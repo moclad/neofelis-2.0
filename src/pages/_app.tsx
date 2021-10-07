@@ -98,8 +98,10 @@ const AppHead = () => {
 };
 
 const App = ({ Component, pageProps }) => {
+  const { session } = pageProps;
+
   return (
-    <Providers>
+    <Providers session={session}>
       <AppHead />
       <ErrorBoundary>
         <Viewport>

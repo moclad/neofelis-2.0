@@ -8,6 +8,10 @@ import { ISession, IToken, IUser } from '@/types/types';
 const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY || 'secret');
 
 const options = {
+  pages: {
+    signIn: '/login',
+    newUser: '/account/register', // New users will be directed here on first sign in (leave the property out if not of interest)
+  },
   providers: [
     Providers.GitHub({
       clientId: process.env.GITHUB_CLIENT_ID,

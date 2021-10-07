@@ -6,6 +6,7 @@ import { UsersRoutes } from './users';
 import { UserFactory } from './users/factory';
 import { userSeeds } from './users/seeds';
 
+/*
 const AppSerializer = Serializer.extend({
   embed: true,
   root: false,
@@ -41,3 +42,4 @@ export const mockServer = () => {
     },
   });
 };
+*/
