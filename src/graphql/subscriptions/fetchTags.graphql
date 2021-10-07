@@ -1,0 +1,8 @@
+subscription fetchTags {
+  tags(order_by: { created_at: desc }) {
+    id
+    name
+    created_at
+    updated_at
+  }
+}

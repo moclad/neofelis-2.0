@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useState } from 'react';
 import { isBrowser } from '@/utils/ssr';
 
 interface AuthContextValue {
-  isAuthenticated: boolean;
+  isLogged: boolean;
   updateToken(string): void;
 }
 
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated: !!token,
+        isLogged: !!token,
         updateToken: handleUpdateToken,
       }}
     >

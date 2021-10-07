@@ -15,7 +15,7 @@ export const Layout = ({ children }) => {
     onClose: navOnClose,
     onOpen: navOnOpen,
   } = useDisclosure();
-  const { isAuthenticated } = useAuthContext();
+  const { isLogged } = useAuthContext();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const Layout = ({ children }) => {
       value={{ isFocusMode, setIsFocusMode, navIsOpen, navOnClose, navOnOpen }}
     >
       <Viewport>
-        {isAuthenticated && !isFocusMode && <TopBar />}
+        {isLogged && !isFocusMode && <TopBar />}
         <Flex flex="1" direction="column">
           {children}
         </Flex>

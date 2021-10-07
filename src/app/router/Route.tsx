@@ -10,19 +10,19 @@ import { useAuthContext } from '@/app/auth/AuthContext';
 import { ErrorBoundary } from '@/errors';
 
 export const Route = (props) => {
-  const { isAuthenticated } = useAuthContext();
+  const { isLogged } = useAuthContext();
   const { pathname, search } = useLocation();
   const history = useHistory();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isLogged) {
       history.replace(
         `/login?redirect=${encodeURIComponent(pathname + search)}`
       );
     }
-  }, [isAuthenticated, history, pathname, search]);
+  }, [isLogged, history, pathname, search]);
 
-  return !isAuthenticated ? null : (
+  return !isLogged ? null : (
     <ErrorBoundary>
       <RouterRoute {...props} />
     </ErrorBoundary>

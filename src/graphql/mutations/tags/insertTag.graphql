@@ -1,0 +1,8 @@
+mutation insertTag($object: tags_insert_input!) {
+  insert_tags_one(object: $object) {
+    id,
+    name,
+    created_at,
+    updated_at
+  }
+}
