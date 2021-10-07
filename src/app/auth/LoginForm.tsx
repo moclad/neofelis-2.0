@@ -1,52 +1,48 @@
 import React from 'react';
 
 import {
-  Alert,
-  AlertDescription,
   Box,
   Button,
+  Divider,
   Flex,
+  HStack,
   Stack,
+  StackDivider,
+  Text,
+  VStack,
 } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
-import { Trans, useTranslation } from 'react-i18next';
+import { signIn } from 'next-auth/client';
+import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { useLogin } from '@/app/auth/auth.service';
+import { useLogin, useProvidersList } from '@/app/auth/auth.service';
 import { FieldInput, useToastError } from '@/components';
 
-const MockedApiHint = () => {
-  const { t } = useTranslation();
-  const form = useForm({ subscribe: 'form' });
-  const mockedUsername = 'admin';
-  const mockedPassword = 'admin';
+import { Loader } from '../layout';
 
-  if (process.env.NEXT_PUBLIC_API_BASE_URL) return null;
+const OAuthProviders = ({ providers }) => {
+  const { t } = useTranslation();
+
+  if (!!!providers) {
+    return <Loader />;
+  }
 
   return (
-    <Alert mt="4" borderRadius="md" textAlign="center" colorScheme="brand">
-      <AlertDescription>
-        <Trans
-          t={t}
-          i18nKey="auth:mockedApi.loginHint"
-          values={{ credentials: `${mockedUsername}/${mockedPassword}` }}
-          components={{
-            button: (
-              <Button
-                variant="link"
-                color="inherit"
-                onClick={() =>
-                  form.setFieldsValues({
-                    username: mockedUsername,
-                    password: mockedPassword,
-                  })
-                }
-              />
-            ),
-          }}
-        />
-      </AlertDescription>
-    </Alert>
+    <>
+      <HStack paddingTop={5}>
+        <Divider />
+        <Text>{t('auth:login.or')}</Text>
+        <Divider />
+      </HStack>
+      <VStack divider={<StackDivider />} spacing={4} align="stretch">
+        {Object.values(providers).map((provider: any) => (
+          <Button onClick={() => signIn(provider.id)} key={provider.name}>
+            {t('auth:login.with')} {provider.name}
+          </Button>
+        ))}
+      </VStack>
+    </>
   );
 };
 
@@ -54,6 +50,8 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
   const { t } = useTranslation();
   const form = useForm({ subscribe: 'form' });
   const toastError = useToastError();
+
+  const { providers } = useProvidersList();
 
   const { mutate: login, isLoading } = useLogin({
     onSuccess,
@@ -101,7 +99,7 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
             </Button>
           </Flex>
 
-          <MockedApiHint />
+          <OAuthProviders providers={providers} />
         </Stack>
       </Formiz>
     </Box>
