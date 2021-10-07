@@ -9,7 +9,7 @@ const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY || 'secret');
 
 const options = {
   pages: {
-    signIn: '/login',
+    signIn: '/app/login',
     newUser: '/account/register', // New users will be directed here on first sign in (leave the property out if not of interest)
   },
   providers: [

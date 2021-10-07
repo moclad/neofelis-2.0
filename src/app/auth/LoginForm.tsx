@@ -1,52 +1,29 @@
 import React from 'react';
 
 import {
-  Alert,
-  AlertDescription,
   Box,
   Button,
   Flex,
   Stack,
+  StackDivider,
+  VStack,
 } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { useLogin } from '@/app/auth/auth.service';
 import { FieldInput, useToastError } from '@/components';
 
-const MockedApiHint = () => {
-  const { t } = useTranslation();
-  const form = useForm({ subscribe: 'form' });
-  const mockedUsername = 'admin';
-  const mockedPassword = 'admin';
-
-  if (process.env.NEXT_PUBLIC_API_BASE_URL) return null;
-
+const OAuthProviders = () => {
   return (
-    <Alert mt="4" borderRadius="md" textAlign="center" colorScheme="brand">
-      <AlertDescription>
-        <Trans
-          t={t}
-          i18nKey="auth:mockedApi.loginHint"
-          values={{ credentials: `${mockedUsername}/${mockedPassword}` }}
-          components={{
-            button: (
-              <Button
-                variant="link"
-                color="inherit"
-                onClick={() =>
-                  form.setFieldsValues({
-                    username: mockedUsername,
-                    password: mockedPassword,
-                  })
-                }
-              />
-            ),
-          }}
-        />
-      </AlertDescription>
-    </Alert>
+    <VStack
+      paddingTop={5}
+      divider={<StackDivider borderColor="gray.200" />}
+      align="stretch"
+    >
+      <Button>GitHub</Button>
+    </VStack>
   );
 };
 
@@ -101,7 +78,7 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
             </Button>
           </Flex>
 
-          <MockedApiHint />
+          <OAuthProviders />
         </Stack>
       </Formiz>
     </Box>

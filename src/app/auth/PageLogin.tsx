@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Box, Button, Center, Heading } from '@chakra-ui/react';
+import { getProviders } from 'next-auth/client';
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from 'react-query';
 import { Link as RouterLink } from 'react-router-dom';

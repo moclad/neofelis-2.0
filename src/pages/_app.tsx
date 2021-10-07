@@ -98,6 +98,7 @@ const AppHead = () => {
 };
 
 const App = ({ Component, pageProps }) => {
+  console.log('_app');
   const { session } = pageProps;
 
   return (
