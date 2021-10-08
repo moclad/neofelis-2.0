@@ -11,17 +11,17 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import Axios from 'axios';
+import { useSession } from 'next-auth/client';
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from 'react-query';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import { useAuthContext } from '@/app/auth/AuthContext';
 import { LoginForm } from '@/app/auth/LoginForm';
 
 export const LoginModalInterceptor = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isLogged, updateToken } = useAuthContext();
+  const [session] = useSession();
   const queryCache = useQueryClient();
   const history = useHistory();
   const { pathname } = useLocation();
@@ -42,19 +42,19 @@ export const LoginModalInterceptor = () => {
         throw error;
       }
     );
-  }, [onOpen, updateToken, queryCache]);
+  }, [onOpen, queryCache]);
 
   // On Route Change
   useEffect(() => {
     const destroy = history.listen(() => {
       if (isOpen) {
-        updateToken(null);
+        // updateToken(null);
         onClose();
       }
     });
 
     return () => destroy();
-  }, [history, isOpen, updateToken, onClose]);
+  }, [history, isOpen, onClose]);
 
   const handleLogin = () => {
     queryCache.refetchQueries();
@@ -62,14 +62,14 @@ export const LoginModalInterceptor = () => {
   };
 
   const handleClose = () => {
-    updateToken(null);
+    // updateToken(null);
     onClose();
     history.push('/login');
   };
 
   return (
     <Modal
-      isOpen={isOpen && isLogged}
+      isOpen={session && isOpen}
       onClose={handleClose}
       closeOnOverlayClick={false}
       trapFocus={false}

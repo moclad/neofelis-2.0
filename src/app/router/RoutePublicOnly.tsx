@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
 
+import { useSession } from 'next-auth/client';
 import { useHistory } from 'react-router-dom';
-
-import { useAuthContext } from '@/app/auth/AuthContext';
 
 import { RoutePublic } from './RoutePublic';
 
 export const RoutePublicOnly = (props) => {
-  const { isLogged } = useAuthContext();
+  const [session] = useSession();
   const history = useHistory();
 
   useEffect(() => {
-    if (isLogged) {
+    if (session) {
       history.replace(`/`);
     }
-  }, [isLogged, history]);
+  }, [session, history]);
 
-  return isLogged ? null : <RoutePublic {...props} />;
+  return session ? null : <RoutePublic {...props} />;
 };

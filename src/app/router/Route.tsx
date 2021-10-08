@@ -1,28 +1,28 @@
 import React, { useEffect } from 'react';
 
+import { useSession } from 'next-auth/client';
 import {
-  useLocation,
-  useHistory,
   Route as RouterRoute,
+  useHistory,
+  useLocation,
 } from 'react-router-dom';
 
-import { useAuthContext } from '@/app/auth/AuthContext';
 import { ErrorBoundary } from '@/errors';
 
 export const Route = (props) => {
-  const { isLogged } = useAuthContext();
+  const [session] = useSession();
   const { pathname, search } = useLocation();
   const history = useHistory();
 
   useEffect(() => {
-    if (!isLogged) {
+    if (!session) {
       history.replace(
         `/login?redirect=${encodeURIComponent(pathname + search)}`
       );
     }
-  }, [isLogged, history, pathname, search]);
+  }, [session, history, pathname, search]);
 
-  return !isLogged ? null : (
+  return !session ? null : (
     <ErrorBoundary>
       <RouterRoute {...props} />
     </ErrorBoundary>

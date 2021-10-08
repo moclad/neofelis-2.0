@@ -1,21 +1,19 @@
 import React, { useEffect } from 'react';
 
 import { Center, Spinner } from '@chakra-ui/react';
+import { signOut } from 'next-auth/client';
 import { useQueryClient } from 'react-query';
 import { useHistory } from 'react-router-dom';
 
-import { useAuthContext } from '@/app/auth/AuthContext';
-
 export const PageLogout = () => {
-  const { updateToken } = useAuthContext();
   const history = useHistory();
   const queryCache = useQueryClient();
 
   useEffect(() => {
-    updateToken(null);
+    signOut({ callbackUrl: 'http://localhost:3000/app/login' });
     queryCache.clear();
     history.push('/');
-  }, [updateToken, queryCache, history]);
+  }, [queryCache, history]);
 
   return (
     <Center flex="1">

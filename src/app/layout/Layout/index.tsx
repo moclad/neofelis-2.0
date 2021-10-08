@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 import { Flex, useDisclosure } from '@chakra-ui/react';
+import { useSession } from 'next-auth/client';
 import { useLocation } from 'react-router-dom';
 
-import { useAuthContext } from '@/app/auth/AuthContext';
 import { LoginModalInterceptor } from '@/app/auth/LoginModalInterceptor';
-import { TopBar, LayoutContext } from '@/app/layout';
+import { LayoutContext, TopBar } from '@/app/layout';
 import { Viewport } from '@/components';
 
 export const Layout = ({ children }) => {
@@ -15,7 +15,7 @@ export const Layout = ({ children }) => {
     onClose: navOnClose,
     onOpen: navOnOpen,
   } = useDisclosure();
-  const { isLogged } = useAuthContext();
+  const [session] = useSession();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const Layout = ({ children }) => {
       value={{ isFocusMode, setIsFocusMode, navIsOpen, navOnClose, navOnOpen }}
     >
       <Viewport>
-        {isLogged && !isFocusMode && <TopBar />}
+        {session && !isFocusMode && <TopBar />}
         <Flex flex="1" direction="column">
           {children}
         </Flex>

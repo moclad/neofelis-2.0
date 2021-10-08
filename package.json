@@ -7,7 +7,7 @@
     "init": "node scripts/generate-keys.ts && yarn install",
     "postinstall": "husky install",
     "DEV": "---------------------------------DEV--------------------------------",
-    "dev": "concurrently \"yarn docs:build\" \"next dev \" \"yarn generate-graphql --watch\"",
+    "dev": "concurrently \"next dev \" \"yarn generate-graphql --watch\"",
     "generate-graphql": "graphql-codegen --config codegen.yml --require dotenv/config",
     "build": "yarn docs:build && next build",
     "start": "next start",
