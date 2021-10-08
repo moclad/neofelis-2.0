@@ -1,11 +1,5 @@
 import Axios from 'axios';
-import { OAuthProvider } from 'next-auth/providers';
-import {
-  useMutation,
-  UseMutationOptions,
-  useQuery,
-  UseQueryOptions,
-} from 'react-query';
+import { useMutation, UseMutationOptions, useQuery } from 'react-query';
 
 import { useAuthContext } from '@/app/auth/AuthContext';
 

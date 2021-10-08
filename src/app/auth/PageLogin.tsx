@@ -15,10 +15,12 @@ export const PageLogin = () => {
   const { colorModeValue } = useDarkMode();
   const redirect = useRedirectFromUrl();
   const queryCache = useQueryClient();
+
   const onLogin = () => {
     queryCache.clear();
     redirect();
   };
+
   return (
     <SlideIn>
       <Box px="2" py="4rem" w="22rem" maxW="full" m="auto">

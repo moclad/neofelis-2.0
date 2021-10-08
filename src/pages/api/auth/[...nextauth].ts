@@ -9,7 +9,7 @@ const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY || 'secret');
 
 const options = {
   pages: {
-    signIn: '/login',
+    signIn: '/app/login',
     newUser: '/account/register', // New users will be directed here on first sign in (leave the property out if not of interest)
   },
   providers: [
@@ -34,7 +34,9 @@ const options = {
     },
   },
   session: {
-    jwt: true,
+    jwt: false,
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60, // 24 hours
   },
   jwt: {
     encode: async ({ token }: { token: IToken }) => {
@@ -72,7 +74,7 @@ const options = {
 
   callbacks: {
     session: async (session: ISession, user: IUser) => {
-      const encodedToken = jwt.sign(user, jwtSecret.key, {
+      const encodedToken = jwt.sign(JSON.stringify(user), jwtSecret.key, {
         algorithm: jwtSecret.type,
       });
 

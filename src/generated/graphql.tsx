@@ -784,14 +784,12 @@ export type Mutation_RootUpdate_Notifications_By_PkArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_SessionsArgs = {
-  _inc?: Maybe<Sessions_Inc_Input>;
   _set?: Maybe<Sessions_Set_Input>;
   where: Sessions_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Sessions_By_PkArgs = {
-  _inc?: Maybe<Sessions_Inc_Input>;
   _set?: Maybe<Sessions_Set_Input>;
   pk_columns: Sessions_Pk_Columns_Input;
 };
@@ -1353,7 +1351,7 @@ export type Sessions = {
   id: Scalars['uuid'];
   session_token: Scalars['String'];
   updated_at: Scalars['timestamptz'];
-  user_id: Scalars['Int'];
+  user_id: Scalars['uuid'];
 };
 
 /** aggregated selection of "sessions" */
@@ -1366,29 +1364,15 @@ export type Sessions_Aggregate = {
 /** aggregate fields of "sessions" */
 export type Sessions_Aggregate_Fields = {
   __typename?: 'sessions_aggregate_fields';
-  avg?: Maybe<Sessions_Avg_Fields>;
   count: Scalars['Int'];
   max?: Maybe<Sessions_Max_Fields>;
   min?: Maybe<Sessions_Min_Fields>;
-  stddev?: Maybe<Sessions_Stddev_Fields>;
-  stddev_pop?: Maybe<Sessions_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Sessions_Stddev_Samp_Fields>;
-  sum?: Maybe<Sessions_Sum_Fields>;
-  var_pop?: Maybe<Sessions_Var_Pop_Fields>;
-  var_samp?: Maybe<Sessions_Var_Samp_Fields>;
-  variance?: Maybe<Sessions_Variance_Fields>;
 };
 
 /** aggregate fields of "sessions" */
 export type Sessions_Aggregate_FieldsCountArgs = {
   columns?: Maybe<Array<Sessions_Select_Column>>;
   distinct?: Maybe<Scalars['Boolean']>;
-};
-
-/** aggregate avg on columns */
-export type Sessions_Avg_Fields = {
-  __typename?: 'sessions_avg_fields';
-  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "sessions". All fields are combined with a logical 'AND'. */
@@ -1402,7 +1386,7 @@ export type Sessions_Bool_Exp = {
   id?: Maybe<Uuid_Comparison_Exp>;
   session_token?: Maybe<String_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
-  user_id?: Maybe<Int_Comparison_Exp>;
+  user_id?: Maybe<Uuid_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "sessions" */
@@ -1410,11 +1394,6 @@ export enum Sessions_Constraint {
   /** unique or primary key constraint */
   SessionsPkey = 'sessions_pkey',
 }
-
-/** input type for incrementing numeric columns in table "sessions" */
-export type Sessions_Inc_Input = {
-  user_id?: Maybe<Scalars['Int']>;
-};
 
 /** input type for inserting data into table "sessions" */
 export type Sessions_Insert_Input = {
@@ -1424,7 +1403,7 @@ export type Sessions_Insert_Input = {
   id?: Maybe<Scalars['uuid']>;
   session_token?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['uuid']>;
 };
 
 /** aggregate max on columns */
@@ -1436,7 +1415,7 @@ export type Sessions_Max_Fields = {
   id?: Maybe<Scalars['uuid']>;
   session_token?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['uuid']>;
 };
 
 /** aggregate min on columns */
@@ -1448,7 +1427,7 @@ export type Sessions_Min_Fields = {
   id?: Maybe<Scalars['uuid']>;
   session_token?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['uuid']>;
 };
 
 /** response of any mutation on the table "sessions" */
@@ -1509,31 +1488,7 @@ export type Sessions_Set_Input = {
   id?: Maybe<Scalars['uuid']>;
   session_token?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
-};
-
-/** aggregate stddev on columns */
-export type Sessions_Stddev_Fields = {
-  __typename?: 'sessions_stddev_fields';
-  user_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Sessions_Stddev_Pop_Fields = {
-  __typename?: 'sessions_stddev_pop_fields';
-  user_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Sessions_Stddev_Samp_Fields = {
-  __typename?: 'sessions_stddev_samp_fields';
-  user_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate sum on columns */
-export type Sessions_Sum_Fields = {
-  __typename?: 'sessions_sum_fields';
-  user_id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['uuid']>;
 };
 
 /** update columns of table "sessions" */
@@ -1553,24 +1508,6 @@ export enum Sessions_Update_Column {
   /** column name */
   UserId = 'user_id',
 }
-
-/** aggregate var_pop on columns */
-export type Sessions_Var_Pop_Fields = {
-  __typename?: 'sessions_var_pop_fields';
-  user_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate var_samp on columns */
-export type Sessions_Var_Samp_Fields = {
-  __typename?: 'sessions_var_samp_fields';
-  user_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate variance on columns */
-export type Sessions_Variance_Fields = {
-  __typename?: 'sessions_variance_fields';
-  user_id?: Maybe<Scalars['Float']>;
-};
 
 export type Subscription_Root = {
   __typename?: 'subscription_root';
@@ -3485,10 +3422,8 @@ export type ResolversTypes = {
   sessions: ResolverTypeWrapper<Sessions>;
   sessions_aggregate: ResolverTypeWrapper<Sessions_Aggregate>;
   sessions_aggregate_fields: ResolverTypeWrapper<Sessions_Aggregate_Fields>;
-  sessions_avg_fields: ResolverTypeWrapper<Sessions_Avg_Fields>;
   sessions_bool_exp: Sessions_Bool_Exp;
   sessions_constraint: Sessions_Constraint;
-  sessions_inc_input: Sessions_Inc_Input;
   sessions_insert_input: Sessions_Insert_Input;
   sessions_max_fields: ResolverTypeWrapper<Sessions_Max_Fields>;
   sessions_min_fields: ResolverTypeWrapper<Sessions_Min_Fields>;
@@ -3498,14 +3433,7 @@ export type ResolversTypes = {
   sessions_pk_columns_input: Sessions_Pk_Columns_Input;
   sessions_select_column: Sessions_Select_Column;
   sessions_set_input: Sessions_Set_Input;
-  sessions_stddev_fields: ResolverTypeWrapper<Sessions_Stddev_Fields>;
-  sessions_stddev_pop_fields: ResolverTypeWrapper<Sessions_Stddev_Pop_Fields>;
-  sessions_stddev_samp_fields: ResolverTypeWrapper<Sessions_Stddev_Samp_Fields>;
-  sessions_sum_fields: ResolverTypeWrapper<Sessions_Sum_Fields>;
   sessions_update_column: Sessions_Update_Column;
-  sessions_var_pop_fields: ResolverTypeWrapper<Sessions_Var_Pop_Fields>;
-  sessions_var_samp_fields: ResolverTypeWrapper<Sessions_Var_Samp_Fields>;
-  sessions_variance_fields: ResolverTypeWrapper<Sessions_Variance_Fields>;
   subscription_root: ResolverTypeWrapper<{}>;
   tags: ResolverTypeWrapper<Tags>;
   tags_aggregate: ResolverTypeWrapper<Tags_Aggregate>;
@@ -3643,9 +3571,7 @@ export type ResolversParentTypes = {
   sessions: Sessions;
   sessions_aggregate: Sessions_Aggregate;
   sessions_aggregate_fields: Sessions_Aggregate_Fields;
-  sessions_avg_fields: Sessions_Avg_Fields;
   sessions_bool_exp: Sessions_Bool_Exp;
-  sessions_inc_input: Sessions_Inc_Input;
   sessions_insert_input: Sessions_Insert_Input;
   sessions_max_fields: Sessions_Max_Fields;
   sessions_min_fields: Sessions_Min_Fields;
@@ -3654,13 +3580,6 @@ export type ResolversParentTypes = {
   sessions_order_by: Sessions_Order_By;
   sessions_pk_columns_input: Sessions_Pk_Columns_Input;
   sessions_set_input: Sessions_Set_Input;
-  sessions_stddev_fields: Sessions_Stddev_Fields;
-  sessions_stddev_pop_fields: Sessions_Stddev_Pop_Fields;
-  sessions_stddev_samp_fields: Sessions_Stddev_Samp_Fields;
-  sessions_sum_fields: Sessions_Sum_Fields;
-  sessions_var_pop_fields: Sessions_Var_Pop_Fields;
-  sessions_var_samp_fields: Sessions_Var_Samp_Fields;
-  sessions_variance_fields: Sessions_Variance_Fields;
   subscription_root: {};
   tags: Tags;
   tags_aggregate: Tags_Aggregate;
@@ -4646,7 +4565,7 @@ export type SessionsResolvers<
   id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
   session_token?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
-  user_id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  user_id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -4667,11 +4586,6 @@ export type Sessions_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['sessions_aggregate_fields'] = ResolversParentTypes['sessions_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['sessions_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
   count?: Resolver<
     ResolversTypes['Int'],
     ParentType,
@@ -4688,49 +4602,6 @@ export type Sessions_Aggregate_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['sessions_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['sessions_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['sessions_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['sessions_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['sessions_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['sessions_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['sessions_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Sessions_Avg_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['sessions_avg_fields'] = ResolversParentTypes['sessions_avg_fields']
-> = {
-  user_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -4764,7 +4635,7 @@ export type Sessions_Max_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  user_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  user_id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -4798,7 +4669,7 @@ export type Sessions_Min_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  user_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  user_id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -4812,62 +4683,6 @@ export type Sessions_Mutation_ResponseResolvers<
     ParentType,
     ContextType
   >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Sessions_Stddev_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['sessions_stddev_fields'] = ResolversParentTypes['sessions_stddev_fields']
-> = {
-  user_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Sessions_Stddev_Pop_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['sessions_stddev_pop_fields'] = ResolversParentTypes['sessions_stddev_pop_fields']
-> = {
-  user_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Sessions_Stddev_Samp_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['sessions_stddev_samp_fields'] = ResolversParentTypes['sessions_stddev_samp_fields']
-> = {
-  user_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Sessions_Sum_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['sessions_sum_fields'] = ResolversParentTypes['sessions_sum_fields']
-> = {
-  user_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Sessions_Var_Pop_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['sessions_var_pop_fields'] = ResolversParentTypes['sessions_var_pop_fields']
-> = {
-  user_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Sessions_Var_Samp_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['sessions_var_samp_fields'] = ResolversParentTypes['sessions_var_samp_fields']
-> = {
-  user_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Sessions_Variance_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['sessions_variance_fields'] = ResolversParentTypes['sessions_variance_fields']
-> = {
-  user_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -5527,17 +5342,9 @@ export type Resolvers<ContextType = any> = {
   sessions?: SessionsResolvers<ContextType>;
   sessions_aggregate?: Sessions_AggregateResolvers<ContextType>;
   sessions_aggregate_fields?: Sessions_Aggregate_FieldsResolvers<ContextType>;
-  sessions_avg_fields?: Sessions_Avg_FieldsResolvers<ContextType>;
   sessions_max_fields?: Sessions_Max_FieldsResolvers<ContextType>;
   sessions_min_fields?: Sessions_Min_FieldsResolvers<ContextType>;
   sessions_mutation_response?: Sessions_Mutation_ResponseResolvers<ContextType>;
-  sessions_stddev_fields?: Sessions_Stddev_FieldsResolvers<ContextType>;
-  sessions_stddev_pop_fields?: Sessions_Stddev_Pop_FieldsResolvers<ContextType>;
-  sessions_stddev_samp_fields?: Sessions_Stddev_Samp_FieldsResolvers<ContextType>;
-  sessions_sum_fields?: Sessions_Sum_FieldsResolvers<ContextType>;
-  sessions_var_pop_fields?: Sessions_Var_Pop_FieldsResolvers<ContextType>;
-  sessions_var_samp_fields?: Sessions_Var_Samp_FieldsResolvers<ContextType>;
-  sessions_variance_fields?: Sessions_Variance_FieldsResolvers<ContextType>;
   subscription_root?: Subscription_RootResolvers<ContextType>;
   tags?: TagsResolvers<ContextType>;
   tags_aggregate?: Tags_AggregateResolvers<ContextType>;

@@ -17,14 +17,14 @@ import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { useLogin, useProvidersList } from '@/app/auth/auth.service';
+import { Loader } from '@/app/layout';
 import { FieldInput, useToastError } from '@/components';
 
-import { Loader } from '../layout';
-
-const OAuthProviders = ({ providers }) => {
+const OAuthProviders = () => {
   const { t } = useTranslation();
+  const { providers, isLoading } = useProvidersList();
 
-  if (!!!providers) {
+  if (isLoading || !!!providers) {
     return <Loader />;
   }
 
@@ -51,8 +51,6 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
   const form = useForm({ subscribe: 'form' });
   const toastError = useToastError();
 
-  const { providers } = useProvidersList();
-
   const { mutate: login, isLoading } = useLogin({
     onSuccess,
     onError: (error: any) => {
@@ -65,7 +63,14 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
 
   return (
     <Box {...rest}>
-      <Formiz id="login-form" autoForm onValidSubmit={login} connect={form}>
+      <Formiz
+        id="login-form"
+        autoForm
+        onValidSubmit={() => {
+          signIn('credentials', { username: 'jsmith', password: '1234' });
+        }}
+        connect={form}
+      >
         <Stack spacing="4">
           <FieldInput
             name="username"
@@ -99,7 +104,7 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
             </Button>
           </Flex>
 
-          <OAuthProviders providers={providers} />
+          <OAuthProviders />
         </Stack>
       </Formiz>
     </Box>
