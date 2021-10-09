@@ -4,8 +4,10 @@ import { useSession } from 'next-auth/client';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 
+import { PageAuthError } from '@/app/auth/PageAuthError';
 import { PageLogin } from '@/app/auth/PageLogin';
 import { PageLogout } from '@/app/auth/PageLogout';
+import { PageVerifyRequest } from '@/app/auth/PageVerifyRequest';
 import { Layout, Loader } from '@/app/layout';
 import { Route, RouteAdmin, RoutePublic, RoutePublicOnly } from '@/app/router';
 import { Error404, ErrorBoundary } from '@/errors';
@@ -37,6 +39,16 @@ export const App = () => {
                 render={() => <PageLogin />}
               />
               <RoutePublic exact path="/logout" render={() => <PageLogout />} />
+              <RoutePublicOnly
+                exact
+                path="/verify-request"
+                render={() => <PageVerifyRequest />}
+              />
+              <RoutePublicOnly
+                exact
+                path="/error"
+                render={() => <PageAuthError />}
+              />
 
               <RoutePublic path="/account" render={() => <AccountRoutes />} />
 

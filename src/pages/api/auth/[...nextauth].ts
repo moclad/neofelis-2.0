@@ -10,9 +10,14 @@ const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY || 'secret');
 const options = {
   pages: {
     signIn: '/app/login',
-    newUser: '/account/register', // New users will be directed here on first sign in (leave the property out if not of interest)
+    verifyRequest: '/app/verify-request',
+    error: '/app/error',
   },
   providers: [
+    Providers.Email({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    }),
     Providers.GitHub({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,

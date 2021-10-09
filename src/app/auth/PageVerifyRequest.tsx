@@ -1,25 +1,15 @@
 import React from 'react';
 
-import { Box, Button, Center, Heading } from '@chakra-ui/react';
+import { Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { useQueryClient } from 'react-query';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { LoginForm } from '@/app/auth/LoginForm';
-import { useRedirectFromUrl } from '@/app/router';
 import { Logo, SlideIn } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
 
-export const PageLogin = () => {
+export const PageVerifyRequest = () => {
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
-  const redirect = useRedirectFromUrl();
-  const queryCache = useQueryClient();
-
-  const onLogin = () => {
-    queryCache.clear();
-    redirect();
-  };
 
   return (
     <SlideIn>
@@ -31,20 +21,25 @@ export const PageLogin = () => {
           borderRadius="md"
           boxShadow="md"
         >
-          <Heading size="md" mb="4">
-            {t('auth:login.title')}
-          </Heading>
-          <LoginForm onSuccess={onLogin} />
+          <Center>
+            <VStack>
+              <Heading as="h3" size="lg" mb="8">
+                {t('auth:login.verify.title')}
+              </Heading>
+
+              <Text fontSize="md">{t('auth:login.verify.message')}</Text>
+            </VStack>
+          </Center>
         </Box>
         <Center mt="8">
-          <Button as={RouterLink} to="/account/register" variant="link">
-            {t('auth:login.actions.needAccount')}{' '}
+          <Button as={RouterLink} to="/" variant="link">
+            {t('auth:login.verify.closeMessage')}{' '}
             <Box
               as="strong"
               color={colorModeValue('brand.500', 'brand.300')}
               ms="2"
             >
-              {t('auth:login.actions.register')}
+              Neofelis Home
             </Box>
           </Button>
         </Center>

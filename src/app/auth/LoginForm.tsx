@@ -12,6 +12,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
+import { isEmail } from '@formiz/validations';
 import { signIn } from 'next-auth/client';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink } from 'react-router-dom';
@@ -35,12 +36,19 @@ const OAuthProviders = () => {
         <Text>{t('auth:login.or')}</Text>
         <Divider />
       </HStack>
-      <VStack divider={<StackDivider />} spacing={4} align="stretch">
-        {Object.values(providers).map((provider: any) => (
-          <Button onClick={() => signIn(provider.id)} key={provider.name}>
-            {t('auth:login.with')} {provider.name}
-          </Button>
-        ))}
+      <VStack
+        divider={<StackDivider />}
+        paddingTop={5}
+        spacing={4}
+        align="stretch"
+      >
+        {Object.values(providers)
+          .filter((provider) => provider.id !== 'email')
+          .map((provider: any) => (
+            <Button onClick={() => signIn(provider.id)} key={provider.name}>
+              {t('auth:login.with')} {provider.name}
+            </Button>
+          ))}
       </VStack>
     </>
   );
@@ -66,46 +74,34 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
       <Formiz
         id="login-form"
         autoForm
-        onValidSubmit={() => {
-          signIn('credentials', { username: 'jsmith', password: '1234' });
+        onValidSubmit={({ email }: any) => {
+          signIn('email', { email });
         }}
         connect={form}
       >
         <Stack spacing="4">
           <FieldInput
-            name="username"
-            label={t('auth:data.username.label')}
-            required={t('auth:data.username.required') as string}
+            name="email"
+            label={t('auth:data.email.label')}
+            validations={[
+              {
+                rule: isEmail(),
+                message: t('auth:data.email.invalid'),
+              },
+            ]}
+            required={t('auth:data.email.required') as string}
           />
-          <FieldInput
-            name="password"
-            type="password"
-            label={t('auth:data.password.label')}
-            required={t('auth:data.password.required') as string}
-          />
-          <Flex>
-            <Button
-              as={RouterLink}
-              to="/account/reset"
-              size="sm"
-              variant="link"
-              whiteSpace="initial"
-            >
-              {t('auth:login.actions.forgotPassword')}
-            </Button>
-            <Button
-              isLoading={isLoading}
-              isDisabled={form.isSubmitted && !form.isValid}
-              type="submit"
-              variant="@primary"
-              ms="auto"
-            >
-              {t('auth:login.actions.login')}
-            </Button>
-          </Flex>
-
-          <OAuthProviders />
+          <Button
+            isLoading={isLoading}
+            isDisabled={form.isSubmitted && !form.isValid}
+            type="submit"
+            variant="@primary"
+            ms="auto"
+          >
+            {t('auth:login.actions.loginWithEmail')}
+          </Button>
         </Stack>
+        <OAuthProviders />
       </Formiz>
     </Box>
   );

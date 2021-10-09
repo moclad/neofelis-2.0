@@ -1,25 +1,19 @@
 import React from 'react';
 
-import { Box, Button, Center, Heading } from '@chakra-ui/react';
+import { Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { useQueryClient } from 'react-query';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { LoginForm } from '@/app/auth/LoginForm';
-import { useRedirectFromUrl } from '@/app/router';
+import { useSearchParams } from '@/app/router';
 import { Logo, SlideIn } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
 
-export const PageLogin = () => {
+export const PageAuthError = () => {
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
-  const redirect = useRedirectFromUrl();
-  const queryCache = useQueryClient();
+  const { searchParams } = useSearchParams();
 
-  const onLogin = () => {
-    queryCache.clear();
-    redirect();
-  };
+  const error = searchParams.get('error');
 
   return (
     <SlideIn>
@@ -31,20 +25,26 @@ export const PageLogin = () => {
           borderRadius="md"
           boxShadow="md"
         >
-          <Heading size="md" mb="4">
-            {t('auth:login.title')}
-          </Heading>
-          <LoginForm onSuccess={onLogin} />
+          <Center>
+            <VStack spacing="4">
+              <Heading as="h3" size="lg" mb="8">
+                {t(`auth:error.${error}.title`)}
+              </Heading>
+
+              <Text fontSize="md">{t(`auth:error.${error}.message`)}</Text>
+              <Text fontSize="md">{t(`auth:error.${error}.extra`)}</Text>
+            </VStack>
+          </Center>
         </Box>
         <Center mt="8">
-          <Button as={RouterLink} to="/account/register" variant="link">
-            {t('auth:login.actions.needAccount')}{' '}
+          <Button as={RouterLink} to="/" variant="link">
+            {t('auth:login.verify.back')}{' '}
             <Box
               as="strong"
               color={colorModeValue('brand.500', 'brand.300')}
               ms="2"
             >
-              {t('auth:login.actions.register')}
+              Neofelis Home
             </Box>
           </Button>
         </Center>
