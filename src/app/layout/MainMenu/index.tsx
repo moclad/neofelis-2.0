@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Stack, Box } from '@chakra-ui/react';
+import { Box, Stack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
@@ -62,7 +62,8 @@ const MainMenuItem = ({ to, ...rest }: any) => {
 
 export const MainMenu = ({ ...rest }) => {
   const { t } = useTranslation();
-  const { isAdmin } = useAccount();
+  // const { isAdmin } = useAccount();
+  const isAdmin = true;
   return (
     <Stack direction="row" spacing="1" {...rest}>
       <MainMenuItem to="/dashboard">

@@ -3,5 +3,6 @@ query fetchUser($userId: uuid!) {
     id
     name
     email
+    image
   }
 }

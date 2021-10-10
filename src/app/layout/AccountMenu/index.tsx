@@ -2,18 +2,19 @@ import React from 'react';
 
 import {
   Avatar,
+  Flex,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
-  MenuGroup,
   MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
   Spinner,
-  Flex,
   Text,
   useClipboard,
   useColorMode,
 } from '@chakra-ui/react';
+import { useSession } from 'next-auth/client';
 import { useTranslation } from 'react-i18next';
 import {
   FiCheck,
@@ -26,9 +27,10 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 
 import appBuild from '@/../app-build.json';
-import { useAccount } from '@/app/account/account.service';
 import { Icon } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
+
+import { useFetchUserQuery } from '../../../generated/graphql';
 
 const AppVersion = ({ ...rest }) => {
   const { t } = useTranslation();
@@ -96,14 +98,26 @@ export const AccountMenu = ({ ...rest }) => {
   const { t } = useTranslation('layout');
   const { colorModeValue } = useDarkMode();
   const { colorMode, toggleColorMode } = useColorMode();
-  const { account, isLoading } = useAccount();
   const history = useHistory();
+  const [session] = useSession();
+
+  const { loading, data } = useFetchUserQuery({
+    variables: {
+      userId: session?.id,
+    },
+  });
 
   return (
     <Menu placement="bottom-end" {...rest}>
       <MenuButton borderRadius="full" _focus={{ shadow: 'outline' }}>
-        <Avatar size="sm" icon={<></>} name={!isLoading && `${account?.login}`}>
-          {isLoading && <Spinner size="xs" />}
+        <Avatar
+          size="sm"
+          icon={<></>}
+          name={
+            !loading && `${data?.users_by_pk?.name || data?.users_by_pk?.email}`
+          }
+        >
+          {loading && <Spinner size="xs" />}
         </Avatar>
       </MenuButton>
       <MenuList
@@ -111,7 +125,7 @@ export const AccountMenu = ({ ...rest }) => {
         maxW="12rem"
         overflow="hidden"
       >
-        <MenuGroup title={account?.email} isTruncated>
+        <MenuGroup title={data?.users_by_pk?.email} isTruncated>
           <MenuItem
             as={Link}
             to="/account"

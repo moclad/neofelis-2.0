@@ -2369,6 +2369,7 @@ export type FetchUserQuery = {
         id: any;
         name?: string | null | undefined;
         email?: string | null | undefined;
+        image?: string | null | undefined;
       }
     | null
     | undefined;
@@ -2837,6 +2838,7 @@ export const FetchUserDocument = gql`
       id
       name
       email
+      image
     }
   }
 `;
