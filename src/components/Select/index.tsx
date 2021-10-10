@@ -1,12 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React, { forwardRef, useRef } from 'react';
 
 import {
   Box,
-  Portal,
-  useToken,
   BoxProps,
-  useTheme,
+  Portal,
   useStyleConfig,
+  useTheme,
+  useToken,
 } from '@chakra-ui/react';
 import type { CSSObject } from '@emotion/react';
 import ReactSelect from 'react-select';
@@ -75,7 +76,7 @@ export const Select = forwardRef<HTMLElement, Props>((props, ref) => {
     return ReactSelect;
   })();
 
-  let debounceTimeout = useRef<any>();
+  const debounceTimeout = useRef<any>();
 
   const debounce = (func: () => unknown, delay: number) => {
     clearTimeout(debounceTimeout.current);

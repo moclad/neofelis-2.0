@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 
-import { Flex, useMediaQuery } from '@chakra-ui/react';
-
 import { isBrowser } from '@/utils/ssr';
+import { Flex, useMediaQuery } from '@chakra-ui/react';
 
 const useFixViewport = () => {
   useEffect(() => {
     const updateCssViewportHeight = () => {
-      let vh = window.innerHeight * 0.01;
+      const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
 

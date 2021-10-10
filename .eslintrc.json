@@ -1,29 +1,32 @@
 {
-  "extends": ["react-app", "plugin:@next/next/recommended"],
   "env": {
-    "node": true,
     "browser": true,
-    "jest": true
+    "es2021": true,
+    "node": true
   },
-  "rules": {
-    "jsx-a11y/anchor-is-valid": "warn"
-  },
-  "overrides": [
-    {
-      "files": ["src/app/*"],
-      "rules": {
-        "import/no-default-export": "error"
-      }
+  "extends": [
+    "plugin:@next/next/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "restParams": true
     },
-    {
-      "files": [
-        "*.stories.tsx",
-        "src/locales/**/*",
-        "./src/theme/components/**/*.ts"
-      ],
-      "rules": {
-        "import/no-anonymous-default-export": "off"
-      }
-    }
-  ]
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "@next/eslint-plugin-next"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-interface": "off"
+  }
 }
