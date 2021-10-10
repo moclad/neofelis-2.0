@@ -26,6 +26,18 @@ export const styles = {
       pr: 'safe-right',
       pb: 'safe-bottom',
     },
+    '#nprogress': {
+      pointerEvents: 'none',
+    },
+    '#nprogress .bar': {
+      background: 'green.200',
+      position: 'fixed',
+      zIndex: '1031',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '2px',
+    },
     ...externalsStyles(props),
   }),
 };

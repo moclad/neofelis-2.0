@@ -1915,6 +1915,8 @@ export type Users = {
   feeds_aggregate: Feeds_Aggregate;
   id: Scalars['uuid'];
   image?: Maybe<Scalars['String']>;
+  langKey?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   /** fetch data from the table: "notifications" */
   notifications: Array<Notifications>;
@@ -1991,6 +1993,8 @@ export type Users_Bool_Exp = {
   feeds?: Maybe<Feeds_Bool_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
   image?: Maybe<String_Comparison_Exp>;
+  langKey?: Maybe<String_Comparison_Exp>;
+  lastName?: Maybe<String_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
   notifications?: Maybe<Notifications_Bool_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
@@ -2010,6 +2014,8 @@ export type Users_Insert_Input = {
   feeds?: Maybe<Feeds_Arr_Rel_Insert_Input>;
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
+  langKey?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   notifications?: Maybe<Notifications_Arr_Rel_Insert_Input>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -2023,6 +2029,8 @@ export type Users_Max_Fields = {
   email_verified?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
+  langKey?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -2035,6 +2043,8 @@ export type Users_Min_Fields = {
   email_verified?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
+  langKey?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -2070,6 +2080,8 @@ export type Users_Order_By = {
   feeds_aggregate?: Maybe<Feeds_Aggregate_Order_By>;
   id?: Maybe<Order_By>;
   image?: Maybe<Order_By>;
+  langKey?: Maybe<Order_By>;
+  lastName?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   notifications_aggregate?: Maybe<Notifications_Aggregate_Order_By>;
   updated_at?: Maybe<Order_By>;
@@ -2093,6 +2105,10 @@ export enum Users_Select_Column {
   /** column name */
   Image = 'image',
   /** column name */
+  LangKey = 'langKey',
+  /** column name */
+  LastName = 'lastName',
+  /** column name */
   Name = 'name',
   /** column name */
   UpdatedAt = 'updated_at',
@@ -2105,6 +2121,8 @@ export type Users_Set_Input = {
   email_verified?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
+  langKey?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -2121,6 +2139,10 @@ export enum Users_Update_Column {
   Id = 'id',
   /** column name */
   Image = 'image',
+  /** column name */
+  LangKey = 'langKey',
+  /** column name */
+  LastName = 'lastName',
   /** column name */
   Name = 'name',
   /** column name */
@@ -2338,8 +2360,7 @@ export type InsertTagMutation = {
 
 export type UpdateUserMutationVariables = Exact<{
   userId: Scalars['uuid'];
-  name?: Maybe<Scalars['String']>;
-  email?: Maybe<Scalars['String']>;
+  changes?: Maybe<Users_Set_Input>;
 }>;
 
 export type UpdateUserMutation = {
@@ -2370,6 +2391,8 @@ export type FetchUserQuery = {
         name?: string | null | undefined;
         email?: string | null | undefined;
         image?: string | null | undefined;
+        lastName?: string | null | undefined;
+        langKey?: string | null | undefined;
       }
     | null
     | undefined;
@@ -2726,11 +2749,8 @@ export type InsertTagMutationOptions = Apollo.BaseMutationOptions<
   InsertTagMutationVariables
 >;
 export const UpdateUserDocument = gql`
-  mutation updateUser($userId: uuid!, $name: String, $email: String) {
-    update_users(
-      where: { id: { _eq: $userId } }
-      _set: { name: $name, email: $email }
-    ) {
+  mutation updateUser($userId: uuid!, $changes: users_set_input) {
+    update_users(where: { id: { _eq: $userId } }, _set: $changes) {
       returning {
         id
         name
@@ -2806,8 +2826,7 @@ export function withUpdateUser<
  * const [updateUserMutation, { data, loading, error }] = useUpdateUserMutation({
  *   variables: {
  *      userId: // value for 'userId'
- *      name: // value for 'name'
- *      email: // value for 'email'
+ *      changes: // value for 'changes'
  *   },
  * });
  */
@@ -2839,6 +2858,8 @@ export const FetchUserDocument = gql`
       name
       email
       image
+      lastName
+      langKey
     }
   }
 `;
@@ -5069,6 +5090,8 @@ export type UsersResolvers<
   >;
   id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  langKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  lastName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   notifications?: Resolver<
     Array<ResolversTypes['notifications']>,
@@ -5139,6 +5162,8 @@ export type Users_Max_FieldsResolvers<
   >;
   id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  langKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  lastName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   updated_at?: Resolver<
     Maybe<ResolversTypes['timestamptz']>,
@@ -5165,6 +5190,8 @@ export type Users_Min_FieldsResolvers<
   >;
   id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  langKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  lastName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   updated_at?: Resolver<
     Maybe<ResolversTypes['timestamptz']>,

@@ -1,6 +1,5 @@
-import React, { Suspense } from 'react';
-
 import { useSession } from 'next-auth/client';
+import React, { Suspense } from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
 
@@ -20,7 +19,6 @@ const DashboardRoutes = React.lazy(
 
 export const App = () => {
   const session = useSession();
-  console.log(session);
   return (
     <ErrorBoundary>
       <BrowserRouter basename="/app/">

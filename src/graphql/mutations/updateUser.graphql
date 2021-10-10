@@ -1,5 +1,5 @@
-mutation updateUser($userId: uuid!, $name: String, $email: String) {
-  update_users(where: { id: { _eq: $userId } }, _set: { name: $name, email: $email }) {
+mutation updateUser($userId: uuid!, $changes: users_set_input) {
+  update_users(where: { id: { _eq: $userId } }, _set: $changes) {
     returning {
       id
       name

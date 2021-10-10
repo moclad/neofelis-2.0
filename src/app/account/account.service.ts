@@ -1,17 +1,25 @@
 import Axios from 'axios';
+import { useSession } from 'next-auth/client';
 import { useTranslation } from 'react-i18next';
-import {
-  useMutation,
-  UseMutationOptions,
-  useQuery,
-  UseQueryOptions,
-} from 'react-query';
+import { useMutation, UseMutationOptions, useQuery, UseQueryOptions } from 'react-query';
 
 import { Account } from '@/app/account/account.types';
 import { DEFAULT_LANGUAGE_KEY } from '@/constants/i18n';
 
-export const useAccount = (config: UseQueryOptions<Account> = {}) => {
-  const { i18n } = useTranslation();
+import { useFetchUserQuery } from '../../generated/graphql';
+
+export const useAccount = () => {
+  // const { i18n } = useTranslation();
+  const [session] = useSession();
+
+  return useFetchUserQuery({
+    variables: {
+      userId: session?.id,
+    },
+  });
+
+  /*
+
   const { data: account, ...rest } = useQuery(
     ['account'],
     (): Promise<Account> => Axios.get('/account'),
@@ -27,7 +35,7 @@ export const useAccount = (config: UseQueryOptions<Account> = {}) => {
     }
   );
   const isAdmin = !!account?.authorities?.includes('ROLE_ADMIN');
-  return { account, isAdmin, ...rest };
+  return { account, isAdmin, ...rest };*/
 };
 
 export const useCreateAccount = (

@@ -1,70 +1,69 @@
+import { useSession } from 'next-auth/client';
 import React from 'react';
-
-import { Flex, Button, Heading, Stack } from '@chakra-ui/react';
-import { Formiz, useForm } from '@formiz/core';
-import { isEmail } from '@formiz/validations';
-import { useTranslation } from 'react-i18next';
+import { useSSR, useTranslation } from 'react-i18next';
 import { useQueryClient } from 'react-query';
 
-import { AccountNav } from '@/app/account/AccountNav';
 import { useAccount, useUpdateAccount } from '@/app/account/account.service';
+import { AccountNav } from '@/app/account/AccountNav';
 import { Page, PageContent } from '@/app/layout';
-import {
-  FieldInput,
-  FieldSelect,
-  useToastSuccess,
-  useToastError,
-} from '@/components';
+import { FieldInput, FieldSelect, useToastError, useToastSuccess } from '@/components';
 import { AVAILABLE_LANGUAGES } from '@/constants/i18n';
+import { useUpdateUserMutation } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { Button, Flex, Heading, Stack } from '@chakra-ui/react';
+import { Formiz, useForm } from '@formiz/core';
+import { isEmail } from '@formiz/validations';
 
 export const PageProfile = () => {
+  const [session] = useSession();
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
-  const { account } = useAccount();
+  const { loading, data } = useAccount();
   const generalInformationForm = useForm();
-  const queryClient = useQueryClient();
 
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
-  const { mutate: updateAccount, isLoading: updateLoading } = useUpdateAccount({
-    onError: (error: any) => {
-      const { title } = error?.response?.data || {};
+  const [updateUser, { loading: updateLoading }] = useUpdateUserMutation({
+    onError: (error) => {
       toastError({
         title: t('account:profile.feedbacks.updateError.title'),
-        description: title,
+        description: error.message,
       });
     },
-    onSuccess: () => {
+    onCompleted: () => {
       toastSuccess({
         title: t('account:profile.feedbacks.updateSuccess.title'),
       });
-      queryClient.invalidateQueries('account');
     },
   });
 
   const submitGeneralInformation = async (values) => {
-    const newAccount = {
-      ...account,
+    const newData = {
+      ...data.users_by_pk,
       ...values,
     };
 
-    await updateAccount(newAccount);
+    await updateUser({
+      variables: {
+        userId: session.id,
+        changes: newData,
+      },
+    });
   };
 
   return (
     <Page nav={<AccountNav />}>
-      <PageContent>
+      <PageContent loading={loading}>
         <Heading size="md" mb="4">
           {t('account:profile.title')}
         </Heading>
-        {account && (
+        {data && (
           <Formiz
             id="account-form"
             onValidSubmit={submitGeneralInformation}
             connect={generalInformationForm}
-            initialValues={account}
+            initialValues={data.users_by_pk}
           >
             <form noValidate onSubmit={generalInformationForm.submit}>
               <Stack
@@ -77,14 +76,13 @@ export const PageProfile = () => {
               >
                 <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
                   <FieldInput
-                    name="firstName"
+                    name="name"
                     label={t('account:data.firstname.label')}
                     required={t('account:data.firstname.required') as string}
                   />
                   <FieldInput
                     name="lastName"
                     label={t('account:data.lastname.label')}
-                    required={t('account:data.lastname.required') as string}
                   />
                 </Stack>
                 <FieldInput

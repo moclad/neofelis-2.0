@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { Flex } from '@chakra-ui/react';
-
 import { Layout } from '@/app/layout';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { Flex } from '@chakra-ui/react';
 
-import { Page, PageTopBar, PageContent, PageBottomBar } from './index';
+import { Page, PageBottomBar, PageContent, PageTopBar } from './index';
 
 export default {
   title: 'App Layout/Page',
@@ -81,6 +80,14 @@ export const NoContainer = () => (
   <Page hideContainer>
     <PageTopBar>Page Top Bar</PageTopBar>
     <PageContent>Page Content</PageContent>
+    <PageBottomBar>Page Bottom Bar</PageBottomBar>
+  </Page>
+);
+
+export const ContentLoading = () => (
+  <Page>
+    <PageTopBar>Page Top Bar</PageTopBar>
+    <PageContent loading={true}>Page Content</PageContent>
     <PageBottomBar>Page Bottom Bar</PageBottomBar>
   </Page>
 );

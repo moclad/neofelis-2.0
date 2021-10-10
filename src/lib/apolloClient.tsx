@@ -1,12 +1,12 @@
+import fetch from 'isomorphic-unfetch';
+import ws from 'isomorphic-ws';
 import React from 'react';
+import { SubscriptionClient } from 'subscriptions-transport-ws';
 
 import { ApolloClient, HttpLink, split } from '@apollo/client';
 import { InMemoryCache, NormalizedCacheObject } from '@apollo/client/cache';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
-import fetch from 'isomorphic-unfetch';
-import ws from 'isomorphic-ws';
-import { SubscriptionClient } from 'subscriptions-transport-ws';
 
 const createHttpLink = (token: string) => {
   const httpLink = new HttpLink({
@@ -61,7 +61,11 @@ export const createApolloClient = (token: string) => {
       )
     : createHttpLink(token);
 
-  return new ApolloClient({ ssrMode, link, cache: new InMemoryCache() });
+  return new ApolloClient({
+    ssrMode,
+    link,
+    cache: new InMemoryCache({ addTypename: false }),
+  });
 };
 
 export const initializeApollo = (

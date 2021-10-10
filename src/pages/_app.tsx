@@ -1,12 +1,13 @@
+import { AppProps } from 'next/app';
+import { Router } from 'next/dist/client/router';
+import Head from 'next/head';
+import NProgress from 'nprogress';
 import React from 'react';
 
-import { Box, Text, useTheme } from '@chakra-ui/react';
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-
-import { Providers } from '@/Providers';
 import { Viewport } from '@/components';
 import { ErrorBoundary } from '@/errors';
+import { Providers } from '@/Providers';
+import { Box, Text, useTheme } from '@chakra-ui/react';
 
 const AppDevHint = () => {
   const envName =
@@ -98,7 +99,11 @@ const AppHead = () => {
   );
 };
 
-const App = ({ Component, pageProps }: AppProps) => {
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
+
+const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (
     <Providers pageProps={pageProps}>
       <AppHead />

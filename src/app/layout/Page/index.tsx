@@ -1,18 +1,10 @@
 import React, { useContext, useLayoutEffect, useRef, useState } from 'react';
-
-import {
-  Box,
-  Flex,
-  FlexProps,
-  HStack,
-  IconButton,
-  Stack,
-} from '@chakra-ui/react';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
-import { useFocusMode } from '@/app/layout';
+import { Loader, useFocusMode } from '@/app/layout';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useRtl } from '@/hooks/useRtl';
+import { Box, Flex, FlexProps, HStack, IconButton, Skeleton, Stack } from '@chakra-ui/react';
 
 const PageContext = React.createContext(null);
 
@@ -71,7 +63,7 @@ export const PageTopBar = ({
       <PageContainer>
         <HStack spacing="4">
           {showBack && (
-            <Box ms={{ base: 0, lg: '-3.5rem' }}>
+            <Box ms={{ base: 0, lg: '-1.5rem' }}>
               <IconButton
                 aria-label="Go Back"
                 icon={rtlValue(<FiArrowLeft />, <FiArrowRight />)}
@@ -90,27 +82,39 @@ export const PageTopBar = ({
 interface PageContentProps extends FlexProps {
   onBack?(): void;
   showBack?: boolean;
+  loading?: boolean;
 }
 
-export const PageContent = ({ children, ...rest }: PageContentProps) => {
+export const PageContent = ({
+  children,
+  loading,
+  ...rest
+}: PageContentProps) => {
   const { nav } = useContext(PageContext);
+
   return (
     <Flex zIndex="1" direction="column" flex="1" py="4" {...rest}>
       <PageContainer>
-        <Stack
-          direction={{ base: 'column', lg: 'row' }}
-          spacing={{ base: '4', lg: '8' }}
-          flex="1"
-        >
-          {nav && (
-            <Flex direction="column" minW="0" w={{ base: 'full', lg: '12rem' }}>
-              {nav}
+        <Skeleton h="100%" isLoaded={!loading}>
+          <Stack
+            direction={{ base: 'column', lg: 'row' }}
+            spacing={{ base: '4', lg: '8' }}
+            flex="1"
+          >
+            {nav && (
+              <Flex
+                direction="column"
+                minW="0"
+                w={{ base: 'full', lg: '12rem' }}
+              >
+                {nav}
+              </Flex>
+            )}
+            <Flex direction="column" flex="1" minW="0">
+              {children}
             </Flex>
-          )}
-          <Flex direction="column" flex="1" minW="0">
-            {children}
-          </Flex>
-        </Stack>
+          </Stack>
+        </Skeleton>
       </PageContainer>
       <Box w="full" h="0" pb="safe-bottom" />
     </Flex>
@@ -160,7 +164,7 @@ interface PageProps extends FlexProps {
 export const Page = ({
   isFocusMode = false,
   hideContainer,
-  containerSize = 'md',
+  containerSize = 'xl',
   nav = null,
   ...rest
 }: PageProps) => {
