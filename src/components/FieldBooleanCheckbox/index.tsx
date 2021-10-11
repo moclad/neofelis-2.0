@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { Checkbox } from '@chakra-ui/react';
-import { useField, FieldProps } from '@formiz/core';
-
 import { FormGroup, FormGroupProps } from '@/components/FormGroup';
+import { Checkbox } from '@chakra-ui/react';
+import { FieldProps, useField } from '@formiz/core';
 
 export interface FieldBooleanCheckboxProps extends FieldProps, FormGroupProps {
   optionLabel?: string;
@@ -11,15 +10,8 @@ export interface FieldBooleanCheckboxProps extends FieldProps, FormGroupProps {
 }
 
 export const FieldBooleanCheckbox = (props: FieldBooleanCheckboxProps) => {
-  const {
-    errorMessage,
-    id,
-    isValid,
-    isSubmitted,
-    resetKey,
-    setValue,
-    value,
-  } = useField(props);
+  const { errorMessage, id, isValid, isSubmitted, resetKey, setValue, value } =
+    useField(props);
   const { required } = props;
   const {
     children,

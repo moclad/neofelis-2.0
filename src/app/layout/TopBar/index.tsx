@@ -1,13 +1,4 @@
 import React from 'react';
-
-import {
-  Box,
-  Flex,
-  SlideFade,
-  IconButton,
-  useTheme,
-  useBreakpointValue,
-} from '@chakra-ui/react';
 import { FiMenu } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -15,6 +6,7 @@ import { AccountMenu, MainMenu, useLayoutContext } from '@/app/layout';
 import { NavDrawer } from '@/app/layout/NavDrawer';
 import { Logo } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { Box, Flex, IconButton, SlideFade, useBreakpointValue, useTheme } from '@chakra-ui/react';
 
 const MenuButton = (props) => {
   const { navOnOpen } = useLayoutContext();

@@ -10,5 +10,13 @@
     "deactivate": "Deactivate",
     "delete": "Delete",
     "edit": "Edit"
+  },
+  "feedbacks": {
+    "updateSuccess": {
+      "title": "Updated with success."
+    },
+    "updateError": {
+      "title": "Update failed."
+    }
   }
 }

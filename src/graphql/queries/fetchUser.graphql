@@ -5,6 +5,13 @@ query fetchUser($userId: uuid!) {
     email
     image
     lastName
+  }
+}
+
+query fetchUserSettings($userId: uuid!) {
+  user_settings_by_pk(user_id: $userId) {
+    user_id
+    darkMode
     langKey
   }
 }

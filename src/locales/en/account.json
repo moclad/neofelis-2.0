@@ -2,32 +2,23 @@
   "nav": {
     "profile": "Profile",
     "password": "Password",
-    "myAccount": "My Account"
+    "myAccount": "My Account",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "actions": {
+      "save": "Save"
+    }
   },
   "profile": {
     "title": "Profile",
-    "feedbacks": {
-      "updateSuccess": {
-        "title": "Updated with success"
-      },
-      "updateError": {
-        "title": "Update failed"
-      }
-    },
     "actions": {
       "save": "Save"
     }
   },
   "password": {
     "title": "Password",
-    "feedbacks": {
-      "updateSuccess": {
-        "title": "Your password has been updated with success"
-      },
-      "updateError": {
-        "title": "Password update failed"
-      }
-    },
     "actions": {
       "changePassword": "Change Password"
     }
@@ -90,6 +81,10 @@
     },
     "language": {
       "label": "Language"
+    },
+    "darkMode": {
+      "label": "Dark mode",
+      "optionLabel": "Active"
     },
     "password": {
       "label": "Password",

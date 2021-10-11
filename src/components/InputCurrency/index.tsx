@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-
-import { forwardRef, InputProps, Input } from '@chakra-ui/react';
 import CurrencyInput, { formatValue } from 'react-currency-input-field';
 import { useTranslation } from 'react-i18next';
+
+import { forwardRef, Input, InputProps } from '@chakra-ui/react';
 
 export interface InputCurrencyProps
   extends Omit<InputProps, 'onChange' | 'placeholder'> {

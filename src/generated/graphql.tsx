@@ -524,6 +524,10 @@ export type Mutation_Root = {
   delete_tags?: Maybe<Tags_Mutation_Response>;
   /** delete single row from the table: "tags" */
   delete_tags_by_pk?: Maybe<Tags>;
+  /** delete data from the table: "user_settings" */
+  delete_user_settings?: Maybe<User_Settings_Mutation_Response>;
+  /** delete single row from the table: "user_settings" */
+  delete_user_settings_by_pk?: Maybe<User_Settings>;
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>;
   /** delete single row from the table: "users" */
@@ -552,6 +556,10 @@ export type Mutation_Root = {
   insert_tags?: Maybe<Tags_Mutation_Response>;
   /** insert a single row into the table: "tags" */
   insert_tags_one?: Maybe<Tags>;
+  /** insert data into the table: "user_settings" */
+  insert_user_settings?: Maybe<User_Settings_Mutation_Response>;
+  /** insert a single row into the table: "user_settings" */
+  insert_user_settings_one?: Maybe<User_Settings>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>;
   /** insert a single row into the table: "users" */
@@ -580,6 +588,10 @@ export type Mutation_Root = {
   update_tags?: Maybe<Tags_Mutation_Response>;
   /** update single row of the table: "tags" */
   update_tags_by_pk?: Maybe<Tags>;
+  /** update data of the table: "user_settings" */
+  update_user_settings?: Maybe<User_Settings_Mutation_Response>;
+  /** update single row of the table: "user_settings" */
+  update_user_settings_by_pk?: Maybe<User_Settings>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
   /** update single row of the table: "users" */
@@ -638,6 +650,16 @@ export type Mutation_RootDelete_TagsArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Tags_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+/** mutation root */
+export type Mutation_RootDelete_User_SettingsArgs = {
+  where: User_Settings_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_User_Settings_By_PkArgs = {
+  user_id: Scalars['uuid'];
 };
 
 /** mutation root */
@@ -718,6 +740,18 @@ export type Mutation_RootInsert_TagsArgs = {
 export type Mutation_RootInsert_Tags_OneArgs = {
   object: Tags_Insert_Input;
   on_conflict?: Maybe<Tags_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_User_SettingsArgs = {
+  objects: Array<User_Settings_Insert_Input>;
+  on_conflict?: Maybe<User_Settings_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_User_Settings_OneArgs = {
+  object: User_Settings_Insert_Input;
+  on_conflict?: Maybe<User_Settings_On_Conflict>;
 };
 
 /** mutation root */
@@ -806,6 +840,18 @@ export type Mutation_RootUpdate_Tags_By_PkArgs = {
   _inc?: Maybe<Tags_Inc_Input>;
   _set?: Maybe<Tags_Set_Input>;
   pk_columns: Tags_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_User_SettingsArgs = {
+  _set?: Maybe<User_Settings_Set_Input>;
+  where: User_Settings_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_User_Settings_By_PkArgs = {
+  _set?: Maybe<User_Settings_Set_Input>;
+  pk_columns: User_Settings_Pk_Columns_Input;
 };
 
 /** mutation root */
@@ -1188,6 +1234,12 @@ export type Query_Root = {
   tags_aggregate: Tags_Aggregate;
   /** fetch data from the table: "tags" using primary key columns */
   tags_by_pk?: Maybe<Tags>;
+  /** fetch data from the table: "user_settings" */
+  user_settings: Array<User_Settings>;
+  /** fetch aggregated fields from the table: "user_settings" */
+  user_settings_aggregate: User_Settings_Aggregate;
+  /** fetch data from the table: "user_settings" using primary key columns */
+  user_settings_by_pk?: Maybe<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -1300,6 +1352,26 @@ export type Query_RootTags_AggregateArgs = {
 
 export type Query_RootTags_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+export type Query_RootUser_SettingsArgs = {
+  distinct_on?: Maybe<Array<User_Settings_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Settings_Order_By>>;
+  where?: Maybe<User_Settings_Bool_Exp>;
+};
+
+export type Query_RootUser_Settings_AggregateArgs = {
+  distinct_on?: Maybe<Array<User_Settings_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Settings_Order_By>>;
+  where?: Maybe<User_Settings_Bool_Exp>;
+};
+
+export type Query_RootUser_Settings_By_PkArgs = {
+  user_id: Scalars['uuid'];
 };
 
 export type Query_RootUsersArgs = {
@@ -1541,6 +1613,12 @@ export type Subscription_Root = {
   tags_aggregate: Tags_Aggregate;
   /** fetch data from the table: "tags" using primary key columns */
   tags_by_pk?: Maybe<Tags>;
+  /** fetch data from the table: "user_settings" */
+  user_settings: Array<User_Settings>;
+  /** fetch aggregated fields from the table: "user_settings" */
+  user_settings_aggregate: User_Settings_Aggregate;
+  /** fetch data from the table: "user_settings" using primary key columns */
+  user_settings_by_pk?: Maybe<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -1653,6 +1731,26 @@ export type Subscription_RootTags_AggregateArgs = {
 
 export type Subscription_RootTags_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+export type Subscription_RootUser_SettingsArgs = {
+  distinct_on?: Maybe<Array<User_Settings_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Settings_Order_By>>;
+  where?: Maybe<User_Settings_Bool_Exp>;
+};
+
+export type Subscription_RootUser_Settings_AggregateArgs = {
+  distinct_on?: Maybe<Array<User_Settings_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<User_Settings_Order_By>>;
+  where?: Maybe<User_Settings_Bool_Exp>;
+};
+
+export type Subscription_RootUser_Settings_By_PkArgs = {
+  user_id: Scalars['uuid'];
 };
 
 export type Subscription_RootUsersArgs = {
@@ -1903,6 +2001,127 @@ export type Timestamptz_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['timestamptz']>>;
 };
 
+/** columns and relationships of "user_settings" */
+export type User_Settings = {
+  __typename?: 'user_settings';
+  darkMode: Scalars['Boolean'];
+  langKey: Scalars['String'];
+  user_id: Scalars['uuid'];
+};
+
+/** aggregated selection of "user_settings" */
+export type User_Settings_Aggregate = {
+  __typename?: 'user_settings_aggregate';
+  aggregate?: Maybe<User_Settings_Aggregate_Fields>;
+  nodes: Array<User_Settings>;
+};
+
+/** aggregate fields of "user_settings" */
+export type User_Settings_Aggregate_Fields = {
+  __typename?: 'user_settings_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<User_Settings_Max_Fields>;
+  min?: Maybe<User_Settings_Min_Fields>;
+};
+
+/** aggregate fields of "user_settings" */
+export type User_Settings_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<User_Settings_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "user_settings". All fields are combined with a logical 'AND'. */
+export type User_Settings_Bool_Exp = {
+  _and?: Maybe<Array<User_Settings_Bool_Exp>>;
+  _not?: Maybe<User_Settings_Bool_Exp>;
+  _or?: Maybe<Array<User_Settings_Bool_Exp>>;
+  darkMode?: Maybe<Boolean_Comparison_Exp>;
+  langKey?: Maybe<String_Comparison_Exp>;
+  user_id?: Maybe<Uuid_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "user_settings" */
+export enum User_Settings_Constraint {
+  /** unique or primary key constraint */
+  UserSettingsPkey = 'user_settings_pkey',
+}
+
+/** input type for inserting data into table "user_settings" */
+export type User_Settings_Insert_Input = {
+  darkMode?: Maybe<Scalars['Boolean']>;
+  langKey?: Maybe<Scalars['String']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate max on columns */
+export type User_Settings_Max_Fields = {
+  __typename?: 'user_settings_max_fields';
+  langKey?: Maybe<Scalars['String']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** aggregate min on columns */
+export type User_Settings_Min_Fields = {
+  __typename?: 'user_settings_min_fields';
+  langKey?: Maybe<Scalars['String']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** response of any mutation on the table "user_settings" */
+export type User_Settings_Mutation_Response = {
+  __typename?: 'user_settings_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<User_Settings>;
+};
+
+/** on conflict condition type for table "user_settings" */
+export type User_Settings_On_Conflict = {
+  constraint: User_Settings_Constraint;
+  update_columns?: Array<User_Settings_Update_Column>;
+  where?: Maybe<User_Settings_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "user_settings". */
+export type User_Settings_Order_By = {
+  darkMode?: Maybe<Order_By>;
+  langKey?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: user_settings */
+export type User_Settings_Pk_Columns_Input = {
+  user_id: Scalars['uuid'];
+};
+
+/** select columns of table "user_settings" */
+export enum User_Settings_Select_Column {
+  /** column name */
+  DarkMode = 'darkMode',
+  /** column name */
+  LangKey = 'langKey',
+  /** column name */
+  UserId = 'user_id',
+}
+
+/** input type for updating data in table "user_settings" */
+export type User_Settings_Set_Input = {
+  darkMode?: Maybe<Scalars['Boolean']>;
+  langKey?: Maybe<Scalars['String']>;
+  user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** update columns of table "user_settings" */
+export enum User_Settings_Update_Column {
+  /** column name */
+  DarkMode = 'darkMode',
+  /** column name */
+  LangKey = 'langKey',
+  /** column name */
+  UserId = 'user_id',
+}
+
 /** columns and relationships of "users" */
 export type Users = {
   __typename?: 'users';
@@ -1915,7 +2134,6 @@ export type Users = {
   feeds_aggregate: Feeds_Aggregate;
   id: Scalars['uuid'];
   image?: Maybe<Scalars['String']>;
-  langKey?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   /** fetch data from the table: "notifications" */
@@ -1993,7 +2211,6 @@ export type Users_Bool_Exp = {
   feeds?: Maybe<Feeds_Bool_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
   image?: Maybe<String_Comparison_Exp>;
-  langKey?: Maybe<String_Comparison_Exp>;
   lastName?: Maybe<String_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
   notifications?: Maybe<Notifications_Bool_Exp>;
@@ -2014,7 +2231,6 @@ export type Users_Insert_Input = {
   feeds?: Maybe<Feeds_Arr_Rel_Insert_Input>;
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
-  langKey?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   notifications?: Maybe<Notifications_Arr_Rel_Insert_Input>;
@@ -2029,7 +2245,6 @@ export type Users_Max_Fields = {
   email_verified?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
-  langKey?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -2043,7 +2258,6 @@ export type Users_Min_Fields = {
   email_verified?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
-  langKey?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -2080,7 +2294,6 @@ export type Users_Order_By = {
   feeds_aggregate?: Maybe<Feeds_Aggregate_Order_By>;
   id?: Maybe<Order_By>;
   image?: Maybe<Order_By>;
-  langKey?: Maybe<Order_By>;
   lastName?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   notifications_aggregate?: Maybe<Notifications_Aggregate_Order_By>;
@@ -2105,8 +2318,6 @@ export enum Users_Select_Column {
   /** column name */
   Image = 'image',
   /** column name */
-  LangKey = 'langKey',
-  /** column name */
   LastName = 'lastName',
   /** column name */
   Name = 'name',
@@ -2121,7 +2332,6 @@ export type Users_Set_Input = {
   email_verified?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
-  langKey?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -2139,8 +2349,6 @@ export enum Users_Update_Column {
   Id = 'id',
   /** column name */
   Image = 'image',
-  /** column name */
-  LangKey = 'langKey',
   /** column name */
   LastName = 'lastName',
   /** column name */
@@ -2378,6 +2586,23 @@ export type UpdateUserMutation = {
     | undefined;
 };
 
+export type UpdateUserSettingsMutationVariables = Exact<{
+  object: User_Settings_Insert_Input;
+}>;
+
+export type UpdateUserSettingsMutation = {
+  __typename?: 'mutation_root';
+  insert_user_settings_one?:
+    | {
+        __typename?: 'user_settings';
+        user_id: any;
+        langKey: string;
+        darkMode: boolean;
+      }
+    | null
+    | undefined;
+};
+
 export type FetchUserQueryVariables = Exact<{
   userId: Scalars['uuid'];
 }>;
@@ -2392,7 +2617,23 @@ export type FetchUserQuery = {
         email?: string | null | undefined;
         image?: string | null | undefined;
         lastName?: string | null | undefined;
-        langKey?: string | null | undefined;
+      }
+    | null
+    | undefined;
+};
+
+export type FetchUserSettingsQueryVariables = Exact<{
+  userId: Scalars['uuid'];
+}>;
+
+export type FetchUserSettingsQuery = {
+  __typename?: 'query_root';
+  user_settings_by_pk?:
+    | {
+        __typename?: 'user_settings';
+        user_id: any;
+        darkMode: boolean;
+        langKey: string;
       }
     | null
     | undefined;
@@ -2851,6 +3092,115 @@ export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<
   UpdateUserMutation,
   UpdateUserMutationVariables
 >;
+export const UpdateUserSettingsDocument = gql`
+  mutation updateUserSettings($object: user_settings_insert_input!) {
+    insert_user_settings_one(
+      object: $object
+      on_conflict: {
+        constraint: user_settings_pkey
+        update_columns: [darkMode, langKey]
+      }
+    ) {
+      user_id
+      langKey
+      darkMode
+    }
+  }
+`;
+export type UpdateUserSettingsMutationFn = Apollo.MutationFunction<
+  UpdateUserSettingsMutation,
+  UpdateUserSettingsMutationVariables
+>;
+export type UpdateUserSettingsComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateUserSettingsMutation,
+    UpdateUserSettingsMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateUserSettingsComponent = (
+  props: UpdateUserSettingsComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateUserSettingsMutation,
+    UpdateUserSettingsMutationVariables
+  >
+    mutation={UpdateUserSettingsDocument}
+    {...props}
+  />
+);
+
+export type UpdateUserSettingsProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateUserSettingsMutation,
+    UpdateUserSettingsMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateUserSettings<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateUserSettingsMutation,
+    UpdateUserSettingsMutationVariables,
+    UpdateUserSettingsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateUserSettingsMutation,
+    UpdateUserSettingsMutationVariables,
+    UpdateUserSettingsProps<TChildProps, TDataName>
+  >(UpdateUserSettingsDocument, {
+    alias: 'updateUserSettings',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateUserSettingsMutation__
+ *
+ * To run a mutation, you first call `useUpdateUserSettingsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateUserSettingsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateUserSettingsMutation, { data, loading, error }] = useUpdateUserSettingsMutation({
+ *   variables: {
+ *      object: // value for 'object'
+ *   },
+ * });
+ */
+export function useUpdateUserSettingsMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateUserSettingsMutation,
+    UpdateUserSettingsMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateUserSettingsMutation,
+    UpdateUserSettingsMutationVariables
+  >(UpdateUserSettingsDocument, options);
+}
+export type UpdateUserSettingsMutationHookResult = ReturnType<
+  typeof useUpdateUserSettingsMutation
+>;
+export type UpdateUserSettingsMutationResult =
+  Apollo.MutationResult<UpdateUserSettingsMutation>;
+export type UpdateUserSettingsMutationOptions = Apollo.BaseMutationOptions<
+  UpdateUserSettingsMutation,
+  UpdateUserSettingsMutationVariables
+>;
 export const FetchUserDocument = gql`
   query fetchUser($userId: uuid!) {
     users_by_pk(id: $userId) {
@@ -2859,7 +3209,6 @@ export const FetchUserDocument = gql`
       email
       image
       lastName
-      langKey
     }
   }
 `;
@@ -2955,6 +3304,121 @@ export type FetchUserLazyQueryHookResult = ReturnType<
 export type FetchUserQueryResult = Apollo.QueryResult<
   FetchUserQuery,
   FetchUserQueryVariables
+>;
+export const FetchUserSettingsDocument = gql`
+  query fetchUserSettings($userId: uuid!) {
+    user_settings_by_pk(user_id: $userId) {
+      user_id
+      darkMode
+      langKey
+    }
+  }
+`;
+export type FetchUserSettingsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    FetchUserSettingsQuery,
+    FetchUserSettingsQueryVariables
+  >,
+  'query'
+> &
+  (
+    | { variables: FetchUserSettingsQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const FetchUserSettingsComponent = (
+  props: FetchUserSettingsComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    FetchUserSettingsQuery,
+    FetchUserSettingsQueryVariables
+  >
+    query={FetchUserSettingsDocument}
+    {...props}
+  />
+);
+
+export type FetchUserSettingsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    FetchUserSettingsQuery,
+    FetchUserSettingsQueryVariables
+  >;
+} & TChildProps;
+export function withFetchUserSettings<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    FetchUserSettingsQuery,
+    FetchUserSettingsQueryVariables,
+    FetchUserSettingsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    FetchUserSettingsQuery,
+    FetchUserSettingsQueryVariables,
+    FetchUserSettingsProps<TChildProps, TDataName>
+  >(FetchUserSettingsDocument, {
+    alias: 'fetchUserSettings',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useFetchUserSettingsQuery__
+ *
+ * To run a query within a React component, call `useFetchUserSettingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFetchUserSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFetchUserSettingsQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useFetchUserSettingsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    FetchUserSettingsQuery,
+    FetchUserSettingsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    FetchUserSettingsQuery,
+    FetchUserSettingsQueryVariables
+  >(FetchUserSettingsDocument, options);
+}
+export function useFetchUserSettingsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    FetchUserSettingsQuery,
+    FetchUserSettingsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    FetchUserSettingsQuery,
+    FetchUserSettingsQueryVariables
+  >(FetchUserSettingsDocument, options);
+}
+export type FetchUserSettingsQueryHookResult = ReturnType<
+  typeof useFetchUserSettingsQuery
+>;
+export type FetchUserSettingsLazyQueryHookResult = ReturnType<
+  typeof useFetchUserSettingsLazyQuery
+>;
+export type FetchUserSettingsQueryResult = Apollo.QueryResult<
+  FetchUserSettingsQuery,
+  FetchUserSettingsQueryVariables
 >;
 export const AllTagsDocument = gql`
   query allTags(
@@ -3484,6 +3948,21 @@ export type ResolversTypes = {
   tags_variance_fields: ResolverTypeWrapper<Tags_Variance_Fields>;
   timestamptz: ResolverTypeWrapper<Scalars['timestamptz']>;
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
+  user_settings: ResolverTypeWrapper<User_Settings>;
+  user_settings_aggregate: ResolverTypeWrapper<User_Settings_Aggregate>;
+  user_settings_aggregate_fields: ResolverTypeWrapper<User_Settings_Aggregate_Fields>;
+  user_settings_bool_exp: User_Settings_Bool_Exp;
+  user_settings_constraint: User_Settings_Constraint;
+  user_settings_insert_input: User_Settings_Insert_Input;
+  user_settings_max_fields: ResolverTypeWrapper<User_Settings_Max_Fields>;
+  user_settings_min_fields: ResolverTypeWrapper<User_Settings_Min_Fields>;
+  user_settings_mutation_response: ResolverTypeWrapper<User_Settings_Mutation_Response>;
+  user_settings_on_conflict: User_Settings_On_Conflict;
+  user_settings_order_by: User_Settings_Order_By;
+  user_settings_pk_columns_input: User_Settings_Pk_Columns_Input;
+  user_settings_select_column: User_Settings_Select_Column;
+  user_settings_set_input: User_Settings_Set_Input;
+  user_settings_update_column: User_Settings_Update_Column;
   users: ResolverTypeWrapper<Users>;
   users_aggregate: ResolverTypeWrapper<Users_Aggregate>;
   users_aggregate_fields: ResolverTypeWrapper<Users_Aggregate_Fields>;
@@ -3627,6 +4106,18 @@ export type ResolversParentTypes = {
   tags_variance_fields: Tags_Variance_Fields;
   timestamptz: Scalars['timestamptz'];
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
+  user_settings: User_Settings;
+  user_settings_aggregate: User_Settings_Aggregate;
+  user_settings_aggregate_fields: User_Settings_Aggregate_Fields;
+  user_settings_bool_exp: User_Settings_Bool_Exp;
+  user_settings_insert_input: User_Settings_Insert_Input;
+  user_settings_max_fields: User_Settings_Max_Fields;
+  user_settings_min_fields: User_Settings_Min_Fields;
+  user_settings_mutation_response: User_Settings_Mutation_Response;
+  user_settings_on_conflict: User_Settings_On_Conflict;
+  user_settings_order_by: User_Settings_Order_By;
+  user_settings_pk_columns_input: User_Settings_Pk_Columns_Input;
+  user_settings_set_input: User_Settings_Set_Input;
   users: Users;
   users_aggregate: Users_Aggregate;
   users_aggregate_fields: Users_Aggregate_Fields;
@@ -4024,6 +4515,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_Tags_By_PkArgs, 'id'>
   >;
+  delete_user_settings?: Resolver<
+    Maybe<ResolversTypes['user_settings_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_User_SettingsArgs, 'where'>
+  >;
+  delete_user_settings_by_pk?: Resolver<
+    Maybe<ResolversTypes['user_settings']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_User_Settings_By_PkArgs, 'user_id'>
+  >;
   delete_users?: Resolver<
     Maybe<ResolversTypes['users_mutation_response']>,
     ParentType,
@@ -4108,6 +4611,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_Tags_OneArgs, 'object'>
   >;
+  insert_user_settings?: Resolver<
+    Maybe<ResolversTypes['user_settings_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_User_SettingsArgs, 'objects'>
+  >;
+  insert_user_settings_one?: Resolver<
+    Maybe<ResolversTypes['user_settings']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_User_Settings_OneArgs, 'object'>
+  >;
   insert_users?: Resolver<
     Maybe<ResolversTypes['users_mutation_response']>,
     ParentType,
@@ -4191,6 +4706,18 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Tags_By_PkArgs, 'pk_columns'>
+  >;
+  update_user_settings?: Resolver<
+    Maybe<ResolversTypes['user_settings_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_User_SettingsArgs, 'where'>
+  >;
+  update_user_settings_by_pk?: Resolver<
+    Maybe<ResolversTypes['user_settings']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_User_Settings_By_PkArgs, 'pk_columns'>
   >;
   update_users?: Resolver<
     Maybe<ResolversTypes['users_mutation_response']>,
@@ -4540,6 +5067,24 @@ export type Query_RootResolvers<
     ContextType,
     RequireFields<Query_RootTags_By_PkArgs, 'id'>
   >;
+  user_settings?: Resolver<
+    Array<ResolversTypes['user_settings']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootUser_SettingsArgs, never>
+  >;
+  user_settings_aggregate?: Resolver<
+    ResolversTypes['user_settings_aggregate'],
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootUser_Settings_AggregateArgs, never>
+  >;
+  user_settings_by_pk?: Resolver<
+    Maybe<ResolversTypes['user_settings']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootUser_Settings_By_PkArgs, 'user_id'>
+  >;
   users?: Resolver<
     Array<ResolversTypes['users']>,
     ParentType,
@@ -4818,6 +5363,27 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootTags_By_PkArgs, 'id'>
   >;
+  user_settings?: SubscriptionResolver<
+    Array<ResolversTypes['user_settings']>,
+    'user_settings',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootUser_SettingsArgs, never>
+  >;
+  user_settings_aggregate?: SubscriptionResolver<
+    ResolversTypes['user_settings_aggregate'],
+    'user_settings_aggregate',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootUser_Settings_AggregateArgs, never>
+  >;
+  user_settings_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['user_settings']>,
+    'user_settings_by_pk',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootUser_Settings_By_PkArgs, 'user_id'>
+  >;
   users?: SubscriptionResolver<
     Array<ResolversTypes['users']>,
     'users',
@@ -5065,6 +5631,87 @@ export interface TimestamptzScalarConfig
   name: 'timestamptz';
 }
 
+export type User_SettingsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['user_settings'] = ResolversParentTypes['user_settings']
+> = {
+  darkMode?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  langKey?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  user_id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type User_Settings_AggregateResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['user_settings_aggregate'] = ResolversParentTypes['user_settings_aggregate']
+> = {
+  aggregate?: Resolver<
+    Maybe<ResolversTypes['user_settings_aggregate_fields']>,
+    ParentType,
+    ContextType
+  >;
+  nodes?: Resolver<
+    Array<ResolversTypes['user_settings']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type User_Settings_Aggregate_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['user_settings_aggregate_fields'] = ResolversParentTypes['user_settings_aggregate_fields']
+> = {
+  count?: Resolver<
+    ResolversTypes['Int'],
+    ParentType,
+    ContextType,
+    RequireFields<User_Settings_Aggregate_FieldsCountArgs, never>
+  >;
+  max?: Resolver<
+    Maybe<ResolversTypes['user_settings_max_fields']>,
+    ParentType,
+    ContextType
+  >;
+  min?: Resolver<
+    Maybe<ResolversTypes['user_settings_min_fields']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type User_Settings_Max_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['user_settings_max_fields'] = ResolversParentTypes['user_settings_max_fields']
+> = {
+  langKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  user_id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type User_Settings_Min_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['user_settings_min_fields'] = ResolversParentTypes['user_settings_min_fields']
+> = {
+  langKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  user_id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type User_Settings_Mutation_ResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['user_settings_mutation_response'] = ResolversParentTypes['user_settings_mutation_response']
+> = {
+  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  returning?: Resolver<
+    Array<ResolversTypes['user_settings']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type UsersResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['users'] = ResolversParentTypes['users']
@@ -5090,7 +5737,6 @@ export type UsersResolvers<
   >;
   id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  langKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   lastName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   notifications?: Resolver<
@@ -5162,7 +5808,6 @@ export type Users_Max_FieldsResolvers<
   >;
   id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  langKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   lastName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   updated_at?: Resolver<
@@ -5190,7 +5835,6 @@ export type Users_Min_FieldsResolvers<
   >;
   id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  langKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   lastName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   updated_at?: Resolver<
@@ -5390,6 +6034,12 @@ export type Resolvers<ContextType = any> = {
   tags_var_samp_fields?: Tags_Var_Samp_FieldsResolvers<ContextType>;
   tags_variance_fields?: Tags_Variance_FieldsResolvers<ContextType>;
   timestamptz?: GraphQLScalarType;
+  user_settings?: User_SettingsResolvers<ContextType>;
+  user_settings_aggregate?: User_Settings_AggregateResolvers<ContextType>;
+  user_settings_aggregate_fields?: User_Settings_Aggregate_FieldsResolvers<ContextType>;
+  user_settings_max_fields?: User_Settings_Max_FieldsResolvers<ContextType>;
+  user_settings_min_fields?: User_Settings_Min_FieldsResolvers<ContextType>;
+  user_settings_mutation_response?: User_Settings_Mutation_ResponseResolvers<ContextType>;
   users?: UsersResolvers<ContextType>;
   users_aggregate?: Users_AggregateResolvers<ContextType>;
   users_aggregate_fields?: Users_Aggregate_FieldsResolvers<ContextType>;

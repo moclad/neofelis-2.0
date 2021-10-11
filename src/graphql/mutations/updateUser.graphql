@@ -6,3 +6,11 @@ mutation updateUser($userId: uuid!, $changes: users_set_input) {
     }
   }
 }
+
+mutation updateUserSettings($object: user_settings_insert_input!) {
+  insert_user_settings_one(object: $object, on_conflict: {constraint: user_settings_pkey, update_columns: [darkMode, langKey]}) {
+    user_id
+    langKey
+    darkMode
+  }
+}

@@ -6,64 +6,83 @@ import { useQueryClient } from 'react-query';
 import { useAccount, useUpdateAccount } from '@/app/account/account.service';
 import { AccountNav } from '@/app/account/AccountNav';
 import { Page, PageContent } from '@/app/layout';
-import { FieldInput, FieldSelect, useToastError, useToastSuccess } from '@/components';
+import {
+  FieldBooleanCheckbox,
+  FieldInput,
+  FieldSelect,
+  useToastError,
+  useToastSuccess
+} from '@/components';
 import { AVAILABLE_LANGUAGES } from '@/constants/i18n';
-import { useUpdateUserMutation } from '@/generated/graphql';
+import {
+  useFetchUserSettingsQuery,
+  useUpdateUserMutation,
+  useUpdateUserSettingsMutation
+} from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { Button, Flex, Heading, Stack } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
-import { isEmail } from '@formiz/validations';
 
-export const PageProfile = () => {
+export const PageSettings = () => {
   const [session] = useSession();
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
-  const { loading, data } = useAccount();
+  const { loading, data } = useFetchUserSettingsQuery({
+    variables: {
+      userId: session?.id,
+    },
+  });
+
+  console.log(data);
+
   const generalInformationForm = useForm();
 
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
-  const [updateUser, { loading: updateLoading }] = useUpdateUserMutation({
-    onError: (error) => {
-      toastError({
-        title: t('common:feedbacks.updateError.title'),
-        description: error.message,
-      });
-    },
-    onCompleted: () => {
-      toastSuccess({
-        title: t('common:feedbacks.updateSuccess.title'),
-      });
-    },
-  });
+  const [updateUser, { loading: updateLoading }] =
+    useUpdateUserSettingsMutation({
+      onError: (error) => {
+        toastError({
+          title: t('common:feedbacks.updateError.title'),
+          description: error.message,
+        });
+      },
+      onCompleted: () => {
+        toastSuccess({
+          title: t('common:feedbacks.updateSuccess.title'),
+        });
+      },
+    });
 
   const submitGeneralInformation = async (values) => {
     const newData = {
-      ...data.users_by_pk,
+      ...data.user_settings_by_pk,
       ...values,
+      user_id: session.id,
     };
 
     await updateUser({
       variables: {
-        userId: session.id,
-        changes: newData,
+        object: newData,
       },
     });
   };
+
+  console.log(data);
 
   return (
     <Page nav={<AccountNav />}>
       <PageContent loading={loading}>
         <Heading size="md" mb="4">
-          {t('account:profile.title')}
+          {t('account:settings.title')}
         </Heading>
         {data && (
           <Formiz
             id="account-form"
             onValidSubmit={submitGeneralInformation}
             connect={generalInformationForm}
-            initialValues={data.users_by_pk}
+            initialValues={data.user_settings_by_pk}
           >
             <form noValidate onSubmit={generalInformationForm.submit}>
               <Stack
@@ -74,27 +93,13 @@ export const PageProfile = () => {
                 spacing="6"
                 shadow="md"
               >
-                <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-                  <FieldInput
-                    name="name"
-                    label={t('account:data.firstname.label')}
-                    required={t('account:data.firstname.required') as string}
-                  />
-                  <FieldInput
-                    name="lastName"
-                    label={t('account:data.lastname.label')}
-                  />
-                </Stack>
-                <FieldInput
-                  name="email"
-                  label={t('account:data.email.label')}
-                  required={t('account:data.email.required') as string}
-                  validations={[
-                    {
-                      rule: isEmail(),
-                      message: t('account:data.email.invalid'),
-                    },
-                  ]}
+                <FieldSelect
+                  name="langKey"
+                  label={t('account:data.language.label')}
+                  options={AVAILABLE_LANGUAGES.map(({ key }) => ({
+                    label: t(`languages.${key}`),
+                    value: key,
+                  }))}
                 />
                 <Flex>
                   <Button
@@ -103,7 +108,7 @@ export const PageProfile = () => {
                     ms="auto"
                     isLoading={updateLoading}
                   >
-                    {t('account:profile.actions.save')}
+                    {t('account:settings.actions.save')}
                   </Button>
                 </Flex>
               </Stack>

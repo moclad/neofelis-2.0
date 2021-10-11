@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { useTranslation } from 'react-i18next';
-import { FiLock, FiUser } from 'react-icons/fi';
+import { FiSettings, FiUser } from 'react-icons/fi';
 import { Link, useLocation } from 'react-router-dom';
 
-import { Nav, NavItem, NavGroup } from '@/components';
+import { Nav, NavGroup, NavItem } from '@/components';
 
 export const AccountNav = () => {
   const { t } = useTranslation();
@@ -23,11 +22,11 @@ export const AccountNav = () => {
         </NavItem>
         <NavItem
           as={Link}
-          to="/account/password"
-          isActive={isActive('/account/password')}
-          icon={FiLock}
+          to="/account/settings"
+          isActive={isActive('/account/settings')}
+          icon={FiSettings}
         >
-          {t('account:nav.password')}
+          {t('account:nav.settings')}
         </NavItem>
       </NavGroup>
     </Nav>

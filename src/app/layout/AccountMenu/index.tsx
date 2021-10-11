@@ -1,5 +1,12 @@
+import { useSession } from 'next-auth/client';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { FiCheck, FiCopy, FiLogOut, FiMoon, FiSun, FiUser } from 'react-icons/fi';
+import { Link, useHistory } from 'react-router-dom';
 
+import appBuild from '@/../app-build.json';
+import { Icon } from '@/components';
+import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Avatar,
   Flex,
@@ -12,23 +19,8 @@ import {
   Spinner,
   Text,
   useClipboard,
-  useColorMode,
+  useColorMode
 } from '@chakra-ui/react';
-import { useSession } from 'next-auth/client';
-import { useTranslation } from 'react-i18next';
-import {
-  FiCheck,
-  FiCopy,
-  FiLogOut,
-  FiMoon,
-  FiSun,
-  FiUser,
-} from 'react-icons/fi';
-import { Link, useHistory } from 'react-router-dom';
-
-import appBuild from '@/../app-build.json';
-import { Icon } from '@/components';
-import { useDarkMode } from '@/hooks/useDarkMode';
 
 import { useFetchUserQuery } from '../../../generated/graphql';
 
@@ -114,7 +106,7 @@ export const AccountMenu = ({ ...rest }) => {
           size="sm"
           icon={<></>}
           name={
-            !loading && `${data?.users_by_pk?.name || data?.users_by_pk?.email}`
+            !loading && `${data?.users_by_pk?.name ?? data?.users_by_pk?.email}`
           }
         >
           {loading && <Spinner size="xs" />}
