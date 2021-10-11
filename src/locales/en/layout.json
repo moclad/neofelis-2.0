@@ -1,6 +1,7 @@
 {
   "mainMenu": {
     "dashboard": "Dashboard",
+    "classification": "Classification",
     "admin": "Admin"
   },
   "accountMenu": {

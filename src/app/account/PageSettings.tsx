@@ -1,24 +1,12 @@
 import { useSession } from 'next-auth/client';
 import React from 'react';
-import { useSSR, useTranslation } from 'react-i18next';
-import { useQueryClient } from 'react-query';
+import { useTranslation } from 'react-i18next';
 
-import { useAccount, useUpdateAccount } from '@/app/account/account.service';
 import { AccountNav } from '@/app/account/AccountNav';
 import { Page, PageContent } from '@/app/layout';
-import {
-  FieldBooleanCheckbox,
-  FieldInput,
-  FieldSelect,
-  useToastError,
-  useToastSuccess
-} from '@/components';
+import { FieldSelect, useToastError, useToastSuccess } from '@/components';
 import { AVAILABLE_LANGUAGES } from '@/constants/i18n';
-import {
-  useFetchUserSettingsQuery,
-  useUpdateUserMutation,
-  useUpdateUserSettingsMutation
-} from '@/generated/graphql';
+import { useFetchUserSettingsQuery, useUpdateUserSettingsMutation } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { Button, Flex, Heading, Stack } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';

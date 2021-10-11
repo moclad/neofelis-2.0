@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "title": "Classification",
+    "tags": "Tags",
+    "categories": "Categories",
+    "groups": "Groups"
+  },
+  "tags": {
+    "title": "Tags"
+  }
+}

@@ -2006,6 +2006,8 @@ export type User_Settings = {
   __typename?: 'user_settings';
   darkMode: Scalars['Boolean'];
   langKey: Scalars['String'];
+  /** An object relationship */
+  user: Users;
   user_id: Scalars['uuid'];
 };
 
@@ -2037,6 +2039,7 @@ export type User_Settings_Bool_Exp = {
   _or?: Maybe<Array<User_Settings_Bool_Exp>>;
   darkMode?: Maybe<Boolean_Comparison_Exp>;
   langKey?: Maybe<String_Comparison_Exp>;
+  user?: Maybe<Users_Bool_Exp>;
   user_id?: Maybe<Uuid_Comparison_Exp>;
 };
 
@@ -2050,6 +2053,7 @@ export enum User_Settings_Constraint {
 export type User_Settings_Insert_Input = {
   darkMode?: Maybe<Scalars['Boolean']>;
   langKey?: Maybe<Scalars['String']>;
+  user?: Maybe<Users_Obj_Rel_Insert_Input>;
   user_id?: Maybe<Scalars['uuid']>;
 };
 
@@ -2076,6 +2080,13 @@ export type User_Settings_Mutation_Response = {
   returning: Array<User_Settings>;
 };
 
+/** input type for inserting object relation for remote table "user_settings" */
+export type User_Settings_Obj_Rel_Insert_Input = {
+  data: User_Settings_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<User_Settings_On_Conflict>;
+};
+
 /** on conflict condition type for table "user_settings" */
 export type User_Settings_On_Conflict = {
   constraint: User_Settings_Constraint;
@@ -2087,6 +2098,7 @@ export type User_Settings_On_Conflict = {
 export type User_Settings_Order_By = {
   darkMode?: Maybe<Order_By>;
   langKey?: Maybe<Order_By>;
+  user?: Maybe<Users_Order_By>;
   user_id?: Maybe<Order_By>;
 };
 
@@ -2141,6 +2153,8 @@ export type Users = {
   /** fetch aggregated fields from the table: "notifications" */
   notifications_aggregate: Notifications_Aggregate;
   updated_at: Scalars['timestamptz'];
+  /** An object relationship */
+  user_setting: User_Settings;
 };
 
 /** columns and relationships of "users" */
@@ -2215,6 +2229,7 @@ export type Users_Bool_Exp = {
   name?: Maybe<String_Comparison_Exp>;
   notifications?: Maybe<Notifications_Bool_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  user_setting?: Maybe<User_Settings_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "users" */
@@ -2235,6 +2250,7 @@ export type Users_Insert_Input = {
   name?: Maybe<Scalars['String']>;
   notifications?: Maybe<Notifications_Arr_Rel_Insert_Input>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+  user_setting?: Maybe<User_Settings_Obj_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -2298,6 +2314,7 @@ export type Users_Order_By = {
   name?: Maybe<Order_By>;
   notifications_aggregate?: Maybe<Notifications_Aggregate_Order_By>;
   updated_at?: Maybe<Order_By>;
+  user_setting?: Maybe<User_Settings_Order_By>;
 };
 
 /** primary key columns input for table: users */
@@ -3957,6 +3974,7 @@ export type ResolversTypes = {
   user_settings_max_fields: ResolverTypeWrapper<User_Settings_Max_Fields>;
   user_settings_min_fields: ResolverTypeWrapper<User_Settings_Min_Fields>;
   user_settings_mutation_response: ResolverTypeWrapper<User_Settings_Mutation_Response>;
+  user_settings_obj_rel_insert_input: User_Settings_Obj_Rel_Insert_Input;
   user_settings_on_conflict: User_Settings_On_Conflict;
   user_settings_order_by: User_Settings_Order_By;
   user_settings_pk_columns_input: User_Settings_Pk_Columns_Input;
@@ -4114,6 +4132,7 @@ export type ResolversParentTypes = {
   user_settings_max_fields: User_Settings_Max_Fields;
   user_settings_min_fields: User_Settings_Min_Fields;
   user_settings_mutation_response: User_Settings_Mutation_Response;
+  user_settings_obj_rel_insert_input: User_Settings_Obj_Rel_Insert_Input;
   user_settings_on_conflict: User_Settings_On_Conflict;
   user_settings_order_by: User_Settings_Order_By;
   user_settings_pk_columns_input: User_Settings_Pk_Columns_Input;
@@ -5637,6 +5656,7 @@ export type User_SettingsResolvers<
 > = {
   darkMode?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   langKey?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  user?: Resolver<ResolversTypes['users'], ParentType, ContextType>;
   user_id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -5752,6 +5772,11 @@ export type UsersResolvers<
     RequireFields<UsersNotifications_AggregateArgs, never>
   >;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  user_setting?: Resolver<
+    ResolversTypes['user_settings'],
+    ParentType,
+    ContextType
+  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 

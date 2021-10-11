@@ -1,13 +1,9 @@
 import React from 'react';
 import { Redirect, Switch, useRouteMatch } from 'react-router-dom';
 
-import { PageActivate } from '@/app/account/PageActivate';
 import { PageProfile } from '@/app/account/PageProfile';
-import { PageRegister } from '@/app/account/PageRegister';
-import { PageResetPasswordConfirm } from '@/app/account/PageResetPasswordConfirm';
-import { PageResetPasswordRequest } from '@/app/account/PageResetPasswordRequest';
 import { PageSettings } from '@/app/account/PageSettings';
-import { Route, RoutePublicOnly } from '@/app/router';
+import { Route } from '@/app/router';
 import { Error404 } from '@/errors';
 
 const AccountRoutes = () => {
@@ -20,7 +16,7 @@ const AccountRoutes = () => {
         render={() => <Redirect to={`${url}/profile`} />}
       />
 
-      <RoutePublicOnly
+      {/* <RoutePublicOnly
         exact
         path={`${url}/register`}
         render={() => <PageRegister />}
@@ -39,7 +35,7 @@ const AccountRoutes = () => {
         exact
         path={`${url}/reset/finish`}
         render={() => <PageResetPasswordConfirm />}
-      />
+      /> */}
 
       <Route exact path={`${url}/profile`} render={() => <PageProfile />} />
       <Route exact path={`${url}/settings`} render={() => <PageSettings />} />
