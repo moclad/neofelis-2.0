@@ -19,6 +19,12 @@
     },
     "updateError": {
       "title": "Update failed."
+    },
+    "createdSuccess": {
+      "title": "Data created with success."
+    },
+    "createdError": {
+      "title": "Data creation failed."
     }
   }
 }
