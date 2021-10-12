@@ -2,7 +2,6 @@ import React from 'react';
 
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { Button, Stack } from '@chakra-ui/react';
-import { Formiz, useForm } from '@formiz/core';
 import { isEmail } from '@formiz/validations';
 
 import { FieldInput } from '../';
@@ -18,7 +17,6 @@ export default {
     closeOnOverlayClick: false,
     isOpen: true,
     onClose: { action: 'closed' },
-    onConfirm: { action: 'confirm' },
   },
 };
 

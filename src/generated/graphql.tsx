@@ -2656,12 +2656,7 @@ export type FetchUserSettingsQuery = {
     | undefined;
 };
 
-export type AllLabelsQueryVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Labels_Order_By> | Labels_Order_By>;
-  where?: Maybe<Labels_Bool_Exp>;
-}>;
+export type AllLabelsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type AllLabelsQuery = {
   __typename?: 'query_root';
@@ -2672,13 +2667,6 @@ export type AllLabelsQuery = {
     created_at: string;
     updated_at: string;
   }>;
-  labels_aggregate: {
-    __typename?: 'labels_aggregate';
-    aggregate?:
-      | { __typename?: 'labels_aggregate_fields'; count: number }
-      | null
-      | undefined;
-  };
 };
 
 export type FetchFeedsSubscriptionVariables = Exact<{ [key: string]: never }>;
@@ -3446,22 +3434,12 @@ export type FetchUserSettingsQueryResult = Apollo.QueryResult<
   FetchUserSettingsQueryVariables
 >;
 export const AllLabelsDocument = gql`
-  query allLabels(
-    $limit: Int
-    $offset: Int
-    $order_by: [labels_order_by!]
-    $where: labels_bool_exp
-  ) {
-    labels(limit: $limit, offset: $offset, order_by: $order_by, where: $where) {
+  query allLabels {
+    labels {
       id
       name
       created_at
       updated_at
-    }
-    labels_aggregate(where: $where) {
-      aggregate {
-        count
-      }
     }
   }
 `;
@@ -3524,10 +3502,6 @@ export function withAllLabels<
  * @example
  * const { data, loading, error } = useAllLabelsQuery({
  *   variables: {
- *      limit: // value for 'limit'
- *      offset: // value for 'offset'
- *      order_by: // value for 'order_by'
- *      where: // value for 'where'
  *   },
  * });
  */

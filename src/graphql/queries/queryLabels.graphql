@@ -1,4 +1,4 @@
-query allTags {
+query allLabels {
   labels {
     id
     name

@@ -25,6 +25,12 @@
     },
     "createdError": {
       "title": "Data creation failed."
+    },
+    "deletedSuccess": {
+      "title": "Data deleted with success."
+    },
+    "deletedError": {
+      "title": "Data deletion failed."
     }
   }
 }

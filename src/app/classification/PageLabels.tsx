@@ -2,7 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
-import { useAccount } from '@/app/account/account.service';
 import { ClassificationNav } from '@/app/classification/ClassificationNav';
 import { Page, PageContent } from '@/app/layout';
 import {
@@ -88,7 +87,7 @@ export const PageLabels = () => {
     <>
       <Page nav={<ClassificationNav />}>
         <PageContent
-          loading={loading}
+          loading={loading || deleteLabelFetching || insertLoading}
           title={t('classification:labels.title')}
           actions={[
             <Button
