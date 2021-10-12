@@ -3,7 +3,7 @@ import { Redirect, Switch, useRouteMatch } from 'react-router-dom';
 
 import { PageCategories } from '@/app/classification/PageCategories';
 import { PageGroups } from '@/app/classification/PageGroups';
-import { PageTags } from '@/app/classification/PageTags';
+import { PageLabels } from '@/app/classification/PageLabels';
 import { Route } from '@/app/router';
 import { Error404 } from '@/errors';
 
@@ -14,10 +14,10 @@ const ClassificationRoutes = () => {
       <Route
         exact
         path={`${url}/`}
-        render={() => <Redirect to={`${url}/tags`} />}
+        render={() => <Redirect to={`${url}/labels`} />}
       />
 
-      <Route exact path={`${url}/tags`} render={() => <PageTags />} />
+      <Route exact path={`${url}/labels`} render={() => <PageLabels />} />
       <Route
         exact
         path={`${url}/categories`}

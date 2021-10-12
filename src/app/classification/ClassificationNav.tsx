@@ -14,11 +14,11 @@ export const ClassificationNav = () => {
       <NavGroup title={t('classification:nav.title')}>
         <NavItem
           as={Link}
-          to="/classification/tags"
-          isActive={isActive('/classification/tags')}
+          to="/classification/labels"
+          isActive={isActive('/classification/labels')}
           icon={FiUser}
         >
-          {t('classification:nav.tags')}
+          {t('classification:nav.labels')}
         </NavItem>
         <NavItem
           as={Link}

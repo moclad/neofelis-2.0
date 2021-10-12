@@ -1,5 +1,5 @@
-mutation insertTag($object: tags_insert_input!) {
-  insert_tags_one(object: $object) {
+mutation insertLabel($object: labels_insert_input!) {
+  insert_labels_one(object: $object) {
     id,
     name,
     created_at,

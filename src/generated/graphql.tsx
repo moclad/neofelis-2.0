@@ -501,6 +501,201 @@ export enum Feeds_Update_Column {
   UserId = 'user_id',
 }
 
+/** columns and relationships of "labels" */
+export type Labels = {
+  __typename?: 'labels';
+  created_at: Scalars['timestamptz'];
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "labels" */
+export type Labels_Aggregate = {
+  __typename?: 'labels_aggregate';
+  aggregate?: Maybe<Labels_Aggregate_Fields>;
+  nodes: Array<Labels>;
+};
+
+/** aggregate fields of "labels" */
+export type Labels_Aggregate_Fields = {
+  __typename?: 'labels_aggregate_fields';
+  avg?: Maybe<Labels_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Labels_Max_Fields>;
+  min?: Maybe<Labels_Min_Fields>;
+  stddev?: Maybe<Labels_Stddev_Fields>;
+  stddev_pop?: Maybe<Labels_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Labels_Stddev_Samp_Fields>;
+  sum?: Maybe<Labels_Sum_Fields>;
+  var_pop?: Maybe<Labels_Var_Pop_Fields>;
+  var_samp?: Maybe<Labels_Var_Samp_Fields>;
+  variance?: Maybe<Labels_Variance_Fields>;
+};
+
+/** aggregate fields of "labels" */
+export type Labels_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Labels_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Labels_Avg_Fields = {
+  __typename?: 'labels_avg_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "labels". All fields are combined with a logical 'AND'. */
+export type Labels_Bool_Exp = {
+  _and?: Maybe<Array<Labels_Bool_Exp>>;
+  _not?: Maybe<Labels_Bool_Exp>;
+  _or?: Maybe<Array<Labels_Bool_Exp>>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  name?: Maybe<String_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "labels" */
+export enum Labels_Constraint {
+  /** unique or primary key constraint */
+  LabelsPkey = 'labels_pkey',
+}
+
+/** input type for incrementing numeric columns in table "labels" */
+export type Labels_Inc_Input = {
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "labels" */
+export type Labels_Insert_Input = {
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Labels_Max_Fields = {
+  __typename?: 'labels_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Labels_Min_Fields = {
+  __typename?: 'labels_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "labels" */
+export type Labels_Mutation_Response = {
+  __typename?: 'labels_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Labels>;
+};
+
+/** on conflict condition type for table "labels" */
+export type Labels_On_Conflict = {
+  constraint: Labels_Constraint;
+  update_columns?: Array<Labels_Update_Column>;
+  where?: Maybe<Labels_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "labels". */
+export type Labels_Order_By = {
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: labels */
+export type Labels_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "labels" */
+export enum Labels_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+/** input type for updating data in table "labels" */
+export type Labels_Set_Input = {
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Labels_Stddev_Fields = {
+  __typename?: 'labels_stddev_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Labels_Stddev_Pop_Fields = {
+  __typename?: 'labels_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Labels_Stddev_Samp_Fields = {
+  __typename?: 'labels_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Labels_Sum_Fields = {
+  __typename?: 'labels_sum_fields';
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "labels" */
+export enum Labels_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+/** aggregate var_pop on columns */
+export type Labels_Var_Pop_Fields = {
+  __typename?: 'labels_var_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Labels_Var_Samp_Fields = {
+  __typename?: 'labels_var_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Labels_Variance_Fields = {
+  __typename?: 'labels_variance_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
@@ -512,6 +707,10 @@ export type Mutation_Root = {
   delete_feeds?: Maybe<Feeds_Mutation_Response>;
   /** delete single row from the table: "feeds" */
   delete_feeds_by_pk?: Maybe<Feeds>;
+  /** delete data from the table: "labels" */
+  delete_labels?: Maybe<Labels_Mutation_Response>;
+  /** delete single row from the table: "labels" */
+  delete_labels_by_pk?: Maybe<Labels>;
   /** delete data from the table: "notifications" */
   delete_notifications?: Maybe<Notifications_Mutation_Response>;
   /** delete single row from the table: "notifications" */
@@ -520,10 +719,6 @@ export type Mutation_Root = {
   delete_sessions?: Maybe<Sessions_Mutation_Response>;
   /** delete single row from the table: "sessions" */
   delete_sessions_by_pk?: Maybe<Sessions>;
-  /** delete data from the table: "tags" */
-  delete_tags?: Maybe<Tags_Mutation_Response>;
-  /** delete single row from the table: "tags" */
-  delete_tags_by_pk?: Maybe<Tags>;
   /** delete data from the table: "user_settings" */
   delete_user_settings?: Maybe<User_Settings_Mutation_Response>;
   /** delete single row from the table: "user_settings" */
@@ -544,6 +739,10 @@ export type Mutation_Root = {
   insert_feeds?: Maybe<Feeds_Mutation_Response>;
   /** insert a single row into the table: "feeds" */
   insert_feeds_one?: Maybe<Feeds>;
+  /** insert data into the table: "labels" */
+  insert_labels?: Maybe<Labels_Mutation_Response>;
+  /** insert a single row into the table: "labels" */
+  insert_labels_one?: Maybe<Labels>;
   /** insert data into the table: "notifications" */
   insert_notifications?: Maybe<Notifications_Mutation_Response>;
   /** insert a single row into the table: "notifications" */
@@ -552,10 +751,6 @@ export type Mutation_Root = {
   insert_sessions?: Maybe<Sessions_Mutation_Response>;
   /** insert a single row into the table: "sessions" */
   insert_sessions_one?: Maybe<Sessions>;
-  /** insert data into the table: "tags" */
-  insert_tags?: Maybe<Tags_Mutation_Response>;
-  /** insert a single row into the table: "tags" */
-  insert_tags_one?: Maybe<Tags>;
   /** insert data into the table: "user_settings" */
   insert_user_settings?: Maybe<User_Settings_Mutation_Response>;
   /** insert a single row into the table: "user_settings" */
@@ -576,6 +771,10 @@ export type Mutation_Root = {
   update_feeds?: Maybe<Feeds_Mutation_Response>;
   /** update single row of the table: "feeds" */
   update_feeds_by_pk?: Maybe<Feeds>;
+  /** update data of the table: "labels" */
+  update_labels?: Maybe<Labels_Mutation_Response>;
+  /** update single row of the table: "labels" */
+  update_labels_by_pk?: Maybe<Labels>;
   /** update data of the table: "notifications" */
   update_notifications?: Maybe<Notifications_Mutation_Response>;
   /** update single row of the table: "notifications" */
@@ -584,10 +783,6 @@ export type Mutation_Root = {
   update_sessions?: Maybe<Sessions_Mutation_Response>;
   /** update single row of the table: "sessions" */
   update_sessions_by_pk?: Maybe<Sessions>;
-  /** update data of the table: "tags" */
-  update_tags?: Maybe<Tags_Mutation_Response>;
-  /** update single row of the table: "tags" */
-  update_tags_by_pk?: Maybe<Tags>;
   /** update data of the table: "user_settings" */
   update_user_settings?: Maybe<User_Settings_Mutation_Response>;
   /** update single row of the table: "user_settings" */
@@ -623,6 +818,16 @@ export type Mutation_RootDelete_Feeds_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootDelete_LabelsArgs = {
+  where: Labels_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Labels_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+/** mutation root */
 export type Mutation_RootDelete_NotificationsArgs = {
   where: Notifications_Bool_Exp;
 };
@@ -640,16 +845,6 @@ export type Mutation_RootDelete_SessionsArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Sessions_By_PkArgs = {
   id: Scalars['uuid'];
-};
-
-/** mutation root */
-export type Mutation_RootDelete_TagsArgs = {
-  where: Tags_Bool_Exp;
-};
-
-/** mutation root */
-export type Mutation_RootDelete_Tags_By_PkArgs = {
-  id: Scalars['Int'];
 };
 
 /** mutation root */
@@ -707,6 +902,18 @@ export type Mutation_RootInsert_Feeds_OneArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootInsert_LabelsArgs = {
+  objects: Array<Labels_Insert_Input>;
+  on_conflict?: Maybe<Labels_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Labels_OneArgs = {
+  object: Labels_Insert_Input;
+  on_conflict?: Maybe<Labels_On_Conflict>;
+};
+
+/** mutation root */
 export type Mutation_RootInsert_NotificationsArgs = {
   objects: Array<Notifications_Insert_Input>;
   on_conflict?: Maybe<Notifications_On_Conflict>;
@@ -728,18 +935,6 @@ export type Mutation_RootInsert_SessionsArgs = {
 export type Mutation_RootInsert_Sessions_OneArgs = {
   object: Sessions_Insert_Input;
   on_conflict?: Maybe<Sessions_On_Conflict>;
-};
-
-/** mutation root */
-export type Mutation_RootInsert_TagsArgs = {
-  objects: Array<Tags_Insert_Input>;
-  on_conflict?: Maybe<Tags_On_Conflict>;
-};
-
-/** mutation root */
-export type Mutation_RootInsert_Tags_OneArgs = {
-  object: Tags_Insert_Input;
-  on_conflict?: Maybe<Tags_On_Conflict>;
 };
 
 /** mutation root */
@@ -803,6 +998,20 @@ export type Mutation_RootUpdate_Feeds_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_LabelsArgs = {
+  _inc?: Maybe<Labels_Inc_Input>;
+  _set?: Maybe<Labels_Set_Input>;
+  where: Labels_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Labels_By_PkArgs = {
+  _inc?: Maybe<Labels_Inc_Input>;
+  _set?: Maybe<Labels_Set_Input>;
+  pk_columns: Labels_Pk_Columns_Input;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_NotificationsArgs = {
   _inc?: Maybe<Notifications_Inc_Input>;
   _set?: Maybe<Notifications_Set_Input>;
@@ -826,20 +1035,6 @@ export type Mutation_RootUpdate_SessionsArgs = {
 export type Mutation_RootUpdate_Sessions_By_PkArgs = {
   _set?: Maybe<Sessions_Set_Input>;
   pk_columns: Sessions_Pk_Columns_Input;
-};
-
-/** mutation root */
-export type Mutation_RootUpdate_TagsArgs = {
-  _inc?: Maybe<Tags_Inc_Input>;
-  _set?: Maybe<Tags_Set_Input>;
-  where: Tags_Bool_Exp;
-};
-
-/** mutation root */
-export type Mutation_RootUpdate_Tags_By_PkArgs = {
-  _inc?: Maybe<Tags_Inc_Input>;
-  _set?: Maybe<Tags_Set_Input>;
-  pk_columns: Tags_Pk_Columns_Input;
 };
 
 /** mutation root */
@@ -1216,6 +1411,12 @@ export type Query_Root = {
   feeds_aggregate: Feeds_Aggregate;
   /** fetch data from the table: "feeds" using primary key columns */
   feeds_by_pk?: Maybe<Feeds>;
+  /** fetch data from the table: "labels" */
+  labels: Array<Labels>;
+  /** fetch aggregated fields from the table: "labels" */
+  labels_aggregate: Labels_Aggregate;
+  /** fetch data from the table: "labels" using primary key columns */
+  labels_by_pk?: Maybe<Labels>;
   /** fetch data from the table: "notifications" */
   notifications: Array<Notifications>;
   /** fetch aggregated fields from the table: "notifications" */
@@ -1228,12 +1429,6 @@ export type Query_Root = {
   sessions_aggregate: Sessions_Aggregate;
   /** fetch data from the table: "sessions" using primary key columns */
   sessions_by_pk?: Maybe<Sessions>;
-  /** fetch data from the table: "tags" */
-  tags: Array<Tags>;
-  /** fetch aggregated fields from the table: "tags" */
-  tags_aggregate: Tags_Aggregate;
-  /** fetch data from the table: "tags" using primary key columns */
-  tags_by_pk?: Maybe<Tags>;
   /** fetch data from the table: "user_settings" */
   user_settings: Array<User_Settings>;
   /** fetch aggregated fields from the table: "user_settings" */
@@ -1294,6 +1489,26 @@ export type Query_RootFeeds_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
+export type Query_RootLabelsArgs = {
+  distinct_on?: Maybe<Array<Labels_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Labels_Order_By>>;
+  where?: Maybe<Labels_Bool_Exp>;
+};
+
+export type Query_RootLabels_AggregateArgs = {
+  distinct_on?: Maybe<Array<Labels_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Labels_Order_By>>;
+  where?: Maybe<Labels_Bool_Exp>;
+};
+
+export type Query_RootLabels_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
 export type Query_RootNotificationsArgs = {
   distinct_on?: Maybe<Array<Notifications_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -1332,26 +1547,6 @@ export type Query_RootSessions_AggregateArgs = {
 
 export type Query_RootSessions_By_PkArgs = {
   id: Scalars['uuid'];
-};
-
-export type Query_RootTagsArgs = {
-  distinct_on?: Maybe<Array<Tags_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Tags_Order_By>>;
-  where?: Maybe<Tags_Bool_Exp>;
-};
-
-export type Query_RootTags_AggregateArgs = {
-  distinct_on?: Maybe<Array<Tags_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Tags_Order_By>>;
-  where?: Maybe<Tags_Bool_Exp>;
-};
-
-export type Query_RootTags_By_PkArgs = {
-  id: Scalars['Int'];
 };
 
 export type Query_RootUser_SettingsArgs = {
@@ -1595,6 +1790,12 @@ export type Subscription_Root = {
   feeds_aggregate: Feeds_Aggregate;
   /** fetch data from the table: "feeds" using primary key columns */
   feeds_by_pk?: Maybe<Feeds>;
+  /** fetch data from the table: "labels" */
+  labels: Array<Labels>;
+  /** fetch aggregated fields from the table: "labels" */
+  labels_aggregate: Labels_Aggregate;
+  /** fetch data from the table: "labels" using primary key columns */
+  labels_by_pk?: Maybe<Labels>;
   /** fetch data from the table: "notifications" */
   notifications: Array<Notifications>;
   /** fetch aggregated fields from the table: "notifications" */
@@ -1607,12 +1808,6 @@ export type Subscription_Root = {
   sessions_aggregate: Sessions_Aggregate;
   /** fetch data from the table: "sessions" using primary key columns */
   sessions_by_pk?: Maybe<Sessions>;
-  /** fetch data from the table: "tags" */
-  tags: Array<Tags>;
-  /** fetch aggregated fields from the table: "tags" */
-  tags_aggregate: Tags_Aggregate;
-  /** fetch data from the table: "tags" using primary key columns */
-  tags_by_pk?: Maybe<Tags>;
   /** fetch data from the table: "user_settings" */
   user_settings: Array<User_Settings>;
   /** fetch aggregated fields from the table: "user_settings" */
@@ -1673,6 +1868,26 @@ export type Subscription_RootFeeds_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
+export type Subscription_RootLabelsArgs = {
+  distinct_on?: Maybe<Array<Labels_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Labels_Order_By>>;
+  where?: Maybe<Labels_Bool_Exp>;
+};
+
+export type Subscription_RootLabels_AggregateArgs = {
+  distinct_on?: Maybe<Array<Labels_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Labels_Order_By>>;
+  where?: Maybe<Labels_Bool_Exp>;
+};
+
+export type Subscription_RootLabels_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
 export type Subscription_RootNotificationsArgs = {
   distinct_on?: Maybe<Array<Notifications_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -1711,26 +1926,6 @@ export type Subscription_RootSessions_AggregateArgs = {
 
 export type Subscription_RootSessions_By_PkArgs = {
   id: Scalars['uuid'];
-};
-
-export type Subscription_RootTagsArgs = {
-  distinct_on?: Maybe<Array<Tags_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Tags_Order_By>>;
-  where?: Maybe<Tags_Bool_Exp>;
-};
-
-export type Subscription_RootTags_AggregateArgs = {
-  distinct_on?: Maybe<Array<Tags_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Tags_Order_By>>;
-  where?: Maybe<Tags_Bool_Exp>;
-};
-
-export type Subscription_RootTags_By_PkArgs = {
-  id: Scalars['Int'];
 };
 
 export type Subscription_RootUser_SettingsArgs = {
@@ -1791,201 +1986,6 @@ export type Subscription_RootVerification_Requests_AggregateArgs = {
 
 export type Subscription_RootVerification_Requests_By_PkArgs = {
   id: Scalars['uuid'];
-};
-
-/** columns and relationships of "tags" */
-export type Tags = {
-  __typename?: 'tags';
-  created_at: Scalars['timestamptz'];
-  id: Scalars['Int'];
-  name: Scalars['String'];
-  updated_at: Scalars['timestamptz'];
-};
-
-/** aggregated selection of "tags" */
-export type Tags_Aggregate = {
-  __typename?: 'tags_aggregate';
-  aggregate?: Maybe<Tags_Aggregate_Fields>;
-  nodes: Array<Tags>;
-};
-
-/** aggregate fields of "tags" */
-export type Tags_Aggregate_Fields = {
-  __typename?: 'tags_aggregate_fields';
-  avg?: Maybe<Tags_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Tags_Max_Fields>;
-  min?: Maybe<Tags_Min_Fields>;
-  stddev?: Maybe<Tags_Stddev_Fields>;
-  stddev_pop?: Maybe<Tags_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Tags_Stddev_Samp_Fields>;
-  sum?: Maybe<Tags_Sum_Fields>;
-  var_pop?: Maybe<Tags_Var_Pop_Fields>;
-  var_samp?: Maybe<Tags_Var_Samp_Fields>;
-  variance?: Maybe<Tags_Variance_Fields>;
-};
-
-/** aggregate fields of "tags" */
-export type Tags_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Tags_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-};
-
-/** aggregate avg on columns */
-export type Tags_Avg_Fields = {
-  __typename?: 'tags_avg_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** Boolean expression to filter rows from the table "tags". All fields are combined with a logical 'AND'. */
-export type Tags_Bool_Exp = {
-  _and?: Maybe<Array<Tags_Bool_Exp>>;
-  _not?: Maybe<Tags_Bool_Exp>;
-  _or?: Maybe<Array<Tags_Bool_Exp>>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
-};
-
-/** unique or primary key constraints on table "tags" */
-export enum Tags_Constraint {
-  /** unique or primary key constraint */
-  TagsPkey = 'tags_pkey',
-}
-
-/** input type for incrementing numeric columns in table "tags" */
-export type Tags_Inc_Input = {
-  id?: Maybe<Scalars['Int']>;
-};
-
-/** input type for inserting data into table "tags" */
-export type Tags_Insert_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** aggregate max on columns */
-export type Tags_Max_Fields = {
-  __typename?: 'tags_max_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** aggregate min on columns */
-export type Tags_Min_Fields = {
-  __typename?: 'tags_min_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** response of any mutation on the table "tags" */
-export type Tags_Mutation_Response = {
-  __typename?: 'tags_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Tags>;
-};
-
-/** on conflict condition type for table "tags" */
-export type Tags_On_Conflict = {
-  constraint: Tags_Constraint;
-  update_columns?: Array<Tags_Update_Column>;
-  where?: Maybe<Tags_Bool_Exp>;
-};
-
-/** Ordering options when selecting data from "tags". */
-export type Tags_Order_By = {
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-};
-
-/** primary key columns input for table: tags */
-export type Tags_Pk_Columns_Input = {
-  id: Scalars['Int'];
-};
-
-/** select columns of table "tags" */
-export enum Tags_Select_Column {
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  UpdatedAt = 'updated_at',
-}
-
-/** input type for updating data in table "tags" */
-export type Tags_Set_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** aggregate stddev on columns */
-export type Tags_Stddev_Fields = {
-  __typename?: 'tags_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Tags_Stddev_Pop_Fields = {
-  __typename?: 'tags_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Tags_Stddev_Samp_Fields = {
-  __typename?: 'tags_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate sum on columns */
-export type Tags_Sum_Fields = {
-  __typename?: 'tags_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-};
-
-/** update columns of table "tags" */
-export enum Tags_Update_Column {
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  UpdatedAt = 'updated_at',
-}
-
-/** aggregate var_pop on columns */
-export type Tags_Var_Pop_Fields = {
-  __typename?: 'tags_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate var_samp on columns */
-export type Tags_Var_Samp_Fields = {
-  __typename?: 'tags_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate variance on columns */
-export type Tags_Variance_Fields = {
-  __typename?: 'tags_variance_fields';
-  id?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
@@ -2553,27 +2553,27 @@ export type InsertFeedMutation = {
   insert_feeds_one?: { __typename?: 'feeds'; id: any } | null | undefined;
 };
 
-export type DeleteTagMutationVariables = Exact<{
+export type DeleteLabelMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-export type DeleteTagMutation = {
+export type DeleteLabelMutation = {
   __typename?: 'mutation_root';
-  delete_tags_by_pk?:
-    | { __typename?: 'tags'; id: number; name: string }
+  delete_labels_by_pk?:
+    | { __typename?: 'labels'; id: number; name: string }
     | null
     | undefined;
 };
 
-export type InsertTagMutationVariables = Exact<{
-  object: Tags_Insert_Input;
+export type InsertLabelMutationVariables = Exact<{
+  object: Labels_Insert_Input;
 }>;
 
-export type InsertTagMutation = {
+export type InsertLabelMutation = {
   __typename?: 'mutation_root';
-  insert_tags_one?:
+  insert_labels_one?:
     | {
-        __typename?: 'tags';
+        __typename?: 'labels';
         id: number;
         name: string;
         created_at: string;
@@ -2656,26 +2656,26 @@ export type FetchUserSettingsQuery = {
     | undefined;
 };
 
-export type AllTagsQueryVariables = Exact<{
+export type AllLabelsQueryVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Tags_Order_By> | Tags_Order_By>;
-  where?: Maybe<Tags_Bool_Exp>;
+  order_by?: Maybe<Array<Labels_Order_By> | Labels_Order_By>;
+  where?: Maybe<Labels_Bool_Exp>;
 }>;
 
-export type AllTagsQuery = {
+export type AllLabelsQuery = {
   __typename?: 'query_root';
-  tags: Array<{
-    __typename?: 'tags';
+  labels: Array<{
+    __typename?: 'labels';
     id: number;
     name: string;
     created_at: string;
     updated_at: string;
   }>;
-  tags_aggregate: {
-    __typename?: 'tags_aggregate';
+  labels_aggregate: {
+    __typename?: 'labels_aggregate';
     aggregate?:
-      | { __typename?: 'tags_aggregate_fields'; count: number }
+      | { __typename?: 'labels_aggregate_fields'; count: number }
       | null
       | undefined;
   };
@@ -2699,12 +2699,12 @@ export type FetchFeedsSubscription = {
   }>;
 };
 
-export type FetchTagsSubscriptionVariables = Exact<{ [key: string]: never }>;
+export type FetchLabelsSubscriptionVariables = Exact<{ [key: string]: never }>;
 
-export type FetchTagsSubscription = {
+export type FetchLabelsSubscription = {
   __typename?: 'subscription_root';
-  tags: Array<{
-    __typename?: 'tags';
+  labels: Array<{
+    __typename?: 'labels';
     id: number;
     name: string;
     created_at: string;
@@ -2812,105 +2812,109 @@ export type InsertFeedMutationOptions = Apollo.BaseMutationOptions<
   InsertFeedMutation,
   InsertFeedMutationVariables
 >;
-export const DeleteTagDocument = gql`
-  mutation deleteTag($id: Int!) {
-    delete_tags_by_pk(id: $id) {
+export const DeleteLabelDocument = gql`
+  mutation deleteLabel($id: Int!) {
+    delete_labels_by_pk(id: $id) {
       id
       name
     }
   }
 `;
-export type DeleteTagMutationFn = Apollo.MutationFunction<
-  DeleteTagMutation,
-  DeleteTagMutationVariables
+export type DeleteLabelMutationFn = Apollo.MutationFunction<
+  DeleteLabelMutation,
+  DeleteLabelMutationVariables
 >;
-export type DeleteTagComponentProps = Omit<
+export type DeleteLabelComponentProps = Omit<
   ApolloReactComponents.MutationComponentOptions<
-    DeleteTagMutation,
-    DeleteTagMutationVariables
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables
   >,
   'mutation'
 >;
 
-export const DeleteTagComponent = (props: DeleteTagComponentProps) => (
-  <ApolloReactComponents.Mutation<DeleteTagMutation, DeleteTagMutationVariables>
-    mutation={DeleteTagDocument}
+export const DeleteLabelComponent = (props: DeleteLabelComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables
+  >
+    mutation={DeleteLabelDocument}
     {...props}
   />
 );
 
-export type DeleteTagProps<
+export type DeleteLabelProps<
   TChildProps = {},
   TDataName extends string = 'mutate'
 > = {
   [key in TDataName]: Apollo.MutationFunction<
-    DeleteTagMutation,
-    DeleteTagMutationVariables
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables
   >;
 } & TChildProps;
-export function withDeleteTag<
+export function withDeleteLabel<
   TProps,
   TChildProps = {},
   TDataName extends string = 'mutate'
 >(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
-    DeleteTagMutation,
-    DeleteTagMutationVariables,
-    DeleteTagProps<TChildProps, TDataName>
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables,
+    DeleteLabelProps<TChildProps, TDataName>
   >
 ) {
   return ApolloReactHoc.withMutation<
     TProps,
-    DeleteTagMutation,
-    DeleteTagMutationVariables,
-    DeleteTagProps<TChildProps, TDataName>
-  >(DeleteTagDocument, {
-    alias: 'deleteTag',
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables,
+    DeleteLabelProps<TChildProps, TDataName>
+  >(DeleteLabelDocument, {
+    alias: 'deleteLabel',
     ...operationOptions,
   });
 }
 
 /**
- * __useDeleteTagMutation__
+ * __useDeleteLabelMutation__
  *
- * To run a mutation, you first call `useDeleteTagMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteTagMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useDeleteLabelMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteLabelMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [deleteTagMutation, { data, loading, error }] = useDeleteTagMutation({
+ * const [deleteLabelMutation, { data, loading, error }] = useDeleteLabelMutation({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useDeleteTagMutation(
+export function useDeleteLabelMutation(
   baseOptions?: Apollo.MutationHookOptions<
-    DeleteTagMutation,
-    DeleteTagMutationVariables
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteTagMutation, DeleteTagMutationVariables>(
-    DeleteTagDocument,
+  return Apollo.useMutation<DeleteLabelMutation, DeleteLabelMutationVariables>(
+    DeleteLabelDocument,
     options
   );
 }
-export type DeleteTagMutationHookResult = ReturnType<
-  typeof useDeleteTagMutation
+export type DeleteLabelMutationHookResult = ReturnType<
+  typeof useDeleteLabelMutation
 >;
-export type DeleteTagMutationResult = Apollo.MutationResult<DeleteTagMutation>;
-export type DeleteTagMutationOptions = Apollo.BaseMutationOptions<
-  DeleteTagMutation,
-  DeleteTagMutationVariables
+export type DeleteLabelMutationResult =
+  Apollo.MutationResult<DeleteLabelMutation>;
+export type DeleteLabelMutationOptions = Apollo.BaseMutationOptions<
+  DeleteLabelMutation,
+  DeleteLabelMutationVariables
 >;
-export const InsertTagDocument = gql`
-  mutation insertTag($object: tags_insert_input!) {
-    insert_tags_one(object: $object) {
+export const InsertLabelDocument = gql`
+  mutation insertLabel($object: labels_insert_input!) {
+    insert_labels_one(object: $object) {
       id
       name
       created_at
@@ -2918,93 +2922,97 @@ export const InsertTagDocument = gql`
     }
   }
 `;
-export type InsertTagMutationFn = Apollo.MutationFunction<
-  InsertTagMutation,
-  InsertTagMutationVariables
+export type InsertLabelMutationFn = Apollo.MutationFunction<
+  InsertLabelMutation,
+  InsertLabelMutationVariables
 >;
-export type InsertTagComponentProps = Omit<
+export type InsertLabelComponentProps = Omit<
   ApolloReactComponents.MutationComponentOptions<
-    InsertTagMutation,
-    InsertTagMutationVariables
+    InsertLabelMutation,
+    InsertLabelMutationVariables
   >,
   'mutation'
 >;
 
-export const InsertTagComponent = (props: InsertTagComponentProps) => (
-  <ApolloReactComponents.Mutation<InsertTagMutation, InsertTagMutationVariables>
-    mutation={InsertTagDocument}
+export const InsertLabelComponent = (props: InsertLabelComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    InsertLabelMutation,
+    InsertLabelMutationVariables
+  >
+    mutation={InsertLabelDocument}
     {...props}
   />
 );
 
-export type InsertTagProps<
+export type InsertLabelProps<
   TChildProps = {},
   TDataName extends string = 'mutate'
 > = {
   [key in TDataName]: Apollo.MutationFunction<
-    InsertTagMutation,
-    InsertTagMutationVariables
+    InsertLabelMutation,
+    InsertLabelMutationVariables
   >;
 } & TChildProps;
-export function withInsertTag<
+export function withInsertLabel<
   TProps,
   TChildProps = {},
   TDataName extends string = 'mutate'
 >(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
-    InsertTagMutation,
-    InsertTagMutationVariables,
-    InsertTagProps<TChildProps, TDataName>
+    InsertLabelMutation,
+    InsertLabelMutationVariables,
+    InsertLabelProps<TChildProps, TDataName>
   >
 ) {
   return ApolloReactHoc.withMutation<
     TProps,
-    InsertTagMutation,
-    InsertTagMutationVariables,
-    InsertTagProps<TChildProps, TDataName>
-  >(InsertTagDocument, {
-    alias: 'insertTag',
+    InsertLabelMutation,
+    InsertLabelMutationVariables,
+    InsertLabelProps<TChildProps, TDataName>
+  >(InsertLabelDocument, {
+    alias: 'insertLabel',
     ...operationOptions,
   });
 }
 
 /**
- * __useInsertTagMutation__
+ * __useInsertLabelMutation__
  *
- * To run a mutation, you first call `useInsertTagMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useInsertTagMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useInsertLabelMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertLabelMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [insertTagMutation, { data, loading, error }] = useInsertTagMutation({
+ * const [insertLabelMutation, { data, loading, error }] = useInsertLabelMutation({
  *   variables: {
  *      object: // value for 'object'
  *   },
  * });
  */
-export function useInsertTagMutation(
+export function useInsertLabelMutation(
   baseOptions?: Apollo.MutationHookOptions<
-    InsertTagMutation,
-    InsertTagMutationVariables
+    InsertLabelMutation,
+    InsertLabelMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<InsertTagMutation, InsertTagMutationVariables>(
-    InsertTagDocument,
+  return Apollo.useMutation<InsertLabelMutation, InsertLabelMutationVariables>(
+    InsertLabelDocument,
     options
   );
 }
-export type InsertTagMutationHookResult = ReturnType<
-  typeof useInsertTagMutation
+export type InsertLabelMutationHookResult = ReturnType<
+  typeof useInsertLabelMutation
 >;
-export type InsertTagMutationResult = Apollo.MutationResult<InsertTagMutation>;
-export type InsertTagMutationOptions = Apollo.BaseMutationOptions<
-  InsertTagMutation,
-  InsertTagMutationVariables
+export type InsertLabelMutationResult =
+  Apollo.MutationResult<InsertLabelMutation>;
+export type InsertLabelMutationOptions = Apollo.BaseMutationOptions<
+  InsertLabelMutation,
+  InsertLabelMutationVariables
 >;
 export const UpdateUserDocument = gql`
   mutation updateUser($userId: uuid!, $changes: users_set_input) {
@@ -3437,84 +3445,84 @@ export type FetchUserSettingsQueryResult = Apollo.QueryResult<
   FetchUserSettingsQuery,
   FetchUserSettingsQueryVariables
 >;
-export const AllTagsDocument = gql`
-  query allTags(
+export const AllLabelsDocument = gql`
+  query allLabels(
     $limit: Int
     $offset: Int
-    $order_by: [tags_order_by!]
-    $where: tags_bool_exp
+    $order_by: [labels_order_by!]
+    $where: labels_bool_exp
   ) {
-    tags(limit: $limit, offset: $offset, order_by: $order_by, where: $where) {
+    labels(limit: $limit, offset: $offset, order_by: $order_by, where: $where) {
       id
       name
       created_at
       updated_at
     }
-    tags_aggregate(where: $where) {
+    labels_aggregate(where: $where) {
       aggregate {
         count
       }
     }
   }
 `;
-export type AllTagsComponentProps = Omit<
+export type AllLabelsComponentProps = Omit<
   ApolloReactComponents.QueryComponentOptions<
-    AllTagsQuery,
-    AllTagsQueryVariables
+    AllLabelsQuery,
+    AllLabelsQueryVariables
   >,
   'query'
 >;
 
-export const AllTagsComponent = (props: AllTagsComponentProps) => (
-  <ApolloReactComponents.Query<AllTagsQuery, AllTagsQueryVariables>
-    query={AllTagsDocument}
+export const AllLabelsComponent = (props: AllLabelsComponentProps) => (
+  <ApolloReactComponents.Query<AllLabelsQuery, AllLabelsQueryVariables>
+    query={AllLabelsDocument}
     {...props}
   />
 );
 
-export type AllTagsProps<
+export type AllLabelsProps<
   TChildProps = {},
   TDataName extends string = 'data'
 > = {
   [key in TDataName]: ApolloReactHoc.DataValue<
-    AllTagsQuery,
-    AllTagsQueryVariables
+    AllLabelsQuery,
+    AllLabelsQueryVariables
   >;
 } & TChildProps;
-export function withAllTags<
+export function withAllLabels<
   TProps,
   TChildProps = {},
   TDataName extends string = 'data'
 >(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
-    AllTagsQuery,
-    AllTagsQueryVariables,
-    AllTagsProps<TChildProps, TDataName>
+    AllLabelsQuery,
+    AllLabelsQueryVariables,
+    AllLabelsProps<TChildProps, TDataName>
   >
 ) {
   return ApolloReactHoc.withQuery<
     TProps,
-    AllTagsQuery,
-    AllTagsQueryVariables,
-    AllTagsProps<TChildProps, TDataName>
-  >(AllTagsDocument, {
-    alias: 'allTags',
+    AllLabelsQuery,
+    AllLabelsQueryVariables,
+    AllLabelsProps<TChildProps, TDataName>
+  >(AllLabelsDocument, {
+    alias: 'allLabels',
     ...operationOptions,
   });
 }
 
 /**
- * __useAllTagsQuery__
+ * __useAllLabelsQuery__
  *
- * To run a query within a React component, call `useAllTagsQuery` and pass it any options that fit your needs.
- * When your component renders, `useAllTagsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useAllLabelsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllLabelsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useAllTagsQuery({
+ * const { data, loading, error } = useAllLabelsQuery({
  *   variables: {
  *      limit: // value for 'limit'
  *      offset: // value for 'offset'
@@ -3523,29 +3531,34 @@ export function withAllTags<
  *   },
  * });
  */
-export function useAllTagsQuery(
-  baseOptions?: Apollo.QueryHookOptions<AllTagsQuery, AllTagsQueryVariables>
+export function useAllLabelsQuery(
+  baseOptions?: Apollo.QueryHookOptions<AllLabelsQuery, AllLabelsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AllTagsQuery, AllTagsQueryVariables>(
-    AllTagsDocument,
+  return Apollo.useQuery<AllLabelsQuery, AllLabelsQueryVariables>(
+    AllLabelsDocument,
     options
   );
 }
-export function useAllTagsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<AllTagsQuery, AllTagsQueryVariables>
+export function useAllLabelsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    AllLabelsQuery,
+    AllLabelsQueryVariables
+  >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AllTagsQuery, AllTagsQueryVariables>(
-    AllTagsDocument,
+  return Apollo.useLazyQuery<AllLabelsQuery, AllLabelsQueryVariables>(
+    AllLabelsDocument,
     options
   );
 }
-export type AllTagsQueryHookResult = ReturnType<typeof useAllTagsQuery>;
-export type AllTagsLazyQueryHookResult = ReturnType<typeof useAllTagsLazyQuery>;
-export type AllTagsQueryResult = Apollo.QueryResult<
-  AllTagsQuery,
-  AllTagsQueryVariables
+export type AllLabelsQueryHookResult = ReturnType<typeof useAllLabelsQuery>;
+export type AllLabelsLazyQueryHookResult = ReturnType<
+  typeof useAllLabelsLazyQuery
+>;
+export type AllLabelsQueryResult = Apollo.QueryResult<
+  AllLabelsQuery,
+  AllLabelsQueryVariables
 >;
 export const FetchFeedsDocument = gql`
   subscription fetchFeeds {
@@ -3643,9 +3656,9 @@ export type FetchFeedsSubscriptionHookResult = ReturnType<
 >;
 export type FetchFeedsSubscriptionResult =
   Apollo.SubscriptionResult<FetchFeedsSubscription>;
-export const FetchTagsDocument = gql`
-  subscription fetchTags {
-    tags(order_by: { created_at: desc }) {
+export const FetchLabelsDocument = gql`
+  subscription fetchLabels {
+    labels(order_by: { created_at: desc }) {
       id
       name
       created_at
@@ -3653,88 +3666,88 @@ export const FetchTagsDocument = gql`
     }
   }
 `;
-export type FetchTagsComponentProps = Omit<
+export type FetchLabelsComponentProps = Omit<
   ApolloReactComponents.SubscriptionComponentOptions<
-    FetchTagsSubscription,
-    FetchTagsSubscriptionVariables
+    FetchLabelsSubscription,
+    FetchLabelsSubscriptionVariables
   >,
   'subscription'
 >;
 
-export const FetchTagsComponent = (props: FetchTagsComponentProps) => (
+export const FetchLabelsComponent = (props: FetchLabelsComponentProps) => (
   <ApolloReactComponents.Subscription<
-    FetchTagsSubscription,
-    FetchTagsSubscriptionVariables
+    FetchLabelsSubscription,
+    FetchLabelsSubscriptionVariables
   >
-    subscription={FetchTagsDocument}
+    subscription={FetchLabelsDocument}
     {...props}
   />
 );
 
-export type FetchTagsProps<
+export type FetchLabelsProps<
   TChildProps = {},
   TDataName extends string = 'data'
 > = {
   [key in TDataName]: ApolloReactHoc.DataValue<
-    FetchTagsSubscription,
-    FetchTagsSubscriptionVariables
+    FetchLabelsSubscription,
+    FetchLabelsSubscriptionVariables
   >;
 } & TChildProps;
-export function withFetchTags<
+export function withFetchLabels<
   TProps,
   TChildProps = {},
   TDataName extends string = 'data'
 >(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
-    FetchTagsSubscription,
-    FetchTagsSubscriptionVariables,
-    FetchTagsProps<TChildProps, TDataName>
+    FetchLabelsSubscription,
+    FetchLabelsSubscriptionVariables,
+    FetchLabelsProps<TChildProps, TDataName>
   >
 ) {
   return ApolloReactHoc.withSubscription<
     TProps,
-    FetchTagsSubscription,
-    FetchTagsSubscriptionVariables,
-    FetchTagsProps<TChildProps, TDataName>
-  >(FetchTagsDocument, {
-    alias: 'fetchTags',
+    FetchLabelsSubscription,
+    FetchLabelsSubscriptionVariables,
+    FetchLabelsProps<TChildProps, TDataName>
+  >(FetchLabelsDocument, {
+    alias: 'fetchLabels',
     ...operationOptions,
   });
 }
 
 /**
- * __useFetchTagsSubscription__
+ * __useFetchLabelsSubscription__
  *
- * To run a query within a React component, call `useFetchTagsSubscription` and pass it any options that fit your needs.
- * When your component renders, `useFetchTagsSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useFetchLabelsSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useFetchLabelsSubscription` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useFetchTagsSubscription({
+ * const { data, loading, error } = useFetchLabelsSubscription({
  *   variables: {
  *   },
  * });
  */
-export function useFetchTagsSubscription(
+export function useFetchLabelsSubscription(
   baseOptions?: Apollo.SubscriptionHookOptions<
-    FetchTagsSubscription,
-    FetchTagsSubscriptionVariables
+    FetchLabelsSubscription,
+    FetchLabelsSubscriptionVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useSubscription<
-    FetchTagsSubscription,
-    FetchTagsSubscriptionVariables
-  >(FetchTagsDocument, options);
+    FetchLabelsSubscription,
+    FetchLabelsSubscriptionVariables
+  >(FetchLabelsDocument, options);
 }
-export type FetchTagsSubscriptionHookResult = ReturnType<
-  typeof useFetchTagsSubscription
+export type FetchLabelsSubscriptionHookResult = ReturnType<
+  typeof useFetchLabelsSubscription
 >;
-export type FetchTagsSubscriptionResult =
-  Apollo.SubscriptionResult<FetchTagsSubscription>;
+export type FetchLabelsSubscriptionResult =
+  Apollo.SubscriptionResult<FetchLabelsSubscription>;
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
@@ -3884,6 +3897,30 @@ export type ResolversTypes = {
   feeds_select_column: Feeds_Select_Column;
   feeds_set_input: Feeds_Set_Input;
   feeds_update_column: Feeds_Update_Column;
+  labels: ResolverTypeWrapper<Labels>;
+  labels_aggregate: ResolverTypeWrapper<Labels_Aggregate>;
+  labels_aggregate_fields: ResolverTypeWrapper<Labels_Aggregate_Fields>;
+  labels_avg_fields: ResolverTypeWrapper<Labels_Avg_Fields>;
+  labels_bool_exp: Labels_Bool_Exp;
+  labels_constraint: Labels_Constraint;
+  labels_inc_input: Labels_Inc_Input;
+  labels_insert_input: Labels_Insert_Input;
+  labels_max_fields: ResolverTypeWrapper<Labels_Max_Fields>;
+  labels_min_fields: ResolverTypeWrapper<Labels_Min_Fields>;
+  labels_mutation_response: ResolverTypeWrapper<Labels_Mutation_Response>;
+  labels_on_conflict: Labels_On_Conflict;
+  labels_order_by: Labels_Order_By;
+  labels_pk_columns_input: Labels_Pk_Columns_Input;
+  labels_select_column: Labels_Select_Column;
+  labels_set_input: Labels_Set_Input;
+  labels_stddev_fields: ResolverTypeWrapper<Labels_Stddev_Fields>;
+  labels_stddev_pop_fields: ResolverTypeWrapper<Labels_Stddev_Pop_Fields>;
+  labels_stddev_samp_fields: ResolverTypeWrapper<Labels_Stddev_Samp_Fields>;
+  labels_sum_fields: ResolverTypeWrapper<Labels_Sum_Fields>;
+  labels_update_column: Labels_Update_Column;
+  labels_var_pop_fields: ResolverTypeWrapper<Labels_Var_Pop_Fields>;
+  labels_var_samp_fields: ResolverTypeWrapper<Labels_Var_Samp_Fields>;
+  labels_variance_fields: ResolverTypeWrapper<Labels_Variance_Fields>;
   mutation_root: ResolverTypeWrapper<{}>;
   notifications: ResolverTypeWrapper<Notifications>;
   notifications_aggregate: ResolverTypeWrapper<Notifications_Aggregate>;
@@ -3939,30 +3976,6 @@ export type ResolversTypes = {
   sessions_set_input: Sessions_Set_Input;
   sessions_update_column: Sessions_Update_Column;
   subscription_root: ResolverTypeWrapper<{}>;
-  tags: ResolverTypeWrapper<Tags>;
-  tags_aggregate: ResolverTypeWrapper<Tags_Aggregate>;
-  tags_aggregate_fields: ResolverTypeWrapper<Tags_Aggregate_Fields>;
-  tags_avg_fields: ResolverTypeWrapper<Tags_Avg_Fields>;
-  tags_bool_exp: Tags_Bool_Exp;
-  tags_constraint: Tags_Constraint;
-  tags_inc_input: Tags_Inc_Input;
-  tags_insert_input: Tags_Insert_Input;
-  tags_max_fields: ResolverTypeWrapper<Tags_Max_Fields>;
-  tags_min_fields: ResolverTypeWrapper<Tags_Min_Fields>;
-  tags_mutation_response: ResolverTypeWrapper<Tags_Mutation_Response>;
-  tags_on_conflict: Tags_On_Conflict;
-  tags_order_by: Tags_Order_By;
-  tags_pk_columns_input: Tags_Pk_Columns_Input;
-  tags_select_column: Tags_Select_Column;
-  tags_set_input: Tags_Set_Input;
-  tags_stddev_fields: ResolverTypeWrapper<Tags_Stddev_Fields>;
-  tags_stddev_pop_fields: ResolverTypeWrapper<Tags_Stddev_Pop_Fields>;
-  tags_stddev_samp_fields: ResolverTypeWrapper<Tags_Stddev_Samp_Fields>;
-  tags_sum_fields: ResolverTypeWrapper<Tags_Sum_Fields>;
-  tags_update_column: Tags_Update_Column;
-  tags_var_pop_fields: ResolverTypeWrapper<Tags_Var_Pop_Fields>;
-  tags_var_samp_fields: ResolverTypeWrapper<Tags_Var_Samp_Fields>;
-  tags_variance_fields: ResolverTypeWrapper<Tags_Variance_Fields>;
   timestamptz: ResolverTypeWrapper<Scalars['timestamptz']>;
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
   user_settings: ResolverTypeWrapper<User_Settings>;
@@ -4053,6 +4066,27 @@ export type ResolversParentTypes = {
   feeds_order_by: Feeds_Order_By;
   feeds_pk_columns_input: Feeds_Pk_Columns_Input;
   feeds_set_input: Feeds_Set_Input;
+  labels: Labels;
+  labels_aggregate: Labels_Aggregate;
+  labels_aggregate_fields: Labels_Aggregate_Fields;
+  labels_avg_fields: Labels_Avg_Fields;
+  labels_bool_exp: Labels_Bool_Exp;
+  labels_inc_input: Labels_Inc_Input;
+  labels_insert_input: Labels_Insert_Input;
+  labels_max_fields: Labels_Max_Fields;
+  labels_min_fields: Labels_Min_Fields;
+  labels_mutation_response: Labels_Mutation_Response;
+  labels_on_conflict: Labels_On_Conflict;
+  labels_order_by: Labels_Order_By;
+  labels_pk_columns_input: Labels_Pk_Columns_Input;
+  labels_set_input: Labels_Set_Input;
+  labels_stddev_fields: Labels_Stddev_Fields;
+  labels_stddev_pop_fields: Labels_Stddev_Pop_Fields;
+  labels_stddev_samp_fields: Labels_Stddev_Samp_Fields;
+  labels_sum_fields: Labels_Sum_Fields;
+  labels_var_pop_fields: Labels_Var_Pop_Fields;
+  labels_var_samp_fields: Labels_Var_Samp_Fields;
+  labels_variance_fields: Labels_Variance_Fields;
   mutation_root: {};
   notifications: Notifications;
   notifications_aggregate: Notifications_Aggregate;
@@ -4101,27 +4135,6 @@ export type ResolversParentTypes = {
   sessions_pk_columns_input: Sessions_Pk_Columns_Input;
   sessions_set_input: Sessions_Set_Input;
   subscription_root: {};
-  tags: Tags;
-  tags_aggregate: Tags_Aggregate;
-  tags_aggregate_fields: Tags_Aggregate_Fields;
-  tags_avg_fields: Tags_Avg_Fields;
-  tags_bool_exp: Tags_Bool_Exp;
-  tags_inc_input: Tags_Inc_Input;
-  tags_insert_input: Tags_Insert_Input;
-  tags_max_fields: Tags_Max_Fields;
-  tags_min_fields: Tags_Min_Fields;
-  tags_mutation_response: Tags_Mutation_Response;
-  tags_on_conflict: Tags_On_Conflict;
-  tags_order_by: Tags_Order_By;
-  tags_pk_columns_input: Tags_Pk_Columns_Input;
-  tags_set_input: Tags_Set_Input;
-  tags_stddev_fields: Tags_Stddev_Fields;
-  tags_stddev_pop_fields: Tags_Stddev_Pop_Fields;
-  tags_stddev_samp_fields: Tags_Stddev_Samp_Fields;
-  tags_sum_fields: Tags_Sum_Fields;
-  tags_var_pop_fields: Tags_Var_Pop_Fields;
-  tags_var_samp_fields: Tags_Var_Samp_Fields;
-  tags_variance_fields: Tags_Variance_Fields;
   timestamptz: Scalars['timestamptz'];
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
   user_settings: User_Settings;
@@ -4470,6 +4483,208 @@ export type Feeds_Mutation_ResponseResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type LabelsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels'] = ResolversParentTypes['labels']
+> = {
+  created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_AggregateResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_aggregate'] = ResolversParentTypes['labels_aggregate']
+> = {
+  aggregate?: Resolver<
+    Maybe<ResolversTypes['labels_aggregate_fields']>,
+    ParentType,
+    ContextType
+  >;
+  nodes?: Resolver<Array<ResolversTypes['labels']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Aggregate_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_aggregate_fields'] = ResolversParentTypes['labels_aggregate_fields']
+> = {
+  avg?: Resolver<
+    Maybe<ResolversTypes['labels_avg_fields']>,
+    ParentType,
+    ContextType
+  >;
+  count?: Resolver<
+    ResolversTypes['Int'],
+    ParentType,
+    ContextType,
+    RequireFields<Labels_Aggregate_FieldsCountArgs, never>
+  >;
+  max?: Resolver<
+    Maybe<ResolversTypes['labels_max_fields']>,
+    ParentType,
+    ContextType
+  >;
+  min?: Resolver<
+    Maybe<ResolversTypes['labels_min_fields']>,
+    ParentType,
+    ContextType
+  >;
+  stddev?: Resolver<
+    Maybe<ResolversTypes['labels_stddev_fields']>,
+    ParentType,
+    ContextType
+  >;
+  stddev_pop?: Resolver<
+    Maybe<ResolversTypes['labels_stddev_pop_fields']>,
+    ParentType,
+    ContextType
+  >;
+  stddev_samp?: Resolver<
+    Maybe<ResolversTypes['labels_stddev_samp_fields']>,
+    ParentType,
+    ContextType
+  >;
+  sum?: Resolver<
+    Maybe<ResolversTypes['labels_sum_fields']>,
+    ParentType,
+    ContextType
+  >;
+  var_pop?: Resolver<
+    Maybe<ResolversTypes['labels_var_pop_fields']>,
+    ParentType,
+    ContextType
+  >;
+  var_samp?: Resolver<
+    Maybe<ResolversTypes['labels_var_samp_fields']>,
+    ParentType,
+    ContextType
+  >;
+  variance?: Resolver<
+    Maybe<ResolversTypes['labels_variance_fields']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Avg_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_avg_fields'] = ResolversParentTypes['labels_avg_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Max_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_max_fields'] = ResolversParentTypes['labels_max_fields']
+> = {
+  created_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  updated_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Min_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_min_fields'] = ResolversParentTypes['labels_min_fields']
+> = {
+  created_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  updated_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Mutation_ResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_mutation_response'] = ResolversParentTypes['labels_mutation_response']
+> = {
+  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  returning?: Resolver<
+    Array<ResolversTypes['labels']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Stddev_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_stddev_fields'] = ResolversParentTypes['labels_stddev_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Stddev_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_stddev_pop_fields'] = ResolversParentTypes['labels_stddev_pop_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Stddev_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_stddev_samp_fields'] = ResolversParentTypes['labels_stddev_samp_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Sum_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_sum_fields'] = ResolversParentTypes['labels_sum_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Var_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_var_pop_fields'] = ResolversParentTypes['labels_var_pop_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Var_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_var_samp_fields'] = ResolversParentTypes['labels_var_samp_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Labels_Variance_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['labels_variance_fields'] = ResolversParentTypes['labels_variance_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Mutation_RootResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['mutation_root'] = ResolversParentTypes['mutation_root']
@@ -4498,6 +4713,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_Feeds_By_PkArgs, 'id'>
   >;
+  delete_labels?: Resolver<
+    Maybe<ResolversTypes['labels_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_LabelsArgs, 'where'>
+  >;
+  delete_labels_by_pk?: Resolver<
+    Maybe<ResolversTypes['labels']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Labels_By_PkArgs, 'id'>
+  >;
   delete_notifications?: Resolver<
     Maybe<ResolversTypes['notifications_mutation_response']>,
     ParentType,
@@ -4521,18 +4748,6 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootDelete_Sessions_By_PkArgs, 'id'>
-  >;
-  delete_tags?: Resolver<
-    Maybe<ResolversTypes['tags_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_TagsArgs, 'where'>
-  >;
-  delete_tags_by_pk?: Resolver<
-    Maybe<ResolversTypes['tags']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_Tags_By_PkArgs, 'id'>
   >;
   delete_user_settings?: Resolver<
     Maybe<ResolversTypes['user_settings_mutation_response']>,
@@ -4594,6 +4809,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_Feeds_OneArgs, 'object'>
   >;
+  insert_labels?: Resolver<
+    Maybe<ResolversTypes['labels_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_LabelsArgs, 'objects'>
+  >;
+  insert_labels_one?: Resolver<
+    Maybe<ResolversTypes['labels']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Labels_OneArgs, 'object'>
+  >;
   insert_notifications?: Resolver<
     Maybe<ResolversTypes['notifications_mutation_response']>,
     ParentType,
@@ -4617,18 +4844,6 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootInsert_Sessions_OneArgs, 'object'>
-  >;
-  insert_tags?: Resolver<
-    Maybe<ResolversTypes['tags_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_TagsArgs, 'objects'>
-  >;
-  insert_tags_one?: Resolver<
-    Maybe<ResolversTypes['tags']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_Tags_OneArgs, 'object'>
   >;
   insert_user_settings?: Resolver<
     Maybe<ResolversTypes['user_settings_mutation_response']>,
@@ -4690,6 +4905,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_Feeds_By_PkArgs, 'pk_columns'>
   >;
+  update_labels?: Resolver<
+    Maybe<ResolversTypes['labels_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_LabelsArgs, 'where'>
+  >;
+  update_labels_by_pk?: Resolver<
+    Maybe<ResolversTypes['labels']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Labels_By_PkArgs, 'pk_columns'>
+  >;
   update_notifications?: Resolver<
     Maybe<ResolversTypes['notifications_mutation_response']>,
     ParentType,
@@ -4713,18 +4940,6 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Sessions_By_PkArgs, 'pk_columns'>
-  >;
-  update_tags?: Resolver<
-    Maybe<ResolversTypes['tags_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootUpdate_TagsArgs, 'where'>
-  >;
-  update_tags_by_pk?: Resolver<
-    Maybe<ResolversTypes['tags']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootUpdate_Tags_By_PkArgs, 'pk_columns'>
   >;
   update_user_settings?: Resolver<
     Maybe<ResolversTypes['user_settings_mutation_response']>,
@@ -5032,6 +5247,24 @@ export type Query_RootResolvers<
     ContextType,
     RequireFields<Query_RootFeeds_By_PkArgs, 'id'>
   >;
+  labels?: Resolver<
+    Array<ResolversTypes['labels']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootLabelsArgs, never>
+  >;
+  labels_aggregate?: Resolver<
+    ResolversTypes['labels_aggregate'],
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootLabels_AggregateArgs, never>
+  >;
+  labels_by_pk?: Resolver<
+    Maybe<ResolversTypes['labels']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootLabels_By_PkArgs, 'id'>
+  >;
   notifications?: Resolver<
     Array<ResolversTypes['notifications']>,
     ParentType,
@@ -5067,24 +5300,6 @@ export type Query_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Query_RootSessions_By_PkArgs, 'id'>
-  >;
-  tags?: Resolver<
-    Array<ResolversTypes['tags']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootTagsArgs, never>
-  >;
-  tags_aggregate?: Resolver<
-    ResolversTypes['tags_aggregate'],
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootTags_AggregateArgs, never>
-  >;
-  tags_by_pk?: Resolver<
-    Maybe<ResolversTypes['tags']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootTags_By_PkArgs, 'id'>
   >;
   user_settings?: Resolver<
     Array<ResolversTypes['user_settings']>,
@@ -5319,6 +5534,27 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootFeeds_By_PkArgs, 'id'>
   >;
+  labels?: SubscriptionResolver<
+    Array<ResolversTypes['labels']>,
+    'labels',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootLabelsArgs, never>
+  >;
+  labels_aggregate?: SubscriptionResolver<
+    ResolversTypes['labels_aggregate'],
+    'labels_aggregate',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootLabels_AggregateArgs, never>
+  >;
+  labels_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['labels']>,
+    'labels_by_pk',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootLabels_By_PkArgs, 'id'>
+  >;
   notifications?: SubscriptionResolver<
     Array<ResolversTypes['notifications']>,
     'notifications',
@@ -5360,27 +5596,6 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootSessions_By_PkArgs, 'id'>
-  >;
-  tags?: SubscriptionResolver<
-    Array<ResolversTypes['tags']>,
-    'tags',
-    ParentType,
-    ContextType,
-    RequireFields<Subscription_RootTagsArgs, never>
-  >;
-  tags_aggregate?: SubscriptionResolver<
-    ResolversTypes['tags_aggregate'],
-    'tags_aggregate',
-    ParentType,
-    ContextType,
-    RequireFields<Subscription_RootTags_AggregateArgs, never>
-  >;
-  tags_by_pk?: SubscriptionResolver<
-    Maybe<ResolversTypes['tags']>,
-    'tags_by_pk',
-    ParentType,
-    ContextType,
-    RequireFields<Subscription_RootTags_By_PkArgs, 'id'>
   >;
   user_settings?: SubscriptionResolver<
     Array<ResolversTypes['user_settings']>,
@@ -5445,204 +5660,6 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootVerification_Requests_By_PkArgs, 'id'>
   >;
-};
-
-export type TagsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags'] = ResolversParentTypes['tags']
-> = {
-  created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_AggregateResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_aggregate'] = ResolversParentTypes['tags_aggregate']
-> = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['tags_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<Array<ResolversTypes['tags']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Aggregate_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_aggregate_fields'] = ResolversParentTypes['tags_aggregate_fields']
-> = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['tags_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    RequireFields<Tags_Aggregate_FieldsCountArgs, never>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['tags_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['tags_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['tags_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['tags_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['tags_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['tags_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['tags_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['tags_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['tags_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Avg_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_avg_fields'] = ResolversParentTypes['tags_avg_fields']
-> = {
-  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Max_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_max_fields'] = ResolversParentTypes['tags_max_fields']
-> = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Min_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_min_fields'] = ResolversParentTypes['tags_min_fields']
-> = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Mutation_ResponseResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_mutation_response'] = ResolversParentTypes['tags_mutation_response']
-> = {
-  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<Array<ResolversTypes['tags']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Stddev_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_stddev_fields'] = ResolversParentTypes['tags_stddev_fields']
-> = {
-  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Stddev_Pop_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_stddev_pop_fields'] = ResolversParentTypes['tags_stddev_pop_fields']
-> = {
-  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Stddev_Samp_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_stddev_samp_fields'] = ResolversParentTypes['tags_stddev_samp_fields']
-> = {
-  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Sum_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_sum_fields'] = ResolversParentTypes['tags_sum_fields']
-> = {
-  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Var_Pop_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_var_pop_fields'] = ResolversParentTypes['tags_var_pop_fields']
-> = {
-  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Var_Samp_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_var_samp_fields'] = ResolversParentTypes['tags_var_samp_fields']
-> = {
-  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Tags_Variance_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['tags_variance_fields'] = ResolversParentTypes['tags_variance_fields']
-> = {
-  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export interface TimestamptzScalarConfig
@@ -6021,6 +6038,20 @@ export type Resolvers<ContextType = any> = {
   feeds_max_fields?: Feeds_Max_FieldsResolvers<ContextType>;
   feeds_min_fields?: Feeds_Min_FieldsResolvers<ContextType>;
   feeds_mutation_response?: Feeds_Mutation_ResponseResolvers<ContextType>;
+  labels?: LabelsResolvers<ContextType>;
+  labels_aggregate?: Labels_AggregateResolvers<ContextType>;
+  labels_aggregate_fields?: Labels_Aggregate_FieldsResolvers<ContextType>;
+  labels_avg_fields?: Labels_Avg_FieldsResolvers<ContextType>;
+  labels_max_fields?: Labels_Max_FieldsResolvers<ContextType>;
+  labels_min_fields?: Labels_Min_FieldsResolvers<ContextType>;
+  labels_mutation_response?: Labels_Mutation_ResponseResolvers<ContextType>;
+  labels_stddev_fields?: Labels_Stddev_FieldsResolvers<ContextType>;
+  labels_stddev_pop_fields?: Labels_Stddev_Pop_FieldsResolvers<ContextType>;
+  labels_stddev_samp_fields?: Labels_Stddev_Samp_FieldsResolvers<ContextType>;
+  labels_sum_fields?: Labels_Sum_FieldsResolvers<ContextType>;
+  labels_var_pop_fields?: Labels_Var_Pop_FieldsResolvers<ContextType>;
+  labels_var_samp_fields?: Labels_Var_Samp_FieldsResolvers<ContextType>;
+  labels_variance_fields?: Labels_Variance_FieldsResolvers<ContextType>;
   mutation_root?: Mutation_RootResolvers<ContextType>;
   notifications?: NotificationsResolvers<ContextType>;
   notifications_aggregate?: Notifications_AggregateResolvers<ContextType>;
@@ -6044,20 +6075,6 @@ export type Resolvers<ContextType = any> = {
   sessions_min_fields?: Sessions_Min_FieldsResolvers<ContextType>;
   sessions_mutation_response?: Sessions_Mutation_ResponseResolvers<ContextType>;
   subscription_root?: Subscription_RootResolvers<ContextType>;
-  tags?: TagsResolvers<ContextType>;
-  tags_aggregate?: Tags_AggregateResolvers<ContextType>;
-  tags_aggregate_fields?: Tags_Aggregate_FieldsResolvers<ContextType>;
-  tags_avg_fields?: Tags_Avg_FieldsResolvers<ContextType>;
-  tags_max_fields?: Tags_Max_FieldsResolvers<ContextType>;
-  tags_min_fields?: Tags_Min_FieldsResolvers<ContextType>;
-  tags_mutation_response?: Tags_Mutation_ResponseResolvers<ContextType>;
-  tags_stddev_fields?: Tags_Stddev_FieldsResolvers<ContextType>;
-  tags_stddev_pop_fields?: Tags_Stddev_Pop_FieldsResolvers<ContextType>;
-  tags_stddev_samp_fields?: Tags_Stddev_Samp_FieldsResolvers<ContextType>;
-  tags_sum_fields?: Tags_Sum_FieldsResolvers<ContextType>;
-  tags_var_pop_fields?: Tags_Var_Pop_FieldsResolvers<ContextType>;
-  tags_var_samp_fields?: Tags_Var_Samp_FieldsResolvers<ContextType>;
-  tags_variance_fields?: Tags_Variance_FieldsResolvers<ContextType>;
   timestamptz?: GraphQLScalarType;
   user_settings?: User_SettingsResolvers<ContextType>;
   user_settings_aggregate?: User_Settings_AggregateResolvers<ContextType>;

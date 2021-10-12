@@ -1,5 +1,5 @@
-subscription fetchTags {
-  tags(order_by: { created_at: desc }) {
+subscription fetchLabels {
+  labels(order_by: { created_at: desc }) {
     id
     name
     created_at

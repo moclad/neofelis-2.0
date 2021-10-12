@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FiHexagon, FiLock, FiUser } from 'react-icons/fi';
 
 import { Layout } from '@/app/layout';
 import { useDarkMode } from '@/hooks/useDarkMode';
-import { Flex } from '@chakra-ui/react';
+import { Button, Flex } from '@chakra-ui/react';
 
+import { Nav, NavGroup, NavItem } from '../../../components';
 import { Page, PageBottomBar, PageContent, PageTopBar } from './index';
 
 export default {
@@ -41,6 +43,82 @@ export const FocusAndBackButton = () => (
     </PageTopBar>
     <PageContent>Page Content</PageContent>
     <PageBottomBar>Page Bottom Bar</PageBottomBar>
+  </Page>
+);
+
+export const ContainerTitleAndActions = () => (
+  <Page>
+    <PageTopBar>Page Top Bar</PageTopBar>
+    <PageContent
+      title="Title"
+      actions={[
+        <Button variant="@primary">Action 1</Button>,
+        <Button>Action 2</Button>,
+        <Button>Action 3</Button>,
+      ]}
+    >
+      Page Content
+    </PageContent>
+    <PageBottomBar>Page Bottom Bar</PageBottomBar>
+  </Page>
+);
+
+const DefaultNav = () => {
+  const [active, setActive] = useState(0);
+  return (
+    <Nav>
+      <NavGroup title="My Account">
+        <NavItem
+          as="a"
+          icon={FiUser}
+          isActive={active === 0}
+          onClick={() => setActive(0)}
+        >
+          Profile
+        </NavItem>
+        <NavItem
+          as="a"
+          icon={FiLock}
+          isActive={active === 1}
+          onClick={() => setActive(1)}
+        >
+          Password
+        </NavItem>
+      </NavGroup>
+      <NavGroup title="Other">
+        <NavItem
+          as="a"
+          icon={FiHexagon}
+          isActive={active === 2}
+          onClick={() => setActive(2)}
+        >
+          Stuff 1
+        </NavItem>
+        <NavItem
+          as="a"
+          icon={FiHexagon}
+          isActive={active === 3}
+          onClick={() => setActive(3)}
+        >
+          Stuff 2
+        </NavItem>
+      </NavGroup>
+    </Nav>
+  );
+};
+
+export const WithNavigationBar = () => (
+  <Page nav={<DefaultNav />}>
+    <PageContent
+      title="Title"
+      actions={[
+        <Button variant="@primary">Action 1</Button>,
+        <Button>Action 2</Button>,
+        <Button>Action 3</Button>,
+      ]}
+    >
+      Page Content
+    </PageContent>
   </Page>
 );
 

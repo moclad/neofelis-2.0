@@ -1,11 +1,16 @@
 {
   "nav": {
     "title": "Classification",
-    "tags": "Tags",
+    "labels": "Labels",
     "categories": "Categories",
     "groups": "Groups"
   },
-  "tags": {
-    "title": "Tags"
+  "labels": {
+    "title": "Labels",
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "create": "Create label"
+    }
   }
 }

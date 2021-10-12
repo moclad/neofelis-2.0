@@ -9,7 +9,8 @@
     "cancel": "Cancel",
     "deactivate": "Deactivate",
     "delete": "Delete",
-    "edit": "Edit"
+    "edit": "Edit",
+    "submitting": "Submitting"
   },
   "feedbacks": {
     "updateSuccess": {
