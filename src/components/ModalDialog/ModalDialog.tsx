@@ -1,13 +1,11 @@
-import React, { FC, MutableRefObject } from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
-  Box,
   Button,
   HStack,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
@@ -22,7 +20,7 @@ export interface ModalDialogProps {
   closeOnOverlayClick?: boolean;
   formId: string;
   onCancel: () => void;
-  onConfirm: (values: any) => any | Promise<any> | void;
+  onConfirm: (values) => void;
 }
 
 const ModalDialog: FC<ModalDialogProps> = (props) => {
@@ -42,6 +40,7 @@ const ModalDialog: FC<ModalDialogProps> = (props) => {
 
   const submitFormData = async (values) => {
     await onConfirm(values);
+    onCancel();
   };
 
   return (
@@ -56,7 +55,6 @@ const ModalDialog: FC<ModalDialogProps> = (props) => {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>{title}</ModalHeader>
-        {/* <ModalCloseButton disabled={loading} /> */}
         <Formiz
           id={formId}
           onValidSubmit={submitFormData}
@@ -80,7 +78,6 @@ const ModalDialog: FC<ModalDialogProps> = (props) => {
                   variant="@primary"
                   isLoading={loading}
                   loadingText={t('common:actions.submitting')}
-                  onClick={onConfirm}
                 >
                   {t('common:actions.confirm')}
                 </Button>

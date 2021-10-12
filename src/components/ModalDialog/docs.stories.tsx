@@ -38,7 +38,7 @@ const Template = ({
       title={title}
       isOpen={isOpen}
       onCancel={() => onClose()}
-      onConfirm={(values) => onConfirm(values)}
+      onConfirm={onConfirm}
       loading={loading}
       closeOnOverlayClick={closeOnOverlayClick}
       formId={formId}
