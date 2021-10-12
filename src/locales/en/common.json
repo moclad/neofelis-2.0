@@ -10,7 +10,8 @@
     "deactivate": "Deactivate",
     "delete": "Delete",
     "edit": "Edit",
-    "submitting": "Submitting"
+    "submitting": "Submitting",
+    "confirm": "Confirm"
   },
   "feedbacks": {
     "updateSuccess": {
