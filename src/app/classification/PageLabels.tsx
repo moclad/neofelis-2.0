@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
@@ -15,9 +15,10 @@ import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import {
   useAllLabelsQuery,
   useDeleteLabelMutation,
-  useInsertLabelMutation
+  useInsertLabelMutation,
+  useUpdateLabelMutation
 } from '@/generated/graphql';
-import { useDarkMode } from '@/hooks/useDarkMode';
+import { useEditMode } from '@/hooks/useEditMode';
 import {
   Button,
   Menu,
@@ -25,7 +26,6 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
-  Stack,
   Tag,
   TagLabel,
   useDisclosure,
@@ -37,12 +37,28 @@ export const PageLabels = () => {
   const { t } = useTranslation();
   const { loading, data } = useAllLabelsQuery();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { colorModeValue } = useDarkMode();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } =
+    useEditMode<number>();
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
   const [deleteLabel, { loading: deleteLabelFetching }] =
     useDeleteLabelMutation();
+
+  const [updateLabel, { loading: updateLoading }] = useUpdateLabelMutation({
+    onError: (error) => {
+      toastError({
+        title: t('common:feedbacks.updateError.title'),
+        description: error.message,
+      });
+    },
+    onCompleted: () => {
+      toastSuccess({
+        title: t('common:feedbacks.updateSuccess.title'),
+      });
+    },
+  });
+
   const [insertLabel, { loading: insertLoading }] = useInsertLabelMutation({
     onError: (error) => {
       toastError({
@@ -57,7 +73,7 @@ export const PageLabels = () => {
     },
   });
 
-  const onConfirm = async (values) => {
+  const onConfirmCreate = async (values) => {
     const newData = {
       ...values,
     };
@@ -70,13 +86,27 @@ export const PageLabels = () => {
     });
   };
 
+  const onConfirmEdit = async (values) => {
+    const newData = {
+      ...values,
+    };
+
+    await updateLabel({
+      variables: {
+        id: dataKey,
+        changes: newData,
+      },
+      refetchQueries: 'active',
+    });
+  };
+
   const onDelete = async (id: number) => {
     deleteLabel({
       variables: {
         id,
       },
       refetchQueries: 'active',
-    }).then((result) => {
+    }).then(() => {
       toastSuccess({
         title: t('common:feedbacks.deletedSuccess.title'),
       });
@@ -109,7 +139,12 @@ export const PageLabels = () => {
                     <Menu isLazy>
                       <MenuButton as={ActionsButton} size="sm" ml="8px" />
                       <MenuList>
-                        <MenuItem icon={<FiEdit />}>
+                        <MenuItem
+                          icon={<FiEdit />}
+                          onClick={() => {
+                            onEdit(label.id, label);
+                          }}
+                        >
                           {t('classification:labels.actions.edit')}
                         </MenuItem>
                         <MenuDivider />
@@ -130,23 +165,22 @@ export const PageLabels = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={t('classification:labels.create')}
-        isOpen={isOpen}
-        onCancel={() => onClose()}
-        onConfirm={onConfirm}
-        loading={loading || insertLoading}
+        title={
+          isEditing
+            ? t('classification:labels.actions.edit')
+            : t('classification:labels.actions.create')
+        }
+        isOpen={isOpen || isEditing}
+        onCancel={() => {
+          onFinish();
+          onClose();
+        }}
+        onConfirm={isEditing ? onConfirmEdit : onConfirmCreate}
+        loading={loading || insertLoading || updateLoading}
         formId="label-form-id"
+        initialValues={dataContext}
       >
-        <Stack
-          direction="column"
-          bg={colorModeValue('white', 'blackAlpha.400')}
-          p="6"
-          borderRadius="lg"
-          spacing="6"
-          shadow="md"
-        >
-          <FieldInput name="name" label="Name" required="Field required" />
-        </Stack>
+        <FieldInput name="name" label="Name" required="Field required" />
       </ModalDialog>
     </>
   );

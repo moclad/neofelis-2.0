@@ -1,8 +1,0 @@
-mutation insertLabel($object: labels_insert_input!) {
-  insert_labels_one(object: $object) {
-    id,
-    name,
-    created_at,
-    updated_at
-  }
-}

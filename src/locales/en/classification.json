@@ -8,7 +8,7 @@
   "labels": {
     "title": "Labels",
     "actions": {
-      "edit": "Edit",
+      "edit": "Edit Label",
       "delete": "Delete",
       "create": "Create label"
     }

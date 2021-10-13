@@ -1,6 +1,0 @@
-mutation deleteLabel($id: Int!) {
-  delete_labels_by_pk(id: $id) {
-      id
-      name
-  }
-}

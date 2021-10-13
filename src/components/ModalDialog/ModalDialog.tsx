@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Button,
   HStack,
@@ -9,7 +10,8 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay
+  ModalOverlay,
+  Stack
 } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 
@@ -19,6 +21,7 @@ export interface ModalDialogProps {
   title: string;
   closeOnOverlayClick?: boolean;
   formId: string;
+  initialValues?: object;
   onCancel: () => void;
   onConfirm: (values) => void;
 }
@@ -33,10 +36,12 @@ const ModalDialog: FC<ModalDialogProps> = (props) => {
     loading,
     closeOnOverlayClick,
     formId,
+    initialValues,
   } = props;
 
   const { t } = useTranslation();
   const generalInformationForm = useForm();
+  const { colorModeValue } = useDarkMode();
 
   const submitFormData = async (values) => {
     await onConfirm(values);
@@ -59,9 +64,21 @@ const ModalDialog: FC<ModalDialogProps> = (props) => {
           id={formId}
           onValidSubmit={submitFormData}
           connect={generalInformationForm}
+          initialValues={initialValues}
         >
           <form noValidate onSubmit={generalInformationForm.submit}>
-            <ModalBody>{children}</ModalBody>
+            <ModalBody>
+              <Stack
+                direction="column"
+                bg={colorModeValue('white', 'blackAlpha.400')}
+                p="6"
+                borderRadius="lg"
+                spacing="6"
+                shadow="md"
+              >
+                {children}
+              </Stack>
+            </ModalBody>
             <ModalFooter>
               <HStack spacing={4}>
                 <Button

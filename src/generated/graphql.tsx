@@ -2553,18 +2553,6 @@ export type InsertFeedMutation = {
   insert_feeds_one?: { __typename?: 'feeds'; id: any } | null | undefined;
 };
 
-export type DeleteLabelMutationVariables = Exact<{
-  id: Scalars['Int'];
-}>;
-
-export type DeleteLabelMutation = {
-  __typename?: 'mutation_root';
-  delete_labels_by_pk?:
-    | { __typename?: 'labels'; id: number; name: string }
-    | null
-    | undefined;
-};
-
 export type InsertLabelMutationVariables = Exact<{
   object: Labels_Insert_Input;
 }>;
@@ -2579,6 +2567,31 @@ export type InsertLabelMutation = {
         created_at: string;
         updated_at: string;
       }
+    | null
+    | undefined;
+};
+
+export type DeleteLabelMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+export type DeleteLabelMutation = {
+  __typename?: 'mutation_root';
+  delete_labels_by_pk?:
+    | { __typename?: 'labels'; id: number; name: string }
+    | null
+    | undefined;
+};
+
+export type UpdateLabelMutationVariables = Exact<{
+  id: Scalars['Int'];
+  changes?: Maybe<Labels_Set_Input>;
+}>;
+
+export type UpdateLabelMutation = {
+  __typename?: 'mutation_root';
+  update_labels_by_pk?:
+    | { __typename?: 'labels'; id: number }
     | null
     | undefined;
 };
@@ -2800,106 +2813,6 @@ export type InsertFeedMutationOptions = Apollo.BaseMutationOptions<
   InsertFeedMutation,
   InsertFeedMutationVariables
 >;
-export const DeleteLabelDocument = gql`
-  mutation deleteLabel($id: Int!) {
-    delete_labels_by_pk(id: $id) {
-      id
-      name
-    }
-  }
-`;
-export type DeleteLabelMutationFn = Apollo.MutationFunction<
-  DeleteLabelMutation,
-  DeleteLabelMutationVariables
->;
-export type DeleteLabelComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables
-  >,
-  'mutation'
->;
-
-export const DeleteLabelComponent = (props: DeleteLabelComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables
-  >
-    mutation={DeleteLabelDocument}
-    {...props}
-  />
-);
-
-export type DeleteLabelProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables
-  >;
-} & TChildProps;
-export function withDeleteLabel<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables,
-    DeleteLabelProps<TChildProps, TDataName>
-  >
-) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables,
-    DeleteLabelProps<TChildProps, TDataName>
-  >(DeleteLabelDocument, {
-    alias: 'deleteLabel',
-    ...operationOptions,
-  });
-}
-
-/**
- * __useDeleteLabelMutation__
- *
- * To run a mutation, you first call `useDeleteLabelMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteLabelMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [deleteLabelMutation, { data, loading, error }] = useDeleteLabelMutation({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useDeleteLabelMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteLabelMutation, DeleteLabelMutationVariables>(
-    DeleteLabelDocument,
-    options
-  );
-}
-export type DeleteLabelMutationHookResult = ReturnType<
-  typeof useDeleteLabelMutation
->;
-export type DeleteLabelMutationResult =
-  Apollo.MutationResult<DeleteLabelMutation>;
-export type DeleteLabelMutationOptions = Apollo.BaseMutationOptions<
-  DeleteLabelMutation,
-  DeleteLabelMutationVariables
->;
 export const InsertLabelDocument = gql`
   mutation insertLabel($object: labels_insert_input!) {
     insert_labels_one(object: $object) {
@@ -3001,6 +2914,206 @@ export type InsertLabelMutationResult =
 export type InsertLabelMutationOptions = Apollo.BaseMutationOptions<
   InsertLabelMutation,
   InsertLabelMutationVariables
+>;
+export const DeleteLabelDocument = gql`
+  mutation deleteLabel($id: Int!) {
+    delete_labels_by_pk(id: $id) {
+      id
+      name
+    }
+  }
+`;
+export type DeleteLabelMutationFn = Apollo.MutationFunction<
+  DeleteLabelMutation,
+  DeleteLabelMutationVariables
+>;
+export type DeleteLabelComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables
+  >,
+  'mutation'
+>;
+
+export const DeleteLabelComponent = (props: DeleteLabelComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables
+  >
+    mutation={DeleteLabelDocument}
+    {...props}
+  />
+);
+
+export type DeleteLabelProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables
+  >;
+} & TChildProps;
+export function withDeleteLabel<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables,
+    DeleteLabelProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables,
+    DeleteLabelProps<TChildProps, TDataName>
+  >(DeleteLabelDocument, {
+    alias: 'deleteLabel',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useDeleteLabelMutation__
+ *
+ * To run a mutation, you first call `useDeleteLabelMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteLabelMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteLabelMutation, { data, loading, error }] = useDeleteLabelMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteLabelMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteLabelMutation,
+    DeleteLabelMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<DeleteLabelMutation, DeleteLabelMutationVariables>(
+    DeleteLabelDocument,
+    options
+  );
+}
+export type DeleteLabelMutationHookResult = ReturnType<
+  typeof useDeleteLabelMutation
+>;
+export type DeleteLabelMutationResult =
+  Apollo.MutationResult<DeleteLabelMutation>;
+export type DeleteLabelMutationOptions = Apollo.BaseMutationOptions<
+  DeleteLabelMutation,
+  DeleteLabelMutationVariables
+>;
+export const UpdateLabelDocument = gql`
+  mutation updateLabel($id: Int!, $changes: labels_set_input) {
+    update_labels_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+  }
+`;
+export type UpdateLabelMutationFn = Apollo.MutationFunction<
+  UpdateLabelMutation,
+  UpdateLabelMutationVariables
+>;
+export type UpdateLabelComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateLabelMutation,
+    UpdateLabelMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateLabelComponent = (props: UpdateLabelComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    UpdateLabelMutation,
+    UpdateLabelMutationVariables
+  >
+    mutation={UpdateLabelDocument}
+    {...props}
+  />
+);
+
+export type UpdateLabelProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateLabelMutation,
+    UpdateLabelMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateLabel<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateLabelMutation,
+    UpdateLabelMutationVariables,
+    UpdateLabelProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateLabelMutation,
+    UpdateLabelMutationVariables,
+    UpdateLabelProps<TChildProps, TDataName>
+  >(UpdateLabelDocument, {
+    alias: 'updateLabel',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateLabelMutation__
+ *
+ * To run a mutation, you first call `useUpdateLabelMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLabelMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLabelMutation, { data, loading, error }] = useUpdateLabelMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      changes: // value for 'changes'
+ *   },
+ * });
+ */
+export function useUpdateLabelMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateLabelMutation,
+    UpdateLabelMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<UpdateLabelMutation, UpdateLabelMutationVariables>(
+    UpdateLabelDocument,
+    options
+  );
+}
+export type UpdateLabelMutationHookResult = ReturnType<
+  typeof useUpdateLabelMutation
+>;
+export type UpdateLabelMutationResult =
+  Apollo.MutationResult<UpdateLabelMutation>;
+export type UpdateLabelMutationOptions = Apollo.BaseMutationOptions<
+  UpdateLabelMutation,
+  UpdateLabelMutationVariables
 >;
 export const UpdateUserDocument = gql`
   mutation updateUser($userId: uuid!, $changes: users_set_input) {
@@ -3435,7 +3548,7 @@ export type FetchUserSettingsQueryResult = Apollo.QueryResult<
 >;
 export const AllLabelsDocument = gql`
   query allLabels {
-    labels {
+    labels(order_by: { name: asc }) {
       id
       name
       created_at

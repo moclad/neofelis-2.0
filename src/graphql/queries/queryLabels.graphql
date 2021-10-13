@@ -1,5 +1,5 @@
 query allLabels {
-  labels {
+  labels (order_by: {name: asc}) {
     id
     name
     created_at

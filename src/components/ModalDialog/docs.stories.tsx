@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useDarkMode } from '@/hooks/useDarkMode';
 import { Button, Stack } from '@chakra-ui/react';
 import { isEmail } from '@formiz/validations';
 
@@ -17,6 +16,7 @@ export default {
     closeOnOverlayClick: false,
     isOpen: true,
     onClose: { action: 'closed' },
+    initialValues: { label1: 'Label 1 content' },
   },
 };
 
@@ -28,9 +28,8 @@ const Template = ({
   onClose,
   onConfirm,
   formId,
+  initialValues,
 }) => {
-  const { colorModeValue } = useDarkMode();
-
   return (
     <ModalDialog
       title={title}
@@ -40,31 +39,23 @@ const Template = ({
       loading={loading}
       closeOnOverlayClick={closeOnOverlayClick}
       formId={formId}
+      initialValues={initialValues}
     >
-      <Stack
-        direction="column"
-        bg={colorModeValue('white', 'blackAlpha.400')}
-        p="6"
-        borderRadius="lg"
-        spacing="6"
-        shadow="md"
-      >
-        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-          <FieldInput name="label1" label="Label 1" required="Field required" />
-          <FieldInput name="label2" label="Label 2" />
-        </Stack>
-        <FieldInput
-          name="email"
-          label="Email"
-          required="Email is required"
-          validations={[
-            {
-              rule: isEmail(),
-              message: 'Invalid email',
-            },
-          ]}
-        />
+      <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+        <FieldInput name="label1" label="Label 1" required="Field required" />
+        <FieldInput name="label2" label="Label 2" />
       </Stack>
+      <FieldInput
+        name="email"
+        label="Email"
+        required="Email is required"
+        validations={[
+          {
+            rule: isEmail(),
+            message: 'Invalid email',
+          },
+        ]}
+      />
     </ModalDialog>
   );
 };
@@ -76,4 +67,5 @@ Default.args = {
   loading: false,
   closeOnOverlayClick: false,
   isOpen: true,
+  initialValues: { label1: 'Label 1 content' },
 };
