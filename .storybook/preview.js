@@ -43,12 +43,12 @@ export const parameters = {
     dark: {
       ...themes.dark,
       brandImage: logoReversed,
-      brandTitle: 'Start UI',
+      brandTitle: 'Neofelis',
     },
     light: {
       ...themes.light,
       brandImage: logo,
-      brandTitle: 'Start UI',
+      brandTitle: 'Neofelis',
     },
   },
   layout: 'fullscreen',
