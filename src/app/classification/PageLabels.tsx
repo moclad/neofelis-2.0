@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
@@ -180,7 +180,11 @@ export const PageLabels = () => {
         formId="label-form-id"
         initialValues={dataContext}
       >
-        <FieldInput name="name" label="Name" required="Field required" />
+        <FieldInput
+          name="name"
+          label={t('classification:labels.data.name')}
+          required={t('classification:labels.data.nameRequired') as string}
+        />
       </ModalDialog>
     </>
   );

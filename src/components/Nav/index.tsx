@@ -1,25 +1,24 @@
 import React, { FC, useEffect, useMemo, useState } from 'react';
-
-import {
-  Text,
-  Flex,
-  Stack,
-  StackProps,
-  FlexProps,
-  useBreakpointValue,
-  Menu,
-  Button,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuGroup,
-  ChakraComponent,
-  Portal,
-} from '@chakra-ui/react';
 import { FiChevronDown } from 'react-icons/fi';
 
 import { Icon } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import {
+  Button,
+  ChakraComponent,
+  Flex,
+  FlexProps,
+  Menu,
+  MenuButton,
+  MenuGroup,
+  MenuItem,
+  MenuList,
+  Portal,
+  Stack,
+  StackProps,
+  Text,
+  useBreakpointValue
+} from '@chakra-ui/react';
 
 const NavContext = React.createContext(null);
 const useNavContext = () => React.useContext(NavContext);

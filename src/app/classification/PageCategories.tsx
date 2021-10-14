@@ -1,114 +1,193 @@
-import { useSession } from 'next-auth/client';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
-import { useAccount } from '@/app/account/account.service';
 import { ClassificationNav } from '@/app/classification/ClassificationNav';
 import { Page, PageContent } from '@/app/layout';
-import { FieldInput, useToastError, useToastSuccess } from '@/components';
-import { useUpdateUserMutation } from '@/generated/graphql';
-import { useDarkMode } from '@/hooks/useDarkMode';
-import { Button, Flex, Heading, Stack } from '@chakra-ui/react';
-import { Formiz, useForm } from '@formiz/core';
-import { isEmail } from '@formiz/validations';
+import {
+  ActionsButton,
+  ConfirmMenuItem,
+  FieldInput,
+  useToastError,
+  useToastSuccess
+} from '@/components';
+import ModalDialog from '@/components/ModalDialog/ModalDialog';
+import {
+  useAllCategoriesQuery,
+  useDeleteCategoryMutation,
+  useInsertCategoryMutation,
+  useUpdateCategoryMutation
+} from '@/generated/graphql';
+import { useEditMode } from '@/hooks/useEditMode';
+import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Tag,
+  TagLabel,
+  useDisclosure,
+  Wrap,
+  WrapItem
+} from '@chakra-ui/react';
 
 export const PageCategories = () => {
-  const [session] = useSession();
   const { t } = useTranslation();
-  const { colorModeValue } = useDarkMode();
-  const { loading, data } = useAccount();
-  const generalInformationForm = useForm();
-
+  const { loading, data } = useAllCategoriesQuery();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } =
+    useEditMode<number>();
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
-  const [updateUser, { loading: updateLoading }] = useUpdateUserMutation({
-    onError: (error) => {
-      toastError({
-        title: t('common:feedbacks.updateError.title'),
-        description: error.message,
-      });
-    },
-    onCompleted: () => {
-      toastSuccess({
-        title: t('common:feedbacks.updateSuccess.title'),
-      });
-    },
-  });
+  const [deleteCategory, { loading: deleteFetching }] =
+    useDeleteCategoryMutation();
 
-  const submitGeneralInformation = async (values) => {
+  const [updateCategory, { loading: updateLoading }] =
+    useUpdateCategoryMutation({
+      onError: (error) => {
+        toastError({
+          title: t('common:feedbacks.updateError.title'),
+          description: error.message,
+        });
+      },
+      onCompleted: () => {
+        toastSuccess({
+          title: t('common:feedbacks.updateSuccess.title'),
+        });
+      },
+    });
+
+  const [insertCategory, { loading: insertLoading }] =
+    useInsertCategoryMutation({
+      onError: (error) => {
+        toastError({
+          title: t('common:feedbacks.createdError.title'),
+          description: error.message,
+        });
+      },
+      onCompleted: () => {
+        toastSuccess({
+          title: t('common:feedbacks.createdSuccess.title'),
+        });
+      },
+    });
+
+  const onConfirmCreate = async (values) => {
     const newData = {
-      ...data.users_by_pk,
       ...values,
     };
 
-    await updateUser({
+    await insertCategory({
       variables: {
-        userId: session.id,
+        object: newData,
+      },
+      refetchQueries: 'active',
+    });
+  };
+
+  const onConfirmEdit = async (values) => {
+    const newData = {
+      ...values,
+    };
+
+    await updateCategory({
+      variables: {
+        id: dataKey,
         changes: newData,
       },
+      refetchQueries: 'active',
+    });
+  };
+
+  const onDelete = async (id: number) => {
+    deleteCategory({
+      variables: {
+        id,
+      },
+      refetchQueries: 'active',
+    }).then(() => {
+      toastSuccess({
+        title: t('common:feedbacks.deletedSuccess.title'),
+      });
     });
   };
 
   return (
-    <Page nav={<ClassificationNav />}>
-      <PageContent loading={loading}>
-        <Heading size="md" mb="4">
-          {t('account:profile.title')}
-        </Heading>
-        {data && (
-          <Formiz
-            id="account-form"
-            onValidSubmit={submitGeneralInformation}
-            connect={generalInformationForm}
-            initialValues={data.users_by_pk}
-          >
-            <form noValidate onSubmit={generalInformationForm.submit}>
-              <Stack
-                direction="column"
-                bg={colorModeValue('white', 'blackAlpha.400')}
-                p="6"
-                borderRadius="lg"
-                spacing="6"
-                shadow="md"
-              >
-                <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-                  <FieldInput
-                    name="name"
-                    label={t('account:data.firstname.label')}
-                    required={t('account:data.firstname.required') as string}
-                  />
-                  <FieldInput
-                    name="lastName"
-                    label={t('account:data.lastname.label')}
-                  />
-                </Stack>
-                <FieldInput
-                  name="email"
-                  label={t('account:data.email.label')}
-                  required={t('account:data.email.required') as string}
-                  validations={[
-                    {
-                      rule: isEmail(),
-                      message: t('account:data.email.invalid'),
-                    },
-                  ]}
-                />
-                <Flex>
-                  <Button
-                    type="submit"
-                    variant="@primary"
-                    ms="auto"
-                    isLoading={updateLoading}
-                  >
-                    {t('account:profile.actions.save')}
-                  </Button>
-                </Flex>
-              </Stack>
-            </form>
-          </Formiz>
-        )}
-      </PageContent>
-    </Page>
+    <>
+      <Page nav={<ClassificationNav />}>
+        <PageContent
+          loading={loading || deleteFetching || insertLoading}
+          title={t('classification:categories.title')}
+          actions={[
+            <Button
+              key="createCategory"
+              leftIcon={<FiPlus />}
+              variant="@primary"
+              onClick={() => onOpen()}
+            >
+              {t('classification:categories.actions.create')}
+            </Button>,
+          ]}
+        >
+          <Wrap spacing="8px">
+            {data &&
+              data.categories.map((data) => (
+                <WrapItem key={data.id}>
+                  <Tag size={'md'} variant="outline" key={data.id}>
+                    <TagLabel>{data.name}</TagLabel>
+                    <Menu isLazy>
+                      <MenuButton as={ActionsButton} size="sm" ml="8px" />
+                      <MenuList>
+                        <MenuItem
+                          icon={<FiEdit />}
+                          onClick={() => {
+                            onEdit(data.id, data);
+                          }}
+                        >
+                          {t('classification:categories.actions.edit')}
+                        </MenuItem>
+                        <MenuDivider />
+                        <ConfirmMenuItem
+                          icon={<FiTrash2 />}
+                          onClick={() => {
+                            onDelete(data.id);
+                          }}
+                        >
+                          {t('classification:categories.actions.delete')}
+                        </ConfirmMenuItem>
+                      </MenuList>
+                    </Menu>
+                  </Tag>
+                </WrapItem>
+              ))}
+          </Wrap>
+        </PageContent>
+      </Page>
+      <ModalDialog
+        title={
+          isEditing
+            ? t('classification:categories.actions.edit')
+            : t('classification:categories.actions.create')
+        }
+        isOpen={isOpen || isEditing}
+        onCancel={() => {
+          onFinish();
+          onClose();
+        }}
+        onConfirm={isEditing ? onConfirmEdit : onConfirmCreate}
+        loading={loading || insertLoading || updateLoading}
+        formId="category-form-id"
+        initialValues={dataContext}
+      >
+        <FieldInput
+          name="name"
+          label={t('classification:categories.data.name')}
+          required={t('classification:categories.data.nameRequired') as string}
+        />
+      </ModalDialog>
+    </>
   );
 };
