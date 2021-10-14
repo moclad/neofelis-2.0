@@ -1,0 +1,22 @@
+mutation insertCategory($object: categories_insert_input!) {
+  insert_categories_one(object: $object) {
+    id
+    name
+    active
+    created_at
+    updated_at
+  }
+}
+
+mutation deleteCategory($id: bigint!) {
+  delete_categories_by_pk(id: $id) {
+    id
+    name
+  }
+}
+
+mutation updateCategory($id: bigint!, $changes: categories_set_input) {
+  update_categories_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+}

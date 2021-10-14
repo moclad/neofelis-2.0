@@ -1,6 +1,0 @@
-mutation deleteTag($id: Int!) {
-  delete_tags_by_pk(id: $id) {
-      id
-      name
-  }
-}

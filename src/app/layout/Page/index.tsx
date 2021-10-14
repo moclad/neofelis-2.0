@@ -1,10 +1,19 @@
 import React, { useContext, useLayoutEffect, useRef, useState } from 'react';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
-import { Loader, useFocusMode } from '@/app/layout';
+import { useFocusMode } from '@/app/layout';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useRtl } from '@/hooks/useRtl';
-import { Box, Flex, FlexProps, HStack, IconButton, Skeleton, Stack } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  FlexProps,
+  Heading,
+  HStack,
+  IconButton,
+  Skeleton,
+  Stack
+} from '@chakra-ui/react';
 
 const PageContext = React.createContext(null);
 
@@ -83,11 +92,15 @@ interface PageContentProps extends FlexProps {
   onBack?(): void;
   showBack?: boolean;
   loading?: boolean;
+  title?: string;
+  actions?: React.ReactNode[];
 }
 
 export const PageContent = ({
   children,
   loading,
+  title = null,
+  actions = null,
   ...rest
 }: PageContentProps) => {
   const { nav } = useContext(PageContext);
@@ -111,6 +124,14 @@ export const PageContent = ({
               </Flex>
             )}
             <Flex direction="column" flex="1" minW="0">
+              <HStack mb="4">
+                {title && (
+                  <Box flex="1">
+                    <Heading size="md">{title}</Heading>
+                  </Box>
+                )}
+                {actions}
+              </HStack>
               {children}
             </Flex>
           </Stack>

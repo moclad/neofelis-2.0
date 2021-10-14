@@ -1,4 +1,3 @@
-import { useSession } from 'next-auth/client';
 import React, { Suspense } from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { PageAuthError } from '@/app/auth/PageAuthError';
 import { PageLogin } from '@/app/auth/PageLogin';
 import { PageLogout } from '@/app/auth/PageLogout';
 import { PageVerifyRequest } from '@/app/auth/PageVerifyRequest';
+import ClassificationRoutes from '@/app/classification/ClassificationRoutes';
 import { Layout, Loader } from '@/app/layout';
 import { Route, RouteAdmin, RoutePublic, RoutePublicOnly } from '@/app/router';
 import { Error404, ErrorBoundary } from '@/errors';
@@ -18,7 +18,6 @@ const DashboardRoutes = React.lazy(
 );
 
 export const App = () => {
-  const session = useSession();
   return (
     <ErrorBoundary>
       <BrowserRouter basename="/app/">
@@ -49,9 +48,11 @@ export const App = () => {
               />
 
               <RoutePublic path="/account" render={() => <AccountRoutes />} />
-
               <Route path="/dashboard" render={() => <DashboardRoutes />} />
-
+              <Route
+                path="/classification"
+                render={() => <ClassificationRoutes />}
+              />
               <RouteAdmin path="/admin" render={() => <AdminRoutes />} />
 
               <RoutePublic path="*" render={() => <Error404 />} />

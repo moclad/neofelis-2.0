@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "title": "Classification",
+    "labels": "Labels",
+    "categories": "Categories",
+    "groups": "Groups"
+  },
+  "labels": {
+    "title": "Labels",
+    "actions": {
+      "edit": "Edit label",
+      "delete": "Delete",
+      "create": "Create label"
+    },
+    "data": {
+      "name": "Name",
+      "nameRequired": "Field name is required."
+    }
+  },
+  "categories": {
+    "title": "Categories",
+    "actions": {
+      "edit": "Edit category",
+      "delete": "Delete",
+      "create": "Create category"
+    },
+    "data": {
+      "name": "Name",
+      "nameRequired": "Field name is required."
+    }
+  }
+}

@@ -1,0 +1,21 @@
+mutation insertLabel($object: labels_insert_input!) {
+  insert_labels_one(object: $object) {
+    id
+    name
+    created_at
+    updated_at
+  }
+}
+
+mutation deleteLabel($id: Int!) {
+  delete_labels_by_pk(id: $id) {
+    id
+    name
+  }
+}
+
+mutation updateLabel($id: Int!, $changes: labels_set_input) {
+  update_labels_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+}

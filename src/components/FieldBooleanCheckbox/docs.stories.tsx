@@ -20,7 +20,7 @@ export const Default = () => {
           name="FieldBooleanCheckbox2"
           label="Label"
           helper="Helper"
-          optionLabel="Beno"
+          optionLabel="Option Label"
         />
       </Stack>
     </Formiz>

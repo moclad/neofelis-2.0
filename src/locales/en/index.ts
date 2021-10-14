@@ -7,3 +7,4 @@ export { default as dashboard } from './dashboard.json';
 export { default as errors } from './errors.json';
 export { default as layout } from './layout.json';
 export { default as users } from './users.json';
+export { default as classification } from './classification.json';

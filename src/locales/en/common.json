@@ -9,7 +9,9 @@
     "cancel": "Cancel",
     "deactivate": "Deactivate",
     "delete": "Delete",
-    "edit": "Edit"
+    "edit": "Edit",
+    "submitting": "Submitting",
+    "confirm": "Confirm"
   },
   "feedbacks": {
     "updateSuccess": {
@@ -17,6 +19,18 @@
     },
     "updateError": {
       "title": "Update failed."
+    },
+    "createdSuccess": {
+      "title": "Data created with success."
+    },
+    "createdError": {
+      "title": "Data creation failed."
+    },
+    "deletedSuccess": {
+      "title": "Data deleted with success."
+    },
+    "deletedError": {
+      "title": "Data deletion failed."
     }
   }
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useAccount } from '@/app/account/account.service';
-import { AccountNav } from '@/app/account/AccountNav';
+import { ClassificationNav } from '@/app/classification/ClassificationNav';
 import { Page, PageContent } from '@/app/layout';
 import { FieldInput, useToastError, useToastSuccess } from '@/components';
 import { useUpdateUserMutation } from '@/generated/graphql';
@@ -12,7 +12,7 @@ import { Button, Flex, Heading, Stack } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 import { isEmail } from '@formiz/validations';
 
-export const PageProfile = () => {
+export const PageGroups = () => {
   const [session] = useSession();
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
@@ -51,7 +51,7 @@ export const PageProfile = () => {
   };
 
   return (
-    <Page nav={<AccountNav />}>
+    <Page nav={<ClassificationNav />}>
       <PageContent loading={loading}>
         <Heading size="md" mb="4">
           {t('account:profile.title')}

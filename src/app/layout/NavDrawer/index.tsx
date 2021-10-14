@@ -1,16 +1,15 @@
 import React from 'react';
 
+import { MainMenu, useLayoutContext } from '@/app/layout';
+import { Logo } from '@/components';
 import {
   Drawer,
   DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
   DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay
 } from '@chakra-ui/react';
-
-import { MainMenu, useLayoutContext } from '@/app/layout';
-import { Logo } from '@/components';
 
 export const NavDrawer = ({ ...rest }) => {
   const { navIsOpen, navOnClose } = useLayoutContext();
