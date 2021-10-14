@@ -26,7 +26,6 @@ export const NavDrawer = ({ ...rest }) => {
           color="white"
           pt="safe-top"
           pb="safe-bottom"
-          shadow="dark-lg"
         >
           <DrawerCloseButton mt="safe-top" />
           <DrawerHeader>
