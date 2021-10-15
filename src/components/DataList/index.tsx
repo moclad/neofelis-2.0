@@ -1,20 +1,19 @@
-import React, { useContext, useState, useEffect, useRef, FC } from 'react';
-
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-  Box,
-  Flex,
-  useBreakpointValue,
-  FlexProps,
-  AccordionProps,
-  ChakraComponent,
-} from '@chakra-ui/react';
+import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 
 import { useDarkMode } from '@/hooks/useDarkMode';
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  AccordionProps,
+  Box,
+  ChakraComponent,
+  Flex,
+  FlexProps,
+  useBreakpointValue
+} from '@chakra-ui/react';
 
 export const DataListContext = React.createContext(null);
 export const DataListHeaderContext = React.createContext(null);
@@ -179,10 +178,10 @@ export const DataListHeader: FC<DataListHeaderProps> = ({ ...rest }) => {
   return (
     <DataListHeaderContext.Provider value={true}>
       <DataListRow
-        bg={colorModeValue('gray.100', 'blackAlpha.400')}
+        bg={colorModeValue('gray.200', 'blackAlpha.400')}
         fontSize="sm"
         fontWeight="bold"
-        color={colorModeValue('gray.600', 'gray.300')}
+        color={colorModeValue('gray.700', 'gray.300')}
         border="none"
         _hover={{}}
         {...rest}
@@ -237,7 +236,7 @@ export const DataList: FC<DataListProps> = ({
         flexDirection="column"
         bg={colorModeValue('white', 'blackAlpha.400')}
         position="relative"
-        boxShadow="md"
+        boxShadow="lg"
         borderRadius="md"
         overflowX="auto"
         overflowY="hidden"

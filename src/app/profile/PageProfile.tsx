@@ -2,9 +2,9 @@ import { useSession } from 'next-auth/client';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useAccount } from '@/app/account/account.service';
-import { AccountNav } from '@/app/account/AccountNav';
 import { Page, PageContent } from '@/app/layout';
+import { useAccount } from '@/app/profile/profile.service';
+import { ProfileNav } from '@/app/profile/ProfileNav';
 import { FieldInput, useToastError, useToastSuccess } from '@/components';
 import { useUpdateUserMutation } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
@@ -51,14 +51,14 @@ export const PageProfile = () => {
   };
 
   return (
-    <Page nav={<AccountNav />}>
+    <Page nav={<ProfileNav />}>
       <PageContent loading={loading}>
         <Heading size="md" mb="4">
-          {t('account:profile.title')}
+          {t('profile:profile.title')}
         </Heading>
         {data && (
           <Formiz
-            id="account-form"
+            id="profile-form"
             onValidSubmit={submitGeneralInformation}
             connect={generalInformationForm}
             initialValues={data.users_by_pk}
@@ -75,22 +75,22 @@ export const PageProfile = () => {
                 <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
                   <FieldInput
                     name="name"
-                    label={t('account:data.firstname.label')}
-                    required={t('account:data.firstname.required') as string}
+                    label={t('profile:data.firstname.label')}
+                    required={t('profile:data.firstname.required') as string}
                   />
                   <FieldInput
                     name="lastName"
-                    label={t('account:data.lastname.label')}
+                    label={t('profile:data.lastname.label')}
                   />
                 </Stack>
                 <FieldInput
                   name="email"
-                  label={t('account:data.email.label')}
-                  required={t('account:data.email.required') as string}
+                  label={t('profile:data.email.label')}
+                  required={t('profile:data.email.required') as string}
                   validations={[
                     {
                       rule: isEmail(),
-                      message: t('account:data.email.invalid'),
+                      message: t('profile:data.email.invalid'),
                     },
                   ]}
                 />
@@ -101,7 +101,7 @@ export const PageProfile = () => {
                     ms="auto"
                     isLoading={updateLoading}
                   >
-                    {t('account:profile.actions.save')}
+                    {t('profile:profile.actions.save')}
                   </Button>
                 </Flex>
               </Stack>

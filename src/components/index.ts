@@ -4,6 +4,7 @@ export * from './DateAgo';
 export * from './DayPicker';
 export * from './FieldBooleanCheckbox';
 export * from './FieldCheckboxes';
+export * from './FieldCurrency';
 export * from './FieldHidden';
 export * from './FieldRadios';
 export * from './FieldInput';

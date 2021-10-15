@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/client';
 import { useTranslation } from 'react-i18next';
 import { useMutation, UseMutationOptions, useQuery, UseQueryOptions } from 'react-query';
 
-import { Account } from '@/app/account/account.types';
+import { Account } from '@/app/profile/account.types';
 import { DEFAULT_LANGUAGE_KEY } from '@/constants/i18n';
 
 import { useFetchUserQuery } from '../../generated/graphql';
@@ -94,7 +94,7 @@ export const useResetPasswordInit = (
 ) => {
   return useMutation(
     (email): Promise<void> =>
-      Axios.post('/account/reset-password/init', email, {
+      Axios.post('/profile/reset-password/init', email, {
         headers: { 'Content-Type': 'text/plain' },
       }),
     {
@@ -112,7 +112,7 @@ export const useResetPasswordFinish = (
 ) => {
   return useMutation(
     (payload): Promise<void> =>
-      Axios.post('/account/reset-password/finish', payload),
+      Axios.post('/profile/reset-password/finish', payload),
     {
       ...config,
     }
@@ -127,7 +127,7 @@ export const useUpdatePassword = (
   > = {}
 ) => {
   return useMutation(
-    (payload): Promise<void> => Axios.post('/account/change-password', payload),
+    (payload): Promise<void> => Axios.post('/profile/change-password', payload),
     {
       ...config,
     }

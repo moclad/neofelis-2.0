@@ -3,9 +3,9 @@ import { Response } from 'miragejs';
 export const AccountRoutes = (server) => {
   server.get('/account', getCurrent);
   server.post('/account', update);
-  server.post('/account/change-password', changePassword);
-  server.post('/account/reset-password/init', initResetPassword);
-  server.post('/account/reset-password/finish', finishResetPassword);
+  server.post('/profile/change-password', changePassword);
+  server.post('/profile/reset-password/init', initResetPassword);
+  server.post('/profile/reset-password/finish', finishResetPassword);
   server.post('/register', register);
 };
 

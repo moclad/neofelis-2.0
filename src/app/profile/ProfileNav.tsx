@@ -5,28 +5,28 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { Nav, NavGroup, NavItem } from '@/components';
 
-export const AccountNav = () => {
+export const ProfileNav = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const isActive = (to) => pathname.startsWith(to);
   return (
     <Nav>
-      <NavGroup title={t('account:nav.myAccount')}>
+      <NavGroup title={t('profile:nav.myAccount')}>
         <NavItem
           as={Link}
-          to="/account/profile"
-          isActive={isActive('/account/profile')}
+          to="/profile/me"
+          isActive={isActive('/profile/me')}
           icon={FiUser}
         >
-          {t('account:nav.profile')}
+          {t('profile:nav.profile')}
         </NavItem>
         <NavItem
           as={Link}
-          to="/account/settings"
-          isActive={isActive('/account/settings')}
+          to="/profile/settings"
+          isActive={isActive('/profile/settings')}
           icon={FiSettings}
         >
-          {t('account:nav.settings')}
+          {t('profile:nav.settings')}
         </NavItem>
       </NavGroup>
     </Nav>

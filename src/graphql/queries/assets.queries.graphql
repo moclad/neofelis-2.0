@@ -1,0 +1,21 @@
+query allAssets($limit: Int, $offset: Int) {
+  assets(
+    limit: $limit
+    offset: $offset
+    order_by: { name: asc, created_at: asc }
+  ) {
+    id
+    name
+    balance
+    balance_date
+    active
+    account_no
+    created_at
+    updated_at
+  }
+  assets_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

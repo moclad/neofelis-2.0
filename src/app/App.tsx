@@ -12,7 +12,10 @@ import { Route, RouteAdmin, RoutePublic, RoutePublicOnly } from '@/app/router';
 import { Error404, ErrorBoundary } from '@/errors';
 
 const AdminRoutes = React.lazy(() => import('@/app/admin/AdminRoutes'));
-const AccountRoutes = React.lazy(() => import('@/app/account/AccountRoutes'));
+const AccountRoutes = React.lazy(() => import('@/app/profile/ProfileRoutes'));
+const AccountsRoutes = React.lazy(
+  () => import('@/app/accounts/AccountsRoutes')
+);
 const DashboardRoutes = React.lazy(
   () => import('@/app/dashboard/DashboardRoutes')
 );
@@ -47,12 +50,14 @@ export const App = () => {
                 render={() => <PageAuthError />}
               />
 
-              <RoutePublic path="/account" render={() => <AccountRoutes />} />
+              <RoutePublic path="/profile" render={() => <AccountRoutes />} />
+
               <Route path="/dashboard" render={() => <DashboardRoutes />} />
               <Route
                 path="/classification"
                 render={() => <ClassificationRoutes />}
               />
+              <Route path="/accounts" render={() => <AccountsRoutes />} />
               <RouteAdmin path="/admin" render={() => <AdminRoutes />} />
 
               <RoutePublic path="*" render={() => <Error404 />} />

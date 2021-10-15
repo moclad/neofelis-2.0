@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { Link as RouterLink } from 'react-router-dom';
 
+import { useResetPasswordInit } from '@/app/profile/profile.service';
+import { FieldInput, SlideIn, useToastError } from '@/components';
+import { useDarkMode } from '@/hooks/useDarkMode';
+import { useRtl } from '@/hooks/useRtl';
 import {
   Alert,
   AlertDescription,
@@ -9,18 +16,10 @@ import {
   Center,
   Flex,
   Heading,
-  ScaleFade,
+  ScaleFade
 } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 import { isEmail } from '@formiz/validations';
-import { Trans, useTranslation } from 'react-i18next';
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import { Link as RouterLink } from 'react-router-dom';
-
-import { useResetPasswordInit } from '@/app/account/account.service';
-import { FieldInput, SlideIn, useToastError } from '@/components';
-import { useDarkMode } from '@/hooks/useDarkMode';
-import { useRtl } from '@/hooks/useRtl';
 
 export const PageResetPasswordRequest = () => {
   const { rtlValue } = useRtl();
@@ -43,7 +42,7 @@ export const PageResetPasswordRequest = () => {
     onError: (error: any) => {
       const { title } = error?.response?.data || {};
       toastError({
-        title: t('account:resetPassword.feedbacks.initError.title'),
+        title: t('profile:resetPassword.feedbacks.initError.title'),
         description: title,
       });
     },
@@ -71,12 +70,12 @@ export const PageResetPasswordRequest = () => {
           >
             <Box fontSize="3rem">✉️</Box>
             <AlertTitle mt={4} mb={1} fontSize="lg">
-              {t('account:resetPassword.feedbacks.initSuccess.title')}
+              {t('profile:resetPassword.feedbacks.initSuccess.title')}
             </AlertTitle>
             <AlertDescription>
               <Trans
                 t={t}
-                i18nKey="account:resetPassword.feedbacks.initSuccess.description"
+                i18nKey="profile:resetPassword.feedbacks.initSuccess.description"
                 values={{ email: accountEmail }}
               />
             </AlertDescription>
@@ -88,7 +87,7 @@ export const PageResetPasswordRequest = () => {
               variant="link"
               color={colorModeValue('brand.500', 'brand.300')}
             >
-              {t('account:resetPassword.actions.goToLogin')}
+              {t('profile:resetPassword.actions.goToLogin')}
             </Button>
           </Center>
         </ScaleFade>
@@ -105,7 +104,7 @@ export const PageResetPasswordRequest = () => {
           borderRadius="md"
           boxShadow="md"
         >
-          <Heading size="lg">{t('account:resetPassword.title')}</Heading>
+          <Heading size="lg">{t('profile:resetPassword.title')}</Heading>
           <Formiz
             id="reset-password-init-form"
             onValidSubmit={submitResetPasswordInit}
@@ -114,14 +113,14 @@ export const PageResetPasswordRequest = () => {
             <form noValidate onSubmit={resetPasswordInitForm.submit}>
               <FieldInput
                 name="email"
-                label={t('account:data.email.label')}
+                label={t('profile:data.email.label')}
                 my="6"
-                helper={t('account:data.email.resetHelper')}
-                required={t('account:data.email.required') as string}
+                helper={t('profile:data.email.resetHelper')}
+                required={t('profile:data.email.required') as string}
                 validations={[
                   {
                     rule: isEmail(),
-                    message: t('account:data.email.invalid'),
+                    message: t('profile:data.email.invalid'),
                   },
                 ]}
               />
@@ -132,7 +131,7 @@ export const PageResetPasswordRequest = () => {
                   to="/login"
                   variant="link"
                 >
-                  {t('account:resetPassword.actions.cancel')}
+                  {t('profile:resetPassword.actions.cancel')}
                 </Button>
                 <Button
                   type="submit"
@@ -140,7 +139,7 @@ export const PageResetPasswordRequest = () => {
                   ms="auto"
                   isLoading={resetPasswordLoading}
                 >
-                  {t('account:resetPassword.actions.send')}
+                  {t('profile:resetPassword.actions.send')}
                 </Button>
               </Flex>
             </form>

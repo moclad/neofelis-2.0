@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "title": "Accounts",
+    "assets": "Assets",
+    "revenue": "Revenue",
+    "liabilities": "Liabilities",
+    "expense": "Expense"
+  },
+  "assets": {
+    "title": "Assets",
+    "actions": {
+      "edit": "Edit account",
+      "delete": "Delete",
+      "create": "Create account"
+    },
+    "header": {
+      "name": "Name",
+      "accountNo": "Account No",
+      "status": "Status",
+      "currentBalance": "Balance"
+    },
+    "data": {
+      "active": "ACTIVE",
+      "inactive": "INACTIVE",
+      "name": "Name",
+      "accountNo": "Account No",
+      "balance": "Starting balance",
+      "balanceData": "Balance date",
+      "nameRequired": "Field name is required."
+    }
+  },
+  "expense": {
+    "title": "Expense",
+    "actions": {
+      "edit": "Edit account",
+      "delete": "Delete",
+      "create": "Create account"
+    },
+    "data": {
+      "name": "Name",
+      "nameRequired": "Field name is required."
+    }
+  }
+}

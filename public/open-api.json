@@ -268,7 +268,7 @@
         }
       }
     },
-    "/account/change-password": {
+    "/profile/change-password": {
       "post": {
         "summary": "Change account's password",
         "tags": [
@@ -305,7 +305,7 @@
         }
       }
     },
-    "/account/reset-password/init": {
+    "/profile/reset-password/init": {
       "post": {
         "summary": "Request reset password",
         "security": [],
@@ -339,7 +339,7 @@
         }
       }
     },
-    "/account/reset-password/finish": {
+    "/profile/reset-password/finish": {
       "post": {
         "summary": "Conclude reset password",
         "security": [],

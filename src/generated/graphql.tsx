@@ -33,6 +33,8 @@ export type Scalars = {
   Int: number;
   Float: number;
   bigint: any;
+  date: any;
+  numeric: number;
   timestamptz: string;
   uuid: any;
 };
@@ -307,6 +309,252 @@ export enum Accounts_Update_Column {
   UserId = 'user_id',
 }
 
+/** columns and relationships of "assets" */
+export type Assets = {
+  __typename?: 'assets';
+  account_no?: Maybe<Scalars['String']>;
+  active: Scalars['Boolean'];
+  balance?: Maybe<Scalars['numeric']>;
+  balance_date?: Maybe<Scalars['date']>;
+  created_at: Scalars['timestamptz'];
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "assets" */
+export type Assets_Aggregate = {
+  __typename?: 'assets_aggregate';
+  aggregate?: Maybe<Assets_Aggregate_Fields>;
+  nodes: Array<Assets>;
+};
+
+/** aggregate fields of "assets" */
+export type Assets_Aggregate_Fields = {
+  __typename?: 'assets_aggregate_fields';
+  avg?: Maybe<Assets_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Assets_Max_Fields>;
+  min?: Maybe<Assets_Min_Fields>;
+  stddev?: Maybe<Assets_Stddev_Fields>;
+  stddev_pop?: Maybe<Assets_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Assets_Stddev_Samp_Fields>;
+  sum?: Maybe<Assets_Sum_Fields>;
+  var_pop?: Maybe<Assets_Var_Pop_Fields>;
+  var_samp?: Maybe<Assets_Var_Samp_Fields>;
+  variance?: Maybe<Assets_Variance_Fields>;
+};
+
+/** aggregate fields of "assets" */
+export type Assets_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Assets_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Assets_Avg_Fields = {
+  __typename?: 'assets_avg_fields';
+  balance?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "assets". All fields are combined with a logical 'AND'. */
+export type Assets_Bool_Exp = {
+  _and?: Maybe<Array<Assets_Bool_Exp>>;
+  _not?: Maybe<Assets_Bool_Exp>;
+  _or?: Maybe<Array<Assets_Bool_Exp>>;
+  account_no?: Maybe<String_Comparison_Exp>;
+  active?: Maybe<Boolean_Comparison_Exp>;
+  balance?: Maybe<Numeric_Comparison_Exp>;
+  balance_date?: Maybe<Date_Comparison_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  name?: Maybe<String_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "assets" */
+export enum Assets_Constraint {
+  /** unique or primary key constraint */
+  AssetsPkey = 'assets_pkey',
+}
+
+/** input type for incrementing numeric columns in table "assets" */
+export type Assets_Inc_Input = {
+  balance?: Maybe<Scalars['numeric']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "assets" */
+export type Assets_Insert_Input = {
+  account_no?: Maybe<Scalars['String']>;
+  active?: Maybe<Scalars['Boolean']>;
+  balance?: Maybe<Scalars['numeric']>;
+  balance_date?: Maybe<Scalars['date']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Assets_Max_Fields = {
+  __typename?: 'assets_max_fields';
+  account_no?: Maybe<Scalars['String']>;
+  balance?: Maybe<Scalars['numeric']>;
+  balance_date?: Maybe<Scalars['date']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Assets_Min_Fields = {
+  __typename?: 'assets_min_fields';
+  account_no?: Maybe<Scalars['String']>;
+  balance?: Maybe<Scalars['numeric']>;
+  balance_date?: Maybe<Scalars['date']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "assets" */
+export type Assets_Mutation_Response = {
+  __typename?: 'assets_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Assets>;
+};
+
+/** on conflict condition type for table "assets" */
+export type Assets_On_Conflict = {
+  constraint: Assets_Constraint;
+  update_columns?: Array<Assets_Update_Column>;
+  where?: Maybe<Assets_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "assets". */
+export type Assets_Order_By = {
+  account_no?: Maybe<Order_By>;
+  active?: Maybe<Order_By>;
+  balance?: Maybe<Order_By>;
+  balance_date?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: assets */
+export type Assets_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "assets" */
+export enum Assets_Select_Column {
+  /** column name */
+  AccountNo = 'account_no',
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Balance = 'balance',
+  /** column name */
+  BalanceDate = 'balance_date',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+/** input type for updating data in table "assets" */
+export type Assets_Set_Input = {
+  account_no?: Maybe<Scalars['String']>;
+  active?: Maybe<Scalars['Boolean']>;
+  balance?: Maybe<Scalars['numeric']>;
+  balance_date?: Maybe<Scalars['date']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Assets_Stddev_Fields = {
+  __typename?: 'assets_stddev_fields';
+  balance?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Assets_Stddev_Pop_Fields = {
+  __typename?: 'assets_stddev_pop_fields';
+  balance?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Assets_Stddev_Samp_Fields = {
+  __typename?: 'assets_stddev_samp_fields';
+  balance?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Assets_Sum_Fields = {
+  __typename?: 'assets_sum_fields';
+  balance?: Maybe<Scalars['numeric']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "assets" */
+export enum Assets_Update_Column {
+  /** column name */
+  AccountNo = 'account_no',
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Balance = 'balance',
+  /** column name */
+  BalanceDate = 'balance_date',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+/** aggregate var_pop on columns */
+export type Assets_Var_Pop_Fields = {
+  __typename?: 'assets_var_pop_fields';
+  balance?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Assets_Var_Samp_Fields = {
+  __typename?: 'assets_var_samp_fields';
+  balance?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Assets_Variance_Fields = {
+  __typename?: 'assets_variance_fields';
+  balance?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
 /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
 export type Bigint_Comparison_Exp = {
   _eq?: Maybe<Scalars['bigint']>;
@@ -522,6 +770,19 @@ export type Categories_Var_Samp_Fields = {
 export type Categories_Variance_Fields = {
   __typename?: 'categories_variance_fields';
   id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
+export type Date_Comparison_Exp = {
+  _eq?: Maybe<Scalars['date']>;
+  _gt?: Maybe<Scalars['date']>;
+  _gte?: Maybe<Scalars['date']>;
+  _in?: Maybe<Array<Scalars['date']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['date']>;
+  _lte?: Maybe<Scalars['date']>;
+  _neq?: Maybe<Scalars['date']>;
+  _nin?: Maybe<Array<Scalars['date']>>;
 };
 
 /** columns and relationships of "feeds" */
@@ -921,6 +1182,10 @@ export type Mutation_Root = {
   delete_accounts?: Maybe<Accounts_Mutation_Response>;
   /** delete single row from the table: "accounts" */
   delete_accounts_by_pk?: Maybe<Accounts>;
+  /** delete data from the table: "assets" */
+  delete_assets?: Maybe<Assets_Mutation_Response>;
+  /** delete single row from the table: "assets" */
+  delete_assets_by_pk?: Maybe<Assets>;
   /** delete data from the table: "categories" */
   delete_categories?: Maybe<Categories_Mutation_Response>;
   /** delete single row from the table: "categories" */
@@ -957,6 +1222,10 @@ export type Mutation_Root = {
   insert_accounts?: Maybe<Accounts_Mutation_Response>;
   /** insert a single row into the table: "accounts" */
   insert_accounts_one?: Maybe<Accounts>;
+  /** insert data into the table: "assets" */
+  insert_assets?: Maybe<Assets_Mutation_Response>;
+  /** insert a single row into the table: "assets" */
+  insert_assets_one?: Maybe<Assets>;
   /** insert data into the table: "categories" */
   insert_categories?: Maybe<Categories_Mutation_Response>;
   /** insert a single row into the table: "categories" */
@@ -993,6 +1262,10 @@ export type Mutation_Root = {
   update_accounts?: Maybe<Accounts_Mutation_Response>;
   /** update single row of the table: "accounts" */
   update_accounts_by_pk?: Maybe<Accounts>;
+  /** update data of the table: "assets" */
+  update_assets?: Maybe<Assets_Mutation_Response>;
+  /** update single row of the table: "assets" */
+  update_assets_by_pk?: Maybe<Assets>;
   /** update data of the table: "categories" */
   update_categories?: Maybe<Categories_Mutation_Response>;
   /** update single row of the table: "categories" */
@@ -1035,6 +1308,16 @@ export type Mutation_RootDelete_AccountsArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Accounts_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+/** mutation root */
+export type Mutation_RootDelete_AssetsArgs = {
+  where: Assets_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Assets_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 /** mutation root */
@@ -1127,6 +1410,18 @@ export type Mutation_RootInsert_AccountsArgs = {
 export type Mutation_RootInsert_Accounts_OneArgs = {
   object: Accounts_Insert_Input;
   on_conflict?: Maybe<Accounts_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_AssetsArgs = {
+  objects: Array<Assets_Insert_Input>;
+  on_conflict?: Maybe<Assets_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Assets_OneArgs = {
+  object: Assets_Insert_Input;
+  on_conflict?: Maybe<Assets_On_Conflict>;
 };
 
 /** mutation root */
@@ -1235,6 +1530,20 @@ export type Mutation_RootUpdate_AccountsArgs = {
 export type Mutation_RootUpdate_Accounts_By_PkArgs = {
   _set?: Maybe<Accounts_Set_Input>;
   pk_columns: Accounts_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_AssetsArgs = {
+  _inc?: Maybe<Assets_Inc_Input>;
+  _set?: Maybe<Assets_Set_Input>;
+  where: Assets_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Assets_By_PkArgs = {
+  _inc?: Maybe<Assets_Inc_Input>;
+  _set?: Maybe<Assets_Set_Input>;
+  pk_columns: Assets_Pk_Columns_Input;
 };
 
 /** mutation root */
@@ -1647,6 +1956,19 @@ export type Notifications_Variance_Order_By = {
   id?: Maybe<Order_By>;
 };
 
+/** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
+export type Numeric_Comparison_Exp = {
+  _eq?: Maybe<Scalars['numeric']>;
+  _gt?: Maybe<Scalars['numeric']>;
+  _gte?: Maybe<Scalars['numeric']>;
+  _in?: Maybe<Array<Scalars['numeric']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['numeric']>;
+  _lte?: Maybe<Scalars['numeric']>;
+  _neq?: Maybe<Scalars['numeric']>;
+  _nin?: Maybe<Array<Scalars['numeric']>>;
+};
+
 /** column ordering options */
 export enum Order_By {
   /** in ascending order, nulls last */
@@ -1671,6 +1993,12 @@ export type Query_Root = {
   accounts_aggregate: Accounts_Aggregate;
   /** fetch data from the table: "accounts" using primary key columns */
   accounts_by_pk?: Maybe<Accounts>;
+  /** fetch data from the table: "assets" */
+  assets: Array<Assets>;
+  /** fetch aggregated fields from the table: "assets" */
+  assets_aggregate: Assets_Aggregate;
+  /** fetch data from the table: "assets" using primary key columns */
+  assets_by_pk?: Maybe<Assets>;
   /** fetch data from the table: "categories" */
   categories: Array<Categories>;
   /** fetch aggregated fields from the table: "categories" */
@@ -1739,6 +2067,26 @@ export type Query_RootAccounts_AggregateArgs = {
 
 export type Query_RootAccounts_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+export type Query_RootAssetsArgs = {
+  distinct_on?: Maybe<Array<Assets_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Assets_Order_By>>;
+  where?: Maybe<Assets_Bool_Exp>;
+};
+
+export type Query_RootAssets_AggregateArgs = {
+  distinct_on?: Maybe<Array<Assets_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Assets_Order_By>>;
+  where?: Maybe<Assets_Bool_Exp>;
+};
+
+export type Query_RootAssets_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 export type Query_RootCategoriesArgs = {
@@ -2076,6 +2424,12 @@ export type Subscription_Root = {
   accounts_aggregate: Accounts_Aggregate;
   /** fetch data from the table: "accounts" using primary key columns */
   accounts_by_pk?: Maybe<Accounts>;
+  /** fetch data from the table: "assets" */
+  assets: Array<Assets>;
+  /** fetch aggregated fields from the table: "assets" */
+  assets_aggregate: Assets_Aggregate;
+  /** fetch data from the table: "assets" using primary key columns */
+  assets_by_pk?: Maybe<Assets>;
   /** fetch data from the table: "categories" */
   categories: Array<Categories>;
   /** fetch aggregated fields from the table: "categories" */
@@ -2144,6 +2498,26 @@ export type Subscription_RootAccounts_AggregateArgs = {
 
 export type Subscription_RootAccounts_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+export type Subscription_RootAssetsArgs = {
+  distinct_on?: Maybe<Array<Assets_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Assets_Order_By>>;
+  where?: Maybe<Assets_Bool_Exp>;
+};
+
+export type Subscription_RootAssets_AggregateArgs = {
+  distinct_on?: Maybe<Array<Assets_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Assets_Order_By>>;
+  where?: Maybe<Assets_Bool_Exp>;
+};
+
+export type Subscription_RootAssets_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 export type Subscription_RootCategoriesArgs = {
@@ -2861,6 +3235,49 @@ export enum Verification_Requests_Update_Column {
   UpdatedAt = 'updated_at',
 }
 
+export type InsertAssetMutationVariables = Exact<{
+  object: Assets_Insert_Input;
+}>;
+
+export type InsertAssetMutation = {
+  __typename?: 'mutation_root';
+  insert_assets_one?:
+    | {
+        __typename?: 'assets';
+        id: number;
+        name: string;
+        created_at: string;
+        updated_at: string;
+      }
+    | null
+    | undefined;
+};
+
+export type DeleteAssetMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+export type DeleteAssetMutation = {
+  __typename?: 'mutation_root';
+  delete_assets_by_pk?:
+    | { __typename?: 'assets'; id: number; name: string }
+    | null
+    | undefined;
+};
+
+export type UpdateAssetMutationVariables = Exact<{
+  id: Scalars['Int'];
+  changes?: Maybe<Assets_Set_Input>;
+}>;
+
+export type UpdateAssetMutation = {
+  __typename?: 'mutation_root';
+  update_assets_by_pk?:
+    | { __typename?: 'assets'; id: number }
+    | null
+    | undefined;
+};
+
 export type InsertCategoryMutationVariables = Exact<{
   object: Categories_Insert_Input;
 }>;
@@ -2985,6 +3402,33 @@ export type UpdateUserSettingsMutation = {
     | undefined;
 };
 
+export type AllAssetsQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+export type AllAssetsQuery = {
+  __typename?: 'query_root';
+  assets: Array<{
+    __typename?: 'assets';
+    id: number;
+    name: string;
+    balance?: number | null | undefined;
+    balance_date?: any | null | undefined;
+    active: boolean;
+    account_no?: string | null | undefined;
+    created_at: string;
+    updated_at: string;
+  }>;
+  assets_aggregate: {
+    __typename?: 'assets_aggregate';
+    aggregate?:
+      | { __typename?: 'assets_aggregate_fields'; count: number }
+      | null
+      | undefined;
+  };
+};
+
 export type AllCategoriesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type AllCategoriesQuery = {
@@ -3079,6 +3523,308 @@ export type FetchLabelsSubscription = {
   }>;
 };
 
+export const InsertAssetDocument = gql`
+  mutation insertAsset($object: assets_insert_input!) {
+    insert_assets_one(object: $object) {
+      id
+      name
+      created_at
+      updated_at
+    }
+  }
+`;
+export type InsertAssetMutationFn = Apollo.MutationFunction<
+  InsertAssetMutation,
+  InsertAssetMutationVariables
+>;
+export type InsertAssetComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    InsertAssetMutation,
+    InsertAssetMutationVariables
+  >,
+  'mutation'
+>;
+
+export const InsertAssetComponent = (props: InsertAssetComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    InsertAssetMutation,
+    InsertAssetMutationVariables
+  >
+    mutation={InsertAssetDocument}
+    {...props}
+  />
+);
+
+export type InsertAssetProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    InsertAssetMutation,
+    InsertAssetMutationVariables
+  >;
+} & TChildProps;
+export function withInsertAsset<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    InsertAssetMutation,
+    InsertAssetMutationVariables,
+    InsertAssetProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    InsertAssetMutation,
+    InsertAssetMutationVariables,
+    InsertAssetProps<TChildProps, TDataName>
+  >(InsertAssetDocument, {
+    alias: 'insertAsset',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useInsertAssetMutation__
+ *
+ * To run a mutation, you first call `useInsertAssetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertAssetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [insertAssetMutation, { data, loading, error }] = useInsertAssetMutation({
+ *   variables: {
+ *      object: // value for 'object'
+ *   },
+ * });
+ */
+export function useInsertAssetMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InsertAssetMutation,
+    InsertAssetMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<InsertAssetMutation, InsertAssetMutationVariables>(
+    InsertAssetDocument,
+    options
+  );
+}
+export type InsertAssetMutationHookResult = ReturnType<
+  typeof useInsertAssetMutation
+>;
+export type InsertAssetMutationResult =
+  Apollo.MutationResult<InsertAssetMutation>;
+export type InsertAssetMutationOptions = Apollo.BaseMutationOptions<
+  InsertAssetMutation,
+  InsertAssetMutationVariables
+>;
+export const DeleteAssetDocument = gql`
+  mutation deleteAsset($id: Int!) {
+    delete_assets_by_pk(id: $id) {
+      id
+      name
+    }
+  }
+`;
+export type DeleteAssetMutationFn = Apollo.MutationFunction<
+  DeleteAssetMutation,
+  DeleteAssetMutationVariables
+>;
+export type DeleteAssetComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    DeleteAssetMutation,
+    DeleteAssetMutationVariables
+  >,
+  'mutation'
+>;
+
+export const DeleteAssetComponent = (props: DeleteAssetComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    DeleteAssetMutation,
+    DeleteAssetMutationVariables
+  >
+    mutation={DeleteAssetDocument}
+    {...props}
+  />
+);
+
+export type DeleteAssetProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    DeleteAssetMutation,
+    DeleteAssetMutationVariables
+  >;
+} & TChildProps;
+export function withDeleteAsset<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DeleteAssetMutation,
+    DeleteAssetMutationVariables,
+    DeleteAssetProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    DeleteAssetMutation,
+    DeleteAssetMutationVariables,
+    DeleteAssetProps<TChildProps, TDataName>
+  >(DeleteAssetDocument, {
+    alias: 'deleteAsset',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useDeleteAssetMutation__
+ *
+ * To run a mutation, you first call `useDeleteAssetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteAssetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteAssetMutation, { data, loading, error }] = useDeleteAssetMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteAssetMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteAssetMutation,
+    DeleteAssetMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<DeleteAssetMutation, DeleteAssetMutationVariables>(
+    DeleteAssetDocument,
+    options
+  );
+}
+export type DeleteAssetMutationHookResult = ReturnType<
+  typeof useDeleteAssetMutation
+>;
+export type DeleteAssetMutationResult =
+  Apollo.MutationResult<DeleteAssetMutation>;
+export type DeleteAssetMutationOptions = Apollo.BaseMutationOptions<
+  DeleteAssetMutation,
+  DeleteAssetMutationVariables
+>;
+export const UpdateAssetDocument = gql`
+  mutation updateAsset($id: Int!, $changes: assets_set_input) {
+    update_assets_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+  }
+`;
+export type UpdateAssetMutationFn = Apollo.MutationFunction<
+  UpdateAssetMutation,
+  UpdateAssetMutationVariables
+>;
+export type UpdateAssetComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateAssetMutation,
+    UpdateAssetMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateAssetComponent = (props: UpdateAssetComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    UpdateAssetMutation,
+    UpdateAssetMutationVariables
+  >
+    mutation={UpdateAssetDocument}
+    {...props}
+  />
+);
+
+export type UpdateAssetProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateAssetMutation,
+    UpdateAssetMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateAsset<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateAssetMutation,
+    UpdateAssetMutationVariables,
+    UpdateAssetProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateAssetMutation,
+    UpdateAssetMutationVariables,
+    UpdateAssetProps<TChildProps, TDataName>
+  >(UpdateAssetDocument, {
+    alias: 'updateAsset',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateAssetMutation__
+ *
+ * To run a mutation, you first call `useUpdateAssetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateAssetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateAssetMutation, { data, loading, error }] = useUpdateAssetMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      changes: // value for 'changes'
+ *   },
+ * });
+ */
+export function useUpdateAssetMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateAssetMutation,
+    UpdateAssetMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<UpdateAssetMutation, UpdateAssetMutationVariables>(
+    UpdateAssetDocument,
+    options
+  );
+}
+export type UpdateAssetMutationHookResult = ReturnType<
+  typeof useUpdateAssetMutation
+>;
+export type UpdateAssetMutationResult =
+  Apollo.MutationResult<UpdateAssetMutation>;
+export type UpdateAssetMutationOptions = Apollo.BaseMutationOptions<
+  UpdateAssetMutation,
+  UpdateAssetMutationVariables
+>;
 export const InsertCategoryDocument = gql`
   mutation insertCategory($object: categories_insert_input!) {
     insert_categories_one(object: $object) {
@@ -3902,6 +4648,122 @@ export type UpdateUserSettingsMutationOptions = Apollo.BaseMutationOptions<
   UpdateUserSettingsMutation,
   UpdateUserSettingsMutationVariables
 >;
+export const AllAssetsDocument = gql`
+  query allAssets($limit: Int, $offset: Int) {
+    assets(
+      limit: $limit
+      offset: $offset
+      order_by: { name: asc, created_at: asc }
+    ) {
+      id
+      name
+      balance
+      balance_date
+      active
+      account_no
+      created_at
+      updated_at
+    }
+    assets_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+export type AllAssetsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllAssetsQuery,
+    AllAssetsQueryVariables
+  >,
+  'query'
+>;
+
+export const AllAssetsComponent = (props: AllAssetsComponentProps) => (
+  <ApolloReactComponents.Query<AllAssetsQuery, AllAssetsQueryVariables>
+    query={AllAssetsDocument}
+    {...props}
+  />
+);
+
+export type AllAssetsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    AllAssetsQuery,
+    AllAssetsQueryVariables
+  >;
+} & TChildProps;
+export function withAllAssets<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    AllAssetsQuery,
+    AllAssetsQueryVariables,
+    AllAssetsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    AllAssetsQuery,
+    AllAssetsQueryVariables,
+    AllAssetsProps<TChildProps, TDataName>
+  >(AllAssetsDocument, {
+    alias: 'allAssets',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useAllAssetsQuery__
+ *
+ * To run a query within a React component, call `useAllAssetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllAssetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllAssetsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useAllAssetsQuery(
+  baseOptions?: Apollo.QueryHookOptions<AllAssetsQuery, AllAssetsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AllAssetsQuery, AllAssetsQueryVariables>(
+    AllAssetsDocument,
+    options
+  );
+}
+export function useAllAssetsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    AllAssetsQuery,
+    AllAssetsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AllAssetsQuery, AllAssetsQueryVariables>(
+    AllAssetsDocument,
+    options
+  );
+}
+export type AllAssetsQueryHookResult = ReturnType<typeof useAllAssetsQuery>;
+export type AllAssetsLazyQueryHookResult = ReturnType<
+  typeof useAllAssetsLazyQuery
+>;
+export type AllAssetsQueryResult = Apollo.QueryResult<
+  AllAssetsQuery,
+  AllAssetsQueryVariables
+>;
 export const AllCategoriesDocument = gql`
   query allCategories {
     categories(order_by: { name: asc }) {
@@ -4647,6 +5509,30 @@ export type ResolversTypes = {
   accounts_select_column: Accounts_Select_Column;
   accounts_set_input: Accounts_Set_Input;
   accounts_update_column: Accounts_Update_Column;
+  assets: ResolverTypeWrapper<Assets>;
+  assets_aggregate: ResolverTypeWrapper<Assets_Aggregate>;
+  assets_aggregate_fields: ResolverTypeWrapper<Assets_Aggregate_Fields>;
+  assets_avg_fields: ResolverTypeWrapper<Assets_Avg_Fields>;
+  assets_bool_exp: Assets_Bool_Exp;
+  assets_constraint: Assets_Constraint;
+  assets_inc_input: Assets_Inc_Input;
+  assets_insert_input: Assets_Insert_Input;
+  assets_max_fields: ResolverTypeWrapper<Assets_Max_Fields>;
+  assets_min_fields: ResolverTypeWrapper<Assets_Min_Fields>;
+  assets_mutation_response: ResolverTypeWrapper<Assets_Mutation_Response>;
+  assets_on_conflict: Assets_On_Conflict;
+  assets_order_by: Assets_Order_By;
+  assets_pk_columns_input: Assets_Pk_Columns_Input;
+  assets_select_column: Assets_Select_Column;
+  assets_set_input: Assets_Set_Input;
+  assets_stddev_fields: ResolverTypeWrapper<Assets_Stddev_Fields>;
+  assets_stddev_pop_fields: ResolverTypeWrapper<Assets_Stddev_Pop_Fields>;
+  assets_stddev_samp_fields: ResolverTypeWrapper<Assets_Stddev_Samp_Fields>;
+  assets_sum_fields: ResolverTypeWrapper<Assets_Sum_Fields>;
+  assets_update_column: Assets_Update_Column;
+  assets_var_pop_fields: ResolverTypeWrapper<Assets_Var_Pop_Fields>;
+  assets_var_samp_fields: ResolverTypeWrapper<Assets_Var_Samp_Fields>;
+  assets_variance_fields: ResolverTypeWrapper<Assets_Variance_Fields>;
   bigint: ResolverTypeWrapper<Scalars['bigint']>;
   bigint_comparison_exp: Bigint_Comparison_Exp;
   categories: ResolverTypeWrapper<Categories>;
@@ -4673,6 +5559,8 @@ export type ResolversTypes = {
   categories_var_pop_fields: ResolverTypeWrapper<Categories_Var_Pop_Fields>;
   categories_var_samp_fields: ResolverTypeWrapper<Categories_Var_Samp_Fields>;
   categories_variance_fields: ResolverTypeWrapper<Categories_Variance_Fields>;
+  date: ResolverTypeWrapper<Scalars['date']>;
+  date_comparison_exp: Date_Comparison_Exp;
   feeds: ResolverTypeWrapper<Feeds>;
   feeds_aggregate: ResolverTypeWrapper<Feeds_Aggregate>;
   feeds_aggregate_fields: ResolverTypeWrapper<Feeds_Aggregate_Fields>;
@@ -4753,6 +5641,8 @@ export type ResolversTypes = {
   notifications_var_samp_order_by: Notifications_Var_Samp_Order_By;
   notifications_variance_fields: ResolverTypeWrapper<Notifications_Variance_Fields>;
   notifications_variance_order_by: Notifications_Variance_Order_By;
+  numeric: ResolverTypeWrapper<Scalars['numeric']>;
+  numeric_comparison_exp: Numeric_Comparison_Exp;
   order_by: Order_By;
   query_root: ResolverTypeWrapper<{}>;
   sessions: ResolverTypeWrapper<Sessions>;
@@ -4845,6 +5735,27 @@ export type ResolversParentTypes = {
   accounts_order_by: Accounts_Order_By;
   accounts_pk_columns_input: Accounts_Pk_Columns_Input;
   accounts_set_input: Accounts_Set_Input;
+  assets: Assets;
+  assets_aggregate: Assets_Aggregate;
+  assets_aggregate_fields: Assets_Aggregate_Fields;
+  assets_avg_fields: Assets_Avg_Fields;
+  assets_bool_exp: Assets_Bool_Exp;
+  assets_inc_input: Assets_Inc_Input;
+  assets_insert_input: Assets_Insert_Input;
+  assets_max_fields: Assets_Max_Fields;
+  assets_min_fields: Assets_Min_Fields;
+  assets_mutation_response: Assets_Mutation_Response;
+  assets_on_conflict: Assets_On_Conflict;
+  assets_order_by: Assets_Order_By;
+  assets_pk_columns_input: Assets_Pk_Columns_Input;
+  assets_set_input: Assets_Set_Input;
+  assets_stddev_fields: Assets_Stddev_Fields;
+  assets_stddev_pop_fields: Assets_Stddev_Pop_Fields;
+  assets_stddev_samp_fields: Assets_Stddev_Samp_Fields;
+  assets_sum_fields: Assets_Sum_Fields;
+  assets_var_pop_fields: Assets_Var_Pop_Fields;
+  assets_var_samp_fields: Assets_Var_Samp_Fields;
+  assets_variance_fields: Assets_Variance_Fields;
   bigint: Scalars['bigint'];
   bigint_comparison_exp: Bigint_Comparison_Exp;
   categories: Categories;
@@ -4868,6 +5779,8 @@ export type ResolversParentTypes = {
   categories_var_pop_fields: Categories_Var_Pop_Fields;
   categories_var_samp_fields: Categories_Var_Samp_Fields;
   categories_variance_fields: Categories_Variance_Fields;
+  date: Scalars['date'];
+  date_comparison_exp: Date_Comparison_Exp;
   feeds: Feeds;
   feeds_aggregate: Feeds_Aggregate;
   feeds_aggregate_fields: Feeds_Aggregate_Fields;
@@ -4939,6 +5852,8 @@ export type ResolversParentTypes = {
   notifications_var_samp_order_by: Notifications_Var_Samp_Order_By;
   notifications_variance_fields: Notifications_Variance_Fields;
   notifications_variance_order_by: Notifications_Variance_Order_By;
+  numeric: Scalars['numeric'];
+  numeric_comparison_exp: Numeric_Comparison_Exp;
   query_root: {};
   sessions: Sessions;
   sessions_aggregate: Sessions_Aggregate;
@@ -5200,6 +6115,250 @@ export type Accounts_Mutation_ResponseResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type AssetsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets'] = ResolversParentTypes['assets']
+> = {
+  account_no?: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >;
+  active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  balance?: Resolver<Maybe<ResolversTypes['numeric']>, ParentType, ContextType>;
+  balance_date?: Resolver<
+    Maybe<ResolversTypes['date']>,
+    ParentType,
+    ContextType
+  >;
+  created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_AggregateResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_aggregate'] = ResolversParentTypes['assets_aggregate']
+> = {
+  aggregate?: Resolver<
+    Maybe<ResolversTypes['assets_aggregate_fields']>,
+    ParentType,
+    ContextType
+  >;
+  nodes?: Resolver<Array<ResolversTypes['assets']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Aggregate_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_aggregate_fields'] = ResolversParentTypes['assets_aggregate_fields']
+> = {
+  avg?: Resolver<
+    Maybe<ResolversTypes['assets_avg_fields']>,
+    ParentType,
+    ContextType
+  >;
+  count?: Resolver<
+    ResolversTypes['Int'],
+    ParentType,
+    ContextType,
+    RequireFields<Assets_Aggregate_FieldsCountArgs, never>
+  >;
+  max?: Resolver<
+    Maybe<ResolversTypes['assets_max_fields']>,
+    ParentType,
+    ContextType
+  >;
+  min?: Resolver<
+    Maybe<ResolversTypes['assets_min_fields']>,
+    ParentType,
+    ContextType
+  >;
+  stddev?: Resolver<
+    Maybe<ResolversTypes['assets_stddev_fields']>,
+    ParentType,
+    ContextType
+  >;
+  stddev_pop?: Resolver<
+    Maybe<ResolversTypes['assets_stddev_pop_fields']>,
+    ParentType,
+    ContextType
+  >;
+  stddev_samp?: Resolver<
+    Maybe<ResolversTypes['assets_stddev_samp_fields']>,
+    ParentType,
+    ContextType
+  >;
+  sum?: Resolver<
+    Maybe<ResolversTypes['assets_sum_fields']>,
+    ParentType,
+    ContextType
+  >;
+  var_pop?: Resolver<
+    Maybe<ResolversTypes['assets_var_pop_fields']>,
+    ParentType,
+    ContextType
+  >;
+  var_samp?: Resolver<
+    Maybe<ResolversTypes['assets_var_samp_fields']>,
+    ParentType,
+    ContextType
+  >;
+  variance?: Resolver<
+    Maybe<ResolversTypes['assets_variance_fields']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Avg_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_avg_fields'] = ResolversParentTypes['assets_avg_fields']
+> = {
+  balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Max_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_max_fields'] = ResolversParentTypes['assets_max_fields']
+> = {
+  account_no?: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >;
+  balance?: Resolver<Maybe<ResolversTypes['numeric']>, ParentType, ContextType>;
+  balance_date?: Resolver<
+    Maybe<ResolversTypes['date']>,
+    ParentType,
+    ContextType
+  >;
+  created_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  updated_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Min_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_min_fields'] = ResolversParentTypes['assets_min_fields']
+> = {
+  account_no?: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >;
+  balance?: Resolver<Maybe<ResolversTypes['numeric']>, ParentType, ContextType>;
+  balance_date?: Resolver<
+    Maybe<ResolversTypes['date']>,
+    ParentType,
+    ContextType
+  >;
+  created_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  updated_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Mutation_ResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_mutation_response'] = ResolversParentTypes['assets_mutation_response']
+> = {
+  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  returning?: Resolver<
+    Array<ResolversTypes['assets']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Stddev_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_stddev_fields'] = ResolversParentTypes['assets_stddev_fields']
+> = {
+  balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Stddev_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_stddev_pop_fields'] = ResolversParentTypes['assets_stddev_pop_fields']
+> = {
+  balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Stddev_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_stddev_samp_fields'] = ResolversParentTypes['assets_stddev_samp_fields']
+> = {
+  balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Sum_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_sum_fields'] = ResolversParentTypes['assets_sum_fields']
+> = {
+  balance?: Resolver<Maybe<ResolversTypes['numeric']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Var_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_var_pop_fields'] = ResolversParentTypes['assets_var_pop_fields']
+> = {
+  balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Var_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_var_samp_fields'] = ResolversParentTypes['assets_var_samp_fields']
+> = {
+  balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Assets_Variance_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['assets_variance_fields'] = ResolversParentTypes['assets_variance_fields']
+> = {
+  balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export interface BigintScalarConfig
   extends GraphQLScalarTypeConfig<ResolversTypes['bigint'], any> {
   name: 'bigint';
@@ -5411,6 +6570,11 @@ export type Categories_Variance_FieldsResolvers<
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
+
+export interface DateScalarConfig
+  extends GraphQLScalarTypeConfig<ResolversTypes['date'], any> {
+  name: 'date';
+}
 
 export type FeedsResolvers<
   ContextType = any,
@@ -5731,6 +6895,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_Accounts_By_PkArgs, 'id'>
   >;
+  delete_assets?: Resolver<
+    Maybe<ResolversTypes['assets_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_AssetsArgs, 'where'>
+  >;
+  delete_assets_by_pk?: Resolver<
+    Maybe<ResolversTypes['assets']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Assets_By_PkArgs, 'id'>
+  >;
   delete_categories?: Resolver<
     Maybe<ResolversTypes['categories_mutation_response']>,
     ParentType,
@@ -5839,6 +7015,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_Accounts_OneArgs, 'object'>
   >;
+  insert_assets?: Resolver<
+    Maybe<ResolversTypes['assets_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_AssetsArgs, 'objects'>
+  >;
+  insert_assets_one?: Resolver<
+    Maybe<ResolversTypes['assets']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Assets_OneArgs, 'object'>
+  >;
   insert_categories?: Resolver<
     Maybe<ResolversTypes['categories_mutation_response']>,
     ParentType,
@@ -5946,6 +7134,18 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Accounts_By_PkArgs, 'pk_columns'>
+  >;
+  update_assets?: Resolver<
+    Maybe<ResolversTypes['assets_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_AssetsArgs, 'where'>
+  >;
+  update_assets_by_pk?: Resolver<
+    Maybe<ResolversTypes['assets']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Assets_By_PkArgs, 'pk_columns'>
   >;
   update_categories?: Resolver<
     Maybe<ResolversTypes['categories_mutation_response']>,
@@ -6273,6 +7473,11 @@ export type Notifications_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export interface NumericScalarConfig
+  extends GraphQLScalarTypeConfig<ResolversTypes['numeric'], any> {
+  name: 'numeric';
+}
+
 export type Query_RootResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['query_root'] = ResolversParentTypes['query_root']
@@ -6294,6 +7499,24 @@ export type Query_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Query_RootAccounts_By_PkArgs, 'id'>
+  >;
+  assets?: Resolver<
+    Array<ResolversTypes['assets']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootAssetsArgs, never>
+  >;
+  assets_aggregate?: Resolver<
+    ResolversTypes['assets_aggregate'],
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootAssets_AggregateArgs, never>
+  >;
+  assets_by_pk?: Resolver<
+    Maybe<ResolversTypes['assets']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootAssets_By_PkArgs, 'id'>
   >;
   categories?: Resolver<
     Array<ResolversTypes['categories']>,
@@ -6596,6 +7819,27 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootAccounts_By_PkArgs, 'id'>
+  >;
+  assets?: SubscriptionResolver<
+    Array<ResolversTypes['assets']>,
+    'assets',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootAssetsArgs, never>
+  >;
+  assets_aggregate?: SubscriptionResolver<
+    ResolversTypes['assets_aggregate'],
+    'assets_aggregate',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootAssets_AggregateArgs, never>
+  >;
+  assets_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['assets']>,
+    'assets_by_pk',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootAssets_By_PkArgs, 'id'>
   >;
   categories?: SubscriptionResolver<
     Array<ResolversTypes['categories']>,
@@ -7137,6 +8381,20 @@ export type Resolvers<ContextType = any> = {
   accounts_max_fields?: Accounts_Max_FieldsResolvers<ContextType>;
   accounts_min_fields?: Accounts_Min_FieldsResolvers<ContextType>;
   accounts_mutation_response?: Accounts_Mutation_ResponseResolvers<ContextType>;
+  assets?: AssetsResolvers<ContextType>;
+  assets_aggregate?: Assets_AggregateResolvers<ContextType>;
+  assets_aggregate_fields?: Assets_Aggregate_FieldsResolvers<ContextType>;
+  assets_avg_fields?: Assets_Avg_FieldsResolvers<ContextType>;
+  assets_max_fields?: Assets_Max_FieldsResolvers<ContextType>;
+  assets_min_fields?: Assets_Min_FieldsResolvers<ContextType>;
+  assets_mutation_response?: Assets_Mutation_ResponseResolvers<ContextType>;
+  assets_stddev_fields?: Assets_Stddev_FieldsResolvers<ContextType>;
+  assets_stddev_pop_fields?: Assets_Stddev_Pop_FieldsResolvers<ContextType>;
+  assets_stddev_samp_fields?: Assets_Stddev_Samp_FieldsResolvers<ContextType>;
+  assets_sum_fields?: Assets_Sum_FieldsResolvers<ContextType>;
+  assets_var_pop_fields?: Assets_Var_Pop_FieldsResolvers<ContextType>;
+  assets_var_samp_fields?: Assets_Var_Samp_FieldsResolvers<ContextType>;
+  assets_variance_fields?: Assets_Variance_FieldsResolvers<ContextType>;
   bigint?: GraphQLScalarType;
   categories?: CategoriesResolvers<ContextType>;
   categories_aggregate?: Categories_AggregateResolvers<ContextType>;
@@ -7152,6 +8410,7 @@ export type Resolvers<ContextType = any> = {
   categories_var_pop_fields?: Categories_Var_Pop_FieldsResolvers<ContextType>;
   categories_var_samp_fields?: Categories_Var_Samp_FieldsResolvers<ContextType>;
   categories_variance_fields?: Categories_Variance_FieldsResolvers<ContextType>;
+  date?: GraphQLScalarType;
   feeds?: FeedsResolvers<ContextType>;
   feeds_aggregate?: Feeds_AggregateResolvers<ContextType>;
   feeds_aggregate_fields?: Feeds_Aggregate_FieldsResolvers<ContextType>;
@@ -7187,6 +8446,7 @@ export type Resolvers<ContextType = any> = {
   notifications_var_pop_fields?: Notifications_Var_Pop_FieldsResolvers<ContextType>;
   notifications_var_samp_fields?: Notifications_Var_Samp_FieldsResolvers<ContextType>;
   notifications_variance_fields?: Notifications_Variance_FieldsResolvers<ContextType>;
+  numeric?: GraphQLScalarType;
   query_root?: Query_RootResolvers<ContextType>;
   sessions?: SessionsResolvers<ContextType>;
   sessions_aggregate?: Sessions_AggregateResolvers<ContextType>;

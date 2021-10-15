@@ -1,5 +1,5 @@
 # /account
-account:
+profile:
   # ---
   get:
     summary: Get account's information

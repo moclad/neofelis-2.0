@@ -2,8 +2,8 @@ import { useSession } from 'next-auth/client';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AccountNav } from '@/app/account/AccountNav';
 import { Page, PageContent } from '@/app/layout';
+import { ProfileNav } from '@/app/profile/ProfileNav';
 import { FieldSelect, useToastError, useToastSuccess } from '@/components';
 import { AVAILABLE_LANGUAGES } from '@/constants/i18n';
 import { useFetchUserSettingsQuery, useUpdateUserSettingsMutation } from '@/generated/graphql';
@@ -60,10 +60,10 @@ export const PageSettings = () => {
   console.log(data);
 
   return (
-    <Page nav={<AccountNav />}>
+    <Page nav={<ProfileNav />}>
       <PageContent loading={loading}>
         <Heading size="md" mb="4">
-          {t('account:settings.title')}
+          {t('profile:settings.title')}
         </Heading>
         {data && (
           <Formiz
@@ -83,7 +83,7 @@ export const PageSettings = () => {
               >
                 <FieldSelect
                   name="langKey"
-                  label={t('account:data.language.label')}
+                  label={t('profile:data.language.label')}
                   options={AVAILABLE_LANGUAGES.map(({ key }) => ({
                     label: t(`languages.${key}`),
                     value: key,
@@ -96,7 +96,7 @@ export const PageSettings = () => {
                     ms="auto"
                     isLoading={updateLoading}
                   >
-                    {t('account:settings.actions.save')}
+                    {t('profile:settings.actions.save')}
                   </Button>
                 </Flex>
               </Stack>

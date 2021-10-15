@@ -1,21 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Badge,
-  Text,
-  HStack,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuDivider,
-  MenuItem,
-  SimpleGrid,
-  Code,
-  Stack,
-  LinkBox,
-  LinkOverlay,
-} from '@chakra-ui/react';
-import { FiEdit, FiCopy, FiUserPlus, FiTrash2 } from 'react-icons/fi';
+import { FiCopy, FiEdit, FiTrash2, FiUserPlus } from 'react-icons/fi';
 
 import {
   ActionsButton,
@@ -25,20 +8,37 @@ import {
   PaginationButtonLastPage,
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
-  PaginationInfo,
+  PaginationInfo
 } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import {
+  Avatar,
+  Badge,
+  Box,
+  Code,
+  HStack,
+  LinkBox,
+  LinkOverlay,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  SimpleGrid,
+  Stack,
+  Text
+} from '@chakra-ui/react';
 
 import {
   DataList,
-  DataListHeader,
-  DataListFooter,
   DataListAccordion,
   DataListAccordionButton,
   DataListAccordionIcon,
   DataListAccordionPanel,
-  DataListRow,
   DataListCell,
+  DataListFooter,
+  DataListHeader,
+  DataListRow
 } from './index';
 
 export default {
@@ -189,22 +189,6 @@ export const Complete = () => {
       department: 'Optimization',
       status: 'Active',
       role: 'Admin',
-    },
-    {
-      name: 'Cody Fisher',
-      email: 'cody.fisher@example.com',
-      job: 'Product Directives Officer',
-      department: 'Intranet',
-      status: 'Active',
-      role: 'Owner',
-    },
-    {
-      name: 'Esther Howard',
-      email: 'esther.howard@example.com',
-      job: 'Forward Response Developer',
-      department: 'Directives',
-      status: 'Inactive',
-      role: 'Member',
     },
   ];
   return (

@@ -120,7 +120,7 @@ export const AccountMenu = ({ ...rest }) => {
         <MenuGroup title={data?.users_by_pk?.email} isTruncated>
           <MenuItem
             as={Link}
-            to="/account"
+            to="/profile"
             icon={<Icon icon={FiUser} fontSize="lg" color="gray.400" />}
           >
             {t('layout:accountMenu.myAccount')}

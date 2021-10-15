@@ -4,15 +4,15 @@
 
 # Account
 /register:
-  $ref: '../account/paths.yaml#/register'
-/account:
-  $ref: '../account/paths.yaml#/account'
-/account/change-password:
-  $ref: '../account/paths.yaml#/change-password'
-/account/reset-password/init:
-  $ref: '../account/paths.yaml#/reset-password-init'
-/account/reset-password/finish:
-  $ref: '../account/paths.yaml#/reset-password-finish'
+  $ref: '../profile/paths.yaml#/register'
+/profile:
+  $ref: '../profile/paths.yaml#/account'
+/profile/change-password:
+  $ref: '../profile/paths.yaml#/change-password'
+/profile/reset-password/init:
+  $ref: '../profile/paths.yaml#/reset-password-init'
+/profile/reset-password/finish:
+  $ref: '../profile/paths.yaml#/reset-password-finish'
 
 # Users
 /users:

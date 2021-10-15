@@ -1,0 +1,21 @@
+mutation insertAsset($object: assets_insert_input!) {
+  insert_assets_one(object: $object) {
+    id
+    name
+    created_at
+    updated_at
+  }
+}
+
+mutation deleteAsset($id: Int!) {
+  delete_assets_by_pk(id: $id) {
+    id
+    name
+  }
+}
+
+mutation updateAsset($id: Int!, $changes: assets_set_input) {
+  update_assets_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+}

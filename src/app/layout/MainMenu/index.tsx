@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
-import { useAccount } from '@/app/account/account.service';
 import { useLayoutContext } from '@/app/layout';
+import { useAccount } from '@/app/profile/profile.service';
 import { useRtl } from '@/hooks/useRtl';
 import { Box, Stack } from '@chakra-ui/react';
 
@@ -67,6 +67,9 @@ export const MainMenu = ({ ...rest }) => {
     <Stack direction="row" spacing="1" {...rest}>
       <MainMenuItem to="/dashboard">
         {t('layout:mainMenu.dashboard')}
+      </MainMenuItem>
+      <MainMenuItem to="/accounts">
+        {t('layout:mainMenu.accounts')}
       </MainMenuItem>
       <MainMenuItem to="/classification">
         {t('layout:mainMenu.classification')}

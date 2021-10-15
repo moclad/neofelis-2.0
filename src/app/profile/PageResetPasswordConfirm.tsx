@@ -1,20 +1,14 @@
 import React from 'react';
-
-import { Box, Button, Flex, Heading, Stack } from '@chakra-ui/react';
-import { Formiz, useForm } from '@formiz/core';
-import { isMaxLength, isMinLength } from '@formiz/validations';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
-import { useResetPasswordFinish } from '@/app/account/account.service';
+import { useResetPasswordFinish } from '@/app/profile/profile.service';
 import { useSearchParams } from '@/app/router';
-import {
-  FieldInput,
-  SlideIn,
-  useToastError,
-  useToastSuccess,
-} from '@/components';
+import { FieldInput, SlideIn, useToastError, useToastSuccess } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { Box, Button, Flex, Heading, Stack } from '@chakra-ui/react';
+import { Formiz, useForm } from '@formiz/core';
+import { isMaxLength, isMinLength } from '@formiz/validations';
 
 export const PageResetPasswordConfirm = () => {
   const { t } = useTranslation();
@@ -27,27 +21,25 @@ export const PageResetPasswordConfirm = () => {
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
-  const {
-    mutate: resetPasswordFinish,
-    isLoading: resetPasswordLoading,
-  } = useResetPasswordFinish({
-    onError: (error: any) => {
-      const { title } = error?.response?.data || {};
-      toastError({
-        title: t('account:resetPassword.feedbacks.confirmError.title'),
-        description: title,
-      });
-    },
-    onSuccess: () => {
-      toastSuccess({
-        title: t('account:resetPassword.feedbacks.confirmSuccess.title'),
-        description: t(
-          'account:resetPassword.feedbacks.confirmSuccess.description'
-        ),
-      });
-      history.push('/login');
-    },
-  });
+  const { mutate: resetPasswordFinish, isLoading: resetPasswordLoading } =
+    useResetPasswordFinish({
+      onError: (error: any) => {
+        const { title } = error?.response?.data || {};
+        toastError({
+          title: t('profile:resetPassword.feedbacks.confirmError.title'),
+          description: title,
+        });
+      },
+      onSuccess: () => {
+        toastSuccess({
+          title: t('profile:resetPassword.feedbacks.confirmSuccess.title'),
+          description: t(
+            'profile:resetPassword.feedbacks.confirmSuccess.description'
+          ),
+        });
+        history.push('/login');
+      },
+    });
 
   const submitResetPasswordFinish = async (values) => {
     await resetPasswordFinish({
@@ -59,11 +51,11 @@ export const PageResetPasswordConfirm = () => {
   const passwordValidations = [
     {
       rule: isMinLength(4),
-      message: t('account:data.password.tooShort', { min: 4 }),
+      message: t('profile:data.password.tooShort', { min: 4 }),
     },
     {
       rule: isMaxLength(50),
-      message: t('account:data.password.tooLong', { max: 50 }),
+      message: t('profile:data.password.tooLong', { max: 50 }),
     },
   ];
 
@@ -77,7 +69,7 @@ export const PageResetPasswordConfirm = () => {
           boxShadow="md"
         >
           <Heading size="lg" mb="4">
-            {t('account:resetPassword.title')}
+            {t('profile:resetPassword.title')}
           </Heading>
           <Formiz
             id="reset-password-finish-form"
@@ -89,23 +81,23 @@ export const PageResetPasswordConfirm = () => {
                 <FieldInput
                   name="password"
                   type="password"
-                  label={t('account:data.newPassword.label')}
-                  required={t('account:data.newPassword.required') as string}
+                  label={t('profile:data.newPassword.label')}
+                  required={t('profile:data.newPassword.required') as string}
                   validations={passwordValidations}
                 />
                 <FieldInput
                   name="confirmPassword"
                   type="password"
-                  label={t('account:data.confirmNewPassword.label')}
+                  label={t('profile:data.confirmNewPassword.label')}
                   required={
-                    t('account:data.confirmNewPassword.required') as string
+                    t('profile:data.confirmNewPassword.required') as string
                   }
                   validations={[
                     ...passwordValidations,
                     {
                       rule: (value) =>
                         value === resetPasswordFinishForm?.values?.password,
-                      message: t('account:data.confirmNewPassword.notEqual'),
+                      message: t('profile:data.confirmNewPassword.notEqual'),
                       deps: [resetPasswordFinishForm?.values?.password],
                     },
                   ]}
@@ -117,7 +109,7 @@ export const PageResetPasswordConfirm = () => {
                     ms="auto"
                     isLoading={resetPasswordLoading}
                   >
-                    {t('account:resetPassword.actions.reset')}
+                    {t('profile:resetPassword.actions.reset')}
                   </Button>
                 </Flex>
               </Stack>
