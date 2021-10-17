@@ -1,23 +1,22 @@
-import { FC } from 'react';
-
-import {
-  Box,
-  Input,
-  InputGroup,
-  InputProps,
-  InputLeftElement,
-  useBreakpointValue,
-  forwardRef,
-  BoxProps,
-  useTheme,
-} from '@chakra-ui/react';
 import dayjs from 'dayjs';
+import { FC } from 'react';
 import { DateUtils } from 'react-day-picker';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import { useTranslation } from 'react-i18next';
 import { FiCalendar } from 'react-icons/fi';
 
 import { Icon } from '@/components';
+import {
+  Box,
+  BoxProps,
+  forwardRef,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputProps,
+  useBreakpointValue,
+  useTheme
+} from '@chakra-ui/react';
 
 const FORMAT = 'DD/MM/YYYY';
 

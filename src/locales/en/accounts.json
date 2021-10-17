@@ -25,7 +25,7 @@
       "name": "Name",
       "accountNo": "Account No",
       "balance": "Starting balance",
-      "balanceData": "Balance date",
+      "balanceDate": "Balance date",
       "nameRequired": "Field name is required."
     }
   },

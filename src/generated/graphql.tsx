@@ -3278,6 +3278,19 @@ export type UpdateAssetMutation = {
     | undefined;
 };
 
+export type UpdateAssetStateMutationVariables = Exact<{
+  id: Scalars['Int'];
+  state?: Maybe<Scalars['Boolean']>;
+}>;
+
+export type UpdateAssetStateMutation = {
+  __typename?: 'mutation_root';
+  update_assets_by_pk?:
+    | { __typename?: 'assets'; active: boolean }
+    | null
+    | undefined;
+};
+
 export type InsertCategoryMutationVariables = Exact<{
   object: Categories_Insert_Input;
 }>;
@@ -3824,6 +3837,108 @@ export type UpdateAssetMutationResult =
 export type UpdateAssetMutationOptions = Apollo.BaseMutationOptions<
   UpdateAssetMutation,
   UpdateAssetMutationVariables
+>;
+export const UpdateAssetStateDocument = gql`
+  mutation updateAssetState($id: Int!, $state: Boolean) {
+    update_assets_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
+      active
+    }
+  }
+`;
+export type UpdateAssetStateMutationFn = Apollo.MutationFunction<
+  UpdateAssetStateMutation,
+  UpdateAssetStateMutationVariables
+>;
+export type UpdateAssetStateComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateAssetStateMutation,
+    UpdateAssetStateMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateAssetStateComponent = (
+  props: UpdateAssetStateComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateAssetStateMutation,
+    UpdateAssetStateMutationVariables
+  >
+    mutation={UpdateAssetStateDocument}
+    {...props}
+  />
+);
+
+export type UpdateAssetStateProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateAssetStateMutation,
+    UpdateAssetStateMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateAssetState<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateAssetStateMutation,
+    UpdateAssetStateMutationVariables,
+    UpdateAssetStateProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateAssetStateMutation,
+    UpdateAssetStateMutationVariables,
+    UpdateAssetStateProps<TChildProps, TDataName>
+  >(UpdateAssetStateDocument, {
+    alias: 'updateAssetState',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateAssetStateMutation__
+ *
+ * To run a mutation, you first call `useUpdateAssetStateMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateAssetStateMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateAssetStateMutation, { data, loading, error }] = useUpdateAssetStateMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      state: // value for 'state'
+ *   },
+ * });
+ */
+export function useUpdateAssetStateMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateAssetStateMutation,
+    UpdateAssetStateMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateAssetStateMutation,
+    UpdateAssetStateMutationVariables
+  >(UpdateAssetStateDocument, options);
+}
+export type UpdateAssetStateMutationHookResult = ReturnType<
+  typeof useUpdateAssetStateMutation
+>;
+export type UpdateAssetStateMutationResult =
+  Apollo.MutationResult<UpdateAssetStateMutation>;
+export type UpdateAssetStateMutationOptions = Apollo.BaseMutationOptions<
+  UpdateAssetStateMutation,
+  UpdateAssetStateMutationVariables
 >;
 export const InsertCategoryDocument = gql`
   mutation insertCategory($object: categories_insert_input!) {
@@ -4650,11 +4765,7 @@ export type UpdateUserSettingsMutationOptions = Apollo.BaseMutationOptions<
 >;
 export const AllAssetsDocument = gql`
   query allAssets($limit: Int, $offset: Int) {
-    assets(
-      limit: $limit
-      offset: $offset
-      order_by: { name: asc, created_at: asc }
-    ) {
+    assets(limit: $limit, offset: $offset, order_by: { name: asc }) {
       id
       name
       balance

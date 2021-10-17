@@ -19,3 +19,9 @@ mutation updateAsset($id: Int!, $changes: assets_set_input) {
     id
   }
 }
+
+mutation updateAssetState($id: Int!, $state: Boolean) {
+  update_assets_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
+    active
+  }
+}

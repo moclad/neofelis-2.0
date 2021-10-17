@@ -1,9 +1,5 @@
 query allAssets($limit: Int, $offset: Int) {
-  assets(
-    limit: $limit
-    offset: $offset
-    order_by: { name: asc, created_at: asc }
-  ) {
+  assets(limit: $limit, offset: $offset, order_by: { name: asc }) {
     id
     name
     balance

@@ -14,6 +14,7 @@ import {
   DataListFooter,
   DataListHeader,
   DataListRow,
+  DayPicker,
   FieldCurrency,
   FieldInput,
   Icon,
@@ -23,15 +24,19 @@ import {
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
   PaginationInfo,
+  TextCurrency,
   useToastError,
   useToastSuccess
 } from '@/components';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import {
+  AllAssetsQuery,
+  Assets,
   useAllAssetsQuery,
   useDeleteAssetMutation,
   useInsertAssetMutation,
-  useUpdateAssetMutation
+  useUpdateAssetMutation,
+  useUpdateAssetStateMutation
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
@@ -72,7 +77,7 @@ export const PageAssets = () => {
     },
   });
 
-  const [deleteAsset, { loading: deleteLabelFetching }] =
+  const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
     useDeleteAssetMutation();
 
   const [updateAsset, { loading: updateLoading }] = useUpdateAssetMutation({
@@ -89,7 +94,22 @@ export const PageAssets = () => {
     },
   });
 
-  const [insertLabel, { loading: insertLoading }] = useInsertAssetMutation({
+  const [updateAssetState, { loading: updateStateLoading }] =
+    useUpdateAssetStateMutation({
+      onError: (error) => {
+        toastError({
+          title: t('common:feedbacks.updateError.title'),
+          description: error.message,
+        });
+      },
+      onCompleted: () => {
+        toastSuccess({
+          title: t('common:feedbacks.updateSuccess.title'),
+        });
+      },
+    });
+
+  const [insertAsset, { loading: insertLoading }] = useInsertAssetMutation({
     onError: (error) => {
       toastError({
         title: t('common:feedbacks.createdError.title'),
@@ -108,9 +128,19 @@ export const PageAssets = () => {
       ...values,
     };
 
-    await insertLabel({
+    insertAsset({
       variables: {
         object: newData,
+      },
+      refetchQueries: 'active',
+    });
+  };
+
+  const deactivate = async (item: any) => {
+    await updateAssetState({
+      variables: {
+        id: item.id,
+        state: !item.active,
       },
       refetchQueries: 'active',
     });
@@ -148,11 +178,11 @@ export const PageAssets = () => {
     <>
       <Page nav={<AccountsNav />}>
         <PageContent
-          loading={loading || deleteLabelFetching || insertLoading}
+          loading={loading || deleteFetching || insertLoading}
           title={t('accounts:assets.title')}
           actions={[
             <Button
-              key="createLabel"
+              key="createAsset"
               leftIcon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
@@ -207,7 +237,9 @@ export const PageAssets = () => {
                       </Box>
                     </HStack>
                   </DataListCell>
-                  <DataListCell colName="balance">0.00</DataListCell>
+                  <DataListCell colName="balance">
+                    <TextCurrency value={0} locale="de" currency="EUR" />
+                  </DataListCell>
                   <DataListCell colName="status">
                     <Badge
                       size="sm"
@@ -232,6 +264,12 @@ export const PageAssets = () => {
                           >
                             {t('common:actions.edit')}
                           </MenuItem>
+                          <MenuItem
+                            onClick={() => deactivate(item)}
+                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                          >
+                            {t('common:actions.deactivate')}
+                          </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
                             icon={<FiTrash2 />}
@@ -239,7 +277,7 @@ export const PageAssets = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('classification:labels.actions.delete')}
+                            {t('common:actions.delete')}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>

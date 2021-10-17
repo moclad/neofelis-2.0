@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Stack, Code } from '@chakra-ui/react';
+import { Code, Stack } from '@chakra-ui/react';
 
-import { TextCurrency } from '.';
+import { TextCurrency } from './';
 
 export default {
   title: 'Components/TextCurrency',
@@ -35,7 +35,7 @@ export const LocaleFR = () => {
   return (
     <Stack>
       <TextCurrency value={value} locale="fr" />
-      <TextCurrency value={value} locale="fr" currency="EUR" />
+      <TextCurrency value={value} locale="de" currency="EUR" />
       <TextCurrency value={value} locale="fr" currency="USD" />
       <TextCurrency value={value} locale="fr" currency="GBP" />
       <Code>{value}</Code>
