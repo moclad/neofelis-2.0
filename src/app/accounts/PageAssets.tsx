@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import DayPicker from 'react-day-picker';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
@@ -78,7 +77,7 @@ export const PageAssets = () => {
   });
 
   const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
-    useDeleteAssetMutation();
+  useDeleteAssetMutation();
 
   const [updateAsset, { loading: updateLoading }] = useUpdateAssetMutation({
     onError: (error) => {

@@ -16,6 +16,7 @@ export default {
     closeOnOverlayClick: false,
     isOpen: true,
     onClose: { action: 'closed' },
+    onConfirm: { action: 'confirm' },
     initialValues: { label1: 'Label 1 content' },
   },
 };

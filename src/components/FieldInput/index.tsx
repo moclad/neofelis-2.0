@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-
-import {
-  Input,
-  InputGroup,
-  InputProps,
-  InputLeftElement,
-  InputRightElement,
-  Spinner,
-  IconButton,
-} from '@chakra-ui/react';
-import { FieldProps, useField } from '@formiz/core';
-import { RiEyeLine, RiEyeCloseLine } from 'react-icons/ri';
+import { RiEyeCloseLine, RiEyeLine } from 'react-icons/ri';
 
 import { FormGroup, FormGroupProps } from '@/components/FormGroup';
+import {
+  IconButton,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputProps,
+  InputRightElement,
+  Spinner
+} from '@chakra-ui/react';
+import { FieldProps, useField } from '@formiz/core';
 
 export interface FieldInputProps
   extends FieldProps,
