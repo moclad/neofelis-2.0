@@ -29,14 +29,20 @@
       "nameRequired": "Field name is required."
     }
   },
-  "expense": {
+  "expenses": {
     "title": "Expense",
     "actions": {
       "edit": "Edit account",
       "delete": "Delete",
       "create": "Create account"
     },
+    "header": {
+      "name": "Name",
+      "status": "Status"
+    },
     "data": {
+      "active": "ACTIVE",
+      "inactive": "INACTIVE",
       "name": "Name",
       "nameRequired": "Field name is required."
     }

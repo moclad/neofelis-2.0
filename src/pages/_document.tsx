@@ -1,21 +1,14 @@
 /* eslint-disable @next/next/no-document-import-in-page */
-import { ColorModeScript } from '@chakra-ui/react';
-import NextDocument, {
-  DocumentContext,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document';
+import NextDocument, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import { resetServerContext } from 'react-beautiful-dnd';
 
 import i18n from '@/config/i18next';
 import { AVAILABLE_LANGUAGES } from '@/constants/i18n';
 import theme from '@/theme';
+import { ColorModeScript } from '@chakra-ui/react';
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {
-    console.log('_document.getInitialProps');
     resetServerContext();
     try {
       const initialProps = await NextDocument.getInitialProps(ctx);
@@ -29,7 +22,6 @@ export default class Document extends NextDocument {
   }
 
   render() {
-    console.log('_document');
     return (
       <Html
         lang={i18n.language}

@@ -6,7 +6,7 @@ export default {
   title: 'Components/Daypicker',
 };
 export const Default = () => {
-  const [selectedDay, setSelectedDay] = useState(new Date());
+  const [selectedDay, setSelectedDay] = useState();
   return (
     <DayPicker
       value={selectedDay}

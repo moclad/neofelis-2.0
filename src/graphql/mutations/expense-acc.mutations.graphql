@@ -1,0 +1,26 @@
+mutation insertExpenseAcc($object: expenses_insert_input!) {
+  insert_expenses_one(object: $object) {
+    id
+    name
+    created_at
+    updated_at
+  }
+}
+
+mutation deleteExpenseAcc($id: bigint!) {
+  delete_account_info_by_pk(id: $id) {
+    id
+  }
+}
+
+mutation updateExpenseAcc($id: bigint!, $changes: expenses_set_input) {
+  update_expenses_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+}
+
+mutation updateExpenseState($id: bigint!, $state: Boolean) {
+  update_expenses_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
+    active
+  }
+}

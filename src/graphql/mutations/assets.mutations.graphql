@@ -7,20 +7,19 @@ mutation insertAsset($object: assets_insert_input!) {
   }
 }
 
-mutation deleteAsset($id: Int!) {
-  delete_assets_by_pk(id: $id) {
+mutation deleteAsset($id: bigint!) {
+  delete_account_info_by_pk(id: $id) {
     id
-    name
   }
 }
 
-mutation updateAsset($id: Int!, $changes: assets_set_input) {
+mutation updateAsset($id: bigint!, $changes: assets_set_input) {
   update_assets_by_pk(pk_columns: { id: $id }, _set: $changes) {
     id
   }
 }
 
-mutation updateAssetState($id: Int!, $state: Boolean) {
+mutation updateAssetState($id: bigint!, $state: Boolean) {
   update_assets_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
     active
   }

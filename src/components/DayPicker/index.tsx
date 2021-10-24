@@ -39,7 +39,7 @@ interface DayPickerProps extends BoxProps {
   placeholder?: string;
   value?: string | Date;
   onChange?: any;
-  inputProps?: any;
+  inputProps?: InputProps;
   dayPickerProps?: any;
 }
 
@@ -55,10 +55,19 @@ export const DayPicker: FC<DayPickerProps> = ({
   const { i18n } = useTranslation();
   const isSmartphoneFormat = useBreakpointValue({ base: true, sm: false });
 
-  const formatDate = (date, format) => dayjs(date).format(format);
+  const formatDate = (date, format) => {
+    console.log(date);
+    console.log(format);
+    return dayjs(date).format(format);
+  };
 
   const parseDate = (str, format) => {
-    const parsed = dayjs(str, format).toDate();
+    console.log('parse');
+    console.log(str);
+    console.log(format);
+
+    const parsed = dayjs(dayjs(str).format(format)).toDate();
+    console.log(parsed);
     return DateUtils.isDate(parsed) ? parsed : null;
   };
 

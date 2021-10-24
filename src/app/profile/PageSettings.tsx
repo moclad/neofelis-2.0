@@ -21,8 +21,6 @@ export const PageSettings = () => {
     },
   });
 
-  console.log(data);
-
   const generalInformationForm = useForm();
 
   const toastSuccess = useToastSuccess();
@@ -56,8 +54,6 @@ export const PageSettings = () => {
       },
     });
   };
-
-  console.log(data);
 
   return (
     <Page nav={<ProfileNav />}>

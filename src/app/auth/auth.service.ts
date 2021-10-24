@@ -4,10 +4,8 @@ import { useMutation, UseMutationOptions, useQuery } from 'react-query';
 export const useLogin = (
   config: UseMutationOptions<any, unknown, { email: string }> = {}
 ) => {
-  console.log('mutate login');
   return useMutation(
     ({ email }) => {
-      console.log(email);
       return Axios.post('/authenticate', { email });
     },
     {

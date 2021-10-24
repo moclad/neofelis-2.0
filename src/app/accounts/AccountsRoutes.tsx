@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect, Switch, useRouteMatch } from 'react-router-dom';
 
 import { PageAssets } from '@/app/accounts/PageAssets';
+import { PageExpenses } from '@/app/accounts/PageExpenses';
 import { Route } from '@/app/router';
 import { Error404 } from '@/errors';
 
@@ -16,7 +17,7 @@ const AccountsRoutes = () => {
       />
 
       <Route exact path={`${url}/assets`} render={() => <PageAssets />} />
-      <Route exact path={`${url}/expense`} render={() => <PageAssets />} />
+      <Route exact path={`${url}/expense`} render={() => <PageExpenses />} />
 
       <Route path="*" render={() => <Error404 />} />
     </Switch>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
@@ -13,9 +13,6 @@ import {
   DataListFooter,
   DataListHeader,
   DataListRow,
-  DayPicker,
-  FieldCurrency,
-  FieldDayPicker,
   FieldInput,
   Icon,
   Pagination,
@@ -30,11 +27,11 @@ import {
 } from '@/components';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import {
-  useAllAssetsQuery,
-  useDeleteAssetMutation,
-  useInsertAssetMutation,
-  useUpdateAssetMutation,
-  useUpdateAssetStateMutation
+  useAllExpenseAccountsQuery,
+  useDeleteExpenseAccMutation,
+  useInsertExpenseAccMutation,
+  useUpdateExpenseAccMutation,
+  useUpdateExpenseStateMutation
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
@@ -52,12 +49,11 @@ import {
   MenuItem,
   MenuList,
   Portal,
-  Stack,
   Text,
   useDisclosure
 } from '@chakra-ui/react';
 
-export const PageAssets = () => {
+export const PageExpenses = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } =
@@ -68,31 +64,18 @@ export const PageAssets = () => {
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
-  const { loading, data } = useAllAssetsQuery({
+  const { loading, data } = useAllExpenseAccountsQuery({
     variables: {
       offset: (page - 1) * pageSize,
       limit: pageSize,
     },
   });
 
-  const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
+  const [deleteExpense, { loading: deleteFetching }] =
+    useDeleteExpenseAccMutation();
 
-  const [updateAsset, { loading: updateLoading }] = useUpdateAssetMutation({
-    onError: (error) => {
-      toastError({
-        title: t('common:feedbacks.updateError.title'),
-        description: error.message,
-      });
-    },
-    onCompleted: () => {
-      toastSuccess({
-        title: t('common:feedbacks.updateSuccess.title'),
-      });
-    },
-  });
-
-  const [updateAssetState, { loading: updateStateLoading }] =
-    useUpdateAssetStateMutation({
+  const [updateExpense, { loading: updateLoading }] =
+    useUpdateExpenseAccMutation({
       onError: (error) => {
         toastError({
           title: t('common:feedbacks.updateError.title'),
@@ -106,27 +89,43 @@ export const PageAssets = () => {
       },
     });
 
-  const [insertAsset, { loading: insertLoading }] = useInsertAssetMutation({
-    onError: (error) => {
-      toastError({
-        title: t('common:feedbacks.createdError.title'),
-        description: error.message,
-      });
-    },
-    onCompleted: () => {
-      toastSuccess({
-        title: t('common:feedbacks.createdSuccess.title'),
-      });
-    },
-  });
+  const [updateExpenseState, { loading: updateStateLoading }] =
+    useUpdateExpenseStateMutation({
+      onError: (error) => {
+        toastError({
+          title: t('common:feedbacks.updateError.title'),
+          description: error.message,
+        });
+      },
+      onCompleted: () => {
+        toastSuccess({
+          title: t('common:feedbacks.updateSuccess.title'),
+        });
+      },
+    });
+
+  const [insertExpense, { loading: insertLoading }] =
+    useInsertExpenseAccMutation({
+      onError: (error) => {
+        toastError({
+          title: t('common:feedbacks.createdError.title'),
+          description: error.message,
+        });
+      },
+      onCompleted: () => {
+        toastSuccess({
+          title: t('common:feedbacks.createdSuccess.title'),
+        });
+      },
+    });
 
   const onConfirmCreate = async (values) => {
     const newData = {
       ...values,
-      account_info: { data: { type: 'A' } },
+      account_info: { data: { type: 'E' } },
     };
 
-    insertAsset({
+    insertExpense({
       variables: {
         object: newData,
       },
@@ -135,7 +134,7 @@ export const PageAssets = () => {
   };
 
   const deactivate = async (item) => {
-    await updateAssetState({
+    await updateExpenseState({
       variables: {
         id: item.id,
         state: !item.active,
@@ -149,7 +148,7 @@ export const PageAssets = () => {
       ...values,
     };
 
-    await updateAsset({
+    await updateExpense({
       variables: {
         id: dataKey,
         changes: newData,
@@ -159,7 +158,7 @@ export const PageAssets = () => {
   };
 
   const onDelete = async (id: number) => {
-    deleteAsset({
+    deleteExpense({
       variables: {
         id,
       },
@@ -176,32 +175,29 @@ export const PageAssets = () => {
       <Page nav={<AccountsNav />}>
         <PageContent
           loading={loading || deleteFetching || insertLoading || updateLoading}
-          title={t('accounts:assets.title')}
+          title={t('accounts:expenses.title')}
           actions={[
             <Button
-              key="createAsset"
+              key="createExpense"
               leftIcon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
-              {t('accounts:assets.actions.create')}
+              {t('accounts:expenses.actions.create')}
             </Button>,
           ]}
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
               <DataListCell colName="name" colWidth="1.5">
-                {t('accounts:assets.header.name')}
-              </DataListCell>
-              <DataListCell colName="balance" colWidth="0.5">
-                {t('accounts:assets.header.currentBalance')}
+                {t('accounts:expenses.header.name')}
               </DataListCell>
               <DataListCell
                 colName="status"
                 colWidth="0.5"
                 isVisible={{ base: false, md: true }}
               >
-                {t('accounts:assets.header.status')}
+                {t('accounts:expenses.header.status')}
               </DataListCell>
               <DataListCell
                 colName="actions"
@@ -210,7 +206,7 @@ export const PageAssets = () => {
               />
             </DataListHeader>
             {data &&
-              data.assets.map((item, index) => (
+              data.expenses.map((item, index) => (
                 <DataListRow as={LinkBox} key={index} isDisabled={!item.active}>
                   <DataListCell colName="name">
                     <HStack maxW="100%">
@@ -223,19 +219,8 @@ export const PageAssets = () => {
                             item.name
                           )}
                         </Text>
-                        <Text
-                          isTruncated
-                          maxW="full"
-                          fontSize="sm"
-                          color={colorModeValue('gray.600', 'gray.300')}
-                        >
-                          {item.account_no}
-                        </Text>
                       </Box>
                     </HStack>
-                  </DataListCell>
-                  <DataListCell colName="balance">
-                    <TextCurrency value={0} locale="de" currency="EUR" />
                   </DataListCell>
                   <DataListCell colName="status">
                     <Badge
@@ -243,8 +228,8 @@ export const PageAssets = () => {
                       colorScheme={item.active ? 'success' : 'gray'}
                     >
                       {item.active
-                        ? t('accounts:assets.data.active')
-                        : t('accounts:assets.data.inactive')}
+                        ? t('accounts:expenses.data.active')
+                        : t('accounts:expenses.data.inactive')}
                     </Badge>
                   </DataListCell>
                   <DataListCell colName="actions">
@@ -288,7 +273,7 @@ export const PageAssets = () => {
                 setPage={setPage}
                 page={page}
                 pageSize={pageSize}
-                totalItems={data?.assets_aggregate?.aggregate?.count}
+                totalItems={data?.expenses_aggregate?.aggregate?.count}
               >
                 <PaginationButtonFirstPage />
                 <PaginationButtonPrevPage />
@@ -303,8 +288,8 @@ export const PageAssets = () => {
       <ModalDialog
         title={
           isEditing
-            ? t('accounts:assets.actions.edit')
-            : t('accounts:assets.actions.create')
+            ? t('accounts:expenses.actions.edit')
+            : t('accounts:expenses.actions.create')
         }
         isOpen={isOpen || isEditing}
         onCancel={() => {
@@ -313,30 +298,14 @@ export const PageAssets = () => {
         }}
         onConfirm={isEditing ? onConfirmEdit : onConfirmCreate}
         loading={loading || insertLoading || updateLoading}
-        formId="asset-form-id"
+        formId="expense-form-id"
         initialValues={dataContext}
       >
         <FieldInput
           name="name"
-          label={t('accounts:assets.data.name')}
-          required={t('accounts:assets.data.nameRequired') as string}
+          label={t('accounts:expenses.data.name')}
+          required={t('accounts:expenses.data.nameRequired') as string}
         />
-        <FieldInput
-          name="account_no"
-          label={t('accounts:assets.data.accountNo')}
-        />
-        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-          <FieldCurrency
-            name="balance"
-            label={t('accounts:assets.data.balance')}
-            placeholder={0}
-            currency="EUR"
-          />
-          <FieldDayPicker
-            name="balance_date"
-            label={t('accounts:assets.data.balanceDate')}
-          />
-        </Stack>
       </ModalDialog>
     </>
   );
