@@ -23,7 +23,7 @@ export const AccountsNav = () => {
         <NavItem
           as={Link}
           to="/accounts/expense"
-          isActive={isActive('/assets/expense')}
+          isActive={isActive('/accounts/expense')}
           icon={RiShoppingCartLine}
         >
           {t('accounts:nav.expense')}
@@ -31,7 +31,7 @@ export const AccountsNav = () => {
         <NavItem
           as={Link}
           to="/accounts/revenue"
-          isActive={isActive('/assets/revenue')}
+          isActive={isActive('/accounts/revenue')}
           icon={RiRefund2Line}
         >
           {t('accounts:nav.revenue')}
@@ -39,7 +39,7 @@ export const AccountsNav = () => {
         <NavItem
           as={Link}
           to="/accounts/liabilities"
-          isActive={isActive('/assets/liabilities')}
+          isActive={isActive('/accounts/liabilities')}
           icon={RiExchangeLine}
         >
           {t('accounts:nav.liabilities')}

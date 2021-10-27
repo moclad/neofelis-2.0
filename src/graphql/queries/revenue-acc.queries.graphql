@@ -1,0 +1,14 @@
+query allRevenueAccounts($limit: Int, $offset: Int) {
+  revenues(limit: $limit, offset: $offset, order_by: { name: asc }) {
+    id
+    name
+    active
+    created_at
+    updated_at
+  }
+  revenues_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

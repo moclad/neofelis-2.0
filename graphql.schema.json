@@ -11637,8 +11637,8 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities",
-        "description": "columns and relationships of \"liabiulities\"",
+        "name": "liabilities",
+        "description": "columns and relationships of \"liabilities\"",
         "fields": [
           {
             "name": "account_info",
@@ -11744,8 +11744,8 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_aggregate",
-        "description": "aggregated selection of \"liabiulities\"",
+        "name": "liabilities_aggregate",
+        "description": "aggregated selection of \"liabilities\"",
         "fields": [
           {
             "name": "aggregate",
@@ -11753,7 +11753,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_aggregate_fields",
+              "name": "liabilities_aggregate_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11774,7 +11774,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "liabiulities",
+                    "name": "liabilities",
                     "ofType": null
                   }
                 }
@@ -11791,8 +11791,8 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_aggregate_fields",
-        "description": "aggregate fields of \"liabiulities\"",
+        "name": "liabilities_aggregate_fields",
+        "description": "aggregate fields of \"liabilities\"",
         "fields": [
           {
             "name": "avg",
@@ -11800,7 +11800,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_avg_fields",
+              "name": "liabilities_avg_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11821,7 +11821,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "ENUM",
-                      "name": "liabiulities_select_column",
+                      "name": "liabilities_select_column",
                       "ofType": null
                     }
                   }
@@ -11861,7 +11861,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_max_fields",
+              "name": "liabilities_max_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11873,7 +11873,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_min_fields",
+              "name": "liabilities_min_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11885,7 +11885,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_stddev_fields",
+              "name": "liabilities_stddev_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11897,7 +11897,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_stddev_pop_fields",
+              "name": "liabilities_stddev_pop_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11909,7 +11909,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_stddev_samp_fields",
+              "name": "liabilities_stddev_samp_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11921,7 +11921,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_sum_fields",
+              "name": "liabilities_sum_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11933,7 +11933,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_var_pop_fields",
+              "name": "liabilities_var_pop_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11945,7 +11945,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_var_samp_fields",
+              "name": "liabilities_var_samp_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11957,7 +11957,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_variance_fields",
+              "name": "liabilities_variance_fields",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11971,7 +11971,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_avg_fields",
+        "name": "liabilities_avg_fields",
         "description": "aggregate avg on columns",
         "fields": [
           {
@@ -11994,8 +11994,8 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "liabiulities_bool_exp",
-        "description": "Boolean expression to filter rows from the table \"liabiulities\". All fields are combined with a logical 'AND'.",
+        "name": "liabilities_bool_exp",
+        "description": "Boolean expression to filter rows from the table \"liabilities\". All fields are combined with a logical 'AND'.",
         "fields": null,
         "inputFields": [
           {
@@ -12009,7 +12009,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_bool_exp",
+                  "name": "liabilities_bool_exp",
                   "ofType": null
                 }
               }
@@ -12023,7 +12023,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "liabiulities_bool_exp",
+              "name": "liabilities_bool_exp",
               "ofType": null
             },
             "defaultValue": null,
@@ -12041,7 +12041,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_bool_exp",
+                  "name": "liabilities_bool_exp",
                   "ofType": null
                 }
               }
@@ -12129,8 +12129,8 @@
       },
       {
         "kind": "ENUM",
-        "name": "liabiulities_constraint",
-        "description": "unique or primary key constraints on table \"liabiulities\"",
+        "name": "liabilities_constraint",
+        "description": "unique or primary key constraints on table \"liabilities\"",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -12146,8 +12146,8 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "liabiulities_inc_input",
-        "description": "input type for incrementing numeric columns in table \"liabiulities\"",
+        "name": "liabilities_inc_input",
+        "description": "input type for incrementing numeric columns in table \"liabilities\"",
         "fields": null,
         "inputFields": [
           {
@@ -12169,8 +12169,8 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "liabiulities_insert_input",
-        "description": "input type for inserting data into table \"liabiulities\"",
+        "name": "liabilities_insert_input",
+        "description": "input type for inserting data into table \"liabilities\"",
         "fields": null,
         "inputFields": [
           {
@@ -12252,7 +12252,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_max_fields",
+        "name": "liabilities_max_fields",
         "description": "aggregate max on columns",
         "fields": [
           {
@@ -12311,7 +12311,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_min_fields",
+        "name": "liabilities_min_fields",
         "description": "aggregate min on columns",
         "fields": [
           {
@@ -12370,8 +12370,8 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_mutation_response",
-        "description": "response of any mutation on the table \"liabiulities\"",
+        "name": "liabilities_mutation_response",
+        "description": "response of any mutation on the table \"liabilities\"",
         "fields": [
           {
             "name": "affected_rows",
@@ -12404,7 +12404,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "liabiulities",
+                    "name": "liabilities",
                     "ofType": null
                   }
                 }
@@ -12421,8 +12421,8 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "liabiulities_on_conflict",
-        "description": "on conflict condition type for table \"liabiulities\"",
+        "name": "liabilities_on_conflict",
+        "description": "on conflict condition type for table \"liabilities\"",
         "fields": null,
         "inputFields": [
           {
@@ -12433,7 +12433,7 @@
               "name": null,
               "ofType": {
                 "kind": "ENUM",
-                "name": "liabiulities_constraint",
+                "name": "liabilities_constraint",
                 "ofType": null
               }
             },
@@ -12455,7 +12455,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "ENUM",
-                    "name": "liabiulities_update_column",
+                    "name": "liabilities_update_column",
                     "ofType": null
                   }
                 }
@@ -12470,7 +12470,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "liabiulities_bool_exp",
+              "name": "liabilities_bool_exp",
               "ofType": null
             },
             "defaultValue": null,
@@ -12484,8 +12484,8 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "liabiulities_order_by",
-        "description": "Ordering options when selecting data from \"liabiulities\".",
+        "name": "liabilities_order_by",
+        "description": "Ordering options when selecting data from \"liabilities\".",
         "fields": null,
         "inputFields": [
           {
@@ -12567,8 +12567,8 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "liabiulities_pk_columns_input",
-        "description": "primary key columns input for table: liabiulities",
+        "name": "liabilities_pk_columns_input",
+        "description": "primary key columns input for table: liabilities",
         "fields": null,
         "inputFields": [
           {
@@ -12594,8 +12594,8 @@
       },
       {
         "kind": "ENUM",
-        "name": "liabiulities_select_column",
-        "description": "select columns of table \"liabiulities\"",
+        "name": "liabilities_select_column",
+        "description": "select columns of table \"liabilities\"",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -12635,8 +12635,8 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "liabiulities_set_input",
-        "description": "input type for updating data in table \"liabiulities\"",
+        "name": "liabilities_set_input",
+        "description": "input type for updating data in table \"liabilities\"",
         "fields": null,
         "inputFields": [
           {
@@ -12706,7 +12706,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_stddev_fields",
+        "name": "liabilities_stddev_fields",
         "description": "aggregate stddev on columns",
         "fields": [
           {
@@ -12729,7 +12729,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_stddev_pop_fields",
+        "name": "liabilities_stddev_pop_fields",
         "description": "aggregate stddev_pop on columns",
         "fields": [
           {
@@ -12752,7 +12752,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_stddev_samp_fields",
+        "name": "liabilities_stddev_samp_fields",
         "description": "aggregate stddev_samp on columns",
         "fields": [
           {
@@ -12775,7 +12775,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_sum_fields",
+        "name": "liabilities_sum_fields",
         "description": "aggregate sum on columns",
         "fields": [
           {
@@ -12798,8 +12798,8 @@
       },
       {
         "kind": "ENUM",
-        "name": "liabiulities_update_column",
-        "description": "update columns of table \"liabiulities\"",
+        "name": "liabilities_update_column",
+        "description": "update columns of table \"liabilities\"",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -12839,7 +12839,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_var_pop_fields",
+        "name": "liabilities_var_pop_fields",
         "description": "aggregate var_pop on columns",
         "fields": [
           {
@@ -12862,7 +12862,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_var_samp_fields",
+        "name": "liabilities_var_samp_fields",
         "description": "aggregate var_samp on columns",
         "fields": [
           {
@@ -12885,7 +12885,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "liabiulities_variance_fields",
+        "name": "liabilities_variance_fields",
         "description": "aggregate variance on columns",
         "fields": [
           {
@@ -13318,8 +13318,8 @@
             "deprecationReason": null
           },
           {
-            "name": "delete_liabiulities",
-            "description": "delete data from the table: \"liabiulities\"",
+            "name": "delete_liabilities",
+            "description": "delete data from the table: \"liabilities\"",
             "args": [
               {
                 "name": "where",
@@ -13329,7 +13329,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "liabiulities_bool_exp",
+                    "name": "liabilities_bool_exp",
                     "ofType": null
                   }
                 },
@@ -13340,15 +13340,15 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_mutation_response",
+              "name": "liabilities_mutation_response",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "delete_liabiulities_by_pk",
-            "description": "delete single row from the table: \"liabiulities\"",
+            "name": "delete_liabilities_by_pk",
+            "description": "delete single row from the table: \"liabilities\"",
             "args": [
               {
                 "name": "id",
@@ -13369,7 +13369,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities",
+              "name": "liabilities",
               "ofType": null
             },
             "isDeprecated": false,
@@ -14354,8 +14354,8 @@
             "deprecationReason": null
           },
           {
-            "name": "insert_liabiulities",
-            "description": "insert data into the table: \"liabiulities\"",
+            "name": "insert_liabilities",
+            "description": "insert data into the table: \"liabilities\"",
             "args": [
               {
                 "name": "objects",
@@ -14371,7 +14371,7 @@
                       "name": null,
                       "ofType": {
                         "kind": "INPUT_OBJECT",
-                        "name": "liabiulities_insert_input",
+                        "name": "liabilities_insert_input",
                         "ofType": null
                       }
                     }
@@ -14386,7 +14386,7 @@
                 "description": "on conflict condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_on_conflict",
+                  "name": "liabilities_on_conflict",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -14396,15 +14396,15 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_mutation_response",
+              "name": "liabilities_mutation_response",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "insert_liabiulities_one",
-            "description": "insert a single row into the table: \"liabiulities\"",
+            "name": "insert_liabilities_one",
+            "description": "insert a single row into the table: \"liabilities\"",
             "args": [
               {
                 "name": "object",
@@ -14414,7 +14414,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "liabiulities_insert_input",
+                    "name": "liabilities_insert_input",
                     "ofType": null
                   }
                 },
@@ -14427,7 +14427,7 @@
                 "description": "on conflict condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_on_conflict",
+                  "name": "liabilities_on_conflict",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -14437,7 +14437,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities",
+              "name": "liabilities",
               "ofType": null
             },
             "isDeprecated": false,
@@ -15678,15 +15678,15 @@
             "deprecationReason": null
           },
           {
-            "name": "update_liabiulities",
-            "description": "update data of the table: \"liabiulities\"",
+            "name": "update_liabilities",
+            "description": "update data of the table: \"liabilities\"",
             "args": [
               {
                 "name": "_inc",
                 "description": "increments the numeric columns with given value of the filtered values",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_inc_input",
+                  "name": "liabilities_inc_input",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -15698,7 +15698,7 @@
                 "description": "sets the columns of the filtered rows to the given values",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_set_input",
+                  "name": "liabilities_set_input",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -15713,7 +15713,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "liabiulities_bool_exp",
+                    "name": "liabilities_bool_exp",
                     "ofType": null
                   }
                 },
@@ -15724,22 +15724,22 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities_mutation_response",
+              "name": "liabilities_mutation_response",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "update_liabiulities_by_pk",
-            "description": "update single row of the table: \"liabiulities\"",
+            "name": "update_liabilities_by_pk",
+            "description": "update single row of the table: \"liabilities\"",
             "args": [
               {
                 "name": "_inc",
                 "description": "increments the numeric columns with given value of the filtered values",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_inc_input",
+                  "name": "liabilities_inc_input",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -15751,7 +15751,7 @@
                 "description": "sets the columns of the filtered rows to the given values",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_set_input",
+                  "name": "liabilities_set_input",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -15766,7 +15766,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "liabiulities_pk_columns_input",
+                    "name": "liabilities_pk_columns_input",
                     "ofType": null
                   }
                 },
@@ -15777,7 +15777,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities",
+              "name": "liabilities",
               "ofType": null
             },
             "isDeprecated": false,
@@ -19898,8 +19898,8 @@
             "deprecationReason": null
           },
           {
-            "name": "liabiulities",
-            "description": "fetch data from the table: \"liabiulities\"",
+            "name": "liabilities",
+            "description": "fetch data from the table: \"liabilities\"",
             "args": [
               {
                 "name": "distinct_on",
@@ -19912,7 +19912,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "ENUM",
-                      "name": "liabiulities_select_column",
+                      "name": "liabilities_select_column",
                       "ofType": null
                     }
                   }
@@ -19956,7 +19956,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "liabiulities_order_by",
+                      "name": "liabilities_order_by",
                       "ofType": null
                     }
                   }
@@ -19970,7 +19970,7 @@
                 "description": "filter the rows returned",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_bool_exp",
+                  "name": "liabilities_bool_exp",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -19989,7 +19989,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "liabiulities",
+                    "name": "liabilities",
                     "ofType": null
                   }
                 }
@@ -19999,8 +19999,8 @@
             "deprecationReason": null
           },
           {
-            "name": "liabiulities_aggregate",
-            "description": "fetch aggregated fields from the table: \"liabiulities\"",
+            "name": "liabilities_aggregate",
+            "description": "fetch aggregated fields from the table: \"liabilities\"",
             "args": [
               {
                 "name": "distinct_on",
@@ -20013,7 +20013,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "ENUM",
-                      "name": "liabiulities_select_column",
+                      "name": "liabilities_select_column",
                       "ofType": null
                     }
                   }
@@ -20057,7 +20057,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "liabiulities_order_by",
+                      "name": "liabilities_order_by",
                       "ofType": null
                     }
                   }
@@ -20071,7 +20071,7 @@
                 "description": "filter the rows returned",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_bool_exp",
+                  "name": "liabilities_bool_exp",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -20084,7 +20084,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "liabiulities_aggregate",
+                "name": "liabilities_aggregate",
                 "ofType": null
               }
             },
@@ -20092,8 +20092,8 @@
             "deprecationReason": null
           },
           {
-            "name": "liabiulities_by_pk",
-            "description": "fetch data from the table: \"liabiulities\" using primary key columns",
+            "name": "liabilities_by_pk",
+            "description": "fetch data from the table: \"liabilities\" using primary key columns",
             "args": [
               {
                 "name": "id",
@@ -20114,7 +20114,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities",
+              "name": "liabilities",
               "ofType": null
             },
             "isDeprecated": false,
@@ -25442,8 +25442,8 @@
             "deprecationReason": null
           },
           {
-            "name": "liabiulities",
-            "description": "fetch data from the table: \"liabiulities\"",
+            "name": "liabilities",
+            "description": "fetch data from the table: \"liabilities\"",
             "args": [
               {
                 "name": "distinct_on",
@@ -25456,7 +25456,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "ENUM",
-                      "name": "liabiulities_select_column",
+                      "name": "liabilities_select_column",
                       "ofType": null
                     }
                   }
@@ -25500,7 +25500,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "liabiulities_order_by",
+                      "name": "liabilities_order_by",
                       "ofType": null
                     }
                   }
@@ -25514,7 +25514,7 @@
                 "description": "filter the rows returned",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_bool_exp",
+                  "name": "liabilities_bool_exp",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -25533,7 +25533,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "liabiulities",
+                    "name": "liabilities",
                     "ofType": null
                   }
                 }
@@ -25543,8 +25543,8 @@
             "deprecationReason": null
           },
           {
-            "name": "liabiulities_aggregate",
-            "description": "fetch aggregated fields from the table: \"liabiulities\"",
+            "name": "liabilities_aggregate",
+            "description": "fetch aggregated fields from the table: \"liabilities\"",
             "args": [
               {
                 "name": "distinct_on",
@@ -25557,7 +25557,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "ENUM",
-                      "name": "liabiulities_select_column",
+                      "name": "liabilities_select_column",
                       "ofType": null
                     }
                   }
@@ -25601,7 +25601,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "liabiulities_order_by",
+                      "name": "liabilities_order_by",
                       "ofType": null
                     }
                   }
@@ -25615,7 +25615,7 @@
                 "description": "filter the rows returned",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "liabiulities_bool_exp",
+                  "name": "liabilities_bool_exp",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -25628,7 +25628,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "liabiulities_aggregate",
+                "name": "liabilities_aggregate",
                 "ofType": null
               }
             },
@@ -25636,8 +25636,8 @@
             "deprecationReason": null
           },
           {
-            "name": "liabiulities_by_pk",
-            "description": "fetch data from the table: \"liabiulities\" using primary key columns",
+            "name": "liabilities_by_pk",
+            "description": "fetch data from the table: \"liabilities\" using primary key columns",
             "args": [
               {
                 "name": "id",
@@ -25658,7 +25658,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "liabiulities",
+              "name": "liabilities",
               "ofType": null
             },
             "isDeprecated": false,

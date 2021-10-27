@@ -7,7 +7,7 @@
     "expense": "Expense"
   },
   "assets": {
-    "title": "Assets",
+    "title": "Asset accounts",
     "actions": {
       "edit": "Edit account",
       "delete": "Delete",
@@ -30,7 +30,43 @@
     }
   },
   "expenses": {
-    "title": "Expense",
+    "title": "Expense accounts",
+    "actions": {
+      "edit": "Edit account",
+      "delete": "Delete",
+      "create": "Create account"
+    },
+    "header": {
+      "name": "Name",
+      "status": "Status"
+    },
+    "data": {
+      "active": "ACTIVE",
+      "inactive": "INACTIVE",
+      "name": "Name",
+      "nameRequired": "Field name is required."
+    }
+  },
+  "revenues": {
+    "title": "Revenue accounts",
+    "actions": {
+      "edit": "Edit account",
+      "delete": "Delete",
+      "create": "Create account"
+    },
+    "header": {
+      "name": "Name",
+      "status": "Status"
+    },
+    "data": {
+      "active": "ACTIVE",
+      "inactive": "INACTIVE",
+      "name": "Name",
+      "nameRequired": "Field name is required."
+    }
+  },
+  "liabilities": {
+    "title": "Liability accounts",
     "actions": {
       "edit": "Edit account",
       "delete": "Delete",

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
@@ -13,7 +13,6 @@ import {
   DataListFooter,
   DataListHeader,
   DataListRow,
-  DayPicker,
   FieldCurrency,
   FieldDayPicker,
   FieldInput,

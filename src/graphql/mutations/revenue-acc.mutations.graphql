@@ -1,0 +1,26 @@
+mutation insertRevenueAcc($object: revenues_insert_input!) {
+  insert_revenues_one(object: $object) {
+    id
+    name
+    created_at
+    updated_at
+  }
+}
+
+mutation deleteRevenueAcc($id: bigint!) {
+  delete_account_info_by_pk(id: $id) {
+    id
+  }
+}
+
+mutation updateRevenueAcc($id: bigint!, $changes: revenues_set_input) {
+  update_revenues_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+}
+
+mutation updateRevenueState($id: bigint!, $state: Boolean) {
+  update_revenues_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
+    active
+  }
+}

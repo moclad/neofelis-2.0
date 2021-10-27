@@ -1,0 +1,26 @@
+mutation insertLiabilityAcc($object: liabilities_insert_input!) {
+  insert_liabilities_one(object: $object) {
+    id
+    name
+    created_at
+    updated_at
+  }
+}
+
+mutation deleteLiabilityAcc($id: bigint!) {
+  delete_account_info_by_pk(id: $id) {
+    id
+  }
+}
+
+mutation updateLiabilityAcc($id: bigint!, $changes: liabilities_set_input) {
+  update_liabilities_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+}
+
+mutation updateLiabilityState($id: bigint!, $state: Boolean) {
+  update_liabilities_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
+    active
+  }
+}

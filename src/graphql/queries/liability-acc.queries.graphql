@@ -1,0 +1,14 @@
+query allLiabilityAccounts($limit: Int, $offset: Int) {
+  liabilities(limit: $limit, offset: $offset, order_by: { name: asc }) {
+    id
+    name
+    active
+    created_at
+    updated_at
+  }
+  liabilities_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

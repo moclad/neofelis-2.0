@@ -26,13 +26,12 @@ import {
 } from '@/components';
 import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import {
-  useAllExpenseAccountsQuery,
-  useDeleteExpenseAccMutation,
-  useInsertExpenseAccMutation,
-  useUpdateExpenseAccMutation,
-  useUpdateExpenseStateMutation
+  useAllRevenueAccountsQuery,
+  useDeleteRevenueAccMutation,
+  useInsertRevenueAccMutation,
+  useUpdateRevenueAccMutation,
+  useUpdateRevenueStateMutation
 } from '@/generated/graphql';
-import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
 import {
   Avatar,
@@ -52,7 +51,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 
-export const PageExpenses = () => {
+export const PageRevenues = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } =
@@ -62,18 +61,18 @@ export const PageExpenses = () => {
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
-  const { loading, data } = useAllExpenseAccountsQuery({
+  const { loading, data } = useAllRevenueAccountsQuery({
     variables: {
       offset: (page - 1) * pageSize,
       limit: pageSize,
     },
   });
 
-  const [deleteExpense, { loading: deleteFetching }] =
-    useDeleteExpenseAccMutation();
+  const [deleteRevenue, { loading: deleteFetching }] =
+    useDeleteRevenueAccMutation();
 
-  const [updateExpense, { loading: updateLoading }] =
-    useUpdateExpenseAccMutation({
+  const [updateRevenue, { loading: updateLoading }] =
+    useUpdateRevenueAccMutation({
       onError: (error) => {
         toastError({
           title: t('common:feedbacks.updateError.title'),
@@ -87,8 +86,8 @@ export const PageExpenses = () => {
       },
     });
 
-  const [updateExpenseState, { loading: updateStateLoading }] =
-    useUpdateExpenseStateMutation({
+  const [updateRevenueState, { loading: updateStateLoading }] =
+    useUpdateRevenueStateMutation({
       onError: (error) => {
         toastError({
           title: t('common:feedbacks.updateError.title'),
@@ -102,8 +101,8 @@ export const PageExpenses = () => {
       },
     });
 
-  const [insertExpense, { loading: insertLoading }] =
-    useInsertExpenseAccMutation({
+  const [insertRevenue, { loading: insertLoading }] =
+    useInsertRevenueAccMutation({
       onError: (error) => {
         toastError({
           title: t('common:feedbacks.createdError.title'),
@@ -120,10 +119,10 @@ export const PageExpenses = () => {
   const onConfirmCreate = async (values) => {
     const newData = {
       ...values,
-      account_info: { data: { type: 'E' } },
+      account_info: { data: { type: 'R' } },
     };
 
-    insertExpense({
+    insertRevenue({
       variables: {
         object: newData,
       },
@@ -132,7 +131,7 @@ export const PageExpenses = () => {
   };
 
   const deactivate = async (item) => {
-    await updateExpenseState({
+    await updateRevenueState({
       variables: {
         id: item.id,
         state: !item.active,
@@ -146,7 +145,7 @@ export const PageExpenses = () => {
       ...values,
     };
 
-    await updateExpense({
+    await updateRevenue({
       variables: {
         id: dataKey,
         changes: newData,
@@ -156,7 +155,7 @@ export const PageExpenses = () => {
   };
 
   const onDelete = async (id: number) => {
-    deleteExpense({
+    deleteRevenue({
       variables: {
         id,
       },
@@ -173,29 +172,29 @@ export const PageExpenses = () => {
       <Page nav={<AccountsNav />}>
         <PageContent
           loading={loading || deleteFetching || insertLoading || updateLoading}
-          title={t('accounts:expenses.title')}
+          title={t('accounts:revenues.title')}
           actions={[
             <Button
-              key="createExpense"
+              key="createRevenue"
               leftIcon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
-              {t('accounts:expenses.actions.create')}
+              {t('accounts:revenues.actions.create')}
             </Button>,
           ]}
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
               <DataListCell colName="name" colWidth="1.5">
-                {t('accounts:expenses.header.name')}
+                {t('accounts:revenues.header.name')}
               </DataListCell>
               <DataListCell
                 colName="status"
                 colWidth="0.5"
                 isVisible={{ base: false, md: true }}
               >
-                {t('accounts:expenses.header.status')}
+                {t('accounts:revenues.header.status')}
               </DataListCell>
               <DataListCell
                 colName="actions"
@@ -204,7 +203,7 @@ export const PageExpenses = () => {
               />
             </DataListHeader>
             {data &&
-              data.expenses.map((item, index) => (
+              data.revenues.map((item, index) => (
                 <DataListRow as={LinkBox} key={index} isDisabled={!item.active}>
                   <DataListCell colName="name">
                     <HStack maxW="100%">
@@ -226,8 +225,8 @@ export const PageExpenses = () => {
                       colorScheme={item.active ? 'success' : 'gray'}
                     >
                       {item.active
-                        ? t('accounts:expenses.data.active')
-                        : t('accounts:expenses.data.inactive')}
+                        ? t('accounts:revenues.data.active')
+                        : t('accounts:revenues.data.inactive')}
                     </Badge>
                   </DataListCell>
                   <DataListCell colName="actions">
@@ -271,7 +270,7 @@ export const PageExpenses = () => {
                 setPage={setPage}
                 page={page}
                 pageSize={pageSize}
-                totalItems={data?.expenses_aggregate?.aggregate?.count}
+                totalItems={data?.revenues_aggregate?.aggregate?.count}
               >
                 <PaginationButtonFirstPage />
                 <PaginationButtonPrevPage />
@@ -286,8 +285,8 @@ export const PageExpenses = () => {
       <ModalDialog
         title={
           isEditing
-            ? t('accounts:expenses.actions.edit')
-            : t('accounts:expenses.actions.create')
+            ? t('accounts:revenues.actions.edit')
+            : t('accounts:revenues.actions.create')
         }
         isOpen={isOpen || isEditing}
         onCancel={() => {
@@ -296,13 +295,13 @@ export const PageExpenses = () => {
         }}
         onConfirm={isEditing ? onConfirmEdit : onConfirmCreate}
         loading={loading || insertLoading || updateLoading}
-        formId="expense-form-id"
+        formId="revenue-form-id"
         initialValues={dataContext}
       >
         <FieldInput
           name="name"
-          label={t('accounts:expenses.data.name')}
-          required={t('accounts:expenses.data.nameRequired') as string}
+          label={t('accounts:revenues.data.name')}
+          required={t('accounts:revenues.data.nameRequired') as string}
         />
       </ModalDialog>
     </>

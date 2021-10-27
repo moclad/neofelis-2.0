@@ -1650,9 +1650,9 @@ export type Labels_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
-/** columns and relationships of "liabiulities" */
-export type Liabiulities = {
-  __typename?: 'liabiulities';
+/** columns and relationships of "liabilities" */
+export type Liabilities = {
+  __typename?: 'liabilities';
   /** An object relationship */
   account_info: Account_Info;
   active: Scalars['Boolean'];
@@ -1662,46 +1662,46 @@ export type Liabiulities = {
   updated_at: Scalars['timestamptz'];
 };
 
-/** aggregated selection of "liabiulities" */
-export type Liabiulities_Aggregate = {
-  __typename?: 'liabiulities_aggregate';
-  aggregate?: Maybe<Liabiulities_Aggregate_Fields>;
-  nodes: Array<Liabiulities>;
+/** aggregated selection of "liabilities" */
+export type Liabilities_Aggregate = {
+  __typename?: 'liabilities_aggregate';
+  aggregate?: Maybe<Liabilities_Aggregate_Fields>;
+  nodes: Array<Liabilities>;
 };
 
-/** aggregate fields of "liabiulities" */
-export type Liabiulities_Aggregate_Fields = {
-  __typename?: 'liabiulities_aggregate_fields';
-  avg?: Maybe<Liabiulities_Avg_Fields>;
+/** aggregate fields of "liabilities" */
+export type Liabilities_Aggregate_Fields = {
+  __typename?: 'liabilities_aggregate_fields';
+  avg?: Maybe<Liabilities_Avg_Fields>;
   count: Scalars['Int'];
-  max?: Maybe<Liabiulities_Max_Fields>;
-  min?: Maybe<Liabiulities_Min_Fields>;
-  stddev?: Maybe<Liabiulities_Stddev_Fields>;
-  stddev_pop?: Maybe<Liabiulities_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Liabiulities_Stddev_Samp_Fields>;
-  sum?: Maybe<Liabiulities_Sum_Fields>;
-  var_pop?: Maybe<Liabiulities_Var_Pop_Fields>;
-  var_samp?: Maybe<Liabiulities_Var_Samp_Fields>;
-  variance?: Maybe<Liabiulities_Variance_Fields>;
+  max?: Maybe<Liabilities_Max_Fields>;
+  min?: Maybe<Liabilities_Min_Fields>;
+  stddev?: Maybe<Liabilities_Stddev_Fields>;
+  stddev_pop?: Maybe<Liabilities_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Liabilities_Stddev_Samp_Fields>;
+  sum?: Maybe<Liabilities_Sum_Fields>;
+  var_pop?: Maybe<Liabilities_Var_Pop_Fields>;
+  var_samp?: Maybe<Liabilities_Var_Samp_Fields>;
+  variance?: Maybe<Liabilities_Variance_Fields>;
 };
 
-/** aggregate fields of "liabiulities" */
-export type Liabiulities_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Liabiulities_Select_Column>>;
+/** aggregate fields of "liabilities" */
+export type Liabilities_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Liabilities_Select_Column>>;
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
-export type Liabiulities_Avg_Fields = {
-  __typename?: 'liabiulities_avg_fields';
+export type Liabilities_Avg_Fields = {
+  __typename?: 'liabilities_avg_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
-/** Boolean expression to filter rows from the table "liabiulities". All fields are combined with a logical 'AND'. */
-export type Liabiulities_Bool_Exp = {
-  _and?: Maybe<Array<Liabiulities_Bool_Exp>>;
-  _not?: Maybe<Liabiulities_Bool_Exp>;
-  _or?: Maybe<Array<Liabiulities_Bool_Exp>>;
+/** Boolean expression to filter rows from the table "liabilities". All fields are combined with a logical 'AND'. */
+export type Liabilities_Bool_Exp = {
+  _and?: Maybe<Array<Liabilities_Bool_Exp>>;
+  _not?: Maybe<Liabilities_Bool_Exp>;
+  _or?: Maybe<Array<Liabilities_Bool_Exp>>;
   account_info?: Maybe<Account_Info_Bool_Exp>;
   active?: Maybe<Boolean_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
@@ -1710,19 +1710,19 @@ export type Liabiulities_Bool_Exp = {
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
 
-/** unique or primary key constraints on table "liabiulities" */
-export enum Liabiulities_Constraint {
+/** unique or primary key constraints on table "liabilities" */
+export enum Liabilities_Constraint {
   /** unique or primary key constraint */
   LiabiulitiesPkey = 'liabiulities_pkey',
 }
 
-/** input type for incrementing numeric columns in table "liabiulities" */
-export type Liabiulities_Inc_Input = {
+/** input type for incrementing numeric columns in table "liabilities" */
+export type Liabilities_Inc_Input = {
   id?: Maybe<Scalars['bigint']>;
 };
 
-/** input type for inserting data into table "liabiulities" */
-export type Liabiulities_Insert_Input = {
+/** input type for inserting data into table "liabilities" */
+export type Liabilities_Insert_Input = {
   account_info?: Maybe<Account_Info_Obj_Rel_Insert_Input>;
   active?: Maybe<Scalars['Boolean']>;
   created_at?: Maybe<Scalars['timestamptz']>;
@@ -1732,8 +1732,8 @@ export type Liabiulities_Insert_Input = {
 };
 
 /** aggregate max on columns */
-export type Liabiulities_Max_Fields = {
-  __typename?: 'liabiulities_max_fields';
+export type Liabilities_Max_Fields = {
+  __typename?: 'liabilities_max_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
@@ -1741,32 +1741,32 @@ export type Liabiulities_Max_Fields = {
 };
 
 /** aggregate min on columns */
-export type Liabiulities_Min_Fields = {
-  __typename?: 'liabiulities_min_fields';
+export type Liabilities_Min_Fields = {
+  __typename?: 'liabilities_min_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
-/** response of any mutation on the table "liabiulities" */
-export type Liabiulities_Mutation_Response = {
-  __typename?: 'liabiulities_mutation_response';
+/** response of any mutation on the table "liabilities" */
+export type Liabilities_Mutation_Response = {
+  __typename?: 'liabilities_mutation_response';
   /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
-  returning: Array<Liabiulities>;
+  returning: Array<Liabilities>;
 };
 
-/** on conflict condition type for table "liabiulities" */
-export type Liabiulities_On_Conflict = {
-  constraint: Liabiulities_Constraint;
-  update_columns?: Array<Liabiulities_Update_Column>;
-  where?: Maybe<Liabiulities_Bool_Exp>;
+/** on conflict condition type for table "liabilities" */
+export type Liabilities_On_Conflict = {
+  constraint: Liabilities_Constraint;
+  update_columns?: Array<Liabilities_Update_Column>;
+  where?: Maybe<Liabilities_Bool_Exp>;
 };
 
-/** Ordering options when selecting data from "liabiulities". */
-export type Liabiulities_Order_By = {
+/** Ordering options when selecting data from "liabilities". */
+export type Liabilities_Order_By = {
   account_info?: Maybe<Account_Info_Order_By>;
   active?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
@@ -1775,13 +1775,13 @@ export type Liabiulities_Order_By = {
   updated_at?: Maybe<Order_By>;
 };
 
-/** primary key columns input for table: liabiulities */
-export type Liabiulities_Pk_Columns_Input = {
+/** primary key columns input for table: liabilities */
+export type Liabilities_Pk_Columns_Input = {
   id: Scalars['bigint'];
 };
 
-/** select columns of table "liabiulities" */
-export enum Liabiulities_Select_Column {
+/** select columns of table "liabilities" */
+export enum Liabilities_Select_Column {
   /** column name */
   Active = 'active',
   /** column name */
@@ -1794,8 +1794,8 @@ export enum Liabiulities_Select_Column {
   UpdatedAt = 'updated_at',
 }
 
-/** input type for updating data in table "liabiulities" */
-export type Liabiulities_Set_Input = {
+/** input type for updating data in table "liabilities" */
+export type Liabilities_Set_Input = {
   active?: Maybe<Scalars['Boolean']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
@@ -1804,31 +1804,31 @@ export type Liabiulities_Set_Input = {
 };
 
 /** aggregate stddev on columns */
-export type Liabiulities_Stddev_Fields = {
-  __typename?: 'liabiulities_stddev_fields';
+export type Liabilities_Stddev_Fields = {
+  __typename?: 'liabilities_stddev_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
-export type Liabiulities_Stddev_Pop_Fields = {
-  __typename?: 'liabiulities_stddev_pop_fields';
+export type Liabilities_Stddev_Pop_Fields = {
+  __typename?: 'liabilities_stddev_pop_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
-export type Liabiulities_Stddev_Samp_Fields = {
-  __typename?: 'liabiulities_stddev_samp_fields';
+export type Liabilities_Stddev_Samp_Fields = {
+  __typename?: 'liabilities_stddev_samp_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
-export type Liabiulities_Sum_Fields = {
-  __typename?: 'liabiulities_sum_fields';
+export type Liabilities_Sum_Fields = {
+  __typename?: 'liabilities_sum_fields';
   id?: Maybe<Scalars['bigint']>;
 };
 
-/** update columns of table "liabiulities" */
-export enum Liabiulities_Update_Column {
+/** update columns of table "liabilities" */
+export enum Liabilities_Update_Column {
   /** column name */
   Active = 'active',
   /** column name */
@@ -1842,20 +1842,20 @@ export enum Liabiulities_Update_Column {
 }
 
 /** aggregate var_pop on columns */
-export type Liabiulities_Var_Pop_Fields = {
-  __typename?: 'liabiulities_var_pop_fields';
+export type Liabilities_Var_Pop_Fields = {
+  __typename?: 'liabilities_var_pop_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
-export type Liabiulities_Var_Samp_Fields = {
-  __typename?: 'liabiulities_var_samp_fields';
+export type Liabilities_Var_Samp_Fields = {
+  __typename?: 'liabilities_var_samp_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
-export type Liabiulities_Variance_Fields = {
-  __typename?: 'liabiulities_variance_fields';
+export type Liabilities_Variance_Fields = {
+  __typename?: 'liabilities_variance_fields';
   id?: Maybe<Scalars['Float']>;
 };
 
@@ -1890,10 +1890,10 @@ export type Mutation_Root = {
   delete_labels?: Maybe<Labels_Mutation_Response>;
   /** delete single row from the table: "labels" */
   delete_labels_by_pk?: Maybe<Labels>;
-  /** delete data from the table: "liabiulities" */
-  delete_liabiulities?: Maybe<Liabiulities_Mutation_Response>;
-  /** delete single row from the table: "liabiulities" */
-  delete_liabiulities_by_pk?: Maybe<Liabiulities>;
+  /** delete data from the table: "liabilities" */
+  delete_liabilities?: Maybe<Liabilities_Mutation_Response>;
+  /** delete single row from the table: "liabilities" */
+  delete_liabilities_by_pk?: Maybe<Liabilities>;
   /** delete data from the table: "notifications" */
   delete_notifications?: Maybe<Notifications_Mutation_Response>;
   /** delete single row from the table: "notifications" */
@@ -1946,10 +1946,10 @@ export type Mutation_Root = {
   insert_labels?: Maybe<Labels_Mutation_Response>;
   /** insert a single row into the table: "labels" */
   insert_labels_one?: Maybe<Labels>;
-  /** insert data into the table: "liabiulities" */
-  insert_liabiulities?: Maybe<Liabiulities_Mutation_Response>;
-  /** insert a single row into the table: "liabiulities" */
-  insert_liabiulities_one?: Maybe<Liabiulities>;
+  /** insert data into the table: "liabilities" */
+  insert_liabilities?: Maybe<Liabilities_Mutation_Response>;
+  /** insert a single row into the table: "liabilities" */
+  insert_liabilities_one?: Maybe<Liabilities>;
   /** insert data into the table: "notifications" */
   insert_notifications?: Maybe<Notifications_Mutation_Response>;
   /** insert a single row into the table: "notifications" */
@@ -2002,10 +2002,10 @@ export type Mutation_Root = {
   update_labels?: Maybe<Labels_Mutation_Response>;
   /** update single row of the table: "labels" */
   update_labels_by_pk?: Maybe<Labels>;
-  /** update data of the table: "liabiulities" */
-  update_liabiulities?: Maybe<Liabiulities_Mutation_Response>;
-  /** update single row of the table: "liabiulities" */
-  update_liabiulities_by_pk?: Maybe<Liabiulities>;
+  /** update data of the table: "liabilities" */
+  update_liabilities?: Maybe<Liabilities_Mutation_Response>;
+  /** update single row of the table: "liabilities" */
+  update_liabilities_by_pk?: Maybe<Liabilities>;
   /** update data of the table: "notifications" */
   update_notifications?: Maybe<Notifications_Mutation_Response>;
   /** update single row of the table: "notifications" */
@@ -2103,12 +2103,12 @@ export type Mutation_RootDelete_Labels_By_PkArgs = {
 };
 
 /** mutation root */
-export type Mutation_RootDelete_LiabiulitiesArgs = {
-  where: Liabiulities_Bool_Exp;
+export type Mutation_RootDelete_LiabilitiesArgs = {
+  where: Liabilities_Bool_Exp;
 };
 
 /** mutation root */
-export type Mutation_RootDelete_Liabiulities_By_PkArgs = {
+export type Mutation_RootDelete_Liabilities_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
@@ -2257,15 +2257,15 @@ export type Mutation_RootInsert_Labels_OneArgs = {
 };
 
 /** mutation root */
-export type Mutation_RootInsert_LiabiulitiesArgs = {
-  objects: Array<Liabiulities_Insert_Input>;
-  on_conflict?: Maybe<Liabiulities_On_Conflict>;
+export type Mutation_RootInsert_LiabilitiesArgs = {
+  objects: Array<Liabilities_Insert_Input>;
+  on_conflict?: Maybe<Liabilities_On_Conflict>;
 };
 
 /** mutation root */
-export type Mutation_RootInsert_Liabiulities_OneArgs = {
-  object: Liabiulities_Insert_Input;
-  on_conflict?: Maybe<Liabiulities_On_Conflict>;
+export type Mutation_RootInsert_Liabilities_OneArgs = {
+  object: Liabilities_Insert_Input;
+  on_conflict?: Maybe<Liabilities_On_Conflict>;
 };
 
 /** mutation root */
@@ -2435,17 +2435,17 @@ export type Mutation_RootUpdate_Labels_By_PkArgs = {
 };
 
 /** mutation root */
-export type Mutation_RootUpdate_LiabiulitiesArgs = {
-  _inc?: Maybe<Liabiulities_Inc_Input>;
-  _set?: Maybe<Liabiulities_Set_Input>;
-  where: Liabiulities_Bool_Exp;
+export type Mutation_RootUpdate_LiabilitiesArgs = {
+  _inc?: Maybe<Liabilities_Inc_Input>;
+  _set?: Maybe<Liabilities_Set_Input>;
+  where: Liabilities_Bool_Exp;
 };
 
 /** mutation root */
-export type Mutation_RootUpdate_Liabiulities_By_PkArgs = {
-  _inc?: Maybe<Liabiulities_Inc_Input>;
-  _set?: Maybe<Liabiulities_Set_Input>;
-  pk_columns: Liabiulities_Pk_Columns_Input;
+export type Mutation_RootUpdate_Liabilities_By_PkArgs = {
+  _inc?: Maybe<Liabilities_Inc_Input>;
+  _set?: Maybe<Liabilities_Set_Input>;
+  pk_columns: Liabilities_Pk_Columns_Input;
 };
 
 /** mutation root */
@@ -2892,12 +2892,12 @@ export type Query_Root = {
   labels_aggregate: Labels_Aggregate;
   /** fetch data from the table: "labels" using primary key columns */
   labels_by_pk?: Maybe<Labels>;
-  /** fetch data from the table: "liabiulities" */
-  liabiulities: Array<Liabiulities>;
-  /** fetch aggregated fields from the table: "liabiulities" */
-  liabiulities_aggregate: Liabiulities_Aggregate;
-  /** fetch data from the table: "liabiulities" using primary key columns */
-  liabiulities_by_pk?: Maybe<Liabiulities>;
+  /** fetch data from the table: "liabilities" */
+  liabilities: Array<Liabilities>;
+  /** fetch aggregated fields from the table: "liabilities" */
+  liabilities_aggregate: Liabilities_Aggregate;
+  /** fetch data from the table: "liabilities" using primary key columns */
+  liabilities_by_pk?: Maybe<Liabilities>;
   /** fetch data from the table: "notifications" */
   notifications: Array<Notifications>;
   /** fetch aggregated fields from the table: "notifications" */
@@ -3076,23 +3076,23 @@ export type Query_RootLabels_By_PkArgs = {
   id: Scalars['Int'];
 };
 
-export type Query_RootLiabiulitiesArgs = {
-  distinct_on?: Maybe<Array<Liabiulities_Select_Column>>;
+export type Query_RootLiabilitiesArgs = {
+  distinct_on?: Maybe<Array<Liabilities_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Liabiulities_Order_By>>;
-  where?: Maybe<Liabiulities_Bool_Exp>;
+  order_by?: Maybe<Array<Liabilities_Order_By>>;
+  where?: Maybe<Liabilities_Bool_Exp>;
 };
 
-export type Query_RootLiabiulities_AggregateArgs = {
-  distinct_on?: Maybe<Array<Liabiulities_Select_Column>>;
+export type Query_RootLiabilities_AggregateArgs = {
+  distinct_on?: Maybe<Array<Liabilities_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Liabiulities_Order_By>>;
-  where?: Maybe<Liabiulities_Bool_Exp>;
+  order_by?: Maybe<Array<Liabilities_Order_By>>;
+  where?: Maybe<Liabilities_Bool_Exp>;
 };
 
-export type Query_RootLiabiulities_By_PkArgs = {
+export type Query_RootLiabilities_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
@@ -3636,12 +3636,12 @@ export type Subscription_Root = {
   labels_aggregate: Labels_Aggregate;
   /** fetch data from the table: "labels" using primary key columns */
   labels_by_pk?: Maybe<Labels>;
-  /** fetch data from the table: "liabiulities" */
-  liabiulities: Array<Liabiulities>;
-  /** fetch aggregated fields from the table: "liabiulities" */
-  liabiulities_aggregate: Liabiulities_Aggregate;
-  /** fetch data from the table: "liabiulities" using primary key columns */
-  liabiulities_by_pk?: Maybe<Liabiulities>;
+  /** fetch data from the table: "liabilities" */
+  liabilities: Array<Liabilities>;
+  /** fetch aggregated fields from the table: "liabilities" */
+  liabilities_aggregate: Liabilities_Aggregate;
+  /** fetch data from the table: "liabilities" using primary key columns */
+  liabilities_by_pk?: Maybe<Liabilities>;
   /** fetch data from the table: "notifications" */
   notifications: Array<Notifications>;
   /** fetch aggregated fields from the table: "notifications" */
@@ -3820,23 +3820,23 @@ export type Subscription_RootLabels_By_PkArgs = {
   id: Scalars['Int'];
 };
 
-export type Subscription_RootLiabiulitiesArgs = {
-  distinct_on?: Maybe<Array<Liabiulities_Select_Column>>;
+export type Subscription_RootLiabilitiesArgs = {
+  distinct_on?: Maybe<Array<Liabilities_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Liabiulities_Order_By>>;
-  where?: Maybe<Liabiulities_Bool_Exp>;
+  order_by?: Maybe<Array<Liabilities_Order_By>>;
+  where?: Maybe<Liabilities_Bool_Exp>;
 };
 
-export type Subscription_RootLiabiulities_AggregateArgs = {
-  distinct_on?: Maybe<Array<Liabiulities_Select_Column>>;
+export type Subscription_RootLiabilities_AggregateArgs = {
+  distinct_on?: Maybe<Array<Liabilities_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Liabiulities_Order_By>>;
-  where?: Maybe<Liabiulities_Bool_Exp>;
+  order_by?: Maybe<Array<Liabilities_Order_By>>;
+  where?: Maybe<Liabilities_Bool_Exp>;
 };
 
-export type Subscription_RootLiabiulities_By_PkArgs = {
+export type Subscription_RootLiabilities_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
@@ -4711,6 +4711,118 @@ export type UpdateLabelMutation = {
     | undefined;
 };
 
+export type InsertLiabilityAccMutationVariables = Exact<{
+  object: Liabilities_Insert_Input;
+}>;
+
+export type InsertLiabilityAccMutation = {
+  __typename?: 'mutation_root';
+  insert_liabilities_one?:
+    | {
+        __typename?: 'liabilities';
+        id: any;
+        name: string;
+        created_at: string;
+        updated_at: string;
+      }
+    | null
+    | undefined;
+};
+
+export type DeleteLiabilityAccMutationVariables = Exact<{
+  id: Scalars['bigint'];
+}>;
+
+export type DeleteLiabilityAccMutation = {
+  __typename?: 'mutation_root';
+  delete_account_info_by_pk?:
+    | { __typename?: 'account_info'; id: any }
+    | null
+    | undefined;
+};
+
+export type UpdateLiabilityAccMutationVariables = Exact<{
+  id: Scalars['bigint'];
+  changes?: Maybe<Liabilities_Set_Input>;
+}>;
+
+export type UpdateLiabilityAccMutation = {
+  __typename?: 'mutation_root';
+  update_liabilities_by_pk?:
+    | { __typename?: 'liabilities'; id: any }
+    | null
+    | undefined;
+};
+
+export type UpdateLiabilityStateMutationVariables = Exact<{
+  id: Scalars['bigint'];
+  state?: Maybe<Scalars['Boolean']>;
+}>;
+
+export type UpdateLiabilityStateMutation = {
+  __typename?: 'mutation_root';
+  update_liabilities_by_pk?:
+    | { __typename?: 'liabilities'; active: boolean }
+    | null
+    | undefined;
+};
+
+export type InsertRevenueAccMutationVariables = Exact<{
+  object: Revenues_Insert_Input;
+}>;
+
+export type InsertRevenueAccMutation = {
+  __typename?: 'mutation_root';
+  insert_revenues_one?:
+    | {
+        __typename?: 'revenues';
+        id: any;
+        name: string;
+        created_at: string;
+        updated_at: string;
+      }
+    | null
+    | undefined;
+};
+
+export type DeleteRevenueAccMutationVariables = Exact<{
+  id: Scalars['bigint'];
+}>;
+
+export type DeleteRevenueAccMutation = {
+  __typename?: 'mutation_root';
+  delete_account_info_by_pk?:
+    | { __typename?: 'account_info'; id: any }
+    | null
+    | undefined;
+};
+
+export type UpdateRevenueAccMutationVariables = Exact<{
+  id: Scalars['bigint'];
+  changes?: Maybe<Revenues_Set_Input>;
+}>;
+
+export type UpdateRevenueAccMutation = {
+  __typename?: 'mutation_root';
+  update_revenues_by_pk?:
+    | { __typename?: 'revenues'; id: any }
+    | null
+    | undefined;
+};
+
+export type UpdateRevenueStateMutationVariables = Exact<{
+  id: Scalars['bigint'];
+  state?: Maybe<Scalars['Boolean']>;
+}>;
+
+export type UpdateRevenueStateMutation = {
+  __typename?: 'mutation_root';
+  update_revenues_by_pk?:
+    | { __typename?: 'revenues'; active: boolean }
+    | null
+    | undefined;
+};
+
 export type UpdateUserMutationVariables = Exact<{
   userId: Scalars['uuid'];
   changes?: Maybe<Users_Set_Input>;
@@ -4860,6 +4972,54 @@ export type AllLabelsQuery = {
     created_at: string;
     updated_at: string;
   }>;
+};
+
+export type AllLiabilityAccountsQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+export type AllLiabilityAccountsQuery = {
+  __typename?: 'query_root';
+  liabilities: Array<{
+    __typename?: 'liabilities';
+    id: any;
+    name: string;
+    active: boolean;
+    created_at: string;
+    updated_at: string;
+  }>;
+  liabilities_aggregate: {
+    __typename?: 'liabilities_aggregate';
+    aggregate?:
+      | { __typename?: 'liabilities_aggregate_fields'; count: number }
+      | null
+      | undefined;
+  };
+};
+
+export type AllRevenueAccountsQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+export type AllRevenueAccountsQuery = {
+  __typename?: 'query_root';
+  revenues: Array<{
+    __typename?: 'revenues';
+    id: any;
+    name: string;
+    active: boolean;
+    created_at: string;
+    updated_at: string;
+  }>;
+  revenues_aggregate: {
+    __typename?: 'revenues_aggregate';
+    aggregate?:
+      | { __typename?: 'revenues_aggregate_fields'; count: number }
+      | null
+      | undefined;
+  };
 };
 
 export type FetchFeedsSubscriptionVariables = Exact<{ [key: string]: never }>;
@@ -6316,6 +6476,827 @@ export type UpdateLabelMutationOptions = Apollo.BaseMutationOptions<
   UpdateLabelMutation,
   UpdateLabelMutationVariables
 >;
+export const InsertLiabilityAccDocument = gql`
+  mutation insertLiabilityAcc($object: liabilities_insert_input!) {
+    insert_liabilities_one(object: $object) {
+      id
+      name
+      created_at
+      updated_at
+    }
+  }
+`;
+export type InsertLiabilityAccMutationFn = Apollo.MutationFunction<
+  InsertLiabilityAccMutation,
+  InsertLiabilityAccMutationVariables
+>;
+export type InsertLiabilityAccComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    InsertLiabilityAccMutation,
+    InsertLiabilityAccMutationVariables
+  >,
+  'mutation'
+>;
+
+export const InsertLiabilityAccComponent = (
+  props: InsertLiabilityAccComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    InsertLiabilityAccMutation,
+    InsertLiabilityAccMutationVariables
+  >
+    mutation={InsertLiabilityAccDocument}
+    {...props}
+  />
+);
+
+export type InsertLiabilityAccProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    InsertLiabilityAccMutation,
+    InsertLiabilityAccMutationVariables
+  >;
+} & TChildProps;
+export function withInsertLiabilityAcc<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    InsertLiabilityAccMutation,
+    InsertLiabilityAccMutationVariables,
+    InsertLiabilityAccProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    InsertLiabilityAccMutation,
+    InsertLiabilityAccMutationVariables,
+    InsertLiabilityAccProps<TChildProps, TDataName>
+  >(InsertLiabilityAccDocument, {
+    alias: 'insertLiabilityAcc',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useInsertLiabilityAccMutation__
+ *
+ * To run a mutation, you first call `useInsertLiabilityAccMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertLiabilityAccMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [insertLiabilityAccMutation, { data, loading, error }] = useInsertLiabilityAccMutation({
+ *   variables: {
+ *      object: // value for 'object'
+ *   },
+ * });
+ */
+export function useInsertLiabilityAccMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InsertLiabilityAccMutation,
+    InsertLiabilityAccMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InsertLiabilityAccMutation,
+    InsertLiabilityAccMutationVariables
+  >(InsertLiabilityAccDocument, options);
+}
+export type InsertLiabilityAccMutationHookResult = ReturnType<
+  typeof useInsertLiabilityAccMutation
+>;
+export type InsertLiabilityAccMutationResult =
+  Apollo.MutationResult<InsertLiabilityAccMutation>;
+export type InsertLiabilityAccMutationOptions = Apollo.BaseMutationOptions<
+  InsertLiabilityAccMutation,
+  InsertLiabilityAccMutationVariables
+>;
+export const DeleteLiabilityAccDocument = gql`
+  mutation deleteLiabilityAcc($id: bigint!) {
+    delete_account_info_by_pk(id: $id) {
+      id
+    }
+  }
+`;
+export type DeleteLiabilityAccMutationFn = Apollo.MutationFunction<
+  DeleteLiabilityAccMutation,
+  DeleteLiabilityAccMutationVariables
+>;
+export type DeleteLiabilityAccComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    DeleteLiabilityAccMutation,
+    DeleteLiabilityAccMutationVariables
+  >,
+  'mutation'
+>;
+
+export const DeleteLiabilityAccComponent = (
+  props: DeleteLiabilityAccComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    DeleteLiabilityAccMutation,
+    DeleteLiabilityAccMutationVariables
+  >
+    mutation={DeleteLiabilityAccDocument}
+    {...props}
+  />
+);
+
+export type DeleteLiabilityAccProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    DeleteLiabilityAccMutation,
+    DeleteLiabilityAccMutationVariables
+  >;
+} & TChildProps;
+export function withDeleteLiabilityAcc<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DeleteLiabilityAccMutation,
+    DeleteLiabilityAccMutationVariables,
+    DeleteLiabilityAccProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    DeleteLiabilityAccMutation,
+    DeleteLiabilityAccMutationVariables,
+    DeleteLiabilityAccProps<TChildProps, TDataName>
+  >(DeleteLiabilityAccDocument, {
+    alias: 'deleteLiabilityAcc',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useDeleteLiabilityAccMutation__
+ *
+ * To run a mutation, you first call `useDeleteLiabilityAccMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteLiabilityAccMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteLiabilityAccMutation, { data, loading, error }] = useDeleteLiabilityAccMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteLiabilityAccMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteLiabilityAccMutation,
+    DeleteLiabilityAccMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DeleteLiabilityAccMutation,
+    DeleteLiabilityAccMutationVariables
+  >(DeleteLiabilityAccDocument, options);
+}
+export type DeleteLiabilityAccMutationHookResult = ReturnType<
+  typeof useDeleteLiabilityAccMutation
+>;
+export type DeleteLiabilityAccMutationResult =
+  Apollo.MutationResult<DeleteLiabilityAccMutation>;
+export type DeleteLiabilityAccMutationOptions = Apollo.BaseMutationOptions<
+  DeleteLiabilityAccMutation,
+  DeleteLiabilityAccMutationVariables
+>;
+export const UpdateLiabilityAccDocument = gql`
+  mutation updateLiabilityAcc($id: bigint!, $changes: liabilities_set_input) {
+    update_liabilities_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+  }
+`;
+export type UpdateLiabilityAccMutationFn = Apollo.MutationFunction<
+  UpdateLiabilityAccMutation,
+  UpdateLiabilityAccMutationVariables
+>;
+export type UpdateLiabilityAccComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateLiabilityAccMutation,
+    UpdateLiabilityAccMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateLiabilityAccComponent = (
+  props: UpdateLiabilityAccComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateLiabilityAccMutation,
+    UpdateLiabilityAccMutationVariables
+  >
+    mutation={UpdateLiabilityAccDocument}
+    {...props}
+  />
+);
+
+export type UpdateLiabilityAccProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateLiabilityAccMutation,
+    UpdateLiabilityAccMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateLiabilityAcc<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateLiabilityAccMutation,
+    UpdateLiabilityAccMutationVariables,
+    UpdateLiabilityAccProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateLiabilityAccMutation,
+    UpdateLiabilityAccMutationVariables,
+    UpdateLiabilityAccProps<TChildProps, TDataName>
+  >(UpdateLiabilityAccDocument, {
+    alias: 'updateLiabilityAcc',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateLiabilityAccMutation__
+ *
+ * To run a mutation, you first call `useUpdateLiabilityAccMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLiabilityAccMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLiabilityAccMutation, { data, loading, error }] = useUpdateLiabilityAccMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      changes: // value for 'changes'
+ *   },
+ * });
+ */
+export function useUpdateLiabilityAccMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateLiabilityAccMutation,
+    UpdateLiabilityAccMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateLiabilityAccMutation,
+    UpdateLiabilityAccMutationVariables
+  >(UpdateLiabilityAccDocument, options);
+}
+export type UpdateLiabilityAccMutationHookResult = ReturnType<
+  typeof useUpdateLiabilityAccMutation
+>;
+export type UpdateLiabilityAccMutationResult =
+  Apollo.MutationResult<UpdateLiabilityAccMutation>;
+export type UpdateLiabilityAccMutationOptions = Apollo.BaseMutationOptions<
+  UpdateLiabilityAccMutation,
+  UpdateLiabilityAccMutationVariables
+>;
+export const UpdateLiabilityStateDocument = gql`
+  mutation updateLiabilityState($id: bigint!, $state: Boolean) {
+    update_liabilities_by_pk(
+      pk_columns: { id: $id }
+      _set: { active: $state }
+    ) {
+      active
+    }
+  }
+`;
+export type UpdateLiabilityStateMutationFn = Apollo.MutationFunction<
+  UpdateLiabilityStateMutation,
+  UpdateLiabilityStateMutationVariables
+>;
+export type UpdateLiabilityStateComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateLiabilityStateMutation,
+    UpdateLiabilityStateMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateLiabilityStateComponent = (
+  props: UpdateLiabilityStateComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateLiabilityStateMutation,
+    UpdateLiabilityStateMutationVariables
+  >
+    mutation={UpdateLiabilityStateDocument}
+    {...props}
+  />
+);
+
+export type UpdateLiabilityStateProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateLiabilityStateMutation,
+    UpdateLiabilityStateMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateLiabilityState<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateLiabilityStateMutation,
+    UpdateLiabilityStateMutationVariables,
+    UpdateLiabilityStateProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateLiabilityStateMutation,
+    UpdateLiabilityStateMutationVariables,
+    UpdateLiabilityStateProps<TChildProps, TDataName>
+  >(UpdateLiabilityStateDocument, {
+    alias: 'updateLiabilityState',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateLiabilityStateMutation__
+ *
+ * To run a mutation, you first call `useUpdateLiabilityStateMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLiabilityStateMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLiabilityStateMutation, { data, loading, error }] = useUpdateLiabilityStateMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      state: // value for 'state'
+ *   },
+ * });
+ */
+export function useUpdateLiabilityStateMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateLiabilityStateMutation,
+    UpdateLiabilityStateMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateLiabilityStateMutation,
+    UpdateLiabilityStateMutationVariables
+  >(UpdateLiabilityStateDocument, options);
+}
+export type UpdateLiabilityStateMutationHookResult = ReturnType<
+  typeof useUpdateLiabilityStateMutation
+>;
+export type UpdateLiabilityStateMutationResult =
+  Apollo.MutationResult<UpdateLiabilityStateMutation>;
+export type UpdateLiabilityStateMutationOptions = Apollo.BaseMutationOptions<
+  UpdateLiabilityStateMutation,
+  UpdateLiabilityStateMutationVariables
+>;
+export const InsertRevenueAccDocument = gql`
+  mutation insertRevenueAcc($object: revenues_insert_input!) {
+    insert_revenues_one(object: $object) {
+      id
+      name
+      created_at
+      updated_at
+    }
+  }
+`;
+export type InsertRevenueAccMutationFn = Apollo.MutationFunction<
+  InsertRevenueAccMutation,
+  InsertRevenueAccMutationVariables
+>;
+export type InsertRevenueAccComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    InsertRevenueAccMutation,
+    InsertRevenueAccMutationVariables
+  >,
+  'mutation'
+>;
+
+export const InsertRevenueAccComponent = (
+  props: InsertRevenueAccComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    InsertRevenueAccMutation,
+    InsertRevenueAccMutationVariables
+  >
+    mutation={InsertRevenueAccDocument}
+    {...props}
+  />
+);
+
+export type InsertRevenueAccProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    InsertRevenueAccMutation,
+    InsertRevenueAccMutationVariables
+  >;
+} & TChildProps;
+export function withInsertRevenueAcc<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    InsertRevenueAccMutation,
+    InsertRevenueAccMutationVariables,
+    InsertRevenueAccProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    InsertRevenueAccMutation,
+    InsertRevenueAccMutationVariables,
+    InsertRevenueAccProps<TChildProps, TDataName>
+  >(InsertRevenueAccDocument, {
+    alias: 'insertRevenueAcc',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useInsertRevenueAccMutation__
+ *
+ * To run a mutation, you first call `useInsertRevenueAccMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertRevenueAccMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [insertRevenueAccMutation, { data, loading, error }] = useInsertRevenueAccMutation({
+ *   variables: {
+ *      object: // value for 'object'
+ *   },
+ * });
+ */
+export function useInsertRevenueAccMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InsertRevenueAccMutation,
+    InsertRevenueAccMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InsertRevenueAccMutation,
+    InsertRevenueAccMutationVariables
+  >(InsertRevenueAccDocument, options);
+}
+export type InsertRevenueAccMutationHookResult = ReturnType<
+  typeof useInsertRevenueAccMutation
+>;
+export type InsertRevenueAccMutationResult =
+  Apollo.MutationResult<InsertRevenueAccMutation>;
+export type InsertRevenueAccMutationOptions = Apollo.BaseMutationOptions<
+  InsertRevenueAccMutation,
+  InsertRevenueAccMutationVariables
+>;
+export const DeleteRevenueAccDocument = gql`
+  mutation deleteRevenueAcc($id: bigint!) {
+    delete_account_info_by_pk(id: $id) {
+      id
+    }
+  }
+`;
+export type DeleteRevenueAccMutationFn = Apollo.MutationFunction<
+  DeleteRevenueAccMutation,
+  DeleteRevenueAccMutationVariables
+>;
+export type DeleteRevenueAccComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    DeleteRevenueAccMutation,
+    DeleteRevenueAccMutationVariables
+  >,
+  'mutation'
+>;
+
+export const DeleteRevenueAccComponent = (
+  props: DeleteRevenueAccComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    DeleteRevenueAccMutation,
+    DeleteRevenueAccMutationVariables
+  >
+    mutation={DeleteRevenueAccDocument}
+    {...props}
+  />
+);
+
+export type DeleteRevenueAccProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    DeleteRevenueAccMutation,
+    DeleteRevenueAccMutationVariables
+  >;
+} & TChildProps;
+export function withDeleteRevenueAcc<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DeleteRevenueAccMutation,
+    DeleteRevenueAccMutationVariables,
+    DeleteRevenueAccProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    DeleteRevenueAccMutation,
+    DeleteRevenueAccMutationVariables,
+    DeleteRevenueAccProps<TChildProps, TDataName>
+  >(DeleteRevenueAccDocument, {
+    alias: 'deleteRevenueAcc',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useDeleteRevenueAccMutation__
+ *
+ * To run a mutation, you first call `useDeleteRevenueAccMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteRevenueAccMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteRevenueAccMutation, { data, loading, error }] = useDeleteRevenueAccMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteRevenueAccMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteRevenueAccMutation,
+    DeleteRevenueAccMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DeleteRevenueAccMutation,
+    DeleteRevenueAccMutationVariables
+  >(DeleteRevenueAccDocument, options);
+}
+export type DeleteRevenueAccMutationHookResult = ReturnType<
+  typeof useDeleteRevenueAccMutation
+>;
+export type DeleteRevenueAccMutationResult =
+  Apollo.MutationResult<DeleteRevenueAccMutation>;
+export type DeleteRevenueAccMutationOptions = Apollo.BaseMutationOptions<
+  DeleteRevenueAccMutation,
+  DeleteRevenueAccMutationVariables
+>;
+export const UpdateRevenueAccDocument = gql`
+  mutation updateRevenueAcc($id: bigint!, $changes: revenues_set_input) {
+    update_revenues_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+  }
+`;
+export type UpdateRevenueAccMutationFn = Apollo.MutationFunction<
+  UpdateRevenueAccMutation,
+  UpdateRevenueAccMutationVariables
+>;
+export type UpdateRevenueAccComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateRevenueAccMutation,
+    UpdateRevenueAccMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateRevenueAccComponent = (
+  props: UpdateRevenueAccComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateRevenueAccMutation,
+    UpdateRevenueAccMutationVariables
+  >
+    mutation={UpdateRevenueAccDocument}
+    {...props}
+  />
+);
+
+export type UpdateRevenueAccProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateRevenueAccMutation,
+    UpdateRevenueAccMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateRevenueAcc<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateRevenueAccMutation,
+    UpdateRevenueAccMutationVariables,
+    UpdateRevenueAccProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateRevenueAccMutation,
+    UpdateRevenueAccMutationVariables,
+    UpdateRevenueAccProps<TChildProps, TDataName>
+  >(UpdateRevenueAccDocument, {
+    alias: 'updateRevenueAcc',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateRevenueAccMutation__
+ *
+ * To run a mutation, you first call `useUpdateRevenueAccMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateRevenueAccMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateRevenueAccMutation, { data, loading, error }] = useUpdateRevenueAccMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      changes: // value for 'changes'
+ *   },
+ * });
+ */
+export function useUpdateRevenueAccMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateRevenueAccMutation,
+    UpdateRevenueAccMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateRevenueAccMutation,
+    UpdateRevenueAccMutationVariables
+  >(UpdateRevenueAccDocument, options);
+}
+export type UpdateRevenueAccMutationHookResult = ReturnType<
+  typeof useUpdateRevenueAccMutation
+>;
+export type UpdateRevenueAccMutationResult =
+  Apollo.MutationResult<UpdateRevenueAccMutation>;
+export type UpdateRevenueAccMutationOptions = Apollo.BaseMutationOptions<
+  UpdateRevenueAccMutation,
+  UpdateRevenueAccMutationVariables
+>;
+export const UpdateRevenueStateDocument = gql`
+  mutation updateRevenueState($id: bigint!, $state: Boolean) {
+    update_revenues_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
+      active
+    }
+  }
+`;
+export type UpdateRevenueStateMutationFn = Apollo.MutationFunction<
+  UpdateRevenueStateMutation,
+  UpdateRevenueStateMutationVariables
+>;
+export type UpdateRevenueStateComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateRevenueStateMutation,
+    UpdateRevenueStateMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateRevenueStateComponent = (
+  props: UpdateRevenueStateComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateRevenueStateMutation,
+    UpdateRevenueStateMutationVariables
+  >
+    mutation={UpdateRevenueStateDocument}
+    {...props}
+  />
+);
+
+export type UpdateRevenueStateProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateRevenueStateMutation,
+    UpdateRevenueStateMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateRevenueState<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateRevenueStateMutation,
+    UpdateRevenueStateMutationVariables,
+    UpdateRevenueStateProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateRevenueStateMutation,
+    UpdateRevenueStateMutationVariables,
+    UpdateRevenueStateProps<TChildProps, TDataName>
+  >(UpdateRevenueStateDocument, {
+    alias: 'updateRevenueState',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateRevenueStateMutation__
+ *
+ * To run a mutation, you first call `useUpdateRevenueStateMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateRevenueStateMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateRevenueStateMutation, { data, loading, error }] = useUpdateRevenueStateMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      state: // value for 'state'
+ *   },
+ * });
+ */
+export function useUpdateRevenueStateMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateRevenueStateMutation,
+    UpdateRevenueStateMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateRevenueStateMutation,
+    UpdateRevenueStateMutationVariables
+  >(UpdateRevenueStateDocument, options);
+}
+export type UpdateRevenueStateMutationHookResult = ReturnType<
+  typeof useUpdateRevenueStateMutation
+>;
+export type UpdateRevenueStateMutationResult =
+  Apollo.MutationResult<UpdateRevenueStateMutation>;
+export type UpdateRevenueStateMutationOptions = Apollo.BaseMutationOptions<
+  UpdateRevenueStateMutation,
+  UpdateRevenueStateMutationVariables
+>;
 export const UpdateUserDocument = gql`
   mutation updateUser($userId: uuid!, $changes: users_set_input) {
     update_users(where: { id: { _eq: $userId } }, _set: $changes) {
@@ -7186,6 +8167,244 @@ export type AllLabelsQueryResult = Apollo.QueryResult<
   AllLabelsQuery,
   AllLabelsQueryVariables
 >;
+export const AllLiabilityAccountsDocument = gql`
+  query allLiabilityAccounts($limit: Int, $offset: Int) {
+    liabilities(limit: $limit, offset: $offset, order_by: { name: asc }) {
+      id
+      name
+      active
+      created_at
+      updated_at
+    }
+    liabilities_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+export type AllLiabilityAccountsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllLiabilityAccountsQuery,
+    AllLiabilityAccountsQueryVariables
+  >,
+  'query'
+>;
+
+export const AllLiabilityAccountsComponent = (
+  props: AllLiabilityAccountsComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    AllLiabilityAccountsQuery,
+    AllLiabilityAccountsQueryVariables
+  >
+    query={AllLiabilityAccountsDocument}
+    {...props}
+  />
+);
+
+export type AllLiabilityAccountsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    AllLiabilityAccountsQuery,
+    AllLiabilityAccountsQueryVariables
+  >;
+} & TChildProps;
+export function withAllLiabilityAccounts<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    AllLiabilityAccountsQuery,
+    AllLiabilityAccountsQueryVariables,
+    AllLiabilityAccountsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    AllLiabilityAccountsQuery,
+    AllLiabilityAccountsQueryVariables,
+    AllLiabilityAccountsProps<TChildProps, TDataName>
+  >(AllLiabilityAccountsDocument, {
+    alias: 'allLiabilityAccounts',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useAllLiabilityAccountsQuery__
+ *
+ * To run a query within a React component, call `useAllLiabilityAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllLiabilityAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllLiabilityAccountsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useAllLiabilityAccountsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    AllLiabilityAccountsQuery,
+    AllLiabilityAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    AllLiabilityAccountsQuery,
+    AllLiabilityAccountsQueryVariables
+  >(AllLiabilityAccountsDocument, options);
+}
+export function useAllLiabilityAccountsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    AllLiabilityAccountsQuery,
+    AllLiabilityAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    AllLiabilityAccountsQuery,
+    AllLiabilityAccountsQueryVariables
+  >(AllLiabilityAccountsDocument, options);
+}
+export type AllLiabilityAccountsQueryHookResult = ReturnType<
+  typeof useAllLiabilityAccountsQuery
+>;
+export type AllLiabilityAccountsLazyQueryHookResult = ReturnType<
+  typeof useAllLiabilityAccountsLazyQuery
+>;
+export type AllLiabilityAccountsQueryResult = Apollo.QueryResult<
+  AllLiabilityAccountsQuery,
+  AllLiabilityAccountsQueryVariables
+>;
+export const AllRevenueAccountsDocument = gql`
+  query allRevenueAccounts($limit: Int, $offset: Int) {
+    revenues(limit: $limit, offset: $offset, order_by: { name: asc }) {
+      id
+      name
+      active
+      created_at
+      updated_at
+    }
+    revenues_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+export type AllRevenueAccountsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllRevenueAccountsQuery,
+    AllRevenueAccountsQueryVariables
+  >,
+  'query'
+>;
+
+export const AllRevenueAccountsComponent = (
+  props: AllRevenueAccountsComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    AllRevenueAccountsQuery,
+    AllRevenueAccountsQueryVariables
+  >
+    query={AllRevenueAccountsDocument}
+    {...props}
+  />
+);
+
+export type AllRevenueAccountsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    AllRevenueAccountsQuery,
+    AllRevenueAccountsQueryVariables
+  >;
+} & TChildProps;
+export function withAllRevenueAccounts<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    AllRevenueAccountsQuery,
+    AllRevenueAccountsQueryVariables,
+    AllRevenueAccountsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    AllRevenueAccountsQuery,
+    AllRevenueAccountsQueryVariables,
+    AllRevenueAccountsProps<TChildProps, TDataName>
+  >(AllRevenueAccountsDocument, {
+    alias: 'allRevenueAccounts',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useAllRevenueAccountsQuery__
+ *
+ * To run a query within a React component, call `useAllRevenueAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllRevenueAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllRevenueAccountsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useAllRevenueAccountsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    AllRevenueAccountsQuery,
+    AllRevenueAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    AllRevenueAccountsQuery,
+    AllRevenueAccountsQueryVariables
+  >(AllRevenueAccountsDocument, options);
+}
+export function useAllRevenueAccountsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    AllRevenueAccountsQuery,
+    AllRevenueAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    AllRevenueAccountsQuery,
+    AllRevenueAccountsQueryVariables
+  >(AllRevenueAccountsDocument, options);
+}
+export type AllRevenueAccountsQueryHookResult = ReturnType<
+  typeof useAllRevenueAccountsQuery
+>;
+export type AllRevenueAccountsLazyQueryHookResult = ReturnType<
+  typeof useAllRevenueAccountsLazyQuery
+>;
+export type AllRevenueAccountsQueryResult = Apollo.QueryResult<
+  AllRevenueAccountsQuery,
+  AllRevenueAccountsQueryVariables
+>;
 export const FetchFeedsDocument = gql`
   subscription fetchFeeds {
     feeds(order_by: { created_at: desc }) {
@@ -7653,30 +8872,30 @@ export type ResolversTypes = {
   labels_var_pop_fields: ResolverTypeWrapper<Labels_Var_Pop_Fields>;
   labels_var_samp_fields: ResolverTypeWrapper<Labels_Var_Samp_Fields>;
   labels_variance_fields: ResolverTypeWrapper<Labels_Variance_Fields>;
-  liabiulities: ResolverTypeWrapper<Liabiulities>;
-  liabiulities_aggregate: ResolverTypeWrapper<Liabiulities_Aggregate>;
-  liabiulities_aggregate_fields: ResolverTypeWrapper<Liabiulities_Aggregate_Fields>;
-  liabiulities_avg_fields: ResolverTypeWrapper<Liabiulities_Avg_Fields>;
-  liabiulities_bool_exp: Liabiulities_Bool_Exp;
-  liabiulities_constraint: Liabiulities_Constraint;
-  liabiulities_inc_input: Liabiulities_Inc_Input;
-  liabiulities_insert_input: Liabiulities_Insert_Input;
-  liabiulities_max_fields: ResolverTypeWrapper<Liabiulities_Max_Fields>;
-  liabiulities_min_fields: ResolverTypeWrapper<Liabiulities_Min_Fields>;
-  liabiulities_mutation_response: ResolverTypeWrapper<Liabiulities_Mutation_Response>;
-  liabiulities_on_conflict: Liabiulities_On_Conflict;
-  liabiulities_order_by: Liabiulities_Order_By;
-  liabiulities_pk_columns_input: Liabiulities_Pk_Columns_Input;
-  liabiulities_select_column: Liabiulities_Select_Column;
-  liabiulities_set_input: Liabiulities_Set_Input;
-  liabiulities_stddev_fields: ResolverTypeWrapper<Liabiulities_Stddev_Fields>;
-  liabiulities_stddev_pop_fields: ResolverTypeWrapper<Liabiulities_Stddev_Pop_Fields>;
-  liabiulities_stddev_samp_fields: ResolverTypeWrapper<Liabiulities_Stddev_Samp_Fields>;
-  liabiulities_sum_fields: ResolverTypeWrapper<Liabiulities_Sum_Fields>;
-  liabiulities_update_column: Liabiulities_Update_Column;
-  liabiulities_var_pop_fields: ResolverTypeWrapper<Liabiulities_Var_Pop_Fields>;
-  liabiulities_var_samp_fields: ResolverTypeWrapper<Liabiulities_Var_Samp_Fields>;
-  liabiulities_variance_fields: ResolverTypeWrapper<Liabiulities_Variance_Fields>;
+  liabilities: ResolverTypeWrapper<Liabilities>;
+  liabilities_aggregate: ResolverTypeWrapper<Liabilities_Aggregate>;
+  liabilities_aggregate_fields: ResolverTypeWrapper<Liabilities_Aggregate_Fields>;
+  liabilities_avg_fields: ResolverTypeWrapper<Liabilities_Avg_Fields>;
+  liabilities_bool_exp: Liabilities_Bool_Exp;
+  liabilities_constraint: Liabilities_Constraint;
+  liabilities_inc_input: Liabilities_Inc_Input;
+  liabilities_insert_input: Liabilities_Insert_Input;
+  liabilities_max_fields: ResolverTypeWrapper<Liabilities_Max_Fields>;
+  liabilities_min_fields: ResolverTypeWrapper<Liabilities_Min_Fields>;
+  liabilities_mutation_response: ResolverTypeWrapper<Liabilities_Mutation_Response>;
+  liabilities_on_conflict: Liabilities_On_Conflict;
+  liabilities_order_by: Liabilities_Order_By;
+  liabilities_pk_columns_input: Liabilities_Pk_Columns_Input;
+  liabilities_select_column: Liabilities_Select_Column;
+  liabilities_set_input: Liabilities_Set_Input;
+  liabilities_stddev_fields: ResolverTypeWrapper<Liabilities_Stddev_Fields>;
+  liabilities_stddev_pop_fields: ResolverTypeWrapper<Liabilities_Stddev_Pop_Fields>;
+  liabilities_stddev_samp_fields: ResolverTypeWrapper<Liabilities_Stddev_Samp_Fields>;
+  liabilities_sum_fields: ResolverTypeWrapper<Liabilities_Sum_Fields>;
+  liabilities_update_column: Liabilities_Update_Column;
+  liabilities_var_pop_fields: ResolverTypeWrapper<Liabilities_Var_Pop_Fields>;
+  liabilities_var_samp_fields: ResolverTypeWrapper<Liabilities_Var_Samp_Fields>;
+  liabilities_variance_fields: ResolverTypeWrapper<Liabilities_Variance_Fields>;
   mutation_root: ResolverTypeWrapper<{}>;
   notifications: ResolverTypeWrapper<Notifications>;
   notifications_aggregate: ResolverTypeWrapper<Notifications_Aggregate>;
@@ -7961,27 +9180,27 @@ export type ResolversParentTypes = {
   labels_var_pop_fields: Labels_Var_Pop_Fields;
   labels_var_samp_fields: Labels_Var_Samp_Fields;
   labels_variance_fields: Labels_Variance_Fields;
-  liabiulities: Liabiulities;
-  liabiulities_aggregate: Liabiulities_Aggregate;
-  liabiulities_aggregate_fields: Liabiulities_Aggregate_Fields;
-  liabiulities_avg_fields: Liabiulities_Avg_Fields;
-  liabiulities_bool_exp: Liabiulities_Bool_Exp;
-  liabiulities_inc_input: Liabiulities_Inc_Input;
-  liabiulities_insert_input: Liabiulities_Insert_Input;
-  liabiulities_max_fields: Liabiulities_Max_Fields;
-  liabiulities_min_fields: Liabiulities_Min_Fields;
-  liabiulities_mutation_response: Liabiulities_Mutation_Response;
-  liabiulities_on_conflict: Liabiulities_On_Conflict;
-  liabiulities_order_by: Liabiulities_Order_By;
-  liabiulities_pk_columns_input: Liabiulities_Pk_Columns_Input;
-  liabiulities_set_input: Liabiulities_Set_Input;
-  liabiulities_stddev_fields: Liabiulities_Stddev_Fields;
-  liabiulities_stddev_pop_fields: Liabiulities_Stddev_Pop_Fields;
-  liabiulities_stddev_samp_fields: Liabiulities_Stddev_Samp_Fields;
-  liabiulities_sum_fields: Liabiulities_Sum_Fields;
-  liabiulities_var_pop_fields: Liabiulities_Var_Pop_Fields;
-  liabiulities_var_samp_fields: Liabiulities_Var_Samp_Fields;
-  liabiulities_variance_fields: Liabiulities_Variance_Fields;
+  liabilities: Liabilities;
+  liabilities_aggregate: Liabilities_Aggregate;
+  liabilities_aggregate_fields: Liabilities_Aggregate_Fields;
+  liabilities_avg_fields: Liabilities_Avg_Fields;
+  liabilities_bool_exp: Liabilities_Bool_Exp;
+  liabilities_inc_input: Liabilities_Inc_Input;
+  liabilities_insert_input: Liabilities_Insert_Input;
+  liabilities_max_fields: Liabilities_Max_Fields;
+  liabilities_min_fields: Liabilities_Min_Fields;
+  liabilities_mutation_response: Liabilities_Mutation_Response;
+  liabilities_on_conflict: Liabilities_On_Conflict;
+  liabilities_order_by: Liabilities_Order_By;
+  liabilities_pk_columns_input: Liabilities_Pk_Columns_Input;
+  liabilities_set_input: Liabilities_Set_Input;
+  liabilities_stddev_fields: Liabilities_Stddev_Fields;
+  liabilities_stddev_pop_fields: Liabilities_Stddev_Pop_Fields;
+  liabilities_stddev_samp_fields: Liabilities_Stddev_Samp_Fields;
+  liabilities_sum_fields: Liabilities_Sum_Fields;
+  liabilities_var_pop_fields: Liabilities_Var_Pop_Fields;
+  liabilities_var_samp_fields: Liabilities_Var_Samp_Fields;
+  liabilities_variance_fields: Liabilities_Variance_Fields;
   mutation_root: {};
   notifications: Notifications;
   notifications_aggregate: Notifications_Aggregate;
@@ -9492,9 +10711,9 @@ export type Labels_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type LiabiulitiesResolvers<
+export type LiabilitiesResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities'] = ResolversParentTypes['liabiulities']
+  ParentType extends ResolversParentTypes['liabilities'] = ResolversParentTypes['liabilities']
 > = {
   account_info?: Resolver<
     ResolversTypes['account_info'],
@@ -9509,29 +10728,29 @@ export type LiabiulitiesResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_AggregateResolvers<
+export type Liabilities_AggregateResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_aggregate'] = ResolversParentTypes['liabiulities_aggregate']
+  ParentType extends ResolversParentTypes['liabilities_aggregate'] = ResolversParentTypes['liabilities_aggregate']
 > = {
   aggregate?: Resolver<
-    Maybe<ResolversTypes['liabiulities_aggregate_fields']>,
+    Maybe<ResolversTypes['liabilities_aggregate_fields']>,
     ParentType,
     ContextType
   >;
   nodes?: Resolver<
-    Array<ResolversTypes['liabiulities']>,
+    Array<ResolversTypes['liabilities']>,
     ParentType,
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Aggregate_FieldsResolvers<
+export type Liabilities_Aggregate_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_aggregate_fields'] = ResolversParentTypes['liabiulities_aggregate_fields']
+  ParentType extends ResolversParentTypes['liabilities_aggregate_fields'] = ResolversParentTypes['liabilities_aggregate_fields']
 > = {
   avg?: Resolver<
-    Maybe<ResolversTypes['liabiulities_avg_fields']>,
+    Maybe<ResolversTypes['liabilities_avg_fields']>,
     ParentType,
     ContextType
   >;
@@ -9539,67 +10758,67 @@ export type Liabiulities_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Liabiulities_Aggregate_FieldsCountArgs, never>
+    RequireFields<Liabilities_Aggregate_FieldsCountArgs, never>
   >;
   max?: Resolver<
-    Maybe<ResolversTypes['liabiulities_max_fields']>,
+    Maybe<ResolversTypes['liabilities_max_fields']>,
     ParentType,
     ContextType
   >;
   min?: Resolver<
-    Maybe<ResolversTypes['liabiulities_min_fields']>,
+    Maybe<ResolversTypes['liabilities_min_fields']>,
     ParentType,
     ContextType
   >;
   stddev?: Resolver<
-    Maybe<ResolversTypes['liabiulities_stddev_fields']>,
+    Maybe<ResolversTypes['liabilities_stddev_fields']>,
     ParentType,
     ContextType
   >;
   stddev_pop?: Resolver<
-    Maybe<ResolversTypes['liabiulities_stddev_pop_fields']>,
+    Maybe<ResolversTypes['liabilities_stddev_pop_fields']>,
     ParentType,
     ContextType
   >;
   stddev_samp?: Resolver<
-    Maybe<ResolversTypes['liabiulities_stddev_samp_fields']>,
+    Maybe<ResolversTypes['liabilities_stddev_samp_fields']>,
     ParentType,
     ContextType
   >;
   sum?: Resolver<
-    Maybe<ResolversTypes['liabiulities_sum_fields']>,
+    Maybe<ResolversTypes['liabilities_sum_fields']>,
     ParentType,
     ContextType
   >;
   var_pop?: Resolver<
-    Maybe<ResolversTypes['liabiulities_var_pop_fields']>,
+    Maybe<ResolversTypes['liabilities_var_pop_fields']>,
     ParentType,
     ContextType
   >;
   var_samp?: Resolver<
-    Maybe<ResolversTypes['liabiulities_var_samp_fields']>,
+    Maybe<ResolversTypes['liabilities_var_samp_fields']>,
     ParentType,
     ContextType
   >;
   variance?: Resolver<
-    Maybe<ResolversTypes['liabiulities_variance_fields']>,
+    Maybe<ResolversTypes['liabilities_variance_fields']>,
     ParentType,
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Avg_FieldsResolvers<
+export type Liabilities_Avg_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_avg_fields'] = ResolversParentTypes['liabiulities_avg_fields']
+  ParentType extends ResolversParentTypes['liabilities_avg_fields'] = ResolversParentTypes['liabilities_avg_fields']
 > = {
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Max_FieldsResolvers<
+export type Liabilities_Max_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_max_fields'] = ResolversParentTypes['liabiulities_max_fields']
+  ParentType extends ResolversParentTypes['liabilities_max_fields'] = ResolversParentTypes['liabilities_max_fields']
 > = {
   created_at?: Resolver<
     Maybe<ResolversTypes['timestamptz']>,
@@ -9616,9 +10835,9 @@ export type Liabiulities_Max_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Min_FieldsResolvers<
+export type Liabilities_Min_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_min_fields'] = ResolversParentTypes['liabiulities_min_fields']
+  ParentType extends ResolversParentTypes['liabilities_min_fields'] = ResolversParentTypes['liabilities_min_fields']
 > = {
   created_at?: Resolver<
     Maybe<ResolversTypes['timestamptz']>,
@@ -9635,70 +10854,70 @@ export type Liabiulities_Min_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Mutation_ResponseResolvers<
+export type Liabilities_Mutation_ResponseResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_mutation_response'] = ResolversParentTypes['liabiulities_mutation_response']
+  ParentType extends ResolversParentTypes['liabilities_mutation_response'] = ResolversParentTypes['liabilities_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   returning?: Resolver<
-    Array<ResolversTypes['liabiulities']>,
+    Array<ResolversTypes['liabilities']>,
     ParentType,
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Stddev_FieldsResolvers<
+export type Liabilities_Stddev_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_stddev_fields'] = ResolversParentTypes['liabiulities_stddev_fields']
+  ParentType extends ResolversParentTypes['liabilities_stddev_fields'] = ResolversParentTypes['liabilities_stddev_fields']
 > = {
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Stddev_Pop_FieldsResolvers<
+export type Liabilities_Stddev_Pop_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_stddev_pop_fields'] = ResolversParentTypes['liabiulities_stddev_pop_fields']
+  ParentType extends ResolversParentTypes['liabilities_stddev_pop_fields'] = ResolversParentTypes['liabilities_stddev_pop_fields']
 > = {
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Stddev_Samp_FieldsResolvers<
+export type Liabilities_Stddev_Samp_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_stddev_samp_fields'] = ResolversParentTypes['liabiulities_stddev_samp_fields']
+  ParentType extends ResolversParentTypes['liabilities_stddev_samp_fields'] = ResolversParentTypes['liabilities_stddev_samp_fields']
 > = {
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Sum_FieldsResolvers<
+export type Liabilities_Sum_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_sum_fields'] = ResolversParentTypes['liabiulities_sum_fields']
+  ParentType extends ResolversParentTypes['liabilities_sum_fields'] = ResolversParentTypes['liabilities_sum_fields']
 > = {
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Var_Pop_FieldsResolvers<
+export type Liabilities_Var_Pop_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_var_pop_fields'] = ResolversParentTypes['liabiulities_var_pop_fields']
+  ParentType extends ResolversParentTypes['liabilities_var_pop_fields'] = ResolversParentTypes['liabilities_var_pop_fields']
 > = {
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Var_Samp_FieldsResolvers<
+export type Liabilities_Var_Samp_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_var_samp_fields'] = ResolversParentTypes['liabiulities_var_samp_fields']
+  ParentType extends ResolversParentTypes['liabilities_var_samp_fields'] = ResolversParentTypes['liabilities_var_samp_fields']
 > = {
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Liabiulities_Variance_FieldsResolvers<
+export type Liabilities_Variance_FieldsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['liabiulities_variance_fields'] = ResolversParentTypes['liabiulities_variance_fields']
+  ParentType extends ResolversParentTypes['liabilities_variance_fields'] = ResolversParentTypes['liabilities_variance_fields']
 > = {
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -9792,17 +11011,17 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_Labels_By_PkArgs, 'id'>
   >;
-  delete_liabiulities?: Resolver<
-    Maybe<ResolversTypes['liabiulities_mutation_response']>,
+  delete_liabilities?: Resolver<
+    Maybe<ResolversTypes['liabilities_mutation_response']>,
     ParentType,
     ContextType,
-    RequireFields<Mutation_RootDelete_LiabiulitiesArgs, 'where'>
+    RequireFields<Mutation_RootDelete_LiabilitiesArgs, 'where'>
   >;
-  delete_liabiulities_by_pk?: Resolver<
-    Maybe<ResolversTypes['liabiulities']>,
+  delete_liabilities_by_pk?: Resolver<
+    Maybe<ResolversTypes['liabilities']>,
     ParentType,
     ContextType,
-    RequireFields<Mutation_RootDelete_Liabiulities_By_PkArgs, 'id'>
+    RequireFields<Mutation_RootDelete_Liabilities_By_PkArgs, 'id'>
   >;
   delete_notifications?: Resolver<
     Maybe<ResolversTypes['notifications_mutation_response']>,
@@ -9960,17 +11179,17 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_Labels_OneArgs, 'object'>
   >;
-  insert_liabiulities?: Resolver<
-    Maybe<ResolversTypes['liabiulities_mutation_response']>,
+  insert_liabilities?: Resolver<
+    Maybe<ResolversTypes['liabilities_mutation_response']>,
     ParentType,
     ContextType,
-    RequireFields<Mutation_RootInsert_LiabiulitiesArgs, 'objects'>
+    RequireFields<Mutation_RootInsert_LiabilitiesArgs, 'objects'>
   >;
-  insert_liabiulities_one?: Resolver<
-    Maybe<ResolversTypes['liabiulities']>,
+  insert_liabilities_one?: Resolver<
+    Maybe<ResolversTypes['liabilities']>,
     ParentType,
     ContextType,
-    RequireFields<Mutation_RootInsert_Liabiulities_OneArgs, 'object'>
+    RequireFields<Mutation_RootInsert_Liabilities_OneArgs, 'object'>
   >;
   insert_notifications?: Resolver<
     Maybe<ResolversTypes['notifications_mutation_response']>,
@@ -10128,17 +11347,17 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_Labels_By_PkArgs, 'pk_columns'>
   >;
-  update_liabiulities?: Resolver<
-    Maybe<ResolversTypes['liabiulities_mutation_response']>,
+  update_liabilities?: Resolver<
+    Maybe<ResolversTypes['liabilities_mutation_response']>,
     ParentType,
     ContextType,
-    RequireFields<Mutation_RootUpdate_LiabiulitiesArgs, 'where'>
+    RequireFields<Mutation_RootUpdate_LiabilitiesArgs, 'where'>
   >;
-  update_liabiulities_by_pk?: Resolver<
-    Maybe<ResolversTypes['liabiulities']>,
+  update_liabilities_by_pk?: Resolver<
+    Maybe<ResolversTypes['liabilities']>,
     ParentType,
     ContextType,
-    RequireFields<Mutation_RootUpdate_Liabiulities_By_PkArgs, 'pk_columns'>
+    RequireFields<Mutation_RootUpdate_Liabilities_By_PkArgs, 'pk_columns'>
   >;
   update_notifications?: Resolver<
     Maybe<ResolversTypes['notifications_mutation_response']>,
@@ -10572,23 +11791,23 @@ export type Query_RootResolvers<
     ContextType,
     RequireFields<Query_RootLabels_By_PkArgs, 'id'>
   >;
-  liabiulities?: Resolver<
-    Array<ResolversTypes['liabiulities']>,
+  liabilities?: Resolver<
+    Array<ResolversTypes['liabilities']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootLiabiulitiesArgs, never>
+    RequireFields<Query_RootLiabilitiesArgs, never>
   >;
-  liabiulities_aggregate?: Resolver<
-    ResolversTypes['liabiulities_aggregate'],
+  liabilities_aggregate?: Resolver<
+    ResolversTypes['liabilities_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootLiabiulities_AggregateArgs, never>
+    RequireFields<Query_RootLiabilities_AggregateArgs, never>
   >;
-  liabiulities_by_pk?: Resolver<
-    Maybe<ResolversTypes['liabiulities']>,
+  liabilities_by_pk?: Resolver<
+    Maybe<ResolversTypes['liabilities']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootLiabiulities_By_PkArgs, 'id'>
+    RequireFields<Query_RootLiabilities_By_PkArgs, 'id'>
   >;
   notifications?: Resolver<
     Array<ResolversTypes['notifications']>,
@@ -11190,26 +12409,26 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootLabels_By_PkArgs, 'id'>
   >;
-  liabiulities?: SubscriptionResolver<
-    Array<ResolversTypes['liabiulities']>,
-    'liabiulities',
+  liabilities?: SubscriptionResolver<
+    Array<ResolversTypes['liabilities']>,
+    'liabilities',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootLiabiulitiesArgs, never>
+    RequireFields<Subscription_RootLiabilitiesArgs, never>
   >;
-  liabiulities_aggregate?: SubscriptionResolver<
-    ResolversTypes['liabiulities_aggregate'],
-    'liabiulities_aggregate',
+  liabilities_aggregate?: SubscriptionResolver<
+    ResolversTypes['liabilities_aggregate'],
+    'liabilities_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootLiabiulities_AggregateArgs, never>
+    RequireFields<Subscription_RootLiabilities_AggregateArgs, never>
   >;
-  liabiulities_by_pk?: SubscriptionResolver<
-    Maybe<ResolversTypes['liabiulities']>,
-    'liabiulities_by_pk',
+  liabilities_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['liabilities']>,
+    'liabilities_by_pk',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootLiabiulities_By_PkArgs, 'id'>
+    RequireFields<Subscription_RootLiabilities_By_PkArgs, 'id'>
   >;
   notifications?: SubscriptionResolver<
     Array<ResolversTypes['notifications']>,
@@ -11789,20 +13008,20 @@ export type Resolvers<ContextType = any> = {
   labels_var_pop_fields?: Labels_Var_Pop_FieldsResolvers<ContextType>;
   labels_var_samp_fields?: Labels_Var_Samp_FieldsResolvers<ContextType>;
   labels_variance_fields?: Labels_Variance_FieldsResolvers<ContextType>;
-  liabiulities?: LiabiulitiesResolvers<ContextType>;
-  liabiulities_aggregate?: Liabiulities_AggregateResolvers<ContextType>;
-  liabiulities_aggregate_fields?: Liabiulities_Aggregate_FieldsResolvers<ContextType>;
-  liabiulities_avg_fields?: Liabiulities_Avg_FieldsResolvers<ContextType>;
-  liabiulities_max_fields?: Liabiulities_Max_FieldsResolvers<ContextType>;
-  liabiulities_min_fields?: Liabiulities_Min_FieldsResolvers<ContextType>;
-  liabiulities_mutation_response?: Liabiulities_Mutation_ResponseResolvers<ContextType>;
-  liabiulities_stddev_fields?: Liabiulities_Stddev_FieldsResolvers<ContextType>;
-  liabiulities_stddev_pop_fields?: Liabiulities_Stddev_Pop_FieldsResolvers<ContextType>;
-  liabiulities_stddev_samp_fields?: Liabiulities_Stddev_Samp_FieldsResolvers<ContextType>;
-  liabiulities_sum_fields?: Liabiulities_Sum_FieldsResolvers<ContextType>;
-  liabiulities_var_pop_fields?: Liabiulities_Var_Pop_FieldsResolvers<ContextType>;
-  liabiulities_var_samp_fields?: Liabiulities_Var_Samp_FieldsResolvers<ContextType>;
-  liabiulities_variance_fields?: Liabiulities_Variance_FieldsResolvers<ContextType>;
+  liabilities?: LiabilitiesResolvers<ContextType>;
+  liabilities_aggregate?: Liabilities_AggregateResolvers<ContextType>;
+  liabilities_aggregate_fields?: Liabilities_Aggregate_FieldsResolvers<ContextType>;
+  liabilities_avg_fields?: Liabilities_Avg_FieldsResolvers<ContextType>;
+  liabilities_max_fields?: Liabilities_Max_FieldsResolvers<ContextType>;
+  liabilities_min_fields?: Liabilities_Min_FieldsResolvers<ContextType>;
+  liabilities_mutation_response?: Liabilities_Mutation_ResponseResolvers<ContextType>;
+  liabilities_stddev_fields?: Liabilities_Stddev_FieldsResolvers<ContextType>;
+  liabilities_stddev_pop_fields?: Liabilities_Stddev_Pop_FieldsResolvers<ContextType>;
+  liabilities_stddev_samp_fields?: Liabilities_Stddev_Samp_FieldsResolvers<ContextType>;
+  liabilities_sum_fields?: Liabilities_Sum_FieldsResolvers<ContextType>;
+  liabilities_var_pop_fields?: Liabilities_Var_Pop_FieldsResolvers<ContextType>;
+  liabilities_var_samp_fields?: Liabilities_Var_Samp_FieldsResolvers<ContextType>;
+  liabilities_variance_fields?: Liabilities_Variance_FieldsResolvers<ContextType>;
   mutation_root?: Mutation_RootResolvers<ContextType>;
   notifications?: NotificationsResolvers<ContextType>;
   notifications_aggregate?: Notifications_AggregateResolvers<ContextType>;

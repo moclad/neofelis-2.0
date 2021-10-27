@@ -99,6 +99,8 @@ export const NavItem: ChakraComponent<'span', NavItemProps> = ({
   useEffect(() => {
     if (isActive) {
       setActive(itemContent);
+
+      console.log(itemContent);
     }
   }, [isActive, setActive, itemContent]);
 
