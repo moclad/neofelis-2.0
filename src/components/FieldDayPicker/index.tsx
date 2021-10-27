@@ -5,8 +5,6 @@ import { FormGroup, FormGroupProps } from '@/components/FormGroup';
 import { InputGroup, InputProps, InputRightElement, Spinner } from '@chakra-ui/react';
 import { FieldProps, useField } from '@formiz/core';
 
-import { defaultValue } from '../InputCurrency/docs.stories';
-
 export interface FieldDayPickerProps extends FieldProps, FormGroupProps {
   invalidMessage?: string;
 }
