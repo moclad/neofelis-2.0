@@ -1,12 +1,21 @@
 {
   "title": "Dashboard",
-  "welcome": {
-    "title": "Welcome to Neofelis",
-    "description": "An opinionated UI starter with React, Chakra UI, React Query & Formiz",
-    "author": "— Made by <strong>Beno Dresch</strong>"
+  "actions": {
+    "createExpense": "Expense"
   },
-  "links": {
-    "github": "GitHub Repository",
-    "openIssue": "Open Issue"
+  "expense": {
+    "data": {
+      "description": "Description",
+      "source": "Source account",
+      "destiny": "Destination account",
+      "sourceRequired": "Source account is required",
+      "destinyRequired": "Destination account is required",
+      "category": "Category",
+      "labels": "Labels",
+      "amount": "Amount",
+      "amountRequired": "Amount is required",
+      "bookDate": "Date",
+      "bookDateRequired": "Booking date is required"
+    }
   }
 }

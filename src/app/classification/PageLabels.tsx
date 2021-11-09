@@ -8,10 +8,10 @@ import {
   ActionsButton,
   ConfirmMenuItem,
   FieldInput,
+  ModalDialog,
   useToastError,
   useToastSuccess
 } from '@/components';
-import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import {
   useAllLabelsQuery,
   useDeleteLabelMutation,

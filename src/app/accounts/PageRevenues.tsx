@@ -15,6 +15,7 @@ import {
   DataListRow,
   FieldInput,
   Icon,
+  ModalDialog,
   Pagination,
   PaginationButtonFirstPage,
   PaginationButtonLastPage,
@@ -24,7 +25,6 @@ import {
   useToastError,
   useToastSuccess
 } from '@/components';
-import ModalDialog from '@/components/ModalDialog/ModalDialog';
 import {
   useAllRevenueAccountsQuery,
   useDeleteRevenueAccMutation,

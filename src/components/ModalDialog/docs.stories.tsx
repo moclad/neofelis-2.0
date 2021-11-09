@@ -4,7 +4,7 @@ import { Button, Stack } from '@chakra-ui/react';
 import { isEmail } from '@formiz/validations';
 
 import { FieldInput } from '../';
-import ModalDialog from './ModalDialog';
+import { ModalDialog } from './';
 
 export default {
   title: 'Components/ModalDialog',

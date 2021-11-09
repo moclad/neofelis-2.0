@@ -1,41 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { DayPicker } from '@/components/DayPicker';
-import { FormGroup, FormGroupProps } from '@/components/FormGroup';
-import { InputGroup, InputProps, InputRightElement, Spinner } from '@chakra-ui/react';
-import { FieldProps, useField } from '@formiz/core';
+import { DayPicker, FormGroup, FormGroupProps } from '@/components';
+import { FieldProps, useField, useForm } from '@formiz/core';
 
 export interface FieldDayPickerProps extends FieldProps, FormGroupProps {
   invalidMessage?: string;
 }
 
 export const FieldDayPicker = (props: FieldDayPickerProps) => {
+  const { t } = useTranslation();
+  const { invalidMessage, ...fieldProps } = props;
+  const { invalidateFields } = useForm({ subscribe: false });
   const {
     errorMessage,
     id,
     isValid,
     isSubmitted,
-    isValidating,
-    resetKey,
     setValue,
     value,
     otherProps,
-  } = useField(props);
-  const {
-    children,
-    label,
-    placeholder,
-    helper,
-    size = 'md',
-    ...rest
-  } = otherProps;
+  } = useField({
+    debounce: 0,
+    ...fieldProps,
+  });
+  const { children, label, type, placeholder, helper, size, ...rest } =
+    otherProps;
   const { required } = props;
-  const [isTouched, setIsTouched] = useState(false);
-  const showError = !isValid && (isTouched || isSubmitted);
-
-  useEffect(() => {
-    setIsTouched(false);
-  }, [resetKey]);
+  const showError = !isValid && isSubmitted;
 
   const formGroupProps = {
     errorMessage,
@@ -47,22 +39,26 @@ export const FieldDayPicker = (props: FieldDayPickerProps) => {
     ...rest,
   };
 
+  const handleChange = (date, isValid) => {
+    setValue(date);
+    if (!isValid) {
+      setTimeout(() => {
+        invalidateFields({
+          [props.name]:
+            invalidMessage ?? t('components:fieldDayPicker.invalidMessage'),
+        });
+      });
+    }
+  };
+
   return (
     <FormGroup {...formGroupProps}>
-      {/* <InputGroup size={size} autoSave={'off'}> */}
       <DayPicker
         id={id}
-        value={value ?? null}
-        onChange={setValue}
-        onBlur={() => setIsTouched(true)}
-        placeholder={placeholder}
+        value={value ?? ''}
+        onChange={handleChange}
+        placeholder={placeholder ? String(placeholder) : ''}
       />
-      {(isTouched || isSubmitted) && isValidating && (
-        <InputRightElement>
-          <Spinner size="sm" flex="none" />
-        </InputRightElement>
-      )}
-      {/* </InputGroup> */}
       {children}
     </FormGroup>
   );

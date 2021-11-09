@@ -14,6 +14,7 @@ export * from './FieldTextarea';
 export * from './FormGroup';
 export * from './Icons';
 export * from './Logo';
+export * from './ModalDialog';
 export * from './Pagination';
 export * from './DataList';
 export * from './Nav';

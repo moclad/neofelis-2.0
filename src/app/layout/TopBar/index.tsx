@@ -45,7 +45,7 @@ export const TopBar = () => {
           pt="safe-top"
           px="4"
           h={theme.layout.topBar.height}
-          shadow="xl"
+          shadow="2xl"
         >
           <MenuButton display={{ base: 'flex', md: 'none' }} ms="-0.5rem" />
           <Box

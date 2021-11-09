@@ -1,20 +1,39 @@
 import React from 'react';
 
-import { Box, Stack } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  Portal,
+  Stack,
+  useDisclosure
+} from '@chakra-ui/react';
 
-import { Select } from '.';
+import { Select } from './';
 
 export default {
   title: 'components/Select',
+  decorators: [
+    (Story) => (
+      <Box h="24rem">
+        <Story />
+      </Box>
+    ),
+  ],
 };
-
-const decorators = [
-  (Story) => (
-    <Box h="24rem">
-      <Story />
-    </Box>
-  ),
-];
 
 const selectOptions = [
   { value: 1, label: 'Option 1' },
@@ -32,37 +51,31 @@ export const Default = () => {
     </Stack>
   );
 };
-Default.decorators = decorators;
 
 export const SelectWithDefaultValue = () => {
   return <Select options={selectOptions} defaultValue={selectOptions[1]} />;
 };
-SelectWithDefaultValue.decorators = decorators;
 
 export const SelectWithPlaceholder = () => {
   return (
     <Select
       placeholder="Please select an option"
-      noOptionsMessage="There is no options"
+      noOptionsMessage={() => 'There is no options'}
     />
   );
 };
-SelectWithPlaceholder.decorators = decorators;
 
 export const DisabledSelect = () => {
   return <Select isDisabled />;
 };
-DisabledSelect.decorators = decorators;
 
 export const IsErrorSelect = () => {
   return <Select isError />;
 };
-IsErrorSelect.decorators = decorators;
 
 export const MultiSelect = () => {
   return <Select isMulti options={selectOptions.slice(0, 2)} />;
 };
-MultiSelect.decorators = decorators;
 
 export const CreatableSelect = () => {
   return (
@@ -73,12 +86,10 @@ export const CreatableSelect = () => {
     />
   );
 };
-CreatableSelect.decorators = decorators;
 
 export const NotSearchableSelect = () => {
   return <Select isSearchable={false} options={selectOptions.slice(0, 2)} />;
 };
-NotSearchableSelect.decorators = decorators;
 
 const options = [
   'red',
@@ -124,7 +135,6 @@ export const AsyncSelect = () => {
     />
   );
 };
-AsyncSelect.decorators = decorators;
 
 export const AsyncCreatableSelect = () => {
   return (
@@ -141,7 +151,6 @@ export const AsyncCreatableSelect = () => {
     />
   );
 };
-AsyncCreatableSelect.decorators = decorators;
 
 export const SelectWithSomeDisabledOptions = () => {
   return (
@@ -154,4 +163,49 @@ export const SelectWithSomeDisabledOptions = () => {
     />
   );
 };
-SelectWithSomeDisabledOptions.decorators = decorators;
+
+export const SelectInPopover = () => {
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <Button>Trigger</Button>
+      </PopoverTrigger>
+      <Portal>
+        <PopoverContent>
+          <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverHeader>Confirmation!</PopoverHeader>
+          <PopoverBody>
+            <Select options={selectOptions} />
+          </PopoverBody>
+        </PopoverContent>
+      </Portal>
+    </Popover>
+  );
+};
+
+export const SelectInModal = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+      <Button onClick={onOpen}>Open Modal</Button>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Select options={selectOptions} />
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+};

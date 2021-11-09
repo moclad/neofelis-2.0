@@ -1,11 +1,3 @@
-import { createServer, Model, Serializer } from 'miragejs';
-
-import { AccountRoutes } from './account';
-import { AuthRoutes } from './auth';
-import { UsersRoutes } from './users';
-import { UserFactory } from './users/factory';
-import { userSeeds } from './users/seeds';
-
 /*
 const AppSerializer = Serializer.extend({
   embed: true,

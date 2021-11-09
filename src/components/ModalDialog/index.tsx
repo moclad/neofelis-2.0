@@ -26,7 +26,7 @@ export interface ModalDialogProps {
   onConfirm: (values) => void;
 }
 
-const ModalDialog: FC<ModalDialogProps> = (props) => {
+export const ModalDialog: FC<ModalDialogProps> = (props) => {
   const {
     children,
     isOpen,
@@ -56,6 +56,8 @@ const ModalDialog: FC<ModalDialogProps> = (props) => {
       }}
       motionPreset="scale"
       closeOnOverlayClick={closeOnOverlayClick ?? false}
+      isCentered
+      size="2xl"
     >
       <ModalOverlay />
       <ModalContent>
@@ -106,5 +108,3 @@ const ModalDialog: FC<ModalDialogProps> = (props) => {
     </Modal>
   );
 };
-
-export default ModalDialog;

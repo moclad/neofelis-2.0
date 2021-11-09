@@ -6,6 +6,7 @@ export const reactDayPicker = (props) => ({
   '.DayPicker *': {
     outline: 'none',
   },
+
   '.DayPickerInput': {
     display: 'inline-block',
     fontSize: '0.1em',
@@ -62,6 +63,20 @@ export const reactDayPicker = (props) => ({
     color: 'gray.300',
   },
 
+  '.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside)':
+    {
+      position: 'relative',
+      backgroundColor: mode('brand.500', 'brand.600')(props),
+      borderRadius: '100%',
+    },
+
+  '.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover':
+    {
+      backgroundColor: mode('brand.400', 'brand.500')(props),
+      borderRadius: '100%',
+      color: 'white',
+    },
+
   '.DayPicker:not(.DayPicker--interactionDisabled)': {
     '.DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover':
       {
@@ -70,21 +85,6 @@ export const reactDayPicker = (props) => ({
         color: mode('black', 'white')(props),
       },
   },
-
-  '.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside)':
-    {
-      position: 'relative',
-      backgroundColor: mode('brand.500', 'brand.600')(props),
-      borderRadius: '100%',
-      color: mode('black', 'white')(props),
-    },
-
-  '.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover':
-    {
-      backgroundColor: mode('brand.400', 'brand.500')(props),
-      borderRadius: '100%',
-      color: mode('black', 'white')(props),
-    },
 
   '.DayPicker-Day--weekend:.DayPicker-Day--selected': {
     color: 'white',

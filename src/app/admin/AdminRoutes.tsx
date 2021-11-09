@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { Switch, Redirect, useRouteMatch } from 'react-router-dom';
+import { Redirect, Switch, useRouteMatch } from 'react-router-dom';
 
 import { PageApiDocumentation } from '@/app/admin/api/PageApiDocumentation';
 import { Route } from '@/app/router';
@@ -17,7 +16,7 @@ const AdminRoutes = () => {
       <Route
         exact
         path={`${url}/`}
-        render={() => <Redirect to={`${url}/users`} />}
+        render={() => <Redirect to={`${url}/api`} />}
       />
       <Route path={`${url}/users`} render={() => <AdminUsersRoutes />} />
       <Route path={`${url}/api`} render={() => <PageApiDocumentation />} />

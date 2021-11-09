@@ -1,64 +1,97 @@
+import dayjs from 'dayjs';
 import React from 'react';
-
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-  Box,
-  Button,
-  ButtonGroup,
-  Heading,
-  Text,
-} from '@chakra-ui/react';
-import { Trans, useTranslation } from 'react-i18next';
-import { FaGithub } from 'react-icons/fa';
-import { FiAlertCircle } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
+import { FiPlus } from 'react-icons/fi';
 
 import { Page, PageContent } from '@/app/layout';
-import { Icon } from '@/components';
+import { FieldCurrency, FieldDayPicker, FieldInput, FieldSelect, ModalDialog } from '@/components';
+import { Button, Stack, useDisclosure } from '@chakra-ui/react';
+
+import { onConfirmCreate } from './Dashboard.services';
+import { TransactionDialog } from './dialogs/transaction-dialog';
 
 export const PageDashboard = () => {
   const { t } = useTranslation();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const colors = [
+    { label: 'Red', value: 'red' },
+    { label: 'Yellow', value: 'yellow' },
+    { label: 'Blue', value: 'blue' },
+  ];
+
   return (
     <Page>
-      <PageContent>
-        <Heading size="md" mb="4">
-          {t('dashboard:title')}
-        </Heading>
-        <Alert status="success" colorScheme="brand" borderRadius="md">
-          <AlertIcon />
-          <Box flex="1">
-            <AlertTitle fontSize="lg">
-              {t('dashboard:welcome.title')}
-            </AlertTitle>
-            <AlertDescription display="block">
-              {t('dashboard:welcome.description')}
-              <br />
-              <Text as="a" href="https://www.bearstudio.fr">
-                <Trans t={t} i18nKey="dashboard:welcome.author" />
-              </Text>
-            </AlertDescription>
-          </Box>
-        </Alert>
-        <ButtonGroup mt="4" spacing="4">
+      <PageContent
+        loading={false}
+        title={t('dashboard:title')}
+        actions={[
           <Button
-            variant="link"
-            as="a"
-            href="https://github.com/BearStudio/start-ui"
+            key="createCategory"
+            leftIcon={<FiPlus />}
+            variant="@primary"
+            onClick={() => onOpen()}
           >
-            <Icon icon={FaGithub} me="1" /> {t('dashboard:links.github')}
-          </Button>
-          <Button
-            variant="link"
-            as="a"
-            href="https://github.com/BearStudio/start-ui/issues/new"
-          >
-            <Icon icon={FiAlertCircle} me="1" />{' '}
-            {t('dashboard:links.openIssue')}
-          </Button>
-        </ButtonGroup>
-      </PageContent>
+            {t('dashboard:actions.createExpense')}
+          </Button>,
+        ]}
+      ></PageContent>
+      <ModalDialog
+        title={t('dashboard:actions.createExpense')}
+        isOpen={isOpen}
+        onCancel={() => {
+          onClose();
+        }}
+        onConfirm={onConfirmCreate}
+        // loading={loading || insertLoading}
+        formId="asset-form-id"
+        loading={false}
+        initialValues={{ transaction_date: dayjs().toDate() }}
+      >
+        <FieldInput
+          name="description"
+          label={t('dashboard:expense.data.description')}
+        />
+        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+          <FieldSelect
+            name="source"
+            label={t('dashboard:expense.data.source')}
+            required={t('dashboard:expense.data.sourceRequired') as string}
+            options={colors}
+          />
+          <FieldSelect
+            name="destiny"
+            label={t('dashboard:expense.data.destiny')}
+            required={t('dashboard:expense.data.targetRequired') as string}
+            options={colors}
+          />
+        </Stack>
+        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+          <FieldSelect
+            name="category"
+            label={t('dashboard:expense.data.category')}
+            options={colors}
+          />
+          <FieldSelect
+            name="labels"
+            label={t('dashboard:expense.data.labels')}
+            options={colors}
+          />
+        </Stack>
+        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+          <FieldCurrency
+            name="amount"
+            label={t('dashboard:expense.data.amount')}
+            placeholder={0}
+            currency="EUR"
+            required={t('dashboard:expense.data.amountRequired') as string}
+          />
+          <FieldDayPicker
+            name="transaction_date"
+            label={t('dashboard:expense.data.bookDate')}
+            required={t('dashboard:expense.data.bookDateRequired') as string}
+          />
+        </Stack>
+      </ModalDialog>
     </Page>
   );
 };
