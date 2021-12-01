@@ -1,4 +1,5 @@
 import React, { ReactNode, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import ReactSelect, { GroupBase, Props } from 'react-select';
 import AsyncReactSelect from 'react-select/async';
 import AsyncCreatableReactSelect from 'react-select/async-creatable';
@@ -71,6 +72,7 @@ const SelectInner = <
   } = props;
 
   const theme = useTheme();
+  const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
   const stylesFromTheme: any = useStyleConfig('Select', {
     size,
@@ -278,13 +280,19 @@ const SelectInner = <
     })),
   };
 
+  const createLabel = formatCreateLabel
+    ? formatCreateLabel
+    : (input: string) => {
+        return <>{`${t('components:select.create')} ${input}`}</>;
+      };
+
   return (
     <BoxAny
       as={Element}
       styles={selectStyle}
       menuPortalTarget={document.body}
       {...(loadingMessage ? { loadingMessage: () => loadingMessage } : {})}
-      {...(formatCreateLabel ? { formatCreateLabel } : {})}
+      formatCreateLabel={createLabel}
       placeholder={placeholder ? String(placeholder) : 'Select...'}
       menuPlacement="auto"
       onCreateOption={isCreatable ? onCreateOption : null}

@@ -26,9 +26,10 @@ export interface FieldSelectProps<
 
 export const FieldSelect = <
   Option,
+  IsMulti extends boolean,
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
-  props: FieldSelectProps<Option, Group>
+  props: FieldSelectProps<Option, IsMulti, Group>
 ) => {
   const {
     errorMessage,
@@ -54,6 +55,7 @@ export const FieldSelect = <
     closeMenuOnSelect = true,
     isMulti = false,
     onCreateOption,
+    formatCreateLabel,
     size = 'md',
     selectProps,
     ...rest
@@ -105,6 +107,7 @@ export const FieldSelect = <
         isCreatable={isCreatable}
         onCreateOption={onCreateOption}
         closeMenuOnSelect={closeMenuOnSelect}
+        formatCreateLabel={formatCreateLabel}
         {...selectProps}
       />
       {children}

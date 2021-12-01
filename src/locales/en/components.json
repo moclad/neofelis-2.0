@@ -1,4 +1,7 @@
 {
+  "select": {
+    "create": "Create"
+  },
   "dateAgo": {
     "format": "dddd, DD MMMM YYYY, hh:mm a"
   },

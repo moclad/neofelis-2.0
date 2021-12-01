@@ -46,6 +46,8 @@ export const TransactionDialog = (props) => {
   const [insertLabel] = useInsertLabelMutation(mutationOptions);
   const [insertCategory] = useInsertCategoryMutation(mutationOptions);
   const [insertExpense] = useInsertExpenseAccMutation(mutationOptions);
+  const [insertTransaction, { loading: insertLoading }] =
+    useInsertTransactionMutation(mutationOptions);
 
   const labels: ISelectOptions[] = [];
   const expenses: ISelectOptions[] = [];
@@ -55,23 +57,7 @@ export const TransactionDialog = (props) => {
   const { data: labelsData } = useAllLabelsQuery();
   const { data: categoriesData } = useActiveCategoriesQuery();
   const { data: expensesData } = useActiveExpenseAccountsQuery();
-
   const { data: assetsData } = useActiveAssetAccountsQuery();
-
-  const [insertTransaction, { loading: insertLoading }] =
-    useInsertTransactionMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.createdError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.createdSuccess.title'),
-        });
-      },
-    });
 
   if (categoriesData) {
     categoriesData.categories.map((category) => {
@@ -178,7 +164,7 @@ export const TransactionDialog = (props) => {
       onConfirm={onConfirmCreate}
       loading={insertLoading}
       formId="asset-form-id"
-      initialValues={{ transaction_date: dayjs().toDate(), amount: 0 }}
+      initialValues={{ transaction_date: dayjs().toDate() }}
     >
       <FieldInput
         name="description"
