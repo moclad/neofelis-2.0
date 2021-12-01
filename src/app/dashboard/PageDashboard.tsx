@@ -35,63 +35,7 @@ export const PageDashboard = () => {
           </Button>,
         ]}
       ></PageContent>
-      <ModalDialog
-        title={t('dashboard:actions.createExpense')}
-        isOpen={isOpen}
-        onCancel={() => {
-          onClose();
-        }}
-        onConfirm={onConfirmCreate}
-        // loading={loading || insertLoading}
-        formId="asset-form-id"
-        loading={false}
-        initialValues={{ transaction_date: dayjs().toDate() }}
-      >
-        <FieldInput
-          name="description"
-          label={t('dashboard:expense.data.description')}
-        />
-        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-          <FieldSelect
-            name="source"
-            label={t('dashboard:expense.data.source')}
-            required={t('dashboard:expense.data.sourceRequired') as string}
-            options={colors}
-          />
-          <FieldSelect
-            name="destiny"
-            label={t('dashboard:expense.data.destiny')}
-            required={t('dashboard:expense.data.targetRequired') as string}
-            options={colors}
-          />
-        </Stack>
-        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-          <FieldSelect
-            name="category"
-            label={t('dashboard:expense.data.category')}
-            options={colors}
-          />
-          <FieldSelect
-            name="labels"
-            label={t('dashboard:expense.data.labels')}
-            options={colors}
-          />
-        </Stack>
-        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-          <FieldCurrency
-            name="amount"
-            label={t('dashboard:expense.data.amount')}
-            placeholder={0}
-            currency="EUR"
-            required={t('dashboard:expense.data.amountRequired') as string}
-          />
-          <FieldDayPicker
-            name="transaction_date"
-            label={t('dashboard:expense.data.bookDate')}
-            required={t('dashboard:expense.data.bookDateRequired') as string}
-          />
-        </Stack>
-      </ModalDialog>
+      <TransactionDialog isOpen={isOpen} onClose={onClose} />
     </Page>
   );
 };

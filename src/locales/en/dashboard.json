@@ -9,7 +9,7 @@
       "source": "Source account",
       "destiny": "Destination account",
       "sourceRequired": "Source account is required",
-      "destinyRequired": "Destination account is required",
+      "targetRequired": "Destination account is required",
       "category": "Category",
       "labels": "Labels",
       "amount": "Amount",

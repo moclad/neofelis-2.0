@@ -1,22 +1,10 @@
-import React, { useContext, FC } from 'react';
-
-import {
-  Box,
-  HStack,
-  IconButton,
-  IconButtonProps,
-  Spinner,
-} from '@chakra-ui/react';
+import React, { FC, useContext } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import {
-  FiChevronsLeft,
-  FiChevronsRight,
-  FiChevronLeft,
-  FiChevronRight,
-} from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 
 import { Icon } from '@/components';
 import { useRtl } from '@/hooks/useRtl';
+import { Box, HStack, IconButton, IconButtonProps, Spinner } from '@chakra-ui/react';
 
 export const getPaginationInfo = ({
   page = 1,
@@ -43,7 +31,33 @@ export const getPaginationInfo = ({
   };
 };
 
-export const PaginationContext = React.createContext(null);
+export type PaginationContextValue<PageType = number> = {
+  page: PageType;
+  setPage: (page: PageType) => void;
+  firstPage: PageType;
+  isFirstPage: boolean;
+  lastPage: PageType;
+  isLastPage: boolean;
+  totalItems: number;
+  isLoadingPage: boolean;
+  pageSize: number;
+  firstItemOnPage: number;
+  lastItemOnPage: number;
+};
+
+export const PaginationContext = React.createContext<PaginationContextValue>({
+  page: 0,
+  setPage: () => undefined,
+  firstPage: 0,
+  isFirstPage: false,
+  lastPage: 0,
+  isLastPage: false,
+  totalItems: 0,
+  isLoadingPage: false,
+  pageSize: 0,
+  firstItemOnPage: 0,
+  lastItemOnPage: 0,
+});
 
 export const PaginationButtonFirstPage: FC<
   Omit<IconButtonProps, 'aria-label'>
@@ -127,12 +141,8 @@ export const PaginationButtonNextPage: FC<
 
 export const PaginationInfo = ({ ...rest }) => {
   const { t } = useTranslation();
-  const {
-    firstItemOnPage,
-    lastItemOnPage,
-    totalItems,
-    isLoadingPage,
-  } = useContext(PaginationContext);
+  const { firstItemOnPage, lastItemOnPage, totalItems, isLoadingPage } =
+    useContext(PaginationContext);
   const translationProps = {
     t,
     values: {

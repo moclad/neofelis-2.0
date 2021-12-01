@@ -12,3 +12,13 @@ query allLiabilityAccounts($limit: Int, $offset: Int) {
     }
   }
 }
+
+query activeLiabilityAccounts {
+  liabilities(order_by: { name: asc }, where: { active: { _eq: true } }) {
+    id
+    name
+    active
+    created_at
+    updated_at
+  }
+}

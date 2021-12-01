@@ -15,21 +15,28 @@ const BoxAny: any = Box;
 // as this code won't be in the final bundle.
 // https://fettblog.eu/typescript-react-generic-forward-refs/#option-3%3A-augment-forwardref
 declare module 'react' {
-  function forwardRef<T, P = {}>(
+  function forwardRef<
+    T,
+    P = {
+      /**/
+    }
+  >(
     render: (props: P, ref: React.Ref<T>) => React.ReactElement | null
   ): (props: P & React.RefAttributes<T>) => React.ReactElement | null;
 }
 
 export type SelectProps<
   Option,
-  IsMulti extends boolean = false,
+  IsMulti extends boolean,
   Group extends GroupBase<Option> = GroupBase<Option>
 > = {
   isAsync?: boolean;
   isCreatable?: boolean;
   isError?: boolean;
+  isMulti?: boolean;
   size?: string;
   formatCreateLabel?: (inputValue: string) => ReactNode;
+  onCreateOption?: (inputLabel: string) => void;
   loadOptions?: (input: unknown) => any;
   defaultOptions?: unknown | boolean;
   debounceDelay?: number;
@@ -38,7 +45,7 @@ export type SelectProps<
 
 const SelectInner = <
   Option,
-  IsMulti extends boolean = false,
+  IsMulti extends boolean,
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
   props: SelectProps<Option, IsMulti, Group>,
@@ -48,11 +55,13 @@ const SelectInner = <
     isAsync,
     isCreatable,
     isError,
+    isMulti,
     size = 'md',
     loadingMessage,
     formatCreateLabel,
     placeholder,
     loadOptions = () => new Promise<void>((resolve) => resolve()),
+    onCreateOption,
     defaultOptions = true,
     debounceDelay = 500,
     styles = {},
@@ -92,7 +101,7 @@ const SelectInner = <
     return ReactSelect;
   })();
 
-  let debounceTimeout = useRef<any>();
+  const debounceTimeout = useRef<any>();
 
   const debounce = (func: () => unknown, delay: number) => {
     clearTimeout(debounceTimeout.current);
@@ -276,6 +285,8 @@ const SelectInner = <
       {...(formatCreateLabel ? { formatCreateLabel } : {})}
       placeholder={placeholder ? String(placeholder) : 'Select...'}
       menuPlacement="auto"
+      onCreateOption={isCreatable ? onCreateOption : null}
+      isMulti={isMulti}
       ref={ref}
       {...asyncProps}
       {...otherProps}

@@ -1,21 +1,164 @@
 import dayjs from 'dayjs';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiPlus } from 'react-icons/fi';
 
-import { Page, PageContent } from '@/app/layout';
-import { FieldCurrency, FieldDayPicker, FieldInput, FieldSelect, ModalDialog } from '@/components';
+import {
+  FieldCurrency,
+  FieldDayPicker,
+  FieldInput,
+  FieldSelect,
+  ModalDialog,
+  useToastError,
+  useToastSuccess
+} from '@/components';
+import {
+  useActiveAssetAccountsQuery,
+  useActiveCategoriesQuery,
+  useActiveExpenseAccountsQuery,
+  useAllLabelsQuery,
+  useInsertCategoryMutation,
+  useInsertExpenseAccMutation,
+  useInsertTransactionMutation
+} from '@/generated/graphql';
+import { ISelectOptions } from '@/types/types';
 import { Button, Stack, useDisclosure } from '@chakra-ui/react';
 
-export const TransactionDialog = () => {
+export const TransactionDialog = (props) => {
   const { t } = useTranslation();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const toastSuccess = useToastSuccess();
+  const toastError = useToastError();
+  const { isOpen, onClose } = props;
 
-  const colors = [
-    { label: 'Red', value: 'red' },
-    { label: 'Yellow', value: 'yellow' },
-    { label: 'Blue', value: 'blue' },
-  ];
+  const [insertExpense] = useInsertExpenseAccMutation({
+    onError: (error) => {
+      toastError({
+        title: t('common:feedbacks.createdError.title'),
+        description: error.message,
+      });
+    },
+    onCompleted: () => {
+      toastSuccess({
+        title: t('common:feedbacks.createdSuccess.title'),
+      });
+    },
+  });
+
+  const [insertCategory] = useInsertCategoryMutation({
+    onError: (error) => {
+      toastError({
+        title: t('common:feedbacks.createdError.title'),
+        description: error.message,
+      });
+    },
+    onCompleted: () => {
+      toastSuccess({
+        title: t('common:feedbacks.createdSuccess.title'),
+      });
+    },
+  });
+
+  const labels: ISelectOptions[] = [];
+  const expenses: ISelectOptions[] = [];
+  const assets: ISelectOptions[] = [];
+  const categories: ISelectOptions[] = [];
+
+  const { loading: labelsLoading, data: labelsData } = useAllLabelsQuery();
+  const { loading: categoriesLoading, data: categoriesData } =
+    useActiveCategoriesQuery();
+  const { loading: expensesLoading, data: expensesData } =
+    useActiveExpenseAccountsQuery();
+
+  const { loading: assetsLoading, data: assetsData } =
+    useActiveAssetAccountsQuery();
+
+  const [insertTransaction, { loading: insertLoading }] =
+    useInsertTransactionMutation({
+      onError: (error) => {
+        toastError({
+          title: t('common:feedbacks.createdError.title'),
+          description: error.message,
+        });
+      },
+      onCompleted: () => {
+        toastSuccess({
+          title: t('common:feedbacks.createdSuccess.title'),
+        });
+      },
+    });
+
+  if (categoriesData) {
+    categoriesData.categories.map((category) => {
+      const option: ISelectOptions = {
+        label: category.name,
+        value: category.id,
+      };
+      categories.push(option);
+    });
+  }
+
+  if (labelsData) {
+    labelsData.labels.map((label) => {
+      const option: ISelectOptions = { label: label.name, value: label.id };
+      labels.push(option);
+    });
+  }
+
+  if (expensesData) {
+    expensesData.expenses.map((data) => {
+      const option: ISelectOptions = { label: data.name, value: data.id };
+      expenses.push(option);
+    });
+  }
+
+  if (assetsData) {
+    assetsData.assets.map((data) => {
+      const option: ISelectOptions = { label: data.name, value: data.id };
+      assets.push(option);
+    });
+  }
+
+  const onCreateExpenseAccount = (value: string) => {
+    const newData = {
+      name: value,
+      account_info: { data: { type: 'E' } },
+    };
+
+    insertExpense({
+      variables: {
+        object: newData,
+      },
+      refetchQueries: 'active',
+    });
+  };
+
+  const onCreateCategory = (value: string) => {
+    const newData = {
+      name: value,
+    };
+
+    insertCategory({
+      variables: {
+        object: newData,
+      },
+      refetchQueries: 'active',
+    });
+  };
+
+  const onConfirmCreate = async (values) => {
+    console.log(values);
+    const newData = {
+      ...values,
+    };
+
+    console.log(newData);
+
+    await insertTransaction({
+      variables: {
+        object: newData,
+      },
+      refetchQueries: 'active',
+    });
+  };
 
   return (
     <ModalDialog
@@ -24,40 +167,32 @@ export const TransactionDialog = () => {
       onCancel={() => {
         onClose();
       }}
-      onConfirm={() => console.log('test')}
+      onConfirm={onConfirmCreate}
       // loading={loading || insertLoading}
       formId="asset-form-id"
       loading={false}
-      initialValues={{ transaction_date: dayjs().toDate() }}
+      initialValues={{ transaction_date: dayjs().toDate(), amount: 0 }}
     >
       <FieldInput
         name="description"
         label={t('dashboard:expense.data.description')}
+        type={'text'}
+        placeholder={t('dashboard:expense.data.description') as string}
       />
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldSelect
-          name="source"
+          name="source_account"
           label={t('dashboard:expense.data.source')}
           required={t('dashboard:expense.data.sourceRequired') as string}
-          options={colors}
+          options={assets}
         />
         <FieldSelect
-          name="destiny"
+          name="destiny_account"
           label={t('dashboard:expense.data.destiny')}
           required={t('dashboard:expense.data.targetRequired') as string}
-          options={colors}
-        />
-      </Stack>
-      <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-        <FieldSelect
-          name="category"
-          label={t('dashboard:expense.data.category')}
-          options={colors}
-        />
-        <FieldSelect
-          name="labels"
-          label={t('dashboard:expense.data.labels')}
-          options={colors}
+          options={expenses}
+          isCreatable={true}
+          onCreateOption={onCreateExpenseAccount}
         />
       </Stack>
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
@@ -72,6 +207,25 @@ export const TransactionDialog = () => {
           name="transaction_date"
           label={t('dashboard:expense.data.bookDate')}
           required={t('dashboard:expense.data.bookDateRequired') as string}
+        />
+      </Stack>
+      <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+        <FieldSelect
+          name="category_id"
+          label={t('dashboard:expense.data.category')}
+          options={categories}
+          isCreatable={true}
+          onCreateOption={onCreateCategory}
+        />
+      </Stack>
+      <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+        <FieldSelect
+          name="labels"
+          label={t('dashboard:expense.data.labels')}
+          options={labels}
+          size="sm"
+          isCreatable={true}
+          isMulti={true}
         />
       </Stack>
     </ModalDialog>

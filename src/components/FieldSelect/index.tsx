@@ -1,25 +1,33 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-
-import { FieldProps, useField } from '@formiz/core';
+import { GroupBase } from 'react-select';
 
 import { FormGroup, FormGroupProps } from '@/components/FormGroup';
-import { Select } from '@/components/Select';
+import { Select, SelectProps } from '@/components/Select';
+import { FieldProps, useField } from '@formiz/core';
 
-interface Option {
-  value: any;
-  label?: ReactNode;
-}
-
-export interface FieldSelectProps extends FieldProps, FormGroupProps {
+export interface FieldSelectProps<
+  Option,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> extends FieldProps,
+    FormGroupProps {
   placeholder?: string;
   size?: 'sm' | 'md' | 'lg';
   options?: Option[];
-  noOptionsMessage?: string;
+  isMulti?: boolean;
   isClearable?: boolean;
   isSearchable?: boolean;
+  selectProps?: SelectProps<Option, Group>;
+  isCreatable?: boolean;
+  formatCreateLabel?: (inputValue: string) => ReactNode;
+  onCreateOption?: (inputLabel: string) => void;
 }
 
-export const FieldSelect = (props: FieldSelectProps) => {
+export const FieldSelect = <
+  Option,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: FieldSelectProps<Option, Group>
+) => {
   const {
     errorMessage,
     id,
@@ -37,11 +45,14 @@ export const FieldSelect = (props: FieldSelectProps) => {
     options = [],
     placeholder,
     helper,
-    noOptionsMessage,
     isDisabled,
     isClearable,
     isSearchable,
+    isCreatable,
+    isMulti = false,
+    onCreateOption,
     size = 'md',
+    selectProps,
     ...rest
   } = otherProps;
   const [isTouched, setIsTouched] = useState(false);
@@ -65,6 +76,7 @@ export const FieldSelect = (props: FieldSelectProps) => {
     <FormGroup {...formGroupProps}>
       <Select
         id={id}
+        isMulti={isMulti}
         value={options?.find((option) => option.value === value) || ''}
         onBlur={() => setIsTouched(true)}
         placeholder={placeholder || 'Select...'}
@@ -73,11 +85,13 @@ export const FieldSelect = (props: FieldSelectProps) => {
         }
         size={size}
         options={options}
-        noOptionsMessage={noOptionsMessage || 'No option'}
         isDisabled={isDisabled}
         isClearable={isClearable}
         isSearchable={isSearchable}
         isError={showError}
+        isCreatable={isCreatable}
+        onCreateOption={onCreateOption}
+        {...selectProps}
       />
       {children}
     </FormGroup>

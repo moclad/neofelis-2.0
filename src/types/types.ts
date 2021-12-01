@@ -22,3 +22,8 @@ export interface IUser {
   image: string;
   email: string;
 }
+
+export interface ISelectOptions {
+  label: string;
+  value: number;
+}

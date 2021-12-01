@@ -8,5 +8,8 @@
   "links": {
     "github": "Dépôt GitHub",
     "openIssue": "Ouvrir une issue"
+  },
+  "dashboard:dashboard": {
+    "title": ""
   }
 }

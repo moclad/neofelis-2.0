@@ -9,6 +9,7 @@ import * as React from 'react';
 import * as ApolloReactComponents from '@apollo/client/react/components';
 import * as ApolloReactHoc from '@apollo/client/react/hoc';
 export type Maybe<T> = T | undefined;
+export type InputMaybe<T> = T | undefined;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
@@ -40,61 +41,61 @@ export type Scalars = {
 
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
 export type Boolean_Comparison_Exp = {
-  _eq?: Maybe<Scalars['Boolean']>;
-  _gt?: Maybe<Scalars['Boolean']>;
-  _gte?: Maybe<Scalars['Boolean']>;
-  _in?: Maybe<Array<Scalars['Boolean']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['Boolean']>;
-  _lte?: Maybe<Scalars['Boolean']>;
-  _neq?: Maybe<Scalars['Boolean']>;
-  _nin?: Maybe<Array<Scalars['Boolean']>>;
+  _eq?: InputMaybe<Scalars['Boolean']>;
+  _gt?: InputMaybe<Scalars['Boolean']>;
+  _gte?: InputMaybe<Scalars['Boolean']>;
+  _in?: InputMaybe<Array<Scalars['Boolean']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['Boolean']>;
+  _lte?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Scalars['Boolean']>;
+  _nin?: InputMaybe<Array<Scalars['Boolean']>>;
 };
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
-  _eq?: Maybe<Scalars['Int']>;
-  _gt?: Maybe<Scalars['Int']>;
-  _gte?: Maybe<Scalars['Int']>;
-  _in?: Maybe<Array<Scalars['Int']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['Int']>;
-  _lte?: Maybe<Scalars['Int']>;
-  _neq?: Maybe<Scalars['Int']>;
-  _nin?: Maybe<Array<Scalars['Int']>>;
+  _eq?: InputMaybe<Scalars['Int']>;
+  _gt?: InputMaybe<Scalars['Int']>;
+  _gte?: InputMaybe<Scalars['Int']>;
+  _in?: InputMaybe<Array<Scalars['Int']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['Int']>;
+  _lte?: InputMaybe<Scalars['Int']>;
+  _neq?: InputMaybe<Scalars['Int']>;
+  _nin?: InputMaybe<Array<Scalars['Int']>>;
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_Comparison_Exp = {
-  _eq?: Maybe<Scalars['String']>;
-  _gt?: Maybe<Scalars['String']>;
-  _gte?: Maybe<Scalars['String']>;
+  _eq?: InputMaybe<Scalars['String']>;
+  _gt?: InputMaybe<Scalars['String']>;
+  _gte?: InputMaybe<Scalars['String']>;
   /** does the column match the given case-insensitive pattern */
-  _ilike?: Maybe<Scalars['String']>;
-  _in?: Maybe<Array<Scalars['String']>>;
+  _ilike?: InputMaybe<Scalars['String']>;
+  _in?: InputMaybe<Array<Scalars['String']>>;
   /** does the column match the given POSIX regular expression, case insensitive */
-  _iregex?: Maybe<Scalars['String']>;
-  _is_null?: Maybe<Scalars['Boolean']>;
+  _iregex?: InputMaybe<Scalars['String']>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
   /** does the column match the given pattern */
-  _like?: Maybe<Scalars['String']>;
-  _lt?: Maybe<Scalars['String']>;
-  _lte?: Maybe<Scalars['String']>;
-  _neq?: Maybe<Scalars['String']>;
+  _like?: InputMaybe<Scalars['String']>;
+  _lt?: InputMaybe<Scalars['String']>;
+  _lte?: InputMaybe<Scalars['String']>;
+  _neq?: InputMaybe<Scalars['String']>;
   /** does the column NOT match the given case-insensitive pattern */
-  _nilike?: Maybe<Scalars['String']>;
-  _nin?: Maybe<Array<Scalars['String']>>;
+  _nilike?: InputMaybe<Scalars['String']>;
+  _nin?: InputMaybe<Array<Scalars['String']>>;
   /** does the column NOT match the given POSIX regular expression, case insensitive */
-  _niregex?: Maybe<Scalars['String']>;
+  _niregex?: InputMaybe<Scalars['String']>;
   /** does the column NOT match the given pattern */
-  _nlike?: Maybe<Scalars['String']>;
+  _nlike?: InputMaybe<Scalars['String']>;
   /** does the column NOT match the given POSIX regular expression, case sensitive */
-  _nregex?: Maybe<Scalars['String']>;
+  _nregex?: InputMaybe<Scalars['String']>;
   /** does the column NOT match the given SQL regular expression */
-  _nsimilar?: Maybe<Scalars['String']>;
+  _nsimilar?: InputMaybe<Scalars['String']>;
   /** does the column match the given POSIX regular expression, case sensitive */
-  _regex?: Maybe<Scalars['String']>;
+  _regex?: InputMaybe<Scalars['String']>;
   /** does the column match the given SQL regular expression */
-  _similar?: Maybe<Scalars['String']>;
+  _similar?: InputMaybe<Scalars['String']>;
 };
 
 /** columns and relationships of "account_info" */
@@ -118,38 +119,38 @@ export type Account_Info = {
 
 /** columns and relationships of "account_info" */
 export type Account_InfoTransactionsArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 /** columns and relationships of "account_info" */
 export type Account_InfoTransactionsBySourceAccountArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 /** columns and relationships of "account_info" */
 export type Account_InfoTransactionsBySourceAccount_AggregateArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 /** columns and relationships of "account_info" */
 export type Account_InfoTransactions_AggregateArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 /** aggregated selection of "account_info" */
@@ -177,8 +178,8 @@ export type Account_Info_Aggregate_Fields = {
 
 /** aggregate fields of "account_info" */
 export type Account_Info_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Account_Info_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Account_Info_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -189,16 +190,16 @@ export type Account_Info_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "account_info". All fields are combined with a logical 'AND'. */
 export type Account_Info_Bool_Exp = {
-  _and?: Maybe<Array<Account_Info_Bool_Exp>>;
-  _not?: Maybe<Account_Info_Bool_Exp>;
-  _or?: Maybe<Array<Account_Info_Bool_Exp>>;
-  asset?: Maybe<Assets_Bool_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Bigint_Comparison_Exp>;
-  transactions?: Maybe<Transactions_Bool_Exp>;
-  transactionsBySourceAccount?: Maybe<Transactions_Bool_Exp>;
-  type?: Maybe<Bpchar_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Account_Info_Bool_Exp>>;
+  _not?: InputMaybe<Account_Info_Bool_Exp>;
+  _or?: InputMaybe<Array<Account_Info_Bool_Exp>>;
+  asset?: InputMaybe<Assets_Bool_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Bigint_Comparison_Exp>;
+  transactions?: InputMaybe<Transactions_Bool_Exp>;
+  transactionsBySourceAccount?: InputMaybe<Transactions_Bool_Exp>;
+  type?: InputMaybe<Bpchar_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "account_info" */
@@ -209,18 +210,18 @@ export enum Account_Info_Constraint {
 
 /** input type for incrementing numeric columns in table "account_info" */
 export type Account_Info_Inc_Input = {
-  id?: Maybe<Scalars['bigint']>;
+  id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "account_info" */
 export type Account_Info_Insert_Input = {
-  asset?: Maybe<Assets_Obj_Rel_Insert_Input>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  transactions?: Maybe<Transactions_Arr_Rel_Insert_Input>;
-  transactionsBySourceAccount?: Maybe<Transactions_Arr_Rel_Insert_Input>;
-  type?: Maybe<Scalars['bpchar']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  asset?: InputMaybe<Assets_Obj_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  transactions?: InputMaybe<Transactions_Arr_Rel_Insert_Input>;
+  transactionsBySourceAccount?: InputMaybe<Transactions_Arr_Rel_Insert_Input>;
+  type?: InputMaybe<Scalars['bpchar']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -254,25 +255,25 @@ export type Account_Info_Mutation_Response = {
 export type Account_Info_Obj_Rel_Insert_Input = {
   data: Account_Info_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Account_Info_On_Conflict>;
+  on_conflict?: InputMaybe<Account_Info_On_Conflict>;
 };
 
 /** on conflict condition type for table "account_info" */
 export type Account_Info_On_Conflict = {
   constraint: Account_Info_Constraint;
   update_columns?: Array<Account_Info_Update_Column>;
-  where?: Maybe<Account_Info_Bool_Exp>;
+  where?: InputMaybe<Account_Info_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "account_info". */
 export type Account_Info_Order_By = {
-  asset?: Maybe<Assets_Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  transactionsBySourceAccount_aggregate?: Maybe<Transactions_Aggregate_Order_By>;
-  transactions_aggregate?: Maybe<Transactions_Aggregate_Order_By>;
-  type?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  asset?: InputMaybe<Assets_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transactionsBySourceAccount_aggregate?: InputMaybe<Transactions_Aggregate_Order_By>;
+  transactions_aggregate?: InputMaybe<Transactions_Aggregate_Order_By>;
+  type?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: account_info */
@@ -294,10 +295,10 @@ export enum Account_Info_Select_Column {
 
 /** input type for updating data in table "account_info" */
 export type Account_Info_Set_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  type?: Maybe<Scalars['bpchar']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  type?: InputMaybe<Scalars['bpchar']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -387,26 +388,26 @@ export type Accounts_Aggregate_Fields = {
 
 /** aggregate fields of "accounts" */
 export type Accounts_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Accounts_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Accounts_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "accounts". All fields are combined with a logical 'AND'. */
 export type Accounts_Bool_Exp = {
-  _and?: Maybe<Array<Accounts_Bool_Exp>>;
-  _not?: Maybe<Accounts_Bool_Exp>;
-  _or?: Maybe<Array<Accounts_Bool_Exp>>;
-  access_token?: Maybe<String_Comparison_Exp>;
-  access_token_expires?: Maybe<Timestamptz_Comparison_Exp>;
-  compound_id?: Maybe<String_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Uuid_Comparison_Exp>;
-  provider_account_id?: Maybe<String_Comparison_Exp>;
-  provider_id?: Maybe<String_Comparison_Exp>;
-  provider_type?: Maybe<String_Comparison_Exp>;
-  refresh_token?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
-  user_id?: Maybe<Uuid_Comparison_Exp>;
+  _and?: InputMaybe<Array<Accounts_Bool_Exp>>;
+  _not?: InputMaybe<Accounts_Bool_Exp>;
+  _or?: InputMaybe<Array<Accounts_Bool_Exp>>;
+  access_token?: InputMaybe<String_Comparison_Exp>;
+  access_token_expires?: InputMaybe<Timestamptz_Comparison_Exp>;
+  compound_id?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  provider_account_id?: InputMaybe<String_Comparison_Exp>;
+  provider_id?: InputMaybe<String_Comparison_Exp>;
+  provider_type?: InputMaybe<String_Comparison_Exp>;
+  refresh_token?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "accounts" */
@@ -417,17 +418,17 @@ export enum Accounts_Constraint {
 
 /** input type for inserting data into table "accounts" */
 export type Accounts_Insert_Input = {
-  access_token?: Maybe<Scalars['String']>;
-  access_token_expires?: Maybe<Scalars['timestamptz']>;
-  compound_id?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['uuid']>;
-  provider_account_id?: Maybe<Scalars['String']>;
-  provider_id?: Maybe<Scalars['String']>;
-  provider_type?: Maybe<Scalars['String']>;
-  refresh_token?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['uuid']>;
+  access_token?: InputMaybe<Scalars['String']>;
+  access_token_expires?: InputMaybe<Scalars['timestamptz']>;
+  compound_id?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  provider_account_id?: InputMaybe<Scalars['String']>;
+  provider_id?: InputMaybe<Scalars['String']>;
+  provider_type?: InputMaybe<Scalars['String']>;
+  refresh_token?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
 };
 
 /** aggregate max on columns */
@@ -475,22 +476,22 @@ export type Accounts_Mutation_Response = {
 export type Accounts_On_Conflict = {
   constraint: Accounts_Constraint;
   update_columns?: Array<Accounts_Update_Column>;
-  where?: Maybe<Accounts_Bool_Exp>;
+  where?: InputMaybe<Accounts_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "accounts". */
 export type Accounts_Order_By = {
-  access_token?: Maybe<Order_By>;
-  access_token_expires?: Maybe<Order_By>;
-  compound_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  provider_account_id?: Maybe<Order_By>;
-  provider_id?: Maybe<Order_By>;
-  provider_type?: Maybe<Order_By>;
-  refresh_token?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  access_token?: InputMaybe<Order_By>;
+  access_token_expires?: InputMaybe<Order_By>;
+  compound_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  provider_account_id?: InputMaybe<Order_By>;
+  provider_id?: InputMaybe<Order_By>;
+  provider_type?: InputMaybe<Order_By>;
+  refresh_token?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: accounts */
@@ -526,17 +527,17 @@ export enum Accounts_Select_Column {
 
 /** input type for updating data in table "accounts" */
 export type Accounts_Set_Input = {
-  access_token?: Maybe<Scalars['String']>;
-  access_token_expires?: Maybe<Scalars['timestamptz']>;
-  compound_id?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['uuid']>;
-  provider_account_id?: Maybe<Scalars['String']>;
-  provider_id?: Maybe<Scalars['String']>;
-  provider_type?: Maybe<Scalars['String']>;
-  refresh_token?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['uuid']>;
+  access_token?: InputMaybe<Scalars['String']>;
+  access_token_expires?: InputMaybe<Scalars['timestamptz']>;
+  compound_id?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  provider_account_id?: InputMaybe<Scalars['String']>;
+  provider_id?: InputMaybe<Scalars['String']>;
+  provider_type?: InputMaybe<Scalars['String']>;
+  refresh_token?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
 };
 
 /** update columns of table "accounts" */
@@ -605,8 +606,8 @@ export type Assets_Aggregate_Fields = {
 
 /** aggregate fields of "assets" */
 export type Assets_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Assets_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Assets_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -618,18 +619,18 @@ export type Assets_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "assets". All fields are combined with a logical 'AND'. */
 export type Assets_Bool_Exp = {
-  _and?: Maybe<Array<Assets_Bool_Exp>>;
-  _not?: Maybe<Assets_Bool_Exp>;
-  _or?: Maybe<Array<Assets_Bool_Exp>>;
-  account_info?: Maybe<Account_Info_Bool_Exp>;
-  account_no?: Maybe<String_Comparison_Exp>;
-  active?: Maybe<Boolean_Comparison_Exp>;
-  balance?: Maybe<Float8_Comparison_Exp>;
-  balance_date?: Maybe<Date_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Bigint_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Assets_Bool_Exp>>;
+  _not?: InputMaybe<Assets_Bool_Exp>;
+  _or?: InputMaybe<Array<Assets_Bool_Exp>>;
+  account_info?: InputMaybe<Account_Info_Bool_Exp>;
+  account_no?: InputMaybe<String_Comparison_Exp>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  balance?: InputMaybe<Float8_Comparison_Exp>;
+  balance_date?: InputMaybe<Date_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Bigint_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "assets" */
@@ -640,21 +641,21 @@ export enum Assets_Constraint {
 
 /** input type for incrementing numeric columns in table "assets" */
 export type Assets_Inc_Input = {
-  balance?: Maybe<Scalars['float8']>;
-  id?: Maybe<Scalars['bigint']>;
+  balance?: InputMaybe<Scalars['float8']>;
+  id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "assets" */
 export type Assets_Insert_Input = {
-  account_info?: Maybe<Account_Info_Obj_Rel_Insert_Input>;
-  account_no?: Maybe<Scalars['String']>;
-  active?: Maybe<Scalars['Boolean']>;
-  balance?: Maybe<Scalars['float8']>;
-  balance_date?: Maybe<Scalars['date']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  account_no?: InputMaybe<Scalars['String']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  balance?: InputMaybe<Scalars['float8']>;
+  balance_date?: InputMaybe<Scalars['date']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -694,27 +695,27 @@ export type Assets_Mutation_Response = {
 export type Assets_Obj_Rel_Insert_Input = {
   data: Assets_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Assets_On_Conflict>;
+  on_conflict?: InputMaybe<Assets_On_Conflict>;
 };
 
 /** on conflict condition type for table "assets" */
 export type Assets_On_Conflict = {
   constraint: Assets_Constraint;
   update_columns?: Array<Assets_Update_Column>;
-  where?: Maybe<Assets_Bool_Exp>;
+  where?: InputMaybe<Assets_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "assets". */
 export type Assets_Order_By = {
-  account_info?: Maybe<Account_Info_Order_By>;
-  account_no?: Maybe<Order_By>;
-  active?: Maybe<Order_By>;
-  balance?: Maybe<Order_By>;
-  balance_date?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  account_info?: InputMaybe<Account_Info_Order_By>;
+  account_no?: InputMaybe<Order_By>;
+  active?: InputMaybe<Order_By>;
+  balance?: InputMaybe<Order_By>;
+  balance_date?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: assets */
@@ -744,14 +745,14 @@ export enum Assets_Select_Column {
 
 /** input type for updating data in table "assets" */
 export type Assets_Set_Input = {
-  account_no?: Maybe<Scalars['String']>;
-  active?: Maybe<Scalars['Boolean']>;
-  balance?: Maybe<Scalars['float8']>;
-  balance_date?: Maybe<Scalars['date']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  account_no?: InputMaybe<Scalars['String']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  balance?: InputMaybe<Scalars['float8']>;
+  balance_date?: InputMaybe<Scalars['date']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -825,48 +826,48 @@ export type Assets_Variance_Fields = {
 
 /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
 export type Bigint_Comparison_Exp = {
-  _eq?: Maybe<Scalars['bigint']>;
-  _gt?: Maybe<Scalars['bigint']>;
-  _gte?: Maybe<Scalars['bigint']>;
-  _in?: Maybe<Array<Scalars['bigint']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['bigint']>;
-  _lte?: Maybe<Scalars['bigint']>;
-  _neq?: Maybe<Scalars['bigint']>;
-  _nin?: Maybe<Array<Scalars['bigint']>>;
+  _eq?: InputMaybe<Scalars['bigint']>;
+  _gt?: InputMaybe<Scalars['bigint']>;
+  _gte?: InputMaybe<Scalars['bigint']>;
+  _in?: InputMaybe<Array<Scalars['bigint']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['bigint']>;
+  _lte?: InputMaybe<Scalars['bigint']>;
+  _neq?: InputMaybe<Scalars['bigint']>;
+  _nin?: InputMaybe<Array<Scalars['bigint']>>;
 };
 
 /** Boolean expression to compare columns of type "bpchar". All fields are combined with logical 'AND'. */
 export type Bpchar_Comparison_Exp = {
-  _eq?: Maybe<Scalars['bpchar']>;
-  _gt?: Maybe<Scalars['bpchar']>;
-  _gte?: Maybe<Scalars['bpchar']>;
+  _eq?: InputMaybe<Scalars['bpchar']>;
+  _gt?: InputMaybe<Scalars['bpchar']>;
+  _gte?: InputMaybe<Scalars['bpchar']>;
   /** does the column match the given case-insensitive pattern */
-  _ilike?: Maybe<Scalars['bpchar']>;
-  _in?: Maybe<Array<Scalars['bpchar']>>;
+  _ilike?: InputMaybe<Scalars['bpchar']>;
+  _in?: InputMaybe<Array<Scalars['bpchar']>>;
   /** does the column match the given POSIX regular expression, case insensitive */
-  _iregex?: Maybe<Scalars['bpchar']>;
-  _is_null?: Maybe<Scalars['Boolean']>;
+  _iregex?: InputMaybe<Scalars['bpchar']>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
   /** does the column match the given pattern */
-  _like?: Maybe<Scalars['bpchar']>;
-  _lt?: Maybe<Scalars['bpchar']>;
-  _lte?: Maybe<Scalars['bpchar']>;
-  _neq?: Maybe<Scalars['bpchar']>;
+  _like?: InputMaybe<Scalars['bpchar']>;
+  _lt?: InputMaybe<Scalars['bpchar']>;
+  _lte?: InputMaybe<Scalars['bpchar']>;
+  _neq?: InputMaybe<Scalars['bpchar']>;
   /** does the column NOT match the given case-insensitive pattern */
-  _nilike?: Maybe<Scalars['bpchar']>;
-  _nin?: Maybe<Array<Scalars['bpchar']>>;
+  _nilike?: InputMaybe<Scalars['bpchar']>;
+  _nin?: InputMaybe<Array<Scalars['bpchar']>>;
   /** does the column NOT match the given POSIX regular expression, case insensitive */
-  _niregex?: Maybe<Scalars['bpchar']>;
+  _niregex?: InputMaybe<Scalars['bpchar']>;
   /** does the column NOT match the given pattern */
-  _nlike?: Maybe<Scalars['bpchar']>;
+  _nlike?: InputMaybe<Scalars['bpchar']>;
   /** does the column NOT match the given POSIX regular expression, case sensitive */
-  _nregex?: Maybe<Scalars['bpchar']>;
+  _nregex?: InputMaybe<Scalars['bpchar']>;
   /** does the column NOT match the given SQL regular expression */
-  _nsimilar?: Maybe<Scalars['bpchar']>;
+  _nsimilar?: InputMaybe<Scalars['bpchar']>;
   /** does the column match the given POSIX regular expression, case sensitive */
-  _regex?: Maybe<Scalars['bpchar']>;
+  _regex?: InputMaybe<Scalars['bpchar']>;
   /** does the column match the given SQL regular expression */
-  _similar?: Maybe<Scalars['bpchar']>;
+  _similar?: InputMaybe<Scalars['bpchar']>;
 };
 
 /** columns and relationships of "categories" */
@@ -885,20 +886,20 @@ export type Categories = {
 
 /** columns and relationships of "categories" */
 export type CategoriesTransactionsArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 /** columns and relationships of "categories" */
 export type CategoriesTransactions_AggregateArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 /** aggregated selection of "categories" */
@@ -926,8 +927,8 @@ export type Categories_Aggregate_Fields = {
 
 /** aggregate fields of "categories" */
 export type Categories_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Categories_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Categories_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -938,15 +939,15 @@ export type Categories_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "categories". All fields are combined with a logical 'AND'. */
 export type Categories_Bool_Exp = {
-  _and?: Maybe<Array<Categories_Bool_Exp>>;
-  _not?: Maybe<Categories_Bool_Exp>;
-  _or?: Maybe<Array<Categories_Bool_Exp>>;
-  active?: Maybe<Boolean_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Bigint_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  transactions?: Maybe<Transactions_Bool_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Categories_Bool_Exp>>;
+  _not?: InputMaybe<Categories_Bool_Exp>;
+  _or?: InputMaybe<Array<Categories_Bool_Exp>>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Bigint_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  transactions?: InputMaybe<Transactions_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "categories" */
@@ -957,17 +958,17 @@ export enum Categories_Constraint {
 
 /** input type for incrementing numeric columns in table "categories" */
 export type Categories_Inc_Input = {
-  id?: Maybe<Scalars['bigint']>;
+  id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "categories" */
 export type Categories_Insert_Input = {
-  active?: Maybe<Scalars['Boolean']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  transactions?: Maybe<Transactions_Arr_Rel_Insert_Input>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  transactions?: InputMaybe<Transactions_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -1001,24 +1002,24 @@ export type Categories_Mutation_Response = {
 export type Categories_Obj_Rel_Insert_Input = {
   data: Categories_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Categories_On_Conflict>;
+  on_conflict?: InputMaybe<Categories_On_Conflict>;
 };
 
 /** on conflict condition type for table "categories" */
 export type Categories_On_Conflict = {
   constraint: Categories_Constraint;
   update_columns?: Array<Categories_Update_Column>;
-  where?: Maybe<Categories_Bool_Exp>;
+  where?: InputMaybe<Categories_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "categories". */
 export type Categories_Order_By = {
-  active?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  transactions_aggregate?: Maybe<Transactions_Aggregate_Order_By>;
-  updated_at?: Maybe<Order_By>;
+  active?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  transactions_aggregate?: InputMaybe<Transactions_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: categories */
@@ -1042,11 +1043,11 @@ export enum Categories_Select_Column {
 
 /** input type for updating data in table "categories" */
 export type Categories_Set_Input = {
-  active?: Maybe<Scalars['Boolean']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -1107,15 +1108,15 @@ export type Categories_Variance_Fields = {
 
 /** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
 export type Date_Comparison_Exp = {
-  _eq?: Maybe<Scalars['date']>;
-  _gt?: Maybe<Scalars['date']>;
-  _gte?: Maybe<Scalars['date']>;
-  _in?: Maybe<Array<Scalars['date']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['date']>;
-  _lte?: Maybe<Scalars['date']>;
-  _neq?: Maybe<Scalars['date']>;
-  _nin?: Maybe<Array<Scalars['date']>>;
+  _eq?: InputMaybe<Scalars['date']>;
+  _gt?: InputMaybe<Scalars['date']>;
+  _gte?: InputMaybe<Scalars['date']>;
+  _in?: InputMaybe<Array<Scalars['date']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['date']>;
+  _lte?: InputMaybe<Scalars['date']>;
+  _neq?: InputMaybe<Scalars['date']>;
+  _nin?: InputMaybe<Array<Scalars['date']>>;
 };
 
 /** columns and relationships of "expenses" */
@@ -1155,8 +1156,8 @@ export type Expenses_Aggregate_Fields = {
 
 /** aggregate fields of "expenses" */
 export type Expenses_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Expenses_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Expenses_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -1167,15 +1168,15 @@ export type Expenses_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "expenses". All fields are combined with a logical 'AND'. */
 export type Expenses_Bool_Exp = {
-  _and?: Maybe<Array<Expenses_Bool_Exp>>;
-  _not?: Maybe<Expenses_Bool_Exp>;
-  _or?: Maybe<Array<Expenses_Bool_Exp>>;
-  account_info?: Maybe<Account_Info_Bool_Exp>;
-  active?: Maybe<Boolean_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Bigint_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Expenses_Bool_Exp>>;
+  _not?: InputMaybe<Expenses_Bool_Exp>;
+  _or?: InputMaybe<Array<Expenses_Bool_Exp>>;
+  account_info?: InputMaybe<Account_Info_Bool_Exp>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Bigint_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "expenses" */
@@ -1186,17 +1187,17 @@ export enum Expenses_Constraint {
 
 /** input type for incrementing numeric columns in table "expenses" */
 export type Expenses_Inc_Input = {
-  id?: Maybe<Scalars['bigint']>;
+  id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "expenses" */
 export type Expenses_Insert_Input = {
-  account_info?: Maybe<Account_Info_Obj_Rel_Insert_Input>;
-  active?: Maybe<Scalars['Boolean']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -1230,17 +1231,17 @@ export type Expenses_Mutation_Response = {
 export type Expenses_On_Conflict = {
   constraint: Expenses_Constraint;
   update_columns?: Array<Expenses_Update_Column>;
-  where?: Maybe<Expenses_Bool_Exp>;
+  where?: InputMaybe<Expenses_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "expenses". */
 export type Expenses_Order_By = {
-  account_info?: Maybe<Account_Info_Order_By>;
-  active?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  account_info?: InputMaybe<Account_Info_Order_By>;
+  active?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: expenses */
@@ -1264,11 +1265,11 @@ export enum Expenses_Select_Column {
 
 /** input type for updating data in table "expenses" */
 export type Expenses_Set_Input = {
-  active?: Maybe<Scalars['Boolean']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -1329,15 +1330,15 @@ export type Expenses_Variance_Fields = {
 
 /** Boolean expression to compare columns of type "float8". All fields are combined with logical 'AND'. */
 export type Float8_Comparison_Exp = {
-  _eq?: Maybe<Scalars['float8']>;
-  _gt?: Maybe<Scalars['float8']>;
-  _gte?: Maybe<Scalars['float8']>;
-  _in?: Maybe<Array<Scalars['float8']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['float8']>;
-  _lte?: Maybe<Scalars['float8']>;
-  _neq?: Maybe<Scalars['float8']>;
-  _nin?: Maybe<Array<Scalars['float8']>>;
+  _eq?: InputMaybe<Scalars['float8']>;
+  _gt?: InputMaybe<Scalars['float8']>;
+  _gte?: InputMaybe<Scalars['float8']>;
+  _in?: InputMaybe<Array<Scalars['float8']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['float8']>;
+  _lte?: InputMaybe<Scalars['float8']>;
+  _neq?: InputMaybe<Scalars['float8']>;
+  _nin?: InputMaybe<Array<Scalars['float8']>>;
 };
 
 /** columns and relationships of "labels" */
@@ -1376,8 +1377,8 @@ export type Labels_Aggregate_Fields = {
 
 /** aggregate fields of "labels" */
 export type Labels_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Labels_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Labels_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -1388,14 +1389,14 @@ export type Labels_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "labels". All fields are combined with a logical 'AND'. */
 export type Labels_Bool_Exp = {
-  _and?: Maybe<Array<Labels_Bool_Exp>>;
-  _not?: Maybe<Labels_Bool_Exp>;
-  _or?: Maybe<Array<Labels_Bool_Exp>>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  transaction_label?: Maybe<Transaction_Labels_Bool_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Labels_Bool_Exp>>;
+  _not?: InputMaybe<Labels_Bool_Exp>;
+  _or?: InputMaybe<Array<Labels_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  transaction_label?: InputMaybe<Transaction_Labels_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "labels" */
@@ -1406,16 +1407,16 @@ export enum Labels_Constraint {
 
 /** input type for incrementing numeric columns in table "labels" */
 export type Labels_Inc_Input = {
-  id?: Maybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "labels" */
 export type Labels_Insert_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  transaction_label?: Maybe<Transaction_Labels_Obj_Rel_Insert_Input>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  transaction_label?: InputMaybe<Transaction_Labels_Obj_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -1449,23 +1450,23 @@ export type Labels_Mutation_Response = {
 export type Labels_Obj_Rel_Insert_Input = {
   data: Labels_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Labels_On_Conflict>;
+  on_conflict?: InputMaybe<Labels_On_Conflict>;
 };
 
 /** on conflict condition type for table "labels" */
 export type Labels_On_Conflict = {
   constraint: Labels_Constraint;
   update_columns?: Array<Labels_Update_Column>;
-  where?: Maybe<Labels_Bool_Exp>;
+  where?: InputMaybe<Labels_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "labels". */
 export type Labels_Order_By = {
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  transaction_label?: Maybe<Transaction_Labels_Order_By>;
-  updated_at?: Maybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  transaction_label?: InputMaybe<Transaction_Labels_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: labels */
@@ -1487,10 +1488,10 @@ export enum Labels_Select_Column {
 
 /** input type for updating data in table "labels" */
 export type Labels_Set_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -1584,8 +1585,8 @@ export type Liabilities_Aggregate_Fields = {
 
 /** aggregate fields of "liabilities" */
 export type Liabilities_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Liabilities_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Liabilities_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -1596,15 +1597,15 @@ export type Liabilities_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "liabilities". All fields are combined with a logical 'AND'. */
 export type Liabilities_Bool_Exp = {
-  _and?: Maybe<Array<Liabilities_Bool_Exp>>;
-  _not?: Maybe<Liabilities_Bool_Exp>;
-  _or?: Maybe<Array<Liabilities_Bool_Exp>>;
-  account_info?: Maybe<Account_Info_Bool_Exp>;
-  active?: Maybe<Boolean_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Bigint_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Liabilities_Bool_Exp>>;
+  _not?: InputMaybe<Liabilities_Bool_Exp>;
+  _or?: InputMaybe<Array<Liabilities_Bool_Exp>>;
+  account_info?: InputMaybe<Account_Info_Bool_Exp>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Bigint_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "liabilities" */
@@ -1615,17 +1616,17 @@ export enum Liabilities_Constraint {
 
 /** input type for incrementing numeric columns in table "liabilities" */
 export type Liabilities_Inc_Input = {
-  id?: Maybe<Scalars['bigint']>;
+  id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "liabilities" */
 export type Liabilities_Insert_Input = {
-  account_info?: Maybe<Account_Info_Obj_Rel_Insert_Input>;
-  active?: Maybe<Scalars['Boolean']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -1659,17 +1660,17 @@ export type Liabilities_Mutation_Response = {
 export type Liabilities_On_Conflict = {
   constraint: Liabilities_Constraint;
   update_columns?: Array<Liabilities_Update_Column>;
-  where?: Maybe<Liabilities_Bool_Exp>;
+  where?: InputMaybe<Liabilities_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "liabilities". */
 export type Liabilities_Order_By = {
-  account_info?: Maybe<Account_Info_Order_By>;
-  active?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  account_info?: InputMaybe<Account_Info_Order_By>;
+  active?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: liabilities */
@@ -1693,11 +1694,11 @@ export enum Liabilities_Select_Column {
 
 /** input type for updating data in table "liabilities" */
 export type Liabilities_Set_Input = {
-  active?: Maybe<Scalars['Boolean']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -2118,406 +2119,406 @@ export type Mutation_RootDelete_Verification_Requests_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootInsert_Account_InfoArgs = {
   objects: Array<Account_Info_Insert_Input>;
-  on_conflict?: Maybe<Account_Info_On_Conflict>;
+  on_conflict?: InputMaybe<Account_Info_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Account_Info_OneArgs = {
   object: Account_Info_Insert_Input;
-  on_conflict?: Maybe<Account_Info_On_Conflict>;
+  on_conflict?: InputMaybe<Account_Info_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_AccountsArgs = {
   objects: Array<Accounts_Insert_Input>;
-  on_conflict?: Maybe<Accounts_On_Conflict>;
+  on_conflict?: InputMaybe<Accounts_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Accounts_OneArgs = {
   object: Accounts_Insert_Input;
-  on_conflict?: Maybe<Accounts_On_Conflict>;
+  on_conflict?: InputMaybe<Accounts_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_AssetsArgs = {
   objects: Array<Assets_Insert_Input>;
-  on_conflict?: Maybe<Assets_On_Conflict>;
+  on_conflict?: InputMaybe<Assets_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Assets_OneArgs = {
   object: Assets_Insert_Input;
-  on_conflict?: Maybe<Assets_On_Conflict>;
+  on_conflict?: InputMaybe<Assets_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_CategoriesArgs = {
   objects: Array<Categories_Insert_Input>;
-  on_conflict?: Maybe<Categories_On_Conflict>;
+  on_conflict?: InputMaybe<Categories_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Categories_OneArgs = {
   object: Categories_Insert_Input;
-  on_conflict?: Maybe<Categories_On_Conflict>;
+  on_conflict?: InputMaybe<Categories_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_ExpensesArgs = {
   objects: Array<Expenses_Insert_Input>;
-  on_conflict?: Maybe<Expenses_On_Conflict>;
+  on_conflict?: InputMaybe<Expenses_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Expenses_OneArgs = {
   object: Expenses_Insert_Input;
-  on_conflict?: Maybe<Expenses_On_Conflict>;
+  on_conflict?: InputMaybe<Expenses_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_LabelsArgs = {
   objects: Array<Labels_Insert_Input>;
-  on_conflict?: Maybe<Labels_On_Conflict>;
+  on_conflict?: InputMaybe<Labels_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Labels_OneArgs = {
   object: Labels_Insert_Input;
-  on_conflict?: Maybe<Labels_On_Conflict>;
+  on_conflict?: InputMaybe<Labels_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_LiabilitiesArgs = {
   objects: Array<Liabilities_Insert_Input>;
-  on_conflict?: Maybe<Liabilities_On_Conflict>;
+  on_conflict?: InputMaybe<Liabilities_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Liabilities_OneArgs = {
   object: Liabilities_Insert_Input;
-  on_conflict?: Maybe<Liabilities_On_Conflict>;
+  on_conflict?: InputMaybe<Liabilities_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_NotificationsArgs = {
   objects: Array<Notifications_Insert_Input>;
-  on_conflict?: Maybe<Notifications_On_Conflict>;
+  on_conflict?: InputMaybe<Notifications_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Notifications_OneArgs = {
   object: Notifications_Insert_Input;
-  on_conflict?: Maybe<Notifications_On_Conflict>;
+  on_conflict?: InputMaybe<Notifications_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_RevenuesArgs = {
   objects: Array<Revenues_Insert_Input>;
-  on_conflict?: Maybe<Revenues_On_Conflict>;
+  on_conflict?: InputMaybe<Revenues_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Revenues_OneArgs = {
   object: Revenues_Insert_Input;
-  on_conflict?: Maybe<Revenues_On_Conflict>;
+  on_conflict?: InputMaybe<Revenues_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_SessionsArgs = {
   objects: Array<Sessions_Insert_Input>;
-  on_conflict?: Maybe<Sessions_On_Conflict>;
+  on_conflict?: InputMaybe<Sessions_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Sessions_OneArgs = {
   object: Sessions_Insert_Input;
-  on_conflict?: Maybe<Sessions_On_Conflict>;
+  on_conflict?: InputMaybe<Sessions_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Transaction_AttachmentsArgs = {
   objects: Array<Transaction_Attachments_Insert_Input>;
-  on_conflict?: Maybe<Transaction_Attachments_On_Conflict>;
+  on_conflict?: InputMaybe<Transaction_Attachments_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Transaction_Attachments_OneArgs = {
   object: Transaction_Attachments_Insert_Input;
-  on_conflict?: Maybe<Transaction_Attachments_On_Conflict>;
+  on_conflict?: InputMaybe<Transaction_Attachments_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Transaction_LabelsArgs = {
   objects: Array<Transaction_Labels_Insert_Input>;
-  on_conflict?: Maybe<Transaction_Labels_On_Conflict>;
+  on_conflict?: InputMaybe<Transaction_Labels_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Transaction_Labels_OneArgs = {
   object: Transaction_Labels_Insert_Input;
-  on_conflict?: Maybe<Transaction_Labels_On_Conflict>;
+  on_conflict?: InputMaybe<Transaction_Labels_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_TransactionsArgs = {
   objects: Array<Transactions_Insert_Input>;
-  on_conflict?: Maybe<Transactions_On_Conflict>;
+  on_conflict?: InputMaybe<Transactions_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Transactions_OneArgs = {
   object: Transactions_Insert_Input;
-  on_conflict?: Maybe<Transactions_On_Conflict>;
+  on_conflict?: InputMaybe<Transactions_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_User_SettingsArgs = {
   objects: Array<User_Settings_Insert_Input>;
-  on_conflict?: Maybe<User_Settings_On_Conflict>;
+  on_conflict?: InputMaybe<User_Settings_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_User_Settings_OneArgs = {
   object: User_Settings_Insert_Input;
-  on_conflict?: Maybe<User_Settings_On_Conflict>;
+  on_conflict?: InputMaybe<User_Settings_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_UsersArgs = {
   objects: Array<Users_Insert_Input>;
-  on_conflict?: Maybe<Users_On_Conflict>;
+  on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Users_OneArgs = {
   object: Users_Insert_Input;
-  on_conflict?: Maybe<Users_On_Conflict>;
+  on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Verification_RequestsArgs = {
   objects: Array<Verification_Requests_Insert_Input>;
-  on_conflict?: Maybe<Verification_Requests_On_Conflict>;
+  on_conflict?: InputMaybe<Verification_Requests_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootInsert_Verification_Requests_OneArgs = {
   object: Verification_Requests_Insert_Input;
-  on_conflict?: Maybe<Verification_Requests_On_Conflict>;
+  on_conflict?: InputMaybe<Verification_Requests_On_Conflict>;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Account_InfoArgs = {
-  _inc?: Maybe<Account_Info_Inc_Input>;
-  _set?: Maybe<Account_Info_Set_Input>;
+  _inc?: InputMaybe<Account_Info_Inc_Input>;
+  _set?: InputMaybe<Account_Info_Set_Input>;
   where: Account_Info_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Account_Info_By_PkArgs = {
-  _inc?: Maybe<Account_Info_Inc_Input>;
-  _set?: Maybe<Account_Info_Set_Input>;
+  _inc?: InputMaybe<Account_Info_Inc_Input>;
+  _set?: InputMaybe<Account_Info_Set_Input>;
   pk_columns: Account_Info_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_AccountsArgs = {
-  _set?: Maybe<Accounts_Set_Input>;
+  _set?: InputMaybe<Accounts_Set_Input>;
   where: Accounts_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Accounts_By_PkArgs = {
-  _set?: Maybe<Accounts_Set_Input>;
+  _set?: InputMaybe<Accounts_Set_Input>;
   pk_columns: Accounts_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_AssetsArgs = {
-  _inc?: Maybe<Assets_Inc_Input>;
-  _set?: Maybe<Assets_Set_Input>;
+  _inc?: InputMaybe<Assets_Inc_Input>;
+  _set?: InputMaybe<Assets_Set_Input>;
   where: Assets_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Assets_By_PkArgs = {
-  _inc?: Maybe<Assets_Inc_Input>;
-  _set?: Maybe<Assets_Set_Input>;
+  _inc?: InputMaybe<Assets_Inc_Input>;
+  _set?: InputMaybe<Assets_Set_Input>;
   pk_columns: Assets_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_CategoriesArgs = {
-  _inc?: Maybe<Categories_Inc_Input>;
-  _set?: Maybe<Categories_Set_Input>;
+  _inc?: InputMaybe<Categories_Inc_Input>;
+  _set?: InputMaybe<Categories_Set_Input>;
   where: Categories_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Categories_By_PkArgs = {
-  _inc?: Maybe<Categories_Inc_Input>;
-  _set?: Maybe<Categories_Set_Input>;
+  _inc?: InputMaybe<Categories_Inc_Input>;
+  _set?: InputMaybe<Categories_Set_Input>;
   pk_columns: Categories_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_ExpensesArgs = {
-  _inc?: Maybe<Expenses_Inc_Input>;
-  _set?: Maybe<Expenses_Set_Input>;
+  _inc?: InputMaybe<Expenses_Inc_Input>;
+  _set?: InputMaybe<Expenses_Set_Input>;
   where: Expenses_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Expenses_By_PkArgs = {
-  _inc?: Maybe<Expenses_Inc_Input>;
-  _set?: Maybe<Expenses_Set_Input>;
+  _inc?: InputMaybe<Expenses_Inc_Input>;
+  _set?: InputMaybe<Expenses_Set_Input>;
   pk_columns: Expenses_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_LabelsArgs = {
-  _inc?: Maybe<Labels_Inc_Input>;
-  _set?: Maybe<Labels_Set_Input>;
+  _inc?: InputMaybe<Labels_Inc_Input>;
+  _set?: InputMaybe<Labels_Set_Input>;
   where: Labels_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Labels_By_PkArgs = {
-  _inc?: Maybe<Labels_Inc_Input>;
-  _set?: Maybe<Labels_Set_Input>;
+  _inc?: InputMaybe<Labels_Inc_Input>;
+  _set?: InputMaybe<Labels_Set_Input>;
   pk_columns: Labels_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_LiabilitiesArgs = {
-  _inc?: Maybe<Liabilities_Inc_Input>;
-  _set?: Maybe<Liabilities_Set_Input>;
+  _inc?: InputMaybe<Liabilities_Inc_Input>;
+  _set?: InputMaybe<Liabilities_Set_Input>;
   where: Liabilities_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Liabilities_By_PkArgs = {
-  _inc?: Maybe<Liabilities_Inc_Input>;
-  _set?: Maybe<Liabilities_Set_Input>;
+  _inc?: InputMaybe<Liabilities_Inc_Input>;
+  _set?: InputMaybe<Liabilities_Set_Input>;
   pk_columns: Liabilities_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_NotificationsArgs = {
-  _inc?: Maybe<Notifications_Inc_Input>;
-  _set?: Maybe<Notifications_Set_Input>;
+  _inc?: InputMaybe<Notifications_Inc_Input>;
+  _set?: InputMaybe<Notifications_Set_Input>;
   where: Notifications_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Notifications_By_PkArgs = {
-  _inc?: Maybe<Notifications_Inc_Input>;
-  _set?: Maybe<Notifications_Set_Input>;
+  _inc?: InputMaybe<Notifications_Inc_Input>;
+  _set?: InputMaybe<Notifications_Set_Input>;
   pk_columns: Notifications_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_RevenuesArgs = {
-  _inc?: Maybe<Revenues_Inc_Input>;
-  _set?: Maybe<Revenues_Set_Input>;
+  _inc?: InputMaybe<Revenues_Inc_Input>;
+  _set?: InputMaybe<Revenues_Set_Input>;
   where: Revenues_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Revenues_By_PkArgs = {
-  _inc?: Maybe<Revenues_Inc_Input>;
-  _set?: Maybe<Revenues_Set_Input>;
+  _inc?: InputMaybe<Revenues_Inc_Input>;
+  _set?: InputMaybe<Revenues_Set_Input>;
   pk_columns: Revenues_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_SessionsArgs = {
-  _set?: Maybe<Sessions_Set_Input>;
+  _set?: InputMaybe<Sessions_Set_Input>;
   where: Sessions_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Sessions_By_PkArgs = {
-  _set?: Maybe<Sessions_Set_Input>;
+  _set?: InputMaybe<Sessions_Set_Input>;
   pk_columns: Sessions_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Transaction_AttachmentsArgs = {
-  _inc?: Maybe<Transaction_Attachments_Inc_Input>;
-  _set?: Maybe<Transaction_Attachments_Set_Input>;
+  _inc?: InputMaybe<Transaction_Attachments_Inc_Input>;
+  _set?: InputMaybe<Transaction_Attachments_Set_Input>;
   where: Transaction_Attachments_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Transaction_Attachments_By_PkArgs = {
-  _inc?: Maybe<Transaction_Attachments_Inc_Input>;
-  _set?: Maybe<Transaction_Attachments_Set_Input>;
+  _inc?: InputMaybe<Transaction_Attachments_Inc_Input>;
+  _set?: InputMaybe<Transaction_Attachments_Set_Input>;
   pk_columns: Transaction_Attachments_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Transaction_LabelsArgs = {
-  _inc?: Maybe<Transaction_Labels_Inc_Input>;
-  _set?: Maybe<Transaction_Labels_Set_Input>;
+  _inc?: InputMaybe<Transaction_Labels_Inc_Input>;
+  _set?: InputMaybe<Transaction_Labels_Set_Input>;
   where: Transaction_Labels_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Transaction_Labels_By_PkArgs = {
-  _inc?: Maybe<Transaction_Labels_Inc_Input>;
-  _set?: Maybe<Transaction_Labels_Set_Input>;
+  _inc?: InputMaybe<Transaction_Labels_Inc_Input>;
+  _set?: InputMaybe<Transaction_Labels_Set_Input>;
   pk_columns: Transaction_Labels_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_TransactionsArgs = {
-  _inc?: Maybe<Transactions_Inc_Input>;
-  _set?: Maybe<Transactions_Set_Input>;
+  _inc?: InputMaybe<Transactions_Inc_Input>;
+  _set?: InputMaybe<Transactions_Set_Input>;
   where: Transactions_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Transactions_By_PkArgs = {
-  _inc?: Maybe<Transactions_Inc_Input>;
-  _set?: Maybe<Transactions_Set_Input>;
+  _inc?: InputMaybe<Transactions_Inc_Input>;
+  _set?: InputMaybe<Transactions_Set_Input>;
   pk_columns: Transactions_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_User_SettingsArgs = {
-  _set?: Maybe<User_Settings_Set_Input>;
+  _set?: InputMaybe<User_Settings_Set_Input>;
   where: User_Settings_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_User_Settings_By_PkArgs = {
-  _set?: Maybe<User_Settings_Set_Input>;
+  _set?: InputMaybe<User_Settings_Set_Input>;
   pk_columns: User_Settings_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
-  _set?: Maybe<Users_Set_Input>;
+  _set?: InputMaybe<Users_Set_Input>;
   where: Users_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Users_By_PkArgs = {
-  _set?: Maybe<Users_Set_Input>;
+  _set?: InputMaybe<Users_Set_Input>;
   pk_columns: Users_Pk_Columns_Input;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Verification_RequestsArgs = {
-  _set?: Maybe<Verification_Requests_Set_Input>;
+  _set?: InputMaybe<Verification_Requests_Set_Input>;
   where: Verification_Requests_Bool_Exp;
 };
 
 /** mutation root */
 export type Mutation_RootUpdate_Verification_Requests_By_PkArgs = {
-  _set?: Maybe<Verification_Requests_Set_Input>;
+  _set?: InputMaybe<Verification_Requests_Set_Input>;
   pk_columns: Verification_Requests_Pk_Columns_Input;
 };
 
@@ -2560,30 +2561,30 @@ export type Notifications_Aggregate_Fields = {
 
 /** aggregate fields of "notifications" */
 export type Notifications_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Notifications_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Notifications_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "notifications" */
 export type Notifications_Aggregate_Order_By = {
-  avg?: Maybe<Notifications_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Notifications_Max_Order_By>;
-  min?: Maybe<Notifications_Min_Order_By>;
-  stddev?: Maybe<Notifications_Stddev_Order_By>;
-  stddev_pop?: Maybe<Notifications_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Notifications_Stddev_Samp_Order_By>;
-  sum?: Maybe<Notifications_Sum_Order_By>;
-  var_pop?: Maybe<Notifications_Var_Pop_Order_By>;
-  var_samp?: Maybe<Notifications_Var_Samp_Order_By>;
-  variance?: Maybe<Notifications_Variance_Order_By>;
+  avg?: InputMaybe<Notifications_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Notifications_Max_Order_By>;
+  min?: InputMaybe<Notifications_Min_Order_By>;
+  stddev?: InputMaybe<Notifications_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Notifications_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Notifications_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Notifications_Sum_Order_By>;
+  var_pop?: InputMaybe<Notifications_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Notifications_Var_Samp_Order_By>;
+  variance?: InputMaybe<Notifications_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "notifications" */
 export type Notifications_Arr_Rel_Insert_Input = {
   data: Array<Notifications_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Notifications_On_Conflict>;
+  on_conflict?: InputMaybe<Notifications_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -2594,22 +2595,22 @@ export type Notifications_Avg_Fields = {
 
 /** order by avg() on columns of table "notifications" */
 export type Notifications_Avg_Order_By = {
-  id?: Maybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "notifications". All fields are combined with a logical 'AND'. */
 export type Notifications_Bool_Exp = {
-  _and?: Maybe<Array<Notifications_Bool_Exp>>;
-  _not?: Maybe<Notifications_Bool_Exp>;
-  _or?: Maybe<Array<Notifications_Bool_Exp>>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  description?: Maybe<String_Comparison_Exp>;
-  id?: Maybe<Int_Comparison_Exp>;
-  read_status?: Maybe<Boolean_Comparison_Exp>;
-  title?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
-  user_id?: Maybe<Uuid_Comparison_Exp>;
+  _and?: InputMaybe<Array<Notifications_Bool_Exp>>;
+  _not?: InputMaybe<Notifications_Bool_Exp>;
+  _or?: InputMaybe<Array<Notifications_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  read_status?: InputMaybe<Boolean_Comparison_Exp>;
+  title?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user?: InputMaybe<Users_Bool_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "notifications" */
@@ -2620,19 +2621,19 @@ export enum Notifications_Constraint {
 
 /** input type for incrementing numeric columns in table "notifications" */
 export type Notifications_Inc_Input = {
-  id?: Maybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "notifications" */
 export type Notifications_Insert_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  read_status?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
-  user_id?: Maybe<Scalars['uuid']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  read_status?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['uuid']>;
 };
 
 /** aggregate max on columns */
@@ -2648,12 +2649,12 @@ export type Notifications_Max_Fields = {
 
 /** order by max() on columns of table "notifications" */
 export type Notifications_Max_Order_By = {
-  created_at?: Maybe<Order_By>;
-  description?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  title?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -2669,12 +2670,12 @@ export type Notifications_Min_Fields = {
 
 /** order by min() on columns of table "notifications" */
 export type Notifications_Min_Order_By = {
-  created_at?: Maybe<Order_By>;
-  description?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  title?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "notifications" */
@@ -2690,19 +2691,19 @@ export type Notifications_Mutation_Response = {
 export type Notifications_On_Conflict = {
   constraint: Notifications_Constraint;
   update_columns?: Array<Notifications_Update_Column>;
-  where?: Maybe<Notifications_Bool_Exp>;
+  where?: InputMaybe<Notifications_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "notifications". */
 export type Notifications_Order_By = {
-  created_at?: Maybe<Order_By>;
-  description?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  read_status?: Maybe<Order_By>;
-  title?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  user?: Maybe<Users_Order_By>;
-  user_id?: Maybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  read_status?: InputMaybe<Order_By>;
+  title?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: notifications */
@@ -2730,13 +2731,13 @@ export enum Notifications_Select_Column {
 
 /** input type for updating data in table "notifications" */
 export type Notifications_Set_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Int']>;
-  read_status?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['uuid']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  read_status?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
 };
 
 /** aggregate stddev on columns */
@@ -2747,7 +2748,7 @@ export type Notifications_Stddev_Fields = {
 
 /** order by stddev() on columns of table "notifications" */
 export type Notifications_Stddev_Order_By = {
-  id?: Maybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -2758,7 +2759,7 @@ export type Notifications_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "notifications" */
 export type Notifications_Stddev_Pop_Order_By = {
-  id?: Maybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -2769,7 +2770,7 @@ export type Notifications_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "notifications" */
 export type Notifications_Stddev_Samp_Order_By = {
-  id?: Maybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -2780,7 +2781,7 @@ export type Notifications_Sum_Fields = {
 
 /** order by sum() on columns of table "notifications" */
 export type Notifications_Sum_Order_By = {
-  id?: Maybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "notifications" */
@@ -2809,7 +2810,7 @@ export type Notifications_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "notifications" */
 export type Notifications_Var_Pop_Order_By = {
-  id?: Maybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -2820,7 +2821,7 @@ export type Notifications_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "notifications" */
 export type Notifications_Var_Samp_Order_By = {
-  id?: Maybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -2831,7 +2832,7 @@ export type Notifications_Variance_Fields = {
 
 /** order by variance() on columns of table "notifications" */
 export type Notifications_Variance_Order_By = {
-  id?: Maybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** column ordering options */
@@ -2951,19 +2952,19 @@ export type Query_Root = {
 };
 
 export type Query_RootAccount_InfoArgs = {
-  distinct_on?: Maybe<Array<Account_Info_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Account_Info_Order_By>>;
-  where?: Maybe<Account_Info_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Account_Info_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Account_Info_Order_By>>;
+  where?: InputMaybe<Account_Info_Bool_Exp>;
 };
 
 export type Query_RootAccount_Info_AggregateArgs = {
-  distinct_on?: Maybe<Array<Account_Info_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Account_Info_Order_By>>;
-  where?: Maybe<Account_Info_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Account_Info_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Account_Info_Order_By>>;
+  where?: InputMaybe<Account_Info_Bool_Exp>;
 };
 
 export type Query_RootAccount_Info_By_PkArgs = {
@@ -2971,19 +2972,19 @@ export type Query_RootAccount_Info_By_PkArgs = {
 };
 
 export type Query_RootAccountsArgs = {
-  distinct_on?: Maybe<Array<Accounts_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Accounts_Order_By>>;
-  where?: Maybe<Accounts_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Accounts_Order_By>>;
+  where?: InputMaybe<Accounts_Bool_Exp>;
 };
 
 export type Query_RootAccounts_AggregateArgs = {
-  distinct_on?: Maybe<Array<Accounts_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Accounts_Order_By>>;
-  where?: Maybe<Accounts_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Accounts_Order_By>>;
+  where?: InputMaybe<Accounts_Bool_Exp>;
 };
 
 export type Query_RootAccounts_By_PkArgs = {
@@ -2991,19 +2992,19 @@ export type Query_RootAccounts_By_PkArgs = {
 };
 
 export type Query_RootAssetsArgs = {
-  distinct_on?: Maybe<Array<Assets_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Assets_Order_By>>;
-  where?: Maybe<Assets_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Assets_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Assets_Order_By>>;
+  where?: InputMaybe<Assets_Bool_Exp>;
 };
 
 export type Query_RootAssets_AggregateArgs = {
-  distinct_on?: Maybe<Array<Assets_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Assets_Order_By>>;
-  where?: Maybe<Assets_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Assets_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Assets_Order_By>>;
+  where?: InputMaybe<Assets_Bool_Exp>;
 };
 
 export type Query_RootAssets_By_PkArgs = {
@@ -3011,19 +3012,19 @@ export type Query_RootAssets_By_PkArgs = {
 };
 
 export type Query_RootCategoriesArgs = {
-  distinct_on?: Maybe<Array<Categories_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Categories_Order_By>>;
-  where?: Maybe<Categories_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Categories_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Categories_Order_By>>;
+  where?: InputMaybe<Categories_Bool_Exp>;
 };
 
 export type Query_RootCategories_AggregateArgs = {
-  distinct_on?: Maybe<Array<Categories_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Categories_Order_By>>;
-  where?: Maybe<Categories_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Categories_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Categories_Order_By>>;
+  where?: InputMaybe<Categories_Bool_Exp>;
 };
 
 export type Query_RootCategories_By_PkArgs = {
@@ -3031,19 +3032,19 @@ export type Query_RootCategories_By_PkArgs = {
 };
 
 export type Query_RootExpensesArgs = {
-  distinct_on?: Maybe<Array<Expenses_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Expenses_Order_By>>;
-  where?: Maybe<Expenses_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Expenses_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Expenses_Order_By>>;
+  where?: InputMaybe<Expenses_Bool_Exp>;
 };
 
 export type Query_RootExpenses_AggregateArgs = {
-  distinct_on?: Maybe<Array<Expenses_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Expenses_Order_By>>;
-  where?: Maybe<Expenses_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Expenses_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Expenses_Order_By>>;
+  where?: InputMaybe<Expenses_Bool_Exp>;
 };
 
 export type Query_RootExpenses_By_PkArgs = {
@@ -3051,19 +3052,19 @@ export type Query_RootExpenses_By_PkArgs = {
 };
 
 export type Query_RootLabelsArgs = {
-  distinct_on?: Maybe<Array<Labels_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Labels_Order_By>>;
-  where?: Maybe<Labels_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Labels_Order_By>>;
+  where?: InputMaybe<Labels_Bool_Exp>;
 };
 
 export type Query_RootLabels_AggregateArgs = {
-  distinct_on?: Maybe<Array<Labels_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Labels_Order_By>>;
-  where?: Maybe<Labels_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Labels_Order_By>>;
+  where?: InputMaybe<Labels_Bool_Exp>;
 };
 
 export type Query_RootLabels_By_PkArgs = {
@@ -3071,19 +3072,19 @@ export type Query_RootLabels_By_PkArgs = {
 };
 
 export type Query_RootLiabilitiesArgs = {
-  distinct_on?: Maybe<Array<Liabilities_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Liabilities_Order_By>>;
-  where?: Maybe<Liabilities_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Liabilities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Liabilities_Order_By>>;
+  where?: InputMaybe<Liabilities_Bool_Exp>;
 };
 
 export type Query_RootLiabilities_AggregateArgs = {
-  distinct_on?: Maybe<Array<Liabilities_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Liabilities_Order_By>>;
-  where?: Maybe<Liabilities_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Liabilities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Liabilities_Order_By>>;
+  where?: InputMaybe<Liabilities_Bool_Exp>;
 };
 
 export type Query_RootLiabilities_By_PkArgs = {
@@ -3091,19 +3092,19 @@ export type Query_RootLiabilities_By_PkArgs = {
 };
 
 export type Query_RootNotificationsArgs = {
-  distinct_on?: Maybe<Array<Notifications_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Notifications_Order_By>>;
-  where?: Maybe<Notifications_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Notifications_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Notifications_Order_By>>;
+  where?: InputMaybe<Notifications_Bool_Exp>;
 };
 
 export type Query_RootNotifications_AggregateArgs = {
-  distinct_on?: Maybe<Array<Notifications_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Notifications_Order_By>>;
-  where?: Maybe<Notifications_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Notifications_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Notifications_Order_By>>;
+  where?: InputMaybe<Notifications_Bool_Exp>;
 };
 
 export type Query_RootNotifications_By_PkArgs = {
@@ -3111,19 +3112,19 @@ export type Query_RootNotifications_By_PkArgs = {
 };
 
 export type Query_RootRevenuesArgs = {
-  distinct_on?: Maybe<Array<Revenues_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Revenues_Order_By>>;
-  where?: Maybe<Revenues_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Revenues_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Revenues_Order_By>>;
+  where?: InputMaybe<Revenues_Bool_Exp>;
 };
 
 export type Query_RootRevenues_AggregateArgs = {
-  distinct_on?: Maybe<Array<Revenues_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Revenues_Order_By>>;
-  where?: Maybe<Revenues_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Revenues_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Revenues_Order_By>>;
+  where?: InputMaybe<Revenues_Bool_Exp>;
 };
 
 export type Query_RootRevenues_By_PkArgs = {
@@ -3131,19 +3132,19 @@ export type Query_RootRevenues_By_PkArgs = {
 };
 
 export type Query_RootSessionsArgs = {
-  distinct_on?: Maybe<Array<Sessions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Sessions_Order_By>>;
-  where?: Maybe<Sessions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Sessions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Sessions_Order_By>>;
+  where?: InputMaybe<Sessions_Bool_Exp>;
 };
 
 export type Query_RootSessions_AggregateArgs = {
-  distinct_on?: Maybe<Array<Sessions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Sessions_Order_By>>;
-  where?: Maybe<Sessions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Sessions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Sessions_Order_By>>;
+  where?: InputMaybe<Sessions_Bool_Exp>;
 };
 
 export type Query_RootSessions_By_PkArgs = {
@@ -3151,19 +3152,19 @@ export type Query_RootSessions_By_PkArgs = {
 };
 
 export type Query_RootTransaction_AttachmentsArgs = {
-  distinct_on?: Maybe<Array<Transaction_Attachments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Attachments_Order_By>>;
-  where?: Maybe<Transaction_Attachments_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transaction_Attachments_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Attachments_Order_By>>;
+  where?: InputMaybe<Transaction_Attachments_Bool_Exp>;
 };
 
 export type Query_RootTransaction_Attachments_AggregateArgs = {
-  distinct_on?: Maybe<Array<Transaction_Attachments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Attachments_Order_By>>;
-  where?: Maybe<Transaction_Attachments_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transaction_Attachments_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Attachments_Order_By>>;
+  where?: InputMaybe<Transaction_Attachments_Bool_Exp>;
 };
 
 export type Query_RootTransaction_Attachments_By_PkArgs = {
@@ -3172,19 +3173,19 @@ export type Query_RootTransaction_Attachments_By_PkArgs = {
 };
 
 export type Query_RootTransaction_LabelsArgs = {
-  distinct_on?: Maybe<Array<Transaction_Labels_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Labels_Order_By>>;
-  where?: Maybe<Transaction_Labels_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transaction_Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Labels_Order_By>>;
+  where?: InputMaybe<Transaction_Labels_Bool_Exp>;
 };
 
 export type Query_RootTransaction_Labels_AggregateArgs = {
-  distinct_on?: Maybe<Array<Transaction_Labels_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Labels_Order_By>>;
-  where?: Maybe<Transaction_Labels_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transaction_Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Labels_Order_By>>;
+  where?: InputMaybe<Transaction_Labels_Bool_Exp>;
 };
 
 export type Query_RootTransaction_Labels_By_PkArgs = {
@@ -3193,19 +3194,19 @@ export type Query_RootTransaction_Labels_By_PkArgs = {
 };
 
 export type Query_RootTransactionsArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 export type Query_RootTransactions_AggregateArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 export type Query_RootTransactions_By_PkArgs = {
@@ -3213,19 +3214,19 @@ export type Query_RootTransactions_By_PkArgs = {
 };
 
 export type Query_RootUser_SettingsArgs = {
-  distinct_on?: Maybe<Array<User_Settings_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Settings_Order_By>>;
-  where?: Maybe<User_Settings_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
 };
 
 export type Query_RootUser_Settings_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Settings_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Settings_Order_By>>;
-  where?: Maybe<User_Settings_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
 };
 
 export type Query_RootUser_Settings_By_PkArgs = {
@@ -3233,19 +3234,19 @@ export type Query_RootUser_Settings_By_PkArgs = {
 };
 
 export type Query_RootUsersArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 export type Query_RootUsers_AggregateArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 export type Query_RootUsers_By_PkArgs = {
@@ -3253,19 +3254,19 @@ export type Query_RootUsers_By_PkArgs = {
 };
 
 export type Query_RootVerification_RequestsArgs = {
-  distinct_on?: Maybe<Array<Verification_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Verification_Requests_Order_By>>;
-  where?: Maybe<Verification_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Verification_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Verification_Requests_Order_By>>;
+  where?: InputMaybe<Verification_Requests_Bool_Exp>;
 };
 
 export type Query_RootVerification_Requests_AggregateArgs = {
-  distinct_on?: Maybe<Array<Verification_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Verification_Requests_Order_By>>;
-  where?: Maybe<Verification_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Verification_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Verification_Requests_Order_By>>;
+  where?: InputMaybe<Verification_Requests_Bool_Exp>;
 };
 
 export type Query_RootVerification_Requests_By_PkArgs = {
@@ -3309,8 +3310,8 @@ export type Revenues_Aggregate_Fields = {
 
 /** aggregate fields of "revenues" */
 export type Revenues_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Revenues_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Revenues_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -3321,15 +3322,15 @@ export type Revenues_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "revenues". All fields are combined with a logical 'AND'. */
 export type Revenues_Bool_Exp = {
-  _and?: Maybe<Array<Revenues_Bool_Exp>>;
-  _not?: Maybe<Revenues_Bool_Exp>;
-  _or?: Maybe<Array<Revenues_Bool_Exp>>;
-  account_info?: Maybe<Account_Info_Bool_Exp>;
-  active?: Maybe<Boolean_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Bigint_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Revenues_Bool_Exp>>;
+  _not?: InputMaybe<Revenues_Bool_Exp>;
+  _or?: InputMaybe<Array<Revenues_Bool_Exp>>;
+  account_info?: InputMaybe<Account_Info_Bool_Exp>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Bigint_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "revenues" */
@@ -3340,17 +3341,17 @@ export enum Revenues_Constraint {
 
 /** input type for incrementing numeric columns in table "revenues" */
 export type Revenues_Inc_Input = {
-  id?: Maybe<Scalars['bigint']>;
+  id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "revenues" */
 export type Revenues_Insert_Input = {
-  account_info?: Maybe<Account_Info_Obj_Rel_Insert_Input>;
-  active?: Maybe<Scalars['Boolean']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -3384,17 +3385,17 @@ export type Revenues_Mutation_Response = {
 export type Revenues_On_Conflict = {
   constraint: Revenues_Constraint;
   update_columns?: Array<Revenues_Update_Column>;
-  where?: Maybe<Revenues_Bool_Exp>;
+  where?: InputMaybe<Revenues_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "revenues". */
 export type Revenues_Order_By = {
-  account_info?: Maybe<Account_Info_Order_By>;
-  active?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  account_info?: InputMaybe<Account_Info_Order_By>;
+  active?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: revenues */
@@ -3418,11 +3419,11 @@ export enum Revenues_Select_Column {
 
 /** input type for updating data in table "revenues" */
 export type Revenues_Set_Input = {
-  active?: Maybe<Scalars['Boolean']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['bigint']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -3510,22 +3511,22 @@ export type Sessions_Aggregate_Fields = {
 
 /** aggregate fields of "sessions" */
 export type Sessions_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Sessions_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Sessions_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "sessions". All fields are combined with a logical 'AND'. */
 export type Sessions_Bool_Exp = {
-  _and?: Maybe<Array<Sessions_Bool_Exp>>;
-  _not?: Maybe<Sessions_Bool_Exp>;
-  _or?: Maybe<Array<Sessions_Bool_Exp>>;
-  access_token?: Maybe<String_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  expires?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Uuid_Comparison_Exp>;
-  session_token?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
-  user_id?: Maybe<Uuid_Comparison_Exp>;
+  _and?: InputMaybe<Array<Sessions_Bool_Exp>>;
+  _not?: InputMaybe<Sessions_Bool_Exp>;
+  _or?: InputMaybe<Array<Sessions_Bool_Exp>>;
+  access_token?: InputMaybe<String_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  expires?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  session_token?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "sessions" */
@@ -3536,13 +3537,13 @@ export enum Sessions_Constraint {
 
 /** input type for inserting data into table "sessions" */
 export type Sessions_Insert_Input = {
-  access_token?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  expires?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['uuid']>;
-  session_token?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['uuid']>;
+  access_token?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  expires?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  session_token?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
 };
 
 /** aggregate max on columns */
@@ -3582,18 +3583,18 @@ export type Sessions_Mutation_Response = {
 export type Sessions_On_Conflict = {
   constraint: Sessions_Constraint;
   update_columns?: Array<Sessions_Update_Column>;
-  where?: Maybe<Sessions_Bool_Exp>;
+  where?: InputMaybe<Sessions_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "sessions". */
 export type Sessions_Order_By = {
-  access_token?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  expires?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  session_token?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
-  user_id?: Maybe<Order_By>;
+  access_token?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  expires?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  session_token?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: sessions */
@@ -3621,13 +3622,13 @@ export enum Sessions_Select_Column {
 
 /** input type for updating data in table "sessions" */
 export type Sessions_Set_Input = {
-  access_token?: Maybe<Scalars['String']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  expires?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['uuid']>;
-  session_token?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['uuid']>;
+  access_token?: InputMaybe<Scalars['String']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  expires?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  session_token?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
 };
 
 /** update columns of table "sessions" */
@@ -3749,19 +3750,19 @@ export type Subscription_Root = {
 };
 
 export type Subscription_RootAccount_InfoArgs = {
-  distinct_on?: Maybe<Array<Account_Info_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Account_Info_Order_By>>;
-  where?: Maybe<Account_Info_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Account_Info_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Account_Info_Order_By>>;
+  where?: InputMaybe<Account_Info_Bool_Exp>;
 };
 
 export type Subscription_RootAccount_Info_AggregateArgs = {
-  distinct_on?: Maybe<Array<Account_Info_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Account_Info_Order_By>>;
-  where?: Maybe<Account_Info_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Account_Info_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Account_Info_Order_By>>;
+  where?: InputMaybe<Account_Info_Bool_Exp>;
 };
 
 export type Subscription_RootAccount_Info_By_PkArgs = {
@@ -3769,19 +3770,19 @@ export type Subscription_RootAccount_Info_By_PkArgs = {
 };
 
 export type Subscription_RootAccountsArgs = {
-  distinct_on?: Maybe<Array<Accounts_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Accounts_Order_By>>;
-  where?: Maybe<Accounts_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Accounts_Order_By>>;
+  where?: InputMaybe<Accounts_Bool_Exp>;
 };
 
 export type Subscription_RootAccounts_AggregateArgs = {
-  distinct_on?: Maybe<Array<Accounts_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Accounts_Order_By>>;
-  where?: Maybe<Accounts_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Accounts_Order_By>>;
+  where?: InputMaybe<Accounts_Bool_Exp>;
 };
 
 export type Subscription_RootAccounts_By_PkArgs = {
@@ -3789,19 +3790,19 @@ export type Subscription_RootAccounts_By_PkArgs = {
 };
 
 export type Subscription_RootAssetsArgs = {
-  distinct_on?: Maybe<Array<Assets_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Assets_Order_By>>;
-  where?: Maybe<Assets_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Assets_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Assets_Order_By>>;
+  where?: InputMaybe<Assets_Bool_Exp>;
 };
 
 export type Subscription_RootAssets_AggregateArgs = {
-  distinct_on?: Maybe<Array<Assets_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Assets_Order_By>>;
-  where?: Maybe<Assets_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Assets_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Assets_Order_By>>;
+  where?: InputMaybe<Assets_Bool_Exp>;
 };
 
 export type Subscription_RootAssets_By_PkArgs = {
@@ -3809,19 +3810,19 @@ export type Subscription_RootAssets_By_PkArgs = {
 };
 
 export type Subscription_RootCategoriesArgs = {
-  distinct_on?: Maybe<Array<Categories_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Categories_Order_By>>;
-  where?: Maybe<Categories_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Categories_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Categories_Order_By>>;
+  where?: InputMaybe<Categories_Bool_Exp>;
 };
 
 export type Subscription_RootCategories_AggregateArgs = {
-  distinct_on?: Maybe<Array<Categories_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Categories_Order_By>>;
-  where?: Maybe<Categories_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Categories_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Categories_Order_By>>;
+  where?: InputMaybe<Categories_Bool_Exp>;
 };
 
 export type Subscription_RootCategories_By_PkArgs = {
@@ -3829,19 +3830,19 @@ export type Subscription_RootCategories_By_PkArgs = {
 };
 
 export type Subscription_RootExpensesArgs = {
-  distinct_on?: Maybe<Array<Expenses_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Expenses_Order_By>>;
-  where?: Maybe<Expenses_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Expenses_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Expenses_Order_By>>;
+  where?: InputMaybe<Expenses_Bool_Exp>;
 };
 
 export type Subscription_RootExpenses_AggregateArgs = {
-  distinct_on?: Maybe<Array<Expenses_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Expenses_Order_By>>;
-  where?: Maybe<Expenses_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Expenses_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Expenses_Order_By>>;
+  where?: InputMaybe<Expenses_Bool_Exp>;
 };
 
 export type Subscription_RootExpenses_By_PkArgs = {
@@ -3849,19 +3850,19 @@ export type Subscription_RootExpenses_By_PkArgs = {
 };
 
 export type Subscription_RootLabelsArgs = {
-  distinct_on?: Maybe<Array<Labels_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Labels_Order_By>>;
-  where?: Maybe<Labels_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Labels_Order_By>>;
+  where?: InputMaybe<Labels_Bool_Exp>;
 };
 
 export type Subscription_RootLabels_AggregateArgs = {
-  distinct_on?: Maybe<Array<Labels_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Labels_Order_By>>;
-  where?: Maybe<Labels_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Labels_Order_By>>;
+  where?: InputMaybe<Labels_Bool_Exp>;
 };
 
 export type Subscription_RootLabels_By_PkArgs = {
@@ -3869,19 +3870,19 @@ export type Subscription_RootLabels_By_PkArgs = {
 };
 
 export type Subscription_RootLiabilitiesArgs = {
-  distinct_on?: Maybe<Array<Liabilities_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Liabilities_Order_By>>;
-  where?: Maybe<Liabilities_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Liabilities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Liabilities_Order_By>>;
+  where?: InputMaybe<Liabilities_Bool_Exp>;
 };
 
 export type Subscription_RootLiabilities_AggregateArgs = {
-  distinct_on?: Maybe<Array<Liabilities_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Liabilities_Order_By>>;
-  where?: Maybe<Liabilities_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Liabilities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Liabilities_Order_By>>;
+  where?: InputMaybe<Liabilities_Bool_Exp>;
 };
 
 export type Subscription_RootLiabilities_By_PkArgs = {
@@ -3889,19 +3890,19 @@ export type Subscription_RootLiabilities_By_PkArgs = {
 };
 
 export type Subscription_RootNotificationsArgs = {
-  distinct_on?: Maybe<Array<Notifications_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Notifications_Order_By>>;
-  where?: Maybe<Notifications_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Notifications_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Notifications_Order_By>>;
+  where?: InputMaybe<Notifications_Bool_Exp>;
 };
 
 export type Subscription_RootNotifications_AggregateArgs = {
-  distinct_on?: Maybe<Array<Notifications_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Notifications_Order_By>>;
-  where?: Maybe<Notifications_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Notifications_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Notifications_Order_By>>;
+  where?: InputMaybe<Notifications_Bool_Exp>;
 };
 
 export type Subscription_RootNotifications_By_PkArgs = {
@@ -3909,19 +3910,19 @@ export type Subscription_RootNotifications_By_PkArgs = {
 };
 
 export type Subscription_RootRevenuesArgs = {
-  distinct_on?: Maybe<Array<Revenues_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Revenues_Order_By>>;
-  where?: Maybe<Revenues_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Revenues_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Revenues_Order_By>>;
+  where?: InputMaybe<Revenues_Bool_Exp>;
 };
 
 export type Subscription_RootRevenues_AggregateArgs = {
-  distinct_on?: Maybe<Array<Revenues_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Revenues_Order_By>>;
-  where?: Maybe<Revenues_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Revenues_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Revenues_Order_By>>;
+  where?: InputMaybe<Revenues_Bool_Exp>;
 };
 
 export type Subscription_RootRevenues_By_PkArgs = {
@@ -3929,19 +3930,19 @@ export type Subscription_RootRevenues_By_PkArgs = {
 };
 
 export type Subscription_RootSessionsArgs = {
-  distinct_on?: Maybe<Array<Sessions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Sessions_Order_By>>;
-  where?: Maybe<Sessions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Sessions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Sessions_Order_By>>;
+  where?: InputMaybe<Sessions_Bool_Exp>;
 };
 
 export type Subscription_RootSessions_AggregateArgs = {
-  distinct_on?: Maybe<Array<Sessions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Sessions_Order_By>>;
-  where?: Maybe<Sessions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Sessions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Sessions_Order_By>>;
+  where?: InputMaybe<Sessions_Bool_Exp>;
 };
 
 export type Subscription_RootSessions_By_PkArgs = {
@@ -3949,19 +3950,19 @@ export type Subscription_RootSessions_By_PkArgs = {
 };
 
 export type Subscription_RootTransaction_AttachmentsArgs = {
-  distinct_on?: Maybe<Array<Transaction_Attachments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Attachments_Order_By>>;
-  where?: Maybe<Transaction_Attachments_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transaction_Attachments_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Attachments_Order_By>>;
+  where?: InputMaybe<Transaction_Attachments_Bool_Exp>;
 };
 
 export type Subscription_RootTransaction_Attachments_AggregateArgs = {
-  distinct_on?: Maybe<Array<Transaction_Attachments_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Attachments_Order_By>>;
-  where?: Maybe<Transaction_Attachments_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transaction_Attachments_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Attachments_Order_By>>;
+  where?: InputMaybe<Transaction_Attachments_Bool_Exp>;
 };
 
 export type Subscription_RootTransaction_Attachments_By_PkArgs = {
@@ -3970,19 +3971,19 @@ export type Subscription_RootTransaction_Attachments_By_PkArgs = {
 };
 
 export type Subscription_RootTransaction_LabelsArgs = {
-  distinct_on?: Maybe<Array<Transaction_Labels_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Labels_Order_By>>;
-  where?: Maybe<Transaction_Labels_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transaction_Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Labels_Order_By>>;
+  where?: InputMaybe<Transaction_Labels_Bool_Exp>;
 };
 
 export type Subscription_RootTransaction_Labels_AggregateArgs = {
-  distinct_on?: Maybe<Array<Transaction_Labels_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Labels_Order_By>>;
-  where?: Maybe<Transaction_Labels_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transaction_Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Labels_Order_By>>;
+  where?: InputMaybe<Transaction_Labels_Bool_Exp>;
 };
 
 export type Subscription_RootTransaction_Labels_By_PkArgs = {
@@ -3991,19 +3992,19 @@ export type Subscription_RootTransaction_Labels_By_PkArgs = {
 };
 
 export type Subscription_RootTransactionsArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 export type Subscription_RootTransactions_AggregateArgs = {
-  distinct_on?: Maybe<Array<Transactions_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transactions_Order_By>>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 export type Subscription_RootTransactions_By_PkArgs = {
@@ -4011,19 +4012,19 @@ export type Subscription_RootTransactions_By_PkArgs = {
 };
 
 export type Subscription_RootUser_SettingsArgs = {
-  distinct_on?: Maybe<Array<User_Settings_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Settings_Order_By>>;
-  where?: Maybe<User_Settings_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
 };
 
 export type Subscription_RootUser_Settings_AggregateArgs = {
-  distinct_on?: Maybe<Array<User_Settings_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<User_Settings_Order_By>>;
-  where?: Maybe<User_Settings_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<User_Settings_Order_By>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
 };
 
 export type Subscription_RootUser_Settings_By_PkArgs = {
@@ -4031,19 +4032,19 @@ export type Subscription_RootUser_Settings_By_PkArgs = {
 };
 
 export type Subscription_RootUsersArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 export type Subscription_RootUsers_AggregateArgs = {
-  distinct_on?: Maybe<Array<Users_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Users_Order_By>>;
-  where?: Maybe<Users_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 export type Subscription_RootUsers_By_PkArgs = {
@@ -4051,19 +4052,19 @@ export type Subscription_RootUsers_By_PkArgs = {
 };
 
 export type Subscription_RootVerification_RequestsArgs = {
-  distinct_on?: Maybe<Array<Verification_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Verification_Requests_Order_By>>;
-  where?: Maybe<Verification_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Verification_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Verification_Requests_Order_By>>;
+  where?: InputMaybe<Verification_Requests_Bool_Exp>;
 };
 
 export type Subscription_RootVerification_Requests_AggregateArgs = {
-  distinct_on?: Maybe<Array<Verification_Requests_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Verification_Requests_Order_By>>;
-  where?: Maybe<Verification_Requests_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Verification_Requests_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Verification_Requests_Order_By>>;
+  where?: InputMaybe<Verification_Requests_Bool_Exp>;
 };
 
 export type Subscription_RootVerification_Requests_By_PkArgs = {
@@ -4072,15 +4073,15 @@ export type Subscription_RootVerification_Requests_By_PkArgs = {
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
-  _eq?: Maybe<Scalars['timestamptz']>;
-  _gt?: Maybe<Scalars['timestamptz']>;
-  _gte?: Maybe<Scalars['timestamptz']>;
-  _in?: Maybe<Array<Scalars['timestamptz']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['timestamptz']>;
-  _lte?: Maybe<Scalars['timestamptz']>;
-  _neq?: Maybe<Scalars['timestamptz']>;
-  _nin?: Maybe<Array<Scalars['timestamptz']>>;
+  _eq?: InputMaybe<Scalars['timestamptz']>;
+  _gt?: InputMaybe<Scalars['timestamptz']>;
+  _gte?: InputMaybe<Scalars['timestamptz']>;
+  _in?: InputMaybe<Array<Scalars['timestamptz']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['timestamptz']>;
+  _lte?: InputMaybe<Scalars['timestamptz']>;
+  _neq?: InputMaybe<Scalars['timestamptz']>;
+  _nin?: InputMaybe<Array<Scalars['timestamptz']>>;
 };
 
 /** columns and relationships of "transaction_attachments" */
@@ -4120,8 +4121,8 @@ export type Transaction_Attachments_Aggregate_Fields = {
 
 /** aggregate fields of "transaction_attachments" */
 export type Transaction_Attachments_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Transaction_Attachments_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Transaction_Attachments_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -4133,15 +4134,15 @@ export type Transaction_Attachments_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "transaction_attachments". All fields are combined with a logical 'AND'. */
 export type Transaction_Attachments_Bool_Exp = {
-  _and?: Maybe<Array<Transaction_Attachments_Bool_Exp>>;
-  _not?: Maybe<Transaction_Attachments_Bool_Exp>;
-  _or?: Maybe<Array<Transaction_Attachments_Bool_Exp>>;
-  attachment_id?: Maybe<Int_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  description?: Maybe<String_Comparison_Exp>;
-  transaction?: Maybe<Transactions_Bool_Exp>;
-  transaction_id?: Maybe<Bigint_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Transaction_Attachments_Bool_Exp>>;
+  _not?: InputMaybe<Transaction_Attachments_Bool_Exp>;
+  _or?: InputMaybe<Array<Transaction_Attachments_Bool_Exp>>;
+  attachment_id?: InputMaybe<Int_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  transaction?: InputMaybe<Transactions_Bool_Exp>;
+  transaction_id?: InputMaybe<Bigint_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "transaction_attachments" */
@@ -4156,18 +4157,18 @@ export enum Transaction_Attachments_Constraint {
 
 /** input type for incrementing numeric columns in table "transaction_attachments" */
 export type Transaction_Attachments_Inc_Input = {
-  attachment_id?: Maybe<Scalars['Int']>;
-  transaction_id?: Maybe<Scalars['bigint']>;
+  attachment_id?: InputMaybe<Scalars['Int']>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "transaction_attachments" */
 export type Transaction_Attachments_Insert_Input = {
-  attachment_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  transaction?: Maybe<Transactions_Obj_Rel_Insert_Input>;
-  transaction_id?: Maybe<Scalars['bigint']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  attachment_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  transaction?: InputMaybe<Transactions_Obj_Rel_Insert_Input>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -4203,17 +4204,17 @@ export type Transaction_Attachments_Mutation_Response = {
 export type Transaction_Attachments_On_Conflict = {
   constraint: Transaction_Attachments_Constraint;
   update_columns?: Array<Transaction_Attachments_Update_Column>;
-  where?: Maybe<Transaction_Attachments_Bool_Exp>;
+  where?: InputMaybe<Transaction_Attachments_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "transaction_attachments". */
 export type Transaction_Attachments_Order_By = {
-  attachment_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  description?: Maybe<Order_By>;
-  transaction?: Maybe<Transactions_Order_By>;
-  transaction_id?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  attachment_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  transaction?: InputMaybe<Transactions_Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: transaction_attachments */
@@ -4238,11 +4239,11 @@ export enum Transaction_Attachments_Select_Column {
 
 /** input type for updating data in table "transaction_attachments" */
 export type Transaction_Attachments_Set_Input = {
-  attachment_id?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  transaction_id?: Maybe<Scalars['bigint']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  attachment_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -4344,8 +4345,8 @@ export type Transaction_Labels_Aggregate_Fields = {
 
 /** aggregate fields of "transaction_labels" */
 export type Transaction_Labels_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Transaction_Labels_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Transaction_Labels_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** aggregate avg on columns */
@@ -4357,13 +4358,13 @@ export type Transaction_Labels_Avg_Fields = {
 
 /** Boolean expression to filter rows from the table "transaction_labels". All fields are combined with a logical 'AND'. */
 export type Transaction_Labels_Bool_Exp = {
-  _and?: Maybe<Array<Transaction_Labels_Bool_Exp>>;
-  _not?: Maybe<Transaction_Labels_Bool_Exp>;
-  _or?: Maybe<Array<Transaction_Labels_Bool_Exp>>;
-  label?: Maybe<Labels_Bool_Exp>;
-  label_id?: Maybe<Int_Comparison_Exp>;
-  transaction?: Maybe<Transactions_Bool_Exp>;
-  transaction_id?: Maybe<Bigint_Comparison_Exp>;
+  _and?: InputMaybe<Array<Transaction_Labels_Bool_Exp>>;
+  _not?: InputMaybe<Transaction_Labels_Bool_Exp>;
+  _or?: InputMaybe<Array<Transaction_Labels_Bool_Exp>>;
+  label?: InputMaybe<Labels_Bool_Exp>;
+  label_id?: InputMaybe<Int_Comparison_Exp>;
+  transaction?: InputMaybe<Transactions_Bool_Exp>;
+  transaction_id?: InputMaybe<Bigint_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "transaction_labels" */
@@ -4378,16 +4379,16 @@ export enum Transaction_Labels_Constraint {
 
 /** input type for incrementing numeric columns in table "transaction_labels" */
 export type Transaction_Labels_Inc_Input = {
-  label_id?: Maybe<Scalars['Int']>;
-  transaction_id?: Maybe<Scalars['bigint']>;
+  label_id?: InputMaybe<Scalars['Int']>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "transaction_labels" */
 export type Transaction_Labels_Insert_Input = {
-  label?: Maybe<Labels_Obj_Rel_Insert_Input>;
-  label_id?: Maybe<Scalars['Int']>;
-  transaction?: Maybe<Transactions_Obj_Rel_Insert_Input>;
-  transaction_id?: Maybe<Scalars['bigint']>;
+  label?: InputMaybe<Labels_Obj_Rel_Insert_Input>;
+  label_id?: InputMaybe<Scalars['Int']>;
+  transaction?: InputMaybe<Transactions_Obj_Rel_Insert_Input>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** aggregate max on columns */
@@ -4417,22 +4418,22 @@ export type Transaction_Labels_Mutation_Response = {
 export type Transaction_Labels_Obj_Rel_Insert_Input = {
   data: Transaction_Labels_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Transaction_Labels_On_Conflict>;
+  on_conflict?: InputMaybe<Transaction_Labels_On_Conflict>;
 };
 
 /** on conflict condition type for table "transaction_labels" */
 export type Transaction_Labels_On_Conflict = {
   constraint: Transaction_Labels_Constraint;
   update_columns?: Array<Transaction_Labels_Update_Column>;
-  where?: Maybe<Transaction_Labels_Bool_Exp>;
+  where?: InputMaybe<Transaction_Labels_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "transaction_labels". */
 export type Transaction_Labels_Order_By = {
-  label?: Maybe<Labels_Order_By>;
-  label_id?: Maybe<Order_By>;
-  transaction?: Maybe<Transactions_Order_By>;
-  transaction_id?: Maybe<Order_By>;
+  label?: InputMaybe<Labels_Order_By>;
+  label_id?: InputMaybe<Order_By>;
+  transaction?: InputMaybe<Transactions_Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: transaction_labels */
@@ -4451,8 +4452,8 @@ export enum Transaction_Labels_Select_Column {
 
 /** input type for updating data in table "transaction_labels" */
 export type Transaction_Labels_Set_Input = {
-  label_id?: Maybe<Scalars['Int']>;
-  transaction_id?: Maybe<Scalars['bigint']>;
+  label_id?: InputMaybe<Scalars['Int']>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** aggregate stddev on columns */
@@ -4559,30 +4560,30 @@ export type Transactions_Aggregate_Fields = {
 
 /** aggregate fields of "transactions" */
 export type Transactions_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Transactions_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Transactions_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** order by aggregate values of table "transactions" */
 export type Transactions_Aggregate_Order_By = {
-  avg?: Maybe<Transactions_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Transactions_Max_Order_By>;
-  min?: Maybe<Transactions_Min_Order_By>;
-  stddev?: Maybe<Transactions_Stddev_Order_By>;
-  stddev_pop?: Maybe<Transactions_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Transactions_Stddev_Samp_Order_By>;
-  sum?: Maybe<Transactions_Sum_Order_By>;
-  var_pop?: Maybe<Transactions_Var_Pop_Order_By>;
-  var_samp?: Maybe<Transactions_Var_Samp_Order_By>;
-  variance?: Maybe<Transactions_Variance_Order_By>;
+  avg?: InputMaybe<Transactions_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Transactions_Max_Order_By>;
+  min?: InputMaybe<Transactions_Min_Order_By>;
+  stddev?: InputMaybe<Transactions_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Transactions_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Transactions_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Transactions_Sum_Order_By>;
+  var_pop?: InputMaybe<Transactions_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Transactions_Var_Samp_Order_By>;
+  variance?: InputMaybe<Transactions_Variance_Order_By>;
 };
 
 /** input type for inserting array relation for remote table "transactions" */
 export type Transactions_Arr_Rel_Insert_Input = {
   data: Array<Transactions_Insert_Input>;
   /** on conflict condition */
-  on_conflict?: Maybe<Transactions_On_Conflict>;
+  on_conflict?: InputMaybe<Transactions_On_Conflict>;
 };
 
 /** aggregate avg on columns */
@@ -4597,31 +4598,31 @@ export type Transactions_Avg_Fields = {
 
 /** order by avg() on columns of table "transactions" */
 export type Transactions_Avg_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "transactions". All fields are combined with a logical 'AND'. */
 export type Transactions_Bool_Exp = {
-  _and?: Maybe<Array<Transactions_Bool_Exp>>;
-  _not?: Maybe<Transactions_Bool_Exp>;
-  _or?: Maybe<Array<Transactions_Bool_Exp>>;
-  accountInfoBySourceAccount?: Maybe<Account_Info_Bool_Exp>;
-  account_info?: Maybe<Account_Info_Bool_Exp>;
-  amount?: Maybe<Float8_Comparison_Exp>;
-  category?: Maybe<Categories_Bool_Exp>;
-  category_id?: Maybe<Bigint_Comparison_Exp>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  description?: Maybe<String_Comparison_Exp>;
-  destiny_account?: Maybe<Bigint_Comparison_Exp>;
-  id?: Maybe<Bigint_Comparison_Exp>;
-  source_account?: Maybe<Bigint_Comparison_Exp>;
-  transaction_date?: Maybe<Date_Comparison_Exp>;
-  transaction_label?: Maybe<Transaction_Labels_Bool_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Transactions_Bool_Exp>>;
+  _not?: InputMaybe<Transactions_Bool_Exp>;
+  _or?: InputMaybe<Array<Transactions_Bool_Exp>>;
+  accountInfoBySourceAccount?: InputMaybe<Account_Info_Bool_Exp>;
+  account_info?: InputMaybe<Account_Info_Bool_Exp>;
+  amount?: InputMaybe<Float8_Comparison_Exp>;
+  category?: InputMaybe<Categories_Bool_Exp>;
+  category_id?: InputMaybe<Bigint_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  description?: InputMaybe<String_Comparison_Exp>;
+  destiny_account?: InputMaybe<Bigint_Comparison_Exp>;
+  id?: InputMaybe<Bigint_Comparison_Exp>;
+  source_account?: InputMaybe<Bigint_Comparison_Exp>;
+  transaction_date?: InputMaybe<Date_Comparison_Exp>;
+  transaction_label?: InputMaybe<Transaction_Labels_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "transactions" */
@@ -4632,28 +4633,28 @@ export enum Transactions_Constraint {
 
 /** input type for incrementing numeric columns in table "transactions" */
 export type Transactions_Inc_Input = {
-  amount?: Maybe<Scalars['float8']>;
-  category_id?: Maybe<Scalars['bigint']>;
-  destiny_account?: Maybe<Scalars['bigint']>;
-  id?: Maybe<Scalars['bigint']>;
-  source_account?: Maybe<Scalars['bigint']>;
+  amount?: InputMaybe<Scalars['float8']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
+  destiny_account?: InputMaybe<Scalars['bigint']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  source_account?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "transactions" */
 export type Transactions_Insert_Input = {
-  accountInfoBySourceAccount?: Maybe<Account_Info_Obj_Rel_Insert_Input>;
-  account_info?: Maybe<Account_Info_Obj_Rel_Insert_Input>;
-  amount?: Maybe<Scalars['float8']>;
-  category?: Maybe<Categories_Obj_Rel_Insert_Input>;
-  category_id?: Maybe<Scalars['bigint']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  destiny_account?: Maybe<Scalars['bigint']>;
-  id?: Maybe<Scalars['bigint']>;
-  source_account?: Maybe<Scalars['bigint']>;
-  transaction_date?: Maybe<Scalars['date']>;
-  transaction_label?: Maybe<Transaction_Labels_Obj_Rel_Insert_Input>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  accountInfoBySourceAccount?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  amount?: InputMaybe<Scalars['float8']>;
+  category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
+  category_id?: InputMaybe<Scalars['bigint']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  destiny_account?: InputMaybe<Scalars['bigint']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  source_account?: InputMaybe<Scalars['bigint']>;
+  transaction_date?: InputMaybe<Scalars['date']>;
+  transaction_label?: InputMaybe<Transaction_Labels_Obj_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -4672,15 +4673,15 @@ export type Transactions_Max_Fields = {
 
 /** order by max() on columns of table "transactions" */
 export type Transactions_Max_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  description?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
-  transaction_date?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
+  transaction_date?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -4699,15 +4700,15 @@ export type Transactions_Min_Fields = {
 
 /** order by min() on columns of table "transactions" */
 export type Transactions_Min_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  description?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
-  transaction_date?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
+  transaction_date?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "transactions" */
@@ -4723,31 +4724,31 @@ export type Transactions_Mutation_Response = {
 export type Transactions_Obj_Rel_Insert_Input = {
   data: Transactions_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Transactions_On_Conflict>;
+  on_conflict?: InputMaybe<Transactions_On_Conflict>;
 };
 
 /** on conflict condition type for table "transactions" */
 export type Transactions_On_Conflict = {
   constraint: Transactions_Constraint;
   update_columns?: Array<Transactions_Update_Column>;
-  where?: Maybe<Transactions_Bool_Exp>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "transactions". */
 export type Transactions_Order_By = {
-  accountInfoBySourceAccount?: Maybe<Account_Info_Order_By>;
-  account_info?: Maybe<Account_Info_Order_By>;
-  amount?: Maybe<Order_By>;
-  category?: Maybe<Categories_Order_By>;
-  category_id?: Maybe<Order_By>;
-  created_at?: Maybe<Order_By>;
-  description?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
-  transaction_date?: Maybe<Order_By>;
-  transaction_label?: Maybe<Transaction_Labels_Order_By>;
-  updated_at?: Maybe<Order_By>;
+  accountInfoBySourceAccount?: InputMaybe<Account_Info_Order_By>;
+  account_info?: InputMaybe<Account_Info_Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category?: InputMaybe<Categories_Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
+  transaction_date?: InputMaybe<Order_By>;
+  transaction_label?: InputMaybe<Transaction_Labels_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: transactions */
@@ -4779,15 +4780,15 @@ export enum Transactions_Select_Column {
 
 /** input type for updating data in table "transactions" */
 export type Transactions_Set_Input = {
-  amount?: Maybe<Scalars['float8']>;
-  category_id?: Maybe<Scalars['bigint']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  description?: Maybe<Scalars['String']>;
-  destiny_account?: Maybe<Scalars['bigint']>;
-  id?: Maybe<Scalars['bigint']>;
-  source_account?: Maybe<Scalars['bigint']>;
-  transaction_date?: Maybe<Scalars['date']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  amount?: InputMaybe<Scalars['float8']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  destiny_account?: InputMaybe<Scalars['bigint']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  source_account?: InputMaybe<Scalars['bigint']>;
+  transaction_date?: InputMaybe<Scalars['date']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
@@ -4802,11 +4803,11 @@ export type Transactions_Stddev_Fields = {
 
 /** order by stddev() on columns of table "transactions" */
 export type Transactions_Stddev_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -4821,11 +4822,11 @@ export type Transactions_Stddev_Pop_Fields = {
 
 /** order by stddev_pop() on columns of table "transactions" */
 export type Transactions_Stddev_Pop_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -4840,11 +4841,11 @@ export type Transactions_Stddev_Samp_Fields = {
 
 /** order by stddev_samp() on columns of table "transactions" */
 export type Transactions_Stddev_Samp_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -4859,11 +4860,11 @@ export type Transactions_Sum_Fields = {
 
 /** order by sum() on columns of table "transactions" */
 export type Transactions_Sum_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "transactions" */
@@ -4900,11 +4901,11 @@ export type Transactions_Var_Pop_Fields = {
 
 /** order by var_pop() on columns of table "transactions" */
 export type Transactions_Var_Pop_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -4919,11 +4920,11 @@ export type Transactions_Var_Samp_Fields = {
 
 /** order by var_samp() on columns of table "transactions" */
 export type Transactions_Var_Samp_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -4938,11 +4939,11 @@ export type Transactions_Variance_Fields = {
 
 /** order by variance() on columns of table "transactions" */
 export type Transactions_Variance_Order_By = {
-  amount?: Maybe<Order_By>;
-  category_id?: Maybe<Order_By>;
-  destiny_account?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  source_account?: Maybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  destiny_account?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  source_account?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "user_settings" */
@@ -4972,19 +4973,19 @@ export type User_Settings_Aggregate_Fields = {
 
 /** aggregate fields of "user_settings" */
 export type User_Settings_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<User_Settings_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<User_Settings_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "user_settings". All fields are combined with a logical 'AND'. */
 export type User_Settings_Bool_Exp = {
-  _and?: Maybe<Array<User_Settings_Bool_Exp>>;
-  _not?: Maybe<User_Settings_Bool_Exp>;
-  _or?: Maybe<Array<User_Settings_Bool_Exp>>;
-  darkMode?: Maybe<Boolean_Comparison_Exp>;
-  langKey?: Maybe<String_Comparison_Exp>;
-  user?: Maybe<Users_Bool_Exp>;
-  user_id?: Maybe<Uuid_Comparison_Exp>;
+  _and?: InputMaybe<Array<User_Settings_Bool_Exp>>;
+  _not?: InputMaybe<User_Settings_Bool_Exp>;
+  _or?: InputMaybe<Array<User_Settings_Bool_Exp>>;
+  darkMode?: InputMaybe<Boolean_Comparison_Exp>;
+  langKey?: InputMaybe<String_Comparison_Exp>;
+  user?: InputMaybe<Users_Bool_Exp>;
+  user_id?: InputMaybe<Uuid_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "user_settings" */
@@ -4995,10 +4996,10 @@ export enum User_Settings_Constraint {
 
 /** input type for inserting data into table "user_settings" */
 export type User_Settings_Insert_Input = {
-  darkMode?: Maybe<Scalars['Boolean']>;
-  langKey?: Maybe<Scalars['String']>;
-  user?: Maybe<Users_Obj_Rel_Insert_Input>;
-  user_id?: Maybe<Scalars['uuid']>;
+  darkMode?: InputMaybe<Scalars['Boolean']>;
+  langKey?: InputMaybe<Scalars['String']>;
+  user?: InputMaybe<Users_Obj_Rel_Insert_Input>;
+  user_id?: InputMaybe<Scalars['uuid']>;
 };
 
 /** aggregate max on columns */
@@ -5028,22 +5029,22 @@ export type User_Settings_Mutation_Response = {
 export type User_Settings_Obj_Rel_Insert_Input = {
   data: User_Settings_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<User_Settings_On_Conflict>;
+  on_conflict?: InputMaybe<User_Settings_On_Conflict>;
 };
 
 /** on conflict condition type for table "user_settings" */
 export type User_Settings_On_Conflict = {
   constraint: User_Settings_Constraint;
   update_columns?: Array<User_Settings_Update_Column>;
-  where?: Maybe<User_Settings_Bool_Exp>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "user_settings". */
 export type User_Settings_Order_By = {
-  darkMode?: Maybe<Order_By>;
-  langKey?: Maybe<Order_By>;
-  user?: Maybe<Users_Order_By>;
-  user_id?: Maybe<Order_By>;
+  darkMode?: InputMaybe<Order_By>;
+  langKey?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: user_settings */
@@ -5063,9 +5064,9 @@ export enum User_Settings_Select_Column {
 
 /** input type for updating data in table "user_settings" */
 export type User_Settings_Set_Input = {
-  darkMode?: Maybe<Scalars['Boolean']>;
-  langKey?: Maybe<Scalars['String']>;
-  user_id?: Maybe<Scalars['uuid']>;
+  darkMode?: InputMaybe<Scalars['Boolean']>;
+  langKey?: InputMaybe<Scalars['String']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
 };
 
 /** update columns of table "user_settings" */
@@ -5099,20 +5100,20 @@ export type Users = {
 
 /** columns and relationships of "users" */
 export type UsersNotificationsArgs = {
-  distinct_on?: Maybe<Array<Notifications_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Notifications_Order_By>>;
-  where?: Maybe<Notifications_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Notifications_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Notifications_Order_By>>;
+  where?: InputMaybe<Notifications_Bool_Exp>;
 };
 
 /** columns and relationships of "users" */
 export type UsersNotifications_AggregateArgs = {
-  distinct_on?: Maybe<Array<Notifications_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Notifications_Order_By>>;
-  where?: Maybe<Notifications_Bool_Exp>;
+  distinct_on?: InputMaybe<Array<Notifications_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Notifications_Order_By>>;
+  where?: InputMaybe<Notifications_Bool_Exp>;
 };
 
 /** aggregated selection of "users" */
@@ -5132,25 +5133,25 @@ export type Users_Aggregate_Fields = {
 
 /** aggregate fields of "users" */
 export type Users_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Users_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Users_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'. */
 export type Users_Bool_Exp = {
-  _and?: Maybe<Array<Users_Bool_Exp>>;
-  _not?: Maybe<Users_Bool_Exp>;
-  _or?: Maybe<Array<Users_Bool_Exp>>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  email?: Maybe<String_Comparison_Exp>;
-  email_verified?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Uuid_Comparison_Exp>;
-  image?: Maybe<String_Comparison_Exp>;
-  lastName?: Maybe<String_Comparison_Exp>;
-  name?: Maybe<String_Comparison_Exp>;
-  notifications?: Maybe<Notifications_Bool_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
-  user_setting?: Maybe<User_Settings_Bool_Exp>;
+  _and?: InputMaybe<Array<Users_Bool_Exp>>;
+  _not?: InputMaybe<Users_Bool_Exp>;
+  _or?: InputMaybe<Array<Users_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  email?: InputMaybe<String_Comparison_Exp>;
+  email_verified?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  image?: InputMaybe<String_Comparison_Exp>;
+  lastName?: InputMaybe<String_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  notifications?: InputMaybe<Notifications_Bool_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_setting?: InputMaybe<User_Settings_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "users" */
@@ -5161,16 +5162,16 @@ export enum Users_Constraint {
 
 /** input type for inserting data into table "users" */
 export type Users_Insert_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  email?: Maybe<Scalars['String']>;
-  email_verified?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['uuid']>;
-  image?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  notifications?: Maybe<Notifications_Arr_Rel_Insert_Input>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_setting?: Maybe<User_Settings_Obj_Rel_Insert_Input>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  email?: InputMaybe<Scalars['String']>;
+  email_verified?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  image?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  notifications?: InputMaybe<Notifications_Arr_Rel_Insert_Input>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_setting?: InputMaybe<User_Settings_Obj_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -5212,28 +5213,28 @@ export type Users_Mutation_Response = {
 export type Users_Obj_Rel_Insert_Input = {
   data: Users_Insert_Input;
   /** on conflict condition */
-  on_conflict?: Maybe<Users_On_Conflict>;
+  on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
 /** on conflict condition type for table "users" */
 export type Users_On_Conflict = {
   constraint: Users_Constraint;
   update_columns?: Array<Users_Update_Column>;
-  where?: Maybe<Users_Bool_Exp>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "users". */
 export type Users_Order_By = {
-  created_at?: Maybe<Order_By>;
-  email?: Maybe<Order_By>;
-  email_verified?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  image?: Maybe<Order_By>;
-  lastName?: Maybe<Order_By>;
-  name?: Maybe<Order_By>;
-  notifications_aggregate?: Maybe<Notifications_Aggregate_Order_By>;
-  updated_at?: Maybe<Order_By>;
-  user_setting?: Maybe<User_Settings_Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  email?: InputMaybe<Order_By>;
+  email_verified?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  image?: InputMaybe<Order_By>;
+  lastName?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  notifications_aggregate?: InputMaybe<Notifications_Aggregate_Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_setting?: InputMaybe<User_Settings_Order_By>;
 };
 
 /** primary key columns input for table: users */
@@ -5263,14 +5264,14 @@ export enum Users_Select_Column {
 
 /** input type for updating data in table "users" */
 export type Users_Set_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  email?: Maybe<Scalars['String']>;
-  email_verified?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['uuid']>;
-  image?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  email?: InputMaybe<Scalars['String']>;
+  email_verified?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  image?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** update columns of table "users" */
@@ -5295,15 +5296,15 @@ export enum Users_Update_Column {
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
 export type Uuid_Comparison_Exp = {
-  _eq?: Maybe<Scalars['uuid']>;
-  _gt?: Maybe<Scalars['uuid']>;
-  _gte?: Maybe<Scalars['uuid']>;
-  _in?: Maybe<Array<Scalars['uuid']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['uuid']>;
-  _lte?: Maybe<Scalars['uuid']>;
-  _neq?: Maybe<Scalars['uuid']>;
-  _nin?: Maybe<Array<Scalars['uuid']>>;
+  _eq?: InputMaybe<Scalars['uuid']>;
+  _gt?: InputMaybe<Scalars['uuid']>;
+  _gte?: InputMaybe<Scalars['uuid']>;
+  _in?: InputMaybe<Array<Scalars['uuid']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['uuid']>;
+  _lte?: InputMaybe<Scalars['uuid']>;
+  _neq?: InputMaybe<Scalars['uuid']>;
+  _nin?: InputMaybe<Array<Scalars['uuid']>>;
 };
 
 /** columns and relationships of "verification_requests" */
@@ -5334,21 +5335,21 @@ export type Verification_Requests_Aggregate_Fields = {
 
 /** aggregate fields of "verification_requests" */
 export type Verification_Requests_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Verification_Requests_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
+  columns?: InputMaybe<Array<Verification_Requests_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Boolean expression to filter rows from the table "verification_requests". All fields are combined with a logical 'AND'. */
 export type Verification_Requests_Bool_Exp = {
-  _and?: Maybe<Array<Verification_Requests_Bool_Exp>>;
-  _not?: Maybe<Verification_Requests_Bool_Exp>;
-  _or?: Maybe<Array<Verification_Requests_Bool_Exp>>;
-  created_at?: Maybe<Timestamptz_Comparison_Exp>;
-  expires?: Maybe<Timestamptz_Comparison_Exp>;
-  id?: Maybe<Uuid_Comparison_Exp>;
-  identifier?: Maybe<String_Comparison_Exp>;
-  token?: Maybe<String_Comparison_Exp>;
-  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  _and?: InputMaybe<Array<Verification_Requests_Bool_Exp>>;
+  _not?: InputMaybe<Verification_Requests_Bool_Exp>;
+  _or?: InputMaybe<Array<Verification_Requests_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  expires?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  identifier?: InputMaybe<String_Comparison_Exp>;
+  token?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "verification_requests" */
@@ -5359,12 +5360,12 @@ export enum Verification_Requests_Constraint {
 
 /** input type for inserting data into table "verification_requests" */
 export type Verification_Requests_Insert_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  expires?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['uuid']>;
-  identifier?: Maybe<Scalars['String']>;
-  token?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  expires?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  identifier?: InputMaybe<Scalars['String']>;
+  token?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
@@ -5402,17 +5403,17 @@ export type Verification_Requests_Mutation_Response = {
 export type Verification_Requests_On_Conflict = {
   constraint: Verification_Requests_Constraint;
   update_columns?: Array<Verification_Requests_Update_Column>;
-  where?: Maybe<Verification_Requests_Bool_Exp>;
+  where?: InputMaybe<Verification_Requests_Bool_Exp>;
 };
 
 /** Ordering options when selecting data from "verification_requests". */
 export type Verification_Requests_Order_By = {
-  created_at?: Maybe<Order_By>;
-  expires?: Maybe<Order_By>;
-  id?: Maybe<Order_By>;
-  identifier?: Maybe<Order_By>;
-  token?: Maybe<Order_By>;
-  updated_at?: Maybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  expires?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  identifier?: InputMaybe<Order_By>;
+  token?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: verification_requests */
@@ -5438,12 +5439,12 @@ export enum Verification_Requests_Select_Column {
 
 /** input type for updating data in table "verification_requests" */
 export type Verification_Requests_Set_Input = {
-  created_at?: Maybe<Scalars['timestamptz']>;
-  expires?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['uuid']>;
-  identifier?: Maybe<Scalars['String']>;
-  token?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  expires?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  identifier?: InputMaybe<Scalars['String']>;
+  token?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** update columns of table "verification_requests" */
@@ -5476,7 +5477,6 @@ export type InsertAssetMutation = {
         created_at: string;
         updated_at: string;
       }
-    | null
     | undefined;
 };
 
@@ -5488,31 +5488,27 @@ export type DeleteAssetMutation = {
   __typename?: 'mutation_root';
   delete_account_info_by_pk?:
     | { __typename?: 'account_info'; id: any }
-    | null
     | undefined;
 };
 
 export type UpdateAssetMutationVariables = Exact<{
   id: Scalars['bigint'];
-  changes?: Maybe<Assets_Set_Input>;
+  changes?: InputMaybe<Assets_Set_Input>;
 }>;
 
 export type UpdateAssetMutation = {
   __typename?: 'mutation_root';
-  update_assets_by_pk?: { __typename?: 'assets'; id: any } | null | undefined;
+  update_assets_by_pk?: { __typename?: 'assets'; id: any } | undefined;
 };
 
 export type UpdateAssetStateMutationVariables = Exact<{
   id: Scalars['bigint'];
-  state?: Maybe<Scalars['Boolean']>;
+  state?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 export type UpdateAssetStateMutation = {
   __typename?: 'mutation_root';
-  update_assets_by_pk?:
-    | { __typename?: 'assets'; active: boolean }
-    | null
-    | undefined;
+  update_assets_by_pk?: { __typename?: 'assets'; active: boolean } | undefined;
 };
 
 export type InsertCategoryMutationVariables = Exact<{
@@ -5530,7 +5526,6 @@ export type InsertCategoryMutation = {
         created_at: string;
         updated_at: string;
       }
-    | null
     | undefined;
 };
 
@@ -5542,21 +5537,17 @@ export type DeleteCategoryMutation = {
   __typename?: 'mutation_root';
   delete_categories_by_pk?:
     | { __typename?: 'categories'; id: any; name: string }
-    | null
     | undefined;
 };
 
 export type UpdateCategoryMutationVariables = Exact<{
   id: Scalars['bigint'];
-  changes?: Maybe<Categories_Set_Input>;
+  changes?: InputMaybe<Categories_Set_Input>;
 }>;
 
 export type UpdateCategoryMutation = {
   __typename?: 'mutation_root';
-  update_categories_by_pk?:
-    | { __typename?: 'categories'; id: any }
-    | null
-    | undefined;
+  update_categories_by_pk?: { __typename?: 'categories'; id: any } | undefined;
 };
 
 export type InsertExpenseAccMutationVariables = Exact<{
@@ -5573,7 +5564,6 @@ export type InsertExpenseAccMutation = {
         created_at: string;
         updated_at: string;
       }
-    | null
     | undefined;
 };
 
@@ -5585,33 +5575,28 @@ export type DeleteExpenseAccMutation = {
   __typename?: 'mutation_root';
   delete_account_info_by_pk?:
     | { __typename?: 'account_info'; id: any }
-    | null
     | undefined;
 };
 
 export type UpdateExpenseAccMutationVariables = Exact<{
   id: Scalars['bigint'];
-  changes?: Maybe<Expenses_Set_Input>;
+  changes?: InputMaybe<Expenses_Set_Input>;
 }>;
 
 export type UpdateExpenseAccMutation = {
   __typename?: 'mutation_root';
-  update_expenses_by_pk?:
-    | { __typename?: 'expenses'; id: any }
-    | null
-    | undefined;
+  update_expenses_by_pk?: { __typename?: 'expenses'; id: any } | undefined;
 };
 
 export type UpdateExpenseStateMutationVariables = Exact<{
   id: Scalars['bigint'];
-  state?: Maybe<Scalars['Boolean']>;
+  state?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 export type UpdateExpenseStateMutation = {
   __typename?: 'mutation_root';
   update_expenses_by_pk?:
     | { __typename?: 'expenses'; active: boolean }
-    | null
     | undefined;
 };
 
@@ -5629,7 +5614,6 @@ export type InsertLabelMutation = {
         created_at: string;
         updated_at: string;
       }
-    | null
     | undefined;
 };
 
@@ -5641,21 +5625,17 @@ export type DeleteLabelMutation = {
   __typename?: 'mutation_root';
   delete_labels_by_pk?:
     | { __typename?: 'labels'; id: number; name: string }
-    | null
     | undefined;
 };
 
 export type UpdateLabelMutationVariables = Exact<{
   id: Scalars['Int'];
-  changes?: Maybe<Labels_Set_Input>;
+  changes?: InputMaybe<Labels_Set_Input>;
 }>;
 
 export type UpdateLabelMutation = {
   __typename?: 'mutation_root';
-  update_labels_by_pk?:
-    | { __typename?: 'labels'; id: number }
-    | null
-    | undefined;
+  update_labels_by_pk?: { __typename?: 'labels'; id: number } | undefined;
 };
 
 export type InsertLiabilityAccMutationVariables = Exact<{
@@ -5672,7 +5652,6 @@ export type InsertLiabilityAccMutation = {
         created_at: string;
         updated_at: string;
       }
-    | null
     | undefined;
 };
 
@@ -5684,33 +5663,30 @@ export type DeleteLiabilityAccMutation = {
   __typename?: 'mutation_root';
   delete_account_info_by_pk?:
     | { __typename?: 'account_info'; id: any }
-    | null
     | undefined;
 };
 
 export type UpdateLiabilityAccMutationVariables = Exact<{
   id: Scalars['bigint'];
-  changes?: Maybe<Liabilities_Set_Input>;
+  changes?: InputMaybe<Liabilities_Set_Input>;
 }>;
 
 export type UpdateLiabilityAccMutation = {
   __typename?: 'mutation_root';
   update_liabilities_by_pk?:
     | { __typename?: 'liabilities'; id: any }
-    | null
     | undefined;
 };
 
 export type UpdateLiabilityStateMutationVariables = Exact<{
   id: Scalars['bigint'];
-  state?: Maybe<Scalars['Boolean']>;
+  state?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 export type UpdateLiabilityStateMutation = {
   __typename?: 'mutation_root';
   update_liabilities_by_pk?:
     | { __typename?: 'liabilities'; active: boolean }
-    | null
     | undefined;
 };
 
@@ -5728,7 +5704,6 @@ export type InsertRevenueAccMutation = {
         created_at: string;
         updated_at: string;
       }
-    | null
     | undefined;
 };
 
@@ -5740,39 +5715,52 @@ export type DeleteRevenueAccMutation = {
   __typename?: 'mutation_root';
   delete_account_info_by_pk?:
     | { __typename?: 'account_info'; id: any }
-    | null
     | undefined;
 };
 
 export type UpdateRevenueAccMutationVariables = Exact<{
   id: Scalars['bigint'];
-  changes?: Maybe<Revenues_Set_Input>;
+  changes?: InputMaybe<Revenues_Set_Input>;
 }>;
 
 export type UpdateRevenueAccMutation = {
   __typename?: 'mutation_root';
-  update_revenues_by_pk?:
-    | { __typename?: 'revenues'; id: any }
-    | null
-    | undefined;
+  update_revenues_by_pk?: { __typename?: 'revenues'; id: any } | undefined;
 };
 
 export type UpdateRevenueStateMutationVariables = Exact<{
   id: Scalars['bigint'];
-  state?: Maybe<Scalars['Boolean']>;
+  state?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 export type UpdateRevenueStateMutation = {
   __typename?: 'mutation_root';
   update_revenues_by_pk?:
     | { __typename?: 'revenues'; active: boolean }
-    | null
+    | undefined;
+};
+
+export type InsertTransactionMutationVariables = Exact<{
+  object: Transactions_Insert_Input;
+}>;
+
+export type InsertTransactionMutation = {
+  __typename?: 'mutation_root';
+  insert_transactions_one?:
+    | {
+        __typename?: 'transactions';
+        id: any;
+        description?: string | undefined;
+        transaction_date: any;
+        created_at: string;
+        updated_at: string;
+      }
     | undefined;
 };
 
 export type UpdateUserMutationVariables = Exact<{
   userId: Scalars['uuid'];
-  changes?: Maybe<Users_Set_Input>;
+  changes?: InputMaybe<Users_Set_Input>;
 }>;
 
 export type UpdateUserMutation = {
@@ -5783,10 +5771,9 @@ export type UpdateUserMutation = {
         returning: Array<{
           __typename?: 'users';
           id: any;
-          name?: string | null | undefined;
+          name?: string | undefined;
         }>;
       }
-    | null
     | undefined;
 };
 
@@ -5803,13 +5790,12 @@ export type UpdateUserSettingsMutation = {
         langKey: string;
         darkMode: boolean;
       }
-    | null
     | undefined;
 };
 
 export type AllAssetsQueryVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 export type AllAssetsQuery = {
@@ -5818,10 +5804,10 @@ export type AllAssetsQuery = {
     __typename?: 'assets';
     id: any;
     name: string;
-    balance?: any | null | undefined;
-    balance_date?: any | null | undefined;
+    balance?: any | undefined;
+    balance_date?: any | undefined;
     active: boolean;
-    account_no?: string | null | undefined;
+    account_no?: string | undefined;
     created_at: string;
     updated_at: string;
   }>;
@@ -5829,9 +5815,15 @@ export type AllAssetsQuery = {
     __typename?: 'assets_aggregate';
     aggregate?:
       | { __typename?: 'assets_aggregate_fields'; count: number }
-      | null
       | undefined;
   };
+};
+
+export type ActiveAssetAccountsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ActiveAssetAccountsQuery = {
+  __typename?: 'query_root';
+  assets: Array<{ __typename?: 'assets'; id: any; name: string }>;
 };
 
 export type AllCategoriesQueryVariables = Exact<{ [key: string]: never }>;
@@ -5848,9 +5840,16 @@ export type AllCategoriesQuery = {
   }>;
 };
 
+export type ActiveCategoriesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ActiveCategoriesQuery = {
+  __typename?: 'query_root';
+  categories: Array<{ __typename?: 'categories'; id: any; name: string }>;
+};
+
 export type AllExpenseAccountsQueryVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 export type AllExpenseAccountsQuery = {
@@ -5867,9 +5866,17 @@ export type AllExpenseAccountsQuery = {
     __typename?: 'expenses_aggregate';
     aggregate?:
       | { __typename?: 'expenses_aggregate_fields'; count: number }
-      | null
       | undefined;
   };
+};
+
+export type ActiveExpenseAccountsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type ActiveExpenseAccountsQuery = {
+  __typename?: 'query_root';
+  expenses: Array<{ __typename?: 'expenses'; id: any; name: string }>;
 };
 
 export type FetchUserQueryVariables = Exact<{
@@ -5882,12 +5889,11 @@ export type FetchUserQuery = {
     | {
         __typename?: 'users';
         id: any;
-        name?: string | null | undefined;
-        email?: string | null | undefined;
-        image?: string | null | undefined;
-        lastName?: string | null | undefined;
+        name?: string | undefined;
+        email?: string | undefined;
+        image?: string | undefined;
+        lastName?: string | undefined;
       }
-    | null
     | undefined;
 };
 
@@ -5904,7 +5910,6 @@ export type FetchUserSettingsQuery = {
         darkMode: boolean;
         langKey: string;
       }
-    | null
     | undefined;
 };
 
@@ -5922,8 +5927,8 @@ export type AllLabelsQuery = {
 };
 
 export type AllLiabilityAccountsQueryVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 export type AllLiabilityAccountsQuery = {
@@ -5940,14 +5945,29 @@ export type AllLiabilityAccountsQuery = {
     __typename?: 'liabilities_aggregate';
     aggregate?:
       | { __typename?: 'liabilities_aggregate_fields'; count: number }
-      | null
       | undefined;
   };
 };
 
+export type ActiveLiabilityAccountsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type ActiveLiabilityAccountsQuery = {
+  __typename?: 'query_root';
+  liabilities: Array<{
+    __typename?: 'liabilities';
+    id: any;
+    name: string;
+    active: boolean;
+    created_at: string;
+    updated_at: string;
+  }>;
+};
+
 export type AllRevenueAccountsQueryVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 }>;
 
 export type AllRevenueAccountsQuery = {
@@ -5964,9 +5984,17 @@ export type AllRevenueAccountsQuery = {
     __typename?: 'revenues_aggregate';
     aggregate?:
       | { __typename?: 'revenues_aggregate_fields'; count: number }
-      | null
       | undefined;
   };
+};
+
+export type ActiveRevenueAccountsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type ActiveRevenueAccountsQuery = {
+  __typename?: 'query_root';
+  revenues: Array<{ __typename?: 'revenues'; id: any; name: string }>;
 };
 
 export type FetchLabelsSubscriptionVariables = Exact<{ [key: string]: never }>;
@@ -8226,6 +8254,111 @@ export type UpdateRevenueStateMutationOptions = Apollo.BaseMutationOptions<
   UpdateRevenueStateMutation,
   UpdateRevenueStateMutationVariables
 >;
+export const InsertTransactionDocument = gql`
+  mutation insertTransaction($object: transactions_insert_input!) {
+    insert_transactions_one(object: $object) {
+      id
+      description
+      transaction_date
+      created_at
+      updated_at
+    }
+  }
+`;
+export type InsertTransactionMutationFn = Apollo.MutationFunction<
+  InsertTransactionMutation,
+  InsertTransactionMutationVariables
+>;
+export type InsertTransactionComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    InsertTransactionMutation,
+    InsertTransactionMutationVariables
+  >,
+  'mutation'
+>;
+
+export const InsertTransactionComponent = (
+  props: InsertTransactionComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    InsertTransactionMutation,
+    InsertTransactionMutationVariables
+  >
+    mutation={InsertTransactionDocument}
+    {...props}
+  />
+);
+
+export type InsertTransactionProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    InsertTransactionMutation,
+    InsertTransactionMutationVariables
+  >;
+} & TChildProps;
+export function withInsertTransaction<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    InsertTransactionMutation,
+    InsertTransactionMutationVariables,
+    InsertTransactionProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    InsertTransactionMutation,
+    InsertTransactionMutationVariables,
+    InsertTransactionProps<TChildProps, TDataName>
+  >(InsertTransactionDocument, {
+    alias: 'insertTransaction',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useInsertTransactionMutation__
+ *
+ * To run a mutation, you first call `useInsertTransactionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertTransactionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [insertTransactionMutation, { data, loading, error }] = useInsertTransactionMutation({
+ *   variables: {
+ *      object: // value for 'object'
+ *   },
+ * });
+ */
+export function useInsertTransactionMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InsertTransactionMutation,
+    InsertTransactionMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InsertTransactionMutation,
+    InsertTransactionMutationVariables
+  >(InsertTransactionDocument, options);
+}
+export type InsertTransactionMutationHookResult = ReturnType<
+  typeof useInsertTransactionMutation
+>;
+export type InsertTransactionMutationResult =
+  Apollo.MutationResult<InsertTransactionMutation>;
+export type InsertTransactionMutationOptions = Apollo.BaseMutationOptions<
+  InsertTransactionMutation,
+  InsertTransactionMutationVariables
+>;
 export const UpdateUserDocument = gql`
   mutation updateUser($userId: uuid!, $changes: users_set_input) {
     update_users(where: { id: { _eq: $userId } }, _set: $changes) {
@@ -8550,6 +8683,115 @@ export type AllAssetsQueryResult = Apollo.QueryResult<
   AllAssetsQuery,
   AllAssetsQueryVariables
 >;
+export const ActiveAssetAccountsDocument = gql`
+  query activeAssetAccounts {
+    assets(order_by: { name: asc }, where: { active: { _eq: true } }) {
+      id
+      name
+    }
+  }
+`;
+export type ActiveAssetAccountsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    ActiveAssetAccountsQuery,
+    ActiveAssetAccountsQueryVariables
+  >,
+  'query'
+>;
+
+export const ActiveAssetAccountsComponent = (
+  props: ActiveAssetAccountsComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    ActiveAssetAccountsQuery,
+    ActiveAssetAccountsQueryVariables
+  >
+    query={ActiveAssetAccountsDocument}
+    {...props}
+  />
+);
+
+export type ActiveAssetAccountsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    ActiveAssetAccountsQuery,
+    ActiveAssetAccountsQueryVariables
+  >;
+} & TChildProps;
+export function withActiveAssetAccounts<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    ActiveAssetAccountsQuery,
+    ActiveAssetAccountsQueryVariables,
+    ActiveAssetAccountsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    ActiveAssetAccountsQuery,
+    ActiveAssetAccountsQueryVariables,
+    ActiveAssetAccountsProps<TChildProps, TDataName>
+  >(ActiveAssetAccountsDocument, {
+    alias: 'activeAssetAccounts',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useActiveAssetAccountsQuery__
+ *
+ * To run a query within a React component, call `useActiveAssetAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useActiveAssetAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useActiveAssetAccountsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useActiveAssetAccountsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    ActiveAssetAccountsQuery,
+    ActiveAssetAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    ActiveAssetAccountsQuery,
+    ActiveAssetAccountsQueryVariables
+  >(ActiveAssetAccountsDocument, options);
+}
+export function useActiveAssetAccountsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ActiveAssetAccountsQuery,
+    ActiveAssetAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    ActiveAssetAccountsQuery,
+    ActiveAssetAccountsQueryVariables
+  >(ActiveAssetAccountsDocument, options);
+}
+export type ActiveAssetAccountsQueryHookResult = ReturnType<
+  typeof useActiveAssetAccountsQuery
+>;
+export type ActiveAssetAccountsLazyQueryHookResult = ReturnType<
+  typeof useActiveAssetAccountsLazyQuery
+>;
+export type ActiveAssetAccountsQueryResult = Apollo.QueryResult<
+  ActiveAssetAccountsQuery,
+  ActiveAssetAccountsQueryVariables
+>;
 export const AllCategoriesDocument = gql`
   query allCategories {
     categories(order_by: { name: asc }) {
@@ -8656,6 +8898,115 @@ export type AllCategoriesLazyQueryHookResult = ReturnType<
 export type AllCategoriesQueryResult = Apollo.QueryResult<
   AllCategoriesQuery,
   AllCategoriesQueryVariables
+>;
+export const ActiveCategoriesDocument = gql`
+  query activeCategories {
+    categories(order_by: { name: asc }, where: { active: { _eq: true } }) {
+      id
+      name
+    }
+  }
+`;
+export type ActiveCategoriesComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    ActiveCategoriesQuery,
+    ActiveCategoriesQueryVariables
+  >,
+  'query'
+>;
+
+export const ActiveCategoriesComponent = (
+  props: ActiveCategoriesComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    ActiveCategoriesQuery,
+    ActiveCategoriesQueryVariables
+  >
+    query={ActiveCategoriesDocument}
+    {...props}
+  />
+);
+
+export type ActiveCategoriesProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    ActiveCategoriesQuery,
+    ActiveCategoriesQueryVariables
+  >;
+} & TChildProps;
+export function withActiveCategories<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    ActiveCategoriesQuery,
+    ActiveCategoriesQueryVariables,
+    ActiveCategoriesProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    ActiveCategoriesQuery,
+    ActiveCategoriesQueryVariables,
+    ActiveCategoriesProps<TChildProps, TDataName>
+  >(ActiveCategoriesDocument, {
+    alias: 'activeCategories',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useActiveCategoriesQuery__
+ *
+ * To run a query within a React component, call `useActiveCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useActiveCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useActiveCategoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useActiveCategoriesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    ActiveCategoriesQuery,
+    ActiveCategoriesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ActiveCategoriesQuery, ActiveCategoriesQueryVariables>(
+    ActiveCategoriesDocument,
+    options
+  );
+}
+export function useActiveCategoriesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ActiveCategoriesQuery,
+    ActiveCategoriesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    ActiveCategoriesQuery,
+    ActiveCategoriesQueryVariables
+  >(ActiveCategoriesDocument, options);
+}
+export type ActiveCategoriesQueryHookResult = ReturnType<
+  typeof useActiveCategoriesQuery
+>;
+export type ActiveCategoriesLazyQueryHookResult = ReturnType<
+  typeof useActiveCategoriesLazyQuery
+>;
+export type ActiveCategoriesQueryResult = Apollo.QueryResult<
+  ActiveCategoriesQuery,
+  ActiveCategoriesQueryVariables
 >;
 export const AllExpenseAccountsDocument = gql`
   query allExpenseAccounts($limit: Int, $offset: Int) {
@@ -8775,6 +9126,115 @@ export type AllExpenseAccountsLazyQueryHookResult = ReturnType<
 export type AllExpenseAccountsQueryResult = Apollo.QueryResult<
   AllExpenseAccountsQuery,
   AllExpenseAccountsQueryVariables
+>;
+export const ActiveExpenseAccountsDocument = gql`
+  query activeExpenseAccounts {
+    expenses(order_by: { name: asc }, where: { active: { _eq: true } }) {
+      id
+      name
+    }
+  }
+`;
+export type ActiveExpenseAccountsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    ActiveExpenseAccountsQuery,
+    ActiveExpenseAccountsQueryVariables
+  >,
+  'query'
+>;
+
+export const ActiveExpenseAccountsComponent = (
+  props: ActiveExpenseAccountsComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    ActiveExpenseAccountsQuery,
+    ActiveExpenseAccountsQueryVariables
+  >
+    query={ActiveExpenseAccountsDocument}
+    {...props}
+  />
+);
+
+export type ActiveExpenseAccountsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    ActiveExpenseAccountsQuery,
+    ActiveExpenseAccountsQueryVariables
+  >;
+} & TChildProps;
+export function withActiveExpenseAccounts<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    ActiveExpenseAccountsQuery,
+    ActiveExpenseAccountsQueryVariables,
+    ActiveExpenseAccountsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    ActiveExpenseAccountsQuery,
+    ActiveExpenseAccountsQueryVariables,
+    ActiveExpenseAccountsProps<TChildProps, TDataName>
+  >(ActiveExpenseAccountsDocument, {
+    alias: 'activeExpenseAccounts',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useActiveExpenseAccountsQuery__
+ *
+ * To run a query within a React component, call `useActiveExpenseAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useActiveExpenseAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useActiveExpenseAccountsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useActiveExpenseAccountsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    ActiveExpenseAccountsQuery,
+    ActiveExpenseAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    ActiveExpenseAccountsQuery,
+    ActiveExpenseAccountsQueryVariables
+  >(ActiveExpenseAccountsDocument, options);
+}
+export function useActiveExpenseAccountsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ActiveExpenseAccountsQuery,
+    ActiveExpenseAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    ActiveExpenseAccountsQuery,
+    ActiveExpenseAccountsQueryVariables
+  >(ActiveExpenseAccountsDocument, options);
+}
+export type ActiveExpenseAccountsQueryHookResult = ReturnType<
+  typeof useActiveExpenseAccountsQuery
+>;
+export type ActiveExpenseAccountsLazyQueryHookResult = ReturnType<
+  typeof useActiveExpenseAccountsLazyQuery
+>;
+export type ActiveExpenseAccountsQueryResult = Apollo.QueryResult<
+  ActiveExpenseAccountsQuery,
+  ActiveExpenseAccountsQueryVariables
 >;
 export const FetchUserDocument = gql`
   query fetchUser($userId: uuid!) {
@@ -9215,6 +9675,118 @@ export type AllLiabilityAccountsQueryResult = Apollo.QueryResult<
   AllLiabilityAccountsQuery,
   AllLiabilityAccountsQueryVariables
 >;
+export const ActiveLiabilityAccountsDocument = gql`
+  query activeLiabilityAccounts {
+    liabilities(order_by: { name: asc }, where: { active: { _eq: true } }) {
+      id
+      name
+      active
+      created_at
+      updated_at
+    }
+  }
+`;
+export type ActiveLiabilityAccountsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    ActiveLiabilityAccountsQuery,
+    ActiveLiabilityAccountsQueryVariables
+  >,
+  'query'
+>;
+
+export const ActiveLiabilityAccountsComponent = (
+  props: ActiveLiabilityAccountsComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    ActiveLiabilityAccountsQuery,
+    ActiveLiabilityAccountsQueryVariables
+  >
+    query={ActiveLiabilityAccountsDocument}
+    {...props}
+  />
+);
+
+export type ActiveLiabilityAccountsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    ActiveLiabilityAccountsQuery,
+    ActiveLiabilityAccountsQueryVariables
+  >;
+} & TChildProps;
+export function withActiveLiabilityAccounts<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    ActiveLiabilityAccountsQuery,
+    ActiveLiabilityAccountsQueryVariables,
+    ActiveLiabilityAccountsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    ActiveLiabilityAccountsQuery,
+    ActiveLiabilityAccountsQueryVariables,
+    ActiveLiabilityAccountsProps<TChildProps, TDataName>
+  >(ActiveLiabilityAccountsDocument, {
+    alias: 'activeLiabilityAccounts',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useActiveLiabilityAccountsQuery__
+ *
+ * To run a query within a React component, call `useActiveLiabilityAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useActiveLiabilityAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useActiveLiabilityAccountsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useActiveLiabilityAccountsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    ActiveLiabilityAccountsQuery,
+    ActiveLiabilityAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    ActiveLiabilityAccountsQuery,
+    ActiveLiabilityAccountsQueryVariables
+  >(ActiveLiabilityAccountsDocument, options);
+}
+export function useActiveLiabilityAccountsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ActiveLiabilityAccountsQuery,
+    ActiveLiabilityAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    ActiveLiabilityAccountsQuery,
+    ActiveLiabilityAccountsQueryVariables
+  >(ActiveLiabilityAccountsDocument, options);
+}
+export type ActiveLiabilityAccountsQueryHookResult = ReturnType<
+  typeof useActiveLiabilityAccountsQuery
+>;
+export type ActiveLiabilityAccountsLazyQueryHookResult = ReturnType<
+  typeof useActiveLiabilityAccountsLazyQuery
+>;
+export type ActiveLiabilityAccountsQueryResult = Apollo.QueryResult<
+  ActiveLiabilityAccountsQuery,
+  ActiveLiabilityAccountsQueryVariables
+>;
 export const AllRevenueAccountsDocument = gql`
   query allRevenueAccounts($limit: Int, $offset: Int) {
     revenues(limit: $limit, offset: $offset, order_by: { name: asc }) {
@@ -9334,6 +9906,115 @@ export type AllRevenueAccountsQueryResult = Apollo.QueryResult<
   AllRevenueAccountsQuery,
   AllRevenueAccountsQueryVariables
 >;
+export const ActiveRevenueAccountsDocument = gql`
+  query activeRevenueAccounts {
+    revenues(order_by: { name: asc }, where: { active: { _eq: true } }) {
+      id
+      name
+    }
+  }
+`;
+export type ActiveRevenueAccountsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    ActiveRevenueAccountsQuery,
+    ActiveRevenueAccountsQueryVariables
+  >,
+  'query'
+>;
+
+export const ActiveRevenueAccountsComponent = (
+  props: ActiveRevenueAccountsComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    ActiveRevenueAccountsQuery,
+    ActiveRevenueAccountsQueryVariables
+  >
+    query={ActiveRevenueAccountsDocument}
+    {...props}
+  />
+);
+
+export type ActiveRevenueAccountsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    ActiveRevenueAccountsQuery,
+    ActiveRevenueAccountsQueryVariables
+  >;
+} & TChildProps;
+export function withActiveRevenueAccounts<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    ActiveRevenueAccountsQuery,
+    ActiveRevenueAccountsQueryVariables,
+    ActiveRevenueAccountsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    ActiveRevenueAccountsQuery,
+    ActiveRevenueAccountsQueryVariables,
+    ActiveRevenueAccountsProps<TChildProps, TDataName>
+  >(ActiveRevenueAccountsDocument, {
+    alias: 'activeRevenueAccounts',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useActiveRevenueAccountsQuery__
+ *
+ * To run a query within a React component, call `useActiveRevenueAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useActiveRevenueAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useActiveRevenueAccountsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useActiveRevenueAccountsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    ActiveRevenueAccountsQuery,
+    ActiveRevenueAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    ActiveRevenueAccountsQuery,
+    ActiveRevenueAccountsQueryVariables
+  >(ActiveRevenueAccountsDocument, options);
+}
+export function useActiveRevenueAccountsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ActiveRevenueAccountsQuery,
+    ActiveRevenueAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    ActiveRevenueAccountsQuery,
+    ActiveRevenueAccountsQueryVariables
+  >(ActiveRevenueAccountsDocument, options);
+}
+export type ActiveRevenueAccountsQueryHookResult = ReturnType<
+  typeof useActiveRevenueAccountsQuery
+>;
+export type ActiveRevenueAccountsLazyQueryHookResult = ReturnType<
+  typeof useActiveRevenueAccountsLazyQuery
+>;
+export type ActiveRevenueAccountsQueryResult = Apollo.QueryResult<
+  ActiveRevenueAccountsQuery,
+  ActiveRevenueAccountsQueryVariables
+>;
 export const FetchLabelsDocument = gql`
   subscription fetchLabels {
     labels(order_by: { created_at: desc }) {
@@ -9448,7 +10129,7 @@ export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   args: TArgs,
   context: TContext,
   info: GraphQLResolveInfo
-) => AsyncIterator<TResult> | Promise<AsyncIterator<TResult>>;
+) => AsyncIterable<TResult> | Promise<AsyncIterable<TResult>>;
 
 export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,

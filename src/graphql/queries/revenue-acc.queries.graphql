@@ -12,3 +12,10 @@ query allRevenueAccounts($limit: Int, $offset: Int) {
     }
   }
 }
+
+query activeRevenueAccounts {
+  revenues(order_by: { name: asc }, where: { active: { _eq: true } }) {
+    id
+    name
+  }
+}

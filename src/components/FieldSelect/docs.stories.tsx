@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { Formiz } from '@formiz/core';
-
 import { FieldSelect } from '@/components';
+import { Formiz } from '@formiz/core';
 
 const colors = [
   { label: 'Red', value: 'red' },

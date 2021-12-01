@@ -7,3 +7,10 @@ query allCategories {
     updated_at
   }
 }
+
+query activeCategories {
+  categories(order_by: { name: asc }, where: { active: { _eq: true } }) {
+    id
+    name
+  }
+}

@@ -12,3 +12,10 @@ query allExpenseAccounts($limit: Int, $offset: Int) {
     }
   }
 }
+
+query activeExpenseAccounts {
+  expenses(order_by: { name: asc }, where: { active: { _eq: true } }) {
+    id
+    name
+  }
+}

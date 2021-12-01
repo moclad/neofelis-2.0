@@ -15,3 +15,10 @@ query allAssets($limit: Int, $offset: Int) {
     }
   }
 }
+
+query activeAssetAccounts {
+  assets(order_by: { name: asc }, where: { active: { _eq: true } }) {
+    id
+    name
+  }
+}
