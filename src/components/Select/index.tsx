@@ -35,6 +35,7 @@ export type SelectProps<
   isError?: boolean;
   isMulti?: boolean;
   size?: string;
+  closeMenuOnSelect?: boolean;
   formatCreateLabel?: (inputValue: string) => ReactNode;
   onCreateOption?: (inputLabel: string) => void;
   loadOptions?: (input: unknown) => any;
@@ -63,6 +64,7 @@ const SelectInner = <
     loadOptions = () => new Promise<void>((resolve) => resolve()),
     onCreateOption,
     defaultOptions = true,
+    closeMenuOnSelect = true,
     debounceDelay = 500,
     styles = {},
     ...otherProps
@@ -287,6 +289,7 @@ const SelectInner = <
       menuPlacement="auto"
       onCreateOption={isCreatable ? onCreateOption : null}
       isMulti={isMulti}
+      closeMenuOnSelect={closeMenuOnSelect}
       ref={ref}
       {...asyncProps}
       {...otherProps}

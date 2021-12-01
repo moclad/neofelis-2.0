@@ -18,10 +18,11 @@ import {
   useAllLabelsQuery,
   useInsertCategoryMutation,
   useInsertExpenseAccMutation,
+  useInsertLabelMutation,
   useInsertTransactionMutation
 } from '@/generated/graphql';
-import { ISelectOptions } from '@/types/types';
-import { Button, Stack, useDisclosure } from '@chakra-ui/react';
+import { ISelectOptions, ITransactionInput } from '@/types/types';
+import { Button, Stack } from '@chakra-ui/react';
 
 export const TransactionDialog = (props) => {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ export const TransactionDialog = (props) => {
   const toastError = useToastError();
   const { isOpen, onClose } = props;
 
-  const [insertExpense] = useInsertExpenseAccMutation({
+  const mutationOptions = {
     onError: (error) => {
       toastError({
         title: t('common:feedbacks.createdError.title'),
@@ -41,35 +42,21 @@ export const TransactionDialog = (props) => {
         title: t('common:feedbacks.createdSuccess.title'),
       });
     },
-  });
-
-  const [insertCategory] = useInsertCategoryMutation({
-    onError: (error) => {
-      toastError({
-        title: t('common:feedbacks.createdError.title'),
-        description: error.message,
-      });
-    },
-    onCompleted: () => {
-      toastSuccess({
-        title: t('common:feedbacks.createdSuccess.title'),
-      });
-    },
-  });
+  };
+  const [insertLabel] = useInsertLabelMutation(mutationOptions);
+  const [insertCategory] = useInsertCategoryMutation(mutationOptions);
+  const [insertExpense] = useInsertExpenseAccMutation(mutationOptions);
 
   const labels: ISelectOptions[] = [];
   const expenses: ISelectOptions[] = [];
   const assets: ISelectOptions[] = [];
   const categories: ISelectOptions[] = [];
 
-  const { loading: labelsLoading, data: labelsData } = useAllLabelsQuery();
-  const { loading: categoriesLoading, data: categoriesData } =
-    useActiveCategoriesQuery();
-  const { loading: expensesLoading, data: expensesData } =
-    useActiveExpenseAccountsQuery();
+  const { data: labelsData } = useAllLabelsQuery();
+  const { data: categoriesData } = useActiveCategoriesQuery();
+  const { data: expensesData } = useActiveExpenseAccountsQuery();
 
-  const { loading: assetsLoading, data: assetsData } =
-    useActiveAssetAccountsQuery();
+  const { data: assetsData } = useActiveAssetAccountsQuery();
 
   const [insertTransaction, { loading: insertLoading }] =
     useInsertTransactionMutation({
@@ -144,17 +131,38 @@ export const TransactionDialog = (props) => {
     });
   };
 
-  const onConfirmCreate = async (values) => {
-    console.log(values);
+  const onCreateLabel = (value: string) => {
     const newData = {
-      ...values,
+      name: value,
     };
 
-    console.log(newData);
+    insertLabel({
+      variables: {
+        object: newData,
+      },
+      refetchQueries: 'active',
+    });
+  };
+
+  const onConfirmCreate = async (values: ITransactionInput) => {
+    const { labels, ...rest } = values;
+
+    const submitData = {
+      ...rest,
+      transaction_labels: { data: [] },
+    };
+
+    if (labels) {
+      labels.forEach((x) =>
+        submitData.transaction_labels.data.push({ label_id: x })
+      );
+    }
+
+    console.log(submitData);
 
     await insertTransaction({
       variables: {
-        object: newData,
+        object: submitData,
       },
       refetchQueries: 'active',
     });
@@ -168,9 +176,8 @@ export const TransactionDialog = (props) => {
         onClose();
       }}
       onConfirm={onConfirmCreate}
-      // loading={loading || insertLoading}
+      loading={insertLoading}
       formId="asset-form-id"
-      loading={false}
       initialValues={{ transaction_date: dayjs().toDate(), amount: 0 }}
     >
       <FieldInput
@@ -225,6 +232,8 @@ export const TransactionDialog = (props) => {
           options={labels}
           size="sm"
           isCreatable={true}
+          onCreateOption={onCreateLabel}
+          closeMenuOnSelect={false}
           isMulti={true}
         />
       </Stack>

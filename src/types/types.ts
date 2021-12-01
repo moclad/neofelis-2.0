@@ -27,3 +27,13 @@ export interface ISelectOptions {
   label: string;
   value: number;
 }
+
+export interface ITransactionInput {
+  description?: string;
+  category_id: number;
+  amount: number;
+  transaction_date: Date;
+  destiny_account: number;
+  source_account: number;
+  labels: number[];
+}

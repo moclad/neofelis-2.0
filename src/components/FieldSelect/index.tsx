@@ -7,6 +7,7 @@ import { FieldProps, useField } from '@formiz/core';
 
 export interface FieldSelectProps<
   Option,
+  IsMulti extends boolean,
   Group extends GroupBase<Option> = GroupBase<Option>
 > extends FieldProps,
     FormGroupProps {
@@ -16,8 +17,9 @@ export interface FieldSelectProps<
   isMulti?: boolean;
   isClearable?: boolean;
   isSearchable?: boolean;
-  selectProps?: SelectProps<Option, Group>;
+  selectProps?: SelectProps<Option, IsMulti, Group>;
   isCreatable?: boolean;
+  closeMenuOnSelect?: boolean;
   formatCreateLabel?: (inputValue: string) => ReactNode;
   onCreateOption?: (inputLabel: string) => void;
 }
@@ -49,6 +51,7 @@ export const FieldSelect = <
     isClearable,
     isSearchable,
     isCreatable,
+    closeMenuOnSelect = true,
     isMulti = false,
     onCreateOption,
     size = 'md',
@@ -76,13 +79,23 @@ export const FieldSelect = <
     <FormGroup {...formGroupProps}>
       <Select
         id={id}
+        name
         isMulti={isMulti}
-        value={options?.find((option) => option.value === value) || ''}
+        // value={
+        //   isMulti
+        //     ? value ?? ''
+        //     : options?.find((option) => option.value === value) || ''
+        // }
         onBlur={() => setIsTouched(true)}
         placeholder={placeholder || 'Select...'}
-        onChange={(fieldValue) =>
-          setValue(fieldValue ? fieldValue.value : null)
-        }
+        onChange={(fieldValue) => {
+          if (fieldValue && Array.isArray(fieldValue)) {
+            const values = fieldValue.map((x) => x.value);
+            setValue(values);
+            return;
+          }
+          setValue(fieldValue ? fieldValue.value : null);
+        }}
         size={size}
         options={options}
         isDisabled={isDisabled}
@@ -91,6 +104,7 @@ export const FieldSelect = <
         isError={showError}
         isCreatable={isCreatable}
         onCreateOption={onCreateOption}
+        closeMenuOnSelect={closeMenuOnSelect}
         {...selectProps}
       />
       {children}
