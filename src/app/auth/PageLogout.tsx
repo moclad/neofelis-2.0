@@ -1,9 +1,9 @@
+import { signOut } from 'next-auth/react';
 import React, { useEffect } from 'react';
-
-import { Center, Spinner } from '@chakra-ui/react';
-import { signOut } from 'next-auth/client';
 import { useQueryClient } from 'react-query';
 import { useHistory } from 'react-router-dom';
+
+import { Center, Spinner } from '@chakra-ui/react';
 
 export const PageLogout = () => {
   const history = useHistory();

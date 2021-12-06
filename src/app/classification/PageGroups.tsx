@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -13,7 +13,7 @@ import { Formiz, useForm } from '@formiz/core';
 import { isEmail } from '@formiz/validations';
 
 export const PageGroups = () => {
-  const [session] = useSession();
+  const { data: session } = useSession();
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
   const { loading, data } = useAccount();

@@ -6,7 +6,7 @@
 	],
 	"settings": {
 		"i18n-ally.keystyle": "nested",
-		"typescript.tsdk": ".yarn/sdks/typescript/lib",
+		"typescript.tsdk": "node_modules\\typescript\\lib",
 		"typescript.enablePromptUseWorkspaceTsdk": true
 	}
 }

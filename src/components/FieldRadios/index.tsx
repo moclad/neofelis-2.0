@@ -1,9 +1,8 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 
-import { RadioGroup, Radio, Wrap, WrapItem } from '@chakra-ui/react';
-import { FieldProps, useField } from '@formiz/core';
-
 import { FormGroup, FormGroupProps } from '@/components/FormGroup';
+import { Radio, RadioGroup, Wrap, WrapItem } from '@chakra-ui/react';
+import { FieldProps, useField } from '@formiz/core';
 
 interface Option {
   value: any;
@@ -60,7 +59,7 @@ export const FieldRadios = (props: FieldRadiosProps) => {
             <WrapItem key={option.value}>
               <Radio
                 id={`${id}-${option.value}`}
-                name={option.value}
+                name={id}
                 value={option.value}
               >
                 {option.label ?? option.value}

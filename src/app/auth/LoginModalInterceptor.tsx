@@ -1,5 +1,11 @@
+import Axios from 'axios';
+import { useSession } from 'next-auth/react';
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useQueryClient } from 'react-query';
+import { useHistory, useLocation } from 'react-router-dom';
 
+import { LoginForm } from '@/app/auth/LoginForm';
 import {
   Heading,
   Modal,
@@ -8,20 +14,13 @@ import {
   ModalContent,
   ModalOverlay,
   Text,
-  useDisclosure,
+  useDisclosure
 } from '@chakra-ui/react';
-import Axios from 'axios';
-import { useSession } from 'next-auth/client';
-import { useTranslation } from 'react-i18next';
-import { useQueryClient } from 'react-query';
-import { useHistory, useLocation } from 'react-router-dom';
-
-import { LoginForm } from '@/app/auth/LoginForm';
 
 export const LoginModalInterceptor = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [session] = useSession();
+  const { data: session } = useSession();
   const queryCache = useQueryClient();
   const history = useHistory();
   const { pathname } = useLocation();

@@ -1,16 +1,11 @@
+import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
-
-import { useSession } from 'next-auth/client';
-import {
-  Route as RouterRoute,
-  useHistory,
-  useLocation,
-} from 'react-router-dom';
+import { Route as RouterRoute, useHistory, useLocation } from 'react-router-dom';
 
 import { ErrorBoundary } from '@/errors';
 
 export const Route = (props) => {
-  const [session] = useSession();
+  const { data: session } = useSession();
   const { pathname, search } = useLocation();
   const history = useHistory();
 

@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -12,7 +12,7 @@ import { Button, Flex, Heading, Stack } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 
 export const PageSettings = () => {
-  const [session] = useSession();
+  const { data: session } = useSession();
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
   const { loading, data } = useFetchUserSettingsQuery({

@@ -1,6 +1,6 @@
 import '@/config';
 
-import { Provider as NextAuthProvider } from 'next-auth/client';
+import { SessionProvider } from 'next-auth/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -24,7 +24,7 @@ export const Providers = ({ pageProps, children }) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NextAuthProvider session={pageProps?.session}>
+      <SessionProvider session={pageProps?.session}>
         <ApolloProvider client={apolloClient}>
           <AuthProvider>
             <ChakraProvider
@@ -39,7 +39,7 @@ export const Providers = ({ pageProps, children }) => {
             </ChakraProvider>
           </AuthProvider>
         </ApolloProvider>
-      </NextAuthProvider>
+      </SessionProvider>
     </QueryClientProvider>
   );
 };

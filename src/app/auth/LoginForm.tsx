@@ -1,5 +1,11 @@
+import { signIn } from 'next-auth/react';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link as RouterLink } from 'react-router-dom';
 
+import { useLogin, useProvidersList } from '@/app/auth/auth.service';
+import { Loader } from '@/app/layout';
+import { FieldInput, useToastError } from '@/components';
 import {
   Box,
   Button,
@@ -9,23 +15,16 @@ import {
   Stack,
   StackDivider,
   Text,
-  VStack,
+  VStack
 } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 import { isEmail } from '@formiz/validations';
-import { signIn } from 'next-auth/client';
-import { useTranslation } from 'react-i18next';
-import { Link as RouterLink } from 'react-router-dom';
-
-import { useLogin, useProvidersList } from '@/app/auth/auth.service';
-import { Loader } from '@/app/layout';
-import { FieldInput, useToastError } from '@/components';
 
 const OAuthProviders = () => {
   const { t } = useTranslation();
   const { providers, isLoading } = useProvidersList();
 
-  if (isLoading || !!!providers) {
+  if (isLoading || !providers) {
     return <Loader />;
   }
 

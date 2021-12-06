@@ -1,12 +1,11 @@
+import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
-
-import { useSession } from 'next-auth/client';
 import { useHistory } from 'react-router-dom';
 
 import { RoutePublic } from './RoutePublic';
 
 export const RoutePublicOnly = (props) => {
-  const [session] = useSession();
+  const { data: session } = useSession();
   const history = useHistory();
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiCheck, FiCopy, FiLogOut, FiMoon, FiSun, FiUser } from 'react-icons/fi';
@@ -91,7 +91,7 @@ export const AccountMenu = ({ ...rest }) => {
   const { colorModeValue } = useDarkMode();
   const { colorMode, toggleColorMode } = useColorMode();
   const history = useHistory();
-  const [session] = useSession();
+  const { data: session } = useSession();
 
   const { loading, data } = useFetchUserQuery({
     variables: {

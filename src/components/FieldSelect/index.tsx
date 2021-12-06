@@ -21,7 +21,7 @@ export interface FieldSelectProps<
   isCreatable?: boolean;
   closeMenuOnSelect?: boolean;
   formatCreateLabel?: (inputValue: string) => ReactNode;
-  onCreateOption?: (inputLabel: string) => void;
+  onCreateOption?: (inputLabel: string) => Promise<number | string | void>;
 }
 
 export const FieldSelect = <
@@ -77,6 +77,17 @@ export const FieldSelect = <
     ...rest,
   };
 
+  const getCreate = (input: string): void => {
+    if (!isCreatable || !onCreateOption) {
+      return null;
+    }
+
+    const result = onCreateOption(input);
+    result.then((x) => {
+      setValue({ value: x, label: input });
+    });
+  };
+
   return (
     <FormGroup {...formGroupProps}>
       <Select
@@ -105,7 +116,7 @@ export const FieldSelect = <
         isSearchable={isSearchable}
         isError={showError}
         isCreatable={isCreatable}
-        onCreateOption={onCreateOption}
+        onCreateOption={getCreate}
         closeMenuOnSelect={closeMenuOnSelect}
         formatCreateLabel={formatCreateLabel}
         {...selectProps}

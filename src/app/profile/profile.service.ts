@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { useSession } from 'next-auth/client';
+import { useSession } from 'next-auth/react';
 import { useTranslation } from 'react-i18next';
 import { useMutation, UseMutationOptions, useQuery, UseQueryOptions } from 'react-query';
 
@@ -10,7 +10,7 @@ import { useFetchUserQuery } from '../../generated/graphql';
 
 export const useAccount = () => {
   // const { i18n } = useTranslation();
-  const [session] = useSession();
+  const { data: session } = useSession();
 
   return useFetchUserQuery({
     variables: {

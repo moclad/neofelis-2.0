@@ -104,17 +104,17 @@ export const TransactionDialog = (props) => {
     });
   };
 
-  const onCreateCategory = (value: string) => {
+  const onCreateCategory = async (value: string) => {
     const newData = {
       name: value,
     };
 
-    insertCategory({
+    return insertCategory({
       variables: {
         object: newData,
       },
       refetchQueries: 'active',
-    });
+    }).then((x) => x.data.insert_categories_one.id);
   };
 
   const onCreateLabel = (value: string) => {
@@ -126,7 +126,6 @@ export const TransactionDialog = (props) => {
       variables: {
         object: newData,
       },
-      refetchQueries: 'active',
     });
   };
 

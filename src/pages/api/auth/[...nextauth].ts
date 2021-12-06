@@ -1,50 +1,52 @@
 import jwt from 'jsonwebtoken';
-import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import EmailProvider from 'next-auth/providers/email';
+import GithubProvider from 'next-auth/providers/github';
 
-import { ISession, IToken, IUser } from '@/types/types';
+import { TypeORMLegacyAdapter } from '@next-auth/typeorm-legacy-adapter';
 
 const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY || 'secret');
 
-const options = {
+export default NextAuth({
   pages: {
     signIn: '/app/login',
     verifyRequest: '/app/verify-request',
     error: '/app/error',
   },
   providers: [
-    Providers.Email({
+    EmailProvider({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
     }),
-    Providers.GitHub({
+    GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
   ],
   secret: process.env.SECRET,
-  database: {
+  adapter: TypeORMLegacyAdapter({
     type: 'postgres',
     host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT || 5432,
+    port: +process.env.DATABASE_PORT || 5432,
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
     ssl: process.env.NODE_ENV === 'production',
     extra: process.env.NODE_ENV === 'production' && {
       ssl: {
-        rejectUnauthorized: false,
+        rejectUnauthorized: true,
       },
     },
-  },
+  }),
   session: {
-    jwt: false,
+    strategy: 'database',
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
   jwt: {
-    encode: async ({ token }: { token: IToken }) => {
+    secret: 'Z33gSJUZhwo+sdYQcYmmkahiQFPt7PLaP+EROFWjuw0EBS+5jUJAZTsSp5Oo++e3',
+    maxAge: 60 * 60 * 24 * 30,
+    async encode({ secret, token, maxAge }) {
       const tokenContents = {
         id: token.id,
         name: token.name,
@@ -67,7 +69,7 @@ const options = {
 
       return encodedToken;
     },
-    decode: async ({ token }: { token: string }) => {
+    async decode({ secret, token, maxAge }) {
       const decodedToken = jwt.verify(token, jwtSecret.key, {
         algorithms: jwtSecret.type,
       });
@@ -78,7 +80,7 @@ const options = {
   debug: true,
 
   callbacks: {
-    session: async (session: ISession, user: IUser) => {
+    async session({ session, token, user }) {
       const encodedToken = jwt.sign(JSON.stringify(user), jwtSecret.key, {
         algorithm: jwtSecret.type,
       });
@@ -88,7 +90,7 @@ const options = {
 
       return Promise.resolve(session);
     },
-    jwt: async (token: IToken, user: IUser) => {
+    async jwt({ token, user, account, profile, isNewUser }) {
       const isSignIn = user ? true : false;
 
       if (isSignIn) {
@@ -98,9 +100,4 @@ const options = {
       return Promise.resolve(token);
     },
   },
-};
-
-const Auth = (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, options);
-
-export default Auth;
+});

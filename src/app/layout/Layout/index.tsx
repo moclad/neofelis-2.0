@@ -1,12 +1,11 @@
+import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
-
-import { Flex, useDisclosure } from '@chakra-ui/react';
-import { useSession } from 'next-auth/client';
 import { useLocation } from 'react-router-dom';
 
 import { LoginModalInterceptor } from '@/app/auth/LoginModalInterceptor';
 import { LayoutContext, TopBar } from '@/app/layout';
 import { Viewport } from '@/components';
+import { Flex, useDisclosure } from '@chakra-ui/react';
 
 export const Layout = ({ children }) => {
   const [isFocusMode, setIsFocusMode] = useState(false);
@@ -15,7 +14,7 @@ export const Layout = ({ children }) => {
     onClose: navOnClose,
     onOpen: navOnOpen,
   } = useDisclosure();
-  const [session] = useSession();
+  const { data: session } = useSession()
   const { pathname } = useLocation();
 
   useEffect(() => {
