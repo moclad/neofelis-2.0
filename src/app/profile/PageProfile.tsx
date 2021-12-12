@@ -78,10 +78,6 @@ export const PageProfile = () => {
                     label={t('profile:data.firstname.label')}
                     required={t('profile:data.firstname.required') as string}
                   />
-                  <FieldInput
-                    name="lastName"
-                    label={t('profile:data.lastname.label')}
-                  />
                 </Stack>
                 <FieldInput
                   name="email"

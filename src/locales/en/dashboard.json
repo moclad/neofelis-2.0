@@ -1,7 +1,9 @@
 {
   "title": "Dashboard",
   "actions": {
-    "createExpense": "Expense"
+    "createIncome": "Income",
+    "createExpense": "Expense",
+    "createTransfer": "Transfer"
   },
   "expense": {
     "data": {

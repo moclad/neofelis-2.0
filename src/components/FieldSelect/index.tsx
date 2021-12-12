@@ -49,7 +49,7 @@ export const FieldSelect = <
     placeholder,
     helper,
     isDisabled,
-    isClearable,
+    isClearable = true,
     isSearchable,
     isCreatable,
     closeMenuOnSelect = true,
@@ -82,17 +82,14 @@ export const FieldSelect = <
       return null;
     }
 
-    const result = onCreateOption(input);
-    result.then((x) => {
-      setValue({ value: x, label: input });
-    });
+    onCreateOption(input);
   };
 
   return (
     <FormGroup {...formGroupProps}>
       <Select
         id={id}
-        name
+        name={name}
         isMulti={isMulti}
         // value={
         //   isMulti

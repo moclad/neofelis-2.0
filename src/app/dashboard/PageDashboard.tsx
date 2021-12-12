@@ -4,10 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { FiPlus } from 'react-icons/fi';
 
 import { Page, PageContent } from '@/app/layout';
-import { FieldCurrency, FieldDayPicker, FieldInput, FieldSelect, ModalDialog } from '@/components';
 import { Button, Stack, useDisclosure } from '@chakra-ui/react';
 
-import { onConfirmCreate } from './Dashboard.services';
 import { TransactionDialog } from './dialogs/transaction-dialog';
 
 export const PageDashboard = () => {
@@ -26,12 +24,28 @@ export const PageDashboard = () => {
         title={t('dashboard:title')}
         actions={[
           <Button
-            key="createCategory"
+            key="createExpense"
             leftIcon={<FiPlus />}
             variant="@primary"
             onClick={() => onOpen()}
           >
             {t('dashboard:actions.createExpense')}
+          </Button>,
+          <Button
+            key="createIncome"
+            leftIcon={<FiPlus />}
+            variant="@secondary"
+            onClick={() => onOpen()}
+          >
+            {t('dashboard:actions.createIncome')}
+          </Button>,
+          <Button
+            key="createTransfer"
+            leftIcon={<FiPlus />}
+            variant="@secondary"
+            onClick={() => onOpen()}
+          >
+            {t('dashboard:actions.createTransfer')}
           </Button>,
         ]}
       ></PageContent>

@@ -1,17 +1,11 @@
 import React from 'react';
-
-import { Stack } from '@chakra-ui/react';
-import {
-  isEmail,
-  isMaxLength,
-  isMinLength,
-  isPattern,
-} from '@formiz/validations';
 import { useTranslation } from 'react-i18next';
 
 import { FieldCheckboxes, FieldInput, FieldSelect } from '@/components';
 import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE_KEY } from '@/constants/i18n';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { Stack } from '@chakra-ui/react';
+import { isEmail, isMaxLength, isMinLength, isPattern } from '@formiz/validations';
 
 const AUTHORITIES = {
   ADMIN: 'ROLE_ADMIN',
@@ -54,7 +48,6 @@ export const UserForm = () => {
       />
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldInput name="firstName" label={t('users:data.firstname.label')} />
-        <FieldInput name="lastName" label={t('users:data.lastname.label')} />
       </Stack>
       <FieldInput
         name="email"
