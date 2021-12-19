@@ -2,95 +2,74 @@ import dayjs from 'dayjs';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { FieldCurrency, FieldDayPicker, FieldInput, FieldSelect, ModalDialog } from '@/components';
 import {
-  FieldCurrency,
-  FieldDayPicker,
-  FieldInput,
-  FieldSelect,
-  ModalDialog,
-  useToastError,
-  useToastSuccess
-} from '@/components';
-import {
-  useActiveAssetAccountsQuery,
-  useActiveCategoriesQuery,
-  useActiveExpenseAccountsQuery,
-  useAllLabelsQuery,
+  ActiveAssetAccountsDocument,
+  ActiveCategoriesDocument,
+  ActiveExpenseAccountsDocument,
+  ActiveRevenueAccountsDocument,
+  AllLabelsDocument,
   useInsertCategoryMutation,
   useInsertExpenseAccMutation,
   useInsertLabelMutation,
+  useInsertRevenueAccMutation,
   useInsertTransactionMutation
 } from '@/generated/graphql';
-import { ISelectOptions, ITransactionInput } from '@/types/types';
-import { Button, Stack } from '@chakra-ui/react';
+import { ITransactionInput, TransactionType } from '@/types/types';
+import { Stack } from '@chakra-ui/react';
+import { useForm } from '@formiz/core';
 
-export const TransactionDialog = (props) => {
+import { useDataToSelectorConverter } from '../../../hooks/useDataToSelectorConverter';
+import { useMutationOptions } from '../../../hooks/useMutationOptions';
+
+export interface TransactionDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+  transactionType: TransactionType;
+}
+
+export const TransactionDialog = (props: TransactionDialogProps) => {
+  const { isOpen, onClose, transactionType } = props;
+
   const { t } = useTranslation();
-  const toastSuccess = useToastSuccess();
-  const toastError = useToastError();
-  const { isOpen, onClose } = props;
+  const { mutationOptions } = useMutationOptions();
+  const form = useForm();
 
-  const mutationOptions = {
-    onError: (error) => {
-      toastError({
-        title: t('common:feedbacks.createdError.title'),
-        description: error.message,
-      });
-    },
-    onCompleted: () => {
-      toastSuccess({
-        title: t('common:feedbacks.createdSuccess.title'),
-      });
-    },
-  };
   const [insertLabel] = useInsertLabelMutation(mutationOptions);
   const [insertCategory] = useInsertCategoryMutation(mutationOptions);
   const [insertExpense] = useInsertExpenseAccMutation(mutationOptions);
+  const [insertRevenue] = useInsertRevenueAccMutation(mutationOptions);
   const [insertTransaction, { loading: insertLoading }] =
     useInsertTransactionMutation(mutationOptions);
 
-  const labels: ISelectOptions[] = [];
-  const expenses: ISelectOptions[] = [];
-  const assets: ISelectOptions[] = [];
-  const categories: ISelectOptions[] = [];
+  const { selectOptions: categories } = useDataToSelectorConverter({
+    entity: 'categories',
+    query: ActiveCategoriesDocument,
+  });
 
-  const { data: labelsData } = useAllLabelsQuery();
-  const { data: categoriesData } = useActiveCategoriesQuery();
-  const { data: expensesData } = useActiveExpenseAccountsQuery();
-  const { data: assetsData } = useActiveAssetAccountsQuery();
+  const { selectOptions: labels } = useDataToSelectorConverter({
+    entity: 'labels',
+    query: AllLabelsDocument,
+  });
 
-  if (categoriesData) {
-    categoriesData.categories.map((category) => {
-      const option: ISelectOptions = {
-        label: category.name,
-        value: category.id,
-      };
-      categories.push(option);
-    });
-  }
+  const { selectOptions: expenses } = useDataToSelectorConverter({
+    entity: 'expenses',
+    query: ActiveExpenseAccountsDocument,
+    skipQuery: transactionType !== TransactionType.Expense,
+  });
 
-  if (labelsData) {
-    labelsData.labels.map((label) => {
-      const option: ISelectOptions = { label: label.name, value: label.id };
-      labels.push(option);
-    });
-  }
+  const { selectOptions: revenues } = useDataToSelectorConverter({
+    entity: 'revenues',
+    query: ActiveRevenueAccountsDocument,
+    skipQuery: transactionType !== TransactionType.Income,
+  });
 
-  if (expensesData) {
-    expensesData.expenses.map((data) => {
-      const option: ISelectOptions = { label: data.name, value: data.id };
-      expenses.push(option);
-    });
-  }
+  const { selectOptions: assets } = useDataToSelectorConverter({
+    entity: 'assets',
+    query: ActiveAssetAccountsDocument,
+  });
 
-  if (assetsData) {
-    assetsData.assets.map((data) => {
-      const option: ISelectOptions = { label: data.name, value: data.id };
-      assets.push(option);
-    });
-  }
-
-  const onCreateExpenseAccount = (value: string) => {
+  const onCreateExpenseAccount = async (value: string) => {
     const newData = {
       name: value,
       account_info: { data: { type: 'E' } },
@@ -101,7 +80,21 @@ export const TransactionDialog = (props) => {
         object: newData,
       },
       refetchQueries: 'active',
-    });
+    }).then((x) => x.data.insert_expenses_one.id);
+  };
+
+  const onCreateRevenueAccount = async (value: string) => {
+    const newData = {
+      name: value,
+      account_info: { data: { type: 'R' } },
+    };
+
+    insertRevenue({
+      variables: {
+        object: newData,
+      },
+      refetchQueries: 'active',
+    }).then((x) => x.data.insert_revenues_one.id);
   };
 
   const onCreateCategory = async (value: string) => {
@@ -117,16 +110,16 @@ export const TransactionDialog = (props) => {
     }).then((x) => x.data.insert_categories_one.id);
   };
 
-  const onCreateLabel = (value: string) => {
+  const onCreateLabel = async (value: string) => {
     const newData = {
       name: value,
     };
 
-    insertLabel({
+    return insertLabel({
       variables: {
         object: newData,
       },
-    });
+    }).then((x) => x.data.insert_labels_one.id);
   };
 
   const onConfirmCreate = async (values: ITransactionInput) => {
@@ -143,19 +136,91 @@ export const TransactionDialog = (props) => {
       );
     }
 
-    console.log(submitData);
-
     await insertTransaction({
       variables: {
         object: submitData,
       },
-      refetchQueries: 'active',
     });
+  };
+
+  const getSourceAndTargetAccounts = () => {
+    if (transactionType === TransactionType.Expense) {
+      return (
+        <>
+          <FieldSelect
+            name="source_account"
+            label={t('dashboard:transaction.data.asset')}
+            required={t('dashboard:transaction.data.assetRequired') as string}
+            options={assets}
+          />
+          <FieldSelect
+            name="destiny_account"
+            label={t('dashboard:transaction.data.expense')}
+            required={t('dashboard:transaction.data.expenseRequired') as string}
+            options={expenses}
+            isCreatable={true}
+            onCreateOption={onCreateExpenseAccount}
+          />
+        </>
+      );
+    }
+
+    if (transactionType === TransactionType.Income) {
+      return (
+        <>
+          <FieldSelect
+            name="source_account"
+            label={t('dashboard:transaction.data.revenue')}
+            required={t('dashboard:transaction.data.revenueRequired') as string}
+            options={revenues}
+            isCreatable={true}
+            onCreateOption={onCreateRevenueAccount}
+          />
+
+          <FieldSelect
+            name="destiny_account"
+            label={t('dashboard:transaction.data.asset')}
+            required={t('dashboard:transaction.data.assetRequired') as string}
+            options={assets}
+          />
+        </>
+      );
+    }
+
+    if (transactionType === TransactionType.Transfer) {
+      return (
+        <>
+          <FieldSelect
+            name="source_account"
+            label={t('dashboard:transaction.data.fromAsset')}
+            required={t('dashboard:transaction.data.assetRequired') as string}
+            options={assets}
+          />
+
+          <FieldSelect
+            name="destiny_account"
+            label={t('dashboard:transaction.data.toAsset')}
+            required={t('dashboard:transaction.data.assetRequired') as string}
+            options={assets}
+            validations={[
+              {
+                rule: (value) => {
+                  return form.values.source_account !== value;
+                },
+                deps: [form.values.source_account],
+                message: t('dashboard:transaction.error.sameAccount'),
+              },
+            ]}
+          />
+        </>
+      );
+    }
   };
 
   return (
     <ModalDialog
       title={t('dashboard:actions.createExpense')}
+      dialogForm={form}
       isOpen={isOpen}
       onCancel={() => {
         onClose();
@@ -165,46 +230,27 @@ export const TransactionDialog = (props) => {
       formId="asset-form-id"
       initialValues={{ transaction_date: dayjs().toDate() }}
     >
-      <FieldInput
-        name="description"
-        label={t('dashboard:expense.data.description')}
-        type={'text'}
-        placeholder={t('dashboard:expense.data.description') as string}
-      />
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-        <FieldSelect
-          name="source_account"
-          label={t('dashboard:expense.data.source')}
-          required={t('dashboard:expense.data.sourceRequired') as string}
-          options={assets}
-        />
-        <FieldSelect
-          name="destiny_account"
-          label={t('dashboard:expense.data.destiny')}
-          required={t('dashboard:expense.data.targetRequired') as string}
-          options={expenses}
-          isCreatable={true}
-          onCreateOption={onCreateExpenseAccount}
-        />
+        {getSourceAndTargetAccounts()}
       </Stack>
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldCurrency
           name="amount"
-          label={t('dashboard:expense.data.amount')}
+          label={t('dashboard:transaction.data.amount')}
           placeholder={0}
           currency="EUR"
-          required={t('dashboard:expense.data.amountRequired') as string}
+          required={t('dashboard:transaction.data.amountRequired') as string}
         />
         <FieldDayPicker
           name="transaction_date"
-          label={t('dashboard:expense.data.bookDate')}
-          required={t('dashboard:expense.data.bookDateRequired') as string}
+          label={t('dashboard:transaction.data.bookDate')}
+          required={t('dashboard:transaction.data.bookDateRequired') as string}
         />
       </Stack>
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldSelect
           name="category_id"
-          label={t('dashboard:expense.data.category')}
+          label={t('dashboard:transaction.data.category')}
           options={categories}
           isCreatable={true}
           onCreateOption={onCreateCategory}
@@ -213,7 +259,7 @@ export const TransactionDialog = (props) => {
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldSelect
           name="labels"
-          label={t('dashboard:expense.data.labels')}
+          label={t('dashboard:transaction.data.labels')}
           options={labels}
           size="sm"
           isCreatable={true}
@@ -222,6 +268,12 @@ export const TransactionDialog = (props) => {
           isMulti={true}
         />
       </Stack>
+      <FieldInput
+        name="description"
+        label={t('dashboard:transaction.data.description')}
+        type={'text'}
+        placeholder={t('dashboard:transaction.data.description') as string}
+      />
     </ModalDialog>
   );
 };

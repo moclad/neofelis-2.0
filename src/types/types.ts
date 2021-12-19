@@ -37,3 +37,10 @@ export interface ITransactionInput {
   source_account: number;
   labels: number[];
 }
+
+export enum TransactionType {
+  None,
+  Expense,
+  Income,
+  Transfer,
+}

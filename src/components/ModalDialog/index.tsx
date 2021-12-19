@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Button,
+  Checkbox,
   HStack,
   Modal,
   ModalBody,
@@ -14,6 +15,7 @@ import {
   Stack
 } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
+import { UseFormValues } from '@formiz/core/dist/types/form.types';
 
 export interface ModalDialogProps {
   isOpen: boolean;
@@ -22,6 +24,7 @@ export interface ModalDialogProps {
   closeOnOverlayClick?: boolean;
   formId: string;
   initialValues?: object;
+  dialogForm?: UseFormValues;
   onCancel: () => void;
   onConfirm: (values) => void;
 }
@@ -37,15 +40,22 @@ export const ModalDialog: FC<ModalDialogProps> = (props) => {
     closeOnOverlayClick,
     formId,
     initialValues,
+    dialogForm = null,
   } = props;
 
   const { t } = useTranslation();
-  const generalInformationForm = useForm();
+  const generalInformationForm = dialogForm ? dialogForm : useForm();
   const { colorModeValue } = useDarkMode();
+  const [continueToAdd, setContinueToAdd] = useState(false);
 
   const submitFormData = async (values) => {
     await onConfirm(values);
-    onCancel();
+
+    if (!continueToAdd) {
+      onCancel();
+    }
+
+    generalInformationForm.reset();
   };
 
   return (
@@ -83,6 +93,13 @@ export const ModalDialog: FC<ModalDialogProps> = (props) => {
             </ModalBody>
             <ModalFooter>
               <HStack spacing={4}>
+                <Checkbox
+                  onChange={(e) => setContinueToAdd(e.target.checked)}
+                  isChecked={continueToAdd}
+                  readOnly={loading}
+                >
+                  {t('common:actions.addAnotherOne')}
+                </Checkbox>
                 <Button
                   isDisabled={loading}
                   variant="ghost"

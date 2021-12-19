@@ -1,21 +1,17 @@
-import dayjs from 'dayjs';
-import React from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiPlus } from 'react-icons/fi';
 
 import { Page, PageContent } from '@/app/layout';
-import { Button, Stack, useDisclosure } from '@chakra-ui/react';
+import { Button, useDisclosure } from '@chakra-ui/react';
 
+import { TransactionType } from '../../types/types';
 import { TransactionDialog } from './dialogs/transaction-dialog';
 
 export const PageDashboard = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const colors = [
-    { label: 'Red', value: 'red' },
-    { label: 'Yellow', value: 'yellow' },
-    { label: 'Blue', value: 'blue' },
-  ];
+  const [transactionType, setTransactionType] = useState(TransactionType.None);
 
   return (
     <Page>
@@ -27,7 +23,10 @@ export const PageDashboard = () => {
             key="createExpense"
             leftIcon={<FiPlus />}
             variant="@primary"
-            onClick={() => onOpen()}
+            onClick={() => {
+              setTransactionType(TransactionType.Expense);
+              onOpen();
+            }}
           >
             {t('dashboard:actions.createExpense')}
           </Button>,
@@ -35,7 +34,10 @@ export const PageDashboard = () => {
             key="createIncome"
             leftIcon={<FiPlus />}
             variant="@secondary"
-            onClick={() => onOpen()}
+            onClick={() => {
+              setTransactionType(TransactionType.Income);
+              onOpen();
+            }}
           >
             {t('dashboard:actions.createIncome')}
           </Button>,
@@ -43,13 +45,20 @@ export const PageDashboard = () => {
             key="createTransfer"
             leftIcon={<FiPlus />}
             variant="@secondary"
-            onClick={() => onOpen()}
+            onClick={() => {
+              setTransactionType(TransactionType.Transfer);
+              onOpen();
+            }}
           >
             {t('dashboard:actions.createTransfer')}
           </Button>,
         ]}
       ></PageContent>
-      <TransactionDialog isOpen={isOpen} onClose={onClose} />
+      <TransactionDialog
+        isOpen={isOpen}
+        onClose={onClose}
+        transactionType={transactionType}
+      />
     </Page>
   );
 };

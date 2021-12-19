@@ -5,13 +5,20 @@
     "createExpense": "Expense",
     "createTransfer": "Transfer"
   },
-  "expense": {
+  "transaction": {
+    "error": {
+      "sameAccount": "Source and destination account can't be the same."
+    },
     "data": {
       "description": "Description",
-      "source": "Source account",
-      "destiny": "Destination account",
-      "sourceRequired": "Source account is required",
-      "targetRequired": "Destination account is required",
+      "asset": "Asset account",
+      "fromAsset": "From asset",
+      "toAsset": "To asset",
+      "revenue": "Revenue account",
+      "expense": "Expense account",
+      "assetRequired": "Asset account is required",
+      "expenseRequired": "Expense account is required",
+      "revenueRequired": "Revenue account is required",
       "category": "Category",
       "labels": "Labels",
       "amount": "Amount",

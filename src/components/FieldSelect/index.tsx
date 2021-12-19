@@ -85,17 +85,20 @@ export const FieldSelect = <
     onCreateOption(input);
   };
 
+  const selectedValues = () => {
+    if (isMulti && value) {
+      return;
+    }
+
+    return options?.find((option) => option.value === value) || '';
+  };
+
   return (
     <FormGroup {...formGroupProps}>
       <Select
         id={id}
-        name={name}
         isMulti={isMulti}
-        // value={
-        //   isMulti
-        //     ? value ?? ''
-        //     : options?.find((option) => option.value === value) || ''
-        // }
+        value={selectedValues()}
         onBlur={() => setIsTouched(true)}
         placeholder={placeholder || 'Select...'}
         onChange={(fieldValue) => {
