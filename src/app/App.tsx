@@ -53,7 +53,7 @@ const getRoutes = () => {
         }
       />
       <Route
-        path="/profile"
+        path="/profile/*"
         element={
           <SecuredPage>
             <AccountRoutes />

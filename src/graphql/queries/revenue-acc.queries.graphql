@@ -3,6 +3,7 @@ query allRevenueAccounts($limit: Int, $offset: Int) {
     id
     name
     active
+    default
     created_at
     updated_at
   }
@@ -17,5 +18,6 @@ query activeRevenueAccounts {
   revenues(order_by: { name: asc }, where: { active: { _eq: true } }) {
     id
     name
+    default
   }
 }

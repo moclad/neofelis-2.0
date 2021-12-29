@@ -12,7 +12,8 @@
     "duplicate": "Duplicate",
     "submitting": "Submitting",
     "confirm": "Confirm",
-    "addAnotherOne": "Add another one"
+    "addAnotherOne": "Add another one",
+    "setAsStandard": "Set as standard"
   },
   "feedbacks": {
     "updateSuccess": {

@@ -49,6 +49,7 @@
   },
   "revenues": {
     "title": "Revenue accounts",
+    "standard": "Standard account",
     "actions": {
       "edit": "Edit account",
       "delete": "Delete",
@@ -62,7 +63,9 @@
       "active": "ACTIVE",
       "inactive": "INACTIVE",
       "name": "Name",
-      "nameRequired": "Field name is required."
+      "nameRequired": "Field name is required.",
+      "default": "Set as default revenue account",
+      "defaultHelper": "Account is pre-selected when nex revenues are created"
     }
   },
   "liabilities": {

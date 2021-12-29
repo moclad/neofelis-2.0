@@ -24,3 +24,12 @@ mutation updateRevenueState($id: bigint!, $state: Boolean) {
     active
   }
 }
+
+mutation updateRevenueStandard($id: bigint!) {
+  update_revenues_by_pk(pk_columns: { id: $id }, _set: { default: true }) {
+    default
+  }
+  update_revenues(_set: { default: false }, where: { id: { _neq: $id } }) {
+    affected_rows
+  }
+}

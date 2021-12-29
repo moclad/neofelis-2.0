@@ -30,6 +30,7 @@ import {
   useDeleteRevenueAccMutation,
   useInsertRevenueAccMutation,
   useUpdateRevenueAccMutation,
+  useUpdateRevenueStandardMutation,
   useUpdateRevenueStateMutation
 } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
@@ -40,7 +41,6 @@ import {
   Button,
   HStack,
   LinkBox,
-  LinkOverlay,
   Menu,
   MenuButton,
   MenuDivider,
@@ -101,6 +101,21 @@ export const PageRevenues = () => {
       },
     });
 
+  const [updateRevenueStandard, { loading: updateStandardLoading }] =
+    useUpdateRevenueStandardMutation({
+      onError: (error) => {
+        toastError({
+          title: t('common:feedbacks.updateError.title'),
+          description: error.message,
+        });
+      },
+      onCompleted: () => {
+        toastSuccess({
+          title: t('common:feedbacks.updateSuccess.title'),
+        });
+      },
+    });
+
   const [insertRevenue, { loading: insertLoading }] =
     useInsertRevenueAccMutation({
       onError: (error) => {
@@ -135,6 +150,14 @@ export const PageRevenues = () => {
       variables: {
         id: item.id,
         state: !item.active,
+      },
+    });
+  };
+
+  const setStandard = async (item) => {
+    await updateRevenueStandard({
+      variables: {
+        id: item.id,
       },
       refetchQueries: 'active',
     });
@@ -210,12 +233,14 @@ export const PageRevenues = () => {
                       <Avatar size="sm" name={item.name} mx="2" />
                       <Box minW="0">
                         <Text isTruncated maxW="full" fontWeight="bold">
-                          {item.active ? (
-                            <LinkOverlay href="#">{item.name}</LinkOverlay>
-                          ) : (
-                            item.name
-                          )}
+                          {item.name}
                         </Text>
+
+                        {item.default ? (
+                          <Text isTruncated maxW="full" fontSize="sm">
+                            {t('accounts:revenues.standard')}
+                          </Text>
+                        ) : null}
                       </Box>
                     </HStack>
                   </DataListCell>
@@ -248,6 +273,12 @@ export const PageRevenues = () => {
                             icon={<Icon icon={FiEdit} color="gray.400" />}
                           >
                             {t('common:actions.deactivate')}
+                          </MenuItem>
+                          <MenuItem
+                            onClick={() => setStandard(item)}
+                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                          >
+                            {t('common:actions.setAsStandard')}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem

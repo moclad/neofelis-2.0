@@ -2815,6 +2815,7 @@ export type Revenues = {
   account_info: Account_Info;
   active: Scalars['Boolean'];
   created_at: Scalars['timestamptz'];
+  default: Scalars['Boolean'];
   id: Scalars['bigint'];
   name: Scalars['String'];
   updated_at: Scalars['timestamptz'];
@@ -2863,6 +2864,7 @@ export type Revenues_Bool_Exp = {
   account_info?: InputMaybe<Account_Info_Bool_Exp>;
   active?: InputMaybe<Boolean_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  default?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -2884,6 +2886,7 @@ export type Revenues_Insert_Input = {
   account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
   active?: InputMaybe<Scalars['Boolean']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -2935,6 +2938,7 @@ export type Revenues_Order_By = {
   account_info?: InputMaybe<Account_Info_Order_By>;
   active?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  default?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -2952,6 +2956,8 @@ export enum Revenues_Select_Column {
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
+  Default = 'default',
+  /** column name */
   Id = 'id',
   /** column name */
   Name = 'name',
@@ -2963,6 +2969,7 @@ export enum Revenues_Select_Column {
 export type Revenues_Set_Input = {
   active?: InputMaybe<Scalars['Boolean']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -2998,6 +3005,8 @@ export enum Revenues_Update_Column {
   Active = 'active',
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  Default = 'default',
   /** column name */
   Id = 'id',
   /** column name */
@@ -4928,6 +4937,20 @@ export type UpdateRevenueStateMutation = {
     | undefined;
 };
 
+export type UpdateRevenueStandardMutationVariables = Exact<{
+  id: Scalars['bigint'];
+}>;
+
+export type UpdateRevenueStandardMutation = {
+  __typename?: 'mutation_root';
+  update_revenues_by_pk?:
+    | { __typename?: 'revenues'; default: boolean }
+    | undefined;
+  update_revenues?:
+    | { __typename?: 'revenues_mutation_response'; affected_rows: number }
+    | undefined;
+};
+
 export type InsertTransactionMutationVariables = Exact<{
   object: Transactions_Insert_Input;
 }>;
@@ -5164,6 +5187,7 @@ export type AllRevenueAccountsQuery = {
     id: any;
     name: string;
     active: boolean;
+    default: boolean;
     created_at: string;
     updated_at: string;
   }>;
@@ -5181,7 +5205,12 @@ export type ActiveRevenueAccountsQueryVariables = Exact<{
 
 export type ActiveRevenueAccountsQuery = {
   __typename?: 'query_root';
-  revenues: Array<{ __typename?: 'revenues'; id: any; name: string }>;
+  revenues: Array<{
+    __typename?: 'revenues';
+    id: any;
+    name: string;
+    default: boolean;
+  }>;
 };
 
 export type FetchLabelsSubscriptionVariables = Exact<{ [key: string]: never }>;
@@ -7441,6 +7470,110 @@ export type UpdateRevenueStateMutationOptions = Apollo.BaseMutationOptions<
   UpdateRevenueStateMutation,
   UpdateRevenueStateMutationVariables
 >;
+export const UpdateRevenueStandardDocument = gql`
+  mutation updateRevenueStandard($id: bigint!) {
+    update_revenues_by_pk(pk_columns: { id: $id }, _set: { default: true }) {
+      default
+    }
+    update_revenues(_set: { default: false }, where: { id: { _neq: $id } }) {
+      affected_rows
+    }
+  }
+`;
+export type UpdateRevenueStandardMutationFn = Apollo.MutationFunction<
+  UpdateRevenueStandardMutation,
+  UpdateRevenueStandardMutationVariables
+>;
+export type UpdateRevenueStandardComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateRevenueStandardMutation,
+    UpdateRevenueStandardMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateRevenueStandardComponent = (
+  props: UpdateRevenueStandardComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateRevenueStandardMutation,
+    UpdateRevenueStandardMutationVariables
+  >
+    mutation={UpdateRevenueStandardDocument}
+    {...props}
+  />
+);
+
+export type UpdateRevenueStandardProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateRevenueStandardMutation,
+    UpdateRevenueStandardMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateRevenueStandard<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateRevenueStandardMutation,
+    UpdateRevenueStandardMutationVariables,
+    UpdateRevenueStandardProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateRevenueStandardMutation,
+    UpdateRevenueStandardMutationVariables,
+    UpdateRevenueStandardProps<TChildProps, TDataName>
+  >(UpdateRevenueStandardDocument, {
+    alias: 'updateRevenueStandard',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateRevenueStandardMutation__
+ *
+ * To run a mutation, you first call `useUpdateRevenueStandardMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateRevenueStandardMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateRevenueStandardMutation, { data, loading, error }] = useUpdateRevenueStandardMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUpdateRevenueStandardMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateRevenueStandardMutation,
+    UpdateRevenueStandardMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateRevenueStandardMutation,
+    UpdateRevenueStandardMutationVariables
+  >(UpdateRevenueStandardDocument, options);
+}
+export type UpdateRevenueStandardMutationHookResult = ReturnType<
+  typeof useUpdateRevenueStandardMutation
+>;
+export type UpdateRevenueStandardMutationResult =
+  Apollo.MutationResult<UpdateRevenueStandardMutation>;
+export type UpdateRevenueStandardMutationOptions = Apollo.BaseMutationOptions<
+  UpdateRevenueStandardMutation,
+  UpdateRevenueStandardMutationVariables
+>;
 export const InsertTransactionDocument = gql`
   mutation insertTransaction($object: transactions_insert_input!) {
     insert_transactions_one(object: $object) {
@@ -8979,6 +9112,7 @@ export const AllRevenueAccountsDocument = gql`
       id
       name
       active
+      default
       created_at
       updated_at
     }
@@ -9097,6 +9231,7 @@ export const ActiveRevenueAccountsDocument = gql`
     revenues(order_by: { name: asc }, where: { active: { _eq: true } }) {
       id
       name
+      default
     }
   }
 `;
@@ -12407,6 +12542,7 @@ export type RevenuesResolvers<
   >;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  default?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
