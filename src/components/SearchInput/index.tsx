@@ -1,19 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
-
-import {
-  forwardRef,
-  Input,
-  InputGroup,
-  InputProps,
-  InputRightElement,
-  IconButton,
-  useControllableState,
-  useMergeRefs,
-} from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { FiSearch, FiX } from 'react-icons/fi';
 
 import { useDarkMode } from '@/hooks/useDarkMode';
+import {
+  forwardRef,
+  IconButton,
+  Input,
+  InputGroup,
+  InputProps,
+  InputRightElement,
+  useControllableState,
+  useMergeRefs
+} from '@chakra-ui/react';
 
 interface SearchInputProps extends Omit<InputProps, 'onChange'> {
   onChange?(value?: string): void;
@@ -55,7 +54,7 @@ export const SearchInput = forwardRef<SearchInputProps, 'input'>(
 
     useEffect(() => {
       const handler = setTimeout(() => {
-        setExternalValueRef.current(search);
+        setExternalValueRef.current?.(search);
       }, delay);
 
       return () => clearTimeout(handler);

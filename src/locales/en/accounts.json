@@ -65,7 +65,7 @@
       "name": "Name",
       "nameRequired": "Field name is required.",
       "default": "Set as default revenue account",
-      "defaultHelper": "Account is pre-selected when nex revenues are created"
+      "defaultHelper": "Account is pre-selected when new revenues are created"
     }
   },
   "liabilities": {

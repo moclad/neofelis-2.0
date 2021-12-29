@@ -61,14 +61,6 @@ const getRoutes = () => {
         }
       />
       <Route
-        path="/dashboard"
-        element={
-          <SecuredPage>
-            <DashboardRoutes />
-          </SecuredPage>
-        }
-      />
-      <Route
         path="/classification/*"
         element={
           <SecuredPage>
