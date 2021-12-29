@@ -20,6 +20,7 @@
       "currentBalance": "Balance"
     },
     "data": {
+      "defaultAsset": "Default",
       "active": "ACTIVE",
       "inactive": "INACTIVE",
       "name": "Name",

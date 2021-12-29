@@ -51,8 +51,11 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 
+import { useDarkMode } from '../../hooks/useDarkMode';
+
 export const PageRevenues = () => {
   const { t } = useTranslation();
+  const { colorModeValue } = useDarkMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } =
     useEditMode<number>();
@@ -235,24 +238,31 @@ export const PageRevenues = () => {
                         <Text isTruncated maxW="full" fontWeight="bold">
                           {item.name}
                         </Text>
-
-                        {item.default ? (
-                          <Text isTruncated maxW="full" fontSize="sm">
-                            {t('accounts:revenues.standard')}
-                          </Text>
-                        ) : null}
                       </Box>
                     </HStack>
                   </DataListCell>
                   <DataListCell colName="status">
-                    <Badge
-                      size="sm"
-                      colorScheme={item.active ? 'success' : 'gray'}
-                    >
-                      {item.active
-                        ? t('accounts:revenues.data.active')
-                        : t('accounts:revenues.data.inactive')}
-                    </Badge>
+                    <HStack>
+                      <Badge
+                        size="sm"
+                        colorScheme={item.active ? 'success' : 'gray'}
+                      >
+                        {item.active
+                          ? t('accounts:revenues.data.active')
+                          : t('accounts:revenues.data.inactive')}
+                      </Badge>
+                      {item.default ? (
+                        <Badge
+                          size="sm"
+                          colorScheme="green"
+                          color={colorModeValue('brand.500', 'brand.500')}
+                        >
+                          {t('accounts:assets.data.defaultAsset')}
+                        </Badge>
+                      ) : (
+                        <></>
+                      )}
+                    </HStack>
                   </DataListCell>
                   <DataListCell colName="actions">
                     <Menu isLazy>

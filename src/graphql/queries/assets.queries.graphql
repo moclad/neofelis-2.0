@@ -8,6 +8,7 @@ query allAssets($limit: Int, $offset: Int) {
     account_no
     created_at
     updated_at
+    default
   }
   assets_aggregate {
     aggregate {
@@ -20,5 +21,6 @@ query activeAssetAccounts {
   assets(order_by: { name: asc }, where: { active: { _eq: true } }) {
     id
     name
+    default
   }
 }

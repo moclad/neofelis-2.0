@@ -29,7 +29,10 @@ mutation updateRevenueStandard($id: bigint!) {
   update_revenues_by_pk(pk_columns: { id: $id }, _set: { default: true }) {
     default
   }
-  update_revenues(_set: { default: false }, where: { id: { _neq: $id } }) {
+  update_revenues(
+    _set: { default: false }
+    where: { id: { _neq: $id }, default: { _eq: true } }
+  ) {
     affected_rows
   }
 }

@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
-import React from 'react';
+import { off } from 'process';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { FieldCurrency, FieldDayPicker, FieldInput, FieldSelect, ModalDialog } from '@/components';
@@ -29,6 +30,7 @@ export interface TransactionDialogProps {
 }
 
 export const TransactionDialog = (props: TransactionDialogProps) => {
+  let defaultAccount;
   const { isOpen, onClose, transactionType } = props;
 
   const { t } = useTranslation();
@@ -45,28 +47,42 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
   const { selectOptions: categories } = useDataToSelectorConverter({
     entity: 'categories',
     query: ActiveCategoriesDocument,
+    skipQuery: transactionType === TransactionType.None,
   });
 
   const { selectOptions: labels } = useDataToSelectorConverter({
     entity: 'labels',
     query: AllLabelsDocument,
+    skipQuery: transactionType === TransactionType.None,
   });
 
   const { selectOptions: expenses } = useDataToSelectorConverter({
     entity: 'expenses',
     query: ActiveExpenseAccountsDocument,
-    skipQuery: transactionType !== TransactionType.Expense,
+    skipQuery:
+      transactionType !== TransactionType.Expense &&
+      transactionType === TransactionType.None,
   });
 
   const { selectOptions: revenues } = useDataToSelectorConverter({
     entity: 'revenues',
     query: ActiveRevenueAccountsDocument,
-    skipQuery: transactionType !== TransactionType.Income,
+    skipQuery:
+      transactionType !== TransactionType.Income &&
+      transactionType === TransactionType.None,
+    onComplete: (data) =>
+      (defaultAccount = data.find((x) => x.data['default'] === true)?.value),
   });
 
   const { selectOptions: assets } = useDataToSelectorConverter({
     entity: 'assets',
     query: ActiveAssetAccountsDocument,
+    skipQuery: transactionType === TransactionType.None,
+    onComplete: (data) => {
+      if (transactionType === TransactionType.Expense) {
+        defaultAccount = data.find((x) => x.data['default'] === true)?.value;
+      }
+    },
   });
 
   const onCreateExpenseAccount = async (value: string) => {
@@ -228,7 +244,10 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
       onConfirm={onConfirmCreate}
       loading={insertLoading}
       formId="asset-form-id"
-      initialValues={{ transaction_date: dayjs().toDate() }}
+      initialValues={{
+        transaction_date: dayjs().toDate(),
+        source_account: defaultAccount,
+      }}
     >
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         {getSourceAndTargetAccounts()}

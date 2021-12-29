@@ -26,6 +26,7 @@ export interface IUser {
 export interface ISelectOptions {
   label: string;
   value: number;
+  data: object;
 }
 
 export interface ITransactionInput {

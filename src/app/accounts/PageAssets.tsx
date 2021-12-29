@@ -33,10 +33,12 @@ import {
   useDeleteAssetMutation,
   useInsertAssetMutation,
   useUpdateAssetMutation,
+  useUpdateAssetStandardMutation,
   useUpdateAssetStateMutation
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
+import { useMutationOptions } from '@/hooks/useMutationOptions';
 import {
   Avatar,
   Badge,
@@ -67,6 +69,8 @@ export const PageAssets = () => {
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
+  const { mutationOptions } = useMutationOptions();
+
   const { loading, data } = useAllAssetsQuery({
     variables: {
       offset: (page - 1) * pageSize,
@@ -76,48 +80,12 @@ export const PageAssets = () => {
 
   const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
 
-  const [updateAsset, { loading: updateLoading }] = useUpdateAssetMutation({
-    onError: (error) => {
-      toastError({
-        title: t('common:feedbacks.updateError.title'),
-        description: error.message,
-      });
-    },
-    onCompleted: () => {
-      toastSuccess({
-        title: t('common:feedbacks.updateSuccess.title'),
-      });
-    },
-  });
-
-  const [updateAssetState, { loading: updateStateLoading }] =
-    useUpdateAssetStateMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
-
-  const [insertAsset, { loading: insertLoading }] = useInsertAssetMutation({
-    onError: (error) => {
-      toastError({
-        title: t('common:feedbacks.createdError.title'),
-        description: error.message,
-      });
-    },
-    onCompleted: () => {
-      toastSuccess({
-        title: t('common:feedbacks.createdSuccess.title'),
-      });
-    },
-  });
+  const [updateAsset, { loading: updateLoading }] =
+    useUpdateAssetMutation(mutationOptions);
+  const [insertAsset, { loading: insertLoading }] =
+    useInsertAssetMutation(mutationOptions);
+  const [updateAssetState] = useUpdateAssetStateMutation(mutationOptions);
+  const [updateAssetStandard] = useUpdateAssetStandardMutation(mutationOptions);
 
   const onConfirmCreate = async (values) => {
     const newData = {
@@ -128,6 +96,15 @@ export const PageAssets = () => {
     insertAsset({
       variables: {
         object: newData,
+      },
+      refetchQueries: 'active',
+    });
+  };
+
+  const setStandard = async (item) => {
+    await updateAssetStandard({
+      variables: {
+        id: item.id,
       },
       refetchQueries: 'active',
     });
@@ -237,14 +214,28 @@ export const PageAssets = () => {
                     <TextCurrency value={0} locale="de" currency="EUR" />
                   </DataListCell>
                   <DataListCell colName="status">
-                    <Badge
-                      size="sm"
-                      colorScheme={item.active ? 'success' : 'gray'}
-                    >
-                      {item.active
-                        ? t('accounts:assets.data.active')
-                        : t('accounts:assets.data.inactive')}
-                    </Badge>
+                    <HStack maxW="100%">
+                      <Badge
+                        size="sm"
+                        colorScheme={item.active ? 'success' : 'gray'}
+                      >
+                        {item.active
+                          ? t('accounts:assets.data.active')
+                          : t('accounts:assets.data.inactive')}
+                      </Badge>
+
+                      {item.default ? (
+                        <Badge
+                          size="sm"
+                          colorScheme="green"
+                          color={colorModeValue('brand.500', 'brand.500')}
+                        >
+                          {t('accounts:assets.data.defaultAsset')}
+                        </Badge>
+                      ) : (
+                        <></>
+                      )}
+                    </HStack>
                   </DataListCell>
                   <DataListCell colName="actions">
                     <Menu isLazy>
@@ -265,6 +256,12 @@ export const PageAssets = () => {
                             icon={<Icon icon={FiEdit} color="gray.400" />}
                           >
                             {t('common:actions.deactivate')}
+                          </MenuItem>
+                          <MenuItem
+                            onClick={() => setStandard(item)}
+                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                          >
+                            {t('common:actions.setAsStandard')}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem

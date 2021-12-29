@@ -10,6 +10,7 @@ export interface useDataToSelectorConverterProps {
   labelFieldName?: string;
   idFieldName?: string;
   skipQuery?: boolean;
+  onComplete?: (data: ISelectOptions[]) => void;
 }
 
 export function useDataToSelectorConverter(
@@ -21,6 +22,7 @@ export function useDataToSelectorConverter(
     labelFieldName = 'name',
     idFieldName = 'id',
     skipQuery = false,
+    onComplete,
   } = props;
 
   const selectOptions: ISelectOptions[] = [];
@@ -35,9 +37,14 @@ export function useDataToSelectorConverter(
       const option: ISelectOptions = {
         label: item[labelFieldName],
         value: item[idFieldName],
+        data: item,
       };
       selectOptions.push(option);
     });
+  }
+
+  if (onComplete && !skipQuery) {
+    onComplete(selectOptions);
   }
 
   return {

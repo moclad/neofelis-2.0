@@ -13,6 +13,11 @@ export const PageDashboard = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [transactionType, setTransactionType] = useState(TransactionType.None);
 
+  const onCloseDialog = () => {
+    setTransactionType(TransactionType.None);
+    onClose();
+  };
+
   return (
     <Page>
       <PageContent
@@ -56,7 +61,7 @@ export const PageDashboard = () => {
       ></PageContent>
       <TransactionDialog
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={onCloseDialog}
         transactionType={transactionType}
       />
     </Page>

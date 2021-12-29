@@ -380,6 +380,7 @@ export type Assets = {
   balance?: Maybe<Scalars['float8']>;
   balance_date?: Maybe<Scalars['date']>;
   created_at: Scalars['timestamptz'];
+  default: Scalars['Boolean'];
   id: Scalars['bigint'];
   name: Scalars['String'];
   updated_at: Scalars['timestamptz'];
@@ -432,6 +433,7 @@ export type Assets_Bool_Exp = {
   balance?: InputMaybe<Float8_Comparison_Exp>;
   balance_date?: InputMaybe<Date_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  default?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -457,6 +459,7 @@ export type Assets_Insert_Input = {
   balance?: InputMaybe<Scalars['float8']>;
   balance_date?: InputMaybe<Scalars['date']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -517,6 +520,7 @@ export type Assets_Order_By = {
   balance?: InputMaybe<Order_By>;
   balance_date?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
+  default?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -540,6 +544,8 @@ export enum Assets_Select_Column {
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
+  Default = 'default',
+  /** column name */
   Id = 'id',
   /** column name */
   Name = 'name',
@@ -554,6 +560,7 @@ export type Assets_Set_Input = {
   balance?: InputMaybe<Scalars['float8']>;
   balance_date?: InputMaybe<Scalars['date']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -599,6 +606,8 @@ export enum Assets_Update_Column {
   BalanceDate = 'balance_date',
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  Default = 'default',
   /** column name */
   Id = 'id',
   /** column name */
@@ -4708,6 +4717,18 @@ export type UpdateAssetStateMutation = {
   update_assets_by_pk?: { __typename?: 'assets'; active: boolean } | undefined;
 };
 
+export type UpdateAssetStandardMutationVariables = Exact<{
+  id: Scalars['bigint'];
+}>;
+
+export type UpdateAssetStandardMutation = {
+  __typename?: 'mutation_root';
+  update_assets_by_pk?: { __typename?: 'assets'; active: boolean } | undefined;
+  update_assets?:
+    | { __typename?: 'assets_mutation_response'; affected_rows: number }
+    | undefined;
+};
+
 export type InsertCategoryMutationVariables = Exact<{
   object: Categories_Insert_Input;
 }>;
@@ -5021,6 +5042,7 @@ export type AllAssetsQuery = {
     account_no?: string | undefined;
     created_at: string;
     updated_at: string;
+    default: boolean;
   }>;
   assets_aggregate: {
     __typename?: 'assets_aggregate';
@@ -5034,7 +5056,12 @@ export type ActiveAssetAccountsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type ActiveAssetAccountsQuery = {
   __typename?: 'query_root';
-  assets: Array<{ __typename?: 'assets'; id: any; name: string }>;
+  assets: Array<{
+    __typename?: 'assets';
+    id: any;
+    name: string;
+    default: boolean;
+  }>;
 };
 
 export type AllCategoriesQueryVariables = Exact<{ [key: string]: never }>;
@@ -5628,6 +5655,113 @@ export type UpdateAssetStateMutationResult =
 export type UpdateAssetStateMutationOptions = Apollo.BaseMutationOptions<
   UpdateAssetStateMutation,
   UpdateAssetStateMutationVariables
+>;
+export const UpdateAssetStandardDocument = gql`
+  mutation updateAssetStandard($id: bigint!) {
+    update_assets_by_pk(pk_columns: { id: $id }, _set: { default: true }) {
+      active
+    }
+    update_assets(
+      _set: { default: false }
+      where: { id: { _neq: $id }, default: { _eq: true } }
+    ) {
+      affected_rows
+    }
+  }
+`;
+export type UpdateAssetStandardMutationFn = Apollo.MutationFunction<
+  UpdateAssetStandardMutation,
+  UpdateAssetStandardMutationVariables
+>;
+export type UpdateAssetStandardComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateAssetStandardMutation,
+    UpdateAssetStandardMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateAssetStandardComponent = (
+  props: UpdateAssetStandardComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateAssetStandardMutation,
+    UpdateAssetStandardMutationVariables
+  >
+    mutation={UpdateAssetStandardDocument}
+    {...props}
+  />
+);
+
+export type UpdateAssetStandardProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateAssetStandardMutation,
+    UpdateAssetStandardMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateAssetStandard<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateAssetStandardMutation,
+    UpdateAssetStandardMutationVariables,
+    UpdateAssetStandardProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateAssetStandardMutation,
+    UpdateAssetStandardMutationVariables,
+    UpdateAssetStandardProps<TChildProps, TDataName>
+  >(UpdateAssetStandardDocument, {
+    alias: 'updateAssetStandard',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateAssetStandardMutation__
+ *
+ * To run a mutation, you first call `useUpdateAssetStandardMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateAssetStandardMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateAssetStandardMutation, { data, loading, error }] = useUpdateAssetStandardMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUpdateAssetStandardMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateAssetStandardMutation,
+    UpdateAssetStandardMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateAssetStandardMutation,
+    UpdateAssetStandardMutationVariables
+  >(UpdateAssetStandardDocument, options);
+}
+export type UpdateAssetStandardMutationHookResult = ReturnType<
+  typeof useUpdateAssetStandardMutation
+>;
+export type UpdateAssetStandardMutationResult =
+  Apollo.MutationResult<UpdateAssetStandardMutation>;
+export type UpdateAssetStandardMutationOptions = Apollo.BaseMutationOptions<
+  UpdateAssetStandardMutation,
+  UpdateAssetStandardMutationVariables
 >;
 export const InsertCategoryDocument = gql`
   mutation insertCategory($object: categories_insert_input!) {
@@ -7475,7 +7609,10 @@ export const UpdateRevenueStandardDocument = gql`
     update_revenues_by_pk(pk_columns: { id: $id }, _set: { default: true }) {
       default
     }
-    update_revenues(_set: { default: false }, where: { id: { _neq: $id } }) {
+    update_revenues(
+      _set: { default: false }
+      where: { id: { _neq: $id }, default: { _eq: true } }
+    ) {
       affected_rows
     }
   }
@@ -7902,6 +8039,7 @@ export const AllAssetsDocument = gql`
       account_no
       created_at
       updated_at
+      default
     }
     assets_aggregate {
       aggregate {
@@ -8008,6 +8146,7 @@ export const ActiveAssetAccountsDocument = gql`
     assets(order_by: { name: asc }, where: { active: { _eq: true } }) {
       id
       name
+      default
     }
   }
 `;
@@ -10474,6 +10613,7 @@ export type AssetsResolvers<
     ContextType
   >;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  default?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
