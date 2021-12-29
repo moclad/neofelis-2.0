@@ -1,13 +1,13 @@
 import { useCallback, useMemo } from 'react';
-
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const useSearchParams = () => {
   const { pathname, search } = useLocation();
-  const history = useHistory();
-  const searchParams = useMemo(() => new URLSearchParams(search || ''), [
-    search,
-  ]);
+  const navigate = useNavigate();
+  const searchParams = useMemo(
+    () => new URLSearchParams(search || ''),
+    [search]
+  );
   const setSearchParam = useCallback(
     (key: string, value: string | number = '', { replace = true } = {}) => {
       if (value || value === 0) {
@@ -15,11 +15,9 @@ export const useSearchParams = () => {
       } else {
         searchParams.delete(key);
       }
-      history[replace ? 'replace' : 'push'](
-        `${pathname}?${searchParams.toString()}`
-      );
+      navigate(`${pathname}?${searchParams.toString()}`, { replace });
     },
-    [history, pathname, searchParams]
+    [navigate, pathname, searchParams]
   );
   return { searchParams, setSearchParam };
 };

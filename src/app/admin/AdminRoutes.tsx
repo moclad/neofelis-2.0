@@ -1,27 +1,44 @@
 import React from 'react';
-import { Redirect, Switch, useRouteMatch } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { PageApiDocumentation } from '@/app/admin/api/PageApiDocumentation';
-import { Route } from '@/app/router';
 import { Error404 } from '@/errors';
+
+import { SecuredPage } from '../router';
 
 const AdminUsersRoutes = React.lazy(
   () => import('@/app/admin/users/AdminUsersRoutes')
 );
 
 const AdminRoutes = () => {
-  const { url } = useRouteMatch();
   return (
-    <Switch>
+    <Routes>
       <Route
-        exact
-        path={`${url}/`}
-        render={() => <Redirect to={`${url}/api`} />}
+        path="/"
+        element={
+          <SecuredPage>
+            <Navigate to="api" replace />
+          </SecuredPage>
+        }
       />
-      <Route path={`${url}/users`} render={() => <AdminUsersRoutes />} />
-      <Route path={`${url}/api`} render={() => <PageApiDocumentation />} />
-      <Route path="*" render={() => <Error404 />} />
-    </Switch>
+      <Route
+        path="users"
+        element={
+          <SecuredPage>
+            <AdminUsersRoutes />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="api"
+        element={
+          <SecuredPage>
+            <PageApiDocumentation />
+          </SecuredPage>
+        }
+      />
+      <Route path="*" element={<Error404 />} />
+    </Routes>
   );
 };
 

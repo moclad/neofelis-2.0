@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { PageAuthError } from '@/app/auth/PageAuthError';
 import { PageLogin } from '@/app/auth/PageLogin';
@@ -8,8 +8,9 @@ import { PageLogout } from '@/app/auth/PageLogout';
 import { PageVerifyRequest } from '@/app/auth/PageVerifyRequest';
 import ClassificationRoutes from '@/app/classification/ClassificationRoutes';
 import { Layout, Loader } from '@/app/layout';
-import { Route as CustomRoute, RouteAdmin, RoutePublicOnly } from '@/app/router';
 import { Error404, ErrorBoundary } from '@/errors';
+
+import { SecuredPage } from './router';
 
 const AdminRoutes = React.lazy(() => import('@/app/admin/AdminRoutes'));
 const AccountRoutes = React.lazy(() => import('@/app/profile/ProfileRoutes'));
@@ -22,28 +23,86 @@ const DashboardRoutes = React.lazy(
 
 const getRoutes = () => {
   return (
-    <Switch>
-      <RoutePublicOnly
-        exact
-        path="/verify-request"
-        render={() => <PageVerifyRequest />}
+    <Routes>
+      <Route path="/verify-request" element={<PageVerifyRequest />} />
+      <Route path="/error" element={<PageAuthError />} />
+      <Route path="/login" element={<PageLogin />} />
+
+      <Route
+        path="/"
+        element={
+          <SecuredPage>
+            <Navigate to="/dashboard" replace />
+          </SecuredPage>
+        }
       />
-      <RoutePublicOnly exact path="/error" render={() => <PageAuthError />} />
-      <RoutePublicOnly exact path="/login" render={() => <PageLogin />} />
+      <Route
+        path="/logout"
+        element={
+          <SecuredPage>
+            <PageLogout />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="/account"
+        element={
+          <SecuredPage>
+            <AccountRoutes />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <SecuredPage>
+            <AccountRoutes />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="/dashboard"
+        element={
+          <SecuredPage>
+            <DashboardRoutes />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="/classification/*"
+        element={
+          <SecuredPage>
+            <ClassificationRoutes />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="/accounts/*"
+        element={
+          <SecuredPage>
+            <AccountsRoutes />
+          </SecuredPage>
+        }
+      />
 
-      <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
-      <Route exact path="/logout" render={() => <PageLogout />} />
-      <Route path="/account" render={() => <AccountRoutes />} />
-      <Route path="/profile" render={() => <AccountRoutes />} />
-      <Route path="/dashboard" render={() => <DashboardRoutes />} />
-      <Route path="/classification" render={() => <ClassificationRoutes />} />
-      <Route path="/accounts" render={() => <AccountsRoutes />} />
-
-      <Route path="*" render={() => <Error404 />} />
-
-      <RouteAdmin path="/admin" render={() => <AdminRoutes />} />
-      <CustomRoute path="/dashboard" render={() => <DashboardRoutes />} />
-    </Switch>
+      <Route
+        path="/admin/*"
+        element={
+          <SecuredPage>
+            <AdminRoutes />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="/dashboard/*"
+        element={
+          <SecuredPage>
+            <DashboardRoutes />
+          </SecuredPage>
+        }
+      />
+      <Route path="*" element={<Error404 />} />
+    </Routes>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Switch, useRouteMatch } from 'react-router-dom';
+import { Navigate, Routes } from 'react-router-dom';
 
 import { PageProfile } from '@/app/profile/PageProfile';
 import { PageSettings } from '@/app/profile/PageSettings';
@@ -7,40 +7,35 @@ import { Route } from '@/app/router';
 import { Error404 } from '@/errors';
 
 const ProfileRoutes = () => {
-  const { url } = useRouteMatch();
   return (
-    <Switch>
-      <Route
-        exact
-        path={`${url}/`}
-        render={() => <Redirect to={`${url}/me`} />}
-      />
+    <Routes>
+      <Route path="/" element={() => <Navigate to="me" replace />} />
 
       {/* <RoutePublicOnly
         exact
         path={`${url}/register`}
-        render={() => <PageRegister />}
+        element={() => <PageRegister />}
       />
       <RoutePublicOnly
         exact
         path={`${url}/activate`}
-        render={() => <PageActivate />}
+        element={() => <PageActivate />}
       />
       <RoutePublicOnly
         exact
         path={`${url}/reset`}
-        render={() => <PageResetPasswordRequest />}
+        element={() => <PageResetPasswordRequest />}
       />
       <RoutePublicOnly
         exact
         path={`${url}/reset/finish`}
-        render={() => <PageResetPasswordConfirm />}
+        element={() => <PageResetPasswordConfirm />}
       /> */}
 
-      <Route exact path={`${url}/me`} render={() => <PageProfile />} />
-      <Route exact path={`${url}/settings`} render={() => <PageSettings />} />
-      <Route path="*" render={() => <Error404 />} />
-    </Switch>
+      <Route path="me" element={() => <PageProfile />} />
+      <Route path="settings" element={() => <PageSettings />} />
+      <Route path="*" element={() => <Error404 />} />
+    </Routes>
   );
 };
 

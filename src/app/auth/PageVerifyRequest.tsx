@@ -1,15 +1,21 @@
+import { useSession } from 'next-auth/react';
 import React from 'react';
-
-import { Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Navigate } from 'react-router-dom';
 
 import { Logo, SlideIn } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 
 export const PageVerifyRequest = () => {
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
+
+  const { data: session } = useSession();
+
+  if (session) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <SlideIn>

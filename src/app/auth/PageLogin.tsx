@@ -1,7 +1,8 @@
+import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from 'react-query';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Navigate } from 'react-router-dom';
 
 import { LoginForm } from '@/app/auth/LoginForm';
 import { useRedirectFromUrl } from '@/app/router';
@@ -10,6 +11,12 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import { Box, Button, Center, Heading } from '@chakra-ui/react';
 
 export const PageLogin = () => {
+  const { data: session } = useSession();
+
+  if (session) {
+    return <Navigate to="/" replace />;
+  }
+
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
   const redirect = useRedirectFromUrl();

@@ -1,34 +1,53 @@
 import React from 'react';
-import { Redirect, Switch, useRouteMatch } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { PageAssets } from '@/app/accounts/PageAssets';
 import { PageExpenses } from '@/app/accounts/PageExpenses';
 import { PageLiabilities } from '@/app/accounts/PageLiabilities';
 import { PageRevenues } from '@/app/accounts/PageRevenues';
-import { Route } from '@/app/router';
+import { SecuredPage } from '@/app/router';
 import { Error404 } from '@/errors';
 
 const AccountsRoutes = () => {
-  const { url } = useRouteMatch();
   return (
-    <Switch>
+    <Routes>
+      <Route path="/" element={<Navigate to="assets" replace />} />
+
       <Route
-        exact
-        path={`${url}/`}
-        render={() => <Redirect to={`${url}/assets`} />}
+        path="assets"
+        element={
+          <SecuredPage>
+            <PageAssets />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="expense"
+        element={
+          <SecuredPage>
+            <PageExpenses />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="revenue"
+        element={
+          <SecuredPage>
+            <PageRevenues />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="liabilities"
+        element={
+          <SecuredPage>
+            <PageLiabilities />
+          </SecuredPage>
+        }
       />
 
-      <Route exact path={`${url}/assets`} render={() => <PageAssets />} />
-      <Route exact path={`${url}/expense`} render={() => <PageExpenses />} />
-      <Route exact path={`${url}/revenue`} render={() => <PageRevenues />} />
-      <Route
-        exact
-        path={`${url}/liabilities`}
-        render={() => <PageLiabilities />}
-      />
-
-      <Route path="*" render={() => <Error404 />} />
-    </Switch>
+      <Route path="*" element={<Error404 />} />
+    </Routes>
   );
 };
 

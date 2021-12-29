@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiCheck, FiCopy, FiLogOut, FiMoon, FiSun, FiUser } from 'react-icons/fi';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import appBuild from '@/../app-build.json';
 import { Icon } from '@/components';
@@ -90,7 +90,7 @@ export const AccountMenu = ({ ...rest }) => {
   const { t } = useTranslation('layout');
   const { colorModeValue } = useDarkMode();
   const { colorMode, toggleColorMode } = useColorMode();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { data: session } = useSession();
 
   const { loading, data } = useFetchUserQuery({
@@ -144,7 +144,7 @@ export const AccountMenu = ({ ...rest }) => {
         <MenuDivider />
         <MenuItem
           icon={<Icon icon={FiLogOut} fontSize="lg" color="gray.400" />}
-          onClick={() => history.push('/logout')}
+          onClick={() => navigate('/logout')}
         >
           {t('layout:accountMenu.logout')}
         </MenuItem>

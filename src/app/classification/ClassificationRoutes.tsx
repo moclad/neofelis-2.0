@@ -1,31 +1,51 @@
 import React from 'react';
-import { Redirect, Switch, useRouteMatch } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { PageCategories } from '@/app/classification/PageCategories';
 import { PageGroups } from '@/app/classification/PageGroups';
 import { PageLabels } from '@/app/classification/PageLabels';
-import { Route } from '@/app/router';
 import { Error404 } from '@/errors';
 
+import { SecuredPage } from '../router';
+
 const ClassificationRoutes = () => {
-  const { url } = useRouteMatch();
   return (
-    <Switch>
+    <Routes>
       <Route
-        exact
-        path={`${url}/`}
-        render={() => <Redirect to={`${url}/labels`} />}
+        path="/"
+        element={
+          <SecuredPage>
+            <Navigate to="labels" />
+          </SecuredPage>
+        }
       />
 
-      <Route exact path={`${url}/labels`} render={() => <PageLabels />} />
       <Route
-        exact
-        path={`${url}/categories`}
-        render={() => <PageCategories />}
+        path="labels"
+        element={
+          <SecuredPage>
+            <PageLabels />
+          </SecuredPage>
+        }
       />
-      <Route exact path={`${url}/groups`} render={() => <PageGroups />} />
-      <Route path="*" render={() => <Error404 />} />
-    </Switch>
+      <Route
+        path="categories"
+        element={
+          <SecuredPage>
+            <PageCategories />
+          </SecuredPage>
+        }
+      />
+      <Route
+        path="groups"
+        element={
+          <SecuredPage>
+            <PageGroups />
+          </SecuredPage>
+        }
+      />
+      <Route path="*" element={<Error404 />} />
+    </Routes>
   );
 };
 

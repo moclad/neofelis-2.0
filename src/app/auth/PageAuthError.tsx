@@ -1,14 +1,20 @@
+import { useSession } from 'next-auth/react';
 import React from 'react';
-
-import { Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Navigate } from 'react-router-dom';
 
 import { useSearchParams } from '@/app/router';
 import { Logo, SlideIn } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 
 export const PageAuthError = () => {
+  const { data: session } = useSession();
+
+  if (session) {
+    return <Navigate to="/" replace />;
+  }
+
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
   const { searchParams } = useSearchParams();
