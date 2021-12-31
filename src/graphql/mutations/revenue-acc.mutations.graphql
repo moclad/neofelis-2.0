@@ -13,8 +13,15 @@ mutation deleteRevenueAcc($id: bigint!) {
   }
 }
 
-mutation updateRevenueAcc($id: bigint!, $changes: revenues_set_input) {
+mutation updateRevenueAcc(
+  $id: bigint!
+  $changes: revenues_set_input
+  $name: String!
+) {
   update_revenues_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+  update_account_info_by_pk(pk_columns: { id: $id }, _set: { name: $name }) {
     id
   }
 }

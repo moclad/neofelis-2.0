@@ -38,6 +38,10 @@ export interface ITransactionInput {
   source_account: number;
   labels: number[];
 }
+export interface ITransactionAccount {
+  amount: number;
+  account_id: number;
+}
 
 export enum TransactionType {
   None,

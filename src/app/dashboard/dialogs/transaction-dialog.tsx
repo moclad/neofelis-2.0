@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
-import { off } from 'process';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { FieldCurrency, FieldDayPicker, FieldInput, FieldSelect, ModalDialog } from '@/components';
@@ -16,7 +15,7 @@ import {
   useInsertRevenueAccMutation,
   useInsertTransactionMutation
 } from '@/generated/graphql';
-import { ITransactionInput, TransactionType } from '@/types/types';
+import { ITransactionAccount, ITransactionInput, TransactionType } from '@/types/types';
 import { Stack } from '@chakra-ui/react';
 import { useForm } from '@formiz/core';
 
@@ -139,11 +138,23 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
   };
 
   const onConfirmCreate = async (values: ITransactionInput) => {
-    const { labels, ...rest } = values;
+    const { amount, labels, source_account, destiny_account, ...rest } = values;
+
+    const source: ITransactionAccount = {
+      account_id: source_account,
+      amount: amount * -1,
+    };
+
+    const target: ITransactionAccount = {
+      account_id: destiny_account,
+      amount: amount,
+    };
 
     const submitData = {
       ...rest,
       transaction_labels: { data: [] },
+      transaction_accounts: { data: [source, target] },
+      amount: amount,
     };
 
     if (labels) {

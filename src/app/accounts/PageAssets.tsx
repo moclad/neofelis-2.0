@@ -64,7 +64,6 @@ export const PageAssets = () => {
   const { dataKey, dataContext, isEditing, onEdit, onFinish } =
     useEditMode<number>();
   const toastSuccess = useToastSuccess();
-  const toastError = useToastError();
   const { colorModeValue } = useDarkMode();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
@@ -88,9 +87,11 @@ export const PageAssets = () => {
   const [updateAssetStandard] = useUpdateAssetStandardMutation(mutationOptions);
 
   const onConfirmCreate = async (values) => {
+    const { name } = values;
     const newData = {
       ...values,
-      account_info: { data: { type: 'A' } },
+      name: name,
+      account_info: { data: { type: 'A', name: name } },
     };
 
     insertAsset({
@@ -129,6 +130,7 @@ export const PageAssets = () => {
       variables: {
         id: dataKey,
         changes: newData,
+        name: newData.name,
       },
       refetchQueries: 'active',
     });

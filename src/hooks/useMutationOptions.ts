@@ -13,8 +13,8 @@ export const useMutationOptions = (props: useMutationOptionProps = {}) => {
   const { t } = useTranslation();
 
   const {
-    successMessage = 'common:feedbacks.createdSuccess.title',
-    errorMessage = 'common:feedbacks.createdError.title',
+    successMessage = 'common:feedbacks.saveSuccess.title',
+    errorMessage = 'common:feedbacks.saveError.title',
   } = props;
 
   const mutationOptions = {

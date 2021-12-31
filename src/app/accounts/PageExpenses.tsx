@@ -22,7 +22,6 @@ import {
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
   PaginationInfo,
-  useToastError,
   useToastSuccess
 } from '@/components';
 import {
@@ -32,7 +31,6 @@ import {
   useUpdateExpenseAccMutation,
   useUpdateExpenseStateMutation
 } from '@/generated/graphql';
-import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
 import {
   Avatar,
@@ -52,13 +50,15 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 
+import { useMutationOptions } from '../../hooks/useMutationOptions';
+
 export const PageExpenses = () => {
   const { t } = useTranslation();
+  const { mutationOptions } = useMutationOptions();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } =
     useEditMode<number>();
   const toastSuccess = useToastSuccess();
-  const toastError = useToastError();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
@@ -73,54 +73,20 @@ export const PageExpenses = () => {
     useDeleteExpenseAccMutation();
 
   const [updateExpense, { loading: updateLoading }] =
-    useUpdateExpenseAccMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
+    useUpdateExpenseAccMutation(mutationOptions);
 
   const [updateExpenseState, { loading: updateStateLoading }] =
-    useUpdateExpenseStateMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
+    useUpdateExpenseStateMutation(mutationOptions);
 
   const [insertExpense, { loading: insertLoading }] =
-    useInsertExpenseAccMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.createdError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.createdSuccess.title'),
-        });
-      },
-    });
+    useInsertExpenseAccMutation(mutationOptions);
 
   const onConfirmCreate = async (values) => {
+    const { name } = values;
     const newData = {
       ...values,
-      account_info: { data: { type: 'E' } },
+      name: name,
+      account_info: { data: { type: 'E', name: name } },
     };
 
     insertExpense({
@@ -150,6 +116,7 @@ export const PageExpenses = () => {
       variables: {
         id: dataKey,
         changes: newData,
+        name: newData.name,
       },
       refetchQueries: 'active',
     });

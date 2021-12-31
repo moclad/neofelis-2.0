@@ -22,11 +22,11 @@
     "updateError": {
       "title": "Update failed."
     },
-    "createdSuccess": {
-      "title": "Data created with success."
+    "saveSuccess": {
+      "title": "Changes saved successfully."
     },
-    "createdError": {
-      "title": "Data creation failed."
+    "saveError": {
+      "title": "An error occurred and changes could not be saved."
     },
     "deletedSuccess": {
       "title": "Data deleted with success."

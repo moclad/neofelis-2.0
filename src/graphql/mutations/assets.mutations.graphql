@@ -13,8 +13,11 @@ mutation deleteAsset($id: bigint!) {
   }
 }
 
-mutation updateAsset($id: bigint!, $changes: assets_set_input) {
+mutation updateAsset($id: bigint!, $changes: assets_set_input, $name: String!) {
   update_assets_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+  update_account_info_by_pk(pk_columns: { id: $id }, _set: { name: $name }) {
     id
   }
 }

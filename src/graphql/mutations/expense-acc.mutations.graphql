@@ -13,8 +13,15 @@ mutation deleteExpenseAcc($id: bigint!) {
   }
 }
 
-mutation updateExpenseAcc($id: bigint!, $changes: expenses_set_input) {
+mutation updateExpenseAcc(
+  $id: bigint!
+  $changes: expenses_set_input
+  $name: String!
+) {
   update_expenses_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+  update_account_info_by_pk(pk_columns: { id: $id }, _set: { name: $name }) {
     id
   }
 }

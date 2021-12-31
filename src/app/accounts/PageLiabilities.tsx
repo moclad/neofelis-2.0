@@ -51,15 +51,18 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 
+import { useMutationOptions } from '../../hooks/useMutationOptions';
+
 export const PageLiabilities = () => {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } =
     useEditMode<number>();
   const toastSuccess = useToastSuccess();
-  const toastError = useToastError();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
+
+  const { mutationOptions } = useMutationOptions();
 
   const { loading, data } = useAllLiabilityAccountsQuery({
     variables: {
@@ -72,54 +75,20 @@ export const PageLiabilities = () => {
     useDeleteLiabilityAccMutation();
 
   const [updateLiability, { loading: updateLoading }] =
-    useUpdateLiabilityAccMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
+    useUpdateLiabilityAccMutation(mutationOptions);
 
   const [updateLiabilityState, { loading: updateStateLoading }] =
-    useUpdateLiabilityStateMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
+    useUpdateLiabilityStateMutation(mutationOptions);
 
   const [insertLiability, { loading: insertLoading }] =
-    useInsertLiabilityAccMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.createdError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.createdSuccess.title'),
-        });
-      },
-    });
+    useInsertLiabilityAccMutation(mutationOptions);
 
   const onConfirmCreate = async (values) => {
+    const { name } = values;
     const newData = {
       ...values,
-      account_info: { data: { type: 'L' } },
+      name: name,
+      account_info: { data: { type: 'L', name: name } },
     };
 
     insertLiability({
@@ -149,6 +118,7 @@ export const PageLiabilities = () => {
       variables: {
         id: dataKey,
         changes: newData,
+        name: newData.name,
       },
       refetchQueries: 'active',
     });

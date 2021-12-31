@@ -19,11 +19,13 @@ export const reactDayPicker = (props) => ({
     right: { base: 0, sm: 'auto' },
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginTop: '5px',
     width: '100%',
     maxWidth: '90vw',
   },
 
   '.DayPickerInput-Overlay': {
+    marginTop: '5px',
     position: 'absolute',
     left: '0',
     top: '-1em',

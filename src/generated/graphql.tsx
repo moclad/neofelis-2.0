@@ -109,54 +109,33 @@ export type Account_Info = {
   id: Scalars['bigint'];
   /** An object relationship */
   liability: Liabilities;
+  name?: Maybe<Scalars['String']>;
   /** An object relationship */
   revenue: Revenues;
   /** An array relationship */
-  transactions: Array<Transactions>;
-  /** An array relationship */
-  transactionsBySourceAccount: Array<Transactions>;
+  transcation_accounts: Array<Transaction_Accounts>;
   /** An aggregate relationship */
-  transactionsBySourceAccount_aggregate: Transactions_Aggregate;
-  /** An aggregate relationship */
-  transactions_aggregate: Transactions_Aggregate;
+  transcation_accounts_aggregate: Transaction_Accounts_Aggregate;
   type: Scalars['bpchar'];
   updated_at: Scalars['timestamptz'];
 };
 
 /** columns and relationships of "account_info" */
-export type Account_InfoTransactionsArgs = {
-  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+export type Account_InfoTranscation_AccountsArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Transactions_Order_By>>;
-  where?: InputMaybe<Transactions_Bool_Exp>;
+  order_by?: InputMaybe<Array<Transaction_Accounts_Order_By>>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
 };
 
 /** columns and relationships of "account_info" */
-export type Account_InfoTransactionsBySourceAccountArgs = {
-  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+export type Account_InfoTranscation_Accounts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Transactions_Order_By>>;
-  where?: InputMaybe<Transactions_Bool_Exp>;
-};
-
-/** columns and relationships of "account_info" */
-export type Account_InfoTransactionsBySourceAccount_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Transactions_Order_By>>;
-  where?: InputMaybe<Transactions_Bool_Exp>;
-};
-
-/** columns and relationships of "account_info" */
-export type Account_InfoTransactions_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Transactions_Order_By>>;
-  where?: InputMaybe<Transactions_Bool_Exp>;
+  order_by?: InputMaybe<Array<Transaction_Accounts_Order_By>>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
 };
 
 /** aggregated selection of "account_info" */
@@ -204,9 +183,9 @@ export type Account_Info_Bool_Exp = {
   expense?: InputMaybe<Expenses_Bool_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
   liability?: InputMaybe<Liabilities_Bool_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
   revenue?: InputMaybe<Revenues_Bool_Exp>;
-  transactions?: InputMaybe<Transactions_Bool_Exp>;
-  transactionsBySourceAccount?: InputMaybe<Transactions_Bool_Exp>;
+  transcation_accounts?: InputMaybe<Transaction_Accounts_Bool_Exp>;
   type?: InputMaybe<Bpchar_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
@@ -229,9 +208,9 @@ export type Account_Info_Insert_Input = {
   expense?: InputMaybe<Expenses_Obj_Rel_Insert_Input>;
   id?: InputMaybe<Scalars['bigint']>;
   liability?: InputMaybe<Liabilities_Obj_Rel_Insert_Input>;
+  name?: InputMaybe<Scalars['String']>;
   revenue?: InputMaybe<Revenues_Obj_Rel_Insert_Input>;
-  transactions?: InputMaybe<Transactions_Arr_Rel_Insert_Input>;
-  transactionsBySourceAccount?: InputMaybe<Transactions_Arr_Rel_Insert_Input>;
+  transcation_accounts?: InputMaybe<Transaction_Accounts_Arr_Rel_Insert_Input>;
   type?: InputMaybe<Scalars['bpchar']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
@@ -241,6 +220,7 @@ export type Account_Info_Max_Fields = {
   __typename?: 'account_info_max_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
+  name?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['bpchar']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -250,6 +230,7 @@ export type Account_Info_Min_Fields = {
   __typename?: 'account_info_min_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
+  name?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['bpchar']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -284,9 +265,9 @@ export type Account_Info_Order_By = {
   expense?: InputMaybe<Expenses_Order_By>;
   id?: InputMaybe<Order_By>;
   liability?: InputMaybe<Liabilities_Order_By>;
+  name?: InputMaybe<Order_By>;
   revenue?: InputMaybe<Revenues_Order_By>;
-  transactionsBySourceAccount_aggregate?: InputMaybe<Transactions_Aggregate_Order_By>;
-  transactions_aggregate?: InputMaybe<Transactions_Aggregate_Order_By>;
+  transcation_accounts_aggregate?: InputMaybe<Transaction_Accounts_Aggregate_Order_By>;
   type?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -303,6 +284,8 @@ export enum Account_Info_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  Name = 'name',
+  /** column name */
   Type = 'type',
   /** column name */
   UpdatedAt = 'updated_at',
@@ -312,6 +295,7 @@ export enum Account_Info_Select_Column {
 export type Account_Info_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
   type?: InputMaybe<Scalars['bpchar']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
@@ -346,6 +330,8 @@ export enum Account_Info_Update_Column {
   CreatedAt = 'created_at',
   /** column name */
   Id = 'id',
+  /** column name */
+  Name = 'name',
   /** column name */
   Type = 'type',
   /** column name */
@@ -1639,6 +1625,10 @@ export type Mutation_Root = {
   delete_revenues?: Maybe<Revenues_Mutation_Response>;
   /** delete single row from the table: "revenues" */
   delete_revenues_by_pk?: Maybe<Revenues>;
+  /** delete data from the table: "transaction_accounts" */
+  delete_transaction_accounts?: Maybe<Transaction_Accounts_Mutation_Response>;
+  /** delete single row from the table: "transaction_accounts" */
+  delete_transaction_accounts_by_pk?: Maybe<Transaction_Accounts>;
   /** delete data from the table: "transaction_attachments" */
   delete_transaction_attachments?: Maybe<Transaction_Attachments_Mutation_Response>;
   /** delete single row from the table: "transaction_attachments" */
@@ -1691,6 +1681,10 @@ export type Mutation_Root = {
   insert_revenues?: Maybe<Revenues_Mutation_Response>;
   /** insert a single row into the table: "revenues" */
   insert_revenues_one?: Maybe<Revenues>;
+  /** insert data into the table: "transaction_accounts" */
+  insert_transaction_accounts?: Maybe<Transaction_Accounts_Mutation_Response>;
+  /** insert a single row into the table: "transaction_accounts" */
+  insert_transaction_accounts_one?: Maybe<Transaction_Accounts>;
   /** insert data into the table: "transaction_attachments" */
   insert_transaction_attachments?: Maybe<Transaction_Attachments_Mutation_Response>;
   /** insert a single row into the table: "transaction_attachments" */
@@ -1743,6 +1737,10 @@ export type Mutation_Root = {
   update_revenues?: Maybe<Revenues_Mutation_Response>;
   /** update single row of the table: "revenues" */
   update_revenues_by_pk?: Maybe<Revenues>;
+  /** update data of the table: "transaction_accounts" */
+  update_transaction_accounts?: Maybe<Transaction_Accounts_Mutation_Response>;
+  /** update single row of the table: "transaction_accounts" */
+  update_transaction_accounts_by_pk?: Maybe<Transaction_Accounts>;
   /** update data of the table: "transaction_attachments" */
   update_transaction_attachments?: Maybe<Transaction_Attachments_Mutation_Response>;
   /** update single row of the table: "transaction_attachments" */
@@ -1842,6 +1840,16 @@ export type Mutation_RootDelete_RevenuesArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Revenues_By_PkArgs = {
+  id: Scalars['bigint'];
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Transaction_AccountsArgs = {
+  where: Transaction_Accounts_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Transaction_Accounts_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
@@ -1991,6 +1999,18 @@ export type Mutation_RootInsert_RevenuesArgs = {
 export type Mutation_RootInsert_Revenues_OneArgs = {
   object: Revenues_Insert_Input;
   on_conflict?: InputMaybe<Revenues_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Transaction_AccountsArgs = {
+  objects: Array<Transaction_Accounts_Insert_Input>;
+  on_conflict?: InputMaybe<Transaction_Accounts_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Transaction_Accounts_OneArgs = {
+  object: Transaction_Accounts_Insert_Input;
+  on_conflict?: InputMaybe<Transaction_Accounts_On_Conflict>;
 };
 
 /** mutation root */
@@ -2163,6 +2183,20 @@ export type Mutation_RootUpdate_Revenues_By_PkArgs = {
   _inc?: InputMaybe<Revenues_Inc_Input>;
   _set?: InputMaybe<Revenues_Set_Input>;
   pk_columns: Revenues_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Transaction_AccountsArgs = {
+  _inc?: InputMaybe<Transaction_Accounts_Inc_Input>;
+  _set?: InputMaybe<Transaction_Accounts_Set_Input>;
+  where: Transaction_Accounts_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Transaction_Accounts_By_PkArgs = {
+  _inc?: InputMaybe<Transaction_Accounts_Inc_Input>;
+  _set?: InputMaybe<Transaction_Accounts_Set_Input>;
+  pk_columns: Transaction_Accounts_Pk_Columns_Input;
 };
 
 /** mutation root */
@@ -2523,6 +2557,12 @@ export type Query_Root = {
   revenues_aggregate: Revenues_Aggregate;
   /** fetch data from the table: "revenues" using primary key columns */
   revenues_by_pk?: Maybe<Revenues>;
+  /** An array relationship */
+  transaction_accounts: Array<Transaction_Accounts>;
+  /** An aggregate relationship */
+  transaction_accounts_aggregate: Transaction_Accounts_Aggregate;
+  /** fetch data from the table: "transaction_accounts" using primary key columns */
+  transaction_accounts_by_pk?: Maybe<Transaction_Accounts>;
   /** fetch data from the table: "transaction_attachments" */
   transaction_attachments: Array<Transaction_Attachments>;
   /** fetch aggregated fields from the table: "transaction_attachments" */
@@ -2712,6 +2752,26 @@ export type Query_RootRevenues_AggregateArgs = {
 };
 
 export type Query_RootRevenues_By_PkArgs = {
+  id: Scalars['bigint'];
+};
+
+export type Query_RootTransaction_AccountsArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Accounts_Order_By>>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
+};
+
+export type Query_RootTransaction_Accounts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Accounts_Order_By>>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
+};
+
+export type Query_RootTransaction_Accounts_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
@@ -3092,6 +3152,12 @@ export type Subscription_Root = {
   revenues_aggregate: Revenues_Aggregate;
   /** fetch data from the table: "revenues" using primary key columns */
   revenues_by_pk?: Maybe<Revenues>;
+  /** An array relationship */
+  transaction_accounts: Array<Transaction_Accounts>;
+  /** An aggregate relationship */
+  transaction_accounts_aggregate: Transaction_Accounts_Aggregate;
+  /** fetch data from the table: "transaction_accounts" using primary key columns */
+  transaction_accounts_by_pk?: Maybe<Transaction_Accounts>;
   /** fetch data from the table: "transaction_attachments" */
   transaction_attachments: Array<Transaction_Attachments>;
   /** fetch aggregated fields from the table: "transaction_attachments" */
@@ -3284,6 +3350,26 @@ export type Subscription_RootRevenues_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
+export type Subscription_RootTransaction_AccountsArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Accounts_Order_By>>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
+};
+
+export type Subscription_RootTransaction_Accounts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Accounts_Order_By>>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
+};
+
+export type Subscription_RootTransaction_Accounts_By_PkArgs = {
+  id: Scalars['bigint'];
+};
+
 export type Subscription_RootTransaction_AttachmentsArgs = {
   distinct_on?: InputMaybe<Array<Transaction_Attachments_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3397,6 +3483,366 @@ export type Timestamptz_Comparison_Exp = {
   _lte?: InputMaybe<Scalars['timestamptz']>;
   _neq?: InputMaybe<Scalars['timestamptz']>;
   _nin?: InputMaybe<Array<Scalars['timestamptz']>>;
+};
+
+/** columns and relationships of "transaction_accounts" */
+export type Transaction_Accounts = {
+  __typename?: 'transaction_accounts';
+  account_id: Scalars['Int'];
+  /** An object relationship */
+  account_info: Account_Info;
+  amount: Scalars['float8'];
+  created_at: Scalars['timestamptz'];
+  id: Scalars['bigint'];
+  /** An object relationship */
+  transaction: Transactions;
+  transaction_id: Scalars['bigint'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "transaction_accounts" */
+export type Transaction_Accounts_Aggregate = {
+  __typename?: 'transaction_accounts_aggregate';
+  aggregate?: Maybe<Transaction_Accounts_Aggregate_Fields>;
+  nodes: Array<Transaction_Accounts>;
+};
+
+/** aggregate fields of "transaction_accounts" */
+export type Transaction_Accounts_Aggregate_Fields = {
+  __typename?: 'transaction_accounts_aggregate_fields';
+  avg?: Maybe<Transaction_Accounts_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Transaction_Accounts_Max_Fields>;
+  min?: Maybe<Transaction_Accounts_Min_Fields>;
+  stddev?: Maybe<Transaction_Accounts_Stddev_Fields>;
+  stddev_pop?: Maybe<Transaction_Accounts_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Transaction_Accounts_Stddev_Samp_Fields>;
+  sum?: Maybe<Transaction_Accounts_Sum_Fields>;
+  var_pop?: Maybe<Transaction_Accounts_Var_Pop_Fields>;
+  var_samp?: Maybe<Transaction_Accounts_Var_Samp_Fields>;
+  variance?: Maybe<Transaction_Accounts_Variance_Fields>;
+};
+
+/** aggregate fields of "transaction_accounts" */
+export type Transaction_Accounts_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "transaction_accounts" */
+export type Transaction_Accounts_Aggregate_Order_By = {
+  avg?: InputMaybe<Transaction_Accounts_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Transaction_Accounts_Max_Order_By>;
+  min?: InputMaybe<Transaction_Accounts_Min_Order_By>;
+  stddev?: InputMaybe<Transaction_Accounts_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Transaction_Accounts_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Transaction_Accounts_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Transaction_Accounts_Sum_Order_By>;
+  var_pop?: InputMaybe<Transaction_Accounts_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Transaction_Accounts_Var_Samp_Order_By>;
+  variance?: InputMaybe<Transaction_Accounts_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "transaction_accounts" */
+export type Transaction_Accounts_Arr_Rel_Insert_Input = {
+  data: Array<Transaction_Accounts_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Transaction_Accounts_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Transaction_Accounts_Avg_Fields = {
+  __typename?: 'transaction_accounts_avg_fields';
+  account_id?: Maybe<Scalars['Float']>;
+  amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  transaction_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Avg_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "transaction_accounts". All fields are combined with a logical 'AND'. */
+export type Transaction_Accounts_Bool_Exp = {
+  _and?: InputMaybe<Array<Transaction_Accounts_Bool_Exp>>;
+  _not?: InputMaybe<Transaction_Accounts_Bool_Exp>;
+  _or?: InputMaybe<Array<Transaction_Accounts_Bool_Exp>>;
+  account_id?: InputMaybe<Int_Comparison_Exp>;
+  account_info?: InputMaybe<Account_Info_Bool_Exp>;
+  amount?: InputMaybe<Float8_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Bigint_Comparison_Exp>;
+  transaction?: InputMaybe<Transactions_Bool_Exp>;
+  transaction_id?: InputMaybe<Bigint_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "transaction_accounts" */
+export enum Transaction_Accounts_Constraint {
+  /** unique or primary key constraint */
+  TranscationAccountPkey = 'transcation_account_pkey',
+}
+
+/** input type for incrementing numeric columns in table "transaction_accounts" */
+export type Transaction_Accounts_Inc_Input = {
+  account_id?: InputMaybe<Scalars['Int']>;
+  amount?: InputMaybe<Scalars['float8']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
+};
+
+/** input type for inserting data into table "transaction_accounts" */
+export type Transaction_Accounts_Insert_Input = {
+  account_id?: InputMaybe<Scalars['Int']>;
+  account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  amount?: InputMaybe<Scalars['float8']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  transaction?: InputMaybe<Transactions_Obj_Rel_Insert_Input>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Transaction_Accounts_Max_Fields = {
+  __typename?: 'transaction_accounts_max_fields';
+  account_id?: Maybe<Scalars['Int']>;
+  amount?: Maybe<Scalars['float8']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['bigint']>;
+  transaction_id?: Maybe<Scalars['bigint']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Max_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Transaction_Accounts_Min_Fields = {
+  __typename?: 'transaction_accounts_min_fields';
+  account_id?: Maybe<Scalars['Int']>;
+  amount?: Maybe<Scalars['float8']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['bigint']>;
+  transaction_id?: Maybe<Scalars['bigint']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Min_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "transaction_accounts" */
+export type Transaction_Accounts_Mutation_Response = {
+  __typename?: 'transaction_accounts_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Transaction_Accounts>;
+};
+
+/** on conflict condition type for table "transaction_accounts" */
+export type Transaction_Accounts_On_Conflict = {
+  constraint: Transaction_Accounts_Constraint;
+  update_columns?: Array<Transaction_Accounts_Update_Column>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "transaction_accounts". */
+export type Transaction_Accounts_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  account_info?: InputMaybe<Account_Info_Order_By>;
+  amount?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction?: InputMaybe<Transactions_Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: transaction_accounts */
+export type Transaction_Accounts_Pk_Columns_Input = {
+  id: Scalars['bigint'];
+};
+
+/** select columns of table "transaction_accounts" */
+export enum Transaction_Accounts_Select_Column {
+  /** column name */
+  AccountId = 'account_id',
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  TransactionId = 'transaction_id',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+/** input type for updating data in table "transaction_accounts" */
+export type Transaction_Accounts_Set_Input = {
+  account_id?: InputMaybe<Scalars['Int']>;
+  amount?: InputMaybe<Scalars['float8']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Transaction_Accounts_Stddev_Fields = {
+  __typename?: 'transaction_accounts_stddev_fields';
+  account_id?: Maybe<Scalars['Float']>;
+  amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  transaction_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Stddev_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Transaction_Accounts_Stddev_Pop_Fields = {
+  __typename?: 'transaction_accounts_stddev_pop_fields';
+  account_id?: Maybe<Scalars['Float']>;
+  amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  transaction_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Stddev_Pop_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Transaction_Accounts_Stddev_Samp_Fields = {
+  __typename?: 'transaction_accounts_stddev_samp_fields';
+  account_id?: Maybe<Scalars['Float']>;
+  amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  transaction_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Stddev_Samp_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Transaction_Accounts_Sum_Fields = {
+  __typename?: 'transaction_accounts_sum_fields';
+  account_id?: Maybe<Scalars['Int']>;
+  amount?: Maybe<Scalars['float8']>;
+  id?: Maybe<Scalars['bigint']>;
+  transaction_id?: Maybe<Scalars['bigint']>;
+};
+
+/** order by sum() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Sum_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "transaction_accounts" */
+export enum Transaction_Accounts_Update_Column {
+  /** column name */
+  AccountId = 'account_id',
+  /** column name */
+  Amount = 'amount',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  TransactionId = 'transaction_id',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+/** aggregate var_pop on columns */
+export type Transaction_Accounts_Var_Pop_Fields = {
+  __typename?: 'transaction_accounts_var_pop_fields';
+  account_id?: Maybe<Scalars['Float']>;
+  amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  transaction_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Var_Pop_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Transaction_Accounts_Var_Samp_Fields = {
+  __typename?: 'transaction_accounts_var_samp_fields';
+  account_id?: Maybe<Scalars['Float']>;
+  amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  transaction_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Var_Samp_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Transaction_Accounts_Variance_Fields = {
+  __typename?: 'transaction_accounts_variance_fields';
+  account_id?: Maybe<Scalars['Float']>;
+  amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  transaction_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "transaction_accounts" */
+export type Transaction_Accounts_Variance_Order_By = {
+  account_id?: InputMaybe<Order_By>;
+  amount?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  transaction_id?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "transaction_attachments" */
@@ -3909,19 +4355,17 @@ export type Transaction_Labels_Variance_Order_By = {
 /** columns and relationships of "transactions" */
 export type Transactions = {
   __typename?: 'transactions';
-  /** An object relationship */
-  accountInfoBySourceAccount: Account_Info;
-  /** An object relationship */
-  account_info: Account_Info;
   amount: Scalars['float8'];
   /** An object relationship */
   category?: Maybe<Categories>;
   category_id?: Maybe<Scalars['bigint']>;
   created_at: Scalars['timestamptz'];
   description?: Maybe<Scalars['String']>;
-  destiny_account: Scalars['bigint'];
   id: Scalars['bigint'];
-  source_account: Scalars['bigint'];
+  /** An array relationship */
+  transaction_accounts: Array<Transaction_Accounts>;
+  /** An aggregate relationship */
+  transaction_accounts_aggregate: Transaction_Accounts_Aggregate;
   /** An object relationship */
   transaction_attachment: Transaction_Attachments;
   transaction_date: Scalars['date'];
@@ -3930,6 +4374,24 @@ export type Transactions = {
   /** An aggregate relationship */
   transaction_labels_aggregate: Transaction_Labels_Aggregate;
   updated_at: Scalars['timestamptz'];
+};
+
+/** columns and relationships of "transactions" */
+export type TransactionsTransaction_AccountsArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Accounts_Order_By>>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
+};
+
+/** columns and relationships of "transactions" */
+export type TransactionsTransaction_Accounts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Accounts_Order_By>>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
 };
 
 /** columns and relationships of "transactions" */
@@ -4006,18 +4468,14 @@ export type Transactions_Avg_Fields = {
   __typename?: 'transactions_avg_fields';
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
-  destiny_account?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
-  source_account?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "transactions" */
 export type Transactions_Avg_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "transactions". All fields are combined with a logical 'AND'. */
@@ -4025,16 +4483,13 @@ export type Transactions_Bool_Exp = {
   _and?: InputMaybe<Array<Transactions_Bool_Exp>>;
   _not?: InputMaybe<Transactions_Bool_Exp>;
   _or?: InputMaybe<Array<Transactions_Bool_Exp>>;
-  accountInfoBySourceAccount?: InputMaybe<Account_Info_Bool_Exp>;
-  account_info?: InputMaybe<Account_Info_Bool_Exp>;
   amount?: InputMaybe<Float8_Comparison_Exp>;
   category?: InputMaybe<Categories_Bool_Exp>;
   category_id?: InputMaybe<Bigint_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
-  destiny_account?: InputMaybe<Bigint_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
-  source_account?: InputMaybe<Bigint_Comparison_Exp>;
+  transaction_accounts?: InputMaybe<Transaction_Accounts_Bool_Exp>;
   transaction_attachment?: InputMaybe<Transaction_Attachments_Bool_Exp>;
   transaction_date?: InputMaybe<Date_Comparison_Exp>;
   transaction_labels?: InputMaybe<Transaction_Labels_Bool_Exp>;
@@ -4051,23 +4506,18 @@ export enum Transactions_Constraint {
 export type Transactions_Inc_Input = {
   amount?: InputMaybe<Scalars['float8']>;
   category_id?: InputMaybe<Scalars['bigint']>;
-  destiny_account?: InputMaybe<Scalars['bigint']>;
   id?: InputMaybe<Scalars['bigint']>;
-  source_account?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "transactions" */
 export type Transactions_Insert_Input = {
-  accountInfoBySourceAccount?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
-  account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
   amount?: InputMaybe<Scalars['float8']>;
   category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
   category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
-  destiny_account?: InputMaybe<Scalars['bigint']>;
   id?: InputMaybe<Scalars['bigint']>;
-  source_account?: InputMaybe<Scalars['bigint']>;
+  transaction_accounts?: InputMaybe<Transaction_Accounts_Arr_Rel_Insert_Input>;
   transaction_attachment?: InputMaybe<Transaction_Attachments_Obj_Rel_Insert_Input>;
   transaction_date?: InputMaybe<Scalars['date']>;
   transaction_labels?: InputMaybe<Transaction_Labels_Arr_Rel_Insert_Input>;
@@ -4081,9 +4531,7 @@ export type Transactions_Max_Fields = {
   category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
-  destiny_account?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
-  source_account?: Maybe<Scalars['bigint']>;
   transaction_date?: Maybe<Scalars['date']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -4094,9 +4542,7 @@ export type Transactions_Max_Order_By = {
   category_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
   transaction_date?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -4108,9 +4554,7 @@ export type Transactions_Min_Fields = {
   category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
-  destiny_account?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
-  source_account?: Maybe<Scalars['bigint']>;
   transaction_date?: Maybe<Scalars['date']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -4121,9 +4565,7 @@ export type Transactions_Min_Order_By = {
   category_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
   transaction_date?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -4153,16 +4595,13 @@ export type Transactions_On_Conflict = {
 
 /** Ordering options when selecting data from "transactions". */
 export type Transactions_Order_By = {
-  accountInfoBySourceAccount?: InputMaybe<Account_Info_Order_By>;
-  account_info?: InputMaybe<Account_Info_Order_By>;
   amount?: InputMaybe<Order_By>;
   category?: InputMaybe<Categories_Order_By>;
   category_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
+  transaction_accounts_aggregate?: InputMaybe<Transaction_Accounts_Aggregate_Order_By>;
   transaction_attachment?: InputMaybe<Transaction_Attachments_Order_By>;
   transaction_date?: InputMaybe<Order_By>;
   transaction_labels_aggregate?: InputMaybe<Transaction_Labels_Aggregate_Order_By>;
@@ -4185,11 +4624,7 @@ export enum Transactions_Select_Column {
   /** column name */
   Description = 'description',
   /** column name */
-  DestinyAccount = 'destiny_account',
-  /** column name */
   Id = 'id',
-  /** column name */
-  SourceAccount = 'source_account',
   /** column name */
   TransactionDate = 'transaction_date',
   /** column name */
@@ -4202,9 +4637,7 @@ export type Transactions_Set_Input = {
   category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
-  destiny_account?: InputMaybe<Scalars['bigint']>;
   id?: InputMaybe<Scalars['bigint']>;
-  source_account?: InputMaybe<Scalars['bigint']>;
   transaction_date?: InputMaybe<Scalars['date']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
@@ -4214,18 +4647,14 @@ export type Transactions_Stddev_Fields = {
   __typename?: 'transactions_stddev_fields';
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
-  destiny_account?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
-  source_account?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "transactions" */
 export type Transactions_Stddev_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -4233,18 +4662,14 @@ export type Transactions_Stddev_Pop_Fields = {
   __typename?: 'transactions_stddev_pop_fields';
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
-  destiny_account?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
-  source_account?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "transactions" */
 export type Transactions_Stddev_Pop_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -4252,18 +4677,14 @@ export type Transactions_Stddev_Samp_Fields = {
   __typename?: 'transactions_stddev_samp_fields';
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
-  destiny_account?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
-  source_account?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "transactions" */
 export type Transactions_Stddev_Samp_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -4271,18 +4692,14 @@ export type Transactions_Sum_Fields = {
   __typename?: 'transactions_sum_fields';
   amount?: Maybe<Scalars['float8']>;
   category_id?: Maybe<Scalars['bigint']>;
-  destiny_account?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
-  source_account?: Maybe<Scalars['bigint']>;
 };
 
 /** order by sum() on columns of table "transactions" */
 export type Transactions_Sum_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "transactions" */
@@ -4296,11 +4713,7 @@ export enum Transactions_Update_Column {
   /** column name */
   Description = 'description',
   /** column name */
-  DestinyAccount = 'destiny_account',
-  /** column name */
   Id = 'id',
-  /** column name */
-  SourceAccount = 'source_account',
   /** column name */
   TransactionDate = 'transaction_date',
   /** column name */
@@ -4312,18 +4725,14 @@ export type Transactions_Var_Pop_Fields = {
   __typename?: 'transactions_var_pop_fields';
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
-  destiny_account?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
-  source_account?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "transactions" */
 export type Transactions_Var_Pop_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -4331,18 +4740,14 @@ export type Transactions_Var_Samp_Fields = {
   __typename?: 'transactions_var_samp_fields';
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
-  destiny_account?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
-  source_account?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "transactions" */
 export type Transactions_Var_Samp_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -4350,18 +4755,14 @@ export type Transactions_Variance_Fields = {
   __typename?: 'transactions_variance_fields';
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
-  destiny_account?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
-  source_account?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "transactions" */
 export type Transactions_Variance_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
-  destiny_account?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  source_account?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "user_settings" */
@@ -4700,11 +5101,15 @@ export type DeleteAssetMutation = {
 export type UpdateAssetMutationVariables = Exact<{
   id: Scalars['bigint'];
   changes?: InputMaybe<Assets_Set_Input>;
+  name: Scalars['String'];
 }>;
 
 export type UpdateAssetMutation = {
   __typename?: 'mutation_root';
   update_assets_by_pk?: { __typename?: 'assets'; id: any } | undefined;
+  update_account_info_by_pk?:
+    | { __typename?: 'account_info'; id: any }
+    | undefined;
 };
 
 export type UpdateAssetStateMutationVariables = Exact<{
@@ -4799,11 +5204,15 @@ export type DeleteExpenseAccMutation = {
 export type UpdateExpenseAccMutationVariables = Exact<{
   id: Scalars['bigint'];
   changes?: InputMaybe<Expenses_Set_Input>;
+  name: Scalars['String'];
 }>;
 
 export type UpdateExpenseAccMutation = {
   __typename?: 'mutation_root';
   update_expenses_by_pk?: { __typename?: 'expenses'; id: any } | undefined;
+  update_account_info_by_pk?:
+    | { __typename?: 'account_info'; id: any }
+    | undefined;
 };
 
 export type UpdateExpenseStateMutationVariables = Exact<{
@@ -4887,12 +5296,16 @@ export type DeleteLiabilityAccMutation = {
 export type UpdateLiabilityAccMutationVariables = Exact<{
   id: Scalars['bigint'];
   changes?: InputMaybe<Liabilities_Set_Input>;
+  name: Scalars['String'];
 }>;
 
 export type UpdateLiabilityAccMutation = {
   __typename?: 'mutation_root';
   update_liabilities_by_pk?:
     | { __typename?: 'liabilities'; id: any }
+    | undefined;
+  update_account_info_by_pk?:
+    | { __typename?: 'account_info'; id: any }
     | undefined;
 };
 
@@ -4939,11 +5352,15 @@ export type DeleteRevenueAccMutation = {
 export type UpdateRevenueAccMutationVariables = Exact<{
   id: Scalars['bigint'];
   changes?: InputMaybe<Revenues_Set_Input>;
+  name: Scalars['String'];
 }>;
 
 export type UpdateRevenueAccMutation = {
   __typename?: 'mutation_root';
   update_revenues_by_pk?: { __typename?: 'revenues'; id: any } | undefined;
+  update_account_info_by_pk?:
+    | { __typename?: 'account_info'; id: any }
+    | undefined;
 };
 
 export type UpdateRevenueStateMutationVariables = Exact<{
@@ -4979,14 +5396,7 @@ export type InsertTransactionMutationVariables = Exact<{
 export type InsertTransactionMutation = {
   __typename?: 'mutation_root';
   insert_transactions_one?:
-    | {
-        __typename?: 'transactions';
-        id: any;
-        description?: string | undefined;
-        transaction_date: any;
-        created_at: string;
-        updated_at: string;
-      }
+    | { __typename?: 'transactions'; id: any; amount: any }
     | undefined;
 };
 
@@ -5455,8 +5865,15 @@ export type DeleteAssetMutationOptions = Apollo.BaseMutationOptions<
   DeleteAssetMutationVariables
 >;
 export const UpdateAssetDocument = gql`
-  mutation updateAsset($id: bigint!, $changes: assets_set_input) {
+  mutation updateAsset(
+    $id: bigint!
+    $changes: assets_set_input
+    $name: String!
+  ) {
     update_assets_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+    update_account_info_by_pk(pk_columns: { id: $id }, _set: { name: $name }) {
       id
     }
   }
@@ -5530,6 +5947,7 @@ export function withUpdateAsset<
  *   variables: {
  *      id: // value for 'id'
  *      changes: // value for 'changes'
+ *      name: // value for 'name'
  *   },
  * });
  */
@@ -6278,8 +6696,15 @@ export type DeleteExpenseAccMutationOptions = Apollo.BaseMutationOptions<
   DeleteExpenseAccMutationVariables
 >;
 export const UpdateExpenseAccDocument = gql`
-  mutation updateExpenseAcc($id: bigint!, $changes: expenses_set_input) {
+  mutation updateExpenseAcc(
+    $id: bigint!
+    $changes: expenses_set_input
+    $name: String!
+  ) {
     update_expenses_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+    update_account_info_by_pk(pk_columns: { id: $id }, _set: { name: $name }) {
       id
     }
   }
@@ -6355,6 +6780,7 @@ export function withUpdateExpenseAcc<
  *   variables: {
  *      id: // value for 'id'
  *      changes: // value for 'changes'
+ *      name: // value for 'name'
  *   },
  * });
  */
@@ -6989,8 +7415,15 @@ export type DeleteLiabilityAccMutationOptions = Apollo.BaseMutationOptions<
   DeleteLiabilityAccMutationVariables
 >;
 export const UpdateLiabilityAccDocument = gql`
-  mutation updateLiabilityAcc($id: bigint!, $changes: liabilities_set_input) {
+  mutation updateLiabilityAcc(
+    $id: bigint!
+    $changes: liabilities_set_input
+    $name: String!
+  ) {
     update_liabilities_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+    update_account_info_by_pk(pk_columns: { id: $id }, _set: { name: $name }) {
       id
     }
   }
@@ -7066,6 +7499,7 @@ export function withUpdateLiabilityAcc<
  *   variables: {
  *      id: // value for 'id'
  *      changes: // value for 'changes'
+ *      name: // value for 'name'
  *   },
  * });
  */
@@ -7401,8 +7835,15 @@ export type DeleteRevenueAccMutationOptions = Apollo.BaseMutationOptions<
   DeleteRevenueAccMutationVariables
 >;
 export const UpdateRevenueAccDocument = gql`
-  mutation updateRevenueAcc($id: bigint!, $changes: revenues_set_input) {
+  mutation updateRevenueAcc(
+    $id: bigint!
+    $changes: revenues_set_input
+    $name: String!
+  ) {
     update_revenues_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+    update_account_info_by_pk(pk_columns: { id: $id }, _set: { name: $name }) {
       id
     }
   }
@@ -7478,6 +7919,7 @@ export function withUpdateRevenueAcc<
  *   variables: {
  *      id: // value for 'id'
  *      changes: // value for 'changes'
+ *      name: // value for 'name'
  *   },
  * });
  */
@@ -7715,10 +8157,7 @@ export const InsertTransactionDocument = gql`
   mutation insertTransaction($object: transactions_insert_input!) {
     insert_transactions_one(object: $object) {
       id
-      description
-      transaction_date
-      created_at
-      updated_at
+      amount
     }
   }
 `;
@@ -9895,6 +10334,42 @@ export type ResolversTypes = {
   subscription_root: ResolverTypeWrapper<{}>;
   timestamptz: ResolverTypeWrapper<Scalars['timestamptz']>;
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
+  transaction_accounts: ResolverTypeWrapper<Transaction_Accounts>;
+  transaction_accounts_aggregate: ResolverTypeWrapper<Transaction_Accounts_Aggregate>;
+  transaction_accounts_aggregate_fields: ResolverTypeWrapper<Transaction_Accounts_Aggregate_Fields>;
+  transaction_accounts_aggregate_order_by: Transaction_Accounts_Aggregate_Order_By;
+  transaction_accounts_arr_rel_insert_input: Transaction_Accounts_Arr_Rel_Insert_Input;
+  transaction_accounts_avg_fields: ResolverTypeWrapper<Transaction_Accounts_Avg_Fields>;
+  transaction_accounts_avg_order_by: Transaction_Accounts_Avg_Order_By;
+  transaction_accounts_bool_exp: Transaction_Accounts_Bool_Exp;
+  transaction_accounts_constraint: Transaction_Accounts_Constraint;
+  transaction_accounts_inc_input: Transaction_Accounts_Inc_Input;
+  transaction_accounts_insert_input: Transaction_Accounts_Insert_Input;
+  transaction_accounts_max_fields: ResolverTypeWrapper<Transaction_Accounts_Max_Fields>;
+  transaction_accounts_max_order_by: Transaction_Accounts_Max_Order_By;
+  transaction_accounts_min_fields: ResolverTypeWrapper<Transaction_Accounts_Min_Fields>;
+  transaction_accounts_min_order_by: Transaction_Accounts_Min_Order_By;
+  transaction_accounts_mutation_response: ResolverTypeWrapper<Transaction_Accounts_Mutation_Response>;
+  transaction_accounts_on_conflict: Transaction_Accounts_On_Conflict;
+  transaction_accounts_order_by: Transaction_Accounts_Order_By;
+  transaction_accounts_pk_columns_input: Transaction_Accounts_Pk_Columns_Input;
+  transaction_accounts_select_column: Transaction_Accounts_Select_Column;
+  transaction_accounts_set_input: Transaction_Accounts_Set_Input;
+  transaction_accounts_stddev_fields: ResolverTypeWrapper<Transaction_Accounts_Stddev_Fields>;
+  transaction_accounts_stddev_order_by: Transaction_Accounts_Stddev_Order_By;
+  transaction_accounts_stddev_pop_fields: ResolverTypeWrapper<Transaction_Accounts_Stddev_Pop_Fields>;
+  transaction_accounts_stddev_pop_order_by: Transaction_Accounts_Stddev_Pop_Order_By;
+  transaction_accounts_stddev_samp_fields: ResolverTypeWrapper<Transaction_Accounts_Stddev_Samp_Fields>;
+  transaction_accounts_stddev_samp_order_by: Transaction_Accounts_Stddev_Samp_Order_By;
+  transaction_accounts_sum_fields: ResolverTypeWrapper<Transaction_Accounts_Sum_Fields>;
+  transaction_accounts_sum_order_by: Transaction_Accounts_Sum_Order_By;
+  transaction_accounts_update_column: Transaction_Accounts_Update_Column;
+  transaction_accounts_var_pop_fields: ResolverTypeWrapper<Transaction_Accounts_Var_Pop_Fields>;
+  transaction_accounts_var_pop_order_by: Transaction_Accounts_Var_Pop_Order_By;
+  transaction_accounts_var_samp_fields: ResolverTypeWrapper<Transaction_Accounts_Var_Samp_Fields>;
+  transaction_accounts_var_samp_order_by: Transaction_Accounts_Var_Samp_Order_By;
+  transaction_accounts_variance_fields: ResolverTypeWrapper<Transaction_Accounts_Variance_Fields>;
+  transaction_accounts_variance_order_by: Transaction_Accounts_Variance_Order_By;
   transaction_attachments: ResolverTypeWrapper<Transaction_Attachments>;
   transaction_attachments_aggregate: ResolverTypeWrapper<Transaction_Attachments_Aggregate>;
   transaction_attachments_aggregate_fields: ResolverTypeWrapper<Transaction_Attachments_Aggregate_Fields>;
@@ -10226,6 +10701,39 @@ export type ResolversParentTypes = {
   subscription_root: {};
   timestamptz: Scalars['timestamptz'];
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
+  transaction_accounts: Transaction_Accounts;
+  transaction_accounts_aggregate: Transaction_Accounts_Aggregate;
+  transaction_accounts_aggregate_fields: Transaction_Accounts_Aggregate_Fields;
+  transaction_accounts_aggregate_order_by: Transaction_Accounts_Aggregate_Order_By;
+  transaction_accounts_arr_rel_insert_input: Transaction_Accounts_Arr_Rel_Insert_Input;
+  transaction_accounts_avg_fields: Transaction_Accounts_Avg_Fields;
+  transaction_accounts_avg_order_by: Transaction_Accounts_Avg_Order_By;
+  transaction_accounts_bool_exp: Transaction_Accounts_Bool_Exp;
+  transaction_accounts_inc_input: Transaction_Accounts_Inc_Input;
+  transaction_accounts_insert_input: Transaction_Accounts_Insert_Input;
+  transaction_accounts_max_fields: Transaction_Accounts_Max_Fields;
+  transaction_accounts_max_order_by: Transaction_Accounts_Max_Order_By;
+  transaction_accounts_min_fields: Transaction_Accounts_Min_Fields;
+  transaction_accounts_min_order_by: Transaction_Accounts_Min_Order_By;
+  transaction_accounts_mutation_response: Transaction_Accounts_Mutation_Response;
+  transaction_accounts_on_conflict: Transaction_Accounts_On_Conflict;
+  transaction_accounts_order_by: Transaction_Accounts_Order_By;
+  transaction_accounts_pk_columns_input: Transaction_Accounts_Pk_Columns_Input;
+  transaction_accounts_set_input: Transaction_Accounts_Set_Input;
+  transaction_accounts_stddev_fields: Transaction_Accounts_Stddev_Fields;
+  transaction_accounts_stddev_order_by: Transaction_Accounts_Stddev_Order_By;
+  transaction_accounts_stddev_pop_fields: Transaction_Accounts_Stddev_Pop_Fields;
+  transaction_accounts_stddev_pop_order_by: Transaction_Accounts_Stddev_Pop_Order_By;
+  transaction_accounts_stddev_samp_fields: Transaction_Accounts_Stddev_Samp_Fields;
+  transaction_accounts_stddev_samp_order_by: Transaction_Accounts_Stddev_Samp_Order_By;
+  transaction_accounts_sum_fields: Transaction_Accounts_Sum_Fields;
+  transaction_accounts_sum_order_by: Transaction_Accounts_Sum_Order_By;
+  transaction_accounts_var_pop_fields: Transaction_Accounts_Var_Pop_Fields;
+  transaction_accounts_var_pop_order_by: Transaction_Accounts_Var_Pop_Order_By;
+  transaction_accounts_var_samp_fields: Transaction_Accounts_Var_Samp_Fields;
+  transaction_accounts_var_samp_order_by: Transaction_Accounts_Var_Samp_Order_By;
+  transaction_accounts_variance_fields: Transaction_Accounts_Variance_Fields;
+  transaction_accounts_variance_order_by: Transaction_Accounts_Variance_Order_By;
   transaction_attachments: Transaction_Attachments;
   transaction_attachments_aggregate: Transaction_Attachments_Aggregate;
   transaction_attachments_aggregate_fields: Transaction_Attachments_Aggregate_Fields;
@@ -10366,30 +10874,19 @@ export type Account_InfoResolvers<
   expense?: Resolver<ResolversTypes['expenses'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   liability?: Resolver<ResolversTypes['liabilities'], ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   revenue?: Resolver<ResolversTypes['revenues'], ParentType, ContextType>;
-  transactions?: Resolver<
-    Array<ResolversTypes['transactions']>,
+  transcation_accounts?: Resolver<
+    Array<ResolversTypes['transaction_accounts']>,
     ParentType,
     ContextType,
-    RequireFields<Account_InfoTransactionsArgs, never>
+    RequireFields<Account_InfoTranscation_AccountsArgs, never>
   >;
-  transactionsBySourceAccount?: Resolver<
-    Array<ResolversTypes['transactions']>,
+  transcation_accounts_aggregate?: Resolver<
+    ResolversTypes['transaction_accounts_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Account_InfoTransactionsBySourceAccountArgs, never>
-  >;
-  transactionsBySourceAccount_aggregate?: Resolver<
-    ResolversTypes['transactions_aggregate'],
-    ParentType,
-    ContextType,
-    RequireFields<Account_InfoTransactionsBySourceAccount_AggregateArgs, never>
-  >;
-  transactions_aggregate?: Resolver<
-    ResolversTypes['transactions_aggregate'],
-    ParentType,
-    ContextType,
-    RequireFields<Account_InfoTransactions_AggregateArgs, never>
+    RequireFields<Account_InfoTranscation_Accounts_AggregateArgs, never>
   >;
   type?: Resolver<ResolversTypes['bpchar'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
@@ -10494,6 +10991,7 @@ export type Account_Info_Max_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   type?: Resolver<Maybe<ResolversTypes['bpchar']>, ParentType, ContextType>;
   updated_at?: Resolver<
     Maybe<ResolversTypes['timestamptz']>,
@@ -10513,6 +11011,7 @@ export type Account_Info_Min_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   type?: Resolver<Maybe<ResolversTypes['bpchar']>, ParentType, ContextType>;
   updated_at?: Resolver<
     Maybe<ResolversTypes['timestamptz']>,
@@ -11814,6 +12313,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_Revenues_By_PkArgs, 'id'>
   >;
+  delete_transaction_accounts?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Transaction_AccountsArgs, 'where'>
+  >;
+  delete_transaction_accounts_by_pk?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Transaction_Accounts_By_PkArgs, 'id'>
+  >;
   delete_transaction_attachments?: Resolver<
     Maybe<ResolversTypes['transaction_attachments_mutation_response']>,
     ParentType,
@@ -11976,6 +12487,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_Revenues_OneArgs, 'object'>
   >;
+  insert_transaction_accounts?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Transaction_AccountsArgs, 'objects'>
+  >;
+  insert_transaction_accounts_one?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Transaction_Accounts_OneArgs, 'object'>
+  >;
   insert_transaction_attachments?: Resolver<
     Maybe<ResolversTypes['transaction_attachments_mutation_response']>,
     ParentType,
@@ -12131,6 +12654,21 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Revenues_By_PkArgs, 'pk_columns'>
+  >;
+  update_transaction_accounts?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Transaction_AccountsArgs, 'where'>
+  >;
+  update_transaction_accounts_by_pk?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts']>,
+    ParentType,
+    ContextType,
+    RequireFields<
+      Mutation_RootUpdate_Transaction_Accounts_By_PkArgs,
+      'pk_columns'
+    >
   >;
   update_transaction_attachments?: Resolver<
     Maybe<ResolversTypes['transaction_attachments_mutation_response']>,
@@ -12572,6 +13110,24 @@ export type Query_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Query_RootRevenues_By_PkArgs, 'id'>
+  >;
+  transaction_accounts?: Resolver<
+    Array<ResolversTypes['transaction_accounts']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootTransaction_AccountsArgs, never>
+  >;
+  transaction_accounts_aggregate?: Resolver<
+    ResolversTypes['transaction_accounts_aggregate'],
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootTransaction_Accounts_AggregateArgs, never>
+  >;
+  transaction_accounts_by_pk?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootTransaction_Accounts_By_PkArgs, 'id'>
   >;
   transaction_attachments?: Resolver<
     Array<ResolversTypes['transaction_attachments']>,
@@ -13052,6 +13608,27 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootRevenues_By_PkArgs, 'id'>
   >;
+  transaction_accounts?: SubscriptionResolver<
+    Array<ResolversTypes['transaction_accounts']>,
+    'transaction_accounts',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootTransaction_AccountsArgs, never>
+  >;
+  transaction_accounts_aggregate?: SubscriptionResolver<
+    ResolversTypes['transaction_accounts_aggregate'],
+    'transaction_accounts_aggregate',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootTransaction_Accounts_AggregateArgs, never>
+  >;
+  transaction_accounts_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['transaction_accounts']>,
+    'transaction_accounts_by_pk',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootTransaction_Accounts_By_PkArgs, 'id'>
+  >;
   transaction_attachments?: SubscriptionResolver<
     Array<ResolversTypes['transaction_attachments']>,
     'transaction_attachments',
@@ -13169,6 +13746,320 @@ export interface TimestamptzScalarConfig
   extends GraphQLScalarTypeConfig<ResolversTypes['timestamptz'], any> {
   name: 'timestamptz';
 }
+
+export type Transaction_AccountsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts'] = ResolversParentTypes['transaction_accounts']
+> = {
+  account_id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  account_info?: Resolver<
+    ResolversTypes['account_info'],
+    ParentType,
+    ContextType
+  >;
+  amount?: Resolver<ResolversTypes['float8'], ParentType, ContextType>;
+  created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  transaction?: Resolver<
+    ResolversTypes['transactions'],
+    ParentType,
+    ContextType
+  >;
+  transaction_id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_AggregateResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_aggregate'] = ResolversParentTypes['transaction_accounts_aggregate']
+> = {
+  aggregate?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_aggregate_fields']>,
+    ParentType,
+    ContextType
+  >;
+  nodes?: Resolver<
+    Array<ResolversTypes['transaction_accounts']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Aggregate_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_aggregate_fields'] = ResolversParentTypes['transaction_accounts_aggregate_fields']
+> = {
+  avg?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_avg_fields']>,
+    ParentType,
+    ContextType
+  >;
+  count?: Resolver<
+    ResolversTypes['Int'],
+    ParentType,
+    ContextType,
+    RequireFields<Transaction_Accounts_Aggregate_FieldsCountArgs, never>
+  >;
+  max?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_max_fields']>,
+    ParentType,
+    ContextType
+  >;
+  min?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_min_fields']>,
+    ParentType,
+    ContextType
+  >;
+  stddev?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_stddev_fields']>,
+    ParentType,
+    ContextType
+  >;
+  stddev_pop?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_stddev_pop_fields']>,
+    ParentType,
+    ContextType
+  >;
+  stddev_samp?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_stddev_samp_fields']>,
+    ParentType,
+    ContextType
+  >;
+  sum?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_sum_fields']>,
+    ParentType,
+    ContextType
+  >;
+  var_pop?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_var_pop_fields']>,
+    ParentType,
+    ContextType
+  >;
+  var_samp?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_var_samp_fields']>,
+    ParentType,
+    ContextType
+  >;
+  variance?: Resolver<
+    Maybe<ResolversTypes['transaction_accounts_variance_fields']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Avg_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_avg_fields'] = ResolversParentTypes['transaction_accounts_avg_fields']
+> = {
+  account_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Max_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_max_fields'] = ResolversParentTypes['transaction_accounts_max_fields']
+> = {
+  account_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  created_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['bigint']>,
+    ParentType,
+    ContextType
+  >;
+  updated_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Min_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_min_fields'] = ResolversParentTypes['transaction_accounts_min_fields']
+> = {
+  account_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  created_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['bigint']>,
+    ParentType,
+    ContextType
+  >;
+  updated_at?: Resolver<
+    Maybe<ResolversTypes['timestamptz']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Mutation_ResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_mutation_response'] = ResolversParentTypes['transaction_accounts_mutation_response']
+> = {
+  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  returning?: Resolver<
+    Array<ResolversTypes['transaction_accounts']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Stddev_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_stddev_fields'] = ResolversParentTypes['transaction_accounts_stddev_fields']
+> = {
+  account_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Stddev_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_stddev_pop_fields'] = ResolversParentTypes['transaction_accounts_stddev_pop_fields']
+> = {
+  account_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Stddev_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_stddev_samp_fields'] = ResolversParentTypes['transaction_accounts_stddev_samp_fields']
+> = {
+  account_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Sum_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_sum_fields'] = ResolversParentTypes['transaction_accounts_sum_fields']
+> = {
+  account_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['bigint']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Var_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_var_pop_fields'] = ResolversParentTypes['transaction_accounts_var_pop_fields']
+> = {
+  account_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Var_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_var_samp_fields'] = ResolversParentTypes['transaction_accounts_var_samp_fields']
+> = {
+  account_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transaction_Accounts_Variance_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transaction_accounts_variance_fields'] = ResolversParentTypes['transaction_accounts_variance_fields']
+> = {
+  account_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
 
 export type Transaction_AttachmentsResolvers<
   ContextType = any,
@@ -13722,16 +14613,6 @@ export type TransactionsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions'] = ResolversParentTypes['transactions']
 > = {
-  accountInfoBySourceAccount?: Resolver<
-    ResolversTypes['account_info'],
-    ParentType,
-    ContextType
-  >;
-  account_info?: Resolver<
-    ResolversTypes['account_info'],
-    ParentType,
-    ContextType
-  >;
   amount?: Resolver<ResolversTypes['float8'], ParentType, ContextType>;
   category?: Resolver<
     Maybe<ResolversTypes['categories']>,
@@ -13749,9 +14630,19 @@ export type TransactionsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
-  source_account?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  transaction_accounts?: Resolver<
+    Array<ResolversTypes['transaction_accounts']>,
+    ParentType,
+    ContextType,
+    RequireFields<TransactionsTransaction_AccountsArgs, never>
+  >;
+  transaction_accounts_aggregate?: Resolver<
+    ResolversTypes['transaction_accounts_aggregate'],
+    ParentType,
+    ContextType,
+    RequireFields<TransactionsTransaction_Accounts_AggregateArgs, never>
+  >;
   transaction_attachment?: Resolver<
     ResolversTypes['transaction_attachments'],
     ParentType,
@@ -13864,17 +14755,7 @@ export type Transactions_Avg_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -13898,17 +14779,7 @@ export type Transactions_Max_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
   transaction_date?: Resolver<
     Maybe<ResolversTypes['date']>,
     ParentType,
@@ -13942,17 +14813,7 @@ export type Transactions_Min_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
   transaction_date?: Resolver<
     Maybe<ResolversTypes['date']>,
     ParentType,
@@ -13989,17 +14850,7 @@ export type Transactions_Stddev_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14013,17 +14864,7 @@ export type Transactions_Stddev_Pop_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14037,17 +14878,7 @@ export type Transactions_Stddev_Samp_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14061,17 +14892,7 @@ export type Transactions_Sum_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14085,17 +14906,7 @@ export type Transactions_Var_Pop_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14109,17 +14920,7 @@ export type Transactions_Var_Samp_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14133,17 +14934,7 @@ export type Transactions_Variance_FieldsResolvers<
     ParentType,
     ContextType
   >;
-  destiny_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  source_account?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14453,6 +15244,20 @@ export type Resolvers<ContextType = any> = {
   revenues_variance_fields?: Revenues_Variance_FieldsResolvers<ContextType>;
   subscription_root?: Subscription_RootResolvers<ContextType>;
   timestamptz?: GraphQLScalarType;
+  transaction_accounts?: Transaction_AccountsResolvers<ContextType>;
+  transaction_accounts_aggregate?: Transaction_Accounts_AggregateResolvers<ContextType>;
+  transaction_accounts_aggregate_fields?: Transaction_Accounts_Aggregate_FieldsResolvers<ContextType>;
+  transaction_accounts_avg_fields?: Transaction_Accounts_Avg_FieldsResolvers<ContextType>;
+  transaction_accounts_max_fields?: Transaction_Accounts_Max_FieldsResolvers<ContextType>;
+  transaction_accounts_min_fields?: Transaction_Accounts_Min_FieldsResolvers<ContextType>;
+  transaction_accounts_mutation_response?: Transaction_Accounts_Mutation_ResponseResolvers<ContextType>;
+  transaction_accounts_stddev_fields?: Transaction_Accounts_Stddev_FieldsResolvers<ContextType>;
+  transaction_accounts_stddev_pop_fields?: Transaction_Accounts_Stddev_Pop_FieldsResolvers<ContextType>;
+  transaction_accounts_stddev_samp_fields?: Transaction_Accounts_Stddev_Samp_FieldsResolvers<ContextType>;
+  transaction_accounts_sum_fields?: Transaction_Accounts_Sum_FieldsResolvers<ContextType>;
+  transaction_accounts_var_pop_fields?: Transaction_Accounts_Var_Pop_FieldsResolvers<ContextType>;
+  transaction_accounts_var_samp_fields?: Transaction_Accounts_Var_Samp_FieldsResolvers<ContextType>;
+  transaction_accounts_variance_fields?: Transaction_Accounts_Variance_FieldsResolvers<ContextType>;
   transaction_attachments?: Transaction_AttachmentsResolvers<ContextType>;
   transaction_attachments_aggregate?: Transaction_Attachments_AggregateResolvers<ContextType>;
   transaction_attachments_aggregate_fields?: Transaction_Attachments_Aggregate_FieldsResolvers<ContextType>;

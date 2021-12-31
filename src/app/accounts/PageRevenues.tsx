@@ -52,6 +52,7 @@ import {
 } from '@chakra-ui/react';
 
 import { useDarkMode } from '../../hooks/useDarkMode';
+import { useMutationOptions } from '../../hooks/useMutationOptions';
 
 export const PageRevenues = () => {
   const { t } = useTranslation();
@@ -64,6 +65,8 @@ export const PageRevenues = () => {
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
+  const { mutationOptions } = useMutationOptions();
+
   const { loading, data } = useAllRevenueAccountsQuery({
     variables: {
       offset: (page - 1) * pageSize,
@@ -75,69 +78,23 @@ export const PageRevenues = () => {
     useDeleteRevenueAccMutation();
 
   const [updateRevenue, { loading: updateLoading }] =
-    useUpdateRevenueAccMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
+    useUpdateRevenueAccMutation(mutationOptions);
 
   const [updateRevenueState, { loading: updateStateLoading }] =
-    useUpdateRevenueStateMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
+    useUpdateRevenueStateMutation(mutationOptions);
 
   const [updateRevenueStandard, { loading: updateStandardLoading }] =
-    useUpdateRevenueStandardMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
+    useUpdateRevenueStandardMutation(mutationOptions);
 
   const [insertRevenue, { loading: insertLoading }] =
-    useInsertRevenueAccMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.createdError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.createdSuccess.title'),
-        });
-      },
-    });
+    useInsertRevenueAccMutation(mutationOptions);
 
   const onConfirmCreate = async (values) => {
+    const { name } = values;
     const newData = {
       ...values,
-      account_info: { data: { type: 'R' } },
+      name: name,
+      account_info: { data: { type: 'R', name: name } },
     };
 
     insertRevenue({
@@ -175,6 +132,7 @@ export const PageRevenues = () => {
       variables: {
         id: dataKey,
         changes: newData,
+        name: newData.name,
       },
       refetchQueries: 'active',
     });
