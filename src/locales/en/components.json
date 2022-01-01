@@ -3,7 +3,7 @@
     "create": "Create"
   },
   "dateAgo": {
-    "format": "dddd, DD MMMM YYYY, hh:mm a"
+    "format": "dddd, DD MMMM YYYY, hh:mm A"
   },
   "actionsButton": {
     "label": "Actions"

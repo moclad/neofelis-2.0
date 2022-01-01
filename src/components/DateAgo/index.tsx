@@ -1,8 +1,8 @@
+import dayjs from 'dayjs';
 import React, { FC, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { forwardRef, Tooltip, TooltipProps } from '@chakra-ui/react';
-import dayjs from 'dayjs';
-import { useTranslation } from 'react-i18next';
 
 const ONE_SECOND = 1000;
 const ONE_MINUTE = ONE_SECOND * 60;
@@ -19,10 +19,11 @@ const getDelay = (diff) => {
 export interface DateAgoProps extends Omit<TooltipProps, 'children'> {
   date?: string | Date | dayjs.Dayjs;
   format?: string;
+  locale?: string;
 }
 
 export const DateAgo: FC<DateAgoProps> = forwardRef(function DateAgo(
-  { date = new Date(), format, ...rest },
+  { date = new Date(), locale, format, ...rest },
   ref
 ) {
   const { t } = useTranslation();
