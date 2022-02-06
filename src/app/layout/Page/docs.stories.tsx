@@ -52,9 +52,11 @@ export const ContainerTitleAndActions = () => (
     <PageContent
       title="Title"
       actions={[
-        <Button variant="@primary">Action 1</Button>,
-        <Button>Action 2</Button>,
-        <Button>Action 3</Button>,
+        <Button key={1} variant="@primary">
+          Action 1
+        </Button>,
+        <Button key={2}>Action 2</Button>,
+        <Button key={3}>Action 3</Button>,
       ]}
     >
       Page Content
@@ -69,6 +71,7 @@ const DefaultNav = () => {
     <Nav>
       <NavGroup title="My Account">
         <NavItem
+          key={1}
           as="a"
           icon={FiUser}
           isActive={active === 0}
@@ -77,6 +80,7 @@ const DefaultNav = () => {
           Profile
         </NavItem>
         <NavItem
+          key={2}
           as="a"
           icon={FiLock}
           isActive={active === 1}
@@ -87,6 +91,7 @@ const DefaultNav = () => {
       </NavGroup>
       <NavGroup title="Other">
         <NavItem
+          key={3}
           as="a"
           icon={FiHexagon}
           isActive={active === 2}
@@ -95,6 +100,7 @@ const DefaultNav = () => {
           Stuff 1
         </NavItem>
         <NavItem
+          key={4}
           as="a"
           icon={FiHexagon}
           isActive={active === 3}
@@ -108,13 +114,15 @@ const DefaultNav = () => {
 };
 
 export const WithNavigationBar = () => (
-  <Page nav={<DefaultNav />}>
+  <Page nav={<DefaultNav />} isFocusMode={true}>
     <PageContent
       title="Title"
       actions={[
-        <Button variant="@primary">Action 1</Button>,
-        <Button>Action 2</Button>,
-        <Button>Action 3</Button>,
+        <Button key={1} variant="@primary">
+          Action 1
+        </Button>,
+        <Button key={2}>Action 2</Button>,
+        <Button key={3}>Action 3</Button>,
       ]}
     >
       Page Content

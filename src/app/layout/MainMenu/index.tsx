@@ -74,6 +74,9 @@ export const MainMenu = ({ ...rest }) => {
       <MainMenuItem to="/classification">
         {t('layout:mainMenu.classification')}
       </MainMenuItem>
+      <MainMenuItem to="/recurring">
+        {t('layout:mainMenu.recurring')}
+      </MainMenuItem>
       {isAdmin && (
         <MainMenuItem to="/admin">{t('layout:mainMenu.admin')}</MainMenuItem>
       )}

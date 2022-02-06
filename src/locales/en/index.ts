@@ -9,3 +9,4 @@ export { default as layout } from './layout.json';
 export { default as users } from './users.json';
 export { default as classification } from './classification.json';
 export { default as accounts } from './accounts.json';
+export { default as recurring } from './recurring.json';

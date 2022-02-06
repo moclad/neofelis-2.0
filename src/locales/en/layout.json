@@ -2,6 +2,7 @@
   "mainMenu": {
     "dashboard": "Dashboard",
     "classification": "Classification",
+    "recurring": "Recurring",
     "accounts": "Accounts",
     "admin": "Admin"
   },

@@ -1,8 +1,7 @@
 module.exports = {
   experimental: {
-    esmExternals: false,
-  },
-  async redirects() {
+    outputStandalone: true,
+  }, async redirects() {
     return [
       {
         source: '/storybook',

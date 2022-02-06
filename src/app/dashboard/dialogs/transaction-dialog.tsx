@@ -87,7 +87,7 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
   const onCreateExpenseAccount = async (value: string) => {
     const newData = {
       name: value,
-      account_info: { data: { type: 'E' } },
+      account_info: { data: { type: 'E', name: value } },
     };
 
     insertExpense({
@@ -101,7 +101,7 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
   const onCreateRevenueAccount = async (value: string) => {
     const newData = {
       name: value,
-      account_info: { data: { type: 'R' } },
+      account_info: { data: { type: 'R', name: value } },
     };
 
     insertRevenue({

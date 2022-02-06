@@ -129,7 +129,7 @@ Create or edit the `.vscode/settings.json` file with the following settings:
 - Use namespaces `t('namespace:translationKey')` and nesting `t('namespace:this.is.nested')`.
 ```js
 // Example for translations available in account.json
-t('profile:data.firstname.label')
+t('account:data.firstname.label')
 ```
 
 - For fields and data translations use a `data` object.
@@ -146,8 +146,8 @@ t('profile:data.firstname.label')
 ```
 ```js
 // React
-t('profile:data.firstname.label')
-t('profile:data.firstname.required')
+t('account:data.firstname.label')
+t('account:data.firstname.required')
 ```
 
 - For user feedbacks, use a `feedbacks` object with `actionSuccess` & `actionError` keys containing each `title` and `description` (optional).
@@ -169,9 +169,9 @@ t('profile:data.firstname.required')
 ```
 ```js
 // React
-t('profile:resetPassword.feedbacks.updateSuccess.title')
-t('profile:resetPassword.feedbacks.updateSuccess.description')
-t('profile:resetPassword.feedbacks.updateError.title')
+t('account:resetPassword.feedbacks.updateSuccess.title')
+t('account:resetPassword.feedbacks.updateSuccess.description')
+t('account:resetPassword.feedbacks.updateError.title')
 ```
 
 - For user actions, use an `actions` object.
@@ -188,8 +188,8 @@ t('profile:resetPassword.feedbacks.updateError.title')
 ```
 ```js
 // React
-t('profile:resetPassword.actions.send')
-t('profile:resetPassword.actions.reset')
+t('account:resetPassword.actions.send')
+t('account:resetPassword.actions.reset')
 ```
 
 - Use the common workspace only for VERY generic translations. By default, use specific namespaces to allow easy update on large code base without unwanted side-effects.
@@ -199,10 +199,24 @@ t('profile:resetPassword.actions.reset')
 ### NodeJS (recommended)
 
 ```bash
+yarn install
 yarn storybook:build # Optional: Will expose the Storybook at `/storybook`
 yarn build
 yarn start
 ```
+
+### Docker
+
+1. Build the Docker image (replace `start-ui-web` with your project name)
+```
+docker build -t start-ui-web .
+```
+
+2. Run the Docker image (replace `start-ui-web` with your project name)
+```
+docker run -p 80:3000 start-ui-web
+```
+Application will be exposed on port 80 ([http://localhost](http://localhost))
 
 ### Static files
 

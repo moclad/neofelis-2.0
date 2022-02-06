@@ -13,7 +13,7 @@ export * from './FieldInput';
 export * from './FieldSelect';
 export * from './FieldTextarea';
 export * from './FormGroup';
-export * from './PanelContainer';
+export * from './Panel';
 export * from './Icons';
 export * from './Logo';
 export * from './ModalDialog';

@@ -2,6 +2,7 @@ import React, { useContext, useLayoutEffect, useRef, useState } from 'react';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 import { useFocusMode } from '@/app/layout';
+import { ContainerSizes } from '@/constants/container-sizes';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useRtl } from '@/hooks/useRtl';
 import {
@@ -20,14 +21,6 @@ const PageContext = React.createContext(null);
 const PageContainer = ({ children, ...rest }) => {
   const { hideContainer, containerSize } = useContext(PageContext);
 
-  const containerSizes = {
-    sm: '60ch',
-    md: '80ch',
-    lg: '100ch',
-    xl: '140ch',
-    full: '100%',
-  };
-
   if (hideContainer) return children;
 
   return (
@@ -37,7 +30,7 @@ const PageContainer = ({ children, ...rest }) => {
       w="full"
       px="6"
       mx="auto"
-      maxW={containerSizes[containerSize]}
+      maxW={ContainerSizes[containerSize]}
       {...rest}
     >
       {children}

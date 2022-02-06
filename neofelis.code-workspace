@@ -7,6 +7,18 @@
 	"settings": {
 		"i18n-ally.keystyle": "nested",
 		"typescript.tsdk": "node_modules\\typescript\\lib",
-		"typescript.enablePromptUseWorkspaceTsdk": true
+		"typescript.enablePromptUseWorkspaceTsdk": true,
+		"sqltools.connections": [
+			{
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 5432,
+				"askForPassword": true,
+				"driver": "PostgreSQL",
+				"name": "Neofelis",
+				"database": "neofelis",
+				"username": "master"
+			}
+		]
 	}
 }

@@ -143,7 +143,7 @@ export const DayPicker: FC<DayPickerProps> = ({
           weekdaysShort: Array.from({ length: 7 }).map((_, i) =>
             dayjs().day(i).format('dd')
           ),
-          firstDayOfWeek: 0,
+          firstDayOfWeek: 1,
           ...dayPickerProps,
         }}
         inputProps={{

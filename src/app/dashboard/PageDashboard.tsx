@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiPlus } from 'react-icons/fi';
 
-import { Page, PageContent } from '@/app/layout';
 import { Button, useDisclosure } from '@chakra-ui/react';
 
+import { Panel, PanelContent } from '../../components';
 import { TransactionType } from '../../types/types';
 import { TransactionDialog } from './dialogs/transaction-dialog';
 
@@ -19,8 +19,8 @@ export const PageDashboard = () => {
   };
 
   return (
-    <Page>
-      <PageContent
+    <Panel>
+      <PanelContent
         loading={false}
         title={t('dashboard:title')}
         actions={[
@@ -58,12 +58,12 @@ export const PageDashboard = () => {
             {t('dashboard:actions.createTransfer')}
           </Button>,
         ]}
-      ></PageContent>
+      ></PanelContent>
       <TransactionDialog
         isOpen={isOpen}
         onClose={onCloseDialog}
         transactionType={transactionType}
       />
-    </Page>
+    </Panel>
   );
 };

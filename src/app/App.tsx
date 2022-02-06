@@ -10,6 +10,7 @@ import ClassificationRoutes from '@/app/classification/ClassificationRoutes';
 import { Layout, Loader } from '@/app/layout';
 import { Error404, ErrorBoundary } from '@/errors';
 
+import RecurringRoutes from './recurring/RecurringRoutes';
 import { SecuredPage } from './router';
 
 const AdminRoutes = React.lazy(() => import('@/app/admin/AdminRoutes'));
@@ -73,6 +74,15 @@ const getRoutes = () => {
         element={
           <SecuredPage>
             <AccountsRoutes />
+          </SecuredPage>
+        }
+      />
+
+      <Route
+        path="/recurring/*"
+        element={
+          <SecuredPage>
+            <RecurringRoutes />
           </SecuredPage>
         }
       />

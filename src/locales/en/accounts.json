@@ -11,7 +11,7 @@
     "actions": {
       "edit": "Edit account",
       "delete": "Delete",
-      "create": "Create account"
+      "create": "Create"
     },
     "header": {
       "name": "Name",
@@ -35,7 +35,7 @@
     "actions": {
       "edit": "Edit account",
       "delete": "Delete",
-      "create": "Create account"
+      "create": "Create"
     },
     "header": {
       "name": "Name",
@@ -54,7 +54,7 @@
     "actions": {
       "edit": "Edit account",
       "delete": "Delete",
-      "create": "Create account"
+      "create": "Create"
     },
     "header": {
       "name": "Name",
@@ -74,7 +74,7 @@
     "actions": {
       "edit": "Edit account",
       "delete": "Delete",
-      "create": "Create account"
+      "create": "Create"
     },
     "header": {
       "name": "Name",
