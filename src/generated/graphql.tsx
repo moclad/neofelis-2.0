@@ -19,9 +19,9 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
-export type RequireFields<T, K extends keyof T> = {
-  [X in Exclude<keyof T, K>]?: T[X];
-} & { [P in K]-?: NonNullable<T[P]> };
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
+  [P in K]-?: NonNullable<T[P]>;
+};
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
@@ -11845,13 +11845,13 @@ export type Account_InfoResolvers<
     Array<ResolversTypes['transaction_accounts']>,
     ParentType,
     ContextType,
-    RequireFields<Account_InfoTransaction_AccountsArgs, never>
+    Partial<Account_InfoTransaction_AccountsArgs>
   >;
   transaction_accounts_aggregate?: Resolver<
     ResolversTypes['transaction_accounts_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Account_InfoTransaction_Accounts_AggregateArgs, never>
+    Partial<Account_InfoTransaction_Accounts_AggregateArgs>
   >;
   type?: Resolver<ResolversTypes['bpchar'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
@@ -11888,7 +11888,7 @@ export type Account_Info_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Account_Info_Aggregate_FieldsCountArgs, never>
+    Partial<Account_Info_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['account_info_max_fields']>,
@@ -12110,7 +12110,7 @@ export type Assets_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Assets_Aggregate_FieldsCountArgs, never>
+    Partial<Assets_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['assets_max_fields']>,
@@ -12327,13 +12327,13 @@ export type CategoriesResolvers<
     Array<ResolversTypes['transactions']>,
     ParentType,
     ContextType,
-    RequireFields<CategoriesTransactionsArgs, never>
+    Partial<CategoriesTransactionsArgs>
   >;
   transactions_aggregate?: Resolver<
     ResolversTypes['transactions_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<CategoriesTransactions_AggregateArgs, never>
+    Partial<CategoriesTransactions_AggregateArgs>
   >;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -12369,7 +12369,7 @@ export type Categories_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Categories_Aggregate_FieldsCountArgs, never>
+    Partial<Categories_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['categories_max_fields']>,
@@ -12582,7 +12582,7 @@ export type Expenses_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Expenses_Aggregate_FieldsCountArgs, never>
+    Partial<Expenses_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['expenses_max_fields']>,
@@ -12768,13 +12768,13 @@ export type LabelsResolvers<
     Array<ResolversTypes['transaction_labels']>,
     ParentType,
     ContextType,
-    RequireFields<LabelsTransaction_LabelsArgs, never>
+    Partial<LabelsTransaction_LabelsArgs>
   >;
   transaction_labels_aggregate?: Resolver<
     ResolversTypes['transaction_labels_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<LabelsTransaction_Labels_AggregateArgs, never>
+    Partial<LabelsTransaction_Labels_AggregateArgs>
   >;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -12806,7 +12806,7 @@ export type Labels_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Labels_Aggregate_FieldsCountArgs, never>
+    Partial<Labels_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['labels_max_fields']>,
@@ -13018,7 +13018,7 @@ export type Liabilities_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Liabilities_Aggregate_FieldsCountArgs, never>
+    Partial<Liabilities_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['liabilities_max_fields']>,
@@ -13834,7 +13834,7 @@ export type Notifications_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Notifications_Aggregate_FieldsCountArgs, never>
+    Partial<Notifications_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['notifications_max_fields']>,
@@ -14024,13 +14024,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['account_info']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootAccount_InfoArgs, never>
+    Partial<Query_RootAccount_InfoArgs>
   >;
   account_info_aggregate?: Resolver<
     ResolversTypes['account_info_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootAccount_Info_AggregateArgs, never>
+    Partial<Query_RootAccount_Info_AggregateArgs>
   >;
   account_info_by_pk?: Resolver<
     Maybe<ResolversTypes['account_info']>,
@@ -14042,13 +14042,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['assets']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootAssetsArgs, never>
+    Partial<Query_RootAssetsArgs>
   >;
   assets_aggregate?: Resolver<
     ResolversTypes['assets_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootAssets_AggregateArgs, never>
+    Partial<Query_RootAssets_AggregateArgs>
   >;
   assets_by_pk?: Resolver<
     Maybe<ResolversTypes['assets']>,
@@ -14060,13 +14060,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['categories']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootCategoriesArgs, never>
+    Partial<Query_RootCategoriesArgs>
   >;
   categories_aggregate?: Resolver<
     ResolversTypes['categories_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootCategories_AggregateArgs, never>
+    Partial<Query_RootCategories_AggregateArgs>
   >;
   categories_by_pk?: Resolver<
     Maybe<ResolversTypes['categories']>,
@@ -14078,13 +14078,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['expenses']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootExpensesArgs, never>
+    Partial<Query_RootExpensesArgs>
   >;
   expenses_aggregate?: Resolver<
     ResolversTypes['expenses_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootExpenses_AggregateArgs, never>
+    Partial<Query_RootExpenses_AggregateArgs>
   >;
   expenses_by_pk?: Resolver<
     Maybe<ResolversTypes['expenses']>,
@@ -14096,13 +14096,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['labels']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootLabelsArgs, never>
+    Partial<Query_RootLabelsArgs>
   >;
   labels_aggregate?: Resolver<
     ResolversTypes['labels_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootLabels_AggregateArgs, never>
+    Partial<Query_RootLabels_AggregateArgs>
   >;
   labels_by_pk?: Resolver<
     Maybe<ResolversTypes['labels']>,
@@ -14114,13 +14114,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['liabilities']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootLiabilitiesArgs, never>
+    Partial<Query_RootLiabilitiesArgs>
   >;
   liabilities_aggregate?: Resolver<
     ResolversTypes['liabilities_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootLiabilities_AggregateArgs, never>
+    Partial<Query_RootLiabilities_AggregateArgs>
   >;
   liabilities_by_pk?: Resolver<
     Maybe<ResolversTypes['liabilities']>,
@@ -14132,13 +14132,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['notifications']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootNotificationsArgs, never>
+    Partial<Query_RootNotificationsArgs>
   >;
   notifications_aggregate?: Resolver<
     ResolversTypes['notifications_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootNotifications_AggregateArgs, never>
+    Partial<Query_RootNotifications_AggregateArgs>
   >;
   notifications_by_pk?: Resolver<
     Maybe<ResolversTypes['notifications']>,
@@ -14150,13 +14150,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['recurring_items']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootRecurring_ItemsArgs, never>
+    Partial<Query_RootRecurring_ItemsArgs>
   >;
   recurring_items_aggregate?: Resolver<
     ResolversTypes['recurring_items_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootRecurring_Items_AggregateArgs, never>
+    Partial<Query_RootRecurring_Items_AggregateArgs>
   >;
   recurring_items_by_pk?: Resolver<
     Maybe<ResolversTypes['recurring_items']>,
@@ -14168,13 +14168,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['recurring_transactions']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootRecurring_TransactionsArgs, never>
+    Partial<Query_RootRecurring_TransactionsArgs>
   >;
   recurring_transactions_aggregate?: Resolver<
     ResolversTypes['recurring_transactions_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootRecurring_Transactions_AggregateArgs, never>
+    Partial<Query_RootRecurring_Transactions_AggregateArgs>
   >;
   recurring_transactions_by_pk?: Resolver<
     Maybe<ResolversTypes['recurring_transactions']>,
@@ -14189,13 +14189,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['revenues']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootRevenuesArgs, never>
+    Partial<Query_RootRevenuesArgs>
   >;
   revenues_aggregate?: Resolver<
     ResolversTypes['revenues_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootRevenues_AggregateArgs, never>
+    Partial<Query_RootRevenues_AggregateArgs>
   >;
   revenues_by_pk?: Resolver<
     Maybe<ResolversTypes['revenues']>,
@@ -14207,13 +14207,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['transaction_accounts']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootTransaction_AccountsArgs, never>
+    Partial<Query_RootTransaction_AccountsArgs>
   >;
   transaction_accounts_aggregate?: Resolver<
     ResolversTypes['transaction_accounts_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootTransaction_Accounts_AggregateArgs, never>
+    Partial<Query_RootTransaction_Accounts_AggregateArgs>
   >;
   transaction_accounts_by_pk?: Resolver<
     Maybe<ResolversTypes['transaction_accounts']>,
@@ -14225,13 +14225,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['transaction_attachments']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootTransaction_AttachmentsArgs, never>
+    Partial<Query_RootTransaction_AttachmentsArgs>
   >;
   transaction_attachments_aggregate?: Resolver<
     ResolversTypes['transaction_attachments_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootTransaction_Attachments_AggregateArgs, never>
+    Partial<Query_RootTransaction_Attachments_AggregateArgs>
   >;
   transaction_attachments_by_pk?: Resolver<
     Maybe<ResolversTypes['transaction_attachments']>,
@@ -14246,13 +14246,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['transaction_labels']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootTransaction_LabelsArgs, never>
+    Partial<Query_RootTransaction_LabelsArgs>
   >;
   transaction_labels_aggregate?: Resolver<
     ResolversTypes['transaction_labels_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootTransaction_Labels_AggregateArgs, never>
+    Partial<Query_RootTransaction_Labels_AggregateArgs>
   >;
   transaction_labels_by_pk?: Resolver<
     Maybe<ResolversTypes['transaction_labels']>,
@@ -14267,13 +14267,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['transactions']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootTransactionsArgs, never>
+    Partial<Query_RootTransactionsArgs>
   >;
   transactions_aggregate?: Resolver<
     ResolversTypes['transactions_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootTransactions_AggregateArgs, never>
+    Partial<Query_RootTransactions_AggregateArgs>
   >;
   transactions_by_pk?: Resolver<
     Maybe<ResolversTypes['transactions']>,
@@ -14285,13 +14285,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['user_settings']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootUser_SettingsArgs, never>
+    Partial<Query_RootUser_SettingsArgs>
   >;
   user_settings_aggregate?: Resolver<
     ResolversTypes['user_settings_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootUser_Settings_AggregateArgs, never>
+    Partial<Query_RootUser_Settings_AggregateArgs>
   >;
   user_settings_by_pk?: Resolver<
     Maybe<ResolversTypes['user_settings']>,
@@ -14303,13 +14303,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['users']>,
     ParentType,
     ContextType,
-    RequireFields<Query_RootUsersArgs, never>
+    Partial<Query_RootUsersArgs>
   >;
   users_aggregate?: Resolver<
     ResolversTypes['users_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<Query_RootUsers_AggregateArgs, never>
+    Partial<Query_RootUsers_AggregateArgs>
   >;
   users_by_pk?: Resolver<
     Maybe<ResolversTypes['users']>,
@@ -14343,7 +14343,7 @@ export type Recurring_ItemsResolvers<
     ResolversTypes['jsonb'],
     ParentType,
     ContextType,
-    RequireFields<Recurring_ItemsCycle_ConfigurationArgs, never>
+    Partial<Recurring_ItemsCycle_ConfigurationArgs>
   >;
   cycle_type?: Resolver<ResolversTypes['bpchar'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -14399,7 +14399,7 @@ export type Recurring_Items_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Recurring_Items_Aggregate_FieldsCountArgs, never>
+    Partial<Recurring_Items_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['recurring_items_max_fields']>,
@@ -14805,7 +14805,7 @@ export type Recurring_Transactions_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Recurring_Transactions_Aggregate_FieldsCountArgs, never>
+    Partial<Recurring_Transactions_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['recurring_transactions_max_fields']>,
@@ -15082,7 +15082,7 @@ export type Revenues_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Revenues_Aggregate_FieldsCountArgs, never>
+    Partial<Revenues_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['revenues_max_fields']>,
@@ -15256,14 +15256,14 @@ export type Subscription_RootResolvers<
     'account_info',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootAccount_InfoArgs, never>
+    Partial<Subscription_RootAccount_InfoArgs>
   >;
   account_info_aggregate?: SubscriptionResolver<
     ResolversTypes['account_info_aggregate'],
     'account_info_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootAccount_Info_AggregateArgs, never>
+    Partial<Subscription_RootAccount_Info_AggregateArgs>
   >;
   account_info_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['account_info']>,
@@ -15277,14 +15277,14 @@ export type Subscription_RootResolvers<
     'assets',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootAssetsArgs, never>
+    Partial<Subscription_RootAssetsArgs>
   >;
   assets_aggregate?: SubscriptionResolver<
     ResolversTypes['assets_aggregate'],
     'assets_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootAssets_AggregateArgs, never>
+    Partial<Subscription_RootAssets_AggregateArgs>
   >;
   assets_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['assets']>,
@@ -15298,14 +15298,14 @@ export type Subscription_RootResolvers<
     'categories',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootCategoriesArgs, never>
+    Partial<Subscription_RootCategoriesArgs>
   >;
   categories_aggregate?: SubscriptionResolver<
     ResolversTypes['categories_aggregate'],
     'categories_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootCategories_AggregateArgs, never>
+    Partial<Subscription_RootCategories_AggregateArgs>
   >;
   categories_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['categories']>,
@@ -15319,14 +15319,14 @@ export type Subscription_RootResolvers<
     'expenses',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootExpensesArgs, never>
+    Partial<Subscription_RootExpensesArgs>
   >;
   expenses_aggregate?: SubscriptionResolver<
     ResolversTypes['expenses_aggregate'],
     'expenses_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootExpenses_AggregateArgs, never>
+    Partial<Subscription_RootExpenses_AggregateArgs>
   >;
   expenses_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['expenses']>,
@@ -15340,14 +15340,14 @@ export type Subscription_RootResolvers<
     'labels',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootLabelsArgs, never>
+    Partial<Subscription_RootLabelsArgs>
   >;
   labels_aggregate?: SubscriptionResolver<
     ResolversTypes['labels_aggregate'],
     'labels_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootLabels_AggregateArgs, never>
+    Partial<Subscription_RootLabels_AggregateArgs>
   >;
   labels_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['labels']>,
@@ -15361,14 +15361,14 @@ export type Subscription_RootResolvers<
     'liabilities',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootLiabilitiesArgs, never>
+    Partial<Subscription_RootLiabilitiesArgs>
   >;
   liabilities_aggregate?: SubscriptionResolver<
     ResolversTypes['liabilities_aggregate'],
     'liabilities_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootLiabilities_AggregateArgs, never>
+    Partial<Subscription_RootLiabilities_AggregateArgs>
   >;
   liabilities_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['liabilities']>,
@@ -15382,14 +15382,14 @@ export type Subscription_RootResolvers<
     'notifications',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootNotificationsArgs, never>
+    Partial<Subscription_RootNotificationsArgs>
   >;
   notifications_aggregate?: SubscriptionResolver<
     ResolversTypes['notifications_aggregate'],
     'notifications_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootNotifications_AggregateArgs, never>
+    Partial<Subscription_RootNotifications_AggregateArgs>
   >;
   notifications_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['notifications']>,
@@ -15403,14 +15403,14 @@ export type Subscription_RootResolvers<
     'recurring_items',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootRecurring_ItemsArgs, never>
+    Partial<Subscription_RootRecurring_ItemsArgs>
   >;
   recurring_items_aggregate?: SubscriptionResolver<
     ResolversTypes['recurring_items_aggregate'],
     'recurring_items_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootRecurring_Items_AggregateArgs, never>
+    Partial<Subscription_RootRecurring_Items_AggregateArgs>
   >;
   recurring_items_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['recurring_items']>,
@@ -15424,14 +15424,14 @@ export type Subscription_RootResolvers<
     'recurring_transactions',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootRecurring_TransactionsArgs, never>
+    Partial<Subscription_RootRecurring_TransactionsArgs>
   >;
   recurring_transactions_aggregate?: SubscriptionResolver<
     ResolversTypes['recurring_transactions_aggregate'],
     'recurring_transactions_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootRecurring_Transactions_AggregateArgs, never>
+    Partial<Subscription_RootRecurring_Transactions_AggregateArgs>
   >;
   recurring_transactions_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['recurring_transactions']>,
@@ -15448,14 +15448,14 @@ export type Subscription_RootResolvers<
     'revenues',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootRevenuesArgs, never>
+    Partial<Subscription_RootRevenuesArgs>
   >;
   revenues_aggregate?: SubscriptionResolver<
     ResolversTypes['revenues_aggregate'],
     'revenues_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootRevenues_AggregateArgs, never>
+    Partial<Subscription_RootRevenues_AggregateArgs>
   >;
   revenues_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['revenues']>,
@@ -15469,14 +15469,14 @@ export type Subscription_RootResolvers<
     'transaction_accounts',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootTransaction_AccountsArgs, never>
+    Partial<Subscription_RootTransaction_AccountsArgs>
   >;
   transaction_accounts_aggregate?: SubscriptionResolver<
     ResolversTypes['transaction_accounts_aggregate'],
     'transaction_accounts_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootTransaction_Accounts_AggregateArgs, never>
+    Partial<Subscription_RootTransaction_Accounts_AggregateArgs>
   >;
   transaction_accounts_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['transaction_accounts']>,
@@ -15490,14 +15490,14 @@ export type Subscription_RootResolvers<
     'transaction_attachments',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootTransaction_AttachmentsArgs, never>
+    Partial<Subscription_RootTransaction_AttachmentsArgs>
   >;
   transaction_attachments_aggregate?: SubscriptionResolver<
     ResolversTypes['transaction_attachments_aggregate'],
     'transaction_attachments_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootTransaction_Attachments_AggregateArgs, never>
+    Partial<Subscription_RootTransaction_Attachments_AggregateArgs>
   >;
   transaction_attachments_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['transaction_attachments']>,
@@ -15514,14 +15514,14 @@ export type Subscription_RootResolvers<
     'transaction_labels',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootTransaction_LabelsArgs, never>
+    Partial<Subscription_RootTransaction_LabelsArgs>
   >;
   transaction_labels_aggregate?: SubscriptionResolver<
     ResolversTypes['transaction_labels_aggregate'],
     'transaction_labels_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootTransaction_Labels_AggregateArgs, never>
+    Partial<Subscription_RootTransaction_Labels_AggregateArgs>
   >;
   transaction_labels_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['transaction_labels']>,
@@ -15538,14 +15538,14 @@ export type Subscription_RootResolvers<
     'transactions',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootTransactionsArgs, never>
+    Partial<Subscription_RootTransactionsArgs>
   >;
   transactions_aggregate?: SubscriptionResolver<
     ResolversTypes['transactions_aggregate'],
     'transactions_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootTransactions_AggregateArgs, never>
+    Partial<Subscription_RootTransactions_AggregateArgs>
   >;
   transactions_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['transactions']>,
@@ -15559,14 +15559,14 @@ export type Subscription_RootResolvers<
     'user_settings',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootUser_SettingsArgs, never>
+    Partial<Subscription_RootUser_SettingsArgs>
   >;
   user_settings_aggregate?: SubscriptionResolver<
     ResolversTypes['user_settings_aggregate'],
     'user_settings_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootUser_Settings_AggregateArgs, never>
+    Partial<Subscription_RootUser_Settings_AggregateArgs>
   >;
   user_settings_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['user_settings']>,
@@ -15580,14 +15580,14 @@ export type Subscription_RootResolvers<
     'users',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootUsersArgs, never>
+    Partial<Subscription_RootUsersArgs>
   >;
   users_aggregate?: SubscriptionResolver<
     ResolversTypes['users_aggregate'],
     'users_aggregate',
     ParentType,
     ContextType,
-    RequireFields<Subscription_RootUsers_AggregateArgs, never>
+    Partial<Subscription_RootUsers_AggregateArgs>
   >;
   users_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['users']>,
@@ -15656,7 +15656,7 @@ export type Transaction_Accounts_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Transaction_Accounts_Aggregate_FieldsCountArgs, never>
+    Partial<Transaction_Accounts_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['transaction_accounts_max_fields']>,
@@ -15964,7 +15964,7 @@ export type Transaction_Attachments_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Transaction_Attachments_Aggregate_FieldsCountArgs, never>
+    Partial<Transaction_Attachments_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['transaction_attachments_max_fields']>,
@@ -16272,7 +16272,7 @@ export type Transaction_Labels_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Transaction_Labels_Aggregate_FieldsCountArgs, never>
+    Partial<Transaction_Labels_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['transaction_labels_max_fields']>,
@@ -16491,13 +16491,13 @@ export type TransactionsResolvers<
     Array<ResolversTypes['transaction_accounts']>,
     ParentType,
     ContextType,
-    RequireFields<TransactionsTransaction_AccountsArgs, never>
+    Partial<TransactionsTransaction_AccountsArgs>
   >;
   transaction_accounts_aggregate?: Resolver<
     ResolversTypes['transaction_accounts_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<TransactionsTransaction_Accounts_AggregateArgs, never>
+    Partial<TransactionsTransaction_Accounts_AggregateArgs>
   >;
   transaction_attachment?: Resolver<
     Maybe<ResolversTypes['transaction_attachments']>,
@@ -16509,13 +16509,13 @@ export type TransactionsResolvers<
     Array<ResolversTypes['transaction_labels']>,
     ParentType,
     ContextType,
-    RequireFields<TransactionsTransaction_LabelsArgs, never>
+    Partial<TransactionsTransaction_LabelsArgs>
   >;
   transaction_labels_aggregate?: Resolver<
     ResolversTypes['transaction_labels_aggregate'],
     ParentType,
     ContextType,
-    RequireFields<TransactionsTransaction_Labels_AggregateArgs, never>
+    Partial<TransactionsTransaction_Labels_AggregateArgs>
   >;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -16551,7 +16551,7 @@ export type Transactions_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Transactions_Aggregate_FieldsCountArgs, never>
+    Partial<Transactions_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['transactions_max_fields']>,
@@ -16830,7 +16830,7 @@ export type User_Settings_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<User_Settings_Aggregate_FieldsCountArgs, never>
+    Partial<User_Settings_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['user_settings_max_fields']>,
@@ -16918,7 +16918,7 @@ export type Users_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    RequireFields<Users_Aggregate_FieldsCountArgs, never>
+    Partial<Users_Aggregate_FieldsCountArgs>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['users_max_fields']>,
