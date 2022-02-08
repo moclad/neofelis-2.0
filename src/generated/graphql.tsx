@@ -11845,13 +11845,13 @@ export type Account_InfoResolvers<
     Array<ResolversTypes['transaction_accounts']>,
     ParentType,
     ContextType,
-    Partial<Account_InfoTransaction_AccountsArgs>
+    RequireFields<Account_InfoTransaction_AccountsArgs, never>
   >;
   transaction_accounts_aggregate?: Resolver<
     ResolversTypes['transaction_accounts_aggregate'],
     ParentType,
     ContextType,
-    Partial<Account_InfoTransaction_Accounts_AggregateArgs>
+    RequireFields<Account_InfoTransaction_Accounts_AggregateArgs, never>
   >;
   type?: Resolver<ResolversTypes['bpchar'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
@@ -14150,13 +14150,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['recurring_items']>,
     ParentType,
     ContextType,
-    Partial<Query_RootRecurring_ItemsArgs>
+    RequireFields<Query_RootRecurring_ItemsArgs, never>
   >;
   recurring_items_aggregate?: Resolver<
     ResolversTypes['recurring_items_aggregate'],
     ParentType,
     ContextType,
-    Partial<Query_RootRecurring_Items_AggregateArgs>
+    RequireFields<Query_RootRecurring_Items_AggregateArgs, never>
   >;
   recurring_items_by_pk?: Resolver<
     Maybe<ResolversTypes['recurring_items']>,
@@ -14168,13 +14168,13 @@ export type Query_RootResolvers<
     Array<ResolversTypes['recurring_transactions']>,
     ParentType,
     ContextType,
-    Partial<Query_RootRecurring_TransactionsArgs>
+    RequireFields<Query_RootRecurring_TransactionsArgs, never>
   >;
   recurring_transactions_aggregate?: Resolver<
     ResolversTypes['recurring_transactions_aggregate'],
     ParentType,
     ContextType,
-    Partial<Query_RootRecurring_Transactions_AggregateArgs>
+    RequireFields<Query_RootRecurring_Transactions_AggregateArgs, never>
   >;
   recurring_transactions_by_pk?: Resolver<
     Maybe<ResolversTypes['recurring_transactions']>,
@@ -14343,7 +14343,7 @@ export type Recurring_ItemsResolvers<
     ResolversTypes['jsonb'],
     ParentType,
     ContextType,
-    Partial<Recurring_ItemsCycle_ConfigurationArgs>
+    RequireFields<Recurring_ItemsCycle_ConfigurationArgs, never>
   >;
   cycle_type?: Resolver<ResolversTypes['bpchar'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -14399,7 +14399,7 @@ export type Recurring_Items_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    Partial<Recurring_Items_Aggregate_FieldsCountArgs>
+    RequireFields<Recurring_Items_Aggregate_FieldsCountArgs, never>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['recurring_items_max_fields']>,
@@ -14805,7 +14805,7 @@ export type Recurring_Transactions_Aggregate_FieldsResolvers<
     ResolversTypes['Int'],
     ParentType,
     ContextType,
-    Partial<Recurring_Transactions_Aggregate_FieldsCountArgs>
+    RequireFields<Recurring_Transactions_Aggregate_FieldsCountArgs, never>
   >;
   max?: Resolver<
     Maybe<ResolversTypes['recurring_transactions_max_fields']>,
@@ -15403,14 +15403,14 @@ export type Subscription_RootResolvers<
     'recurring_items',
     ParentType,
     ContextType,
-    Partial<Subscription_RootRecurring_ItemsArgs>
+    RequireFields<Subscription_RootRecurring_ItemsArgs, never>
   >;
   recurring_items_aggregate?: SubscriptionResolver<
     ResolversTypes['recurring_items_aggregate'],
     'recurring_items_aggregate',
     ParentType,
     ContextType,
-    Partial<Subscription_RootRecurring_Items_AggregateArgs>
+    RequireFields<Subscription_RootRecurring_Items_AggregateArgs, never>
   >;
   recurring_items_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['recurring_items']>,
@@ -15424,14 +15424,14 @@ export type Subscription_RootResolvers<
     'recurring_transactions',
     ParentType,
     ContextType,
-    Partial<Subscription_RootRecurring_TransactionsArgs>
+    RequireFields<Subscription_RootRecurring_TransactionsArgs, never>
   >;
   recurring_transactions_aggregate?: SubscriptionResolver<
     ResolversTypes['recurring_transactions_aggregate'],
     'recurring_transactions_aggregate',
     ParentType,
     ContextType,
-    Partial<Subscription_RootRecurring_Transactions_AggregateArgs>
+    RequireFields<Subscription_RootRecurring_Transactions_AggregateArgs, never>
   >;
   recurring_transactions_by_pk?: SubscriptionResolver<
     Maybe<ResolversTypes['recurring_transactions']>,
