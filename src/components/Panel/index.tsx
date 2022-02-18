@@ -111,6 +111,7 @@ export const PanelContent = ({
                 className="layout"
                 cols={{ lg: 20, md: 16, sm: 12, xs: 8, xxs: 4 }}
                 rowHeight={20}
+                autoSize={true}
                 //layouts={this.state.layouts}
                 onLayoutChange={(layout, layouts) => {
                   // this.onLayoutChange(layout, layouts)
@@ -119,12 +120,12 @@ export const PanelContent = ({
                 }}
               >
                 <PanelStat
-                  key={'3'}
+                  key="3"
                   label="DB"
                   value={1555.9}
                   arrowType="decrease"
                   helperText="Test"
-                  data-grid={{
+                  dataGrid={{
                     w: 4,
                     h: 6,
                     x: 0,

@@ -19,7 +19,7 @@ export const PageDashboard = () => {
   };
 
   return (
-    <Panel>
+    <Panel allowConfiguration={false}>
       <PanelContent
         loading={false}
         title={t('dashboard:title')}
@@ -27,6 +27,7 @@ export const PageDashboard = () => {
           <Button
             key="createExpense"
             leftIcon={<FiPlus />}
+            size="sm"
             variant="@primary"
             onClick={() => {
               setTransactionType(TransactionType.Expense);
@@ -38,7 +39,7 @@ export const PageDashboard = () => {
           <Button
             key="createIncome"
             leftIcon={<FiPlus />}
-            variant="@secondary"
+            size="sm"
             onClick={() => {
               setTransactionType(TransactionType.Income);
               onOpen();
@@ -49,7 +50,7 @@ export const PageDashboard = () => {
           <Button
             key="createTransfer"
             leftIcon={<FiPlus />}
-            variant="@secondary"
+            size="sm"
             onClick={() => {
               setTransactionType(TransactionType.Transfer);
               onOpen();

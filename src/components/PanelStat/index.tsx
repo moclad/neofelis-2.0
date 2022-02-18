@@ -19,6 +19,7 @@ interface PanelStatProps {
   value?: number;
   arrowType?: 'increase' | 'decrease';
   helperText?: string;
+  dataGrid: any;
 }
 
 export const PanelStat: ChakraComponent<'div', PanelStatProps> = ({
@@ -28,15 +29,18 @@ export const PanelStat: ChakraComponent<'div', PanelStatProps> = ({
   value = null,
   arrowType = 'increase',
   helperText = null,
+  dataGrid,
 }: PanelStatProps) => {
   const { colorModeValue } = useDarkMode();
 
   return (
     <Stat
       key={key}
+      className={'widget'}
       bg={colorModeValue('white', 'gray.700')}
       shadow="lg"
       rounded="md"
+      data-grid={dataGrid}
     >
       <StatLabel>{label}</StatLabel>
       <StatNumber>{value}</StatNumber>
