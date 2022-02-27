@@ -27,7 +27,6 @@ export const PageDashboard = () => {
           <Button
             key="createExpense"
             leftIcon={<FiPlus />}
-            size="sm"
             variant="@primary"
             onClick={() => {
               setTransactionType(TransactionType.Expense);
@@ -39,7 +38,6 @@ export const PageDashboard = () => {
           <Button
             key="createIncome"
             leftIcon={<FiPlus />}
-            size="sm"
             onClick={() => {
               setTransactionType(TransactionType.Income);
               onOpen();
@@ -50,7 +48,6 @@ export const PageDashboard = () => {
           <Button
             key="createTransfer"
             leftIcon={<FiPlus />}
-            size="sm"
             onClick={() => {
               setTransactionType(TransactionType.Transfer);
               onOpen();

@@ -1,9 +1,8 @@
+import dynamic from 'next/dynamic';
 import React, { useEffect, useState } from 'react';
 
-import { Flex, Progress } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
-
 import { Viewport } from '@/components';
+import { Flex, Progress } from '@chakra-ui/react';
 
 const Loading = () => (
   <Viewport>
@@ -18,12 +17,13 @@ const Loading = () => (
     </Flex>
   </Viewport>
 );
-
-const AppComponent = dynamic(() => import('@/app/App').then((mod) => mod.App), {
-  ssr: false,
-  loading: () => <Loading />,
-});
-
+const AppComponent = dynamic<React.ReactNode>(
+  () => import('@/app/App').then((mod) => mod.App),
+  {
+    ssr: false,
+    loading: () => <Loading />,
+  }
+);
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
