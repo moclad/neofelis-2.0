@@ -2,7 +2,6 @@ import { useCombobox, useMultipleSelection, UseMultipleSelectionProps } from 'do
 import { matchSorter } from 'match-sorter';
 import * as React from 'react';
 import Highlighter from 'react-highlight-words';
-import { useTranslation } from 'react-i18next';
 import { useDeepCompareEffect } from 'react-use';
 
 import { ArrowDownIcon, CheckCircleIcon, IconProps } from '@chakra-ui/icons';

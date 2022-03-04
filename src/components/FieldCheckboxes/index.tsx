@@ -230,7 +230,7 @@ export const FieldCheckboxes: React.FC<FieldCheckboxesProps> = (props) => {
   return (
     <FormGroup {...formGroupProps}>
       <FieldCheckboxesContext.Provider value={contextValue as TODO}>
-        {!!children ? (
+        {!children ? (
           children
         ) : (
           <Wrap spacing="4">

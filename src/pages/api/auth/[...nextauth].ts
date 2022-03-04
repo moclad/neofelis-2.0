@@ -69,7 +69,7 @@ export default NextAuth({
 
       return encodedToken;
     },
-    async decode({ secret, token, maxAge }) {
+    async decode({ token }) {
       const decodedToken = jwt.verify(token, jwtSecret.key, {
         algorithms: jwtSecret.type,
       });
@@ -80,7 +80,7 @@ export default NextAuth({
   debug: true,
 
   callbacks: {
-    async session({ session, token, user }) {
+    async session({ session, user }) {
       const encodedToken = jwt.sign(JSON.stringify(user), jwtSecret.key, {
         algorithm: jwtSecret.type,
       });
@@ -90,7 +90,7 @@ export default NextAuth({
 
       return Promise.resolve(session);
     },
-    async jwt({ token, user, account, profile, isNewUser }) {
+    async jwt({ token, user }) {
       const isSignIn = user ? true : false;
 
       if (isSignIn) {
