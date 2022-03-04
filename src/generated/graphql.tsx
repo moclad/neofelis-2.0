@@ -249,11 +249,11 @@ export type Account_Info_Mutation_Response = {
 /** input type for inserting object relation for remote table "account_info" */
 export type Account_Info_Obj_Rel_Insert_Input = {
   data: Account_Info_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Account_Info_On_Conflict>;
 };
 
-/** on conflict condition type for table "account_info" */
+/** on_conflict condition type for table "account_info" */
 export type Account_Info_On_Conflict = {
   constraint: Account_Info_Constraint;
   update_columns?: Array<Account_Info_Update_Column>;
@@ -489,11 +489,11 @@ export type Assets_Mutation_Response = {
 /** input type for inserting object relation for remote table "assets" */
 export type Assets_Obj_Rel_Insert_Input = {
   data: Assets_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Assets_On_Conflict>;
 };
 
-/** on conflict condition type for table "assets" */
+/** on_conflict condition type for table "assets" */
 export type Assets_On_Conflict = {
   constraint: Assets_Constraint;
   update_columns?: Array<Assets_Update_Column>;
@@ -802,11 +802,11 @@ export type Categories_Mutation_Response = {
 /** input type for inserting object relation for remote table "categories" */
 export type Categories_Obj_Rel_Insert_Input = {
   data: Categories_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Categories_On_Conflict>;
 };
 
-/** on conflict condition type for table "categories" */
+/** on_conflict condition type for table "categories" */
 export type Categories_On_Conflict = {
   constraint: Categories_Constraint;
   update_columns?: Array<Categories_Update_Column>;
@@ -1031,11 +1031,11 @@ export type Expenses_Mutation_Response = {
 /** input type for inserting object relation for remote table "expenses" */
 export type Expenses_Obj_Rel_Insert_Input = {
   data: Expenses_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Expenses_On_Conflict>;
 };
 
-/** on conflict condition type for table "expenses" */
+/** on_conflict condition type for table "expenses" */
 export type Expenses_On_Conflict = {
   constraint: Expenses_Constraint;
   update_columns?: Array<Expenses_Update_Column>;
@@ -1300,11 +1300,11 @@ export type Labels_Mutation_Response = {
 /** input type for inserting object relation for remote table "labels" */
 export type Labels_Obj_Rel_Insert_Input = {
   data: Labels_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Labels_On_Conflict>;
 };
 
-/** on conflict condition type for table "labels" */
+/** on_conflict condition type for table "labels" */
 export type Labels_On_Conflict = {
   constraint: Labels_Constraint;
   update_columns?: Array<Labels_Update_Column>;
@@ -1510,11 +1510,11 @@ export type Liabilities_Mutation_Response = {
 /** input type for inserting object relation for remote table "liabilities" */
 export type Liabilities_Obj_Rel_Insert_Input = {
   data: Liabilities_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Liabilities_On_Conflict>;
 };
 
-/** on conflict condition type for table "liabilities" */
+/** on_conflict condition type for table "liabilities" */
 export type Liabilities_On_Conflict = {
   constraint: Liabilities_Constraint;
   update_columns?: Array<Liabilities_Update_Column>;
@@ -2511,7 +2511,7 @@ export type Notifications_Mutation_Response = {
   returning: Array<Notifications>;
 };
 
-/** on conflict condition type for table "notifications" */
+/** on_conflict condition type for table "notifications" */
 export type Notifications_On_Conflict = {
   constraint: Notifications_Constraint;
   update_columns?: Array<Notifications_Update_Column>;
@@ -3275,7 +3275,7 @@ export type Recurring_Items_Mutation_Response = {
   returning: Array<Recurring_Items>;
 };
 
-/** on conflict condition type for table "recurring_items" */
+/** on_conflict condition type for table "recurring_items" */
 export type Recurring_Items_On_Conflict = {
   constraint: Recurring_Items_Constraint;
   update_columns?: Array<Recurring_Items_Update_Column>;
@@ -3573,11 +3573,11 @@ export type Recurring_Transactions_Mutation_Response = {
 /** input type for inserting object relation for remote table "recurring_transactions" */
 export type Recurring_Transactions_Obj_Rel_Insert_Input = {
   data: Recurring_Transactions_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Recurring_Transactions_On_Conflict>;
 };
 
-/** on conflict condition type for table "recurring_transactions" */
+/** on_conflict condition type for table "recurring_transactions" */
 export type Recurring_Transactions_On_Conflict = {
   constraint: Recurring_Transactions_Constraint;
   update_columns?: Array<Recurring_Transactions_Update_Column>;
@@ -3781,11 +3781,11 @@ export type Revenues_Mutation_Response = {
 /** input type for inserting object relation for remote table "revenues" */
 export type Revenues_Obj_Rel_Insert_Input = {
   data: Revenues_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Revenues_On_Conflict>;
 };
 
-/** on conflict condition type for table "revenues" */
+/** on_conflict condition type for table "revenues" */
 export type Revenues_On_Conflict = {
   constraint: Revenues_Constraint;
   update_columns?: Array<Revenues_Update_Column>;
@@ -4390,7 +4390,7 @@ export type Transaction_Accounts_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "transaction_accounts" */
 export type Transaction_Accounts_Arr_Rel_Insert_Input = {
   data: Array<Transaction_Accounts_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Transaction_Accounts_On_Conflict>;
 };
 
@@ -4503,7 +4503,7 @@ export type Transaction_Accounts_Mutation_Response = {
   returning: Array<Transaction_Accounts>;
 };
 
-/** on conflict condition type for table "transaction_accounts" */
+/** on_conflict condition type for table "transaction_accounts" */
 export type Transaction_Accounts_On_Conflict = {
   constraint: Transaction_Accounts_Constraint;
   update_columns?: Array<Transaction_Accounts_Update_Column>;
@@ -4807,11 +4807,11 @@ export type Transaction_Attachments_Mutation_Response = {
 /** input type for inserting object relation for remote table "transaction_attachments" */
 export type Transaction_Attachments_Obj_Rel_Insert_Input = {
   data: Transaction_Attachments_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Transaction_Attachments_On_Conflict>;
 };
 
-/** on conflict condition type for table "transaction_attachments" */
+/** on_conflict condition type for table "transaction_attachments" */
 export type Transaction_Attachments_On_Conflict = {
   constraint: Transaction_Attachments_Constraint;
   update_columns?: Array<Transaction_Attachments_Update_Column>;
@@ -4978,7 +4978,7 @@ export type Transaction_Labels_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "transaction_labels" */
 export type Transaction_Labels_Arr_Rel_Insert_Input = {
   data: Array<Transaction_Labels_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Transaction_Labels_On_Conflict>;
 };
 
@@ -5061,7 +5061,7 @@ export type Transaction_Labels_Mutation_Response = {
   returning: Array<Transaction_Labels>;
 };
 
-/** on conflict condition type for table "transaction_labels" */
+/** on_conflict condition type for table "transaction_labels" */
 export type Transaction_Labels_On_Conflict = {
   constraint: Transaction_Labels_Constraint;
   update_columns?: Array<Transaction_Labels_Update_Column>;
@@ -5302,7 +5302,7 @@ export type Transactions_Aggregate_Order_By = {
 /** input type for inserting array relation for remote table "transactions" */
 export type Transactions_Arr_Rel_Insert_Input = {
   data: Array<Transactions_Insert_Input>;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Transactions_On_Conflict>;
 };
 
@@ -5425,11 +5425,11 @@ export type Transactions_Mutation_Response = {
 /** input type for inserting object relation for remote table "transactions" */
 export type Transactions_Obj_Rel_Insert_Input = {
   data: Transactions_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Transactions_On_Conflict>;
 };
 
-/** on conflict condition type for table "transactions" */
+/** on_conflict condition type for table "transactions" */
 export type Transactions_On_Conflict = {
   constraint: Transactions_Constraint;
   update_columns?: Array<Transactions_Update_Column>;
@@ -5690,11 +5690,11 @@ export type User_Settings_Mutation_Response = {
 /** input type for inserting object relation for remote table "user_settings" */
 export type User_Settings_Obj_Rel_Insert_Input = {
   data: User_Settings_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<User_Settings_On_Conflict>;
 };
 
-/** on conflict condition type for table "user_settings" */
+/** on_conflict condition type for table "user_settings" */
 export type User_Settings_On_Conflict = {
   constraint: User_Settings_Constraint;
   update_columns?: Array<User_Settings_Update_Column>;
@@ -5837,11 +5837,11 @@ export type Users_Mutation_Response = {
 /** input type for inserting object relation for remote table "users" */
 export type Users_Obj_Rel_Insert_Input = {
   data: Users_Insert_Input;
-  /** on conflict condition */
+  /** upsert condition */
   on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
-/** on conflict condition type for table "users" */
+/** on_conflict condition type for table "users" */
 export type Users_On_Conflict = {
   constraint: Users_Constraint;
   update_columns?: Array<Users_Update_Column>;

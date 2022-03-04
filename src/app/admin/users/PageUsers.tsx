@@ -1,43 +1,11 @@
 import React from 'react';
-
-import {
-  Code,
-  Badge,
-  Wrap,
-  WrapItem,
-  HStack,
-  Avatar,
-  Box,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuDivider,
-  MenuItem,
-  Heading,
-  Portal,
-  Button,
-  IconButton,
-  Text,
-  LinkBox,
-  LinkOverlay,
-} from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import {
-  FiEdit,
-  FiCheckCircle,
-  FiXCircle,
-  FiTrash2,
-  FiPlus,
-} from 'react-icons/fi';
+import { FiCheckCircle, FiEdit, FiPlus, FiTrash2, FiXCircle } from 'react-icons/fi';
 import { useQueryClient } from 'react-query';
 import { Link, useRouteMatch } from 'react-router-dom';
 
+import { useUserList, useUserRemove, useUserUpdate } from '@/app/admin/users/users.service';
 import { UserStatus } from '@/app/admin/users/UserStatus';
-import {
-  useUserList,
-  useUserRemove,
-  useUserUpdate,
-} from '@/app/admin/users/users.service';
 import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
 import {
@@ -45,21 +13,42 @@ import {
   ConfirmMenuItem,
   DataList,
   DataListCell,
-  DataListHeader,
   DataListFooter,
+  DataListHeader,
   DataListRow,
   DateAgo,
   Icon,
-  useToastError,
-  useToastSuccess,
-  PaginationButtonFirstPage,
   Pagination,
+  PaginationButtonFirstPage,
   PaginationButtonLastPage,
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
   PaginationInfo,
+  useToastError,
+  useToastSuccess
 } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Code,
+  Heading,
+  HStack,
+  IconButton,
+  LinkBox,
+  LinkOverlay,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Portal,
+  Text,
+  Wrap,
+  WrapItem
+} from '@chakra-ui/react';
 
 import { AdminNav } from '../AdminNav';
 
@@ -86,7 +75,7 @@ const UserActions = ({ user, ...rest }) => {
         });
       }
     },
-    onError: (_, __, { activated, login }) => {
+    onError: (_, { activated, login }) => {
       if (activated) {
         toastError({
           title: t('users:feedbacks.activateUserError.title'),

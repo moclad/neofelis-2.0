@@ -2632,7 +2632,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "account_info_on_conflict",
@@ -2650,7 +2650,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "account_info_on_conflict",
-        "description": "on conflict condition type for table \"account_info\"",
+        "description": "on_conflict condition type for table \"account_info\"",
         "fields": null,
         "inputFields": [
           {
@@ -4234,7 +4234,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "assets_on_conflict",
@@ -4252,7 +4252,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "assets_on_conflict",
-        "description": "on conflict condition type for table \"assets\"",
+        "description": "on_conflict condition type for table \"assets\"",
         "fields": null,
         "inputFields": [
           {
@@ -6360,7 +6360,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "categories_on_conflict",
@@ -6378,7 +6378,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "categories_on_conflict",
-        "description": "on conflict condition type for table \"categories\"",
+        "description": "on_conflict condition type for table \"categories\"",
         "fields": null,
         "inputFields": [
           {
@@ -7815,7 +7815,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "expenses_on_conflict",
@@ -7833,7 +7833,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "expenses_on_conflict",
-        "description": "on conflict condition type for table \"expenses\"",
+        "description": "on_conflict condition type for table \"expenses\"",
         "fields": null,
         "inputFields": [
           {
@@ -9629,7 +9629,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "labels_on_conflict",
@@ -9647,7 +9647,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "labels_on_conflict",
-        "description": "on conflict condition type for table \"labels\"",
+        "description": "on_conflict condition type for table \"labels\"",
         "fields": null,
         "inputFields": [
           {
@@ -10903,7 +10903,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "liabilities_on_conflict",
@@ -10921,7 +10921,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "liabilities_on_conflict",
-        "description": "on conflict condition type for table \"liabilities\"",
+        "description": "on_conflict condition type for table \"liabilities\"",
         "fields": null,
         "inputFields": [
           {
@@ -12416,7 +12416,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "account_info_on_conflict",
@@ -12457,7 +12457,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "account_info_on_conflict",
@@ -12506,7 +12506,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "assets_on_conflict",
@@ -12547,7 +12547,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "assets_on_conflict",
@@ -12596,7 +12596,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "categories_on_conflict",
@@ -12637,7 +12637,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "categories_on_conflict",
@@ -12686,7 +12686,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "expenses_on_conflict",
@@ -12727,7 +12727,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "expenses_on_conflict",
@@ -12776,7 +12776,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "labels_on_conflict",
@@ -12817,7 +12817,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "labels_on_conflict",
@@ -12866,7 +12866,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "liabilities_on_conflict",
@@ -12907,7 +12907,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "liabilities_on_conflict",
@@ -12956,7 +12956,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "notifications_on_conflict",
@@ -12997,7 +12997,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "notifications_on_conflict",
@@ -13046,7 +13046,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "recurring_items_on_conflict",
@@ -13087,7 +13087,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "recurring_items_on_conflict",
@@ -13136,7 +13136,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "recurring_transactions_on_conflict",
@@ -13177,7 +13177,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "recurring_transactions_on_conflict",
@@ -13226,7 +13226,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "revenues_on_conflict",
@@ -13267,7 +13267,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "revenues_on_conflict",
@@ -13316,7 +13316,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "transaction_accounts_on_conflict",
@@ -13357,7 +13357,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "transaction_accounts_on_conflict",
@@ -13406,7 +13406,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "transaction_attachments_on_conflict",
@@ -13447,7 +13447,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "transaction_attachments_on_conflict",
@@ -13496,7 +13496,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "transaction_labels_on_conflict",
@@ -13537,7 +13537,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "transaction_labels_on_conflict",
@@ -13586,7 +13586,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "transactions_on_conflict",
@@ -13627,7 +13627,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "transactions_on_conflict",
@@ -13676,7 +13676,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "user_settings_on_conflict",
@@ -13717,7 +13717,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "user_settings_on_conflict",
@@ -13766,7 +13766,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "users_on_conflict",
@@ -13807,7 +13807,7 @@
               },
               {
                 "name": "on_conflict",
-                "description": "on conflict condition",
+                "description": "upsert condition",
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "users_on_conflict",
@@ -16471,7 +16471,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "notifications_on_conflict",
-        "description": "on conflict condition type for table \"notifications\"",
+        "description": "on_conflict condition type for table \"notifications\"",
         "fields": null,
         "inputFields": [
           {
@@ -22546,7 +22546,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "recurring_items_on_conflict",
-        "description": "on conflict condition type for table \"recurring_items\"",
+        "description": "on_conflict condition type for table \"recurring_items\"",
         "fields": null,
         "inputFields": [
           {
@@ -24469,7 +24469,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "recurring_transactions_on_conflict",
@@ -24487,7 +24487,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "recurring_transactions_on_conflict",
-        "description": "on conflict condition type for table \"recurring_transactions\"",
+        "description": "on_conflict condition type for table \"recurring_transactions\"",
         "fields": null,
         "inputFields": [
           {
@@ -25799,7 +25799,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "revenues_on_conflict",
@@ -25817,7 +25817,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "revenues_on_conflict",
-        "description": "on conflict condition type for table \"revenues\"",
+        "description": "on_conflict condition type for table \"revenues\"",
         "fields": null,
         "inputFields": [
           {
@@ -30650,7 +30650,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "transaction_accounts_on_conflict",
@@ -31511,7 +31511,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "transaction_accounts_on_conflict",
-        "description": "on conflict condition type for table \"transaction_accounts\"",
+        "description": "on_conflict condition type for table \"transaction_accounts\"",
         "fields": null,
         "inputFields": [
           {
@@ -33576,7 +33576,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "transaction_attachments_on_conflict",
@@ -33594,7 +33594,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "transaction_attachments_on_conflict",
-        "description": "on conflict condition type for table \"transaction_attachments\"",
+        "description": "on_conflict condition type for table \"transaction_attachments\"",
         "fields": null,
         "inputFields": [
           {
@@ -34655,7 +34655,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "transaction_labels_on_conflict",
@@ -35156,7 +35156,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "transaction_labels_on_conflict",
-        "description": "on conflict condition type for table \"transaction_labels\"",
+        "description": "on_conflict condition type for table \"transaction_labels\"",
         "fields": null,
         "inputFields": [
           {
@@ -36818,7 +36818,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "transactions_on_conflict",
@@ -37784,7 +37784,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "transactions_on_conflict",
@@ -37802,7 +37802,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "transactions_on_conflict",
-        "description": "on conflict condition type for table \"transactions\"",
+        "description": "on_conflict condition type for table \"transactions\"",
         "fields": null,
         "inputFields": [
           {
@@ -39429,7 +39429,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "user_settings_on_conflict",
@@ -39447,7 +39447,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "user_settings_on_conflict",
-        "description": "on conflict condition type for table \"user_settings\"",
+        "description": "on_conflict condition type for table \"user_settings\"",
         "fields": null,
         "inputFields": [
           {
@@ -40374,7 +40374,7 @@
           },
           {
             "name": "on_conflict",
-            "description": "on conflict condition",
+            "description": "upsert condition",
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "users_on_conflict",
@@ -40392,7 +40392,7 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "users_on_conflict",
-        "description": "on conflict condition type for table \"users\"",
+        "description": "on_conflict condition type for table \"users\"",
         "fields": null,
         "inputFields": [
           {
