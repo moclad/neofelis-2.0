@@ -17,6 +17,7 @@ export * from './FieldSelect';
 export * from './FieldTextarea';
 export * from './FormGroup';
 export * from './Panel';
+export * from './Nav';
 export * from './Icons';
 export * from './InputCurrency';
 export * from './Logo';

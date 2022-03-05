@@ -18,7 +18,7 @@ type DataListColumns = Record<string, DataListCellProps>;
 type DataListContextValue = {
   setColumns: React.Dispatch<React.SetStateAction<DataListColumns>>;
   columns: DataListColumns;
-  isHover;
+  isHover: boolean;
 };
 type DataListHeaderContextValue = boolean;
 

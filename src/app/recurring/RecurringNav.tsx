@@ -8,14 +8,14 @@ import { Nav, NavGroup, NavItem } from '@/components';
 export const RecurringNav = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  const isActive = (to) => pathname.startsWith(to);
+  const isActive = (to: string) => pathname.startsWith(to);
   return (
     <Nav>
       <NavGroup title={t('recurring:nav.recurring')}>
         <NavItem
           as={Link}
-          to="/recurring/transactions"
-          isActive={isActive('/recurring/transactions')}
+          to="/recurring"
+          isActive={isActive('/recurring')}
           icon={RiBankLine}
         >
           {t('recurring:nav.transactions')}

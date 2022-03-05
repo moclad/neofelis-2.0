@@ -8,7 +8,7 @@ import { Nav, NavGroup, NavItem } from '@/components';
 export const AccountsNav = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  const isActive = (to) => pathname.startsWith(to);
+  const isActive = (to: string) => pathname.startsWith(to);
   return (
     <Nav>
       <NavGroup title={t('accounts:nav.title')}>

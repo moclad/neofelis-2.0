@@ -21,6 +21,14 @@ export default NextAuth({
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      profile(profile) {
+        return {
+          id: profile.id.toString(),
+          name: profile.name || profile.login,
+          email: profile.email,
+          image: profile.avatar_url,
+        };
+      },
     }),
   ],
   secret: process.env.SECRET,
@@ -48,19 +56,19 @@ export default NextAuth({
     maxAge: 60 * 60 * 24 * 30,
     async encode({ token }) {
       const tokenContents = {
-        id: token.id,
-        name: token.name,
-        email: token.email,
-        picture: token.picture,
+        id: token?.id,
+        name: token?.name,
+        email: token?.email,
+        picture: token?.picture,
         'https://hasura.io/jwt/claims': {
           'x-hasura-allowed-roles': ['admin', 'user'],
           'x-hasura-default-role': 'user',
           'x-hasura-role': 'user',
-          'x-hasura-user-id': token.id,
+          'x-hasura-user-id': token?.id,
         },
         iat: Date.now() / 1000,
         exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
-        sub: token.id,
+        sub: token?.id,
       };
 
       const encodedToken = jwt.sign(tokenContents, jwtSecret.key, {
@@ -94,7 +102,7 @@ export default NextAuth({
       const isSignIn = user ? true : false;
 
       if (isSignIn) {
-        token.id = user.id;
+        token.id = user?.id;
       }
 
       return Promise.resolve(token);
