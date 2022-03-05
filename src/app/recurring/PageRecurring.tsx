@@ -154,32 +154,22 @@ export const PageRecurring = () => {
       <Page nav={<RecurringNav />}>
         <PageContent
           loading={loading || deleteFetching || insertLoading || updateLoading}
-          title={t('accounts:assets.title')}
+          title={t('recurring:recurring.title')}
           actions={[
             <Button
-              key="createAsset"
+              key="createRecurring"
               leftIcon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
-              {t('accounts:assets.actions.create')}
+              {t('recurring:recurring.actions.create')}
             </Button>,
           ]}
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
               <DataListCell colName="name" colWidth="1.5">
-                {t('accounts:assets.header.name')}
-              </DataListCell>
-              <DataListCell colName="balance" colWidth="0.5">
-                {t('accounts:assets.header.currentBalance')}
-              </DataListCell>
-              <DataListCell
-                colName="status"
-                colWidth="0.5"
-                isVisible={{ base: false, md: true }}
-              >
-                {t('accounts:assets.header.status')}
+                {t('recurring:recurring.header.title')}
               </DataListCell>
               <DataListCell
                 colName="actions"
@@ -189,7 +179,7 @@ export const PageRecurring = () => {
             </DataListHeader>
             {data &&
               data.assets.map((item, index) => (
-                <DataListRow as={LinkBox} key={index} isDisabled={!item.active}>
+                <DataListRow as={LinkBox} key={index}>
                   <DataListCell colName="name">
                     <HStack maxW="100%">
                       <Avatar size="sm" name={item.name} mx="2" />
@@ -212,39 +202,9 @@ export const PageRecurring = () => {
                       </Box>
                     </HStack>
                   </DataListCell>
-                  <DataListCell colName="balance">
-                    <TextCurrency value={0} locale="de" currency="EUR" />
-                  </DataListCell>
-                  <DataListCell colName="status">
-                    <HStack maxW="100%">
-                      <Badge
-                        size="sm"
-                        colorScheme={item.active ? 'success' : 'gray'}
-                      >
-                        {item.active
-                          ? t('accounts:assets.data.active')
-                          : t('accounts:assets.data.inactive')}
-                      </Badge>
-
-                      {item.default ? (
-                        <Badge
-                          size="sm"
-                          colorScheme="green"
-                          color={colorModeValue('brand.500', 'brand.500')}
-                        >
-                          {t('accounts:assets.data.defaultAsset')}
-                        </Badge>
-                      ) : (
-                        <></>
-                      )}
-                    </HStack>
-                  </DataListCell>
                   <DataListCell colName="actions">
                     <Menu isLazy>
-                      <MenuButton
-                        as={ActionsButton}
-                        isDisabled={!item.active}
-                      />
+                      <MenuButton as={ActionsButton} />
                       <Portal>
                         <MenuList>
                           <MenuItem
@@ -301,8 +261,8 @@ export const PageRecurring = () => {
       <ModalDialog
         title={
           isEditing
-            ? t('accounts:assets.actions.edit')
-            : t('accounts:assets.actions.create')
+            ? t('recurring:recurring.actions.edit')
+            : t('recurring:recurring.actions.create')
         }
         isOpen={isOpen || isEditing}
         onCancel={() => {
@@ -316,23 +276,23 @@ export const PageRecurring = () => {
       >
         <FieldInput
           name="name"
-          label={t('accounts:assets.data.name')}
-          required={t('accounts:assets.data.nameRequired') as string}
+          label={t('recurring:recurring.data.name')}
+          required={t('recurring:recurring.data.nameRequired') as string}
         />
         <FieldInput
           name="account_no"
-          label={t('accounts:assets.data.accountNo')}
+          label={t('recurring:recurring.data.accountNo')}
         />
         <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
           <FieldCurrency
             name="balance"
-            label={t('accounts:assets.data.balance')}
+            label={t('recurring:recurring.data.balance')}
             placeholder={0}
             currency="EUR"
           />
           <FieldDayPicker
             name="balance_date"
-            label={t('accounts:assets.data.balanceDate')}
+            label={t('recurring:recurring.data.balanceDate')}
           />
         </Stack>
       </ModalDialog>
