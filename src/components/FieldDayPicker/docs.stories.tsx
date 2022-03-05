@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Button, Stack } from '@chakra-ui/react';
 import { Formiz } from '@formiz/core';

@@ -1,21 +1,51 @@
-import Axios from 'axios';
+import Axios, { AxiosError } from 'axios';
 import {
   useMutation,
   UseMutationOptions,
   useQuery,
   useQueryClient,
-  UseQueryOptions,
+  UseQueryOptions
 } from 'react-query';
 
 import { User, UserList } from '@/app/admin/users/users.types';
 import { DEFAULT_LANGUAGE_KEY } from '@/constants/i18n';
 
+import { TODO } from '../../../utils/types';
+
+type UserMutateError = {
+  title: string;
+  errorKey: string;
+};
+
+namespace UsersQueryKeys {
+  export namespace all {
+    export const keys = () => [] as const;
+    export type type = ReturnType<typeof keys>;
+  }
+  export namespace users {
+    export const keys = (page: number, size: number) =>
+      [...all.keys(), 'users', { page, size }] as const;
+    export type type = ReturnType<typeof keys>;
+  }
+
+  export namespace user {
+    export const keys = (login: string | undefined) =>
+      [...all.keys(), 'users', login] as const;
+    export type type = ReturnType<typeof keys>;
+  }
+}
+
 export const useUserList = (
   { page = 0, size = 10 } = {},
-  config: UseQueryOptions<UserList> = {}
+  config: UseQueryOptions<
+    UserList,
+    AxiosError,
+    UserList,
+    UsersQueryKeys.users.type
+  > = {}
 ) => {
   const result = useQuery(
-    ['users', { page, size }],
+    UsersQueryKeys.users.keys(page, size),
     (): Promise<UserList> =>
       Axios.get('/users', { params: { page, size, sort: 'id,desc' } }),
     {
@@ -25,7 +55,7 @@ export const useUserList = (
   );
 
   const { content: users, totalItems } = result.data || {};
-  const totalPages = Math.ceil(totalItems / size);
+  const totalPages = Math.ceil((totalItems ?? 0) / size);
   const hasMore = page + 1 < totalPages;
   const isLoadingPage = result.isFetching;
 
@@ -40,13 +70,14 @@ export const useUserList = (
 };
 
 export const useUser = (
-  userLogin: string,
-  config: UseQueryOptions<User> = {}
+  userLogin?: string,
+  config: UseQueryOptions<User, AxiosError, User, UsersQueryKeys.user.type> = {}
 ) => {
   const result = useQuery(
-    ['user', userLogin],
+    UsersQueryKeys.user.keys(userLogin),
     (): Promise<User> => Axios.get(`/users/${userLogin}`),
     {
+      enabled: !!userLogin,
       ...config,
     }
   );
@@ -58,7 +89,7 @@ export const useUser = (
 };
 
 export const useUserUpdate = (
-  config: UseMutationOptions<User, unknown, User> = {}
+  config: UseMutationOptions<User, AxiosError<UserMutateError>, User> = {}
 ) => {
   const queryClient = useQueryClient();
   return useMutation((payload) => Axios.put('/users', payload), {
@@ -69,11 +100,11 @@ export const useUserUpdate = (
         .getQueryCache()
         .findAll('users')
         .forEach(({ queryKey }) => {
-          queryClient.setQueryData(queryKey, (cachedData: UserList) => {
+          queryClient.setQueryData<UserList>(queryKey, (cachedData: TODO) => {
             if (!cachedData) return;
             return {
               ...cachedData,
-              content: (cachedData.content || []).map((user) =>
+              content: (cachedData.content || []).map((user: TODO) =>
                 user.id === data.id ? data : user
               ),
             };
@@ -91,7 +122,7 @@ export const useUserUpdate = (
 export const useUserCreate = (
   config: UseMutationOptions<
     User,
-    unknown,
+    AxiosError<UserMutateError>,
     Pick<
       User,
       'login' | 'email' | 'firstName' | 'lastName' | 'langKey' | 'authorities'

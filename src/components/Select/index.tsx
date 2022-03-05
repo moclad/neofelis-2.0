@@ -105,7 +105,7 @@ const SelectInner = <
     return ReactSelect;
   })();
 
-  const debounceTimeout = useRef<any>();
+  const debounceTimeout = useRef<ReturnType<typeof setTimeout>>();
 
   const debounce = (func: () => unknown, delay: number) => {
     clearTimeout(debounceTimeout.current);

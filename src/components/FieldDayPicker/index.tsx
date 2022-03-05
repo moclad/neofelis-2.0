@@ -24,8 +24,7 @@ export const FieldDayPicker = (props: FieldDayPickerProps) => {
     debounce: 0,
     ...fieldProps,
   });
-  const { children, label, type, placeholder, helper, size, ...rest } =
-    otherProps;
+  const { children, label, placeholder, helper, ...rest } = otherProps;
   const { required } = props;
   const showError = !isValid && isSubmitted;
 

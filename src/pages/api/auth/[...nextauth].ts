@@ -46,7 +46,7 @@ export default NextAuth({
   jwt: {
     secret: 'Z33gSJUZhwo+sdYQcYmmkahiQFPt7PLaP+EROFWjuw0EBS+5jUJAZTsSp5Oo++e3',
     maxAge: 60 * 60 * 24 * 30,
-    async encode({ secret, token, maxAge }) {
+    async encode({ token }) {
       const tokenContents = {
         id: token.id,
         name: token.name,

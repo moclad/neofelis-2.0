@@ -52,6 +52,7 @@ export const InputCurrency = forwardRef<InputCurrencyProps, 'input'>(
         currency: currency ?? undefined,
       },
       decimalScale: decimals,
+      groupSpace: groupSpace,
       disableAbbreviations: true,
     };
 

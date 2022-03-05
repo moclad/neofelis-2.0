@@ -1,8 +1,8 @@
 import React from 'react';
-
-import { forwardRef, Text, TextProps } from '@chakra-ui/react';
 import { formatValue } from 'react-currency-input-field';
 import { useTranslation } from 'react-i18next';
+
+import { forwardRef, Text, TextProps } from '@chakra-ui/react';
 
 export interface TextCurrencyProps extends TextProps {
   value: number;
@@ -24,6 +24,7 @@ export const TextCurrency = forwardRef<TextCurrencyProps, 'span'>(
           value: String(value),
           intlConfig: { locale: locale || i18n.language, currency },
           decimalScale: decimals,
+          groupSpace: groupSpace,
         })}
       </Text>
     );
