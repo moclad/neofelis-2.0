@@ -9,12 +9,11 @@ export interface TextCurrencyProps extends TextProps {
   locale?: string;
   currency?: string;
   decimals?: number;
-  groupSpace?: number;
 }
 export const TextCurrency = forwardRef<TextCurrencyProps, 'span'>(
   (
     // eslint-disable-next-line no-unused-vars
-    { value, locale, currency = 'EUR', decimals = 2, groupSpace = 2, ...rest },
+    { value, locale, currency = 'EUR', decimals = 2, ...rest },
     ref
   ) => {
     const { i18n } = useTranslation();
@@ -24,7 +23,6 @@ export const TextCurrency = forwardRef<TextCurrencyProps, 'span'>(
           value: String(value),
           intlConfig: { locale: locale || i18n.language, currency },
           decimalScale: decimals,
-          groupSpace: groupSpace,
         })}
       </Text>
     );

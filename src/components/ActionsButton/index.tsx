@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-
-import { forwardRef, IconButton, IconButtonProps } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { FiMoreVertical } from 'react-icons/fi';
+
+import { forwardRef, IconButton, IconButtonProps } from '@chakra-ui/react';
 
 export interface ActionsButtonProps
   extends Omit<IconButtonProps, 'aria-label'> {
@@ -20,6 +20,7 @@ export const ActionsButton: FC<ActionsButtonProps> = forwardRef(
         variant="ghost"
         color="inherit"
         colorScheme="gray"
+        zIndex={1650}
         bg="transparent"
         opacity="0.5"
         _hover={{ opacity: 1, bg: 'rgba(0, 0, 0, 0.05)' }}
