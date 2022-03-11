@@ -8,6 +8,7 @@ import { PageLogout } from '@/app/auth/PageLogout';
 import { PageVerifyRequest } from '@/app/auth/PageVerifyRequest';
 import ClassificationRoutes from '@/app/classification/ClassificationRoutes';
 import { Layout, Loader } from '@/app/layout';
+import { APP_BASENAME } from '@/constants/routing';
 import { Error404, ErrorBoundary } from '@/errors';
 
 import RecurringRoutes from './recurring/RecurringRoutes';
@@ -111,7 +112,7 @@ const getRoutes = () => {
 export const App = () => {
   return (
     <ErrorBoundary>
-      <BrowserRouter basename="/app/">
+      <BrowserRouter basename={`/${APP_BASENAME}`}>
         <Layout>
           <Suspense fallback={<Loader />}>{getRoutes()}</Suspense>
         </Layout>
