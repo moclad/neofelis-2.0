@@ -47,7 +47,7 @@ export const useUserList = (
   const result = useQuery(
     UsersQueryKeys.users.keys(page, size),
     (): Promise<UserList> =>
-      Axios.get('/users', { params: { page, size, sort: 'id,desc' } }),
+      Axios.get('/admin/users', { params: { page, size, sort: 'id,desc' } }),
     {
       keepPreviousData: true,
       ...config,
@@ -74,8 +74,8 @@ export const useUser = (
   config: UseQueryOptions<User, AxiosError, User, UsersQueryKeys.user.type> = {}
 ) => {
   const result = useQuery(
-    UsersQueryKeys.user.keys(userLogin),
-    (): Promise<User> => Axios.get(`/users/${userLogin}`),
+    ['user', userLogin],
+    (): Promise<User> => Axios.get(`/admin/users/${userLogin}`),
     {
       enabled: !!userLogin,
       ...config,
@@ -92,7 +92,7 @@ export const useUserUpdate = (
   config: UseMutationOptions<User, AxiosError<UserMutateError>, User> = {}
 ) => {
   const queryClient = useQueryClient();
-  return useMutation((payload) => Axios.put('/users', payload), {
+  return useMutation((payload) => Axios.put('/admin/users', payload), {
     ...config,
     onSuccess: (data, payload, ...rest) => {
       queryClient.cancelQueries('users');
@@ -131,7 +131,7 @@ export const useUserCreate = (
 ) => {
   return useMutation(
     ({ langKey = DEFAULT_LANGUAGE_KEY, ...payload }) =>
-      Axios.post('/users', {
+      Axios.post('/admin/users', {
         langKey,
         ...payload,
       }),
@@ -148,7 +148,7 @@ export const useUserRemove = (
 ) => {
   return useMutation(
     (user: UserWithLoginOnly): Promise<void> =>
-      Axios.delete(`/users/${user.login}`),
+      Axios.delete(`/admin/users/${user.login}`),
     { ...config }
   );
 };
