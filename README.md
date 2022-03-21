@@ -89,14 +89,14 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:8080/api
 
 ## Change the app basename
 
-Udpate the `startUI.appBasename` in the `next.config.js` to change the url where the `app` (folder) is serve.
+Udpate the `neofelis.appBasename` in the `next.config.js` to change the url where the `app` (folder) is serve.
 
 ℹ️ Only accept first level path like ✅ `admin` (❌ `sub/path` will not work)
 
 ```js
 // next.config.js
 module.exports = {
-  startUI: {
+  neofelis: {
     appBasename: 'app',
   },
 }
@@ -244,7 +244,7 @@ Then expose the `/out` folder.
 
 💡 You will need to setup your server to rewrite all `/app/*` urls to serve the `app.html` file.
 
-⚠️ If you changed the `startUI.appBasename` You will need to setup your server to rewrite all `/your-basename/*` urls to serve the `your-basename.html` file.
+⚠️ If you changed the `neofelis.appBasename` You will need to setup your server to rewrite all `/your-basename/*` urls to serve the `your-basename.html` file.
 
 #### Using Apache as your web server
 

@@ -1,6 +1,20 @@
 {
-  "title": "Recurring Transactions",
   "actions": {
     "createIncome": "Income"
+  },
+  "recurring": {
+    "title": "Recurring Transactions",
+    "actions": {
+      "create": "Create"
+    },
+    "table": {
+      "header": {
+        "title": "Title"
+      }
+    }
+  },
+  "nav": {
+    "recurring": "Recurring",
+    "transactions": "Transactions"
   }
 }

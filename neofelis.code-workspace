@@ -19,6 +19,8 @@
 				"database": "neofelis",
 				"username": "master"
 			}
-		]
+		],
+		"i18n-ally.extract.keyMaxLength": 40,
+		"i18n-ally.extract.keyPrefix": "{fileNameWithoutExt}"
 	}
 }

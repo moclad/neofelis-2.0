@@ -9,6 +9,7 @@ import {
   ConfirmMenuItem,
   FieldInput,
   ModalDialog,
+  ResponsiveIconButton,
   useToastError,
   useToastSuccess
 } from '@/components';
@@ -20,7 +21,6 @@ import {
 } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
 import {
-  Button,
   Menu,
   MenuButton,
   MenuDivider,
@@ -120,14 +120,14 @@ export const PageLabels = () => {
           loading={loading || deleteLabelFetching || insertLoading}
           title={t('classification:labels.title')}
           actions={[
-            <Button
+            <ResponsiveIconButton
               key="createLabel"
-              leftIcon={<FiPlus />}
+              icon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
               {t('classification:labels.actions.create')}
-            </Button>,
+            </ResponsiveIconButton>,
           ]}
         >
           <Wrap spacing="8px">

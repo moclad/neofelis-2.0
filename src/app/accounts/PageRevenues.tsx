@@ -22,7 +22,7 @@ import {
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
   PaginationInfo,
-  useToastError,
+  ResponsiveIconButton,
   useToastSuccess
 } from '@/components';
 import {
@@ -38,7 +38,6 @@ import {
   Avatar,
   Badge,
   Box,
-  Button,
   HStack,
   LinkBox,
   Menu,
@@ -61,7 +60,6 @@ export const PageRevenues = () => {
   const { dataKey, dataContext, isEditing, onEdit, onFinish } =
     useEditMode<number>();
   const toastSuccess = useToastSuccess();
-  const toastError = useToastError();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
@@ -158,14 +156,14 @@ export const PageRevenues = () => {
           loading={loading || deleteFetching || insertLoading || updateLoading}
           title={t('accounts:revenues.title')}
           actions={[
-            <Button
+            <ResponsiveIconButton
               key="createRevenue"
-              leftIcon={<FiPlus />}
+              icon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
               {t('accounts:revenues.actions.create')}
-            </Button>,
+            </ResponsiveIconButton>,
           ]}
         >
           <DataList>
@@ -265,7 +263,13 @@ export const PageRevenues = () => {
               ))}
             <DataListFooter>
               <Pagination
-                isLoadingPage={loading || insertLoading || updateLoading}
+                isLoadingPage={
+                  loading ||
+                  insertLoading ||
+                  updateLoading ||
+                  updateStateLoading ||
+                  updateStandardLoading
+                }
                 setPage={setPage}
                 page={page}
                 pageSize={pageSize}

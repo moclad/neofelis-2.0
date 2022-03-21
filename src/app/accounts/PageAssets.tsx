@@ -24,8 +24,8 @@ import {
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
   PaginationInfo,
+  ResponsiveIconButton,
   TextCurrency,
-  useToastError,
   useToastSuccess
 } from '@/components';
 import {
@@ -43,7 +43,6 @@ import {
   Avatar,
   Badge,
   Box,
-  Button,
   HStack,
   LinkBox,
   LinkOverlay,
@@ -156,14 +155,14 @@ export const PageAssets = () => {
           loading={loading || deleteFetching || insertLoading || updateLoading}
           title={t('accounts:assets.title')}
           actions={[
-            <Button
+            <ResponsiveIconButton
               key="createAsset"
-              leftIcon={<FiPlus />}
+              icon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
               {t('accounts:assets.actions.create')}
-            </Button>,
+            </ResponsiveIconButton>,
           ]}
         >
           <DataList>

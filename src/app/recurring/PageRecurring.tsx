@@ -23,7 +23,7 @@ import {
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
   PaginationInfo,
-  TextCurrency,
+  ResponsiveIconButton,
   useToastSuccess
 } from '@/components';
 import {
@@ -39,9 +39,7 @@ import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
 import {
   Avatar,
-  Badge,
   Box,
-  Button,
   HStack,
   LinkBox,
   LinkOverlay,
@@ -156,20 +154,20 @@ export const PageRecurring = () => {
           loading={loading || deleteFetching || insertLoading || updateLoading}
           title={t('recurring:recurring.title')}
           actions={[
-            <Button
+            <ResponsiveIconButton
               key="createRecurring"
-              leftIcon={<FiPlus />}
+              icon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
               {t('recurring:recurring.actions.create')}
-            </Button>,
+            </ResponsiveIconButton>,
           ]}
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
               <DataListCell colName="name" colWidth="1.5">
-                {t('recurring:recurring.header.title')}
+                {t('recurring.table.header.title')}
               </DataListCell>
               <DataListCell
                 colName="actions"

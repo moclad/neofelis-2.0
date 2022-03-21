@@ -22,7 +22,7 @@ import {
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
   PaginationInfo,
-  useToastError,
+  ResponsiveIconButton,
   useToastSuccess
 } from '@/components';
 import {
@@ -37,7 +37,6 @@ import {
   Avatar,
   Badge,
   Box,
-  Button,
   HStack,
   LinkBox,
   LinkOverlay,
@@ -144,14 +143,14 @@ export const PageLiabilities = () => {
           loading={loading || deleteFetching || insertLoading || updateLoading}
           title={t('accounts:liabilities.title')}
           actions={[
-            <Button
+            <ResponsiveIconButton
               key="createLiability"
-              leftIcon={<FiPlus />}
+              icon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
               {t('accounts:liabilities.actions.create')}
-            </Button>,
+            </ResponsiveIconButton>,
           ]}
         >
           <DataList>
@@ -236,7 +235,12 @@ export const PageLiabilities = () => {
               ))}
             <DataListFooter>
               <Pagination
-                isLoadingPage={loading || insertLoading || updateLoading}
+                isLoadingPage={
+                  loading ||
+                  insertLoading ||
+                  updateLoading ||
+                  updateStateLoading
+                }
                 setPage={setPage}
                 page={page}
                 pageSize={pageSize}

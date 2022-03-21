@@ -9,6 +9,7 @@ import {
   ConfirmMenuItem,
   FieldInput,
   ModalDialog,
+  ResponsiveIconButton,
   useToastError,
   useToastSuccess
 } from '@/components';
@@ -20,7 +21,6 @@ import {
 } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
 import {
-  Button,
   Menu,
   MenuButton,
   MenuDivider,
@@ -122,14 +122,14 @@ export const PageCategories = () => {
           loading={loading || deleteFetching || insertLoading}
           title={t('classification:categories.title')}
           actions={[
-            <Button
+            <ResponsiveIconButton
               key="createCategory"
-              leftIcon={<FiPlus />}
+              icon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
               {t('classification:categories.actions.create')}
-            </Button>,
+            </ResponsiveIconButton>,
           ]}
         >
           <Wrap spacing="8px">

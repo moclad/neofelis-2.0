@@ -10,7 +10,7 @@
     "actions": {
       "edit": "Edit label",
       "delete": "Delete",
-      "create": "Create label"
+      "create": "Create"
     },
     "data": {
       "name": "Name",
@@ -22,7 +22,7 @@
     "actions": {
       "edit": "Edit category",
       "delete": "Delete",
-      "create": "Create category"
+      "create": "Create"
     },
     "data": {
       "name": "Name",

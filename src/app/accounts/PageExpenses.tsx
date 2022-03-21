@@ -22,6 +22,7 @@ import {
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
   PaginationInfo,
+  ResponsiveIconButton,
   useToastSuccess
 } from '@/components';
 import {
@@ -36,7 +37,6 @@ import {
   Avatar,
   Badge,
   Box,
-  Button,
   HStack,
   LinkBox,
   LinkOverlay,
@@ -142,14 +142,14 @@ export const PageExpenses = () => {
           loading={loading || deleteFetching || insertLoading || updateLoading}
           title={t('accounts:expenses.title')}
           actions={[
-            <Button
+            <ResponsiveIconButton
               key="createExpense"
-              leftIcon={<FiPlus />}
+              icon={<FiPlus />}
               variant="@primary"
               onClick={() => onOpen()}
             >
               {t('accounts:expenses.actions.create')}
-            </Button>,
+            </ResponsiveIconButton>,
           ]}
         >
           <DataList>
@@ -262,7 +262,9 @@ export const PageExpenses = () => {
           onClose();
         }}
         onConfirm={isEditing ? onConfirmEdit : onConfirmCreate}
-        loading={loading || insertLoading || updateLoading}
+        loading={
+          loading || insertLoading || updateLoading || updateStateLoading
+        }
         formId="expense-form-id"
         initialValues={dataContext}
       >

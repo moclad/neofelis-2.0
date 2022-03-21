@@ -1,5 +1,5 @@
 module.exports = {
-  startUI: {
+  neofelis: {
     appBasename: 'app',
   },
   experimental: {
@@ -22,8 +22,8 @@ module.exports = {
       },
       // Rewrite everything else to use `pages/app`
       {
-        source: `/${this.startUI.appBasename}/:any*`,
-        destination: `/${this.startUI.appBasename}/`,
+        source: `/${this.neofelis.appBasename}/:any*`,
+        destination: `/${this.neofelis.appBasename}/`,
       },
     ];
   },
