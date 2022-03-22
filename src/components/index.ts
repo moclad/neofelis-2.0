@@ -1,6 +1,7 @@
 export * from './ActionsButton';
 export * from './AutoComplete';
 export * from './ConfirmMenuItem';
+export * from './ConfirmPopover';
 export * from './DataList';
 export * from './DateAgo';
 export * from './DayPicker';
