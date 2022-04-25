@@ -74,6 +74,7 @@ export const FieldSelect = <
     isRequired: !!required,
     label,
     showError,
+    isDisabled,
     ...rest,
   };
 
