@@ -80,7 +80,7 @@ interface PanelContentProps extends FlexProps {
 }
 
 export const PanelContent = ({
-  children,
+  // children,
   loading,
   title = null,
   actions = null,

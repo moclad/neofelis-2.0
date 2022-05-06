@@ -1,5 +1,4 @@
 import React, { ReactNode, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import ReactSelect, { GroupBase, Props } from 'react-select';
 import AsyncReactSelect from 'react-select/async';
 import AsyncCreatableReactSelect from 'react-select/async-creatable';
@@ -9,37 +8,29 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import { Box, BoxProps, useStyleConfig, useTheme, useToken } from '@chakra-ui/react';
 
 import type { CSSObject } from '@emotion/react';
-const BoxAny: any = Box;
+const BoxAny: ExplicitAny = Box;
 
 // Tricks for generic forwardRef. Do not move this declaration elsewhere as we
 // do not want to apply it everywhere. The duplication is not a problem itself
 // as this code won't be in the final bundle.
 // https://fettblog.eu/typescript-react-generic-forward-refs/#option-3%3A-augment-forwardref
 declare module 'react' {
-  function forwardRef<
-    T,
-    P = {
-      /**/
-    }
-  >(
+  function forwardRef<T, P = Record<string, unknown>>(
     render: (props: P, ref: React.Ref<T>) => React.ReactElement | null
   ): (props: P & React.RefAttributes<T>) => React.ReactElement | null;
 }
 
 export type SelectProps<
   Option,
-  IsMulti extends boolean,
+  IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 > = {
   isAsync?: boolean;
   isCreatable?: boolean;
   isError?: boolean;
-  isMulti?: boolean;
   size?: string;
-  closeMenuOnSelect?: boolean;
   formatCreateLabel?: (inputValue: string) => ReactNode;
-  onCreateOption?: (inputLabel: string) => void;
-  loadOptions?: (input: unknown) => any;
+  loadOptions?: (input: unknown) => TODO;
   defaultOptions?: unknown | boolean;
   debounceDelay?: number;
 } & Props<Option, IsMulti, Group> &
@@ -47,32 +38,27 @@ export type SelectProps<
 
 const SelectInner = <
   Option,
-  IsMulti extends boolean,
+  IsMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
-  props: SelectProps<Option, IsMulti, Group>,
-  ref: React.ForwardedRef<HTMLElement>
-) => {
-  const {
+  {
     isAsync,
     isCreatable,
     isError,
-    isMulti,
     size = 'md',
     loadingMessage,
     formatCreateLabel,
     placeholder,
     loadOptions = () => new Promise<void>((resolve) => resolve()),
-    onCreateOption,
     defaultOptions = true,
-    closeMenuOnSelect = true,
     debounceDelay = 500,
     styles = {},
+    id,
     ...otherProps
-  } = props;
-
+  }: SelectProps<Option, IsMulti, Group>,
+  ref: React.ForwardedRef<HTMLElement>
+) => {
   const theme = useTheme();
-  const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
   const stylesFromTheme: any = useStyleConfig('Select', {
     size,
@@ -108,7 +94,9 @@ const SelectInner = <
   const debounceTimeout = useRef<ReturnType<typeof setTimeout>>();
 
   const debounce = (func: () => unknown, delay: number) => {
-    clearTimeout(debounceTimeout.current);
+    if (debounceTimeout?.current) {
+      clearTimeout(debounceTimeout.current);
+    }
     return new Promise((resolve) => {
       debounceTimeout.current = setTimeout(async () => {
         resolve(func());
@@ -217,7 +205,7 @@ const SelectInner = <
           borderColor: fieldFocusBorderColor,
         },
       }),
-      ...getConditionalStyles(isError, {
+      ...getConditionalStyles(!!isError, {
         borderColor: fieldErrorBorderColor,
         boxShadow: `0 0 0 1px ${fieldErrorBorderColor}`,
         '&:hover': {
@@ -280,24 +268,16 @@ const SelectInner = <
     })),
   };
 
-  const createLabel = formatCreateLabel
-    ? formatCreateLabel
-    : (input: string) => {
-        return <>{`${t('components:select.create')} ${input}`}</>;
-      };
-
   return (
     <BoxAny
       as={Element}
+      inputId={id}
       styles={selectStyle}
       menuPortalTarget={document.body}
       {...(loadingMessage ? { loadingMessage: () => loadingMessage } : {})}
-      formatCreateLabel={createLabel}
+      {...(formatCreateLabel ? { formatCreateLabel } : {})}
       placeholder={placeholder ? String(placeholder) : 'Select...'}
       menuPlacement="auto"
-      onCreateOption={isCreatable ? onCreateOption : null}
-      isMulti={isMulti}
-      closeMenuOnSelect={closeMenuOnSelect}
       ref={ref}
       {...asyncProps}
       {...otherProps}

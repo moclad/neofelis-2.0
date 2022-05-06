@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
@@ -37,6 +37,7 @@ import {
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
+import { TransactionType } from '@/types/types';
 import {
   Avatar,
   Box,
@@ -54,6 +55,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 
+import { RecurringDialog } from './dialogs/recurring-dialog';
 import { RecurringNav } from './RecurringNav';
 
 export const PageRecurring = () => {
@@ -74,6 +76,8 @@ export const PageRecurring = () => {
       limit: pageSize,
     },
   });
+
+  const [transactionType, setTransactionType] = useState(TransactionType.None);
 
   const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
 
@@ -145,6 +149,10 @@ export const PageRecurring = () => {
         title: t('common:feedbacks.deletedSuccess.title'),
       });
     });
+  };
+
+  const onCloseDialog = () => {
+    onClose();
   };
 
   return (
@@ -256,44 +264,11 @@ export const PageRecurring = () => {
           </DataList>
         </PageContent>
       </Page>
-      <ModalDialog
-        title={
-          isEditing
-            ? t('recurring:recurring.actions.edit')
-            : t('recurring:recurring.actions.create')
-        }
-        isOpen={isOpen || isEditing}
-        onCancel={() => {
-          onFinish();
-          onClose();
-        }}
-        onConfirm={isEditing ? onConfirmEdit : onConfirmCreate}
-        loading={loading || insertLoading || updateLoading}
-        formId="asset-form-id"
-        initialValues={dataContext}
-      >
-        <FieldInput
-          name="name"
-          label={t('recurring:recurring.data.name')}
-          required={t('recurring:recurring.data.nameRequired') as string}
-        />
-        <FieldInput
-          name="account_no"
-          label={t('recurring:recurring.data.accountNo')}
-        />
-        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-          <FieldCurrency
-            name="balance"
-            label={t('recurring:recurring.data.balance')}
-            placeholder={0}
-            currency="EUR"
-          />
-          <FieldDayPicker
-            name="balance_date"
-            label={t('recurring:recurring.data.balanceDate')}
-          />
-        </Stack>
-      </ModalDialog>
+      <RecurringDialog
+        isOpen={isOpen}
+        onClose={onCloseDialog}
+        transactionType={transactionType}
+      />
     </>
   );
 };

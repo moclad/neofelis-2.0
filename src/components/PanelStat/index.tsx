@@ -2,14 +2,12 @@ import React from 'react';
 
 import { useDarkMode } from '@/hooks/useDarkMode';
 import {
-  Box,
   ChakraComponent,
   Stat,
   StatArrow,
   StatHelpText,
   StatLabel,
-  StatNumber,
-  StatProps
+  StatNumber
 } from '@chakra-ui/react';
 
 interface PanelStatProps {
@@ -24,7 +22,6 @@ interface PanelStatProps {
 
 export const PanelStat: ChakraComponent<'div', PanelStatProps> = ({
   key,
-  loading,
   label = null,
   value = null,
   arrowType = 'increase',

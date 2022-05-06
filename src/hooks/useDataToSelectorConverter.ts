@@ -33,13 +33,14 @@ export function useDataToSelectorConverter(
   });
 
   if (data) {
-    data[entity]?.map((item) => {
+    data[entity]?.forEach((item) => {
       const option: ISelectOptions = {
         label: item[labelFieldName],
         value: item[idFieldName],
         data: item,
       };
       selectOptions.push(option);
+      return selectOptions;
     });
   }
 

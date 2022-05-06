@@ -90,6 +90,7 @@ type CustomProps = {
 interface DayPickerProps extends Overwrite<BoxProps, CustomProps> {}
 
 export const DayPicker: FC<DayPickerProps> = ({
+  id,
   placeholder = FORMAT,
   value = null,
   onChange = () => undefined,
@@ -149,6 +150,7 @@ export const DayPicker: FC<DayPickerProps> = ({
           ...dayPickerProps,
         }}
         inputProps={{
+          id,
           readOnly: isSmartphoneFormat,
           ...inputProps,
         }}

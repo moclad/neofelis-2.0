@@ -1,3 +1,4 @@
+import Avvvatars from 'avvvatars-react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
@@ -35,7 +36,6 @@ import {
 } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
 import {
-  Avatar,
   Badge,
   Box,
   HStack,
@@ -189,7 +189,7 @@ export const PageRevenues = () => {
                 <DataListRow as={LinkBox} key={index} isDisabled={!item.active}>
                   <DataListCell colName="name">
                     <HStack maxW="100%">
-                      <Avatar size="sm" name={item.name} mx="2" />
+                      <Avvvatars value={item.name} />
                       <Box minW="0">
                         <Text isTruncated maxW="full" fontWeight="bold">
                           {item.name}

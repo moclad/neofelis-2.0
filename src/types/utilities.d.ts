@@ -1,5 +1,5 @@
 /**
- * Use this type to temporary bypass to any without writting any
+ * Use this type to temporary bypass to `any` without writting `any`
  * Comment the line to find where it's used
  */
 type TODO = any;
@@ -15,3 +15,8 @@ type ExplicitAny = any;
  * with the `as` props.
  */
 type Overwrite<T, U> = Pick<T, Exclude<keyof T, keyof U>> & U;
+
+/**
+ * Use this type to type react-query QueryKeys
+ */
+type InferQueryKey<T extends (...args: any) => readonly any[]> = ReturnType<T>;

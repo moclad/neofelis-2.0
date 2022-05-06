@@ -11,6 +11,53 @@
       "header": {
         "title": "Title"
       }
+    },
+    "fields": {
+      "data": {
+        "title": "Title",
+        "titleRequired": "Title is required",
+        "fromAsset": "From asset",
+        "toAsset": "To asset",
+        "asset": "Asset account",
+        "assetRequired": "Asset account is required",
+        "revenue": "Revenue account",
+        "revenueRequired": "Revenue account is required",
+        "expense": "Expense account",
+        "expenseRequired": "Expense account is required",
+        "amount": "Amount",
+        "amountRequired": "Amount is required",
+        "startOn": "Start on",
+        "startOnRequired": "Start date is required",
+        "transactionType": "Transaction",
+        "cycleType": "Cycle",
+        "cycleRequired": "Cycle is required",
+        "durationType": "Duration",
+        "durationRequired": "Duration is required",
+        "category": "Category",
+        "labels": "Labels",
+        "description": "Description",
+        "untilDate": "Repeat until",
+        "numberOfTimes": "Number of times"
+      },
+      "error": {
+        "sameAccount": "Source and destination account can't be the same."
+      }
+    },
+    "transactionType": {
+      "expense": "Expense",
+      "deposit": "Deposit",
+      "transfer": "Transfer"
+    },
+    "durationType": {
+      "forever": "Forever",
+      "untilDate": "Repeat until date",
+      "numberOfTimes": "Number of times"
+    },
+    "cycleType": {
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "halfYearly": "Half-yearly",
+      "annually": "Annually"
     }
   },
   "nav": {

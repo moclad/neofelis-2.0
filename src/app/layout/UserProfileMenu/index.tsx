@@ -1,3 +1,4 @@
+import Avvvatars from 'avvvatars-react';
 import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +9,6 @@ import appBuild from '@/../app-build.json';
 import { Icon } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import {
-  Avatar,
   Flex,
   Menu,
   MenuButton,
@@ -16,7 +16,6 @@ import {
   MenuGroup,
   MenuItem,
   MenuList,
-  Spinner,
   Text,
   useClipboard,
   useColorMode
@@ -102,15 +101,11 @@ export const AccountMenu = ({ ...rest }) => {
   return (
     <Menu placement="bottom-end" {...rest}>
       <MenuButton borderRadius="full" _focus={{ shadow: 'outline' }}>
-        <Avatar
-          size="sm"
-          icon={<></>}
-          name={
+        <Avvvatars
+          value={
             !loading && `${data?.users_by_pk?.name ?? data?.users_by_pk?.email}`
           }
-        >
-          {loading && <Spinner size="xs" />}
-        </Avatar>
+        />
       </MenuButton>
       <MenuList
         color={colorModeValue('gray.800', 'white')}

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useDarkMode } from '@/hooks/useDarkMode';
@@ -27,6 +27,7 @@ export interface ModalDialogProps {
   dialogForm?: UseFormValues;
   onCancel: () => void;
   onConfirm: (values) => void;
+  children?: ReactNode;
 }
 
 export const ModalDialog: FC<ModalDialogProps> = (props) => {

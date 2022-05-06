@@ -49,3 +49,10 @@ export enum TransactionType {
   Income,
   Transfer,
 }
+
+export enum DurationType {
+  None,
+  Forever,
+  UntilDate,
+  NumberOfTimes,
+}

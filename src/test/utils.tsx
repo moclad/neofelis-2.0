@@ -1,17 +1,13 @@
-import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { FC, ReactElement } from 'react';
 
-import { Providers } from '../Providers';
+import { Providers } from '@/Providers';
+import { render, RenderOptions } from '@testing-library/react';
 
-const CustomWrapper = ({ children }) => {
-  return (
-    <Providers>
-      <BrowserRouter>{children}</BrowserRouter>
-    </Providers>
-  );
+const CustomWrapper: FC = ({ children }) => {
+  return <Providers>{children}</Providers>;
 };
 
-const customRender = (ui, options?: any) =>
+const customRender = (ui: ReactElement, options: RenderOptions = {}) =>
   render(ui, {
     wrapper: CustomWrapper,
     ...options,

@@ -21,6 +21,12 @@
 			}
 		],
 		"i18n-ally.extract.keyMaxLength": 40,
-		"i18n-ally.extract.keyPrefix": "{fileNameWithoutExt}"
+		"i18n-ally.extract.keyPrefix": "{fileNameWithoutExt}",
+		"i18n-ally.localesPaths": [
+			"src/locales"
+		],
+		"cSpell.words": [
+			"Avvvatars"
+		]
 	}
 }
