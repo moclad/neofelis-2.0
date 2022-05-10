@@ -1,8 +1,7 @@
 import { FC } from 'react';
 
-import { Progress, ProgressProps } from '@chakra-ui/react';
-
 import { useProgressContext } from '@/components';
+import { Progress, ProgressProps } from '@chakra-ui/react';
 
 export const ProgressBar: FC<ProgressProps> = (props) => {
   const { completed, total, isLoading } = useProgressContext();
