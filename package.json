@@ -25,7 +25,8 @@
     "test:ci": "jest --roots src",
     "type-check": "tsc",
     "RELEASE": "-----------------------------RELEASE---------------------------",
-    "release": "release-it"
+    "release": "release-it",
+    "prebuild": "node prebuild.js"
   },
   "dependencies": {
     "@apollo/client": "3.6.1",
