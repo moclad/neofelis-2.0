@@ -1,0 +1,5 @@
+mutation insertRecurring($object: recurring_insert_input!) {
+  insert_recurring_one(object: $object) {
+    id
+  }
+}
