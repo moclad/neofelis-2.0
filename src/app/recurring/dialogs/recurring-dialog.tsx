@@ -12,16 +12,10 @@ import {
   useInsertCategoryMutation,
   useInsertExpenseAccMutation,
   useInsertLabelMutation,
-  useInsertRevenueAccMutation,
-  useInsertTransactionMutation
+  useInsertRecurringMutation,
+  useInsertRevenueAccMutation
 } from '@/generated/graphql';
-import {
-  DurationType,
-  ISelectOptions,
-  ITransactionAccount,
-  ITransactionInput,
-  TransactionType
-} from '@/types/types';
+import { DurationType, ISelectOptions, TransactionType } from '@/types/types';
 import { Stack } from '@chakra-ui/react';
 import { useForm } from '@formiz/core';
 
@@ -47,8 +41,8 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
   const [insertCategory] = useInsertCategoryMutation(mutationOptions);
   const [insertExpense] = useInsertExpenseAccMutation(mutationOptions);
   const [insertRevenue] = useInsertRevenueAccMutation(mutationOptions);
-  const [insertTransaction, { loading: insertLoading }] =
-    useInsertTransactionMutation(mutationOptions);
+  const [insertRecurring, { loading: insertLoading }] =
+    useInsertRecurringMutation(mutationOptions);
 
   const { selectOptions: categories } = useDataToSelectorConverter({
     entity: 'categories',
@@ -142,33 +136,21 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
     }).then((x) => x.data.insert_labels_one.id);
   };
 
-  const onConfirmCreate = async (values: ITransactionInput) => {
-    const { amount, labels, source_account, destiny_account, ...rest } = values;
-
-    const source: ITransactionAccount = {
-      account_id: source_account,
-      amount: amount * -1,
-    };
-
-    const target: ITransactionAccount = {
-      account_id: destiny_account,
-      amount: amount,
-    };
+  const onConfirmCreate = async (values) => {
+    const { labels, ...rest } = values;
 
     const submitData = {
       ...rest,
-      transaction_labels: { data: [] },
-      transaction_accounts: { data: [source, target] },
-      amount: amount,
+      recurring_labels: { data: [] },
     };
 
     if (labels) {
       labels.forEach((x) =>
-        submitData.transaction_labels.data.push({ label_id: x })
+        submitData.recurring_labels.data.push({ label_id: x })
       );
     }
 
-    await insertTransaction({
+    await insertRecurring({
       variables: {
         object: submitData,
       },
@@ -207,7 +189,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       return (
         <>
           <FieldSelect
-            name="source_account"
+            name="account_from"
             label={t('recurring:recurring.fields.data.asset')}
             required={
               t('recurring:recurring.fields.data.assetRequired') as string
@@ -215,7 +197,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
             options={assets}
           />
           <FieldSelect
-            name="destiny_account"
+            name="account_to"
             label={t('recurring:recurring.fields.data.expense')}
             required={
               t('recurring:recurring.fields.data.expenseRequired') as string
@@ -232,7 +214,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       return (
         <>
           <FieldSelect
-            name="source_account"
+            name="account_from"
             label={t('recurring:recurring.fields.data.revenue')}
             required={
               t('recurring:recurring.fields.data.revenueRequired') as string
@@ -243,7 +225,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
           />
 
           <FieldSelect
-            name="destiny_account"
+            name="account_to"
             label={t('recurring:recurring.fields.data.asset')}
             required={
               t('recurring:recurring.fields.data.assetRequired') as string
@@ -258,7 +240,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       return (
         <>
           <FieldSelect
-            name="source_account"
+            name="account_from"
             label={t('recurring:recurring.fields.data.fromAsset')}
             required={
               t('recurring:recurring.fields.data.assetRequired') as string
@@ -267,7 +249,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
           />
 
           <FieldSelect
-            name="destiny_account"
+            name="account_to"
             label={t('recurring:recurring.fields.data.toAsset')}
             required={
               t('recurring:recurring.fields.data.assetRequired') as string
@@ -383,7 +365,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       }}
       onConfirm={onConfirmCreate}
       loading={insertLoading}
-      formId="asset-form-id"
+      formId="recurring-form-id"
       initialValues={{
         start_on: dayjs().toDate(),
         source_account: defaultAccount,
@@ -393,7 +375,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       }}
     >
       <FieldInput
-        name="name"
+        name="title"
         label={t('recurring:recurring.fields.data.title')}
         required={t('recurring:recurring.fields.data.titleRequired') as string}
       />

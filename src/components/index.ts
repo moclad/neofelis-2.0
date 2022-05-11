@@ -27,6 +27,7 @@ export * from './ModalDialog';
 export * from './Nav';
 export * from './Pagination';
 export * from './Progress';
+export * from './ResponsiveIconButton';
 export * from './Select';
 export * from './SlideIn';
 export * from './Sort';

@@ -1228,13 +1228,33 @@ export type Labels = {
   created_at: Scalars['timestamptz'];
   id: Scalars['Int'];
   name: Scalars['String'];
-  /** An object relationship */
-  recurring_label?: Maybe<Recurring_Labels>;
+  /** An array relationship */
+  recurring_labels: Array<Recurring_Labels>;
+  /** An aggregate relationship */
+  recurring_labels_aggregate: Recurring_Labels_Aggregate;
   /** An array relationship */
   transaction_labels: Array<Transaction_Labels>;
   /** An aggregate relationship */
   transaction_labels_aggregate: Transaction_Labels_Aggregate;
   updated_at: Scalars['timestamptz'];
+};
+
+/** columns and relationships of "labels" */
+export type LabelsRecurring_LabelsArgs = {
+  distinct_on?: InputMaybe<Array<Recurring_Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Recurring_Labels_Order_By>>;
+  where?: InputMaybe<Recurring_Labels_Bool_Exp>;
+};
+
+/** columns and relationships of "labels" */
+export type LabelsRecurring_Labels_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Recurring_Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Recurring_Labels_Order_By>>;
+  where?: InputMaybe<Recurring_Labels_Bool_Exp>;
 };
 
 /** columns and relationships of "labels" */
@@ -1298,7 +1318,7 @@ export type Labels_Bool_Exp = {
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
-  recurring_label?: InputMaybe<Recurring_Labels_Bool_Exp>;
+  recurring_labels?: InputMaybe<Recurring_Labels_Bool_Exp>;
   transaction_labels?: InputMaybe<Transaction_Labels_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
@@ -1319,7 +1339,7 @@ export type Labels_Insert_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
-  recurring_label?: InputMaybe<Recurring_Labels_Obj_Rel_Insert_Input>;
+  recurring_labels?: InputMaybe<Recurring_Labels_Arr_Rel_Insert_Input>;
   transaction_labels?: InputMaybe<Transaction_Labels_Arr_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
@@ -1370,7 +1390,7 @@ export type Labels_Order_By = {
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
-  recurring_label?: InputMaybe<Recurring_Labels_Order_By>;
+  recurring_labels_aggregate?: InputMaybe<Recurring_Labels_Aggregate_Order_By>;
   transaction_labels_aggregate?: InputMaybe<Transaction_Labels_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -2783,9 +2803,9 @@ export type Query_Root = {
   recurring_aggregate: Recurring_Aggregate;
   /** fetch data from the table: "recurring" using primary key columns */
   recurring_by_pk?: Maybe<Recurring>;
-  /** fetch data from the table: "recurring_labels" */
+  /** An array relationship */
   recurring_labels: Array<Recurring_Labels>;
-  /** fetch aggregated fields from the table: "recurring_labels" */
+  /** An aggregate relationship */
   recurring_labels_aggregate: Recurring_Labels_Aggregate;
   /** fetch data from the table: "recurring_labels" using primary key columns */
   recurring_labels_by_pk?: Maybe<Recurring_Labels>;
@@ -3201,14 +3221,34 @@ export type Recurring = {
   description?: Maybe<Scalars['String']>;
   duration_type: Scalars['Int'];
   id: Scalars['bigint'];
-  /** An object relationship */
-  recurring_label?: Maybe<Recurring_Labels>;
+  /** An array relationship */
+  recurring_labels: Array<Recurring_Labels>;
+  /** An aggregate relationship */
+  recurring_labels_aggregate: Recurring_Labels_Aggregate;
   /** An object relationship */
   recurring_transaction?: Maybe<Recurring_Transactions>;
   start_on: Scalars['date'];
   title: Scalars['String'];
   transaction_type: Scalars['Int'];
   updated_at: Scalars['timestamptz'];
+};
+
+/** columns and relationships of "recurring" */
+export type RecurringRecurring_LabelsArgs = {
+  distinct_on?: InputMaybe<Array<Recurring_Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Recurring_Labels_Order_By>>;
+  where?: InputMaybe<Recurring_Labels_Bool_Exp>;
+};
+
+/** columns and relationships of "recurring" */
+export type RecurringRecurring_Labels_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Recurring_Labels_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Recurring_Labels_Order_By>>;
+  where?: InputMaybe<Recurring_Labels_Bool_Exp>;
 };
 
 /** aggregated selection of "recurring" */
@@ -3304,7 +3344,7 @@ export type Recurring_Bool_Exp = {
   description?: InputMaybe<String_Comparison_Exp>;
   duration_type?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
-  recurring_label?: InputMaybe<Recurring_Labels_Bool_Exp>;
+  recurring_labels?: InputMaybe<Recurring_Labels_Bool_Exp>;
   recurring_transaction?: InputMaybe<Recurring_Transactions_Bool_Exp>;
   start_on?: InputMaybe<Date_Comparison_Exp>;
   title?: InputMaybe<String_Comparison_Exp>;
@@ -3344,7 +3384,7 @@ export type Recurring_Insert_Input = {
   description?: InputMaybe<Scalars['String']>;
   duration_type?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['bigint']>;
-  recurring_label?: InputMaybe<Recurring_Labels_Obj_Rel_Insert_Input>;
+  recurring_labels?: InputMaybe<Recurring_Labels_Arr_Rel_Insert_Input>;
   recurring_transaction?: InputMaybe<Recurring_Transactions_Obj_Rel_Insert_Input>;
   start_on?: InputMaybe<Scalars['date']>;
   title?: InputMaybe<Scalars['String']>;
@@ -3392,11 +3432,39 @@ export type Recurring_Labels_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "recurring_labels" */
+export type Recurring_Labels_Aggregate_Order_By = {
+  avg?: InputMaybe<Recurring_Labels_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Recurring_Labels_Max_Order_By>;
+  min?: InputMaybe<Recurring_Labels_Min_Order_By>;
+  stddev?: InputMaybe<Recurring_Labels_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Recurring_Labels_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Recurring_Labels_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Recurring_Labels_Sum_Order_By>;
+  var_pop?: InputMaybe<Recurring_Labels_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Recurring_Labels_Var_Samp_Order_By>;
+  variance?: InputMaybe<Recurring_Labels_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "recurring_labels" */
+export type Recurring_Labels_Arr_Rel_Insert_Input = {
+  data: Array<Recurring_Labels_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Recurring_Labels_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Recurring_Labels_Avg_Fields = {
   __typename?: 'recurring_labels_avg_fields';
   label_id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "recurring_labels" */
+export type Recurring_Labels_Avg_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "recurring_labels". All fields are combined with a logical 'AND'. */
@@ -3413,11 +3481,7 @@ export type Recurring_Labels_Bool_Exp = {
 /** unique or primary key constraints on table "recurring_labels" */
 export enum Recurring_Labels_Constraint {
   /** unique or primary key constraint */
-  RecurringLabelsLabelIdKey = 'recurring_labels_label_id_key',
-  /** unique or primary key constraint */
   RecurringLabelsPkey = 'recurring_labels_pkey',
-  /** unique or primary key constraint */
-  RecurringLabelsRecurringIdKey = 'recurring_labels_recurring_id_key',
 }
 
 /** input type for incrementing numeric columns in table "recurring_labels" */
@@ -3441,11 +3505,23 @@ export type Recurring_Labels_Max_Fields = {
   recurring_id?: Maybe<Scalars['bigint']>;
 };
 
+/** order by max() on columns of table "recurring_labels" */
+export type Recurring_Labels_Max_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Recurring_Labels_Min_Fields = {
   __typename?: 'recurring_labels_min_fields';
   label_id?: Maybe<Scalars['Int']>;
   recurring_id?: Maybe<Scalars['bigint']>;
+};
+
+/** order by min() on columns of table "recurring_labels" */
+export type Recurring_Labels_Min_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "recurring_labels" */
@@ -3455,13 +3531,6 @@ export type Recurring_Labels_Mutation_Response = {
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
   returning: Array<Recurring_Labels>;
-};
-
-/** input type for inserting object relation for remote table "recurring_labels" */
-export type Recurring_Labels_Obj_Rel_Insert_Input = {
-  data: Recurring_Labels_Insert_Input;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Recurring_Labels_On_Conflict>;
 };
 
 /** on_conflict condition type for table "recurring_labels" */
@@ -3506,11 +3575,23 @@ export type Recurring_Labels_Stddev_Fields = {
   recurring_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "recurring_labels" */
+export type Recurring_Labels_Stddev_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Recurring_Labels_Stddev_Pop_Fields = {
   __typename?: 'recurring_labels_stddev_pop_fields';
   label_id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "recurring_labels" */
+export type Recurring_Labels_Stddev_Pop_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -3520,11 +3601,23 @@ export type Recurring_Labels_Stddev_Samp_Fields = {
   recurring_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "recurring_labels" */
+export type Recurring_Labels_Stddev_Samp_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Recurring_Labels_Sum_Fields = {
   __typename?: 'recurring_labels_sum_fields';
   label_id?: Maybe<Scalars['Int']>;
   recurring_id?: Maybe<Scalars['bigint']>;
+};
+
+/** order by sum() on columns of table "recurring_labels" */
+export type Recurring_Labels_Sum_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "recurring_labels" */
@@ -3542,6 +3635,12 @@ export type Recurring_Labels_Var_Pop_Fields = {
   recurring_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "recurring_labels" */
+export type Recurring_Labels_Var_Pop_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Recurring_Labels_Var_Samp_Fields = {
   __typename?: 'recurring_labels_var_samp_fields';
@@ -3549,11 +3648,23 @@ export type Recurring_Labels_Var_Samp_Fields = {
   recurring_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_samp() on columns of table "recurring_labels" */
+export type Recurring_Labels_Var_Samp_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate variance on columns */
 export type Recurring_Labels_Variance_Fields = {
   __typename?: 'recurring_labels_variance_fields';
   label_id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "recurring_labels" */
+export type Recurring_Labels_Variance_Order_By = {
+  label_id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate max on columns */
@@ -3663,7 +3774,7 @@ export type Recurring_Order_By = {
   description?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  recurring_label?: InputMaybe<Recurring_Labels_Order_By>;
+  recurring_labels_aggregate?: InputMaybe<Recurring_Labels_Aggregate_Order_By>;
   recurring_transaction?: InputMaybe<Recurring_Transactions_Order_By>;
   start_on?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
@@ -4407,9 +4518,9 @@ export type Subscription_Root = {
   recurring_aggregate: Recurring_Aggregate;
   /** fetch data from the table: "recurring" using primary key columns */
   recurring_by_pk?: Maybe<Recurring>;
-  /** fetch data from the table: "recurring_labels" */
+  /** An array relationship */
   recurring_labels: Array<Recurring_Labels>;
-  /** fetch aggregated fields from the table: "recurring_labels" */
+  /** An aggregate relationship */
   recurring_labels_aggregate: Recurring_Labels_Aggregate;
   /** fetch data from the table: "recurring_labels" using primary key columns */
   recurring_labels_by_pk?: Maybe<Recurring_Labels>;
@@ -11770,28 +11881,39 @@ export type ResolversTypes = {
   recurring_labels: ResolverTypeWrapper<Recurring_Labels>;
   recurring_labels_aggregate: ResolverTypeWrapper<Recurring_Labels_Aggregate>;
   recurring_labels_aggregate_fields: ResolverTypeWrapper<Recurring_Labels_Aggregate_Fields>;
+  recurring_labels_aggregate_order_by: Recurring_Labels_Aggregate_Order_By;
+  recurring_labels_arr_rel_insert_input: Recurring_Labels_Arr_Rel_Insert_Input;
   recurring_labels_avg_fields: ResolverTypeWrapper<Recurring_Labels_Avg_Fields>;
+  recurring_labels_avg_order_by: Recurring_Labels_Avg_Order_By;
   recurring_labels_bool_exp: Recurring_Labels_Bool_Exp;
   recurring_labels_constraint: Recurring_Labels_Constraint;
   recurring_labels_inc_input: Recurring_Labels_Inc_Input;
   recurring_labels_insert_input: Recurring_Labels_Insert_Input;
   recurring_labels_max_fields: ResolverTypeWrapper<Recurring_Labels_Max_Fields>;
+  recurring_labels_max_order_by: Recurring_Labels_Max_Order_By;
   recurring_labels_min_fields: ResolverTypeWrapper<Recurring_Labels_Min_Fields>;
+  recurring_labels_min_order_by: Recurring_Labels_Min_Order_By;
   recurring_labels_mutation_response: ResolverTypeWrapper<Recurring_Labels_Mutation_Response>;
-  recurring_labels_obj_rel_insert_input: Recurring_Labels_Obj_Rel_Insert_Input;
   recurring_labels_on_conflict: Recurring_Labels_On_Conflict;
   recurring_labels_order_by: Recurring_Labels_Order_By;
   recurring_labels_pk_columns_input: Recurring_Labels_Pk_Columns_Input;
   recurring_labels_select_column: Recurring_Labels_Select_Column;
   recurring_labels_set_input: Recurring_Labels_Set_Input;
   recurring_labels_stddev_fields: ResolverTypeWrapper<Recurring_Labels_Stddev_Fields>;
+  recurring_labels_stddev_order_by: Recurring_Labels_Stddev_Order_By;
   recurring_labels_stddev_pop_fields: ResolverTypeWrapper<Recurring_Labels_Stddev_Pop_Fields>;
+  recurring_labels_stddev_pop_order_by: Recurring_Labels_Stddev_Pop_Order_By;
   recurring_labels_stddev_samp_fields: ResolverTypeWrapper<Recurring_Labels_Stddev_Samp_Fields>;
+  recurring_labels_stddev_samp_order_by: Recurring_Labels_Stddev_Samp_Order_By;
   recurring_labels_sum_fields: ResolverTypeWrapper<Recurring_Labels_Sum_Fields>;
+  recurring_labels_sum_order_by: Recurring_Labels_Sum_Order_By;
   recurring_labels_update_column: Recurring_Labels_Update_Column;
   recurring_labels_var_pop_fields: ResolverTypeWrapper<Recurring_Labels_Var_Pop_Fields>;
+  recurring_labels_var_pop_order_by: Recurring_Labels_Var_Pop_Order_By;
   recurring_labels_var_samp_fields: ResolverTypeWrapper<Recurring_Labels_Var_Samp_Fields>;
+  recurring_labels_var_samp_order_by: Recurring_Labels_Var_Samp_Order_By;
   recurring_labels_variance_fields: ResolverTypeWrapper<Recurring_Labels_Variance_Fields>;
+  recurring_labels_variance_order_by: Recurring_Labels_Variance_Order_By;
   recurring_max_fields: ResolverTypeWrapper<Recurring_Max_Fields>;
   recurring_max_order_by: Recurring_Max_Order_By;
   recurring_min_fields: ResolverTypeWrapper<Recurring_Min_Fields>;
@@ -12226,25 +12348,36 @@ export type ResolversParentTypes = {
   recurring_labels: Recurring_Labels;
   recurring_labels_aggregate: Recurring_Labels_Aggregate;
   recurring_labels_aggregate_fields: Recurring_Labels_Aggregate_Fields;
+  recurring_labels_aggregate_order_by: Recurring_Labels_Aggregate_Order_By;
+  recurring_labels_arr_rel_insert_input: Recurring_Labels_Arr_Rel_Insert_Input;
   recurring_labels_avg_fields: Recurring_Labels_Avg_Fields;
+  recurring_labels_avg_order_by: Recurring_Labels_Avg_Order_By;
   recurring_labels_bool_exp: Recurring_Labels_Bool_Exp;
   recurring_labels_inc_input: Recurring_Labels_Inc_Input;
   recurring_labels_insert_input: Recurring_Labels_Insert_Input;
   recurring_labels_max_fields: Recurring_Labels_Max_Fields;
+  recurring_labels_max_order_by: Recurring_Labels_Max_Order_By;
   recurring_labels_min_fields: Recurring_Labels_Min_Fields;
+  recurring_labels_min_order_by: Recurring_Labels_Min_Order_By;
   recurring_labels_mutation_response: Recurring_Labels_Mutation_Response;
-  recurring_labels_obj_rel_insert_input: Recurring_Labels_Obj_Rel_Insert_Input;
   recurring_labels_on_conflict: Recurring_Labels_On_Conflict;
   recurring_labels_order_by: Recurring_Labels_Order_By;
   recurring_labels_pk_columns_input: Recurring_Labels_Pk_Columns_Input;
   recurring_labels_set_input: Recurring_Labels_Set_Input;
   recurring_labels_stddev_fields: Recurring_Labels_Stddev_Fields;
+  recurring_labels_stddev_order_by: Recurring_Labels_Stddev_Order_By;
   recurring_labels_stddev_pop_fields: Recurring_Labels_Stddev_Pop_Fields;
+  recurring_labels_stddev_pop_order_by: Recurring_Labels_Stddev_Pop_Order_By;
   recurring_labels_stddev_samp_fields: Recurring_Labels_Stddev_Samp_Fields;
+  recurring_labels_stddev_samp_order_by: Recurring_Labels_Stddev_Samp_Order_By;
   recurring_labels_sum_fields: Recurring_Labels_Sum_Fields;
+  recurring_labels_sum_order_by: Recurring_Labels_Sum_Order_By;
   recurring_labels_var_pop_fields: Recurring_Labels_Var_Pop_Fields;
+  recurring_labels_var_pop_order_by: Recurring_Labels_Var_Pop_Order_By;
   recurring_labels_var_samp_fields: Recurring_Labels_Var_Samp_Fields;
+  recurring_labels_var_samp_order_by: Recurring_Labels_Var_Samp_Order_By;
   recurring_labels_variance_fields: Recurring_Labels_Variance_Fields;
+  recurring_labels_variance_order_by: Recurring_Labels_Variance_Order_By;
   recurring_max_fields: Recurring_Max_Fields;
   recurring_max_order_by: Recurring_Max_Order_By;
   recurring_min_fields: Recurring_Min_Fields;
@@ -13457,10 +13590,17 @@ export type LabelsResolvers<
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  recurring_label?: Resolver<
-    Maybe<ResolversTypes['recurring_labels']>,
+  recurring_labels?: Resolver<
+    Array<ResolversTypes['recurring_labels']>,
     ParentType,
-    ContextType
+    ContextType,
+    Partial<LabelsRecurring_LabelsArgs>
+  >;
+  recurring_labels_aggregate?: Resolver<
+    ResolversTypes['recurring_labels_aggregate'],
+    ParentType,
+    ContextType,
+    Partial<LabelsRecurring_Labels_AggregateArgs>
   >;
   transaction_labels?: Resolver<
     Array<ResolversTypes['transaction_labels']>,
@@ -15108,10 +15248,17 @@ export type RecurringResolvers<
   >;
   duration_type?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
-  recurring_label?: Resolver<
-    Maybe<ResolversTypes['recurring_labels']>,
+  recurring_labels?: Resolver<
+    Array<ResolversTypes['recurring_labels']>,
     ParentType,
-    ContextType
+    ContextType,
+    Partial<RecurringRecurring_LabelsArgs>
+  >;
+  recurring_labels_aggregate?: Resolver<
+    ResolversTypes['recurring_labels_aggregate'],
+    ParentType,
+    ContextType,
+    Partial<RecurringRecurring_Labels_AggregateArgs>
   >;
   recurring_transaction?: Resolver<
     Maybe<ResolversTypes['recurring_transactions']>,
