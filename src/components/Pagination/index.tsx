@@ -59,7 +59,9 @@ export const PaginationContext = React.createContext<PaginationContextValue>({
   lastItemOnPage: 0,
 });
 
-export const PaginationButtonFirstPage: FC<React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>> = ({ ...rest }) => {
+export const PaginationButtonFirstPage: FC<
+  React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>
+> = ({ ...rest }) => {
   const { rtlValue } = useRtl();
   const { t } = useTranslation();
   const { setPage, firstPage, isFirstPage } = useContext(PaginationContext);
@@ -77,7 +79,9 @@ export const PaginationButtonFirstPage: FC<React.PropsWithChildren<Omit<IconButt
   );
 };
 
-export const PaginationButtonPrevPage: FC<React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>> = ({ ...rest }) => {
+export const PaginationButtonPrevPage: FC<
+  React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>
+> = ({ ...rest }) => {
   const { rtlValue } = useRtl();
   const { t } = useTranslation();
   const { setPage, page, isFirstPage } = useContext(PaginationContext);
@@ -95,7 +99,9 @@ export const PaginationButtonPrevPage: FC<React.PropsWithChildren<Omit<IconButto
   );
 };
 
-export const PaginationButtonLastPage: FC<React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>> = ({ ...rest }) => {
+export const PaginationButtonLastPage: FC<
+  React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>
+> = ({ ...rest }) => {
   const { rtlValue } = useRtl();
   const { t } = useTranslation();
   const { setPage, lastPage, isLastPage } = useContext(PaginationContext);
@@ -113,7 +119,9 @@ export const PaginationButtonLastPage: FC<React.PropsWithChildren<Omit<IconButto
   );
 };
 
-export const PaginationButtonNextPage: FC<React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>> = ({ ...rest }) => {
+export const PaginationButtonNextPage: FC<
+  React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>
+> = ({ ...rest }) => {
   const { rtlValue } = useRtl();
   const { t } = useTranslation();
   const { setPage, page, isLastPage } = useContext(PaginationContext);

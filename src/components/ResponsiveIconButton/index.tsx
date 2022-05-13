@@ -16,7 +16,9 @@ interface ResponsiveIconButtonProps extends ButtonProps {
   iconPosition?: 'left' | 'right';
 }
 
-export const ResponsiveIconButton: FC<React.PropsWithChildren<ResponsiveIconButtonProps>> = forwardRef(
+export const ResponsiveIconButton: FC<
+  React.PropsWithChildren<ResponsiveIconButtonProps>
+> = forwardRef(
   (
     {
       hideTextBreakpoints = {

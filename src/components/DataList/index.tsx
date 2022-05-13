@@ -186,7 +186,9 @@ export const DataListRow: FC<React.PropsWithChildren<DataListRowProps>> = ({
 
 export interface DataListHeaderProps extends DataListRowProps {}
 
-export const DataListHeader: FC<React.PropsWithChildren<DataListHeaderProps>> = ({ ...rest }) => {
+export const DataListHeader: FC<
+  React.PropsWithChildren<DataListHeaderProps>
+> = ({ ...rest }) => {
   const { colorModeValue } = useDarkMode();
   return (
     <DataListHeaderContext.Provider value={true}>
@@ -205,7 +207,9 @@ export const DataListHeader: FC<React.PropsWithChildren<DataListHeaderProps>> = 
 
 export interface DataListFooterProps extends DataListRowProps {}
 
-export const DataListFooter: FC<React.PropsWithChildren<DataListFooterProps>> = ({ ...rest }) => {
+export const DataListFooter: FC<
+  React.PropsWithChildren<DataListFooterProps>
+> = ({ ...rest }) => {
   const { colorModeValue } = useDarkMode();
   return (
     <Box mt="auto">

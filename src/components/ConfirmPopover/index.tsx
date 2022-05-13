@@ -27,7 +27,9 @@ interface ConfirmPopoverProps extends PopoverProps {
   confirmVariant?: string;
 }
 
-export const ConfirmPopover: React.FC<React.PropsWithChildren<ConfirmPopoverProps>> = ({
+export const ConfirmPopover: React.FC<
+  React.PropsWithChildren<ConfirmPopoverProps>
+> = ({
   children,
   title,
   message,

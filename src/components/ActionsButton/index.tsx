@@ -9,8 +9,8 @@ export interface ActionsButtonProps
   label?: string;
 }
 
-export const ActionsButton: FC<React.PropsWithChildren<ActionsButtonProps>> = forwardRef(
-  ({ label, ...rest }, ref) => {
+export const ActionsButton: FC<React.PropsWithChildren<ActionsButtonProps>> =
+  forwardRef(({ label, ...rest }, ref) => {
     const { t } = useTranslation();
     return (
       <IconButton
@@ -31,7 +31,6 @@ export const ActionsButton: FC<React.PropsWithChildren<ActionsButtonProps>> = fo
         {...rest}
       />
     );
-  }
-);
+  });
 
 ActionsButton.displayName = 'ActionsButton';
