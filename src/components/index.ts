@@ -4,6 +4,7 @@ export * from './ConfirmMenuItem';
 export * from './ConfirmPopover';
 export * from './DataList';
 export * from './DateAgo';
+export * from './DateSelector';
 export * from './DayPicker';
 export * from './FieldDayPicker';
 export * from './FieldBooleanCheckbox';

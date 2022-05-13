@@ -21,19 +21,19 @@ interface OptionProps {
   label: string;
 }
 
-export interface SortValue {
+export type SortValue = {
   by: string;
   order: 'asc' | 'desc';
-}
+};
 
-interface SortProps extends Omit<ButtonProps, 'onChange'> {
+type CustomProps = {
   sort: SortValue;
   size?: 'xs' | 'sm' | 'md';
   options?: Array<OptionProps>;
   onChange?(sort: SortValue): void;
   ascIcon?: FC<React.PropsWithChildren<unknown>>;
   descIcon?: FC<React.PropsWithChildren<unknown>>;
-}
+};
 
 type SortProps = Overwrite<ButtonProps, CustomProps>;
 
@@ -76,7 +76,7 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
         {...rest}
       >
         <Icon mr="0.5" />
-        <Text as="span" d="block" fontSize={size} isTruncated>
+        <Text as="span" fontSize={size} noOfLines={0}>
           {options.find((option) => option?.value === by)?.label}
         </Text>
       </MenuButton>
