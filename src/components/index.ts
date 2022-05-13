@@ -13,7 +13,6 @@ export * from './FieldDayPicker';
 export * from './FieldHidden';
 export * from './FieldInput';
 export * from './FieldMultiSelect';
-export * from './field-number';
 export * from './FieldRadios';
 export * from './FieldSelect';
 export * from './FieldTextarea';

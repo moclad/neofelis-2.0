@@ -3,7 +3,7 @@ import { FC, ReactElement } from 'react';
 import { Providers } from '@/Providers';
 import { render, RenderOptions } from '@testing-library/react';
 
-const CustomWrapper: FC = ({ children }) => {
+const CustomWrapper: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
   return <Providers>{children}</Providers>;
 };
 

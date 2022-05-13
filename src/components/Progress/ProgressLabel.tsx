@@ -9,7 +9,7 @@ export interface ProgressLabelProps extends TextProps {
   children(data: ProgressValues): ReactChild;
 }
 
-export const ProgressLabel: FC<ProgressLabelProps> = ({
+export const ProgressLabel: FC<React.PropsWithChildren<ProgressLabelProps>> = ({
   children,
   ...rest
 }) => {

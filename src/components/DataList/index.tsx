@@ -143,7 +143,7 @@ export interface DataListRowProps extends FlexProps {
   isDisabled?: boolean;
 }
 
-export const DataListRow: FC<DataListRowProps> = ({
+export const DataListRow: FC<React.PropsWithChildren<DataListRowProps>> = ({
   isVisible = true,
   isDisabled = false,
   ...rest
@@ -186,7 +186,7 @@ export const DataListRow: FC<DataListRowProps> = ({
 
 export interface DataListHeaderProps extends DataListRowProps {}
 
-export const DataListHeader: FC<DataListHeaderProps> = ({ ...rest }) => {
+export const DataListHeader: FC<React.PropsWithChildren<DataListHeaderProps>> = ({ ...rest }) => {
   const { colorModeValue } = useDarkMode();
   return (
     <DataListHeaderContext.Provider value={true}>
@@ -205,7 +205,7 @@ export const DataListHeader: FC<DataListHeaderProps> = ({ ...rest }) => {
 
 export interface DataListFooterProps extends DataListRowProps {}
 
-export const DataListFooter: FC<DataListFooterProps> = ({ ...rest }) => {
+export const DataListFooter: FC<React.PropsWithChildren<DataListFooterProps>> = ({ ...rest }) => {
   const { colorModeValue } = useDarkMode();
   return (
     <Box mt="auto">
@@ -228,7 +228,7 @@ export interface DataListProps extends AccordionProps {
   isHover?: boolean;
 }
 
-export const DataList: FC<DataListProps> = ({
+export const DataList: FC<React.PropsWithChildren<DataListProps>> = ({
   allowMultiple = true,
   allowToggle = false,
   isHover = true,

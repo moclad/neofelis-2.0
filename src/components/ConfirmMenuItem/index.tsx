@@ -1,23 +1,22 @@
-import React, { useRef, useState, useEffect } from 'react';
-
-import {
-  chakra,
-  useMenuItem,
-  MenuItemProps,
-  MenuIcon,
-  MenuCommand,
-  forwardRef,
-  HTMLChakraProps,
-  useMenuState,
-  useStyles,
-  Text,
-  Flex,
-} from '@chakra-ui/react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiAlertCircle } from 'react-icons/fi';
 
 import { Icon } from '@/components';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import {
+  chakra,
+  Flex,
+  forwardRef,
+  HTMLChakraProps,
+  MenuCommand,
+  MenuIcon,
+  MenuItemProps,
+  Text,
+  useMenuItem,
+  useMenuState,
+  useStyles
+} from '@chakra-ui/react';
 
 export interface StyledMenuItemProps extends HTMLChakraProps<'button'> {}
 
@@ -99,7 +98,7 @@ interface ConfirmMenuItemProps extends MenuItemProps {
   confirmColorScheme?: string;
   confirmContent?: React.ReactNode;
   confirmText?: React.ReactNode;
-  confirmIcon?: React.FC;
+  confirmIcon?: React.FC<React.PropsWithChildren<unknown>>;
 }
 
 export const ConfirmMenuItem = forwardRef<ConfirmMenuItemProps, 'button'>(

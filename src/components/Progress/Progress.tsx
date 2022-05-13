@@ -12,7 +12,7 @@ export const ProgressContext = createContext<ProgressValues>(null);
 
 export interface ProgressProps extends StackProps, ProgressValues {}
 
-export const Progress: FC<ProgressProps> = ({
+export const Progress: FC<React.PropsWithChildren<ProgressProps>> = ({
   completed = 0,
   total,
   isLoading = false,

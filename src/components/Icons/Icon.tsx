@@ -8,8 +8,8 @@ import {
   IconProps as ChakraIconProps
 } from '@chakra-ui/react';
 
-export interface IconProps extends BoxProps {
-  icon: FC;
+export type IconProps = BoxProps & {
+  icon: FC<React.PropsWithChildren<unknown>>;
   iconProps?: ChakraIconProps;
 }
 

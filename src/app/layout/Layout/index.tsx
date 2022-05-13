@@ -7,7 +7,7 @@ import { LayoutContext, TopBar } from '@/app/layout';
 import { Viewport } from '@/components';
 import { Flex, useDisclosure } from '@chakra-ui/react';
 
-export const Layout = ({ children }) => {
+export const Layout: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
   const [isFocusMode, setIsFocusMode] = useState(false);
   const {
     isOpen: navIsOpen,

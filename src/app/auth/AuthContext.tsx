@@ -25,7 +25,7 @@ const updateToken = (newToken) => {
 
 export const useAuthContext = () => useContext(AuthContext);
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
   const [token, setToken] = useState(
     (isBrowser && localStorage.getItem(AUTH_TOKEN_KEY)) ?? null
   );

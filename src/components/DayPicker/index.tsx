@@ -89,7 +89,7 @@ type CustomProps = {
 
 interface DayPickerProps extends Overwrite<BoxProps, CustomProps> {}
 
-export const DayPicker: FC<DayPickerProps> = ({
+export const DayPicker: FC<React.PropsWithChildren<DayPickerProps>> = ({
   id,
   placeholder = FORMAT,
   value = null,

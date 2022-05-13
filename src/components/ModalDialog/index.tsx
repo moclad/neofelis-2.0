@@ -30,7 +30,9 @@ export interface ModalDialogProps {
   children?: ReactNode;
 }
 
-export const ModalDialog: FC<ModalDialogProps> = (props) => {
+export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
+  props
+) => {
   const {
     children,
     isOpen,

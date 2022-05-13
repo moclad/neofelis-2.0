@@ -22,7 +22,7 @@ export interface DateAgoProps extends Omit<TooltipProps, 'children'> {
   locale?: string;
 }
 
-export const DateAgo: FC<DateAgoProps> = forwardRef(function DateAgo(
+export const DateAgo: FC<React.PropsWithChildren<DateAgoProps>> = forwardRef(function DateAgo(
   { date = new Date(), format, ...rest },
   ref
 ) {

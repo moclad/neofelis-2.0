@@ -68,8 +68,8 @@ export const Nav = ({ children, breakpoint = 'lg', ...rest }: NavProps) => {
   );
 };
 
-interface NavItemProps extends FlexProps {
-  icon?: any;
+type NavItemProps = FlexProps & {
+  icon?: React.FC<React.PropsWithChildren<unknown>>;
   isActive?: boolean;
 }
 
@@ -141,7 +141,7 @@ export const NavItem: ChakraComponent<'span', NavItemProps> = ({
   );
 };
 
-export const NavGroup: FC<FlexProps> = ({ children, title, ...rest }) => {
+export const NavGroup: FC<React.PropsWithChildren<FlexProps>> = ({ children, title, ...rest }) => {
   const { colorModeValue } = useDarkMode();
   const { isMenu } = useNavContext();
 

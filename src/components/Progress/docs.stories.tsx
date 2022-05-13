@@ -20,9 +20,7 @@ export const Default = () => {
 export const Indeterminate = () => {
   return (
     <Progress completed={10} total={30} isLoading>
-      <ProgressLabel>
-        {({ isLoading: _isLoading }) => `Loading...`}
-      </ProgressLabel>
+      <ProgressLabel>{() => `Loading...`}</ProgressLabel>
       <ProgressBar />
     </Progress>
   );

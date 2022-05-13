@@ -1,5 +1,8 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
+import { IconSortAsc, IconSortDesc } from '@/components';
+import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Button,
   ButtonProps,
@@ -10,12 +13,8 @@ import {
   MenuList,
   MenuOptionGroup,
   Portal,
-  Text,
+  Text
 } from '@chakra-ui/react';
-import { useTranslation } from 'react-i18next';
-
-import { IconSortAsc, IconSortDesc } from '@/components';
-import { useDarkMode } from '@/hooks/useDarkMode';
 
 interface OptionProps {
   value: string;
@@ -32,11 +31,13 @@ interface SortProps extends Omit<ButtonProps, 'onChange'> {
   size?: 'xs' | 'sm' | 'md';
   options?: Array<OptionProps>;
   onChange?(sort: SortValue): void;
-  ascIcon?: FC;
-  descIcon?: FC;
+  ascIcon?: FC<React.PropsWithChildren<unknown>>;
+  descIcon?: FC<React.PropsWithChildren<unknown>>;
 }
 
-export const Sort: FC<SortProps> = ({
+type SortProps = Overwrite<ButtonProps, CustomProps>;
+
+export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
   sort = { by: '', order: 'asc' },
   size = 'xs',
   options = [],
