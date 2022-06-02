@@ -1,0 +1,25 @@
+query allRecurring($limit: Int, $offset: Int) {
+  recurring(limit: $limit, offset: $offset, order_by: { title: asc }) {
+    id
+    title
+    created_at
+    updated_at
+    cycle_type
+    duration_type
+    amount
+    start_on
+    transaction_type
+    transactions_aggregate {
+      aggregate {
+        sum {
+          amount
+        }
+      }
+    }
+  }
+  recurring_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

@@ -3,3 +3,9 @@ mutation insertRecurring($object: recurring_insert_input!) {
     id
   }
 }
+
+mutation deleteRecurring($id: bigint!) {
+  delete_recurring_by_pk(id: $id) {
+    id
+  }
+}

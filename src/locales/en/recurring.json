@@ -9,7 +9,10 @@
     },
     "table": {
       "header": {
-        "title": "Title"
+        "title": "Title",
+        "cycle": "Cycle",
+        "amount": "Amount",
+        "totalPaid": "Total paid"
       }
     },
     "fields": {
@@ -51,13 +54,20 @@
     "durationType": {
       "forever": "Forever",
       "untilDate": "Repeat until date",
-      "numberOfTimes": "Number of times"
+      "numberOfTimes": "Number of times",
+      "1": "Forever",
+      "2": "Repeat until date",
+      "3": "Number of times"
     },
     "cycleType": {
       "monthly": "Monthly",
       "quarterly": "Quarterly",
       "halfYearly": "Half-yearly",
-      "annually": "Annually"
+      "annually": "Annually",
+      "1": "Monthly",
+      "2": "Quarterly",
+      "3": "Half-yearly",
+      "4": "Annually"
     }
   },
   "nav": {

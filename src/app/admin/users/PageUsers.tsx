@@ -240,7 +240,7 @@ export const PageUsers = () => {
               colWidth={{ base: '2rem', md: '0.5' }}
               align="center"
             >
-              <Box as="span" d={{ base: 'none', md: 'block' }}>
+              <Box as="span" display={{ base: 'none', md: 'block' }}>
                 {t('users:data.status.label')}
               </Box>
             </DataListCell>
@@ -252,13 +252,13 @@ export const PageUsers = () => {
                 <HStack maxW="100%">
                   <Avatar size="sm" name={user.login} mx="1" />
                   <Box minW="0">
-                    <Text isTruncated maxW="full" fontWeight="bold">
+                    <Text noOfLines={0} maxW="full" fontWeight="bold">
                       <LinkOverlay as={Link} to={`${url}/${user.login}`}>
                         {user.login}
                       </LinkOverlay>
                     </Text>
                     <Text
-                      isTruncated
+                      noOfLines={0}
                       maxW="full"
                       fontSize="sm"
                       color={colorModeValue('gray.600', 'gray.300')}
@@ -269,7 +269,7 @@ export const PageUsers = () => {
                 </HStack>
               </DataListCell>
               <DataListCell colName="id">
-                <Text isTruncated maxW="full" as={Code} fontSize="xs">
+                <Text noOfLines={0} maxW="full" as={Code} fontSize="xs">
                   {user.id}
                 </Text>
               </DataListCell>
@@ -288,12 +288,12 @@ export const PageUsers = () => {
                 position="relative"
                 pointerEvents="none"
               >
-                <Text isTruncated maxW="full">
+                <Text noOfLines={0} maxW="full">
                   {user.createdBy}
                 </Text>
                 {!!user.createdDate && (
                   <Text
-                    isTruncated
+                    noOfLines={0}
                     maxW="full"
                     color={colorModeValue('gray.600', 'gray.300')}
                     pointerEvents="auto"
@@ -308,12 +308,12 @@ export const PageUsers = () => {
                 position="relative"
                 pointerEvents="none"
               >
-                <Text isTruncated maxW="full">
+                <Text noOfLines={0} maxW="full">
                   {user.lastModifiedBy}
                 </Text>
                 {!!user.lastModifiedDate && (
                   <Text
-                    isTruncated
+                    noOfLines={0}
                     maxW="full"
                     color={colorModeValue('gray.600', 'gray.300')}
                     pointerEvents="auto"

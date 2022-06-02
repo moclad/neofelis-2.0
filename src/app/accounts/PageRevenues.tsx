@@ -191,7 +191,7 @@ export const PageRevenues = () => {
                     <HStack maxW="100%">
                       <Avvvatars value={item.name} />
                       <Box minW="0">
-                        <Text isTruncated maxW="full" fontWeight="bold">
+                        <Text noOfLines={0} maxW="full" fontWeight="bold">
                           {item.name}
                         </Text>
                       </Box>
@@ -230,19 +230,19 @@ export const PageRevenues = () => {
                         <MenuList>
                           <MenuItem
                             onClick={() => onEdit(item.id, item)}
-                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                            icon={<FiEdit />}
                           >
                             {t('common:actions.edit')}
                           </MenuItem>
                           <MenuItem
                             onClick={() => deactivate(item)}
-                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                            icon={<FiEdit />}
                           >
                             {t('common:actions.deactivate')}
                           </MenuItem>
                           <MenuItem
                             onClick={() => setStandard(item)}
-                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                            icon={<FiEdit />}
                           >
                             {t('common:actions.setAsStandard')}
                           </MenuItem>

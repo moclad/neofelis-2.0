@@ -11,14 +11,14 @@ import {
 export type IconProps = BoxProps & {
   icon: FC<React.PropsWithChildren<unknown>>;
   iconProps?: ChakraIconProps;
-}
+};
 
 export const Icon = forwardRef<IconProps, 'span'>(
   ({ icon: IconEl, iconProps, ...rest }, ref) => {
     return (
       <Box
         as="span"
-        d="inline-block"
+        display="inline-block"
         position="relative"
         w="1em"
         flex="none"

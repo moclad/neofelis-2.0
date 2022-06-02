@@ -10,7 +10,6 @@ import {
   PaginationButtonPrevPage,
   PaginationInfo
 } from '@/components';
-import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Avatar,
   Badge,
@@ -180,7 +179,6 @@ export const NoHover = () => (
 );
 
 export const Complete = () => {
-  const { colorModeValue } = useDarkMode();
   const users = [
     {
       name: 'Jane Cooper',
@@ -189,6 +187,22 @@ export const Complete = () => {
       department: 'Optimization',
       status: 'Active',
       role: 'Admin',
+    },
+    {
+      name: 'Cody Fisher',
+      email: 'cody.fisher@example.com',
+      job: 'Product Directives Officer',
+      department: 'Intranet',
+      status: 'Active',
+      role: 'Owner',
+    },
+    {
+      name: 'Esther Howard',
+      email: 'esther.howard@example.com',
+      job: 'Forward Response Developer',
+      department: 'Directives',
+      status: 'Inactive',
+      role: 'Member',
     },
   ];
   return (
@@ -226,7 +240,7 @@ export const Complete = () => {
             <HStack maxW="100%">
               <Avatar size="sm" name={item.name} mx="2" />
               <Box minW="0">
-                <Text isTruncated maxW="full" fontWeight="bold">
+                <Text noOfLines={1} maxW="full" fontWeight="bold">
                   {item.status !== 'Inactive' ? (
                     <LinkOverlay href="#">{item.name}</LinkOverlay>
                   ) : (
@@ -234,10 +248,11 @@ export const Complete = () => {
                   )}
                 </Text>
                 <Text
-                  isTruncated
+                  noOfLines={1}
                   maxW="full"
                   fontSize="sm"
-                  color={colorModeValue('gray.600', 'gray.300')}
+                  color="gray.600"
+                  _dark={{ color: 'gray.300' }}
                 >
                   {item.email}
                 </Text>
@@ -245,13 +260,14 @@ export const Complete = () => {
             </HStack>
           </DataListCell>
           <DataListCell colName="title" fontSize="sm">
-            <Text isTruncated maxW="full">
+            <Text noOfLines={1} maxW="full">
               {item.job}
             </Text>
             <Text
-              isTruncated
+              noOfLines={1}
               maxW="full"
-              color={colorModeValue('gray.600', 'gray.300')}
+              color="gray.600"
+              _dark={{ color: 'gray.300' }}
             >
               {item.department}
             </Text>
@@ -266,9 +282,10 @@ export const Complete = () => {
           </DataListCell>
           <DataListCell colName="role" fontSize="sm">
             <Text
-              isTruncated
+              noOfLines={1}
               maxW="full"
-              color={colorModeValue('gray.600', 'gray.300')}
+              color="gray.600"
+              _dark={{ color: 'gray.300' }}
             >
               {item.role}
             </Text>
@@ -328,7 +345,6 @@ export const Complete = () => {
 };
 
 export const CompleteWithCollapse = () => {
-  const { colorModeValue } = useDarkMode();
   const users = [
     {
       name: 'Jane Cooper',
@@ -380,14 +396,15 @@ export const CompleteWithCollapse = () => {
               <HStack maxW="100%">
                 <Avatar size="sm" name={item.name} mx="2" />
                 <Box minW="0">
-                  <Text isTruncated maxW="full" fontWeight="bold">
+                  <Text noOfLines={1} maxW="full" fontWeight="bold">
                     {item.name}
                   </Text>
                   <Text
-                    isTruncated
+                    noOfLines={1}
                     maxW="full"
                     fontSize="sm"
-                    color={colorModeValue('gray.600', 'gray.300')}
+                    color="gray.600"
+                    _dark={{ color: 'gray.300' }}
                   >
                     {item.email}
                   </Text>
@@ -409,31 +426,31 @@ export const CompleteWithCollapse = () => {
           <DataListAccordionPanel>
             <SimpleGrid columns={{ base: 2, md: 3, lg: 4 }} spacing={4}>
               <Box fontSize="sm">
-                <Text color={colorModeValue('gray.600', 'gray.300')}>
+                <Text color="gray.600" _dark={{ color: 'gray.300' }}>
                   Label
                 </Text>
                 <Text>Value</Text>
               </Box>
               <Box fontSize="sm">
-                <Text color={colorModeValue('gray.600', 'gray.300')}>
+                <Text color="gray.600" _dark={{ color: 'gray.300' }}>
                   Label
                 </Text>
                 <Text>Value</Text>
               </Box>
               <Box fontSize="sm">
-                <Text color={colorModeValue('gray.600', 'gray.300')}>
+                <Text color="gray.600" _dark={{ color: 'gray.300' }}>
                   Label
                 </Text>
                 <Text>Value</Text>
               </Box>
               <Box fontSize="sm">
-                <Text color={colorModeValue('gray.600', 'gray.300')}>
+                <Text color="gray.600" _dark={{ color: 'gray.300' }}>
                   Label
                 </Text>
                 <Text>Value</Text>
               </Box>
               <Box fontSize="sm" gridColumn="1/-1">
-                <Text color={colorModeValue('gray.600', 'gray.300')}>
+                <Text color="gray.600" _dark={{ color: 'gray.300' }}>
                   Comment
                 </Text>
                 <Text>

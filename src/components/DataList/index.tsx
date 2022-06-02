@@ -14,6 +14,15 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react';
 
+import {
+  Pagination,
+  PaginationButtonFirstPage,
+  PaginationButtonLastPage,
+  PaginationButtonNextPage,
+  PaginationButtonPrevPage,
+  PaginationInfo
+} from '../Pagination';
+
 type DataListColumns = Record<string, DataListCellProps>;
 type DataListContextValue = {
   setColumns: React.Dispatch<React.SetStateAction<DataListColumns>>;
@@ -170,7 +179,7 @@ export const DataListRow: FC<React.PropsWithChildren<DataListRowProps>> = ({
     : {};
   return (
     <Flex
-      d={!showRow ? 'none' : null}
+      display={!showRow ? 'none' : null}
       position="relative"
       borderBottom="1px solid"
       borderBottomColor={colorModeValue('gray.100', 'gray.900')}
@@ -202,6 +211,38 @@ export const DataListHeader: FC<
         {...rest}
       />
     </DataListHeaderContext.Provider>
+  );
+};
+
+export interface DataListPaginationRowProps extends DataListRowProps {
+  isVisible?: boolean | boolean[] | Record<string, boolean>;
+  isDisabled?: boolean;
+  isLoadingPage?: boolean;
+  setPage?: (p: number) => void;
+  page: number;
+  pageSize: number;
+  totalItems?: number;
+}
+
+export const DataListPaginationFooter: FC<
+  React.PropsWithChildren<DataListPaginationRowProps>
+> = ({ isLoadingPage, setPage, page, pageSize, totalItems, ...rest }) => {
+  return (
+    <DataListFooter {...rest}>
+      <Pagination
+        isLoadingPage={isLoadingPage}
+        setPage={setPage}
+        page={page}
+        pageSize={pageSize}
+        totalItems={totalItems}
+      >
+        <PaginationButtonFirstPage />
+        <PaginationButtonPrevPage />
+        <PaginationInfo flex="1" />
+        <PaginationButtonNextPage />
+        <PaginationButtonLastPage />
+      </Pagination>
+    </DataListFooter>
   );
 };
 

@@ -54,7 +54,6 @@ const AppVersion = ({ ...rest }) => {
         {...rest}
       >
         <Flex
-          d={hasCopied ? 'flex' : 'none'}
           position="absolute"
           align="center"
           top="0"
@@ -112,7 +111,7 @@ export const AccountMenu = ({ ...rest }) => {
         maxW="12rem"
         overflow="hidden"
       >
-        <MenuGroup title={data?.users_by_pk?.email} isTruncated>
+        <MenuGroup title={data?.users_by_pk?.email} noOfLines={1}>
           <MenuItem
             as={Link}
             to="/profile"

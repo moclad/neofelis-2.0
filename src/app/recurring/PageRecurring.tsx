@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import Avvvatars from 'avvvatars-react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
@@ -9,34 +10,22 @@ import {
   ConfirmMenuItem,
   DataList,
   DataListCell,
-  DataListFooter,
   DataListHeader,
+  DataListPaginationFooter,
   DataListRow,
-  Icon,
-  Pagination,
-  PaginationButtonFirstPage,
-  PaginationButtonLastPage,
-  PaginationButtonNextPage,
-  PaginationButtonPrevPage,
-  PaginationInfo,
   ResponsiveIconButton,
+  TextCurrency,
   useToastSuccess
 } from '@/components';
 import {
-  useAllAssetsQuery,
-  useDeleteAssetMutation,
-  useInsertAssetMutation,
-  useUpdateAssetMutation,
-  useUpdateAssetStandardMutation,
-  useUpdateAssetStateMutation
+  useAllRecurringQuery,
+  useDeleteRecurringMutation,
+  useUpdateAssetMutation
 } from '@/generated/graphql';
-import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import { TransactionType } from '@/types/types';
 import {
-  Avatar,
-  Box,
+  Badge,
   HStack,
   LinkBox,
   LinkOverlay,
@@ -46,7 +35,6 @@ import {
   MenuItem,
   MenuList,
   Portal,
-  Stack,
   Text,
   useDisclosure
 } from '@chakra-ui/react';
@@ -60,64 +48,23 @@ export const PageRecurring = () => {
   const { dataKey, dataContext, isEditing, onEdit, onFinish } =
     useEditMode<number>();
   const toastSuccess = useToastSuccess();
-  const { colorModeValue } = useDarkMode();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
   const { mutationOptions } = useMutationOptions();
 
-  const { loading, data } = useAllAssetsQuery({
+  const { loading, data, refetch } = useAllRecurringQuery({
     variables: {
       offset: (page - 1) * pageSize,
       limit: pageSize,
     },
   });
 
-  const [transactionType, setTransactionType] = useState(TransactionType.None);
-
-  const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
+  const [deleteRecurring, { loading: deleteFetching }] =
+    useDeleteRecurringMutation();
 
   const [updateAsset, { loading: updateLoading }] =
     useUpdateAssetMutation(mutationOptions);
-  const [insertAsset, { loading: insertLoading }] =
-    useInsertAssetMutation(mutationOptions);
-  const [updateAssetState] = useUpdateAssetStateMutation(mutationOptions);
-  const [updateAssetStandard] = useUpdateAssetStandardMutation(mutationOptions);
-
-  const onConfirmCreate = async (values) => {
-    const { name } = values;
-    const newData = {
-      ...values,
-      name: name,
-      account_info: { data: { type: 'A', name: name } },
-    };
-
-    insertAsset({
-      variables: {
-        object: newData,
-      },
-      refetchQueries: 'active',
-    });
-  };
-
-  const setStandard = async (item) => {
-    await updateAssetStandard({
-      variables: {
-        id: item.id,
-      },
-      refetchQueries: 'active',
-    });
-  };
-
-  const deactivate = async (item) => {
-    await updateAssetState({
-      variables: {
-        id: item.id,
-        state: !item.active,
-      },
-      refetchQueries: 'active',
-    });
-  };
 
   const onConfirmEdit = async (values) => {
     const newData = {
@@ -135,7 +82,7 @@ export const PageRecurring = () => {
   };
 
   const onDelete = async (id: number) => {
-    deleteAsset({
+    deleteRecurring({
       variables: {
         id,
       },
@@ -149,13 +96,14 @@ export const PageRecurring = () => {
 
   const onCloseDialog = () => {
     onClose();
+    refetch();
   };
 
   return (
     <>
       <Page nav={<RecurringNav />}>
         <PageContent
-          loading={loading || deleteFetching || insertLoading || updateLoading}
+          loading={loading || deleteFetching || updateLoading}
           title={t('recurring:recurring.title')}
           actions={[
             <ResponsiveIconButton
@@ -170,8 +118,17 @@ export const PageRecurring = () => {
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
-              <DataListCell colName="name" colWidth="1.5">
-                {t('recurring.table.header.title')}
+              <DataListCell colName="name" colWidth={1.5}>
+                {t('recurring:recurring.table.header.title')}
+              </DataListCell>
+              <DataListCell colName="cycle">
+                {t('recurring:recurring.table.header.cycle')}
+              </DataListCell>
+              <DataListCell colName="amount">
+                {t('recurring:recurring.table.header.amount')}
+              </DataListCell>
+              <DataListCell colName="total">
+                {t('recurring:recurring.table.header.totalPaid')}
               </DataListCell>
               <DataListCell
                 colName="actions"
@@ -180,29 +137,44 @@ export const PageRecurring = () => {
               />
             </DataListHeader>
             {data &&
-              data.assets.map((item, index) => (
+              data.recurring.map((item, index) => (
                 <DataListRow as={LinkBox} key={index}>
-                  <DataListCell colName="name">
+                  <DataListCell colName="title" colWidth={1.5}>
                     <HStack maxW="100%">
-                      <Avatar size="sm" name={item.name} mx="2" />
-                      <Box minW="0">
-                        <Text isTruncated maxW="full" fontWeight="bold">
-                          {item.active ? (
-                            <LinkOverlay href="#">{item.name}</LinkOverlay>
-                          ) : (
-                            item.name
-                          )}
-                        </Text>
-                        <Text
-                          isTruncated
-                          maxW="full"
-                          fontSize="sm"
-                          color={colorModeValue('gray.600', 'gray.300')}
-                        >
-                          {item.account_no}
-                        </Text>
-                      </Box>
+                      <Avvvatars value={item.title} />
+                      <Text noOfLines={0} maxW="full" fontWeight="bold">
+                        <LinkOverlay href="#">{item.title}</LinkOverlay>
+                      </Text>
                     </HStack>
+                  </DataListCell>
+                  <DataListCell colName="cycle">
+                    <HStack>
+                      <Badge size="sm" colorScheme="success">
+                        {t(`recurring:recurring.cycleType.${item.cycle_type}`)}
+                      </Badge>
+                      <Badge size="sm" colorScheme="gray">
+                        {t(
+                          `recurring:recurring.durationType.${item.duration_type}`
+                        )}
+                      </Badge>
+                    </HStack>
+                  </DataListCell>
+
+                  <DataListCell colName="amount">
+                    <TextCurrency
+                      value={item.amount}
+                      locale="de"
+                      currency="EUR"
+                    />
+                  </DataListCell>
+                  <DataListCell colName="total">
+                    <TextCurrency
+                      value={
+                        item.transactions_aggregate.aggregate?.sum?.amount ?? 0
+                      }
+                      locale="de"
+                      currency="EUR"
+                    />
                   </DataListCell>
                   <DataListCell colName="actions">
                     <Menu isLazy>
@@ -211,21 +183,9 @@ export const PageRecurring = () => {
                         <MenuList>
                           <MenuItem
                             onClick={() => onEdit(item.id, item)}
-                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                            icon={<FiEdit />}
                           >
                             {t('common:actions.edit')}
-                          </MenuItem>
-                          <MenuItem
-                            onClick={() => deactivate(item)}
-                            icon={<Icon icon={FiEdit} color="gray.400" />}
-                          >
-                            {t('common:actions.deactivate')}
-                          </MenuItem>
-                          <MenuItem
-                            onClick={() => setStandard(item)}
-                            icon={<Icon icon={FiEdit} color="gray.400" />}
-                          >
-                            {t('common:actions.setAsStandard')}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -242,29 +202,17 @@ export const PageRecurring = () => {
                   </DataListCell>
                 </DataListRow>
               ))}
-            <DataListFooter>
-              <Pagination
-                isLoadingPage={loading || insertLoading || updateLoading}
-                setPage={setPage}
-                page={page}
-                pageSize={pageSize}
-                totalItems={data?.assets_aggregate?.aggregate?.count}
-              >
-                <PaginationButtonFirstPage />
-                <PaginationButtonPrevPage />
-                <PaginationInfo flex="1" />
-                <PaginationButtonNextPage />
-                <PaginationButtonLastPage />
-              </Pagination>
-            </DataListFooter>
+            <DataListPaginationFooter
+              isLoadingPage={loading || updateLoading || deleteFetching}
+              setPage={setPage}
+              page={page}
+              pageSize={pageSize}
+              totalItems={data?.recurring_aggregate?.aggregate?.count}
+            ></DataListPaginationFooter>
           </DataList>
         </PageContent>
       </Page>
-      <RecurringDialog
-        isOpen={isOpen}
-        onClose={onCloseDialog}
-        transactionType={transactionType}
-      />
+      <RecurringDialog isOpen={isOpen} onClose={onCloseDialog} />
     </>
   );
 };

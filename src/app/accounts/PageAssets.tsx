@@ -17,7 +17,6 @@ import {
   FieldCurrency,
   FieldDayPicker,
   FieldInput,
-  Icon,
   ModalDialog,
   Pagination,
   PaginationButtonFirstPage,
@@ -194,7 +193,7 @@ export const PageAssets = () => {
                       <Avvvatars value={item.name} />
 
                       <Box minW="0">
-                        <Text isTruncated maxW="full" fontWeight="bold">
+                        <Text noOfLines={0} maxW="full" fontWeight="bold">
                           {item.active ? (
                             <LinkOverlay href="#">{item.name}</LinkOverlay>
                           ) : (
@@ -202,7 +201,7 @@ export const PageAssets = () => {
                           )}
                         </Text>
                         <Text
-                          isTruncated
+                          noOfLines={0}
                           maxW="full"
                           fontSize="sm"
                           color={colorModeValue('gray.600', 'gray.300')}
@@ -249,19 +248,19 @@ export const PageAssets = () => {
                         <MenuList>
                           <MenuItem
                             onClick={() => onEdit(item.id, item)}
-                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                            icon={<FiEdit />}
                           >
                             {t('common:actions.edit')}
                           </MenuItem>
                           <MenuItem
                             onClick={() => deactivate(item)}
-                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                            icon={<FiEdit />}
                           >
                             {t('common:actions.deactivate')}
                           </MenuItem>
                           <MenuItem
                             onClick={() => setStandard(item)}
-                            icon={<Icon icon={FiEdit} color="gray.400" />}
+                            icon={<FiEdit />}
                           >
                             {t('common:actions.setAsStandard')}
                           </MenuItem>

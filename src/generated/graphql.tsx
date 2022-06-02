@@ -1729,10 +1729,6 @@ export type Mutation_Root = {
   delete_recurring_labels?: Maybe<Recurring_Labels_Mutation_Response>;
   /** delete single row from the table: "recurring_labels" */
   delete_recurring_labels_by_pk?: Maybe<Recurring_Labels>;
-  /** delete data from the table: "recurring_transactions" */
-  delete_recurring_transactions?: Maybe<Recurring_Transactions_Mutation_Response>;
-  /** delete single row from the table: "recurring_transactions" */
-  delete_recurring_transactions_by_pk?: Maybe<Recurring_Transactions>;
   /** delete data from the table: "revenues" */
   delete_revenues?: Maybe<Revenues_Mutation_Response>;
   /** delete single row from the table: "revenues" */
@@ -1797,10 +1793,6 @@ export type Mutation_Root = {
   insert_recurring_labels_one?: Maybe<Recurring_Labels>;
   /** insert a single row into the table: "recurring" */
   insert_recurring_one?: Maybe<Recurring>;
-  /** insert data into the table: "recurring_transactions" */
-  insert_recurring_transactions?: Maybe<Recurring_Transactions_Mutation_Response>;
-  /** insert a single row into the table: "recurring_transactions" */
-  insert_recurring_transactions_one?: Maybe<Recurring_Transactions>;
   /** insert data into the table: "revenues" */
   insert_revenues?: Maybe<Revenues_Mutation_Response>;
   /** insert a single row into the table: "revenues" */
@@ -1865,10 +1857,6 @@ export type Mutation_Root = {
   update_recurring_labels?: Maybe<Recurring_Labels_Mutation_Response>;
   /** update single row of the table: "recurring_labels" */
   update_recurring_labels_by_pk?: Maybe<Recurring_Labels>;
-  /** update data of the table: "recurring_transactions" */
-  update_recurring_transactions?: Maybe<Recurring_Transactions_Mutation_Response>;
-  /** update single row of the table: "recurring_transactions" */
-  update_recurring_transactions_by_pk?: Maybe<Recurring_Transactions>;
   /** update data of the table: "revenues" */
   update_revenues?: Maybe<Revenues_Mutation_Response>;
   /** update single row of the table: "revenues" */
@@ -1988,17 +1976,6 @@ export type Mutation_RootDelete_Recurring_LabelsArgs = {
 export type Mutation_RootDelete_Recurring_Labels_By_PkArgs = {
   label_id: Scalars['Int'];
   recurring_id: Scalars['bigint'];
-};
-
-/** mutation root */
-export type Mutation_RootDelete_Recurring_TransactionsArgs = {
-  where: Recurring_Transactions_Bool_Exp;
-};
-
-/** mutation root */
-export type Mutation_RootDelete_Recurring_Transactions_By_PkArgs = {
-  recurring_id: Scalars['bigint'];
-  transaction_id: Scalars['bigint'];
 };
 
 /** mutation root */
@@ -2179,18 +2156,6 @@ export type Mutation_RootInsert_Recurring_Labels_OneArgs = {
 export type Mutation_RootInsert_Recurring_OneArgs = {
   object: Recurring_Insert_Input;
   on_conflict?: InputMaybe<Recurring_On_Conflict>;
-};
-
-/** mutation root */
-export type Mutation_RootInsert_Recurring_TransactionsArgs = {
-  objects: Array<Recurring_Transactions_Insert_Input>;
-  on_conflict?: InputMaybe<Recurring_Transactions_On_Conflict>;
-};
-
-/** mutation root */
-export type Mutation_RootInsert_Recurring_Transactions_OneArgs = {
-  object: Recurring_Transactions_Insert_Input;
-  on_conflict?: InputMaybe<Recurring_Transactions_On_Conflict>;
 };
 
 /** mutation root */
@@ -2401,20 +2366,6 @@ export type Mutation_RootUpdate_Recurring_Labels_By_PkArgs = {
   _inc?: InputMaybe<Recurring_Labels_Inc_Input>;
   _set?: InputMaybe<Recurring_Labels_Set_Input>;
   pk_columns: Recurring_Labels_Pk_Columns_Input;
-};
-
-/** mutation root */
-export type Mutation_RootUpdate_Recurring_TransactionsArgs = {
-  _inc?: InputMaybe<Recurring_Transactions_Inc_Input>;
-  _set?: InputMaybe<Recurring_Transactions_Set_Input>;
-  where: Recurring_Transactions_Bool_Exp;
-};
-
-/** mutation root */
-export type Mutation_RootUpdate_Recurring_Transactions_By_PkArgs = {
-  _inc?: InputMaybe<Recurring_Transactions_Inc_Input>;
-  _set?: InputMaybe<Recurring_Transactions_Set_Input>;
-  pk_columns: Recurring_Transactions_Pk_Columns_Input;
 };
 
 /** mutation root */
@@ -2809,12 +2760,6 @@ export type Query_Root = {
   recurring_labels_aggregate: Recurring_Labels_Aggregate;
   /** fetch data from the table: "recurring_labels" using primary key columns */
   recurring_labels_by_pk?: Maybe<Recurring_Labels>;
-  /** fetch data from the table: "recurring_transactions" */
-  recurring_transactions: Array<Recurring_Transactions>;
-  /** fetch aggregated fields from the table: "recurring_transactions" */
-  recurring_transactions_aggregate: Recurring_Transactions_Aggregate;
-  /** fetch data from the table: "recurring_transactions" using primary key columns */
-  recurring_transactions_by_pk?: Maybe<Recurring_Transactions>;
   /** fetch data from the table: "revenues" */
   revenues: Array<Revenues>;
   /** fetch aggregated fields from the table: "revenues" */
@@ -3040,27 +2985,6 @@ export type Query_RootRecurring_Labels_By_PkArgs = {
   recurring_id: Scalars['bigint'];
 };
 
-export type Query_RootRecurring_TransactionsArgs = {
-  distinct_on?: InputMaybe<Array<Recurring_Transactions_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Recurring_Transactions_Order_By>>;
-  where?: InputMaybe<Recurring_Transactions_Bool_Exp>;
-};
-
-export type Query_RootRecurring_Transactions_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Recurring_Transactions_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Recurring_Transactions_Order_By>>;
-  where?: InputMaybe<Recurring_Transactions_Bool_Exp>;
-};
-
-export type Query_RootRecurring_Transactions_By_PkArgs = {
-  recurring_id: Scalars['bigint'];
-  transaction_id: Scalars['bigint'];
-};
-
 export type Query_RootRevenuesArgs = {
   distinct_on?: InputMaybe<Array<Revenues_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3225,11 +3149,14 @@ export type Recurring = {
   recurring_labels: Array<Recurring_Labels>;
   /** An aggregate relationship */
   recurring_labels_aggregate: Recurring_Labels_Aggregate;
-  /** An object relationship */
-  recurring_transaction?: Maybe<Recurring_Transactions>;
   start_on: Scalars['date'];
   title: Scalars['String'];
   transaction_type: Scalars['Int'];
+  /** An array relationship */
+  transactions: Array<Transactions>;
+  /** An aggregate relationship */
+  transactions_aggregate: Transactions_Aggregate;
+  until_date?: Maybe<Scalars['date']>;
   updated_at: Scalars['timestamptz'];
 };
 
@@ -3249,6 +3176,24 @@ export type RecurringRecurring_Labels_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Recurring_Labels_Order_By>>;
   where?: InputMaybe<Recurring_Labels_Bool_Exp>;
+};
+
+/** columns and relationships of "recurring" */
+export type RecurringTransactionsArgs = {
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
+};
+
+/** columns and relationships of "recurring" */
+export type RecurringTransactions_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transactions_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Order_By>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
 };
 
 /** aggregated selection of "recurring" */
@@ -3345,10 +3290,11 @@ export type Recurring_Bool_Exp = {
   duration_type?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
   recurring_labels?: InputMaybe<Recurring_Labels_Bool_Exp>;
-  recurring_transaction?: InputMaybe<Recurring_Transactions_Bool_Exp>;
   start_on?: InputMaybe<Date_Comparison_Exp>;
   title?: InputMaybe<String_Comparison_Exp>;
   transaction_type?: InputMaybe<Int_Comparison_Exp>;
+  transactions?: InputMaybe<Transactions_Bool_Exp>;
+  until_date?: InputMaybe<Date_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -3385,10 +3331,11 @@ export type Recurring_Insert_Input = {
   duration_type?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['bigint']>;
   recurring_labels?: InputMaybe<Recurring_Labels_Arr_Rel_Insert_Input>;
-  recurring_transaction?: InputMaybe<Recurring_Transactions_Obj_Rel_Insert_Input>;
   start_on?: InputMaybe<Scalars['date']>;
   title?: InputMaybe<Scalars['String']>;
   transaction_type?: InputMaybe<Scalars['Int']>;
+  transactions?: InputMaybe<Transactions_Arr_Rel_Insert_Input>;
+  until_date?: InputMaybe<Scalars['date']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
@@ -3682,6 +3629,7 @@ export type Recurring_Max_Fields = {
   start_on?: Maybe<Scalars['date']>;
   title?: Maybe<Scalars['String']>;
   transaction_type?: Maybe<Scalars['Int']>;
+  until_date?: Maybe<Scalars['date']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
@@ -3699,6 +3647,7 @@ export type Recurring_Max_Order_By = {
   start_on?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
+  until_date?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -3717,6 +3666,7 @@ export type Recurring_Min_Fields = {
   start_on?: Maybe<Scalars['date']>;
   title?: Maybe<Scalars['String']>;
   transaction_type?: Maybe<Scalars['Int']>;
+  until_date?: Maybe<Scalars['date']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
@@ -3734,6 +3684,7 @@ export type Recurring_Min_Order_By = {
   start_on?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
+  until_date?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -3775,10 +3726,11 @@ export type Recurring_Order_By = {
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   recurring_labels_aggregate?: InputMaybe<Recurring_Labels_Aggregate_Order_By>;
-  recurring_transaction?: InputMaybe<Recurring_Transactions_Order_By>;
   start_on?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
+  transactions_aggregate?: InputMaybe<Transactions_Aggregate_Order_By>;
+  until_date?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -3814,6 +3766,8 @@ export enum Recurring_Select_Column {
   /** column name */
   TransactionType = 'transaction_type',
   /** column name */
+  UntilDate = 'until_date',
+  /** column name */
   UpdatedAt = 'updated_at',
 }
 
@@ -3831,6 +3785,7 @@ export type Recurring_Set_Input = {
   start_on?: InputMaybe<Scalars['date']>;
   title?: InputMaybe<Scalars['String']>;
   transaction_type?: InputMaybe<Scalars['Int']>;
+  until_date?: InputMaybe<Scalars['date']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
@@ -3934,210 +3889,6 @@ export type Recurring_Sum_Order_By = {
   transaction_type?: InputMaybe<Order_By>;
 };
 
-/** columns and relationships of "recurring_transactions" */
-export type Recurring_Transactions = {
-  __typename?: 'recurring_transactions';
-  /** An object relationship */
-  recurring: Recurring;
-  recurring_id: Scalars['bigint'];
-  /** An object relationship */
-  transaction: Transactions;
-  transaction_id: Scalars['bigint'];
-};
-
-/** aggregated selection of "recurring_transactions" */
-export type Recurring_Transactions_Aggregate = {
-  __typename?: 'recurring_transactions_aggregate';
-  aggregate?: Maybe<Recurring_Transactions_Aggregate_Fields>;
-  nodes: Array<Recurring_Transactions>;
-};
-
-/** aggregate fields of "recurring_transactions" */
-export type Recurring_Transactions_Aggregate_Fields = {
-  __typename?: 'recurring_transactions_aggregate_fields';
-  avg?: Maybe<Recurring_Transactions_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Recurring_Transactions_Max_Fields>;
-  min?: Maybe<Recurring_Transactions_Min_Fields>;
-  stddev?: Maybe<Recurring_Transactions_Stddev_Fields>;
-  stddev_pop?: Maybe<Recurring_Transactions_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Recurring_Transactions_Stddev_Samp_Fields>;
-  sum?: Maybe<Recurring_Transactions_Sum_Fields>;
-  var_pop?: Maybe<Recurring_Transactions_Var_Pop_Fields>;
-  var_samp?: Maybe<Recurring_Transactions_Var_Samp_Fields>;
-  variance?: Maybe<Recurring_Transactions_Variance_Fields>;
-};
-
-/** aggregate fields of "recurring_transactions" */
-export type Recurring_Transactions_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Recurring_Transactions_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** aggregate avg on columns */
-export type Recurring_Transactions_Avg_Fields = {
-  __typename?: 'recurring_transactions_avg_fields';
-  recurring_id?: Maybe<Scalars['Float']>;
-  transaction_id?: Maybe<Scalars['Float']>;
-};
-
-/** Boolean expression to filter rows from the table "recurring_transactions". All fields are combined with a logical 'AND'. */
-export type Recurring_Transactions_Bool_Exp = {
-  _and?: InputMaybe<Array<Recurring_Transactions_Bool_Exp>>;
-  _not?: InputMaybe<Recurring_Transactions_Bool_Exp>;
-  _or?: InputMaybe<Array<Recurring_Transactions_Bool_Exp>>;
-  recurring?: InputMaybe<Recurring_Bool_Exp>;
-  recurring_id?: InputMaybe<Bigint_Comparison_Exp>;
-  transaction?: InputMaybe<Transactions_Bool_Exp>;
-  transaction_id?: InputMaybe<Bigint_Comparison_Exp>;
-};
-
-/** unique or primary key constraints on table "recurring_transactions" */
-export enum Recurring_Transactions_Constraint {
-  /** unique or primary key constraint */
-  RecurringTransactionsPkey = 'recurring_transactions_pkey',
-  /** unique or primary key constraint */
-  RecurringTransactionsRecurringIdKey = 'recurring_transactions_recurring_id_key',
-  /** unique or primary key constraint */
-  RecurringTransactionsTransactionIdKey = 'recurring_transactions_transaction_id_key',
-}
-
-/** input type for incrementing numeric columns in table "recurring_transactions" */
-export type Recurring_Transactions_Inc_Input = {
-  recurring_id?: InputMaybe<Scalars['bigint']>;
-  transaction_id?: InputMaybe<Scalars['bigint']>;
-};
-
-/** input type for inserting data into table "recurring_transactions" */
-export type Recurring_Transactions_Insert_Input = {
-  recurring?: InputMaybe<Recurring_Obj_Rel_Insert_Input>;
-  recurring_id?: InputMaybe<Scalars['bigint']>;
-  transaction?: InputMaybe<Transactions_Obj_Rel_Insert_Input>;
-  transaction_id?: InputMaybe<Scalars['bigint']>;
-};
-
-/** aggregate max on columns */
-export type Recurring_Transactions_Max_Fields = {
-  __typename?: 'recurring_transactions_max_fields';
-  recurring_id?: Maybe<Scalars['bigint']>;
-  transaction_id?: Maybe<Scalars['bigint']>;
-};
-
-/** aggregate min on columns */
-export type Recurring_Transactions_Min_Fields = {
-  __typename?: 'recurring_transactions_min_fields';
-  recurring_id?: Maybe<Scalars['bigint']>;
-  transaction_id?: Maybe<Scalars['bigint']>;
-};
-
-/** response of any mutation on the table "recurring_transactions" */
-export type Recurring_Transactions_Mutation_Response = {
-  __typename?: 'recurring_transactions_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Recurring_Transactions>;
-};
-
-/** input type for inserting object relation for remote table "recurring_transactions" */
-export type Recurring_Transactions_Obj_Rel_Insert_Input = {
-  data: Recurring_Transactions_Insert_Input;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Recurring_Transactions_On_Conflict>;
-};
-
-/** on_conflict condition type for table "recurring_transactions" */
-export type Recurring_Transactions_On_Conflict = {
-  constraint: Recurring_Transactions_Constraint;
-  update_columns?: Array<Recurring_Transactions_Update_Column>;
-  where?: InputMaybe<Recurring_Transactions_Bool_Exp>;
-};
-
-/** Ordering options when selecting data from "recurring_transactions". */
-export type Recurring_Transactions_Order_By = {
-  recurring?: InputMaybe<Recurring_Order_By>;
-  recurring_id?: InputMaybe<Order_By>;
-  transaction?: InputMaybe<Transactions_Order_By>;
-  transaction_id?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: recurring_transactions */
-export type Recurring_Transactions_Pk_Columns_Input = {
-  recurring_id: Scalars['bigint'];
-  transaction_id: Scalars['bigint'];
-};
-
-/** select columns of table "recurring_transactions" */
-export enum Recurring_Transactions_Select_Column {
-  /** column name */
-  RecurringId = 'recurring_id',
-  /** column name */
-  TransactionId = 'transaction_id',
-}
-
-/** input type for updating data in table "recurring_transactions" */
-export type Recurring_Transactions_Set_Input = {
-  recurring_id?: InputMaybe<Scalars['bigint']>;
-  transaction_id?: InputMaybe<Scalars['bigint']>;
-};
-
-/** aggregate stddev on columns */
-export type Recurring_Transactions_Stddev_Fields = {
-  __typename?: 'recurring_transactions_stddev_fields';
-  recurring_id?: Maybe<Scalars['Float']>;
-  transaction_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Recurring_Transactions_Stddev_Pop_Fields = {
-  __typename?: 'recurring_transactions_stddev_pop_fields';
-  recurring_id?: Maybe<Scalars['Float']>;
-  transaction_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Recurring_Transactions_Stddev_Samp_Fields = {
-  __typename?: 'recurring_transactions_stddev_samp_fields';
-  recurring_id?: Maybe<Scalars['Float']>;
-  transaction_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate sum on columns */
-export type Recurring_Transactions_Sum_Fields = {
-  __typename?: 'recurring_transactions_sum_fields';
-  recurring_id?: Maybe<Scalars['bigint']>;
-  transaction_id?: Maybe<Scalars['bigint']>;
-};
-
-/** update columns of table "recurring_transactions" */
-export enum Recurring_Transactions_Update_Column {
-  /** column name */
-  RecurringId = 'recurring_id',
-  /** column name */
-  TransactionId = 'transaction_id',
-}
-
-/** aggregate var_pop on columns */
-export type Recurring_Transactions_Var_Pop_Fields = {
-  __typename?: 'recurring_transactions_var_pop_fields';
-  recurring_id?: Maybe<Scalars['Float']>;
-  transaction_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate var_samp on columns */
-export type Recurring_Transactions_Var_Samp_Fields = {
-  __typename?: 'recurring_transactions_var_samp_fields';
-  recurring_id?: Maybe<Scalars['Float']>;
-  transaction_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate variance on columns */
-export type Recurring_Transactions_Variance_Fields = {
-  __typename?: 'recurring_transactions_variance_fields';
-  recurring_id?: Maybe<Scalars['Float']>;
-  transaction_id?: Maybe<Scalars['Float']>;
-};
-
 /** update columns of table "recurring" */
 export enum Recurring_Update_Column {
   /** column name */
@@ -4164,6 +3915,8 @@ export enum Recurring_Update_Column {
   Title = 'title',
   /** column name */
   TransactionType = 'transaction_type',
+  /** column name */
+  UntilDate = 'until_date',
   /** column name */
   UpdatedAt = 'updated_at',
 }
@@ -4524,12 +4277,6 @@ export type Subscription_Root = {
   recurring_labels_aggregate: Recurring_Labels_Aggregate;
   /** fetch data from the table: "recurring_labels" using primary key columns */
   recurring_labels_by_pk?: Maybe<Recurring_Labels>;
-  /** fetch data from the table: "recurring_transactions" */
-  recurring_transactions: Array<Recurring_Transactions>;
-  /** fetch aggregated fields from the table: "recurring_transactions" */
-  recurring_transactions_aggregate: Recurring_Transactions_Aggregate;
-  /** fetch data from the table: "recurring_transactions" using primary key columns */
-  recurring_transactions_by_pk?: Maybe<Recurring_Transactions>;
   /** fetch data from the table: "revenues" */
   revenues: Array<Revenues>;
   /** fetch aggregated fields from the table: "revenues" */
@@ -4753,27 +4500,6 @@ export type Subscription_RootRecurring_Labels_AggregateArgs = {
 export type Subscription_RootRecurring_Labels_By_PkArgs = {
   label_id: Scalars['Int'];
   recurring_id: Scalars['bigint'];
-};
-
-export type Subscription_RootRecurring_TransactionsArgs = {
-  distinct_on?: InputMaybe<Array<Recurring_Transactions_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Recurring_Transactions_Order_By>>;
-  where?: InputMaybe<Recurring_Transactions_Bool_Exp>;
-};
-
-export type Subscription_RootRecurring_Transactions_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Recurring_Transactions_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Recurring_Transactions_Order_By>>;
-  where?: InputMaybe<Recurring_Transactions_Bool_Exp>;
-};
-
-export type Subscription_RootRecurring_Transactions_By_PkArgs = {
-  recurring_id: Scalars['bigint'];
-  transaction_id: Scalars['bigint'];
 };
 
 export type Subscription_RootRevenuesArgs = {
@@ -5808,8 +5534,7 @@ export type Transactions = {
   created_at: Scalars['timestamptz'];
   description?: Maybe<Scalars['String']>;
   id: Scalars['bigint'];
-  /** An object relationship */
-  recurring_transaction?: Maybe<Recurring_Transactions>;
+  recurring_id?: Maybe<Scalars['bigint']>;
   /** An array relationship */
   transaction_accounts: Array<Transaction_Accounts>;
   /** An aggregate relationship */
@@ -5917,6 +5642,7 @@ export type Transactions_Avg_Fields = {
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  recurring_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "transactions" */
@@ -5924,6 +5650,7 @@ export type Transactions_Avg_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "transactions". All fields are combined with a logical 'AND'. */
@@ -5937,7 +5664,7 @@ export type Transactions_Bool_Exp = {
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
-  recurring_transaction?: InputMaybe<Recurring_Transactions_Bool_Exp>;
+  recurring_id?: InputMaybe<Bigint_Comparison_Exp>;
   transaction_accounts?: InputMaybe<Transaction_Accounts_Bool_Exp>;
   transaction_attachment?: InputMaybe<Transaction_Attachments_Bool_Exp>;
   transaction_date?: InputMaybe<Date_Comparison_Exp>;
@@ -5956,6 +5683,7 @@ export type Transactions_Inc_Input = {
   amount?: InputMaybe<Scalars['float8']>;
   category_id?: InputMaybe<Scalars['bigint']>;
   id?: InputMaybe<Scalars['bigint']>;
+  recurring_id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "transactions" */
@@ -5966,7 +5694,7 @@ export type Transactions_Insert_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['bigint']>;
-  recurring_transaction?: InputMaybe<Recurring_Transactions_Obj_Rel_Insert_Input>;
+  recurring_id?: InputMaybe<Scalars['bigint']>;
   transaction_accounts?: InputMaybe<Transaction_Accounts_Arr_Rel_Insert_Input>;
   transaction_attachment?: InputMaybe<Transaction_Attachments_Obj_Rel_Insert_Input>;
   transaction_date?: InputMaybe<Scalars['date']>;
@@ -5982,6 +5710,7 @@ export type Transactions_Max_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
+  recurring_id?: Maybe<Scalars['bigint']>;
   transaction_date?: Maybe<Scalars['date']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -5993,6 +5722,7 @@ export type Transactions_Max_Order_By = {
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
   transaction_date?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -6005,6 +5735,7 @@ export type Transactions_Min_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
+  recurring_id?: Maybe<Scalars['bigint']>;
   transaction_date?: Maybe<Scalars['date']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -6016,6 +5747,7 @@ export type Transactions_Min_Order_By = {
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
   transaction_date?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -6051,7 +5783,7 @@ export type Transactions_Order_By = {
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
-  recurring_transaction?: InputMaybe<Recurring_Transactions_Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
   transaction_accounts_aggregate?: InputMaybe<Transaction_Accounts_Aggregate_Order_By>;
   transaction_attachment?: InputMaybe<Transaction_Attachments_Order_By>;
   transaction_date?: InputMaybe<Order_By>;
@@ -6077,6 +5809,8 @@ export enum Transactions_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  RecurringId = 'recurring_id',
+  /** column name */
   TransactionDate = 'transaction_date',
   /** column name */
   UpdatedAt = 'updated_at',
@@ -6089,6 +5823,7 @@ export type Transactions_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['bigint']>;
+  recurring_id?: InputMaybe<Scalars['bigint']>;
   transaction_date?: InputMaybe<Scalars['date']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
@@ -6099,6 +5834,7 @@ export type Transactions_Stddev_Fields = {
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  recurring_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "transactions" */
@@ -6106,6 +5842,7 @@ export type Transactions_Stddev_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -6114,6 +5851,7 @@ export type Transactions_Stddev_Pop_Fields = {
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  recurring_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "transactions" */
@@ -6121,6 +5859,7 @@ export type Transactions_Stddev_Pop_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -6129,6 +5868,7 @@ export type Transactions_Stddev_Samp_Fields = {
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  recurring_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "transactions" */
@@ -6136,6 +5876,7 @@ export type Transactions_Stddev_Samp_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -6144,6 +5885,7 @@ export type Transactions_Sum_Fields = {
   amount?: Maybe<Scalars['float8']>;
   category_id?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
+  recurring_id?: Maybe<Scalars['bigint']>;
 };
 
 /** order by sum() on columns of table "transactions" */
@@ -6151,6 +5893,7 @@ export type Transactions_Sum_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "transactions" */
@@ -6166,6 +5909,8 @@ export enum Transactions_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  RecurringId = 'recurring_id',
+  /** column name */
   TransactionDate = 'transaction_date',
   /** column name */
   UpdatedAt = 'updated_at',
@@ -6177,6 +5922,7 @@ export type Transactions_Var_Pop_Fields = {
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  recurring_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "transactions" */
@@ -6184,6 +5930,7 @@ export type Transactions_Var_Pop_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -6192,6 +5939,7 @@ export type Transactions_Var_Samp_Fields = {
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  recurring_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "transactions" */
@@ -6199,6 +5947,7 @@ export type Transactions_Var_Samp_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -6207,6 +5956,7 @@ export type Transactions_Variance_Fields = {
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  recurring_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "transactions" */
@@ -6214,6 +5964,7 @@ export type Transactions_Variance_Order_By = {
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring_id?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "user_settings" */
@@ -6781,6 +6532,15 @@ export type InsertRecurringMutation = {
   insert_recurring_one?: { __typename?: 'recurring'; id: any } | undefined;
 };
 
+export type DeleteRecurringMutationVariables = Exact<{
+  id: Scalars['bigint'];
+}>;
+
+export type DeleteRecurringMutation = {
+  __typename?: 'mutation_root';
+  delete_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined;
+};
+
 export type InsertRevenueAccMutationVariables = Exact<{
   object: Revenues_Insert_Input;
 }>;
@@ -7070,6 +6830,47 @@ export type ActiveLiabilityAccountsQuery = {
     created_at: string;
     updated_at: string;
   }>;
+};
+
+export type AllRecurringQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+}>;
+
+export type AllRecurringQuery = {
+  __typename?: 'query_root';
+  recurring: Array<{
+    __typename?: 'recurring';
+    id: any;
+    title: string;
+    created_at: string;
+    updated_at: string;
+    cycle_type: number;
+    duration_type: number;
+    amount: any;
+    start_on: any;
+    transaction_type: number;
+    transactions_aggregate: {
+      __typename?: 'transactions_aggregate';
+      aggregate?:
+        | {
+            __typename?: 'transactions_aggregate_fields';
+            sum?:
+              | {
+                  __typename?: 'transactions_sum_fields';
+                  amount?: any | undefined;
+                }
+              | undefined;
+          }
+        | undefined;
+    };
+  }>;
+  recurring_aggregate: {
+    __typename?: 'recurring_aggregate';
+    aggregate?:
+      | { __typename?: 'recurring_aggregate_fields'; count: number }
+      | undefined;
+  };
 };
 
 export type AllRevenueAccountsQueryVariables = Exact<{
@@ -9190,6 +8991,107 @@ export type InsertRecurringMutationOptions = Apollo.BaseMutationOptions<
   InsertRecurringMutation,
   InsertRecurringMutationVariables
 >;
+export const DeleteRecurringDocument = gql`
+  mutation deleteRecurring($id: bigint!) {
+    delete_recurring_by_pk(id: $id) {
+      id
+    }
+  }
+`;
+export type DeleteRecurringMutationFn = Apollo.MutationFunction<
+  DeleteRecurringMutation,
+  DeleteRecurringMutationVariables
+>;
+export type DeleteRecurringComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    DeleteRecurringMutation,
+    DeleteRecurringMutationVariables
+  >,
+  'mutation'
+>;
+
+export const DeleteRecurringComponent = (
+  props: DeleteRecurringComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    DeleteRecurringMutation,
+    DeleteRecurringMutationVariables
+  >
+    mutation={DeleteRecurringDocument}
+    {...props}
+  />
+);
+
+export type DeleteRecurringProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    DeleteRecurringMutation,
+    DeleteRecurringMutationVariables
+  >;
+} & TChildProps;
+export function withDeleteRecurring<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DeleteRecurringMutation,
+    DeleteRecurringMutationVariables,
+    DeleteRecurringProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    DeleteRecurringMutation,
+    DeleteRecurringMutationVariables,
+    DeleteRecurringProps<TChildProps, TDataName>
+  >(DeleteRecurringDocument, {
+    alias: 'deleteRecurring',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useDeleteRecurringMutation__
+ *
+ * To run a mutation, you first call `useDeleteRecurringMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteRecurringMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteRecurringMutation, { data, loading, error }] = useDeleteRecurringMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteRecurringMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteRecurringMutation,
+    DeleteRecurringMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DeleteRecurringMutation,
+    DeleteRecurringMutationVariables
+  >(DeleteRecurringDocument, options);
+}
+export type DeleteRecurringMutationHookResult = ReturnType<
+  typeof useDeleteRecurringMutation
+>;
+export type DeleteRecurringMutationResult =
+  Apollo.MutationResult<DeleteRecurringMutation>;
+export type DeleteRecurringMutationOptions = Apollo.BaseMutationOptions<
+  DeleteRecurringMutation,
+  DeleteRecurringMutationVariables
+>;
 export const InsertRevenueAccDocument = gql`
   mutation insertRevenueAcc($object: revenues_insert_input!) {
     insert_revenues_one(object: $object) {
@@ -11245,6 +11147,131 @@ export type ActiveLiabilityAccountsQueryResult = Apollo.QueryResult<
   ActiveLiabilityAccountsQuery,
   ActiveLiabilityAccountsQueryVariables
 >;
+export const AllRecurringDocument = gql`
+  query allRecurring($limit: Int, $offset: Int) {
+    recurring(limit: $limit, offset: $offset, order_by: { title: asc }) {
+      id
+      title
+      created_at
+      updated_at
+      cycle_type
+      duration_type
+      amount
+      start_on
+      transaction_type
+      transactions_aggregate {
+        aggregate {
+          sum {
+            amount
+          }
+        }
+      }
+    }
+    recurring_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+export type AllRecurringComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllRecurringQuery,
+    AllRecurringQueryVariables
+  >,
+  'query'
+>;
+
+export const AllRecurringComponent = (props: AllRecurringComponentProps) => (
+  <ApolloReactComponents.Query<AllRecurringQuery, AllRecurringQueryVariables>
+    query={AllRecurringDocument}
+    {...props}
+  />
+);
+
+export type AllRecurringProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    AllRecurringQuery,
+    AllRecurringQueryVariables
+  >;
+} & TChildProps;
+export function withAllRecurring<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    AllRecurringQuery,
+    AllRecurringQueryVariables,
+    AllRecurringProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    AllRecurringQuery,
+    AllRecurringQueryVariables,
+    AllRecurringProps<TChildProps, TDataName>
+  >(AllRecurringDocument, {
+    alias: 'allRecurring',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useAllRecurringQuery__
+ *
+ * To run a query within a React component, call `useAllRecurringQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllRecurringQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllRecurringQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useAllRecurringQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    AllRecurringQuery,
+    AllRecurringQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AllRecurringQuery, AllRecurringQueryVariables>(
+    AllRecurringDocument,
+    options
+  );
+}
+export function useAllRecurringLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    AllRecurringQuery,
+    AllRecurringQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AllRecurringQuery, AllRecurringQueryVariables>(
+    AllRecurringDocument,
+    options
+  );
+}
+export type AllRecurringQueryHookResult = ReturnType<
+  typeof useAllRecurringQuery
+>;
+export type AllRecurringLazyQueryHookResult = ReturnType<
+  typeof useAllRecurringLazyQuery
+>;
+export type AllRecurringQueryResult = Apollo.QueryResult<
+  AllRecurringQuery,
+  AllRecurringQueryVariables
+>;
 export const AllRevenueAccountsDocument = gql`
   query allRevenueAccounts($limit: Int, $offset: Int) {
     revenues(limit: $limit, offset: $offset, order_by: { name: asc }) {
@@ -11933,31 +11960,6 @@ export type ResolversTypes = {
   recurring_stddev_samp_order_by: Recurring_Stddev_Samp_Order_By;
   recurring_sum_fields: ResolverTypeWrapper<Recurring_Sum_Fields>;
   recurring_sum_order_by: Recurring_Sum_Order_By;
-  recurring_transactions: ResolverTypeWrapper<Recurring_Transactions>;
-  recurring_transactions_aggregate: ResolverTypeWrapper<Recurring_Transactions_Aggregate>;
-  recurring_transactions_aggregate_fields: ResolverTypeWrapper<Recurring_Transactions_Aggregate_Fields>;
-  recurring_transactions_avg_fields: ResolverTypeWrapper<Recurring_Transactions_Avg_Fields>;
-  recurring_transactions_bool_exp: Recurring_Transactions_Bool_Exp;
-  recurring_transactions_constraint: Recurring_Transactions_Constraint;
-  recurring_transactions_inc_input: Recurring_Transactions_Inc_Input;
-  recurring_transactions_insert_input: Recurring_Transactions_Insert_Input;
-  recurring_transactions_max_fields: ResolverTypeWrapper<Recurring_Transactions_Max_Fields>;
-  recurring_transactions_min_fields: ResolverTypeWrapper<Recurring_Transactions_Min_Fields>;
-  recurring_transactions_mutation_response: ResolverTypeWrapper<Recurring_Transactions_Mutation_Response>;
-  recurring_transactions_obj_rel_insert_input: Recurring_Transactions_Obj_Rel_Insert_Input;
-  recurring_transactions_on_conflict: Recurring_Transactions_On_Conflict;
-  recurring_transactions_order_by: Recurring_Transactions_Order_By;
-  recurring_transactions_pk_columns_input: Recurring_Transactions_Pk_Columns_Input;
-  recurring_transactions_select_column: Recurring_Transactions_Select_Column;
-  recurring_transactions_set_input: Recurring_Transactions_Set_Input;
-  recurring_transactions_stddev_fields: ResolverTypeWrapper<Recurring_Transactions_Stddev_Fields>;
-  recurring_transactions_stddev_pop_fields: ResolverTypeWrapper<Recurring_Transactions_Stddev_Pop_Fields>;
-  recurring_transactions_stddev_samp_fields: ResolverTypeWrapper<Recurring_Transactions_Stddev_Samp_Fields>;
-  recurring_transactions_sum_fields: ResolverTypeWrapper<Recurring_Transactions_Sum_Fields>;
-  recurring_transactions_update_column: Recurring_Transactions_Update_Column;
-  recurring_transactions_var_pop_fields: ResolverTypeWrapper<Recurring_Transactions_Var_Pop_Fields>;
-  recurring_transactions_var_samp_fields: ResolverTypeWrapper<Recurring_Transactions_Var_Samp_Fields>;
-  recurring_transactions_variance_fields: ResolverTypeWrapper<Recurring_Transactions_Variance_Fields>;
   recurring_update_column: Recurring_Update_Column;
   recurring_var_pop_fields: ResolverTypeWrapper<Recurring_Var_Pop_Fields>;
   recurring_var_pop_order_by: Recurring_Var_Pop_Order_By;
@@ -12396,28 +12398,6 @@ export type ResolversParentTypes = {
   recurring_stddev_samp_order_by: Recurring_Stddev_Samp_Order_By;
   recurring_sum_fields: Recurring_Sum_Fields;
   recurring_sum_order_by: Recurring_Sum_Order_By;
-  recurring_transactions: Recurring_Transactions;
-  recurring_transactions_aggregate: Recurring_Transactions_Aggregate;
-  recurring_transactions_aggregate_fields: Recurring_Transactions_Aggregate_Fields;
-  recurring_transactions_avg_fields: Recurring_Transactions_Avg_Fields;
-  recurring_transactions_bool_exp: Recurring_Transactions_Bool_Exp;
-  recurring_transactions_inc_input: Recurring_Transactions_Inc_Input;
-  recurring_transactions_insert_input: Recurring_Transactions_Insert_Input;
-  recurring_transactions_max_fields: Recurring_Transactions_Max_Fields;
-  recurring_transactions_min_fields: Recurring_Transactions_Min_Fields;
-  recurring_transactions_mutation_response: Recurring_Transactions_Mutation_Response;
-  recurring_transactions_obj_rel_insert_input: Recurring_Transactions_Obj_Rel_Insert_Input;
-  recurring_transactions_on_conflict: Recurring_Transactions_On_Conflict;
-  recurring_transactions_order_by: Recurring_Transactions_Order_By;
-  recurring_transactions_pk_columns_input: Recurring_Transactions_Pk_Columns_Input;
-  recurring_transactions_set_input: Recurring_Transactions_Set_Input;
-  recurring_transactions_stddev_fields: Recurring_Transactions_Stddev_Fields;
-  recurring_transactions_stddev_pop_fields: Recurring_Transactions_Stddev_Pop_Fields;
-  recurring_transactions_stddev_samp_fields: Recurring_Transactions_Stddev_Samp_Fields;
-  recurring_transactions_sum_fields: Recurring_Transactions_Sum_Fields;
-  recurring_transactions_var_pop_fields: Recurring_Transactions_Var_Pop_Fields;
-  recurring_transactions_var_samp_fields: Recurring_Transactions_Var_Samp_Fields;
-  recurring_transactions_variance_fields: Recurring_Transactions_Variance_Fields;
   recurring_var_pop_fields: Recurring_Var_Pop_Fields;
   recurring_var_pop_order_by: Recurring_Var_Pop_Order_By;
   recurring_var_samp_fields: Recurring_Var_Samp_Fields;
@@ -14136,21 +14116,6 @@ export type Mutation_RootResolvers<
       'label_id' | 'recurring_id'
     >
   >;
-  delete_recurring_transactions?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_Recurring_TransactionsArgs, 'where'>
-  >;
-  delete_recurring_transactions_by_pk?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions']>,
-    ParentType,
-    ContextType,
-    RequireFields<
-      Mutation_RootDelete_Recurring_Transactions_By_PkArgs,
-      'recurring_id' | 'transaction_id'
-    >
-  >;
   delete_revenues?: Resolver<
     Maybe<ResolversTypes['revenues_mutation_response']>,
     ParentType,
@@ -14349,18 +14314,6 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_Recurring_OneArgs, 'object'>
   >;
-  insert_recurring_transactions?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_Recurring_TransactionsArgs, 'objects'>
-  >;
-  insert_recurring_transactions_one?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_Recurring_Transactions_OneArgs, 'object'>
-  >;
   insert_revenues?: Resolver<
     Maybe<ResolversTypes['revenues_mutation_response']>,
     ParentType,
@@ -14552,21 +14505,6 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Recurring_Labels_By_PkArgs, 'pk_columns'>
-  >;
-  update_recurring_transactions?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootUpdate_Recurring_TransactionsArgs, 'where'>
-  >;
-  update_recurring_transactions_by_pk?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions']>,
-    ParentType,
-    ContextType,
-    RequireFields<
-      Mutation_RootUpdate_Recurring_Transactions_By_PkArgs,
-      'pk_columns'
-    >
   >;
   update_revenues?: Resolver<
     Maybe<ResolversTypes['revenues_mutation_response']>,
@@ -15057,27 +14995,6 @@ export type Query_RootResolvers<
       'label_id' | 'recurring_id'
     >
   >;
-  recurring_transactions?: Resolver<
-    Array<ResolversTypes['recurring_transactions']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootRecurring_TransactionsArgs>
-  >;
-  recurring_transactions_aggregate?: Resolver<
-    ResolversTypes['recurring_transactions_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootRecurring_Transactions_AggregateArgs>
-  >;
-  recurring_transactions_by_pk?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions']>,
-    ParentType,
-    ContextType,
-    RequireFields<
-      Query_RootRecurring_Transactions_By_PkArgs,
-      'recurring_id' | 'transaction_id'
-    >
-  >;
   revenues?: Resolver<
     Array<ResolversTypes['revenues']>,
     ParentType,
@@ -15260,14 +15177,22 @@ export type RecurringResolvers<
     ContextType,
     Partial<RecurringRecurring_Labels_AggregateArgs>
   >;
-  recurring_transaction?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions']>,
-    ParentType,
-    ContextType
-  >;
   start_on?: Resolver<ResolversTypes['date'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   transaction_type?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  transactions?: Resolver<
+    Array<ResolversTypes['transactions']>,
+    ParentType,
+    ContextType,
+    Partial<RecurringTransactionsArgs>
+  >;
+  transactions_aggregate?: Resolver<
+    ResolversTypes['transactions_aggregate'],
+    ParentType,
+    ContextType,
+    Partial<RecurringTransactions_AggregateArgs>
+  >;
+  until_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15665,6 +15590,7 @@ export type Recurring_Max_FieldsResolvers<
     ParentType,
     ContextType
   >;
+  until_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   updated_at?: Resolver<
     Maybe<ResolversTypes['timestamptz']>,
     ParentType,
@@ -15717,6 +15643,7 @@ export type Recurring_Min_FieldsResolvers<
     ParentType,
     ContextType
   >;
+  until_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   updated_at?: Resolver<
     Maybe<ResolversTypes['timestamptz']>,
     ParentType,
@@ -15884,284 +15811,6 @@ export type Recurring_Sum_FieldsResolvers<
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   transaction_type?: Resolver<
     Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_TransactionsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions'] = ResolversParentTypes['recurring_transactions']
-> = {
-  recurring?: Resolver<ResolversTypes['recurring'], ParentType, ContextType>;
-  recurring_id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
-  transaction?: Resolver<
-    ResolversTypes['transactions'],
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_AggregateResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_aggregate'] = ResolversParentTypes['recurring_transactions_aggregate']
-> = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['recurring_transactions']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Aggregate_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_aggregate_fields'] = ResolversParentTypes['recurring_transactions_aggregate_fields']
-> = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Recurring_Transactions_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Avg_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_avg_fields'] = ResolversParentTypes['recurring_transactions_avg_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Max_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_max_fields'] = ResolversParentTypes['recurring_transactions_max_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Min_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_min_fields'] = ResolversParentTypes['recurring_transactions_min_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Mutation_ResponseResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_mutation_response'] = ResolversParentTypes['recurring_transactions_mutation_response']
-> = {
-  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['recurring_transactions']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Stddev_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_stddev_fields'] = ResolversParentTypes['recurring_transactions_stddev_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Stddev_Pop_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_stddev_pop_fields'] = ResolversParentTypes['recurring_transactions_stddev_pop_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Stddev_Samp_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_stddev_samp_fields'] = ResolversParentTypes['recurring_transactions_stddev_samp_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Sum_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_sum_fields'] = ResolversParentTypes['recurring_transactions_sum_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Var_Pop_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_var_pop_fields'] = ResolversParentTypes['recurring_transactions_var_pop_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Var_Samp_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_var_samp_fields'] = ResolversParentTypes['recurring_transactions_var_samp_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type Recurring_Transactions_Variance_FieldsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring_transactions_variance_fields'] = ResolversParentTypes['recurring_transactions_variance_fields']
-> = {
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
     ParentType,
     ContextType
   >;
@@ -16688,30 +16337,6 @@ export type Subscription_RootResolvers<
     RequireFields<
       Subscription_RootRecurring_Labels_By_PkArgs,
       'label_id' | 'recurring_id'
-    >
-  >;
-  recurring_transactions?: SubscriptionResolver<
-    Array<ResolversTypes['recurring_transactions']>,
-    'recurring_transactions',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootRecurring_TransactionsArgs>
-  >;
-  recurring_transactions_aggregate?: SubscriptionResolver<
-    ResolversTypes['recurring_transactions_aggregate'],
-    'recurring_transactions_aggregate',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootRecurring_Transactions_AggregateArgs>
-  >;
-  recurring_transactions_by_pk?: SubscriptionResolver<
-    Maybe<ResolversTypes['recurring_transactions']>,
-    'recurring_transactions_by_pk',
-    ParentType,
-    ContextType,
-    RequireFields<
-      Subscription_RootRecurring_Transactions_By_PkArgs,
-      'recurring_id' | 'transaction_id'
     >
   >;
   revenues?: SubscriptionResolver<
@@ -17758,8 +17383,8 @@ export type TransactionsResolvers<
     ContextType
   >;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
-  recurring_transaction?: Resolver<
-    Maybe<ResolversTypes['recurring_transactions']>,
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['bigint']>,
     ParentType,
     ContextType
   >;
@@ -17888,6 +17513,11 @@ export type Transactions_Avg_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17912,6 +17542,11 @@ export type Transactions_Max_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['bigint']>,
+    ParentType,
+    ContextType
+  >;
   transaction_date?: Resolver<
     Maybe<ResolversTypes['date']>,
     ParentType,
@@ -17946,6 +17581,11 @@ export type Transactions_Min_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['bigint']>,
+    ParentType,
+    ContextType
+  >;
   transaction_date?: Resolver<
     Maybe<ResolversTypes['date']>,
     ParentType,
@@ -17983,6 +17623,11 @@ export type Transactions_Stddev_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17997,6 +17642,11 @@ export type Transactions_Stddev_Pop_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18011,6 +17661,11 @@ export type Transactions_Stddev_Samp_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18025,6 +17680,11 @@ export type Transactions_Sum_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['bigint']>,
+    ParentType,
+    ContextType
+  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18039,6 +17699,11 @@ export type Transactions_Var_Pop_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18053,6 +17718,11 @@ export type Transactions_Var_Samp_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18067,6 +17737,11 @@ export type Transactions_Variance_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  recurring_id?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18385,20 +18060,6 @@ export type Resolvers<ContextType = any> = {
   recurring_stddev_pop_fields?: Recurring_Stddev_Pop_FieldsResolvers<ContextType>;
   recurring_stddev_samp_fields?: Recurring_Stddev_Samp_FieldsResolvers<ContextType>;
   recurring_sum_fields?: Recurring_Sum_FieldsResolvers<ContextType>;
-  recurring_transactions?: Recurring_TransactionsResolvers<ContextType>;
-  recurring_transactions_aggregate?: Recurring_Transactions_AggregateResolvers<ContextType>;
-  recurring_transactions_aggregate_fields?: Recurring_Transactions_Aggregate_FieldsResolvers<ContextType>;
-  recurring_transactions_avg_fields?: Recurring_Transactions_Avg_FieldsResolvers<ContextType>;
-  recurring_transactions_max_fields?: Recurring_Transactions_Max_FieldsResolvers<ContextType>;
-  recurring_transactions_min_fields?: Recurring_Transactions_Min_FieldsResolvers<ContextType>;
-  recurring_transactions_mutation_response?: Recurring_Transactions_Mutation_ResponseResolvers<ContextType>;
-  recurring_transactions_stddev_fields?: Recurring_Transactions_Stddev_FieldsResolvers<ContextType>;
-  recurring_transactions_stddev_pop_fields?: Recurring_Transactions_Stddev_Pop_FieldsResolvers<ContextType>;
-  recurring_transactions_stddev_samp_fields?: Recurring_Transactions_Stddev_Samp_FieldsResolvers<ContextType>;
-  recurring_transactions_sum_fields?: Recurring_Transactions_Sum_FieldsResolvers<ContextType>;
-  recurring_transactions_var_pop_fields?: Recurring_Transactions_Var_Pop_FieldsResolvers<ContextType>;
-  recurring_transactions_var_samp_fields?: Recurring_Transactions_Var_Samp_FieldsResolvers<ContextType>;
-  recurring_transactions_variance_fields?: Recurring_Transactions_Variance_FieldsResolvers<ContextType>;
   recurring_var_pop_fields?: Recurring_Var_Pop_FieldsResolvers<ContextType>;
   recurring_var_samp_fields?: Recurring_Var_Samp_FieldsResolvers<ContextType>;
   recurring_variance_fields?: Recurring_Variance_FieldsResolvers<ContextType>;

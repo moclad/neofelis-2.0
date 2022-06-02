@@ -9,7 +9,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import create, { UseStore } from 'zustand';
+import create, { UseBoundStore, useStore } from 'zustand';
 
 import { FormGroup, FormGroupProps } from '@/components/FormGroup';
 import { Checkbox, CheckboxProps, Wrap, WrapItem } from '@chakra-ui/react';
@@ -17,15 +17,15 @@ import { FieldProps, useField } from '@formiz/core';
 
 type Value = unknown;
 
-interface InternalOption {
+type InternalOption = {
   value: Value;
   groups: string[];
-}
+};
 
-interface Option {
+type Option = {
   value: Value;
   label?: ReactNode;
-}
+};
 
 const formatGroupsToArray = (groups?: string[] | string): string[] => {
   if (!groups) return [];
@@ -45,10 +45,10 @@ const splitValuesByGroupsFromOptions = (
         ? [[...inGroups, option.value], others]
         : [inGroups, [...others, option.value]];
     },
-    [[], []] as TODO
+    [[], []] as ExplicitAny
   );
 
-interface FieldCheckboxesState {
+type FieldCheckboxesState = {
   options: InternalOption[];
   registerOption: (option: InternalOption, isChecked: boolean) => void;
   unregisterOption: (option: InternalOption) => void;
@@ -57,27 +57,26 @@ interface FieldCheckboxesState {
   toggleValue: (value: Value) => void;
   toggleGroups: (groups: string[]) => void;
   verifyIsValueChecked: (value: Value) => boolean;
-}
+};
 
-interface FieldCheckboxesContextProps {
-  useStoreRef: MutableRefObject<UseStore<FieldCheckboxesState>>;
+type FieldCheckboxesContextProps = {
+  useStoreRef: MutableRefObject<UseBoundStore<FieldCheckboxesState>>;
   checkboxGroupProps?: Pick<
     CheckboxProps,
     'size' | 'colorScheme' | 'isDisabled'
   >;
-}
+};
 
 const FieldCheckboxesContext = createContext<FieldCheckboxesContextProps>(
   {} as TODO
 );
 
-interface FieldCheckboxesProps
-  extends FieldProps,
-    Omit<FormGroupProps, 'size'>,
-    Pick<CheckboxProps, 'size' | 'colorScheme'> {
-  itemKey?: string;
-  options?: Option[];
-}
+type FieldCheckboxesProps = FieldProps &
+  Omit<FormGroupProps, 'size'> &
+  Pick<CheckboxProps, 'size' | 'colorScheme'> & {
+    itemKey?: string;
+    options?: Option[];
+  };
 
 export const FieldCheckboxes: React.FC<
   React.PropsWithChildren<FieldCheckboxesProps>
@@ -102,11 +101,11 @@ export const FieldCheckboxes: React.FC<
     colorScheme,
     isDisabled,
     ...rest
-  } = otherProps;
+  } = otherProps as Omit<FieldCheckboxesProps, keyof FieldProps>;
 
   const valueRef = useRef(value);
   valueRef.current = value;
-  const itemKeyRef = useRef<string>(itemKey);
+  const itemKeyRef = useRef<string | undefined>(itemKey);
   if (itemKey) {
     itemKeyRef.current = itemKey;
   }
@@ -124,7 +123,7 @@ export const FieldCheckboxes: React.FC<
     valueToVerify: Value
   ): boolean => !!values.find((item) => checkValuesEqual(item, valueToVerify));
 
-  const useStoreRef = useRef<UseStore<FieldCheckboxesState>>();
+  const useStoreRef = useRef<useStore<FieldCheckboxesState>>();
   if (!useStoreRef.current) {
     useStoreRef.current = create<FieldCheckboxesState>((set, get) => ({
       options: [],
@@ -133,7 +132,7 @@ export const FieldCheckboxes: React.FC<
         isChecked: boolean
       ) => {
         set((state) => ({ options: [...state.options, optionToRegister] }));
-        setValue((prevValue) =>
+        setValue((prevValue: Value[]) =>
           isChecked ? [...(prevValue ?? []), optionToRegister.value] : prevValue
         );
       },
@@ -144,7 +143,7 @@ export const FieldCheckboxes: React.FC<
               !checkValuesEqual(option.value, optionToUnregister.value)
           ),
         }));
-        setValue((prevValue) => {
+        setValue((prevValue: Value[]) => {
           const newValue = (prevValue ?? []).filter((localValue) =>
             verifyValueIsInValues(
               get().options.map(({ value: optionValue }) => optionValue) ?? [],
@@ -160,7 +159,7 @@ export const FieldCheckboxes: React.FC<
           values,
         })),
       toggleValue: (valueToUpdate) => {
-        setValue((prevValue) => {
+        setValue((prevValue: Value[]) => {
           const previousValue = prevValue ?? [];
           const hasValue = verifyValueIsInValues(
             prevValue ?? [],
@@ -177,7 +176,7 @@ export const FieldCheckboxes: React.FC<
       toggleGroups: (groups: string[]) => {
         const [allValuesInGroups, allOtherValues] =
           splitValuesByGroupsFromOptions(get().options, groups);
-        setValue((previousValue) => {
+        setValue((previousValue: Value[]) => {
           const allOtherValuesChecked = allOtherValues.filter((otherValue) =>
             verifyValueIsInValues(previousValue ?? [], otherValue)
           );
@@ -236,8 +235,8 @@ export const FieldCheckboxes: React.FC<
           children
         ) : (
           <Wrap spacing="4">
-            {options.map((option) => (
-              <WrapItem key={option.value}>
+            {options?.map((option) => (
+              <WrapItem key={String(option.value)}>
                 <FieldCheckboxesItem value={option.value}>
                   {option.label ?? JSON.stringify(option.value)}
                 </FieldCheckboxesItem>
@@ -250,10 +249,10 @@ export const FieldCheckboxes: React.FC<
   );
 };
 
-interface FieldCheckboxItemProps extends Omit<CheckboxProps, 'value'> {
+type FieldCheckboxItemProps = Omit<CheckboxProps, 'value'> & {
   value: Value;
   groups?: string[] | string;
-}
+};
 
 export const FieldCheckboxesItem: React.FC<
   React.PropsWithChildren<FieldCheckboxItemProps>
@@ -285,7 +284,7 @@ export const FieldCheckboxesItem: React.FC<
     return () => unregisterOption(option);
   }, [value, groups, registerOption, unregisterOption]);
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event);
     toggleValue(value);
   };
@@ -302,9 +301,9 @@ export const FieldCheckboxesItem: React.FC<
   );
 };
 
-interface FieldCheckboxItemCheckAllProps extends CheckboxProps {
+type FieldCheckboxItemCheckAllProps = CheckboxProps & {
   groups?: string[] | string;
-}
+};
 
 export const FieldCheckboxesCheckAll: React.FC<
   React.PropsWithChildren<FieldCheckboxItemCheckAllProps>
@@ -343,7 +342,7 @@ export const FieldCheckboxesCheckAll: React.FC<
     };
   });
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event);
     toggleGroups(groupsArray);
   };
