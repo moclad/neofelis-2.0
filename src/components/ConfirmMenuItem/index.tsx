@@ -14,8 +14,7 @@ import {
   MenuItemProps,
   Text,
   useMenuItem,
-  useMenuState,
-  useStyles
+  useMenuState
 } from '@chakra-ui/react';
 
 export interface StyledMenuItemProps extends HTMLChakraProps<'button'> {}
@@ -23,7 +22,6 @@ export interface StyledMenuItemProps extends HTMLChakraProps<'button'> {}
 const StyledMenuItem = forwardRef<StyledMenuItemProps, 'button'>(
   (props, ref) => {
     const { type, ...rest } = props;
-    const styles = useStyles();
 
     /**
      * Given another component, use its type if present
@@ -42,7 +40,6 @@ const StyledMenuItem = forwardRef<StyledMenuItemProps, 'button'>(
       textAlign: 'left',
       flex: '0 0 auto',
       outline: 0,
-      ...styles.item,
     };
 
     return (

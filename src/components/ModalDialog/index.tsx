@@ -28,6 +28,7 @@ export interface ModalDialogProps {
   onCancel: () => void;
   onConfirm: (values) => void;
   children?: ReactNode;
+  showAddAnotherOne?: boolean;
 }
 
 export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
@@ -44,6 +45,7 @@ export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
     formId,
     initialValues,
     dialogForm = null,
+    showAddAnotherOne = false,
   } = props;
 
   const { t } = useTranslation();
@@ -96,13 +98,15 @@ export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
             </ModalBody>
             <ModalFooter>
               <HStack spacing={4}>
-                <Checkbox
-                  onChange={(e) => setContinueToAdd(e.target.checked)}
-                  isChecked={continueToAdd}
-                  readOnly={loading}
-                >
-                  {t('common:actions.addAnotherOne')}
-                </Checkbox>
+                {showAddAnotherOne ? (
+                  <Checkbox
+                    onChange={(e) => setContinueToAdd(e.target.checked)}
+                    isChecked={continueToAdd}
+                    readOnly={loading}
+                  >
+                    {t('common:actions.addAnotherOne')}
+                  </Checkbox>
+                ) : null}
                 <Button
                   isDisabled={loading}
                   variant="ghost"

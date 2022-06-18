@@ -3145,6 +3145,7 @@ export type Recurring = {
   description?: Maybe<Scalars['String']>;
   duration_type: Scalars['Int'];
   id: Scalars['bigint'];
+  no_of_times?: Maybe<Scalars['Int']>;
   /** An array relationship */
   recurring_labels: Array<Recurring_Labels>;
   /** An aggregate relationship */
@@ -3257,6 +3258,7 @@ export type Recurring_Avg_Fields = {
   cycle_type?: Maybe<Scalars['Float']>;
   duration_type?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  no_of_times?: Maybe<Scalars['Float']>;
   transaction_type?: Maybe<Scalars['Float']>;
 };
 
@@ -3269,6 +3271,7 @@ export type Recurring_Avg_Order_By = {
   cycle_type?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
 };
 
@@ -3289,6 +3292,7 @@ export type Recurring_Bool_Exp = {
   description?: InputMaybe<String_Comparison_Exp>;
   duration_type?: InputMaybe<Int_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
+  no_of_times?: InputMaybe<Int_Comparison_Exp>;
   recurring_labels?: InputMaybe<Recurring_Labels_Bool_Exp>;
   start_on?: InputMaybe<Date_Comparison_Exp>;
   title?: InputMaybe<String_Comparison_Exp>;
@@ -3313,6 +3317,7 @@ export type Recurring_Inc_Input = {
   cycle_type?: InputMaybe<Scalars['Int']>;
   duration_type?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['bigint']>;
+  no_of_times?: InputMaybe<Scalars['Int']>;
   transaction_type?: InputMaybe<Scalars['Int']>;
 };
 
@@ -3330,6 +3335,7 @@ export type Recurring_Insert_Input = {
   description?: InputMaybe<Scalars['String']>;
   duration_type?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['bigint']>;
+  no_of_times?: InputMaybe<Scalars['Int']>;
   recurring_labels?: InputMaybe<Recurring_Labels_Arr_Rel_Insert_Input>;
   start_on?: InputMaybe<Scalars['date']>;
   title?: InputMaybe<Scalars['String']>;
@@ -3626,6 +3632,7 @@ export type Recurring_Max_Fields = {
   description?: Maybe<Scalars['String']>;
   duration_type?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['bigint']>;
+  no_of_times?: Maybe<Scalars['Int']>;
   start_on?: Maybe<Scalars['date']>;
   title?: Maybe<Scalars['String']>;
   transaction_type?: Maybe<Scalars['Int']>;
@@ -3644,6 +3651,7 @@ export type Recurring_Max_Order_By = {
   description?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   start_on?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
@@ -3663,6 +3671,7 @@ export type Recurring_Min_Fields = {
   description?: Maybe<Scalars['String']>;
   duration_type?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['bigint']>;
+  no_of_times?: Maybe<Scalars['Int']>;
   start_on?: Maybe<Scalars['date']>;
   title?: Maybe<Scalars['String']>;
   transaction_type?: Maybe<Scalars['Int']>;
@@ -3681,6 +3690,7 @@ export type Recurring_Min_Order_By = {
   description?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   start_on?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
@@ -3725,6 +3735,7 @@ export type Recurring_Order_By = {
   description?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   recurring_labels_aggregate?: InputMaybe<Recurring_Labels_Aggregate_Order_By>;
   start_on?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
@@ -3760,6 +3771,8 @@ export enum Recurring_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  NoOfTimes = 'no_of_times',
+  /** column name */
   StartOn = 'start_on',
   /** column name */
   Title = 'title',
@@ -3782,6 +3795,7 @@ export type Recurring_Set_Input = {
   description?: InputMaybe<Scalars['String']>;
   duration_type?: InputMaybe<Scalars['Int']>;
   id?: InputMaybe<Scalars['bigint']>;
+  no_of_times?: InputMaybe<Scalars['Int']>;
   start_on?: InputMaybe<Scalars['date']>;
   title?: InputMaybe<Scalars['String']>;
   transaction_type?: InputMaybe<Scalars['Int']>;
@@ -3799,6 +3813,7 @@ export type Recurring_Stddev_Fields = {
   cycle_type?: Maybe<Scalars['Float']>;
   duration_type?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  no_of_times?: Maybe<Scalars['Float']>;
   transaction_type?: Maybe<Scalars['Float']>;
 };
 
@@ -3811,6 +3826,7 @@ export type Recurring_Stddev_Order_By = {
   cycle_type?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
 };
 
@@ -3824,6 +3840,7 @@ export type Recurring_Stddev_Pop_Fields = {
   cycle_type?: Maybe<Scalars['Float']>;
   duration_type?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  no_of_times?: Maybe<Scalars['Float']>;
   transaction_type?: Maybe<Scalars['Float']>;
 };
 
@@ -3836,6 +3853,7 @@ export type Recurring_Stddev_Pop_Order_By = {
   cycle_type?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
 };
 
@@ -3849,6 +3867,7 @@ export type Recurring_Stddev_Samp_Fields = {
   cycle_type?: Maybe<Scalars['Float']>;
   duration_type?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  no_of_times?: Maybe<Scalars['Float']>;
   transaction_type?: Maybe<Scalars['Float']>;
 };
 
@@ -3861,6 +3880,7 @@ export type Recurring_Stddev_Samp_Order_By = {
   cycle_type?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
 };
 
@@ -3874,6 +3894,7 @@ export type Recurring_Sum_Fields = {
   cycle_type?: Maybe<Scalars['Int']>;
   duration_type?: Maybe<Scalars['Int']>;
   id?: Maybe<Scalars['bigint']>;
+  no_of_times?: Maybe<Scalars['Int']>;
   transaction_type?: Maybe<Scalars['Int']>;
 };
 
@@ -3886,6 +3907,7 @@ export type Recurring_Sum_Order_By = {
   cycle_type?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
 };
 
@@ -3910,6 +3932,8 @@ export enum Recurring_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  NoOfTimes = 'no_of_times',
+  /** column name */
   StartOn = 'start_on',
   /** column name */
   Title = 'title',
@@ -3931,6 +3955,7 @@ export type Recurring_Var_Pop_Fields = {
   cycle_type?: Maybe<Scalars['Float']>;
   duration_type?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  no_of_times?: Maybe<Scalars['Float']>;
   transaction_type?: Maybe<Scalars['Float']>;
 };
 
@@ -3943,6 +3968,7 @@ export type Recurring_Var_Pop_Order_By = {
   cycle_type?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
 };
 
@@ -3956,6 +3982,7 @@ export type Recurring_Var_Samp_Fields = {
   cycle_type?: Maybe<Scalars['Float']>;
   duration_type?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  no_of_times?: Maybe<Scalars['Float']>;
   transaction_type?: Maybe<Scalars['Float']>;
 };
 
@@ -3968,6 +3995,7 @@ export type Recurring_Var_Samp_Order_By = {
   cycle_type?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
 };
 
@@ -3981,6 +4009,7 @@ export type Recurring_Variance_Fields = {
   cycle_type?: Maybe<Scalars['Float']>;
   duration_type?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  no_of_times?: Maybe<Scalars['Float']>;
   transaction_type?: Maybe<Scalars['Float']>;
 };
 
@@ -3993,6 +4022,7 @@ export type Recurring_Variance_Order_By = {
   cycle_type?: InputMaybe<Order_By>;
   duration_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  no_of_times?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
 };
 
@@ -6541,6 +6571,29 @@ export type DeleteRecurringMutation = {
   delete_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined;
 };
 
+export type UpdateRecurringMutationVariables = Exact<{
+  id: Scalars['bigint'];
+  changes?: InputMaybe<Recurring_Set_Input>;
+  labels: Array<Recurring_Labels_Insert_Input> | Recurring_Labels_Insert_Input;
+}>;
+
+export type UpdateRecurringMutation = {
+  __typename?: 'mutation_root';
+  update_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined;
+  delete_recurring_labels?:
+    | {
+        __typename?: 'recurring_labels_mutation_response';
+        affected_rows: number;
+      }
+    | undefined;
+  insert_recurring_labels?:
+    | {
+        __typename?: 'recurring_labels_mutation_response';
+        affected_rows: number;
+      }
+    | undefined;
+};
+
 export type InsertRevenueAccMutationVariables = Exact<{
   object: Revenues_Insert_Input;
 }>;
@@ -6850,6 +6903,21 @@ export type AllRecurringQuery = {
     amount: any;
     start_on: any;
     transaction_type: number;
+    account_from: any;
+    account_to: any;
+    category_id?: any | undefined;
+    description?: string | undefined;
+    until_date?: any | undefined;
+    no_of_times?: number | undefined;
+    recurring_labels: Array<{
+      __typename?: 'recurring_labels';
+      label_id: number;
+    }>;
+    accountInfoByAccountTo: {
+      __typename?: 'account_info';
+      name?: string | undefined;
+    };
+    account_info: { __typename?: 'account_info'; name?: string | undefined };
     transactions_aggregate: {
       __typename?: 'transactions_aggregate';
       aggregate?:
@@ -9092,6 +9160,119 @@ export type DeleteRecurringMutationOptions = Apollo.BaseMutationOptions<
   DeleteRecurringMutation,
   DeleteRecurringMutationVariables
 >;
+export const UpdateRecurringDocument = gql`
+  mutation updateRecurring(
+    $id: bigint!
+    $changes: recurring_set_input
+    $labels: [recurring_labels_insert_input!]!
+  ) {
+    update_recurring_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+    delete_recurring_labels(where: { recurring_id: { _eq: $id } }) {
+      affected_rows
+    }
+    insert_recurring_labels(objects: $labels) {
+      affected_rows
+    }
+  }
+`;
+export type UpdateRecurringMutationFn = Apollo.MutationFunction<
+  UpdateRecurringMutation,
+  UpdateRecurringMutationVariables
+>;
+export type UpdateRecurringComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateRecurringMutation,
+    UpdateRecurringMutationVariables
+  >,
+  'mutation'
+>;
+
+export const UpdateRecurringComponent = (
+  props: UpdateRecurringComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateRecurringMutation,
+    UpdateRecurringMutationVariables
+  >
+    mutation={UpdateRecurringDocument}
+    {...props}
+  />
+);
+
+export type UpdateRecurringProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    UpdateRecurringMutation,
+    UpdateRecurringMutationVariables
+  >;
+} & TChildProps;
+export function withUpdateRecurring<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateRecurringMutation,
+    UpdateRecurringMutationVariables,
+    UpdateRecurringProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    UpdateRecurringMutation,
+    UpdateRecurringMutationVariables,
+    UpdateRecurringProps<TChildProps, TDataName>
+  >(UpdateRecurringDocument, {
+    alias: 'updateRecurring',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateRecurringMutation__
+ *
+ * To run a mutation, you first call `useUpdateRecurringMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateRecurringMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateRecurringMutation, { data, loading, error }] = useUpdateRecurringMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      changes: // value for 'changes'
+ *      labels: // value for 'labels'
+ *   },
+ * });
+ */
+export function useUpdateRecurringMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateRecurringMutation,
+    UpdateRecurringMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateRecurringMutation,
+    UpdateRecurringMutationVariables
+  >(UpdateRecurringDocument, options);
+}
+export type UpdateRecurringMutationHookResult = ReturnType<
+  typeof useUpdateRecurringMutation
+>;
+export type UpdateRecurringMutationResult =
+  Apollo.MutationResult<UpdateRecurringMutation>;
+export type UpdateRecurringMutationOptions = Apollo.BaseMutationOptions<
+  UpdateRecurringMutation,
+  UpdateRecurringMutationVariables
+>;
 export const InsertRevenueAccDocument = gql`
   mutation insertRevenueAcc($object: revenues_insert_input!) {
     insert_revenues_one(object: $object) {
@@ -11159,6 +11340,21 @@ export const AllRecurringDocument = gql`
       amount
       start_on
       transaction_type
+      account_from
+      account_to
+      category_id
+      description
+      until_date
+      no_of_times
+      recurring_labels {
+        label_id
+      }
+      accountInfoByAccountTo {
+        name
+      }
+      account_info {
+        name
+      }
       transactions_aggregate {
         aggregate {
           sum {
@@ -15165,6 +15361,7 @@ export type RecurringResolvers<
   >;
   duration_type?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   recurring_labels?: Resolver<
     Array<ResolversTypes['recurring_labels']>,
     ParentType,
@@ -15304,6 +15501,11 @@ export type Recurring_Avg_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  no_of_times?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   transaction_type?: Resolver<
     Maybe<ResolversTypes['Float']>,
     ParentType,
@@ -15583,6 +15785,7 @@ export type Recurring_Max_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   start_on?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   transaction_type?: Resolver<
@@ -15636,6 +15839,7 @@ export type Recurring_Min_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   start_on?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   transaction_type?: Resolver<
@@ -15696,6 +15900,11 @@ export type Recurring_Stddev_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  no_of_times?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   transaction_type?: Resolver<
     Maybe<ResolversTypes['Float']>,
     ParentType,
@@ -15735,6 +15944,11 @@ export type Recurring_Stddev_Pop_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  no_of_times?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   transaction_type?: Resolver<
     Maybe<ResolversTypes['Float']>,
     ParentType,
@@ -15774,6 +15988,11 @@ export type Recurring_Stddev_Samp_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  no_of_times?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   transaction_type?: Resolver<
     Maybe<ResolversTypes['Float']>,
     ParentType,
@@ -15809,6 +16028,7 @@ export type Recurring_Sum_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   transaction_type?: Resolver<
     Maybe<ResolversTypes['Int']>,
     ParentType,
@@ -15848,6 +16068,11 @@ export type Recurring_Var_Pop_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  no_of_times?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   transaction_type?: Resolver<
     Maybe<ResolversTypes['Float']>,
     ParentType,
@@ -15887,6 +16112,11 @@ export type Recurring_Var_Samp_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  no_of_times?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   transaction_type?: Resolver<
     Maybe<ResolversTypes['Float']>,
     ParentType,
@@ -15926,6 +16156,11 @@ export type Recurring_Variance_FieldsResolvers<
     ContextType
   >;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  no_of_times?: Resolver<
+    Maybe<ResolversTypes['Float']>,
+    ParentType,
+    ContextType
+  >;
   transaction_type?: Resolver<
     Maybe<ResolversTypes['Float']>,
     ParentType,

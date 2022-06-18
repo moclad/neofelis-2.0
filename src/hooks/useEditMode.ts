@@ -2,16 +2,16 @@ import * as React from 'react';
 
 import { useControllableProp, useId } from '@chakra-ui/react';
 
-export interface UseEditModeProps {
+export interface UseEditModeProps<P> {
   isEditing?: boolean;
   defaultIsEditing?: boolean;
-  dataContext?: object;
+  dataContext?: P;
   onFinish?(): void;
   onEdit?(values: object): void;
   id?: string;
 }
 
-export function useEditMode<T>(props: UseEditModeProps = {}) {
+export function useEditMode<T, P>(props: UseEditModeProps<P> = {}) {
   const {
     onFinish: onFinishProp,
     onEdit: onEditProp,

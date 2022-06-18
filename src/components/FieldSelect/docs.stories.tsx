@@ -5,8 +5,10 @@ import { Formiz } from '@formiz/core';
 
 const colors = [
   { label: 'Red', value: 'red' },
-  { label: 'Yellow', value: 'yellow' },
+  { label: 'Yellow', value: 'yellow', default: true },
   { label: 'Blue', value: 'blue' },
+  { label: 'Magenta', value: 'magenta' },
+  { label: 'Black', value: 'black' },
 ];
 
 export default {
@@ -22,6 +24,21 @@ export const Default = () => (
       helper="This is an helper"
       required="Color is required"
       options={colors}
+    />
+  </Formiz>
+);
+
+export const InitialValue = () => (
+  <Formiz>
+    <FieldSelect
+      name="colors"
+      label="Colors"
+      placeholder="Placeholder"
+      helper="This is an helper"
+      required="Color is required"
+      options={colors}
+      defaultValue={['red', 'black']}
+      isMulti={true}
     />
   </Formiz>
 );

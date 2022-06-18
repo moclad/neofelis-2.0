@@ -9,3 +9,19 @@ mutation deleteRecurring($id: bigint!) {
     id
   }
 }
+
+mutation updateRecurring(
+  $id: bigint!
+  $changes: recurring_set_input
+  $labels: [recurring_labels_insert_input!]!
+) {
+  update_recurring_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+  delete_recurring_labels(where: { recurring_id: { _eq: $id } }) {
+    affected_rows
+  }
+  insert_recurring_labels(objects: $labels) {
+    affected_rows
+  }
+}

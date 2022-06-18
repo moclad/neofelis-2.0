@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { FieldCurrency, FieldDayPicker, FieldInput, FieldSelect, ModalDialog } from '@/components';
@@ -9,11 +9,13 @@ import {
   ActiveExpenseAccountsDocument,
   ActiveRevenueAccountsDocument,
   AllLabelsDocument,
+  Recurring,
   useInsertCategoryMutation,
   useInsertExpenseAccMutation,
   useInsertLabelMutation,
   useInsertRecurringMutation,
-  useInsertRevenueAccMutation
+  useInsertRevenueAccMutation,
+  useUpdateRecurringMutation
 } from '@/generated/graphql';
 import { DurationType, ISelectOptions, TransactionType } from '@/types/types';
 import { Stack } from '@chakra-ui/react';
@@ -25,11 +27,14 @@ import { useMutationOptions } from '../../../hooks/useMutationOptions';
 export interface RecurringDialogProps {
   isOpen: boolean;
   onClose: () => void;
+  initialValues?: Recurring;
+  isEditing: boolean;
+  id: bigint;
 }
 
 export const RecurringDialog = (props: RecurringDialogProps) => {
   let defaultAccount;
-  const { isOpen, onClose } = props;
+  const { id, initialValues, isEditing, isOpen, onClose } = props;
 
   const [transactionType, setTransactionType] = useState<number>(1);
   const [durationType, setDurationType] = useState<number>(1);
@@ -43,6 +48,9 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
   const [insertRevenue] = useInsertRevenueAccMutation(mutationOptions);
   const [insertRecurring, { loading: insertLoading }] =
     useInsertRecurringMutation(mutationOptions);
+
+  const [updateRecurring, { loading: updateLoading }] =
+    useUpdateRecurringMutation(mutationOptions);
 
   const { selectOptions: categories } = useDataToSelectorConverter({
     entity: 'categories',
@@ -136,25 +144,47 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
     }).then((x) => x.data.insert_labels_one.id);
   };
 
-  const onConfirmCreate = async (values) => {
+  const onSubmit = async (values) => {
     const { labels, ...rest } = values;
 
-    const submitData = {
-      ...rest,
-      recurring_labels: { data: [] },
-    };
+    if (isEditing) {
+      const submitData = {
+        ...rest,
+      };
 
-    if (labels) {
-      labels.forEach((x) =>
-        submitData.recurring_labels.data.push({ label_id: x })
-      );
+      const recurring_labels: any[] = [];
+
+      if (labels) {
+        labels.forEach((x) =>
+          recurring_labels.push({ label_id: x, recurring_id: id })
+        );
+      }
+
+      await updateRecurring({
+        variables: {
+          id: id,
+          changes: submitData,
+          labels: recurring_labels,
+        },
+      });
+    } else {
+      const submitData = {
+        ...rest,
+        recurring_labels: { data: [] },
+      };
+
+      if (labels) {
+        labels.forEach((x) =>
+          submitData.recurring_labels.data.push({ label_id: x })
+        );
+      }
+
+      await insertRecurring({
+        variables: {
+          object: submitData,
+        },
+      });
     }
-
-    await insertRecurring({
-      variables: {
-        object: submitData,
-      },
-    });
   };
 
   const updateDurationTypeView = (): React.ReactNode => {
@@ -162,6 +192,8 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       return (
         <FieldDayPicker
           name="until_date"
+          isDisabled={isEditing}
+          size="sm"
           label={t('recurring:recurring.fields.data.untilDate')}
           required={t('recurring:recurring.fields.data.untilDate') as string}
         />
@@ -171,7 +203,9 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
     if (durationType === DurationType.NumberOfTimes) {
       return (
         <FieldInput
-          name="description"
+          name="no_of_times"
+          isDisabled={isEditing}
+          size="sm"
           label={t('recurring:recurring.fields.data.numberOfTimes')}
           type={'number'}
           placeholder={
@@ -355,23 +389,39 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
     return options;
   };
 
+  useEffect(() => {
+    if (isEditing) {
+      setTransactionType(initialValues?.transaction_type);
+      setDurationType(initialValues?.duration_type);
+    }
+  }, [initialValues]);
+
   return (
     <ModalDialog
-      title={t('recurring:recurring.actions.create')}
+      title={
+        isEditing
+          ? t('recurring:recurring.actions.edit')
+          : t('recurring:recurring.actions.create')
+      }
       dialogForm={form}
       isOpen={isOpen}
       onCancel={() => {
         onClose();
       }}
-      onConfirm={onConfirmCreate}
-      loading={insertLoading}
+      onConfirm={onSubmit}
+      loading={insertLoading || updateLoading}
       formId="recurring-form-id"
+      showAddAnotherOne={!isEditing}
       initialValues={{
-        start_on: dayjs().toDate(),
         source_account: defaultAccount,
         cycle_type: 1,
         transaction_type: 1,
         duration_type: 1,
+        no_of_times: 1,
+        ...initialValues,
+        start_on: isEditing
+          ? dayjs(initialValues.start_on).toDate()
+          : dayjs().toDate(),
       }}
     >
       <FieldInput
@@ -391,6 +441,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
         />
         <FieldDayPicker
           name="start_on"
+          isDisabled={isEditing}
           label={t('recurring:recurring.fields.data.startOn')}
           required={
             t('recurring:recurring.fields.data.startOnRequired') as string
@@ -400,12 +451,14 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldSelect
           name="cycle_type"
+          isDisabled={isEditing}
           label={t('recurring:recurring.fields.data.cycleType')}
           options={cycles()}
           isClearable={false}
         />
         <FieldSelect
           name="duration_type"
+          isDisabled={isEditing}
           label={t('recurring:recurring.fields.data.durationType')}
           options={durations()}
           onChange={(e) => setDurationType(e)}
@@ -415,6 +468,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       {updateDurationTypeView()}
       <FieldSelect
         name="transaction_type"
+        isDisabled={isEditing}
         label={t('recurring:recurring.fields.data.transactionType')}
         options={transactionTypes()}
         onChange={(e) => setTransactionType(e)}
@@ -431,6 +485,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
           size="sm"
           isCreatable={true}
           onCreateOption={onCreateCategory}
+          defaultValue={initialValues?.category_id}
         />
         <FieldSelect
           name="labels"
@@ -441,6 +496,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
           onCreateOption={onCreateLabel}
           closeMenuOnSelect={false}
           isMulti={true}
+          defaultValue={initialValues?.recurring_labels.map((x) => x.label_id)}
         />
       </Stack>
       <FieldInput

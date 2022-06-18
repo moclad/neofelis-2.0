@@ -5,14 +5,16 @@
   "recurring": {
     "title": "Recurring Transactions",
     "actions": {
-      "create": "Create"
+      "create": "Create",
+      "edit": "Edit"
     },
     "table": {
       "header": {
         "title": "Title",
         "cycle": "Cycle",
         "amount": "Amount",
-        "totalPaid": "Total paid"
+        "totalPaid": "Total paid",
+        "accounts": "Accounts"
       }
     },
     "fields": {

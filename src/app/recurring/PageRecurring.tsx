@@ -18,10 +18,12 @@ import {
   useToastSuccess
 } from '@/components';
 import {
+  Recurring,
   useAllRecurringQuery,
   useDeleteRecurringMutation,
   useUpdateAssetMutation
 } from '@/generated/graphql';
+import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
 import {
@@ -36,17 +38,22 @@ import {
   MenuList,
   Portal,
   Text,
-  useDisclosure
+  useDisclosure,
+  Wrap,
+  WrapItem
 } from '@chakra-ui/react';
 
 import { RecurringDialog } from './dialogs/recurring-dialog';
 import { RecurringNav } from './RecurringNav';
 
 export const PageRecurring = () => {
+  const { colorModeValue } = useDarkMode();
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } =
-    useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<
+    number,
+    Recurring
+  >();
   const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
@@ -62,24 +69,6 @@ export const PageRecurring = () => {
 
   const [deleteRecurring, { loading: deleteFetching }] =
     useDeleteRecurringMutation();
-
-  const [updateAsset, { loading: updateLoading }] =
-    useUpdateAssetMutation(mutationOptions);
-
-  const onConfirmEdit = async (values) => {
-    const newData = {
-      ...values,
-    };
-
-    await updateAsset({
-      variables: {
-        id: dataKey,
-        changes: newData,
-        name: newData.name,
-      },
-      refetchQueries: 'active',
-    });
-  };
 
   const onDelete = async (id: number) => {
     deleteRecurring({
@@ -103,7 +92,7 @@ export const PageRecurring = () => {
     <>
       <Page nav={<RecurringNav />}>
         <PageContent
-          loading={loading || deleteFetching || updateLoading}
+          loading={loading || deleteFetching}
           title={t('recurring:recurring.title')}
           actions={[
             <ResponsiveIconButton
@@ -121,7 +110,16 @@ export const PageRecurring = () => {
               <DataListCell colName="name" colWidth={1.5}>
                 {t('recurring:recurring.table.header.title')}
               </DataListCell>
-              <DataListCell colName="cycle">
+              <DataListCell
+                colName="accounts"
+                isVisible={{ base: false, lg: true }}
+              >
+                {t('recurring:recurring.table.header.accounts')}
+              </DataListCell>
+              <DataListCell
+                colName="cycle"
+                isVisible={{ base: false, lg: true }}
+              >
                 {t('recurring:recurring.table.header.cycle')}
               </DataListCell>
               <DataListCell colName="amount">
@@ -147,17 +145,47 @@ export const PageRecurring = () => {
                       </Text>
                     </HStack>
                   </DataListCell>
+                  <DataListCell colName="accounts">
+                    <Wrap>
+                      <WrapItem>
+                        <Text
+                          noOfLines={0}
+                          maxW="full"
+                          fontSize="sm"
+                          color={colorModeValue('gray.600', 'gray.300')}
+                        >
+                          {item?.account_info?.name}
+                        </Text>
+                      </WrapItem>
+                      <WrapItem>
+                        <Text
+                          noOfLines={0}
+                          maxW="full"
+                          fontSize="sm"
+                          color={colorModeValue('gray.600', 'gray.300')}
+                        >
+                          {item?.accountInfoByAccountTo?.name}
+                        </Text>
+                      </WrapItem>
+                    </Wrap>
+                  </DataListCell>
                   <DataListCell colName="cycle">
-                    <HStack>
-                      <Badge size="sm" colorScheme="success">
-                        {t(`recurring:recurring.cycleType.${item.cycle_type}`)}
-                      </Badge>
-                      <Badge size="sm" colorScheme="gray">
-                        {t(
-                          `recurring:recurring.durationType.${item.duration_type}`
-                        )}
-                      </Badge>
-                    </HStack>
+                    <Wrap>
+                      <WrapItem>
+                        <Badge size="sm" colorScheme="success">
+                          {t(
+                            `recurring:recurring.cycleType.${item.cycle_type}`
+                          )}
+                        </Badge>
+                      </WrapItem>
+                      <WrapItem>
+                        <Badge size="sm" colorScheme="gray">
+                          {t(
+                            `recurring:recurring.durationType.${item.duration_type}`
+                          )}
+                        </Badge>
+                      </WrapItem>
+                    </Wrap>
                   </DataListCell>
 
                   <DataListCell colName="amount">
@@ -203,7 +231,7 @@ export const PageRecurring = () => {
                 </DataListRow>
               ))}
             <DataListPaginationFooter
-              isLoadingPage={loading || updateLoading || deleteFetching}
+              isLoadingPage={loading || deleteFetching}
               setPage={setPage}
               page={page}
               pageSize={pageSize}
@@ -212,7 +240,17 @@ export const PageRecurring = () => {
           </DataList>
         </PageContent>
       </Page>
-      <RecurringDialog isOpen={isOpen} onClose={onCloseDialog} />
+      <RecurringDialog
+        id={dataContext?.id}
+        isOpen={isOpen || isEditing}
+        isEditing={isEditing}
+        initialValues={dataContext}
+        onClose={() => {
+          onFinish();
+          onClose();
+          onCloseDialog();
+        }}
+      />
     </>
   );
 };

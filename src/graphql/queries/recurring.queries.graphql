@@ -9,6 +9,21 @@ query allRecurring($limit: Int, $offset: Int) {
     amount
     start_on
     transaction_type
+    account_from
+    account_to
+    category_id
+    description
+    until_date
+    no_of_times
+    recurring_labels {
+      label_id
+    }
+    accountInfoByAccountTo {
+      name
+    }
+    account_info {
+      name
+    }
     transactions_aggregate {
       aggregate {
         sum {

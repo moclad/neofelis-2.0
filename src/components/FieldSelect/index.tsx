@@ -87,8 +87,18 @@ export const FieldSelect = <
   };
 
   const selectedValues = () => {
-    if (isMulti && value) {
-      return;
+    if (isMulti && Array.isArray(value)) {
+      const result = value.map(
+        (v) =>
+          options?.filter((option) => {
+            if (option.value === v) {
+              return option;
+            }
+          })[0]
+      );
+
+      console.log(result);
+      return result;
     }
 
     return options?.find((option) => option.value === value) || '';
