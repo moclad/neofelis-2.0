@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { DayPicker, FormGroup, FormGroupProps } from '@/components';
+import { DayPicker } from '@/components/DayPicker';
+import { FormGroup, FormGroupProps } from '@/components/FormGroup';
 import { FieldProps, useField, useForm } from '@formiz/core';
 
 export interface FieldDayPickerProps extends FieldProps, FormGroupProps {

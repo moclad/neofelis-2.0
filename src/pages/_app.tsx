@@ -4,8 +4,8 @@ import Head from 'next/head';
 import NProgress from 'nprogress';
 import React from 'react';
 
-import { Viewport } from '@/components';
-import { ErrorBoundary } from '@/errors';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { Viewport } from '@/components/Viewport';
 import { Providers } from '@/Providers';
 import { Box, Text, useTheme } from '@chakra-ui/react';
 

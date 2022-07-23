@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FieldSelect } from '@/components';
+import { FieldSelect } from '@/components/FieldSelect';
 import { Formiz } from '@formiz/core';
 
 const colors = [

@@ -1,7 +1,7 @@
-import { Button, Code, HStack, Stack, Text } from '@chakra-ui/react';
 import { FiMoon, FiSun } from 'react-icons/fi';
 
-import { Icon } from '@/components';
+import { Icon } from '@/components/Icons';
+import { Button, Code, HStack, Stack, Text } from '@chakra-ui/react';
 
 import { useDarkMode } from './useDarkMode';
 

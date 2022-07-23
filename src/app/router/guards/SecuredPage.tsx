@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { ErrorBoundary } from '@/errors';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export const SecuredPage = ({ children }) => {
   const { data: session } = useSession();

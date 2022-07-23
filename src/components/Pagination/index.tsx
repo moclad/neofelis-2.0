@@ -2,7 +2,7 @@ import React, { FC, useContext } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 
-import { Icon } from '@/components';
+import { Icon } from '@/components/Icons';
 import { useRtl } from '@/hooks/useRtl';
 import { Box, HStack, IconButton, IconButtonProps, Spinner } from '@chakra-ui/react';
 

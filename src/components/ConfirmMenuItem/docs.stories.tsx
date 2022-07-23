@@ -1,19 +1,18 @@
 import React from 'react';
+import { FiActivity, FiChevronDown, FiTrash2 } from 'react-icons/fi';
 
+import { Icon } from '@/components/Icons';
 import {
+  Badge,
   Box,
   Button,
+  HStack,
   Menu,
   MenuButton,
-  MenuList,
   MenuItem,
-  Portal,
-  Badge,
-  HStack,
+  MenuList,
+  Portal
 } from '@chakra-ui/react';
-import { FiChevronDown, FiActivity, FiTrash2 } from 'react-icons/fi';
-
-import { Icon } from '@/components';
 
 import { ConfirmMenuItem } from './';
 

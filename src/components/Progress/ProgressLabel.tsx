@@ -1,6 +1,6 @@
 import { FC, ReactChild } from 'react';
 
-import { useProgressContext } from '@/components';
+import { useProgressContext } from '@/components/Progress';
 import { Text, TextProps } from '@chakra-ui/react';
 
 import { ProgressValues } from './';

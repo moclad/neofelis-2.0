@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { FiCheck, FiX } from 'react-icons/fi';
 
-import { Icon } from '@/components';
+import { Icon } from '@/components/Icons';
 import { Badge, Box } from '@chakra-ui/react';
 
 export const UserStatus = ({ isActivated = false, ...rest }) => {

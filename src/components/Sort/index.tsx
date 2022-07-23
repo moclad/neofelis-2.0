@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { IconSortAsc, IconSortDesc } from '@/components';
+import { IconSortAsc, IconSortDesc } from '@/components/Icons';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Button,

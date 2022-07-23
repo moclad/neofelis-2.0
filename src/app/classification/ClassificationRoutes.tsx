@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { PageCategories } from '@/app/classification/PageCategories';
 import { PageGroups } from '@/app/classification/PageGroups';
 import { PageLabels } from '@/app/classification/PageLabels';
-import { Error404 } from '@/errors';
+import { ErrorPage } from '@/components/ErrorPage';
 
 import { SecuredPage } from '../router';
 
@@ -44,7 +44,7 @@ const ClassificationRoutes = () => {
           </SecuredPage>
         }
       />
-      <Route path="*" element={<Error404 />} />
+      <Route path="*" element={<ErrorPage errorCode={404} />} />
     </Routes>
   );
 };

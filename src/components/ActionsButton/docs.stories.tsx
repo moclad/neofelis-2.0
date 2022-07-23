@@ -1,17 +1,8 @@
 import React from 'react';
+import { FiCopy, FiEdit, FiTrash2, FiUserPlus } from 'react-icons/fi';
 
-import {
-  Flex,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuDivider,
-  MenuItem,
-  Box,
-} from '@chakra-ui/react';
-import { FiEdit, FiCopy, FiUserPlus, FiTrash2 } from 'react-icons/fi';
-
-import { Icon } from '@/components';
+import { Icon } from '@/components/Icons';
+import { Box, Flex, Menu, MenuButton, MenuDivider, MenuItem, MenuList } from '@chakra-ui/react';
 
 import { ActionsButton } from './index';
 

@@ -1,31 +1,24 @@
-import React from 'react';
-
-import {
-  Text,
-  Box,
-  Heading,
-  HStack,
-  Stack,
-  Button,
-  ButtonGroup,
-  SkeletonText,
-} from '@chakra-ui/react';
-import { Formiz, useForm } from '@formiz/core';
 import { AxiosError } from 'axios';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams, useHistory } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useUser, useUserUpdate } from '@/app/admin/users/users.service';
-import {
-  Page,
-  PageContent,
-  PageBottomBar,
-  PageTopBar,
-  Loader,
-} from '@/app/layout';
-import { useToastError, useToastSuccess } from '@/components';
-import { Error404 } from '@/errors';
+import { Loader, Page, PageBottomBar, PageContent, PageTopBar } from '@/app/layout';
+import { ErrorPage } from '@/components/ErrorPage';
+import { useToastError, useToastSuccess } from '@/components/Toast';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Heading,
+  HStack,
+  SkeletonText,
+  Stack,
+  Text
+} from '@chakra-ui/react';
+import { Formiz, useForm } from '@formiz/core';
 
 import { UserForm } from './UserForm';
 import { UserStatus } from './UserStatus';
@@ -34,7 +27,7 @@ export const PageUserUpdate = () => {
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
   const { login } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
   const {
     user,
     isLoading: userIsLoading,
@@ -71,7 +64,7 @@ export const PageUserUpdate = () => {
       toastSuccess({
         title: t('users:update.feedbacks.updateSuccess.title'),
       });
-      history.goBack();
+      navigate(-1);
     },
   });
   const submitEditUser = (values) => {
@@ -84,7 +77,7 @@ export const PageUserUpdate = () => {
 
   return (
     <Page containerSize="md" isFocusMode>
-      <PageTopBar showBack onBack={() => history.goBack()}>
+      <PageTopBar showBack onBack={() => navigate(-1)}>
         <HStack spacing="4">
           <Box flex="1">
             {userIsLoading || userIsError ? (
@@ -109,7 +102,7 @@ export const PageUserUpdate = () => {
         </HStack>
       </PageTopBar>
       {userIsFetching && <Loader />}
-      {userIsError && !userIsFetching && <Error404 />}
+      {userIsError && !userIsFetching && <ErrorPage errorCode={404} />}
       {!userIsError && !userIsFetching && (
         <Formiz
           id="create-user-form"
@@ -123,7 +116,7 @@ export const PageUserUpdate = () => {
             </PageContent>
             <PageBottomBar>
               <ButtonGroup justifyContent="space-between">
-                <Button onClick={() => history.goBack()}>
+                <Button onClick={() => navigate(-1)}>
                   {t('actions.cancel')}
                 </Button>
                 <Button

@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { Link as RouterLink, Navigate } from 'react-router-dom';
 
 import { useSearchParams } from '@/app/router';
-import { Logo, SlideIn } from '@/components';
+import { Logo } from '@/components/Logo';
+import { SlideIn } from '@/components/SlideIn';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 

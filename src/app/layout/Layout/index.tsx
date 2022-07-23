@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { LoginModalInterceptor } from '@/app/auth/LoginModalInterceptor';
 import { LayoutContext, TopBar } from '@/app/layout';
-import { Viewport } from '@/components';
+import { Viewport } from '@/components/Viewport';
 import { Flex, useDisclosure } from '@chakra-ui/react';
 
 export const Layout: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
@@ -14,7 +14,7 @@ export const Layout: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
     onClose: navOnClose,
     onOpen: navOnOpen,
   } = useDisclosure();
-  const { data: session } = useSession()
+  const { data: session } = useSession();
   const { pathname } = useLocation();
 
   useEffect(() => {

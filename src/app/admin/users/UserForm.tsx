@@ -1,7 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { FieldCheckboxes, FieldInput, FieldSelect } from '@/components';
+import { FieldCheckboxes } from '@/components/FieldCheckboxes';
+import { FieldInput } from '@/components/FieldInput';
+import { FieldSelect } from '@/components/FieldSelect';
 import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE_KEY } from '@/constants/i18n';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { Stack } from '@chakra-ui/react';

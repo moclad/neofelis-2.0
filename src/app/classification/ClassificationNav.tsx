@@ -4,7 +4,7 @@ import { FiUser } from 'react-icons/fi';
 import { RiArchiveDrawerLine, RiPantoneLine, RiPriceTag3Line } from 'react-icons/ri';
 import { Link, useLocation } from 'react-router-dom';
 
-import { Nav, NavGroup, NavItem } from '@/components';
+import { Nav, NavGroup, NavItem } from '@/components/Nav';
 
 export const ClassificationNav = () => {
   const { t } = useTranslation();

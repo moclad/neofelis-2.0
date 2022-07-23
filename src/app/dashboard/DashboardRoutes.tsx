@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import { PageDashboard } from '@/app/dashboard/PageDashboard';
 import { SecuredPage } from '@/app/router';
-import { Error404 } from '@/errors';
+import { ErrorPage } from '@/components/ErrorPage';
 
 const DashboardRoutes = () => {
   return (
@@ -16,7 +16,7 @@ const DashboardRoutes = () => {
           </SecuredPage>
         }
       />
-      <Route path="*" element={<Error404 />} />
+      <Route path="*" element={<ErrorPage errorCode={404} />} />
     </Routes>
   );
 };

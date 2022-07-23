@@ -1,15 +1,14 @@
-import React from 'react';
-
-import { Button, ButtonGroup, Heading } from '@chakra-ui/react';
-import { Formiz, useForm } from '@formiz/core';
 import { AxiosError } from 'axios';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 
 import { UserForm } from '@/app/admin/users/UserForm';
 import { useUserCreate } from '@/app/admin/users/users.service';
-import { Page, PageContent, PageBottomBar, PageTopBar } from '@/app/layout';
-import { useToastError, useToastSuccess } from '@/components';
+import { Page, PageBottomBar, PageContent, PageTopBar } from '@/app/layout';
+import { useToastError, useToastSuccess } from '@/components/Toast';
+import { Button, ButtonGroup, Heading } from '@chakra-ui/react';
+import { Formiz, useForm } from '@formiz/core';
 
 export const PageUserCreate = () => {
   const { t } = useTranslation();

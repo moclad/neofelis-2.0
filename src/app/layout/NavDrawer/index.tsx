@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { MainMenu, useLayoutContext } from '@/app/layout';
-import { Logo } from '@/components';
+import { Logo } from '@/components/Logo';
+import { useRtl } from '@/hooks/useRtl';
 import {
   Drawer,
   DrawerBody,
@@ -11,7 +12,6 @@ import {
   DrawerOverlay
 } from '@chakra-ui/react';
 
-import { useRtl } from '@/hooks/useRtl';
 export const NavDrawer = ({ ...rest }) => {
   const { navIsOpen, navOnClose } = useLayoutContext();
   const { rtlValue } = useRtl();

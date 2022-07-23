@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { RiBankLine, RiExchangeLine, RiRefund2Line, RiShoppingCartLine } from 'react-icons/ri';
 import { Link, useLocation } from 'react-router-dom';
 
-import { Nav, NavGroup, NavItem } from '@/components';
+import { Nav, NavGroup, NavItem } from '@/components/Nav';
 
 export const AccountsNav = () => {
   const { t } = useTranslation();

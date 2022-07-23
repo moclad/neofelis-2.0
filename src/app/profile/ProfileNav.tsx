@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FiSettings, FiUser } from 'react-icons/fi';
 import { Link, useLocation } from 'react-router-dom';
 
-import { Nav, NavGroup, NavItem } from '@/components';
+import { Nav, NavGroup, NavItem } from '@/components/Nav';
 
 export const ProfileNav = () => {
   const { t } = useTranslation();

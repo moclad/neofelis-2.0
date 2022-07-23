@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-
-import { useField } from '@formiz/core';
 import { useTranslation } from 'react-i18next';
 import { GroupBase } from 'react-select';
 
-import { FieldSelectProps, FormGroup, Select } from '@/components';
+import { FieldSelectProps } from '@/components/FieldSelect';
+import { FormGroup } from '@/components/FormGroup';
+import { Select } from '@/components/Select';
+import { useField } from '@formiz/core';
 
 export interface FieldMultiSelectProps<
   Option,

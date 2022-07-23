@@ -6,7 +6,7 @@ import { FiCheck, FiCopy, FiLogOut, FiMoon, FiSun, FiUser } from 'react-icons/fi
 import { Link, useNavigate } from 'react-router-dom';
 
 import appBuild from '@/../app-build.json';
-import { Icon } from '@/components';
+import { Icon } from '@/components/Icons';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Flex,

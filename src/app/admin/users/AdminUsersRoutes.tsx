@@ -1,11 +1,10 @@
 import React from 'react';
-import { Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { PageUserCreate } from '@/app/admin/users/PageUserCreate';
 import { PageUsers } from '@/app/admin/users/PageUsers';
 import { PageUserUpdate } from '@/app/admin/users/PageUserUpdate';
-import { Route } from '@/app/router';
-import { Error404 } from '@/errors';
+import { ErrorPage } from '@/components/ErrorPage';
 
 const AdminUsersRoutes = () => {
   return (
@@ -13,7 +12,7 @@ const AdminUsersRoutes = () => {
       <Route path="/" element={() => <PageUsers />} />
       <Route path="/create" element={() => <PageUserCreate />} />
       <Route path="/:login" element={() => <PageUserUpdate />} />
-      <Route path="*" element={() => <Error404 />} />
+      <Route path="*" element={<ErrorPage errorCode={404} />} />
     </Routes>
   );
 };

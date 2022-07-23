@@ -1,11 +1,11 @@
 import { signIn } from 'next-auth/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link as RouterLink } from 'react-router-dom';
 
 import { useLogin, useProvidersList } from '@/app/auth/auth.service';
 import { Loader } from '@/app/layout';
-import { FieldInput, useToastError } from '@/components';
+import { FieldInput } from '@/components/FieldInput';
+import { useToastError } from '@/components/Toast';
 import {
   Box,
   Button,

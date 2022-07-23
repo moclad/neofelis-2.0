@@ -2,7 +2,11 @@ import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { FieldCurrency, FieldDayPicker, FieldInput, FieldSelect, ModalDialog } from '@/components';
+import { FieldCurrency } from '@/components/FieldCurrency';
+import { FieldDayPicker } from '@/components/FieldDayPicker';
+import { FieldInput } from '@/components/FieldInput';
+import { FieldSelect } from '@/components/FieldSelect';
+import { ModalDialog } from '@/components/ModalDialog';
 import {
   ActiveAssetAccountsDocument,
   ActiveCategoriesDocument,

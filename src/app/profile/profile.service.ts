@@ -1,10 +1,10 @@
 import Axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useTranslation } from 'react-i18next';
-import { useMutation, UseMutationOptions, useQuery, UseQueryOptions } from 'react-query';
 
 import { Account } from '@/app/profile/account.types';
 import { DEFAULT_LANGUAGE_KEY } from '@/constants/i18n';
+import { useMutation, UseMutationOptions, useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 import { useFetchUserQuery } from '../../generated/graphql';
 

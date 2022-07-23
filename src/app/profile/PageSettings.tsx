@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Page, PageContent } from '@/app/layout';
 import { ProfileNav } from '@/app/profile/ProfileNav';
-import { FieldSelect, useToastError, useToastSuccess } from '@/components';
+import { FieldSelect } from '@/components/FieldSelect';
+import { useToastError, useToastSuccess } from '@/components/Toast';
 import { AVAILABLE_LANGUAGES } from '@/constants/i18n';
 import { useFetchUserSettingsQuery, useUpdateUserSettingsMutation } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';

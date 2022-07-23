@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
-
-import { Flex, Progress } from '@chakra-ui/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
+import React, { useEffect, useState } from 'react';
 
-import { Viewport } from '@/components';
+import { Viewport } from '@/components/Viewport';
 import { APP_BASENAME } from '@/constants/routing';
+import { Flex, Progress } from '@chakra-ui/react';
 
 const Loading = () => (
   <Viewport>

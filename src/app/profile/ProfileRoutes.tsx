@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { PageProfile } from '@/app/profile/PageProfile';
 import { PageSettings } from '@/app/profile/PageSettings';
-import { Error404 } from '@/errors';
+import { ErrorPage } from '@/components/ErrorPage';
 
 import { SecuredPage } from '../router';
 
@@ -49,7 +49,7 @@ const ProfileRoutes = () => {
           </SecuredPage>
         }
       />
-      <Route path="*" element={<Error404 />} />
+      <Route path="*" element={<ErrorPage errorCode={404} />} />
     </Routes>
   );
 };

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useProgressContext } from '@/components';
+import { useProgressContext } from '@/components/Progress';
 import { Progress, ProgressProps } from '@chakra-ui/react';
 
 export const ProgressBar: FC<React.PropsWithChildren<ProgressProps>> = (

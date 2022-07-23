@@ -2,7 +2,6 @@ import Axios from 'axios';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useQueryClient } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { LoginForm } from '@/app/auth/LoginForm';
@@ -16,6 +15,7 @@ import {
   Text,
   useDisclosure
 } from '@chakra-ui/react';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const LoginModalInterceptor = () => {
   const { t } = useTranslation();

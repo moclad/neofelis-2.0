@@ -1,14 +1,15 @@
 import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useQueryClient } from 'react-query';
 import { Link as RouterLink, Navigate, useNavigate } from 'react-router-dom';
 
 import { LoginForm } from '@/app/auth/LoginForm';
 import { useRedirectFromUrl } from '@/app/router';
-import { Logo, SlideIn } from '@/components';
+import { Logo } from '@/components/Logo';
+import { SlideIn } from '@/components/SlideIn';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { Box, Button, Center, Heading } from '@chakra-ui/react';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const PageLogin = () => {
   const { data: session } = useSession();

@@ -4,7 +4,9 @@ import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { useResetPasswordInit } from '@/app/profile/profile.service';
-import { FieldInput, SlideIn, useToastError } from '@/components';
+import { FieldInput } from '@/components/FieldInput';
+import { SlideIn } from '@/components/SlideIn';
+import { useToastError } from '@/components/Toast';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useRtl } from '@/hooks/useRtl';
 import {

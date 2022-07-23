@@ -1,10 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiUsers } from 'react-icons/fi';
 import { GoBook } from 'react-icons/go';
 import { Link, useLocation } from 'react-router-dom';
 
-import { Nav, NavGroup, NavItem } from '@/components';
+import { Nav, NavGroup, NavItem } from '@/components/Nav';
 
 export const AdminNav = () => {
   const { t } = useTranslation();

@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { PageAuthError } from '@/app/auth/PageAuthError';
@@ -8,8 +7,10 @@ import { PageLogout } from '@/app/auth/PageLogout';
 import { PageVerifyRequest } from '@/app/auth/PageVerifyRequest';
 import ClassificationRoutes from '@/app/classification/ClassificationRoutes';
 import { Layout, Loader } from '@/app/layout';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { ErrorPage } from '@/components/ErrorPage';
 import { APP_BASENAME } from '@/constants/routing';
-import { Error404, ErrorBoundary } from '@/errors';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import RecurringRoutes from './recurring/RecurringRoutes';
 import { SecuredPage } from './router';
@@ -104,7 +105,7 @@ const getRoutes = () => {
           </SecuredPage>
         }
       />
-      <Route path="*" element={<Error404 />} />
+      <Route path="*" element={<ErrorPage errorCode={404} />} />
     </Routes>
   );
 };

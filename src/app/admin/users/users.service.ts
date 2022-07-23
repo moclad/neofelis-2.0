@@ -1,14 +1,14 @@
 import Axios, { AxiosError } from 'axios';
+
+import { User, UserList } from '@/app/admin/users/users.types';
+import { DEFAULT_LANGUAGE_KEY } from '@/constants/i18n';
 import {
   useMutation,
   UseMutationOptions,
   useQuery,
   useQueryClient,
   UseQueryOptions
-} from 'react-query';
-
-import { User, UserList } from '@/app/admin/users/users.types';
-import { DEFAULT_LANGUAGE_KEY } from '@/constants/i18n';
+} from '@tanstack/react-query';
 
 type UserMutateError = {
   title: string;

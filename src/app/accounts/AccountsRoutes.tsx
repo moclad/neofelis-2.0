@@ -6,7 +6,7 @@ import { PageExpenses } from '@/app/accounts/PageExpenses';
 import { PageLiabilities } from '@/app/accounts/PageLiabilities';
 import { PageRevenues } from '@/app/accounts/PageRevenues';
 import { SecuredPage } from '@/app/router';
-import { Error404 } from '@/errors';
+import { ErrorPage } from '@/components/ErrorPage';
 
 const AccountsRoutes = () => {
   return (
@@ -46,7 +46,7 @@ const AccountsRoutes = () => {
         }
       />
 
-      <Route path="*" element={<Error404 />} />
+      <Route path="*" element={<ErrorPage errorCode={404} />} />
     </Routes>
   );
 };

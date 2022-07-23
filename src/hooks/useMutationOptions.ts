@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { useToastError, useToastSuccess } from '../components';
+import { useToastError, useToastSuccess } from '@/components/Toast';
 
 export interface useMutationOptionProps {
   successMessage?: string;

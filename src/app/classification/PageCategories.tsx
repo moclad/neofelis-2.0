@@ -4,15 +4,12 @@ import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
 
 import { ClassificationNav } from '@/app/classification/ClassificationNav';
 import { Page, PageContent } from '@/app/layout';
-import {
-  ActionsButton,
-  ConfirmMenuItem,
-  FieldInput,
-  ModalDialog,
-  ResponsiveIconButton,
-  useToastError,
-  useToastSuccess
-} from '@/components';
+import { ActionsButton } from '@/components/ActionsButton';
+import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
+import { FieldInput } from '@/components/FieldInput';
+import { ModalDialog } from '@/components/ModalDialog';
+import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
+import { useToastError, useToastSuccess } from '@/components/Toast';
 import {
   useAllCategoriesQuery,
   useDeleteCategoryMutation,

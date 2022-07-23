@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useResetPasswordFinish } from '@/app/profile/profile.service';
 import { useSearchParams } from '@/app/router';
-import { FieldInput, SlideIn, useToastError, useToastSuccess } from '@/components';
+import { FieldInput } from '@/components/FieldInput';
+import { SlideIn } from '@/components/SlideIn';
+import { useToastError, useToastSuccess } from '@/components/Toast';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { Box, Button, Flex, Heading, Stack } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
@@ -16,7 +18,7 @@ export const PageResetPasswordConfirm = () => {
   const { searchParams } = useSearchParams();
 
   const resetPasswordFinishForm = useForm();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
@@ -37,7 +39,7 @@ export const PageResetPasswordConfirm = () => {
             'profile:resetPassword.feedbacks.confirmSuccess.description'
           ),
         });
-        history.push('/login');
+        navigate('/login');
       },
     });
 

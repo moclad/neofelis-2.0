@@ -1,9 +1,9 @@
 import { signOut } from 'next-auth/react';
 import React, { useEffect } from 'react';
-import { useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
 import { Center, Spinner } from '@chakra-ui/react';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const PageLogout = () => {
   const navigate = useNavigate();

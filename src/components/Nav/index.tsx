@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useEffect, useMemo, useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 
-import { Icon } from '@/components';
+import { Icon } from '@/components/Icons';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Button,
@@ -71,7 +71,7 @@ export const Nav = ({ children, breakpoint = 'lg', ...rest }: NavProps) => {
 type NavItemProps = FlexProps & {
   icon?: React.FC<React.PropsWithChildren<unknown>>;
   isActive?: boolean;
-}
+};
 
 export const NavItem: ChakraComponent<'span', NavItemProps> = ({
   children,

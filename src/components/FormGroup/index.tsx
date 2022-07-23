@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 
-import { Icon } from '@/components';
+import { Icon } from '@/components/Icons';
 import {
   FormControl,
   FormControlProps,

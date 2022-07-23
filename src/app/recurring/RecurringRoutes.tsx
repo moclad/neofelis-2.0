@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { SecuredPage } from '@/app/router';
-import { Error404 } from '@/errors';
+import { ErrorPage } from '@/components/ErrorPage';
 
 import { PageRecurring } from './PageRecurring';
 
@@ -17,7 +17,7 @@ const RecurringRoutes = () => {
           </SecuredPage>
         }
       />
-      <Route path="*" element={<Error404 />} />
+      <Route path="*" element={<ErrorPage errorCode={404} />} />
     </Routes>
   );
 };
