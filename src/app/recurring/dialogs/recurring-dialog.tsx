@@ -393,6 +393,9 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
     if (isEditing) {
       setTransactionType(initialValues?.transaction_type);
       setDurationType(initialValues?.duration_type);
+    } else {
+      setTransactionType(1);
+      setDurationType(0);
     }
   }, [initialValues]);
 

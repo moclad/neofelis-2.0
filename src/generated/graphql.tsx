@@ -39,8 +39,13 @@ export type Scalars = {
   uuid: any;
 };
 
+export type Boolean_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
 export type Boolean_Comparison_Exp = {
+  _cast?: InputMaybe<Boolean_Cast_Exp>;
   _eq?: InputMaybe<Scalars['Boolean']>;
   _gt?: InputMaybe<Scalars['Boolean']>;
   _gte?: InputMaybe<Scalars['Boolean']>;
@@ -52,8 +57,13 @@ export type Boolean_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['Boolean']>>;
 };
 
+export type Int_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
+  _cast?: InputMaybe<Int_Cast_Exp>;
   _eq?: InputMaybe<Scalars['Int']>;
   _gt?: InputMaybe<Scalars['Int']>;
   _gte?: InputMaybe<Scalars['Int']>;
@@ -238,7 +248,7 @@ export type Account_Info_Bool_Exp = {
 
 /** unique or primary key constraints on table "account_info" */
 export enum Account_Info_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   AccountInfoPkey = 'account_info_pkey',
 }
 
@@ -477,7 +487,7 @@ export type Assets_Bool_Exp = {
 
 /** unique or primary key constraints on table "assets" */
 export enum Assets_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   AssetsPkey = 'assets_pkey',
 }
 
@@ -673,8 +683,13 @@ export type Assets_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+export type Bigint_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
 export type Bigint_Comparison_Exp = {
+  _cast?: InputMaybe<Bigint_Cast_Exp>;
   _eq?: InputMaybe<Scalars['bigint']>;
   _gt?: InputMaybe<Scalars['bigint']>;
   _gte?: InputMaybe<Scalars['bigint']>;
@@ -686,8 +701,13 @@ export type Bigint_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['bigint']>>;
 };
 
+export type Bpchar_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "bpchar". All fields are combined with logical 'AND'. */
 export type Bpchar_Comparison_Exp = {
+  _cast?: InputMaybe<Bpchar_Cast_Exp>;
   _eq?: InputMaybe<Scalars['bpchar']>;
   _gt?: InputMaybe<Scalars['bpchar']>;
   _gte?: InputMaybe<Scalars['bpchar']>;
@@ -824,7 +844,7 @@ export type Categories_Bool_Exp = {
 
 /** unique or primary key constraints on table "categories" */
 export enum Categories_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   CategoriesPkey = 'categories_pkey',
 }
 
@@ -980,8 +1000,13 @@ export type Categories_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+export type Date_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
 export type Date_Comparison_Exp = {
+  _cast?: InputMaybe<Date_Cast_Exp>;
   _eq?: InputMaybe<Scalars['date']>;
   _gt?: InputMaybe<Scalars['date']>;
   _gte?: InputMaybe<Scalars['date']>;
@@ -1055,7 +1080,7 @@ export type Expenses_Bool_Exp = {
 
 /** unique or primary key constraints on table "expenses" */
 export enum Expenses_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   ExpensesPkey = 'expenses_pkey',
 }
 
@@ -1209,8 +1234,13 @@ export type Expenses_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+export type Float8_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "float8". All fields are combined with logical 'AND'. */
 export type Float8_Comparison_Exp = {
+  _cast?: InputMaybe<Float8_Cast_Exp>;
   _eq?: InputMaybe<Scalars['float8']>;
   _gt?: InputMaybe<Scalars['float8']>;
   _gte?: InputMaybe<Scalars['float8']>;
@@ -1325,7 +1355,7 @@ export type Labels_Bool_Exp = {
 
 /** unique or primary key constraints on table "labels" */
 export enum Labels_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   LabelsPkey = 'labels_pkey',
 }
 
@@ -1536,7 +1566,7 @@ export type Liabilities_Bool_Exp = {
 
 /** unique or primary key constraints on table "liabilities" */
 export enum Liabilities_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   LiabiulitiesPkey = 'liabiulities_pkey',
 }
 
@@ -2525,7 +2555,7 @@ export type Notifications_Bool_Exp = {
 
 /** unique or primary key constraints on table "notifications" */
 export enum Notifications_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   NotificationsPkey = 'notifications_pkey',
 }
 
@@ -3304,7 +3334,7 @@ export type Recurring_Bool_Exp = {
 
 /** unique or primary key constraints on table "recurring" */
 export enum Recurring_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   RecurringPkey = 'recurring_pkey',
 }
 
@@ -3433,7 +3463,7 @@ export type Recurring_Labels_Bool_Exp = {
 
 /** unique or primary key constraints on table "recurring_labels" */
 export enum Recurring_Labels_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "label_id", "recurring_id" */
   RecurringLabelsPkey = 'recurring_labels_pkey',
 }
 
@@ -4090,7 +4120,7 @@ export type Revenues_Bool_Exp = {
 
 /** unique or primary key constraints on table "revenues" */
 export enum Revenues_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   RevenuesPkey = 'revenues_pkey',
 }
 
@@ -4674,8 +4704,13 @@ export type Subscription_RootUsers_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
+export type Timestamptz_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
+  _cast?: InputMaybe<Timestamptz_Cast_Exp>;
   _eq?: InputMaybe<Scalars['timestamptz']>;
   _gt?: InputMaybe<Scalars['timestamptz']>;
   _gte?: InputMaybe<Scalars['timestamptz']>;
@@ -4787,7 +4822,7 @@ export type Transaction_Accounts_Bool_Exp = {
 
 /** unique or primary key constraints on table "transaction_accounts" */
 export enum Transaction_Accounts_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   TranscationAccountPkey = 'transcation_account_pkey',
 }
 
@@ -5110,11 +5145,11 @@ export type Transaction_Attachments_Bool_Exp = {
 
 /** unique or primary key constraints on table "transaction_attachments" */
 export enum Transaction_Attachments_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "attachment_id" */
   TransactionAttachmentsAttachmentIdKey = 'transaction_attachments_attachment_id_key',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "transaction_id", "attachment_id" */
   TransactionAttachmentsPkey = 'transaction_attachments_pkey',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "transaction_id" */
   TransactionAttachmentsTransactionIdKey = 'transaction_attachments_transaction_id_key',
 }
 
@@ -5367,7 +5402,7 @@ export type Transaction_Labels_Bool_Exp = {
 
 /** unique or primary key constraints on table "transaction_labels" */
 export enum Transaction_Labels_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "label_id", "transaction_id" */
   TransactionLabelsPkey = 'transaction_labels_pkey',
 }
 
@@ -5564,6 +5599,8 @@ export type Transactions = {
   created_at: Scalars['timestamptz'];
   description?: Maybe<Scalars['String']>;
   id: Scalars['bigint'];
+  /** An object relationship */
+  recurring?: Maybe<Recurring>;
   recurring_id?: Maybe<Scalars['bigint']>;
   /** An array relationship */
   transaction_accounts: Array<Transaction_Accounts>;
@@ -5694,6 +5731,7 @@ export type Transactions_Bool_Exp = {
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
+  recurring?: InputMaybe<Recurring_Bool_Exp>;
   recurring_id?: InputMaybe<Bigint_Comparison_Exp>;
   transaction_accounts?: InputMaybe<Transaction_Accounts_Bool_Exp>;
   transaction_attachment?: InputMaybe<Transaction_Attachments_Bool_Exp>;
@@ -5704,7 +5742,7 @@ export type Transactions_Bool_Exp = {
 
 /** unique or primary key constraints on table "transactions" */
 export enum Transactions_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   TransactionsPkey = 'transactions_pkey',
 }
 
@@ -5724,6 +5762,7 @@ export type Transactions_Insert_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['bigint']>;
+  recurring?: InputMaybe<Recurring_Obj_Rel_Insert_Input>;
   recurring_id?: InputMaybe<Scalars['bigint']>;
   transaction_accounts?: InputMaybe<Transaction_Accounts_Arr_Rel_Insert_Input>;
   transaction_attachment?: InputMaybe<Transaction_Attachments_Obj_Rel_Insert_Input>;
@@ -5813,6 +5852,7 @@ export type Transactions_Order_By = {
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  recurring?: InputMaybe<Recurring_Order_By>;
   recurring_id?: InputMaybe<Order_By>;
   transaction_accounts_aggregate?: InputMaybe<Transaction_Accounts_Aggregate_Order_By>;
   transaction_attachment?: InputMaybe<Transaction_Attachments_Order_By>;
@@ -6041,7 +6081,7 @@ export type User_Settings_Bool_Exp = {
 
 /** unique or primary key constraints on table "user_settings" */
 export enum User_Settings_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "user_id" */
   UserSettingsPkey = 'user_settings_pkey',
 }
 
@@ -6178,9 +6218,9 @@ export type Users_Bool_Exp = {
 
 /** unique or primary key constraints on table "users" */
 export enum Users_Constraint {
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "id" */
   PkA3ffb1c0c8416b9fc6f907b7433 = 'PK_a3ffb1c0c8416b9fc6f907b7433',
-  /** unique or primary key constraint */
+  /** unique or primary key constraint on columns "email" */
   Uq_97672ac88f789774dd47f7c8be3 = 'UQ_97672ac88f789774dd47f7c8be3',
 }
 
@@ -6289,8 +6329,13 @@ export enum Users_Update_Column {
   Name = 'name',
 }
 
+export type Uuid_Cast_Exp = {
+  String?: InputMaybe<String_Comparison_Exp>;
+};
+
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
 export type Uuid_Comparison_Exp = {
+  _cast?: InputMaybe<Uuid_Cast_Exp>;
   _eq?: InputMaybe<Scalars['uuid']>;
   _gt?: InputMaybe<Scalars['uuid']>;
   _gte?: InputMaybe<Scalars['uuid']>;
@@ -11899,9 +11944,11 @@ export type DirectiveResolverFn<
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  Boolean_cast_exp: Boolean_Cast_Exp;
   Boolean_comparison_exp: Boolean_Comparison_Exp;
   Float: ResolverTypeWrapper<Scalars['Float']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  Int_cast_exp: Int_Cast_Exp;
   Int_comparison_exp: Int_Comparison_Exp;
   String: ResolverTypeWrapper<Scalars['String']>;
   String_comparison_exp: String_Comparison_Exp;
@@ -11956,8 +12003,10 @@ export type ResolversTypes = {
   assets_var_samp_fields: ResolverTypeWrapper<Assets_Var_Samp_Fields>;
   assets_variance_fields: ResolverTypeWrapper<Assets_Variance_Fields>;
   bigint: ResolverTypeWrapper<Scalars['bigint']>;
+  bigint_cast_exp: Bigint_Cast_Exp;
   bigint_comparison_exp: Bigint_Comparison_Exp;
   bpchar: ResolverTypeWrapper<Scalars['bpchar']>;
+  bpchar_cast_exp: Bpchar_Cast_Exp;
   bpchar_comparison_exp: Bpchar_Comparison_Exp;
   categories: ResolverTypeWrapper<Categories>;
   categories_aggregate: ResolverTypeWrapper<Categories_Aggregate>;
@@ -11985,6 +12034,7 @@ export type ResolversTypes = {
   categories_var_samp_fields: ResolverTypeWrapper<Categories_Var_Samp_Fields>;
   categories_variance_fields: ResolverTypeWrapper<Categories_Variance_Fields>;
   date: ResolverTypeWrapper<Scalars['date']>;
+  date_cast_exp: Date_Cast_Exp;
   date_comparison_exp: Date_Comparison_Exp;
   expenses: ResolverTypeWrapper<Expenses>;
   expenses_aggregate: ResolverTypeWrapper<Expenses_Aggregate>;
@@ -12012,6 +12062,7 @@ export type ResolversTypes = {
   expenses_var_samp_fields: ResolverTypeWrapper<Expenses_Var_Samp_Fields>;
   expenses_variance_fields: ResolverTypeWrapper<Expenses_Variance_Fields>;
   float8: ResolverTypeWrapper<Scalars['float8']>;
+  float8_cast_exp: Float8_Cast_Exp;
   float8_comparison_exp: Float8_Comparison_Exp;
   labels: ResolverTypeWrapper<Labels>;
   labels_aggregate: ResolverTypeWrapper<Labels_Aggregate>;
@@ -12190,6 +12241,7 @@ export type ResolversTypes = {
   revenues_variance_fields: ResolverTypeWrapper<Revenues_Variance_Fields>;
   subscription_root: ResolverTypeWrapper<{}>;
   timestamptz: ResolverTypeWrapper<Scalars['timestamptz']>;
+  timestamptz_cast_exp: Timestamptz_Cast_Exp;
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
   transaction_accounts: ResolverTypeWrapper<Transaction_Accounts>;
   transaction_accounts_aggregate: ResolverTypeWrapper<Transaction_Accounts_Aggregate>;
@@ -12358,15 +12410,18 @@ export type ResolversTypes = {
   users_set_input: Users_Set_Input;
   users_update_column: Users_Update_Column;
   uuid: ResolverTypeWrapper<Scalars['uuid']>;
+  uuid_cast_exp: Uuid_Cast_Exp;
   uuid_comparison_exp: Uuid_Comparison_Exp;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
+  Boolean_cast_exp: Boolean_Cast_Exp;
   Boolean_comparison_exp: Boolean_Comparison_Exp;
   Float: Scalars['Float'];
   Int: Scalars['Int'];
+  Int_cast_exp: Int_Cast_Exp;
   Int_comparison_exp: Int_Comparison_Exp;
   String: Scalars['String'];
   String_comparison_exp: String_Comparison_Exp;
@@ -12415,8 +12470,10 @@ export type ResolversParentTypes = {
   assets_var_samp_fields: Assets_Var_Samp_Fields;
   assets_variance_fields: Assets_Variance_Fields;
   bigint: Scalars['bigint'];
+  bigint_cast_exp: Bigint_Cast_Exp;
   bigint_comparison_exp: Bigint_Comparison_Exp;
   bpchar: Scalars['bpchar'];
+  bpchar_cast_exp: Bpchar_Cast_Exp;
   bpchar_comparison_exp: Bpchar_Comparison_Exp;
   categories: Categories;
   categories_aggregate: Categories_Aggregate;
@@ -12441,6 +12498,7 @@ export type ResolversParentTypes = {
   categories_var_samp_fields: Categories_Var_Samp_Fields;
   categories_variance_fields: Categories_Variance_Fields;
   date: Scalars['date'];
+  date_cast_exp: Date_Cast_Exp;
   date_comparison_exp: Date_Comparison_Exp;
   expenses: Expenses;
   expenses_aggregate: Expenses_Aggregate;
@@ -12465,6 +12523,7 @@ export type ResolversParentTypes = {
   expenses_var_samp_fields: Expenses_Var_Samp_Fields;
   expenses_variance_fields: Expenses_Variance_Fields;
   float8: Scalars['float8'];
+  float8_cast_exp: Float8_Cast_Exp;
   float8_comparison_exp: Float8_Comparison_Exp;
   labels: Labels;
   labels_aggregate: Labels_Aggregate;
@@ -12624,6 +12683,7 @@ export type ResolversParentTypes = {
   revenues_variance_fields: Revenues_Variance_Fields;
   subscription_root: {};
   timestamptz: Scalars['timestamptz'];
+  timestamptz_cast_exp: Timestamptz_Cast_Exp;
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
   transaction_accounts: Transaction_Accounts;
   transaction_accounts_aggregate: Transaction_Accounts_Aggregate;
@@ -12774,6 +12834,7 @@ export type ResolversParentTypes = {
   users_pk_columns_input: Users_Pk_Columns_Input;
   users_set_input: Users_Set_Input;
   uuid: Scalars['uuid'];
+  uuid_cast_exp: Uuid_Cast_Exp;
   uuid_comparison_exp: Uuid_Comparison_Exp;
 };
 
@@ -17618,6 +17679,11 @@ export type TransactionsResolvers<
     ContextType
   >;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  recurring?: Resolver<
+    Maybe<ResolversTypes['recurring']>,
+    ParentType,
+    ContextType
+  >;
   recurring_id?: Resolver<
     Maybe<ResolversTypes['bigint']>,
     ParentType,

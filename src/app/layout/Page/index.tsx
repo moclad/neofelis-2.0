@@ -15,6 +15,7 @@ import {
   Skeleton,
   Stack
 } from '@chakra-ui/react';
+import useMeasure from 'react-use-measure';
 
 const PageContext = React.createContext(null);
 
@@ -49,35 +50,52 @@ export const PageTopBar = ({
   showBack = false,
   ...rest
 }: PageTopBarProps) => {
+  const { isFocusMode } = useLayoutContext();
+  const theme = useTheme();
+  const [ref, { height }] = useMeasure();
+
   const { rtlValue } = useRtl();
   const { colorModeValue } = useDarkMode();
   return (
-    <Flex
-      zIndex="2"
-      direction="column"
-      pt="4"
-      pb="4"
-      boxShadow="0 4px 20px rgba(0, 0, 0, 0.05)"
-      bg={colorModeValue('white', 'gray.900')}
-      {...rest}
-    >
-      <Box w="full" h="0" pb="safe-top" />
-      <PageContainer>
-        <HStack spacing="4">
-          {showBack && (
-            <Box ms={{ base: 0, lg: '-1.5rem' }}>
-              <IconButton
-                aria-label="Go Back"
-                icon={rtlValue(<FiArrowLeft />, <FiArrowRight />)}
-                variant="ghost"
-                onClick={() => onBack()}
-              />
-            </Box>
-          )}
-          <Box flex="1">{children}</Box>
-        </HStack>
-      </PageContainer>
-    </Flex>
+    <>
+      {isFixed && <Box h={`${height}px`} />}
+      <Flex
+        zIndex="2"
+        direction="column"
+        pt="4"
+        pb="4"
+        boxShadow="0 4px 20px rgba(0, 0, 0, 0.05)"
+        bg="white"
+        ref={ref}
+        _dark={{ bg: 'gray.900' }}
+        {...(isFixed
+          ? {
+              top: !isFocusMode ? theme.layout.topBar.height : '0',
+              position: 'fixed',
+              right: '0',
+              left: '0',
+            }
+          : {})}
+        {...rest}
+      >
+        <Box w="full" h="0" pb="safe-top" />
+        <PageContainer>
+          <HStack spacing="4">
+            {showBack && (
+              <Box ms={{ base: 0, lg: '-3.5rem' }}>
+                <IconButton
+                  aria-label="Go Back"
+                  icon={rtlValue(<FiArrowLeft />, <FiArrowRight />)}
+                  variant="ghost"
+                  onClick={() => onBack()}
+                />
+              </Box>
+            )}
+            <Box flex="1">{children}</Box>
+          </HStack>
+        </PageContainer>
+      </Flex>
+    </>
   );
 };
 
@@ -136,20 +154,14 @@ export const PageContent = ({
 };
 
 export const PageBottomBar = ({ children, ...rest }: FlexProps) => {
-  const { colorModeValue } = useDarkMode();
-  const bottomBarRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    setHeight(bottomBarRef.current?.offsetHeight || 0);
-  }, [setHeight]);
+  const [ref, { height }] = useMeasure();
 
   return (
     <>
       <Box h={`${height}px`} />
       <Flex
         zIndex="3"
-        ref={bottomBarRef}
+        ref={ref}
         direction="column"
         mt="auto"
         position="fixed"

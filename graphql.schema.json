@@ -22,10 +22,45 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "Boolean_cast_exp",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "String",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "Boolean_comparison_exp",
         "description": "Boolean expression to compare columns of type \"Boolean\". All fields are combined with logical 'AND'.",
         "fields": null,
         "inputFields": [
+          {
+            "name": "_cast",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "Boolean_cast_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "_eq",
             "description": null,
@@ -177,10 +212,45 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "Int_cast_exp",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "String",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "Int_comparison_exp",
         "description": "Boolean expression to compare columns of type \"Int\". All fields are combined with logical 'AND'.",
         "fields": null,
         "inputFields": [
+          {
+            "name": "_cast",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "Int_cast_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "_eq",
             "description": null,
@@ -2666,7 +2736,7 @@
         "enumValues": [
           {
             "name": "account_info_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -4256,7 +4326,7 @@
         "enumValues": [
           {
             "name": "assets_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -5436,10 +5506,45 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "bigint_cast_exp",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "String",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "bigint_comparison_exp",
         "description": "Boolean expression to compare columns of type \"bigint\". All fields are combined with logical 'AND'.",
         "fields": null,
         "inputFields": [
+          {
+            "name": "_cast",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "bigint_cast_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "_eq",
             "description": null,
@@ -5581,10 +5686,45 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "bpchar_cast_exp",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "String",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "bpchar_comparison_exp",
         "description": "Boolean expression to compare columns of type \"bpchar\". All fields are combined with logical 'AND'.",
         "fields": null,
         "inputFields": [
+          {
+            "name": "_cast",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "bpchar_cast_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "_eq",
             "description": null,
@@ -6720,7 +6860,7 @@
         "enumValues": [
           {
             "name": "categories_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -7564,10 +7704,45 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "date_cast_exp",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "String",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "date_comparison_exp",
         "description": "Boolean expression to compare columns of type \"date\". All fields are combined with logical 'AND'.",
         "fields": null,
         "inputFields": [
+          {
+            "name": "_cast",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "date_cast_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "_eq",
             "description": null,
@@ -8199,7 +8374,7 @@
         "enumValues": [
           {
             "name": "expenses_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -9019,10 +9194,45 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "float8_cast_exp",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "String",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "float8_comparison_exp",
         "description": "Boolean expression to compare columns of type \"float8\". All fields are combined with logical 'AND'.",
         "fields": null,
         "inputFields": [
+          {
+            "name": "_cast",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "float8_cast_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "_eq",
             "description": null,
@@ -10010,7 +10220,7 @@
         "enumValues": [
           {
             "name": "labels_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -11296,7 +11506,7 @@
         "enumValues": [
           {
             "name": "liabiulities_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -16705,7 +16915,7 @@
         "enumValues": [
           {
             "name": "notifications_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -22903,7 +23113,7 @@
         "enumValues": [
           {
             "name": "recurring_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -23963,7 +24173,7 @@
         "enumValues": [
           {
             "name": "recurring_labels_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"label_id\", \"recurring_id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -28775,7 +28985,7 @@
         "enumValues": [
           {
             "name": "revenues_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -33270,10 +33480,45 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "timestamptz_cast_exp",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "String",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "timestamptz_comparison_exp",
         "description": "Boolean expression to compare columns of type \"timestamptz\". All fields are combined with logical 'AND'.",
         "fields": null,
         "inputFields": [
+          {
+            "name": "_cast",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "timestamptz_cast_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "_eq",
             "description": null,
@@ -34246,7 +34491,7 @@
         "enumValues": [
           {
             "name": "transcation_account_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -36516,19 +36761,19 @@
         "enumValues": [
           {
             "name": "transaction_attachments_attachment_id_key",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"attachment_id\"",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "transaction_attachments_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"transaction_id\", \"attachment_id\"",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "transaction_attachments_transaction_id_key",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"transaction_id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -38155,7 +38400,7 @@
         "enumValues": [
           {
             "name": "transaction_labels_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"label_id\", \"transaction_id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -39268,6 +39513,18 @@
                 "name": "bigint",
                 "ofType": null
               }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "recurring",
+            "description": "An object relationship",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "recurring",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -40388,6 +40645,18 @@
             "deprecationReason": null
           },
           {
+            "name": "recurring",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "recurring_bool_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "recurring_id",
             "description": null,
             "type": {
@@ -40474,7 +40743,7 @@
         "enumValues": [
           {
             "name": "transactions_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -40612,6 +40881,18 @@
             "type": {
               "kind": "SCALAR",
               "name": "bigint",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "recurring",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "recurring_obj_rel_insert_input",
               "ofType": null
             },
             "defaultValue": null,
@@ -41348,6 +41629,18 @@
             "type": {
               "kind": "ENUM",
               "name": "order_by",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "recurring",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "recurring_order_by",
               "ofType": null
             },
             "defaultValue": null,
@@ -42836,7 +43129,7 @@
         "enumValues": [
           {
             "name": "user_settings_pkey",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"user_id\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -43679,13 +43972,13 @@
         "enumValues": [
           {
             "name": "PK_a3ffb1c0c8416b9fc6f907b7433",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"id\"",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
             "name": "UQ_97672ac88f789774dd47f7c8be3",
-            "description": "unique or primary key constraint",
+            "description": "unique or primary key constraint on columns \"email\"",
             "isDeprecated": false,
             "deprecationReason": null
           }
@@ -44345,10 +44638,45 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "uuid_cast_exp",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "String",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "uuid_comparison_exp",
         "description": "Boolean expression to compare columns of type \"uuid\". All fields are combined with logical 'AND'.",
         "fields": null,
         "inputFields": [
+          {
+            "name": "_cast",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "uuid_cast_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "_eq",
             "description": null,
