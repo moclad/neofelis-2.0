@@ -23,8 +23,6 @@
     "CODE": "---------------------------------UTILS-----------------------------",
     "pretty": "prettier -w .",
     "lint": "next lint",
-    "test": "jest --roots src --watch",
-    "test:ci": "jest --roots src",
     "type-check": "tsc",
     "RELEASE": "-----------------------------RELEASE---------------------------",
     "release": "release-it",

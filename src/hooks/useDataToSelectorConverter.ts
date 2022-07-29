@@ -40,7 +40,6 @@ export function useDataToSelectorConverter(
         data: item,
       };
       selectOptions.push(option);
-      return selectOptions;
     });
   }
 
