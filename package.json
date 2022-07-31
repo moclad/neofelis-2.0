@@ -22,6 +22,7 @@
     "theme:generate-icons": "svgr --config-file src/components/Icons/svgr.config.js src/components/Icons/svg-sources",
     "CODE": "---------------------------------UTILS-----------------------------",
     "pretty": "prettier -w .",
+    "lint": "next lint",
     "lint:staged": "tsc --noEmit && eslint --cache --fix",
     "type-check": "tsc",
     "RELEASE": "-----------------------------RELEASE---------------------------",
