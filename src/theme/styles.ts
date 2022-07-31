@@ -1,8 +1,8 @@
-import { mode } from '@chakra-ui/theme-tools';
+import { StyleFunctionProps, Styles, mode } from '@chakra-ui/theme-tools';
 
 import * as externals from './externals';
 
-const externalsStyles = (props) =>
+const externalsStyles = (props: StyleFunctionProps) =>
   Object.values(externals).reduce(
     (acc, cur) => ({
       ...acc,
@@ -11,7 +11,7 @@ const externalsStyles = (props) =>
     {}
   );
 
-export const styles = {
+export const styles: Styles = {
   global: (props) => ({
     html: {
       bg: 'gray.800',
@@ -25,18 +25,6 @@ export const styles = {
       pl: 'safe-left',
       pr: 'safe-right',
       pb: 'safe-bottom',
-    },
-    '#nprogress': {
-      pointerEvents: 'none',
-    },
-    '#nprogress .bar': {
-      background: 'green.200',
-      position: 'fixed',
-      zIndex: '1031',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '2px',
     },
     ...externalsStyles(props),
   }),

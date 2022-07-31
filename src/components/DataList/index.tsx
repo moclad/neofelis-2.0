@@ -117,7 +117,7 @@ export const DataListAccordionButton = ({ ...rest }) => {
       role="group"
       p="0"
       textAlign="left"
-      _focus={{ outline: 'none' }}
+      _focusVisible={{ outline: 'none' }}
       _hover={{}}
       {...rest}
     />
@@ -128,7 +128,7 @@ export const DataListAccordionIcon = ({ ...rest }) => {
   return (
     <AccordionIcon
       borderRadius="full"
-      _groupFocus={{ boxShadow: 'outline' }}
+      _groupFocusVisible={{ boxShadow: 'outline' }}
       {...rest}
     />
   );
@@ -167,7 +167,7 @@ export const DataListRow: FC<React.PropsWithChildren<DataListRowProps>> = ({
         bg: colorModeValue('gray.50', 'whiteAlpha.50'),
         pointerEvents: 'none',
         _hover: {},
-        _focus: {},
+        _focusVisible: {},
         'aria-disabled': true,
         opacity: '1 !important',
         css: {

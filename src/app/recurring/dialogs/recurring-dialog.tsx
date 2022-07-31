@@ -61,7 +61,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
     query: ActiveCategoriesDocument,
   });
 
-  const { selectOptions: labels } = useDataToSelectorConverter({
+  const { selectOptions: allLabels } = useDataToSelectorConverter({
     entity: 'labels',
     query: AllLabelsDocument,
   });
@@ -167,7 +167,21 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       await updateRecurring({
         variables: {
           id: id,
-          changes: submitData,
+          changes: (({
+            title,
+            amount,
+            description,
+            account_from,
+            account_to,
+            category_id,
+          }) => ({
+            title,
+            amount,
+            description,
+            account_from,
+            account_to,
+            category_id,
+          }))(submitData),
           labels: recurring_labels,
         },
       });
@@ -497,7 +511,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
         <FieldSelect
           name="labels"
           label={t('recurring:recurring.fields.data.labels')}
-          options={labels}
+          options={allLabels}
           size="sm"
           isCreatable={true}
           onCreateOption={onCreateLabel}

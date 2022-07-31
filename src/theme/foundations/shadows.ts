@@ -3,7 +3,7 @@ import { transparentize } from '@chakra-ui/theme-tools';
 import { colors } from './colors';
 
 const createOutline = (colorScheme = 'gray') =>
-  `0 0 0 3px ${transparentize(`${colorScheme}.500`, 0.6)({ colors })}`;
+  `0 0 0 3px ${transparentize(`${colorScheme}.500`, 0.3)({ colors })}`;
 
 export const shadows = {
   outline: createOutline('brand'),

@@ -32,7 +32,7 @@ const MainMenuItem = ({ to, ...rest }: any) => {
           w: '2rem',
         },
       }}
-      _focus={{
+      _focusVisible={{
         outline: 'none',
         bg: 'gray.900',
         _after: {

@@ -2,9 +2,18 @@ import tailwindColors from './tailwindColors';
 
 export const colors = {
   // Update me with other Tailwind colors or with https://smart-swatch.netlify.app/
-  brand: tailwindColors.amber,
+  brand: tailwindColors.blue,
   gray: tailwindColors.blueGray,
-  success: tailwindColors.green,
-  error: tailwindColors.red,
-  warning: tailwindColors.orange,
+
+  success: tailwindColors.lime,
+  green: tailwindColors.lime,
+
+  error: tailwindColors.rose,
+  red: tailwindColors.rose,
+
+  warning: tailwindColors.amber,
+  orange: tailwindColors.amber,
+
+  info: tailwindColors.sky,
+  blue: tailwindColors.sky,
 };

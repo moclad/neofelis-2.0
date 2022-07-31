@@ -1,8 +1,6 @@
-import 'react-day-picker/lib/style.css';
+import { Styles, mode } from '@chakra-ui/theme-tools';
 
-import { mode } from '@chakra-ui/theme-tools';
-
-export const reactDayPicker = (props) => ({
+export const reactDayPicker: Styles['global'] = (props) => ({
   '.DayPicker *': {
     outline: 'none',
   },
@@ -19,16 +17,15 @@ export const reactDayPicker = (props) => ({
     right: { base: 0, sm: 'auto' },
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '5px',
+    top: '3em',
     width: '100%',
     maxWidth: '90vw',
   },
 
   '.DayPickerInput-Overlay': {
-    marginTop: '5px',
     position: 'absolute',
     left: '0',
-    top: '-1em',
+    zIndex: 2,
     borderRadius: 'md',
     boxShadow: 'lg',
     bg: mode('white', 'gray.700')(props),

@@ -156,8 +156,11 @@ export const ConfirmMenuItem = forwardRef<ConfirmMenuItemProps, 'button'>(
           _hover: {
             bg: `${confirmColorScheme}.${colorModeValue('50', '900')}`,
           },
-          _focus: {
-            bg: `${confirmColorScheme}.${colorModeValue('50', '900')}`,
+          _focusVisible: {
+            bg: `${confirmColorScheme}.50`,
+            _dark: {
+              bg: `${confirmColorScheme}.900`,
+            },
           },
           icon: icon
             ? React.cloneElement(icon, { color: 'transparent' })

@@ -46,10 +46,15 @@ const AppVersion = ({ ...rest }) => {
         my="-2"
         fontSize="0.7rem"
         fontWeight="medium"
-        color={colorModeValue('gray.500', 'gray.200')}
         outline="none"
-        _hover={{ bg: colorModeValue('gray.50', 'gray.800') }}
-        _focus={{ bg: colorModeValue('gray.50', 'gray.800') }}
+        color="gray.500"
+        _hover={{ bg: 'gray.50' }}
+        _focusVisible={{ bg: 'gray.50' }}
+        _dark={{
+          color: 'gray.200',
+          _focusVisible: { bg: 'gray.800' },
+          _hover: { bg: 'gray.600' },
+        }}
         onClick={onCopy}
         {...rest}
       >
@@ -99,7 +104,7 @@ export const AccountMenu = ({ ...rest }) => {
 
   return (
     <Menu placement="bottom-end" {...rest}>
-      <MenuButton borderRadius="full" _focus={{ shadow: 'outline' }}>
+      <MenuButton borderRadius="full" _focusVisible={{ shadow: 'outline' }}>
         <Avvvatars
           value={
             !loading && `${data?.users_by_pk?.name ?? data?.users_by_pk?.email}`
