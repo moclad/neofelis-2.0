@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 import { useLayoutContext } from '@/app/layout';
-import { useAccount } from '@/app/profile/profile.service';
 import { useRtl } from '@/hooks/useRtl';
 import { Box, Stack } from '@chakra-ui/react';
 

@@ -6,17 +6,7 @@ import { useLogin, useProvidersList } from '@/app/auth/auth.service';
 import { Loader } from '@/app/layout';
 import { FieldInput } from '@/components/FieldInput';
 import { useToastError } from '@/components/Toast';
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  HStack,
-  Stack,
-  StackDivider,
-  Text,
-  VStack
-} from '@chakra-ui/react';
+import { Box, Button, Divider, HStack, Stack, StackDivider, Text, VStack } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 import { isEmail } from '@formiz/validations';
 
@@ -58,7 +48,7 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
   const form = useForm({ subscribe: 'form' });
   const toastError = useToastError();
 
-  const { mutate: login, isLoading } = useLogin({
+  const { mutate: isLoading } = useLogin({
     onSuccess,
     onError: (error: any) => {
       toastError({

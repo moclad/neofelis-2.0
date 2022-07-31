@@ -1,5 +1,6 @@
-import React, { useContext, useLayoutEffect, useRef, useState } from 'react';
+import React, { useContext } from 'react';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import useMeasure from 'react-use-measure';
 
 import { useFocusMode } from '@/app/layout';
 import { ContainerSizes } from '@/constants/container-sizes';
@@ -15,7 +16,6 @@ import {
   Skeleton,
   Stack
 } from '@chakra-ui/react';
-import useMeasure from 'react-use-measure';
 
 const PageContext = React.createContext(null);
 

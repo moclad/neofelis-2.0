@@ -19,18 +19,24 @@
     "static:serve": "pnpm run static:build && pnpmx run servor out app.html 5000",
     "docs:build": "swagger-cli bundle src/mocks/openapi/openapi.yaml -t json --outfile public/open-api.json",
     "theme:generate-typing": "chakra-cli tokens ./src/theme/theme.ts",
-    "theme:generate-icons": "svgr src/components/Icons/svg-sources",
+    "theme:generate-icons": "svgr --config-file src/components/Icons/svgr.config.js src/components/Icons/svg-sources",
     "CODE": "---------------------------------UTILS-----------------------------",
     "pretty": "prettier -w .",
-    "lint": "next lint",
+    "lint:staged": "tsc --noEmit && eslint --cache --fix",
     "type-check": "tsc",
     "RELEASE": "-----------------------------RELEASE---------------------------",
     "release": "release-it",
     "prebuild": "node prebuild.js"
   },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json}": "prettier --write",
+    "*.{ts,tsx,js,jsx}": "yarn lint:staged",
+    "src/mocks/**/*.{yaml,yml}": "yarn docs:build"
+  },
   "dependencies": {
     "@apollo/client": "3.6.9",
     "@chakra-ui/icons": "^2.0.4",
+    "@chakra-ui/anatomy": "^2.0.1",
     "@chakra-ui/media-query": "^3.2.0",
     "@chakra-ui/react": "^2.2.4",
     "@chakra-ui/system": "^2.2.2",

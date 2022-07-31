@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiUser } from 'react-icons/fi';
 import { RiArchiveDrawerLine, RiPantoneLine, RiPriceTag3Line } from 'react-icons/ri';
 import { Link, useLocation } from 'react-router-dom';
 

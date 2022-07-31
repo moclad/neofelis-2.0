@@ -45,15 +45,13 @@ export const PageRecurring = () => {
   const { colorModeValue } = useDarkMode();
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<
+  const { dataContext, isEditing, onEdit, onFinish } = useEditMode<
     number,
     Recurring
   >();
   const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
-
-  const { mutationOptions } = useMutationOptions();
 
   const { loading, data, refetch } = useAllRecurringQuery({
     variables: {

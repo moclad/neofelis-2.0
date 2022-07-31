@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link as RouterLink, Navigate, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 import { LoginForm } from '@/app/auth/LoginForm';
 import { useRedirectFromUrl } from '@/app/router';
