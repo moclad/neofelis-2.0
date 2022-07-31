@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { FiAlertCircle } from 'react-icons/fi';
 
 import { Icon } from '@/components/Icons';
-import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   chakra,
+  createStylesContext,
   Flex,
   forwardRef,
   HTMLChakraProps,
@@ -14,14 +14,18 @@ import {
   MenuItemProps,
   Text,
   useMenuItem,
-  useMenuState
+  useMenuState,
+  useMultiStyleConfig
 } from '@chakra-ui/react';
 
-export interface StyledMenuItemProps extends HTMLChakraProps<'button'> {}
+export type StyledMenuItemProps = HTMLChakraProps<'button'>;
+
+const [StylesProvider, useStyles] = createStylesContext('Menu');
 
 const StyledMenuItem = forwardRef<StyledMenuItemProps, 'button'>(
   (props, ref) => {
     const { type, ...rest } = props;
+    const styles = useStyles();
 
     /**
      * Given another component, use its type if present
@@ -30,7 +34,7 @@ const StyledMenuItem = forwardRef<StyledMenuItemProps, 'button'>(
      */
     const btnType = rest.as ? type ?? undefined : 'button';
 
-    const buttonStyles: any = {
+    const buttonStyles = {
       textDecoration: 'none',
       color: 'inherit',
       userSelect: 'none',
@@ -40,6 +44,7 @@ const StyledMenuItem = forwardRef<StyledMenuItemProps, 'button'>(
       textAlign: 'left',
       flex: '0 0 auto',
       outline: 0,
+      ...styles.item,
     };
 
     return (
@@ -58,6 +63,8 @@ export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
     ...rest
   } = props;
 
+  const styles = useMultiStyleConfig('Menu', props);
+
   const menuItemProps = useMenuItem(rest, ref) as MenuItemProps;
 
   const shouldWrap = icon || command;
@@ -71,32 +78,34 @@ export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
   );
 
   return (
-    <StyledMenuItem
-      {...menuItemProps}
-      onClick={(e) => {
-        rest?.onClick?.(e);
-      }}
-    >
-      {icon && (
-        <MenuIcon fontSize="0.8em" marginEnd={iconSpacing}>
-          {icon}
-        </MenuIcon>
-      )}
-      {_children}
-      {command && (
-        <MenuCommand marginStart={commandSpacing}>{command}</MenuCommand>
-      )}
-    </StyledMenuItem>
+    <StylesProvider value={styles}>
+      <StyledMenuItem
+        {...menuItemProps}
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+          rest?.onClick?.(e);
+        }}
+      >
+        {icon && (
+          <MenuIcon fontSize="0.8em" marginEnd={iconSpacing}>
+            {icon}
+          </MenuIcon>
+        )}
+        {_children}
+        {command && (
+          <MenuCommand marginStart={commandSpacing}>{command}</MenuCommand>
+        )}
+      </StyledMenuItem>
+    </StylesProvider>
   );
 });
 
-interface ConfirmMenuItemProps extends MenuItemProps {
+type ConfirmMenuItemProps = MenuItemProps & {
   confirmDelay?: number;
   confirmColorScheme?: string;
   confirmContent?: React.ReactNode;
   confirmText?: React.ReactNode;
   confirmIcon?: React.FC<React.PropsWithChildren<unknown>>;
-}
+};
 
 export const ConfirmMenuItem = forwardRef<ConfirmMenuItemProps, 'button'>(
   (
@@ -114,7 +123,7 @@ export const ConfirmMenuItem = forwardRef<ConfirmMenuItemProps, 'button'>(
     ref
   ) => {
     const { t } = useTranslation();
-    const { colorModeValue } = useDarkMode();
+
     const [isConfirmActive, setIsConfirmActive] = useState(false);
     const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -144,17 +153,23 @@ export const ConfirmMenuItem = forwardRef<ConfirmMenuItemProps, 'button'>(
       }
 
       return () => {
-        clearTimeout(timeoutRef.current);
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
       };
     }, [isConfirmActive, confirmDelay]);
 
     const confirmActiveProps = isConfirmActive
       ? {
-          bg: `${confirmColorScheme}.${colorModeValue('100', '800')}`,
+          bg: `${confirmColorScheme}.100`,
           color: 'transparent',
           transition: '0.2s',
+          _dark: {
+            bg: `${confirmColorScheme}.800`,
+          },
           _hover: {
-            bg: `${confirmColorScheme}.${colorModeValue('50', '900')}`,
+            bg: `${confirmColorScheme}.50`,
+            _dark: {
+              bg: `${confirmColorScheme}.900`,
+            },
           },
           _focusVisible: {
             bg: `${confirmColorScheme}.50`,
@@ -194,16 +209,17 @@ export const ConfirmMenuItem = forwardRef<ConfirmMenuItemProps, 'button'>(
             bottom={0}
             px={3}
             as="span"
-            color={colorModeValue(`${confirmColorScheme}.500`, 'white')}
             fontSize="sm"
             alignItems="center"
+            color={`${confirmColorScheme}.500`}
+            _dark={{ color: 'white' }}
           >
             {confirmContent ? (
               confirmContent
             ) : (
               <>
                 <Icon icon={confirmIcon} me={1} />{' '}
-                <Text noOfLines={0} as="span">
+                <Text noOfLines={1} as="span">
                   {confirmText ?? t('components:confirmMenuItem.confirmText')}
                 </Text>
               </>
