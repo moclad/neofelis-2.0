@@ -20,6 +20,8 @@
 # misc
 .DS_Store
 *.pem
+/.vscode/*
+!/.vscode/extensions.json
 .idea/
 .eslintcache
 .db
@@ -27,6 +29,8 @@ tsconfig.tsbuildinfo
 
 # debug
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # local env files
 .env
@@ -38,6 +42,8 @@ npm-debug.log*
 # vercel
 .vercel
 
+# cypress
+/cypress/videos
 
-
-.dccache
+# Build info
+.build-info.json

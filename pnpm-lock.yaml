@@ -14,6 +14,7 @@ specifiers:
   '@chakra-ui/icons': ^2.0.4
   '@chakra-ui/media-query': ^3.2.0
   '@chakra-ui/react': ^2.2.4
+  '@chakra-ui/styled-system': ^2.2.3
   '@chakra-ui/system': ^2.2.2
   '@chakra-ui/theme-tools': ^2.0.5
   '@emotion/core': ^11.0.0
@@ -152,6 +153,7 @@ dependencies:
   '@chakra-ui/icons': 2.0.4_yvhl5ql2jypczm6naccxme2hbi
   '@chakra-ui/media-query': 3.2.0_yvhl5ql2jypczm6naccxme2hbi
   '@chakra-ui/react': 2.2.4_tij2njokttso6734ktuzwjh5a4
+  '@chakra-ui/styled-system': 2.2.3
   '@chakra-ui/system': 2.2.2_fdnqutfacy7v3gmlcm66flps3q
   '@chakra-ui/theme-tools': 2.0.5_@chakra-ui+system@2.2.2
   '@emotion/core': 11.0.0

@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { IconSortAsc, IconSortDesc } from '@/components/Icons';
-import { useDarkMode } from '@/hooks/useDarkMode';
 import {
+  Box,
   Button,
   ButtonProps,
   Menu,
@@ -16,10 +16,10 @@ import {
   Text
 } from '@chakra-ui/react';
 
-interface OptionProps {
+type OptionProps = {
   value: string;
   label: string;
-}
+};
 
 export type SortValue = {
   by: string;
@@ -31,8 +31,8 @@ type CustomProps = {
   size?: 'xs' | 'sm' | 'md';
   options?: Array<OptionProps>;
   onChange?(sort: SortValue): void;
-  ascIcon?: FC<React.PropsWithChildren<unknown>>;
-  descIcon?: FC<React.PropsWithChildren<unknown>>;
+  ascIcon?: ReactNode;
+  descIcon?: ReactNode;
 };
 
 type SortProps = Overwrite<ButtonProps, CustomProps>;
@@ -42,16 +42,13 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
   size = 'xs',
   options = [],
   onChange = () => undefined,
-  ascIcon: AscIcon = IconSortAsc,
-  descIcon: DescIcon = IconSortDesc,
+  ascIcon = <IconSortAsc />,
+  descIcon = <IconSortDesc />,
   ...rest
 }) => {
   const { t } = useTranslation();
-  const { colorMode } = useDarkMode();
 
   const { by, order } = sort;
-
-  const Icon = order === 'asc' ? AscIcon : DescIcon;
 
   const handleByChange = (value: SortValue['by']) => {
     onChange({ ...sort, by: value });
@@ -65,18 +62,29 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
     <Menu closeOnSelect={false} size={size}>
       <MenuButton
         as={Button}
-        d="inline-block"
+        display="inline-block"
         variant="link"
         size={size}
         overflow="hidden"
         textAlign="left"
         p="1"
-        color={colorMode === 'light' ? 'gray.600' : 'gray.100'}
-        sx={{ '> span': { d: 'flex', maxW: 'full' } }}
+        color="gray.600"
+        _dark={{
+          color: 'gray.100',
+        }}
+        sx={{ '> span': { display: 'flex', maxW: 'full' } }}
         {...rest}
       >
-        <Icon mr="0.5" />
-        <Text as="span" fontSize={size} noOfLines={1}>
+        <Box as="span" mr="0.5">
+          {order === 'asc' ? ascIcon : descIcon}
+        </Box>
+        <Text
+          as="span"
+          display="block"
+          sx={{ '&': { display: 'block !important' } }} // Fix: text-ellipsis issue
+          fontSize={size}
+          noOfLines={1}
+        >
           {options.find((option) => option?.value === by)?.label}
         </Text>
       </MenuButton>
@@ -85,9 +93,10 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
           <MenuOptionGroup
             title={t('components:sort.sortBy')}
             type="radio"
-            color={colorMode === 'light' ? 'gray.500' : 'gray.50'}
             fontWeight="medium"
             fontSize="xs"
+            color="gray.500"
+            _dark={{ color: 'gray.50' }}
             value={by}
             onChange={
               (value: string | string[]) => handleByChange(value as string) // type === radio, so value always be string
@@ -97,8 +106,9 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
               <MenuItemOption
                 key={option?.value}
                 value={option?.value}
-                color={colorMode === 'light' ? 'gray.600' : 'gray.100'}
                 fontSize="sm"
+                color="gray.600"
+                _dark={{ color: 'gray.100' }}
               >
                 {option?.label}
               </MenuItemOption>
@@ -109,9 +119,10 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
             value={order}
             title={t('components:sort.order')}
             type="radio"
-            color={colorMode === 'light' ? 'gray.500' : 'gray.50'}
             fontWeight="medium"
             fontSize="xs"
+            color="gray.500"
+            _dark={{ color: 'gray.50' }}
             onChange={
               (value: string | string[]) =>
                 handleOrderChange(value as SortValue['order']) // type === radio, so value always be "asc" or "desc"
@@ -119,15 +130,17 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
           >
             <MenuItemOption
               value="asc"
-              color={colorMode === 'light' ? 'gray.600' : 'gray.100'}
               fontSize="sm"
+              color="gray.600"
+              _dark={{ color: 'gray.100' }}
             >
               {t('components:sort.sortAscending')}
             </MenuItemOption>
             <MenuItemOption
               value="desc"
-              color={colorMode === 'light' ? 'gray.600' : 'gray.100'}
               fontSize="sm"
+              color="gray.600"
+              _dark={{ color: 'gray.100' }}
             >
               {t('components:sort.sortDescending')}
             </MenuItemOption>

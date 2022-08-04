@@ -14,18 +14,17 @@ build:
   script:
     - echo "Installing dependencies"
     - yarn install
-    - echo "Building application version"
-    - sed -i "s/__DEVELOPMENT__/$CI_PIPELINE_ID ($(date +"%Y-%m-%d"))/g" app-build.json
-    - sed -i "s/__VERSION__/PIPELINE $CI_PIPELINE_ID - JOB $CI_JOB_ID/g" app-build.json
-    - sed -i "s/__COMMIT__/$CI_COMMIT_SHORT_SHA/g" app-build.json
-    - sed -i "s/__DATE__/$(date +"%Y-%m-%d %T")/g" app-build.json
     - echo "Building application"
     - yarn build
 
 test:
+  # cypress images may not be up to date.
+  # refer to: https://hub.docker.com/r/cypress/base/tags
+  image: cypress/base:16
   stage: test
   script:
     - yarn install
+    - yarn cypress install
     - echo "Checking format code eslint"
     - yarn eslint .
     - echo "Checking types"

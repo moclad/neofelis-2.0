@@ -5,8 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { FiCheck, FiCopy, FiLogOut, FiMoon, FiSun, FiUser } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 
-import appBuild from '@/../app-build.json';
+import buildInfo from '@/.build-info.json';
 import { Icon } from '@/components/Icons';
+import { useFetchUserQuery } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Flex,
@@ -21,14 +22,14 @@ import {
   useColorMode
 } from '@chakra-ui/react';
 
-import { useFetchUserQuery } from '../../../generated/graphql';
-
 const AppVersion = ({ ...rest }) => {
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
-  const { hasCopied, onCopy } = useClipboard(JSON.stringify(appBuild, null, 2));
+  const { hasCopied, onCopy } = useClipboard(
+    JSON.stringify(buildInfo, null, 2)
+  );
 
-  if (!appBuild?.version) {
+  if (!buildInfo?.version) {
     return null;
   }
 
