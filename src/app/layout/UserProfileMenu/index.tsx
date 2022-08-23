@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { FiCheck, FiCopy, FiLogOut, FiMoon, FiSun, FiUser } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 
-import buildInfo from '@/.build-info.json';
+import buildInfo from '@/../.build-info.json';
 import { Icon } from '@/components/Icons';
 import { useFetchUserQuery } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
@@ -83,7 +83,7 @@ const AppVersion = ({ ...rest }) => {
         </Flex>
         <Text as="span" noOfLines={2}>
           {t('layout:accountMenu.version.label')}{' '}
-          <strong>{appBuild?.display ?? appBuild?.version}</strong>
+          <strong>{buildInfo?.display ?? buildInfo?.version}</strong>
         </Text>
       </Flex>
     </>

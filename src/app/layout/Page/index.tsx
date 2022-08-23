@@ -4,7 +4,17 @@ import useMeasure from 'react-use-measure';
 
 import { useFocusMode, useLayoutContext } from '@/app/layout';
 import { useRtl } from '@/hooks/useRtl';
-import { Box, Flex, FlexProps, HStack, IconButton, Stack, useTheme } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  FlexProps,
+  Heading,
+  HStack,
+  IconButton,
+  Skeleton,
+  Stack,
+  useTheme
+} from '@chakra-ui/react';
 
 type PageContextValue = {
   nav: React.ReactNode;
@@ -107,27 +117,50 @@ export const PageTopBar = ({
 type PageContentProps = FlexProps & {
   onBack?(): void;
   showBack?: boolean;
+  loading?: boolean;
+  title?: string;
+  actions?: React.ReactNode[];
 };
 
-export const PageContent = ({ children, ...rest }: PageContentProps) => {
+export const PageContent = ({
+  children,
+  loading,
+  title = null,
+  actions = null,
+  ...rest
+}: PageContentProps) => {
   const { nav } = useContext(PageContext);
   return (
     <Flex zIndex="1" direction="column" flex="1" py="4" {...rest}>
       <PageContainer>
-        <Stack
-          direction={{ base: 'column', lg: 'row' }}
-          spacing={{ base: '4', lg: '8' }}
-          flex="1"
-        >
-          {nav && (
-            <Flex direction="column" minW="0" w={{ base: 'full', lg: '12rem' }}>
-              {nav}
+        <Skeleton h="100%" isLoaded={!loading}>
+          <Stack
+            direction={{ base: 'column', lg: 'row' }}
+            spacing={{ base: '4', lg: '8' }}
+            flex="1"
+          >
+            {nav && (
+              <Flex
+                direction="column"
+                minW="0"
+                w={{ base: 'full', lg: '12rem' }}
+              >
+                {nav}
+              </Flex>
+            )}
+            <Flex direction="column" flex="1" minW="0">
+              <HStack mb="4">
+                {title && (
+                  <Box flex="1">
+                    <Heading size="md">{title}</Heading>
+                  </Box>
+                )}
+                {actions}
+              </HStack>
+              {children}
             </Flex>
-          )}
-          <Flex direction="column" flex="1" minW="0">
-            {children}
-          </Flex>
-        </Stack>
+          </Stack>
+        </Skeleton>
       </PageContainer>
       <Box w="full" h="0" pb="safe-bottom" />
     </Flex>
@@ -171,8 +204,8 @@ type PageProps = FlexProps & {
 
 export const Page = ({
   isFocusMode = false,
-  hideContainer = false,
-  containerSize = 'md',
+  hideContainer,
+  containerSize = 'xl',
   nav = null,
   ...rest
 }: PageProps) => {
