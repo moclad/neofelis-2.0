@@ -9,9 +9,9 @@ const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY || 'secret');
 
 export default NextAuth({
   pages: {
-    signIn: '/app/login',
-    verifyRequest: '/app/verify-request',
-    error: '/app/error',
+    signIn: '/neofelis/login',
+    verifyRequest: '/neofelis/verify-request',
+    error: '/neofelis/error',
   },
   providers: [
     EmailProvider({

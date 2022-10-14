@@ -19,12 +19,11 @@ import {
   useInsertRevenueAccMutation,
   useInsertTransactionMutation
 } from '@/generated/graphql';
+import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
+import { useMutationOptions } from '@/hooks/useMutationOptions';
 import { ITransactionAccount, ITransactionInput, TransactionType } from '@/types/types';
 import { Stack } from '@chakra-ui/react';
 import { useForm } from '@formiz/core';
-
-import { useDataToSelectorConverter } from '../../../hooks/useDataToSelectorConverter';
-import { useMutationOptions } from '../../../hooks/useMutationOptions';
 
 export interface TransactionDialogProps {
   isOpen: boolean;

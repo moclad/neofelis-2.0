@@ -10,6 +10,12 @@ mutation deleteRecurring($id: bigint!) {
   }
 }
 
+mutation inactivateRecurring($id: bigint!) {
+  update_recurring_by_pk(pk_columns: { id: $id }, _set: { active: false }) {
+    id
+  }
+}
+
 mutation updateRecurring(
   $id: bigint!
   $changes: recurring_set_input

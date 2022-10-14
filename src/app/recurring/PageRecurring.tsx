@@ -1,7 +1,8 @@
 import Avvvatars from 'avvvatars-react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiEdit, FiPlus, FiTrash2 } from 'react-icons/fi';
+import { FiEdit, FiEye, FiPlus, FiTrash2, FiXCircle } from 'react-icons/fi';
+import { Link, RouteMatch, useNavigate } from 'react-router-dom';
 
 import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
@@ -17,10 +18,15 @@ import {
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { TextCurrency } from '@/components/TextCurrency';
 import { useToastSuccess } from '@/components/Toast';
-import { Recurring, useAllRecurringQuery, useDeleteRecurringMutation } from '@/generated/graphql';
+import {
+  Recurring,
+  useDeleteRecurringMutation,
+  useInactivateRecurringMutation,
+  useRecurringAggregateSubscription,
+  useRecurringSubscription
+} from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
-import { useMutationOptions } from '@/hooks/useMutationOptions';
 import {
   Badge,
   HStack,
@@ -53,22 +59,38 @@ export const PageRecurring = () => {
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
-  const { loading, data, refetch } = useAllRecurringQuery({
+  const { loading, data } = useRecurringSubscription({
     variables: {
       offset: (page - 1) * pageSize,
       limit: pageSize,
     },
   });
 
+  const { data: aggregateData } = useRecurringAggregateSubscription();
+
   const [deleteRecurring, { loading: deleteFetching }] =
     useDeleteRecurringMutation();
+
+  const [inactivateRecurring, { loading: inactivateFetching }] =
+    useInactivateRecurringMutation();
+
+  const onDeactivate = async (id: number) => {
+    inactivateRecurring({
+      variables: {
+        id,
+      },
+    }).then(() => {
+      toastSuccess({
+        title: t('common:feedbacks.inactivate.title'),
+      });
+    });
+  };
 
   const onDelete = async (id: number) => {
     deleteRecurring({
       variables: {
         id,
       },
-      refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
         title: t('common:feedbacks.deletedSuccess.title'),
@@ -78,14 +100,13 @@ export const PageRecurring = () => {
 
   const onCloseDialog = () => {
     onClose();
-    refetch();
   };
 
   return (
     <>
       <Page nav={<RecurringNav />}>
         <PageContent
-          loading={loading || deleteFetching}
+          loading={loading || deleteFetching || inactivateFetching}
           title={t('recurring:recurring.title')}
           actions={[
             <ResponsiveIconButton
@@ -115,6 +136,9 @@ export const PageRecurring = () => {
               >
                 {t('recurring:recurring.table.header.cycle')}
               </DataListCell>
+              <DataListCell colName="status">
+                {t('recurring:recurring.table.header.status')}
+              </DataListCell>
               <DataListCell colName="amount">
                 {t('recurring:recurring.table.header.amount')}
               </DataListCell>
@@ -128,12 +152,16 @@ export const PageRecurring = () => {
               />
             </DataListHeader>
             {data &&
-              data.recurring.map((item, index) => (
-                <DataListRow as={LinkBox} key={index}>
+              data.recurring.map((item) => (
+                <DataListRow
+                  as={LinkBox}
+                  key={item.id}
+                  isDisabled={!item.active}
+                >
                   <DataListCell colName="title" colWidth={1.5}>
                     <HStack maxW="100%">
                       <Avvvatars value={item.title} />
-                      <Text noOfLines={0} maxW="full" fontWeight="bold">
+                      <Text noOfLines={0} maxW="full">
                         <LinkOverlay href="#">{item.title}</LinkOverlay>
                       </Text>
                     </HStack>
@@ -180,7 +208,16 @@ export const PageRecurring = () => {
                       </WrapItem>
                     </Wrap>
                   </DataListCell>
-
+                  <DataListCell colName="status">
+                    <Badge
+                      size="sm"
+                      colorScheme={item.active ? 'success' : 'gray'}
+                    >
+                      {item.active
+                        ? t('recurring:recurring.status.active')
+                        : t('recurring:recurring.status.inactive')}
+                    </Badge>
+                  </DataListCell>
                   <DataListCell colName="amount">
                     <TextCurrency
                       value={item.amount}
@@ -191,7 +228,8 @@ export const PageRecurring = () => {
                   <DataListCell colName="total">
                     <TextCurrency
                       value={
-                        item.transactions_aggregate.aggregate?.sum?.amount ?? 0
+                        item?.transactions_aggregate?.aggregate?.sum?.amount ??
+                        0
                       }
                       locale="de"
                       currency="EUR"
@@ -208,8 +246,25 @@ export const PageRecurring = () => {
                           >
                             {t('common:actions.edit')}
                           </MenuItem>
+                          <MenuItem
+                            as={Link}
+                            to={`/recurring//transactions/${item.id}`}
+                            icon={<FiEye />}
+                          >
+                            {t('common:actions.view')}
+                          </MenuItem>
+                          <ConfirmMenuItem
+                            icon={<FiXCircle />}
+                            onClick={() => onDeactivate(item.id)}
+                          >
+                            {t('common:actions.deactivate')}
+                          </ConfirmMenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
+                            isDisabled={
+                              item?.transactions_aggregate?.aggregate?.sum
+                                ?.amount > 0
+                            }
                             icon={<FiTrash2 />}
                             onClick={() => {
                               onDelete(item.id);
@@ -228,7 +283,7 @@ export const PageRecurring = () => {
               setPage={setPage}
               page={page}
               pageSize={pageSize}
-              totalItems={data?.recurring_aggregate?.aggregate?.count}
+              totalItems={aggregateData?.recurring_aggregate?.aggregate?.count}
             ></DataListPaginationFooter>
           </DataList>
         </PageContent>

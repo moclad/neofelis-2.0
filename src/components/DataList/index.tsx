@@ -1,5 +1,13 @@
 import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 
+import {
+  Pagination,
+  PaginationButtonFirstPage,
+  PaginationButtonLastPage,
+  PaginationButtonNextPage,
+  PaginationButtonPrevPage,
+  PaginationInfo
+} from '@/components/Pagination';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Accordion,
@@ -13,15 +21,7 @@ import {
   FlexProps,
   useBreakpointValue
 } from '@chakra-ui/react';
-
-import {
-  Pagination,
-  PaginationButtonFirstPage,
-  PaginationButtonLastPage,
-  PaginationButtonNextPage,
-  PaginationButtonPrevPage,
-  PaginationInfo
-} from '../Pagination';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 type DataListColumns = Record<string, DataListCellProps>;
 type DataListContextValue = {
@@ -218,15 +218,15 @@ export interface DataListPaginationRowProps extends DataListRowProps {
   isVisible?: boolean | boolean[] | Record<string, boolean>;
   isDisabled?: boolean;
   isLoadingPage?: boolean;
-  setPage?: (p: number) => void;
+  setPage: (p: number) => void;
   page: number;
-  pageSize: number;
+  pageSize?: number;
   totalItems?: number;
 }
 
 export const DataListPaginationFooter: FC<
   React.PropsWithChildren<DataListPaginationRowProps>
-> = ({ isLoadingPage, setPage, page, pageSize, totalItems, ...rest }) => {
+> = ({ isLoadingPage, setPage, page, pageSize = 15, totalItems, ...rest }) => {
   return (
     <DataListFooter {...rest}>
       <Pagination
@@ -274,13 +274,15 @@ export interface DataListProps extends AccordionProps {
 }
 
 export const DataList: FC<React.PropsWithChildren<DataListProps>> = ({
-  allowMultiple = true,
+  allowMultiple = false,
   allowToggle = false,
   isHover = true,
   ...rest
 }) => {
   const { colorModeValue } = useDarkMode();
   const [columns, setColumns] = useState<DataListColumns>({});
+  const [listRef]: any = useAutoAnimate<HTMLDivElement>();
+
   return (
     <DataListContext.Provider
       value={{
@@ -301,6 +303,7 @@ export const DataList: FC<React.PropsWithChildren<DataListProps>> = ({
         minH="10rem"
         allowMultiple={allowMultiple && !allowToggle}
         allowToggle={allowToggle}
+        ref={listRef}
         {...rest}
       />
     </DataListContext.Provider>

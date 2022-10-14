@@ -86,7 +86,7 @@ export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
         }}
       >
         {icon && (
-          <MenuIcon fontSize="0.8em" marginEnd={iconSpacing}>
+          <MenuIcon fontSize="1em" marginEnd={iconSpacing}>
             {icon}
           </MenuIcon>
         )}

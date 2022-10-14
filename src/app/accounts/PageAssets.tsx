@@ -195,7 +195,7 @@ export const PageAssets = () => {
                       <Avvvatars value={item.name} />
 
                       <Box minW="0">
-                        <Text noOfLines={0} maxW="full" fontWeight="bold">
+                        <Text noOfLines={0} maxW="full">
                           {item.active ? (
                             <LinkOverlay href="#">{item.name}</LinkOverlay>
                           ) : (

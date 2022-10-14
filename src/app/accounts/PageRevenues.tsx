@@ -35,7 +35,9 @@ import {
   useUpdateRevenueStandardMutation,
   useUpdateRevenueStateMutation
 } from '@/generated/graphql';
+import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
+import { useMutationOptions } from '@/hooks/useMutationOptions';
 import {
   Badge,
   Box,
@@ -50,9 +52,6 @@ import {
   Text,
   useDisclosure
 } from '@chakra-ui/react';
-
-import { useDarkMode } from '../../hooks/useDarkMode';
-import { useMutationOptions } from '../../hooks/useMutationOptions';
 
 export const PageRevenues = () => {
   const { t } = useTranslation();

@@ -4,9 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Account } from '@/app/profile/account.types';
 import { DEFAULT_LANGUAGE_KEY } from '@/constants/i18n';
+import { useFetchUserQuery } from '@/generated/graphql';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
-
-import { useFetchUserQuery } from '../../generated/graphql';
 
 export const useAccount = () => {
   // const { i18n } = useTranslation();

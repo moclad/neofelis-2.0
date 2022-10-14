@@ -1,12 +1,12 @@
 import { modalAnatomy as parts } from '@chakra-ui/anatomy';
+import { mode } from '@chakra-ui/theme-tools';
+
 import type {
   PartsStyleFunction,
   PartsStyleObject,
   SystemStyleFunction,
   SystemStyleObject,
 } from '@chakra-ui/theme-tools';
-import { mode } from '@chakra-ui/theme-tools';
-
 const baseStyleOverlay: SystemStyleObject = {
   backdropFilter: 'blur(4px)',
 };
@@ -30,7 +30,7 @@ const baseStyleCloseButton: SystemStyleObject = {
   insetEnd: 2,
 };
 
-const baseStyleBody: SystemStyleFunction = () => {
+const baseStyleBody: SystemStyleFunction = (props) => {
   return {
     px: 4,
     py: 4,

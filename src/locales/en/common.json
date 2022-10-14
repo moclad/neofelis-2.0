@@ -13,7 +13,9 @@
     "submitting": "Submitting",
     "confirm": "Confirm",
     "addAnotherOne": "Add another one",
-    "setAsStandard": "Set as standard"
+    "setAsStandard": "Set as standard",
+    "view": "View transactions",
+    "back": "Back"
   },
   "feedbacks": {
     "updateSuccess": {

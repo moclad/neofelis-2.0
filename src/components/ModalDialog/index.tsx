@@ -88,7 +88,10 @@ export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
               <Stack
                 direction="column"
                 bg={colorModeValue('white', 'blackAlpha.400')}
-                p="6"
+                pl="6"
+                pr="6"
+                pb="6"
+                pt="2"
                 borderRadius="lg"
                 spacing="6"
                 shadow="md"
@@ -97,7 +100,7 @@ export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
               </Stack>
             </ModalBody>
             <ModalFooter>
-              <HStack spacing={4}>
+              <HStack pt="3" spacing={4}>
                 {showAddAnotherOne ? (
                   <Checkbox
                     onChange={(e) => setContinueToAdd(e.target.checked)}

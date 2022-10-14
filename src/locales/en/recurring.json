@@ -14,7 +14,9 @@
         "cycle": "Cycle",
         "amount": "Amount",
         "totalPaid": "Total paid",
-        "accounts": "Accounts"
+        "accounts": "Accounts",
+        "status": "Status",
+        "date": "Transaction date"
       }
     },
     "fields": {
@@ -60,6 +62,10 @@
       "1": "Forever",
       "2": "Repeat until date",
       "3": "Number of times"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
     },
     "cycleType": {
       "monthly": "Monthly",

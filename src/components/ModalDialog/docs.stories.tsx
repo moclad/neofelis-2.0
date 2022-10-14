@@ -1,9 +1,9 @@
 import React from 'react';
 
+import { FieldInput } from '@/components/FieldInput';
 import { Button, Stack } from '@chakra-ui/react';
 import { isEmail } from '@formiz/validations';
 
-import { FieldInput } from '../';
 import { ModalDialog } from './';
 
 export default {

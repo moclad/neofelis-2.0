@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -21,12 +22,11 @@ import {
   useInsertRevenueAccMutation,
   useUpdateRecurringMutation
 } from '@/generated/graphql';
+import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
+import { useMutationOptions } from '@/hooks/useMutationOptions';
 import { DurationType, ISelectOptions, TransactionType } from '@/types/types';
 import { Stack } from '@chakra-ui/react';
 import { useForm } from '@formiz/core';
-
-import { useDataToSelectorConverter } from '../../../hooks/useDataToSelectorConverter';
-import { useMutationOptions } from '../../../hooks/useMutationOptions';
 
 export interface RecurringDialogProps {
   isOpen: boolean;
@@ -38,6 +38,9 @@ export interface RecurringDialogProps {
 
 export const RecurringDialog = (props: RecurringDialogProps) => {
   let defaultAccount;
+
+  dayjs.extend(customParseFormat);
+
   const { id, initialValues, isEditing, isOpen, onClose } = props;
 
   const [transactionType, setTransactionType] = useState<number>(1);
@@ -196,6 +199,9 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
           submitData.recurring_labels.data.push({ label_id: x })
         );
       }
+
+      const startOn = dayjs(submitData.start_on);
+      submitData.start_on = startOn.format('YYYY-MM-DD');
 
       await insertRecurring({
         variables: {

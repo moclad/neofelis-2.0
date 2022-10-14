@@ -48,7 +48,7 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
   const form = useForm({ subscribe: 'form' });
   const toastError = useToastError();
 
-  const { mutate: isLoading } = useLogin({
+  const { mutate: login, isLoading } = useLogin({
     onSuccess,
     onError: (error: any) => {
       toastError({

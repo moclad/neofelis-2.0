@@ -35,6 +35,7 @@ import {
   useUpdateExpenseStateMutation
 } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
+import { useMutationOptions } from '@/hooks/useMutationOptions';
 import {
   Badge,
   Box,
@@ -50,8 +51,6 @@ import {
   Text,
   useDisclosure
 } from '@chakra-ui/react';
-
-import { useMutationOptions } from '../../hooks/useMutationOptions';
 
 export const PageExpenses = () => {
   const { t } = useTranslation();

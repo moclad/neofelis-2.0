@@ -35,7 +35,7 @@ const containerSizes = {
 const PageContainer = ({ children, ...rest }: FlexProps) => {
   const { hideContainer, containerSize } = useContext(PageContext);
 
-  if (hideContainer) return <>children</>;
+  if (hideContainer) return <>{children}</>;
 
   return (
     <Flex
@@ -125,8 +125,8 @@ type PageContentProps = FlexProps & {
 export const PageContent = ({
   children,
   loading,
-  title = null,
-  actions = null,
+  title = '',
+  actions = [],
   ...rest
 }: PageContentProps) => {
   const { nav } = useContext(PageContext);
@@ -204,7 +204,7 @@ type PageProps = FlexProps & {
 
 export const Page = ({
   isFocusMode = false,
-  hideContainer,
+  hideContainer = false,
   containerSize = 'xl',
   nav = null,
   ...rest

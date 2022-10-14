@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiPlus } from 'react-icons/fi';
 
+import { TransactionDialog } from '@/app/transactions/transaction-dialog';
 import { Panel, PanelContent } from '@/components/Panel';
+import { TransactionType } from '@/types/types';
 import { Button, useDisclosure } from '@chakra-ui/react';
-
-import { TransactionType } from '../../types/types';
-import { TransactionDialog } from './dialogs/transaction-dialog';
 
 export const PageDashboard = () => {
   const { t } = useTranslation();

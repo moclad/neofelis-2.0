@@ -9,7 +9,7 @@ import React, {
   useRef,
   useState
 } from 'react';
-import create, { UseBoundStore, useStore } from 'zustand';
+import create, { StoreApi, UseBoundStore } from 'zustand';
 
 import { FormGroup, FormGroupProps } from '@/components/FormGroup';
 import { Checkbox, CheckboxProps, Wrap, WrapItem } from '@chakra-ui/react';
@@ -123,9 +123,9 @@ export const FieldCheckboxes: React.FC<
     valueToVerify: Value
   ): boolean => !!values.find((item) => checkValuesEqual(item, valueToVerify));
 
-  const useStoreRef = useRef<useStore<FieldCheckboxesState>>();
+  const useStoreRef = useRef<UseBoundStore<StoreApi<FieldCheckboxesState>>>();
   if (!useStoreRef.current) {
-    useStoreRef.current = create<FieldCheckboxesState>((set, get) => ({
+    const store = create<FieldCheckboxesState>((set, get) => ({
       options: [],
       registerOption: (
         optionToRegister: InternalOption,
@@ -194,6 +194,7 @@ export const FieldCheckboxes: React.FC<
       verifyIsValueChecked: (valueToVerify: Value): boolean =>
         !!verifyValueIsInValues(get().values ?? [], valueToVerify),
     }));
+    useStoreRef.current = store;
   }
 
   const setStoreValues = useStoreRef.current((state) => state.setValues);

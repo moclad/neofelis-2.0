@@ -4,3 +4,9 @@ mutation insertTransaction($object: transactions_insert_input!) {
     amount
   }
 }
+
+mutation deleteTransactionById($id: bigint!) {
+  delete_transactions_by_pk(id: $id) {
+    id
+  }
+}

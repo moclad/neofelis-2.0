@@ -4,7 +4,7 @@ import { FiChevronLeft, FiChevronRight, FiChevronsLeft, FiChevronsRight } from '
 
 import { Icon } from '@/components/Icons';
 import { useRtl } from '@/hooks/useRtl';
-import { Box, HStack, IconButton, IconButtonProps, Spinner } from '@chakra-ui/react';
+import { Box, HStack, IconButton, IconButtonProps, Spinner, StackProps } from '@chakra-ui/react';
 
 export const getPaginationInfo = ({
   page = 1,
@@ -164,13 +164,29 @@ export const PaginationInfo = ({ ...rest }) => {
       justify="center"
       {...rest}
     >
-      {isLoadingPage ? (
-        <Trans i18nKey="components:pagination.loading" {...translationProps} />
-      ) : (
-        <Trans i18nKey="components:pagination.showing" {...translationProps} />
-      )}
+      {totalItems > 0 ? (
+        isLoadingPage ? (
+          <Trans
+            i18nKey="components:pagination.loading"
+            {...translationProps}
+          />
+        ) : (
+          <Trans
+            i18nKey="components:pagination.showing"
+            {...translationProps}
+          />
+        )
+      ) : null}
     </HStack>
   );
+};
+
+export type PaginationProps = StackProps & {
+  setPage: (page: number) => void;
+  page?: number;
+  pageSize?: number;
+  totalItems?: number;
+  isLoadingPage?: boolean;
 };
 
 export const Pagination = ({
@@ -180,7 +196,7 @@ export const Pagination = ({
   totalItems = 0,
   isLoadingPage = false,
   ...rest
-}) => {
+}: PaginationProps) => {
   const pagination = getPaginationInfo({ page, pageSize, totalItems });
   return (
     <PaginationContext.Provider

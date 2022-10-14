@@ -1,19 +1,20 @@
 import Axios, { AxiosError } from 'axios';
 
 import { useAuthContext } from '@/app/auth/AuthContext';
-import { useMutation, UseMutationOptions } from '@tanstack/react-query';
+import { useMutation, UseMutationOptions, useQuery } from '@tanstack/react-query';
 
 export const useLogin = (
   config: UseMutationOptions<
     { id_token: string },
     AxiosError<any>,
-    { username: string; password: string }
+    { email: string }
   > = {}
 ) => {
   const { updateToken } = useAuthContext();
   return useMutation(
-    ({ username, password }) =>
-      Axios.post('/authenticate', { username, password }),
+    ({ email }) => {
+      return Axios.post('/authenticate', { email });
+    },
     {
       ...config,
       onSuccess: (data, ...rest) => {
@@ -24,4 +25,16 @@ export const useLogin = (
       },
     }
   );
+};
+
+export const useProvidersList = () => {
+  const result = useQuery(
+    ['auth-providers'],
+    (): Promise<any[]> => Axios.get('/auth/providers')
+  );
+
+  return {
+    providers: result.data,
+    ...result,
+  };
 };

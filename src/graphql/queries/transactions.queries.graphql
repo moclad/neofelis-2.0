@@ -1,0 +1,40 @@
+query recurringTransactions($recurringId: bigint!) {
+  transactions(
+    where: { recurring_id: { _eq: $recurringId } }
+    order_by: { transaction_date: asc }
+  ) {
+    id
+    amount
+    created_at
+    transaction_date
+    updated_at
+    description
+    recurring_id
+    category {
+      name
+    }
+    transaction_labels {
+      label {
+        name
+      }
+    }
+  }
+  transactions_aggregate(where: { recurring_id: { _eq: $recurringId } }) {
+    aggregate {
+      count
+    }
+  }
+}
+
+query getTransactionById($id: bigint!) {
+  transactions_by_pk(id: $id) {
+    amount
+    category_id
+    created_at
+    description
+    id
+    recurring_id
+    transaction_date
+    updated_at
+  }
+}

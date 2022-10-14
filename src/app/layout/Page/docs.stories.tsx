@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { FiHexagon, FiLock, FiUser } from 'react-icons/fi';
 
 import { Layout } from '@/app/layout';
+import { Nav, NavGroup, NavItem } from '@/components/Nav';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { Button, Flex } from '@chakra-ui/react';
 
-import { Nav, NavGroup, NavItem } from '../../../components';
 import { Page, PageBottomBar, PageContent, PageTopBar } from './index';
 
 export default {

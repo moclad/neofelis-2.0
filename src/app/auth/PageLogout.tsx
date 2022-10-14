@@ -10,7 +10,7 @@ export const PageLogout = () => {
   const queryCache = useQueryClient();
 
   useEffect(() => {
-    signOut({ callbackUrl: 'http://localhost:3000/app/login' });
+    signOut({ callbackUrl: 'http://localhost:3000/neofelis/login' });
     queryCache.clear();
     navigate('/');
   }, [queryCache, navigate]);

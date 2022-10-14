@@ -39,13 +39,8 @@ export type Scalars = {
   uuid: any;
 };
 
-export type Boolean_Cast_Exp = {
-  String?: InputMaybe<String_Comparison_Exp>;
-};
-
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
 export type Boolean_Comparison_Exp = {
-  _cast?: InputMaybe<Boolean_Cast_Exp>;
   _eq?: InputMaybe<Scalars['Boolean']>;
   _gt?: InputMaybe<Scalars['Boolean']>;
   _gte?: InputMaybe<Scalars['Boolean']>;
@@ -57,13 +52,8 @@ export type Boolean_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['Boolean']>>;
 };
 
-export type Int_Cast_Exp = {
-  String?: InputMaybe<String_Comparison_Exp>;
-};
-
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
-  _cast?: InputMaybe<Int_Cast_Exp>;
   _eq?: InputMaybe<Scalars['Int']>;
   _gt?: InputMaybe<Scalars['Int']>;
   _gte?: InputMaybe<Scalars['Int']>;
@@ -378,6 +368,23 @@ export type Account_Info_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "account_info" */
+export type Account_Info_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Account_Info_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Account_Info_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['bpchar']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Account_Info_Sum_Fields = {
   __typename?: 'account_info_sum_fields';
@@ -397,6 +404,14 @@ export enum Account_Info_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
 }
+
+export type Account_Info_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Account_Info_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Account_Info_Set_Input>;
+  where: Account_Info_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Account_Info_Var_Pop_Fields = {
@@ -633,6 +648,27 @@ export type Assets_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "assets" */
+export type Assets_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Assets_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Assets_Stream_Cursor_Value_Input = {
+  account_no?: InputMaybe<Scalars['String']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  balance?: InputMaybe<Scalars['float8']>;
+  balance_date?: InputMaybe<Scalars['date']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  default?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Assets_Sum_Fields = {
   __typename?: 'assets_sum_fields';
@@ -662,6 +698,14 @@ export enum Assets_Update_Column {
   UpdatedAt = 'updated_at',
 }
 
+export type Assets_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Assets_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Assets_Set_Input>;
+  where: Assets_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Assets_Var_Pop_Fields = {
   __typename?: 'assets_var_pop_fields';
@@ -683,13 +727,8 @@ export type Assets_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
-export type Bigint_Cast_Exp = {
-  String?: InputMaybe<String_Comparison_Exp>;
-};
-
 /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
 export type Bigint_Comparison_Exp = {
-  _cast?: InputMaybe<Bigint_Cast_Exp>;
   _eq?: InputMaybe<Scalars['bigint']>;
   _gt?: InputMaybe<Scalars['bigint']>;
   _gte?: InputMaybe<Scalars['bigint']>;
@@ -701,13 +740,8 @@ export type Bigint_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['bigint']>>;
 };
 
-export type Bpchar_Cast_Exp = {
-  String?: InputMaybe<String_Comparison_Exp>;
-};
-
 /** Boolean expression to compare columns of type "bpchar". All fields are combined with logical 'AND'. */
 export type Bpchar_Comparison_Exp = {
-  _cast?: InputMaybe<Bpchar_Cast_Exp>;
   _eq?: InputMaybe<Scalars['bpchar']>;
   _gt?: InputMaybe<Scalars['bpchar']>;
   _gte?: InputMaybe<Scalars['bpchar']>;
@@ -962,6 +996,23 @@ export type Categories_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "categories" */
+export type Categories_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Categories_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Categories_Stream_Cursor_Value_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Categories_Sum_Fields = {
   __typename?: 'categories_sum_fields';
@@ -982,6 +1033,14 @@ export enum Categories_Update_Column {
   UpdatedAt = 'updated_at',
 }
 
+export type Categories_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Categories_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Categories_Set_Input>;
+  where: Categories_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Categories_Var_Pop_Fields = {
   __typename?: 'categories_var_pop_fields';
@@ -1000,13 +1059,16 @@ export type Categories_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
-export type Date_Cast_Exp = {
-  String?: InputMaybe<String_Comparison_Exp>;
-};
+/** ordering argument of a cursor */
+export enum Cursor_Ordering {
+  /** ascending ordering of the cursor */
+  Asc = 'ASC',
+  /** descending ordering of the cursor */
+  Desc = 'DESC',
+}
 
 /** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
 export type Date_Comparison_Exp = {
-  _cast?: InputMaybe<Date_Cast_Exp>;
   _eq?: InputMaybe<Scalars['date']>;
   _gt?: InputMaybe<Scalars['date']>;
   _gte?: InputMaybe<Scalars['date']>;
@@ -1196,6 +1258,23 @@ export type Expenses_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "expenses" */
+export type Expenses_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Expenses_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Expenses_Stream_Cursor_Value_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Expenses_Sum_Fields = {
   __typename?: 'expenses_sum_fields';
@@ -1216,6 +1295,14 @@ export enum Expenses_Update_Column {
   UpdatedAt = 'updated_at',
 }
 
+export type Expenses_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Expenses_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Expenses_Set_Input>;
+  where: Expenses_Bool_Exp;
+};
+
 /** aggregate var_pop on columns */
 export type Expenses_Var_Pop_Fields = {
   __typename?: 'expenses_var_pop_fields';
@@ -1234,13 +1321,8 @@ export type Expenses_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
-export type Float8_Cast_Exp = {
-  String?: InputMaybe<String_Comparison_Exp>;
-};
-
 /** Boolean expression to compare columns of type "float8". All fields are combined with logical 'AND'. */
 export type Float8_Comparison_Exp = {
-  _cast?: InputMaybe<Float8_Cast_Exp>;
   _eq?: InputMaybe<Scalars['float8']>;
   _gt?: InputMaybe<Scalars['float8']>;
   _gte?: InputMaybe<Scalars['float8']>;
@@ -1468,6 +1550,22 @@ export type Labels_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "labels" */
+export type Labels_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Labels_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Labels_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Labels_Sum_Fields = {
   __typename?: 'labels_sum_fields';
@@ -1485,6 +1583,14 @@ export enum Labels_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
 }
+
+export type Labels_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Labels_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Labels_Set_Input>;
+  where: Labels_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Labels_Var_Pop_Fields = {
@@ -1682,6 +1788,23 @@ export type Liabilities_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "liabilities" */
+export type Liabilities_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Liabilities_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Liabilities_Stream_Cursor_Value_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Liabilities_Sum_Fields = {
   __typename?: 'liabilities_sum_fields';
@@ -1701,6 +1824,14 @@ export enum Liabilities_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
 }
+
+export type Liabilities_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Liabilities_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Liabilities_Set_Input>;
+  where: Liabilities_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Liabilities_Var_Pop_Fields = {
@@ -1855,30 +1986,48 @@ export type Mutation_Root = {
   update_account_info?: Maybe<Account_Info_Mutation_Response>;
   /** update single row of the table: "account_info" */
   update_account_info_by_pk?: Maybe<Account_Info>;
+  /** update multiples rows of table: "account_info" */
+  update_account_info_many?: Maybe<
+    Array<Maybe<Account_Info_Mutation_Response>>
+  >;
   /** update data of the table: "assets" */
   update_assets?: Maybe<Assets_Mutation_Response>;
   /** update single row of the table: "assets" */
   update_assets_by_pk?: Maybe<Assets>;
+  /** update multiples rows of table: "assets" */
+  update_assets_many?: Maybe<Array<Maybe<Assets_Mutation_Response>>>;
   /** update data of the table: "categories" */
   update_categories?: Maybe<Categories_Mutation_Response>;
   /** update single row of the table: "categories" */
   update_categories_by_pk?: Maybe<Categories>;
+  /** update multiples rows of table: "categories" */
+  update_categories_many?: Maybe<Array<Maybe<Categories_Mutation_Response>>>;
   /** update data of the table: "expenses" */
   update_expenses?: Maybe<Expenses_Mutation_Response>;
   /** update single row of the table: "expenses" */
   update_expenses_by_pk?: Maybe<Expenses>;
+  /** update multiples rows of table: "expenses" */
+  update_expenses_many?: Maybe<Array<Maybe<Expenses_Mutation_Response>>>;
   /** update data of the table: "labels" */
   update_labels?: Maybe<Labels_Mutation_Response>;
   /** update single row of the table: "labels" */
   update_labels_by_pk?: Maybe<Labels>;
+  /** update multiples rows of table: "labels" */
+  update_labels_many?: Maybe<Array<Maybe<Labels_Mutation_Response>>>;
   /** update data of the table: "liabilities" */
   update_liabilities?: Maybe<Liabilities_Mutation_Response>;
   /** update single row of the table: "liabilities" */
   update_liabilities_by_pk?: Maybe<Liabilities>;
+  /** update multiples rows of table: "liabilities" */
+  update_liabilities_many?: Maybe<Array<Maybe<Liabilities_Mutation_Response>>>;
   /** update data of the table: "notifications" */
   update_notifications?: Maybe<Notifications_Mutation_Response>;
   /** update single row of the table: "notifications" */
   update_notifications_by_pk?: Maybe<Notifications>;
+  /** update multiples rows of table: "notifications" */
+  update_notifications_many?: Maybe<
+    Array<Maybe<Notifications_Mutation_Response>>
+  >;
   /** update data of the table: "recurring" */
   update_recurring?: Maybe<Recurring_Mutation_Response>;
   /** update single row of the table: "recurring" */
@@ -1887,34 +2036,64 @@ export type Mutation_Root = {
   update_recurring_labels?: Maybe<Recurring_Labels_Mutation_Response>;
   /** update single row of the table: "recurring_labels" */
   update_recurring_labels_by_pk?: Maybe<Recurring_Labels>;
+  /** update multiples rows of table: "recurring_labels" */
+  update_recurring_labels_many?: Maybe<
+    Array<Maybe<Recurring_Labels_Mutation_Response>>
+  >;
+  /** update multiples rows of table: "recurring" */
+  update_recurring_many?: Maybe<Array<Maybe<Recurring_Mutation_Response>>>;
   /** update data of the table: "revenues" */
   update_revenues?: Maybe<Revenues_Mutation_Response>;
   /** update single row of the table: "revenues" */
   update_revenues_by_pk?: Maybe<Revenues>;
+  /** update multiples rows of table: "revenues" */
+  update_revenues_many?: Maybe<Array<Maybe<Revenues_Mutation_Response>>>;
   /** update data of the table: "transaction_accounts" */
   update_transaction_accounts?: Maybe<Transaction_Accounts_Mutation_Response>;
   /** update single row of the table: "transaction_accounts" */
   update_transaction_accounts_by_pk?: Maybe<Transaction_Accounts>;
+  /** update multiples rows of table: "transaction_accounts" */
+  update_transaction_accounts_many?: Maybe<
+    Array<Maybe<Transaction_Accounts_Mutation_Response>>
+  >;
   /** update data of the table: "transaction_attachments" */
   update_transaction_attachments?: Maybe<Transaction_Attachments_Mutation_Response>;
   /** update single row of the table: "transaction_attachments" */
   update_transaction_attachments_by_pk?: Maybe<Transaction_Attachments>;
+  /** update multiples rows of table: "transaction_attachments" */
+  update_transaction_attachments_many?: Maybe<
+    Array<Maybe<Transaction_Attachments_Mutation_Response>>
+  >;
   /** update data of the table: "transaction_labels" */
   update_transaction_labels?: Maybe<Transaction_Labels_Mutation_Response>;
   /** update single row of the table: "transaction_labels" */
   update_transaction_labels_by_pk?: Maybe<Transaction_Labels>;
+  /** update multiples rows of table: "transaction_labels" */
+  update_transaction_labels_many?: Maybe<
+    Array<Maybe<Transaction_Labels_Mutation_Response>>
+  >;
   /** update data of the table: "transactions" */
   update_transactions?: Maybe<Transactions_Mutation_Response>;
   /** update single row of the table: "transactions" */
   update_transactions_by_pk?: Maybe<Transactions>;
+  /** update multiples rows of table: "transactions" */
+  update_transactions_many?: Maybe<
+    Array<Maybe<Transactions_Mutation_Response>>
+  >;
   /** update data of the table: "user_settings" */
   update_user_settings?: Maybe<User_Settings_Mutation_Response>;
   /** update single row of the table: "user_settings" */
   update_user_settings_by_pk?: Maybe<User_Settings>;
+  /** update multiples rows of table: "user_settings" */
+  update_user_settings_many?: Maybe<
+    Array<Maybe<User_Settings_Mutation_Response>>
+  >;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
   /** update single row of the table: "users" */
   update_users_by_pk?: Maybe<Users>;
+  /** update multiples rows of table: "users" */
+  update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
 };
 
 /** mutation root */
@@ -2287,6 +2466,11 @@ export type Mutation_RootUpdate_Account_Info_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_Account_Info_ManyArgs = {
+  updates: Array<Account_Info_Updates>;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_AssetsArgs = {
   _inc?: InputMaybe<Assets_Inc_Input>;
   _set?: InputMaybe<Assets_Set_Input>;
@@ -2298,6 +2482,11 @@ export type Mutation_RootUpdate_Assets_By_PkArgs = {
   _inc?: InputMaybe<Assets_Inc_Input>;
   _set?: InputMaybe<Assets_Set_Input>;
   pk_columns: Assets_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Assets_ManyArgs = {
+  updates: Array<Assets_Updates>;
 };
 
 /** mutation root */
@@ -2315,6 +2504,11 @@ export type Mutation_RootUpdate_Categories_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_Categories_ManyArgs = {
+  updates: Array<Categories_Updates>;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_ExpensesArgs = {
   _inc?: InputMaybe<Expenses_Inc_Input>;
   _set?: InputMaybe<Expenses_Set_Input>;
@@ -2326,6 +2520,11 @@ export type Mutation_RootUpdate_Expenses_By_PkArgs = {
   _inc?: InputMaybe<Expenses_Inc_Input>;
   _set?: InputMaybe<Expenses_Set_Input>;
   pk_columns: Expenses_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Expenses_ManyArgs = {
+  updates: Array<Expenses_Updates>;
 };
 
 /** mutation root */
@@ -2343,6 +2542,11 @@ export type Mutation_RootUpdate_Labels_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_Labels_ManyArgs = {
+  updates: Array<Labels_Updates>;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_LiabilitiesArgs = {
   _inc?: InputMaybe<Liabilities_Inc_Input>;
   _set?: InputMaybe<Liabilities_Set_Input>;
@@ -2357,6 +2561,11 @@ export type Mutation_RootUpdate_Liabilities_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_Liabilities_ManyArgs = {
+  updates: Array<Liabilities_Updates>;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_NotificationsArgs = {
   _inc?: InputMaybe<Notifications_Inc_Input>;
   _set?: InputMaybe<Notifications_Set_Input>;
@@ -2368,6 +2577,11 @@ export type Mutation_RootUpdate_Notifications_By_PkArgs = {
   _inc?: InputMaybe<Notifications_Inc_Input>;
   _set?: InputMaybe<Notifications_Set_Input>;
   pk_columns: Notifications_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Notifications_ManyArgs = {
+  updates: Array<Notifications_Updates>;
 };
 
 /** mutation root */
@@ -2399,6 +2613,16 @@ export type Mutation_RootUpdate_Recurring_Labels_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_Recurring_Labels_ManyArgs = {
+  updates: Array<Recurring_Labels_Updates>;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Recurring_ManyArgs = {
+  updates: Array<Recurring_Updates>;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_RevenuesArgs = {
   _inc?: InputMaybe<Revenues_Inc_Input>;
   _set?: InputMaybe<Revenues_Set_Input>;
@@ -2410,6 +2634,11 @@ export type Mutation_RootUpdate_Revenues_By_PkArgs = {
   _inc?: InputMaybe<Revenues_Inc_Input>;
   _set?: InputMaybe<Revenues_Set_Input>;
   pk_columns: Revenues_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Revenues_ManyArgs = {
+  updates: Array<Revenues_Updates>;
 };
 
 /** mutation root */
@@ -2427,6 +2656,11 @@ export type Mutation_RootUpdate_Transaction_Accounts_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_Transaction_Accounts_ManyArgs = {
+  updates: Array<Transaction_Accounts_Updates>;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_Transaction_AttachmentsArgs = {
   _inc?: InputMaybe<Transaction_Attachments_Inc_Input>;
   _set?: InputMaybe<Transaction_Attachments_Set_Input>;
@@ -2438,6 +2672,11 @@ export type Mutation_RootUpdate_Transaction_Attachments_By_PkArgs = {
   _inc?: InputMaybe<Transaction_Attachments_Inc_Input>;
   _set?: InputMaybe<Transaction_Attachments_Set_Input>;
   pk_columns: Transaction_Attachments_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Transaction_Attachments_ManyArgs = {
+  updates: Array<Transaction_Attachments_Updates>;
 };
 
 /** mutation root */
@@ -2455,6 +2694,11 @@ export type Mutation_RootUpdate_Transaction_Labels_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_Transaction_Labels_ManyArgs = {
+  updates: Array<Transaction_Labels_Updates>;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_TransactionsArgs = {
   _inc?: InputMaybe<Transactions_Inc_Input>;
   _set?: InputMaybe<Transactions_Set_Input>;
@@ -2466,6 +2710,11 @@ export type Mutation_RootUpdate_Transactions_By_PkArgs = {
   _inc?: InputMaybe<Transactions_Inc_Input>;
   _set?: InputMaybe<Transactions_Set_Input>;
   pk_columns: Transactions_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Transactions_ManyArgs = {
+  updates: Array<Transactions_Updates>;
 };
 
 /** mutation root */
@@ -2481,6 +2730,11 @@ export type Mutation_RootUpdate_User_Settings_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_User_Settings_ManyArgs = {
+  updates: Array<User_Settings_Updates>;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
   _set?: InputMaybe<Users_Set_Input>;
   where: Users_Bool_Exp;
@@ -2492,6 +2746,11 @@ export type Mutation_RootUpdate_Users_By_PkArgs = {
   pk_columns: Users_Pk_Columns_Input;
 };
 
+/** mutation root */
+export type Mutation_RootUpdate_Users_ManyArgs = {
+  updates: Array<Users_Updates>;
+};
+
 /** columns and relationships of "notifications" */
 export type Notifications = {
   __typename?: 'notifications';
@@ -2501,7 +2760,7 @@ export type Notifications = {
   read_status: Scalars['Boolean'];
   title: Scalars['String'];
   updated_at: Scalars['timestamptz'];
-  user_id: Scalars['uuid'];
+  user_id?: Maybe<Scalars['uuid']>;
 };
 
 /** aggregated selection of "notifications" */
@@ -2676,6 +2935,25 @@ export type Notifications_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "notifications" */
+export type Notifications_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Notifications_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Notifications_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  read_status?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
 /** aggregate sum on columns */
 export type Notifications_Sum_Fields = {
   __typename?: 'notifications_sum_fields';
@@ -2699,6 +2977,14 @@ export enum Notifications_Update_Column {
   /** column name */
   UserId = 'user_id',
 }
+
+export type Notifications_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Notifications_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Notifications_Set_Input>;
+  where: Notifications_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Notifications_Var_Pop_Fields = {
@@ -3166,6 +3452,7 @@ export type Recurring = {
   /** An object relationship */
   account_info: Account_Info;
   account_to: Scalars['bigint'];
+  active: Scalars['Boolean'];
   amount: Scalars['float8'];
   /** An object relationship */
   category?: Maybe<Categories>;
@@ -3314,6 +3601,7 @@ export type Recurring_Bool_Exp = {
   account_from?: InputMaybe<Bigint_Comparison_Exp>;
   account_info?: InputMaybe<Account_Info_Bool_Exp>;
   account_to?: InputMaybe<Bigint_Comparison_Exp>;
+  active?: InputMaybe<Boolean_Comparison_Exp>;
   amount?: InputMaybe<Float8_Comparison_Exp>;
   category?: InputMaybe<Categories_Bool_Exp>;
   category_id?: InputMaybe<Bigint_Comparison_Exp>;
@@ -3357,6 +3645,7 @@ export type Recurring_Insert_Input = {
   account_from?: InputMaybe<Scalars['bigint']>;
   account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
   account_to?: InputMaybe<Scalars['bigint']>;
+  active?: InputMaybe<Scalars['Boolean']>;
   amount?: InputMaybe<Scalars['float8']>;
   category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
   category_id?: InputMaybe<Scalars['bigint']>;
@@ -3590,6 +3879,20 @@ export type Recurring_Labels_Stddev_Samp_Order_By = {
   recurring_id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "recurring_labels" */
+export type Recurring_Labels_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Recurring_Labels_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Recurring_Labels_Stream_Cursor_Value_Input = {
+  label_id?: InputMaybe<Scalars['Int']>;
+  recurring_id?: InputMaybe<Scalars['bigint']>;
+};
+
 /** aggregate sum on columns */
 export type Recurring_Labels_Sum_Fields = {
   __typename?: 'recurring_labels_sum_fields';
@@ -3610,6 +3913,14 @@ export enum Recurring_Labels_Update_Column {
   /** column name */
   RecurringId = 'recurring_id',
 }
+
+export type Recurring_Labels_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Recurring_Labels_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Recurring_Labels_Set_Input>;
+  where: Recurring_Labels_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Recurring_Labels_Var_Pop_Fields = {
@@ -3757,6 +4068,7 @@ export type Recurring_Order_By = {
   account_from?: InputMaybe<Order_By>;
   account_info?: InputMaybe<Account_Info_Order_By>;
   account_to?: InputMaybe<Order_By>;
+  active?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category?: InputMaybe<Categories_Order_By>;
   category_id?: InputMaybe<Order_By>;
@@ -3786,6 +4098,8 @@ export enum Recurring_Select_Column {
   AccountFrom = 'account_from',
   /** column name */
   AccountTo = 'account_to',
+  /** column name */
+  Active = 'active',
   /** column name */
   Amount = 'amount',
   /** column name */
@@ -3818,6 +4132,7 @@ export enum Recurring_Select_Column {
 export type Recurring_Set_Input = {
   account_from?: InputMaybe<Scalars['bigint']>;
   account_to?: InputMaybe<Scalars['bigint']>;
+  active?: InputMaybe<Scalars['Boolean']>;
   amount?: InputMaybe<Scalars['float8']>;
   category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
@@ -3914,6 +4229,34 @@ export type Recurring_Stddev_Samp_Order_By = {
   transaction_type?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "recurring" */
+export type Recurring_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Recurring_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Recurring_Stream_Cursor_Value_Input = {
+  account_from?: InputMaybe<Scalars['bigint']>;
+  account_to?: InputMaybe<Scalars['bigint']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  amount?: InputMaybe<Scalars['float8']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  cycle_type?: InputMaybe<Scalars['Int']>;
+  description?: InputMaybe<Scalars['String']>;
+  duration_type?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  no_of_times?: InputMaybe<Scalars['Int']>;
+  start_on?: InputMaybe<Scalars['date']>;
+  title?: InputMaybe<Scalars['String']>;
+  transaction_type?: InputMaybe<Scalars['Int']>;
+  until_date?: InputMaybe<Scalars['date']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Recurring_Sum_Fields = {
   __typename?: 'recurring_sum_fields';
@@ -3948,6 +4291,8 @@ export enum Recurring_Update_Column {
   /** column name */
   AccountTo = 'account_to',
   /** column name */
+  Active = 'active',
+  /** column name */
   Amount = 'amount',
   /** column name */
   CategoryId = 'category_id',
@@ -3974,6 +4319,14 @@ export enum Recurring_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
 }
+
+export type Recurring_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Recurring_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Recurring_Set_Input>;
+  where: Recurring_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Recurring_Var_Pop_Fields = {
@@ -4241,6 +4594,24 @@ export type Revenues_Stddev_Samp_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "revenues" */
+export type Revenues_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Revenues_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Revenues_Stream_Cursor_Value_Input = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  default?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Revenues_Sum_Fields = {
   __typename?: 'revenues_sum_fields';
@@ -4262,6 +4633,14 @@ export enum Revenues_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
 }
+
+export type Revenues_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Revenues_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Revenues_Set_Input>;
+  where: Revenues_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Revenues_Var_Pop_Fields = {
@@ -4289,42 +4668,56 @@ export type Subscription_Root = {
   account_info_aggregate: Account_Info_Aggregate;
   /** fetch data from the table: "account_info" using primary key columns */
   account_info_by_pk?: Maybe<Account_Info>;
+  /** fetch data from the table in a streaming manner : "account_info" */
+  account_info_stream: Array<Account_Info>;
   /** fetch data from the table: "assets" */
   assets: Array<Assets>;
   /** fetch aggregated fields from the table: "assets" */
   assets_aggregate: Assets_Aggregate;
   /** fetch data from the table: "assets" using primary key columns */
   assets_by_pk?: Maybe<Assets>;
+  /** fetch data from the table in a streaming manner : "assets" */
+  assets_stream: Array<Assets>;
   /** fetch data from the table: "categories" */
   categories: Array<Categories>;
   /** fetch aggregated fields from the table: "categories" */
   categories_aggregate: Categories_Aggregate;
   /** fetch data from the table: "categories" using primary key columns */
   categories_by_pk?: Maybe<Categories>;
+  /** fetch data from the table in a streaming manner : "categories" */
+  categories_stream: Array<Categories>;
   /** fetch data from the table: "expenses" */
   expenses: Array<Expenses>;
   /** fetch aggregated fields from the table: "expenses" */
   expenses_aggregate: Expenses_Aggregate;
   /** fetch data from the table: "expenses" using primary key columns */
   expenses_by_pk?: Maybe<Expenses>;
+  /** fetch data from the table in a streaming manner : "expenses" */
+  expenses_stream: Array<Expenses>;
   /** fetch data from the table: "labels" */
   labels: Array<Labels>;
   /** fetch aggregated fields from the table: "labels" */
   labels_aggregate: Labels_Aggregate;
   /** fetch data from the table: "labels" using primary key columns */
   labels_by_pk?: Maybe<Labels>;
+  /** fetch data from the table in a streaming manner : "labels" */
+  labels_stream: Array<Labels>;
   /** fetch data from the table: "liabilities" */
   liabilities: Array<Liabilities>;
   /** fetch aggregated fields from the table: "liabilities" */
   liabilities_aggregate: Liabilities_Aggregate;
   /** fetch data from the table: "liabilities" using primary key columns */
   liabilities_by_pk?: Maybe<Liabilities>;
+  /** fetch data from the table in a streaming manner : "liabilities" */
+  liabilities_stream: Array<Liabilities>;
   /** fetch data from the table: "notifications" */
   notifications: Array<Notifications>;
   /** fetch aggregated fields from the table: "notifications" */
   notifications_aggregate: Notifications_Aggregate;
   /** fetch data from the table: "notifications" using primary key columns */
   notifications_by_pk?: Maybe<Notifications>;
+  /** fetch data from the table in a streaming manner : "notifications" */
+  notifications_stream: Array<Notifications>;
   /** fetch data from the table: "recurring" */
   recurring: Array<Recurring>;
   /** fetch aggregated fields from the table: "recurring" */
@@ -4337,48 +4730,66 @@ export type Subscription_Root = {
   recurring_labels_aggregate: Recurring_Labels_Aggregate;
   /** fetch data from the table: "recurring_labels" using primary key columns */
   recurring_labels_by_pk?: Maybe<Recurring_Labels>;
+  /** fetch data from the table in a streaming manner : "recurring_labels" */
+  recurring_labels_stream: Array<Recurring_Labels>;
+  /** fetch data from the table in a streaming manner : "recurring" */
+  recurring_stream: Array<Recurring>;
   /** fetch data from the table: "revenues" */
   revenues: Array<Revenues>;
   /** fetch aggregated fields from the table: "revenues" */
   revenues_aggregate: Revenues_Aggregate;
   /** fetch data from the table: "revenues" using primary key columns */
   revenues_by_pk?: Maybe<Revenues>;
+  /** fetch data from the table in a streaming manner : "revenues" */
+  revenues_stream: Array<Revenues>;
   /** An array relationship */
   transaction_accounts: Array<Transaction_Accounts>;
   /** An aggregate relationship */
   transaction_accounts_aggregate: Transaction_Accounts_Aggregate;
   /** fetch data from the table: "transaction_accounts" using primary key columns */
   transaction_accounts_by_pk?: Maybe<Transaction_Accounts>;
+  /** fetch data from the table in a streaming manner : "transaction_accounts" */
+  transaction_accounts_stream: Array<Transaction_Accounts>;
   /** fetch data from the table: "transaction_attachments" */
   transaction_attachments: Array<Transaction_Attachments>;
   /** fetch aggregated fields from the table: "transaction_attachments" */
   transaction_attachments_aggregate: Transaction_Attachments_Aggregate;
   /** fetch data from the table: "transaction_attachments" using primary key columns */
   transaction_attachments_by_pk?: Maybe<Transaction_Attachments>;
+  /** fetch data from the table in a streaming manner : "transaction_attachments" */
+  transaction_attachments_stream: Array<Transaction_Attachments>;
   /** An array relationship */
   transaction_labels: Array<Transaction_Labels>;
   /** An aggregate relationship */
   transaction_labels_aggregate: Transaction_Labels_Aggregate;
   /** fetch data from the table: "transaction_labels" using primary key columns */
   transaction_labels_by_pk?: Maybe<Transaction_Labels>;
+  /** fetch data from the table in a streaming manner : "transaction_labels" */
+  transaction_labels_stream: Array<Transaction_Labels>;
   /** An array relationship */
   transactions: Array<Transactions>;
   /** An aggregate relationship */
   transactions_aggregate: Transactions_Aggregate;
   /** fetch data from the table: "transactions" using primary key columns */
   transactions_by_pk?: Maybe<Transactions>;
+  /** fetch data from the table in a streaming manner : "transactions" */
+  transactions_stream: Array<Transactions>;
   /** fetch data from the table: "user_settings" */
   user_settings: Array<User_Settings>;
   /** fetch aggregated fields from the table: "user_settings" */
   user_settings_aggregate: User_Settings_Aggregate;
   /** fetch data from the table: "user_settings" using primary key columns */
   user_settings_by_pk?: Maybe<User_Settings>;
+  /** fetch data from the table in a streaming manner : "user_settings" */
+  user_settings_stream: Array<User_Settings>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
+  /** fetch data from the table in a streaming manner : "users" */
+  users_stream: Array<Users>;
 };
 
 export type Subscription_RootAccount_InfoArgs = {
@@ -4401,6 +4812,12 @@ export type Subscription_RootAccount_Info_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
+export type Subscription_RootAccount_Info_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Account_Info_Stream_Cursor_Input>>;
+  where?: InputMaybe<Account_Info_Bool_Exp>;
+};
+
 export type Subscription_RootAssetsArgs = {
   distinct_on?: InputMaybe<Array<Assets_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -4419,6 +4836,12 @@ export type Subscription_RootAssets_AggregateArgs = {
 
 export type Subscription_RootAssets_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+export type Subscription_RootAssets_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Assets_Stream_Cursor_Input>>;
+  where?: InputMaybe<Assets_Bool_Exp>;
 };
 
 export type Subscription_RootCategoriesArgs = {
@@ -4441,6 +4864,12 @@ export type Subscription_RootCategories_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
+export type Subscription_RootCategories_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Categories_Stream_Cursor_Input>>;
+  where?: InputMaybe<Categories_Bool_Exp>;
+};
+
 export type Subscription_RootExpensesArgs = {
   distinct_on?: InputMaybe<Array<Expenses_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -4459,6 +4888,12 @@ export type Subscription_RootExpenses_AggregateArgs = {
 
 export type Subscription_RootExpenses_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+export type Subscription_RootExpenses_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Expenses_Stream_Cursor_Input>>;
+  where?: InputMaybe<Expenses_Bool_Exp>;
 };
 
 export type Subscription_RootLabelsArgs = {
@@ -4481,6 +4916,12 @@ export type Subscription_RootLabels_By_PkArgs = {
   id: Scalars['Int'];
 };
 
+export type Subscription_RootLabels_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Labels_Stream_Cursor_Input>>;
+  where?: InputMaybe<Labels_Bool_Exp>;
+};
+
 export type Subscription_RootLiabilitiesArgs = {
   distinct_on?: InputMaybe<Array<Liabilities_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -4501,6 +4942,12 @@ export type Subscription_RootLiabilities_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
+export type Subscription_RootLiabilities_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Liabilities_Stream_Cursor_Input>>;
+  where?: InputMaybe<Liabilities_Bool_Exp>;
+};
+
 export type Subscription_RootNotificationsArgs = {
   distinct_on?: InputMaybe<Array<Notifications_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -4519,6 +4966,12 @@ export type Subscription_RootNotifications_AggregateArgs = {
 
 export type Subscription_RootNotifications_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+export type Subscription_RootNotifications_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Notifications_Stream_Cursor_Input>>;
+  where?: InputMaybe<Notifications_Bool_Exp>;
 };
 
 export type Subscription_RootRecurringArgs = {
@@ -4562,6 +5015,18 @@ export type Subscription_RootRecurring_Labels_By_PkArgs = {
   recurring_id: Scalars['bigint'];
 };
 
+export type Subscription_RootRecurring_Labels_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Recurring_Labels_Stream_Cursor_Input>>;
+  where?: InputMaybe<Recurring_Labels_Bool_Exp>;
+};
+
+export type Subscription_RootRecurring_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Recurring_Stream_Cursor_Input>>;
+  where?: InputMaybe<Recurring_Bool_Exp>;
+};
+
 export type Subscription_RootRevenuesArgs = {
   distinct_on?: InputMaybe<Array<Revenues_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -4582,6 +5047,12 @@ export type Subscription_RootRevenues_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
+export type Subscription_RootRevenues_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Revenues_Stream_Cursor_Input>>;
+  where?: InputMaybe<Revenues_Bool_Exp>;
+};
+
 export type Subscription_RootTransaction_AccountsArgs = {
   distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -4600,6 +5071,12 @@ export type Subscription_RootTransaction_Accounts_AggregateArgs = {
 
 export type Subscription_RootTransaction_Accounts_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+export type Subscription_RootTransaction_Accounts_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Transaction_Accounts_Stream_Cursor_Input>>;
+  where?: InputMaybe<Transaction_Accounts_Bool_Exp>;
 };
 
 export type Subscription_RootTransaction_AttachmentsArgs = {
@@ -4623,6 +5100,12 @@ export type Subscription_RootTransaction_Attachments_By_PkArgs = {
   transaction_id: Scalars['bigint'];
 };
 
+export type Subscription_RootTransaction_Attachments_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Transaction_Attachments_Stream_Cursor_Input>>;
+  where?: InputMaybe<Transaction_Attachments_Bool_Exp>;
+};
+
 export type Subscription_RootTransaction_LabelsArgs = {
   distinct_on?: InputMaybe<Array<Transaction_Labels_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -4642,6 +5125,12 @@ export type Subscription_RootTransaction_Labels_AggregateArgs = {
 export type Subscription_RootTransaction_Labels_By_PkArgs = {
   label_id: Scalars['Int'];
   transaction_id: Scalars['bigint'];
+};
+
+export type Subscription_RootTransaction_Labels_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Transaction_Labels_Stream_Cursor_Input>>;
+  where?: InputMaybe<Transaction_Labels_Bool_Exp>;
 };
 
 export type Subscription_RootTransactionsArgs = {
@@ -4664,6 +5153,12 @@ export type Subscription_RootTransactions_By_PkArgs = {
   id: Scalars['bigint'];
 };
 
+export type Subscription_RootTransactions_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Transactions_Stream_Cursor_Input>>;
+  where?: InputMaybe<Transactions_Bool_Exp>;
+};
+
 export type Subscription_RootUser_SettingsArgs = {
   distinct_on?: InputMaybe<Array<User_Settings_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -4682,6 +5177,12 @@ export type Subscription_RootUser_Settings_AggregateArgs = {
 
 export type Subscription_RootUser_Settings_By_PkArgs = {
   user_id: Scalars['uuid'];
+};
+
+export type Subscription_RootUser_Settings_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<User_Settings_Stream_Cursor_Input>>;
+  where?: InputMaybe<User_Settings_Bool_Exp>;
 };
 
 export type Subscription_RootUsersArgs = {
@@ -4704,13 +5205,14 @@ export type Subscription_RootUsers_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
-export type Timestamptz_Cast_Exp = {
-  String?: InputMaybe<String_Comparison_Exp>;
+export type Subscription_RootUsers_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Users_Stream_Cursor_Input>>;
+  where?: InputMaybe<Users_Bool_Exp>;
 };
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
-  _cast?: InputMaybe<Timestamptz_Cast_Exp>;
   _eq?: InputMaybe<Scalars['timestamptz']>;
   _gt?: InputMaybe<Scalars['timestamptz']>;
   _gte?: InputMaybe<Scalars['timestamptz']>;
@@ -4998,6 +5500,24 @@ export type Transaction_Accounts_Stddev_Samp_Order_By = {
   transaction_id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "transaction_accounts" */
+export type Transaction_Accounts_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Transaction_Accounts_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Transaction_Accounts_Stream_Cursor_Value_Input = {
+  account_id?: InputMaybe<Scalars['Int']>;
+  amount?: InputMaybe<Scalars['float8']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Transaction_Accounts_Sum_Fields = {
   __typename?: 'transaction_accounts_sum_fields';
@@ -5030,6 +5550,14 @@ export enum Transaction_Accounts_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
 }
+
+export type Transaction_Accounts_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Transaction_Accounts_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Transaction_Accounts_Set_Input>;
+  where: Transaction_Accounts_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Transaction_Accounts_Var_Pop_Fields = {
@@ -5272,6 +5800,23 @@ export type Transaction_Attachments_Stddev_Samp_Fields = {
   transaction_id?: Maybe<Scalars['Float']>;
 };
 
+/** Streaming cursor of the table "transaction_attachments" */
+export type Transaction_Attachments_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Transaction_Attachments_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Transaction_Attachments_Stream_Cursor_Value_Input = {
+  attachment_id?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Transaction_Attachments_Sum_Fields = {
   __typename?: 'transaction_attachments_sum_fields';
@@ -5292,6 +5837,14 @@ export enum Transaction_Attachments_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
 }
+
+export type Transaction_Attachments_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Transaction_Attachments_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Transaction_Attachments_Set_Input>;
+  where: Transaction_Attachments_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Transaction_Attachments_Var_Pop_Fields = {
@@ -5529,6 +6082,20 @@ export type Transaction_Labels_Stddev_Samp_Order_By = {
   transaction_id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "transaction_labels" */
+export type Transaction_Labels_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Transaction_Labels_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Transaction_Labels_Stream_Cursor_Value_Input = {
+  label_id?: InputMaybe<Scalars['Int']>;
+  transaction_id?: InputMaybe<Scalars['bigint']>;
+};
+
 /** aggregate sum on columns */
 export type Transaction_Labels_Sum_Fields = {
   __typename?: 'transaction_labels_sum_fields';
@@ -5549,6 +6116,14 @@ export enum Transaction_Labels_Update_Column {
   /** column name */
   TransactionId = 'transaction_id',
 }
+
+export type Transaction_Labels_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Transaction_Labels_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Transaction_Labels_Set_Input>;
+  where: Transaction_Labels_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Transaction_Labels_Var_Pop_Fields = {
@@ -5949,6 +6524,26 @@ export type Transactions_Stddev_Samp_Order_By = {
   recurring_id?: InputMaybe<Order_By>;
 };
 
+/** Streaming cursor of the table "transactions" */
+export type Transactions_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Transactions_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Transactions_Stream_Cursor_Value_Input = {
+  amount?: InputMaybe<Scalars['float8']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  recurring_id?: InputMaybe<Scalars['bigint']>;
+  transaction_date?: InputMaybe<Scalars['date']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
 /** aggregate sum on columns */
 export type Transactions_Sum_Fields = {
   __typename?: 'transactions_sum_fields';
@@ -5985,6 +6580,14 @@ export enum Transactions_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
 }
+
+export type Transactions_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Transactions_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Transactions_Set_Input>;
+  where: Transactions_Bool_Exp;
+};
 
 /** aggregate var_pop on columns */
 export type Transactions_Var_Pop_Fields = {
@@ -6160,6 +6763,21 @@ export type User_Settings_Set_Input = {
   user_id?: InputMaybe<Scalars['uuid']>;
 };
 
+/** Streaming cursor of the table "user_settings" */
+export type User_Settings_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: User_Settings_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type User_Settings_Stream_Cursor_Value_Input = {
+  darkMode?: InputMaybe<Scalars['Boolean']>;
+  langKey?: InputMaybe<Scalars['String']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+};
+
 /** update columns of table "user_settings" */
 export enum User_Settings_Update_Column {
   /** column name */
@@ -6169,6 +6787,12 @@ export enum User_Settings_Update_Column {
   /** column name */
   UserId = 'user_id',
 }
+
+export type User_Settings_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<User_Settings_Set_Input>;
+  where: User_Settings_Bool_Exp;
+};
 
 /** columns and relationships of "users" */
 export type Users = {
@@ -6315,6 +6939,23 @@ export type Users_Set_Input = {
   name?: InputMaybe<Scalars['String']>;
 };
 
+/** Streaming cursor of the table "users" */
+export type Users_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Users_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Users_Stream_Cursor_Value_Input = {
+  email?: InputMaybe<Scalars['String']>;
+  emailVerified?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  image?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 /** update columns of table "users" */
 export enum Users_Update_Column {
   /** column name */
@@ -6329,13 +6970,14 @@ export enum Users_Update_Column {
   Name = 'name',
 }
 
-export type Uuid_Cast_Exp = {
-  String?: InputMaybe<String_Comparison_Exp>;
+export type Users_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Users_Set_Input>;
+  where: Users_Bool_Exp;
 };
 
 /** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
 export type Uuid_Comparison_Exp = {
-  _cast?: InputMaybe<Uuid_Cast_Exp>;
   _eq?: InputMaybe<Scalars['uuid']>;
   _gt?: InputMaybe<Scalars['uuid']>;
   _gte?: InputMaybe<Scalars['uuid']>;
@@ -6616,6 +7258,15 @@ export type DeleteRecurringMutation = {
   delete_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined;
 };
 
+export type InactivateRecurringMutationVariables = Exact<{
+  id: Scalars['bigint'];
+}>;
+
+export type InactivateRecurringMutation = {
+  __typename?: 'mutation_root';
+  update_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined;
+};
+
 export type UpdateRecurringMutationVariables = Exact<{
   id: Scalars['bigint'];
   changes?: InputMaybe<Recurring_Set_Input>;
@@ -6715,6 +7366,17 @@ export type InsertTransactionMutation = {
   __typename?: 'mutation_root';
   insert_transactions_one?:
     | { __typename?: 'transactions'; id: any; amount: any }
+    | undefined;
+};
+
+export type DeleteTransactionByIdMutationVariables = Exact<{
+  id: Scalars['bigint'];
+}>;
+
+export type DeleteTransactionByIdMutation = {
+  __typename?: 'mutation_root';
+  delete_transactions_by_pk?:
+    | { __typename?: 'transactions'; id: any }
     | undefined;
 };
 
@@ -6930,62 +7592,6 @@ export type ActiveLiabilityAccountsQuery = {
   }>;
 };
 
-export type AllRecurringQueryVariables = Exact<{
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-}>;
-
-export type AllRecurringQuery = {
-  __typename?: 'query_root';
-  recurring: Array<{
-    __typename?: 'recurring';
-    id: any;
-    title: string;
-    created_at: string;
-    updated_at: string;
-    cycle_type: number;
-    duration_type: number;
-    amount: any;
-    start_on: any;
-    transaction_type: number;
-    account_from: any;
-    account_to: any;
-    category_id?: any | undefined;
-    description?: string | undefined;
-    until_date?: any | undefined;
-    no_of_times?: number | undefined;
-    recurring_labels: Array<{
-      __typename?: 'recurring_labels';
-      label_id: number;
-    }>;
-    accountInfoByAccountTo: {
-      __typename?: 'account_info';
-      name?: string | undefined;
-    };
-    account_info: { __typename?: 'account_info'; name?: string | undefined };
-    transactions_aggregate: {
-      __typename?: 'transactions_aggregate';
-      aggregate?:
-        | {
-            __typename?: 'transactions_aggregate_fields';
-            sum?:
-              | {
-                  __typename?: 'transactions_sum_fields';
-                  amount?: any | undefined;
-                }
-              | undefined;
-          }
-        | undefined;
-    };
-  }>;
-  recurring_aggregate: {
-    __typename?: 'recurring_aggregate';
-    aggregate?:
-      | { __typename?: 'recurring_aggregate_fields'; count: number }
-      | undefined;
-  };
-};
-
 export type AllRevenueAccountsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -7024,6 +7630,56 @@ export type ActiveRevenueAccountsQuery = {
   }>;
 };
 
+export type RecurringTransactionsQueryVariables = Exact<{
+  recurringId: Scalars['bigint'];
+}>;
+
+export type RecurringTransactionsQuery = {
+  __typename?: 'query_root';
+  transactions: Array<{
+    __typename?: 'transactions';
+    id: any;
+    amount: any;
+    created_at: string;
+    transaction_date: any;
+    updated_at: string;
+    description?: string | undefined;
+    recurring_id?: any | undefined;
+    category?: { __typename?: 'categories'; name: string } | undefined;
+    transaction_labels: Array<{
+      __typename?: 'transaction_labels';
+      label: { __typename?: 'labels'; name: string };
+    }>;
+  }>;
+  transactions_aggregate: {
+    __typename?: 'transactions_aggregate';
+    aggregate?:
+      | { __typename?: 'transactions_aggregate_fields'; count: number }
+      | undefined;
+  };
+};
+
+export type GetTransactionByIdQueryVariables = Exact<{
+  id: Scalars['bigint'];
+}>;
+
+export type GetTransactionByIdQuery = {
+  __typename?: 'query_root';
+  transactions_by_pk?:
+    | {
+        __typename?: 'transactions';
+        amount: any;
+        category_id?: any | undefined;
+        created_at: string;
+        description?: string | undefined;
+        id: any;
+        recurring_id?: any | undefined;
+        transaction_date: any;
+        updated_at: string;
+      }
+    | undefined;
+};
+
 export type FetchLabelsSubscriptionVariables = Exact<{ [key: string]: never }>;
 
 export type FetchLabelsSubscription = {
@@ -7035,6 +7691,71 @@ export type FetchLabelsSubscription = {
     created_at: string;
     updated_at: string;
   }>;
+};
+
+export type RecurringSubscriptionVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+}>;
+
+export type RecurringSubscription = {
+  __typename?: 'subscription_root';
+  recurring: Array<{
+    __typename?: 'recurring';
+    id: any;
+    title: string;
+    created_at: string;
+    updated_at: string;
+    cycle_type: number;
+    duration_type: number;
+    amount: any;
+    start_on: any;
+    transaction_type: number;
+    account_from: any;
+    account_to: any;
+    category_id?: any | undefined;
+    description?: string | undefined;
+    until_date?: any | undefined;
+    no_of_times?: number | undefined;
+    active: boolean;
+    recurring_labels: Array<{
+      __typename?: 'recurring_labels';
+      label_id: number;
+    }>;
+    accountInfoByAccountTo: {
+      __typename?: 'account_info';
+      name?: string | undefined;
+    };
+    account_info: { __typename?: 'account_info'; name?: string | undefined };
+    transactions_aggregate: {
+      __typename?: 'transactions_aggregate';
+      aggregate?:
+        | {
+            __typename?: 'transactions_aggregate_fields';
+            sum?:
+              | {
+                  __typename?: 'transactions_sum_fields';
+                  amount?: any | undefined;
+                }
+              | undefined;
+          }
+        | undefined;
+    };
+  }>;
+};
+
+export type RecurringAggregateSubscriptionVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type RecurringAggregateSubscription = {
+  __typename?: 'subscription_root';
+  recurring_aggregate: {
+    __typename?: 'recurring_aggregate';
+    aggregate?:
+      | { __typename?: 'recurring_aggregate_fields'; count: number }
+      | undefined;
+  };
 };
 
 export const InsertAssetDocument = gql`
@@ -9205,6 +9926,107 @@ export type DeleteRecurringMutationOptions = Apollo.BaseMutationOptions<
   DeleteRecurringMutation,
   DeleteRecurringMutationVariables
 >;
+export const InactivateRecurringDocument = gql`
+  mutation inactivateRecurring($id: bigint!) {
+    update_recurring_by_pk(pk_columns: { id: $id }, _set: { active: false }) {
+      id
+    }
+  }
+`;
+export type InactivateRecurringMutationFn = Apollo.MutationFunction<
+  InactivateRecurringMutation,
+  InactivateRecurringMutationVariables
+>;
+export type InactivateRecurringComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    InactivateRecurringMutation,
+    InactivateRecurringMutationVariables
+  >,
+  'mutation'
+>;
+
+export const InactivateRecurringComponent = (
+  props: InactivateRecurringComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    InactivateRecurringMutation,
+    InactivateRecurringMutationVariables
+  >
+    mutation={InactivateRecurringDocument}
+    {...props}
+  />
+);
+
+export type InactivateRecurringProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    InactivateRecurringMutation,
+    InactivateRecurringMutationVariables
+  >;
+} & TChildProps;
+export function withInactivateRecurring<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    InactivateRecurringMutation,
+    InactivateRecurringMutationVariables,
+    InactivateRecurringProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    InactivateRecurringMutation,
+    InactivateRecurringMutationVariables,
+    InactivateRecurringProps<TChildProps, TDataName>
+  >(InactivateRecurringDocument, {
+    alias: 'inactivateRecurring',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useInactivateRecurringMutation__
+ *
+ * To run a mutation, you first call `useInactivateRecurringMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInactivateRecurringMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [inactivateRecurringMutation, { data, loading, error }] = useInactivateRecurringMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useInactivateRecurringMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    InactivateRecurringMutation,
+    InactivateRecurringMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    InactivateRecurringMutation,
+    InactivateRecurringMutationVariables
+  >(InactivateRecurringDocument, options);
+}
+export type InactivateRecurringMutationHookResult = ReturnType<
+  typeof useInactivateRecurringMutation
+>;
+export type InactivateRecurringMutationResult =
+  Apollo.MutationResult<InactivateRecurringMutation>;
+export type InactivateRecurringMutationOptions = Apollo.BaseMutationOptions<
+  InactivateRecurringMutation,
+  InactivateRecurringMutationVariables
+>;
 export const UpdateRecurringDocument = gql`
   mutation updateRecurring(
     $id: bigint!
@@ -9943,6 +10765,107 @@ export type InsertTransactionMutationResult =
 export type InsertTransactionMutationOptions = Apollo.BaseMutationOptions<
   InsertTransactionMutation,
   InsertTransactionMutationVariables
+>;
+export const DeleteTransactionByIdDocument = gql`
+  mutation deleteTransactionById($id: bigint!) {
+    delete_transactions_by_pk(id: $id) {
+      id
+    }
+  }
+`;
+export type DeleteTransactionByIdMutationFn = Apollo.MutationFunction<
+  DeleteTransactionByIdMutation,
+  DeleteTransactionByIdMutationVariables
+>;
+export type DeleteTransactionByIdComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    DeleteTransactionByIdMutation,
+    DeleteTransactionByIdMutationVariables
+  >,
+  'mutation'
+>;
+
+export const DeleteTransactionByIdComponent = (
+  props: DeleteTransactionByIdComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    DeleteTransactionByIdMutation,
+    DeleteTransactionByIdMutationVariables
+  >
+    mutation={DeleteTransactionByIdDocument}
+    {...props}
+  />
+);
+
+export type DeleteTransactionByIdProps<
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+> = {
+  [key in TDataName]: Apollo.MutationFunction<
+    DeleteTransactionByIdMutation,
+    DeleteTransactionByIdMutationVariables
+  >;
+} & TChildProps;
+export function withDeleteTransactionById<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'mutate'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DeleteTransactionByIdMutation,
+    DeleteTransactionByIdMutationVariables,
+    DeleteTransactionByIdProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    DeleteTransactionByIdMutation,
+    DeleteTransactionByIdMutationVariables,
+    DeleteTransactionByIdProps<TChildProps, TDataName>
+  >(DeleteTransactionByIdDocument, {
+    alias: 'deleteTransactionById',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useDeleteTransactionByIdMutation__
+ *
+ * To run a mutation, you first call `useDeleteTransactionByIdMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteTransactionByIdMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteTransactionByIdMutation, { data, loading, error }] = useDeleteTransactionByIdMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteTransactionByIdMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteTransactionByIdMutation,
+    DeleteTransactionByIdMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DeleteTransactionByIdMutation,
+    DeleteTransactionByIdMutationVariables
+  >(DeleteTransactionByIdDocument, options);
+}
+export type DeleteTransactionByIdMutationHookResult = ReturnType<
+  typeof useDeleteTransactionByIdMutation
+>;
+export type DeleteTransactionByIdMutationResult =
+  Apollo.MutationResult<DeleteTransactionByIdMutation>;
+export type DeleteTransactionByIdMutationOptions = Apollo.BaseMutationOptions<
+  DeleteTransactionByIdMutation,
+  DeleteTransactionByIdMutationVariables
 >;
 export const UpdateUserDocument = gql`
   mutation updateUser($userId: uuid!, $changes: users_set_input) {
@@ -11373,146 +12296,6 @@ export type ActiveLiabilityAccountsQueryResult = Apollo.QueryResult<
   ActiveLiabilityAccountsQuery,
   ActiveLiabilityAccountsQueryVariables
 >;
-export const AllRecurringDocument = gql`
-  query allRecurring($limit: Int, $offset: Int) {
-    recurring(limit: $limit, offset: $offset, order_by: { title: asc }) {
-      id
-      title
-      created_at
-      updated_at
-      cycle_type
-      duration_type
-      amount
-      start_on
-      transaction_type
-      account_from
-      account_to
-      category_id
-      description
-      until_date
-      no_of_times
-      recurring_labels {
-        label_id
-      }
-      accountInfoByAccountTo {
-        name
-      }
-      account_info {
-        name
-      }
-      transactions_aggregate {
-        aggregate {
-          sum {
-            amount
-          }
-        }
-      }
-    }
-    recurring_aggregate {
-      aggregate {
-        count
-      }
-    }
-  }
-`;
-export type AllRecurringComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    AllRecurringQuery,
-    AllRecurringQueryVariables
-  >,
-  'query'
->;
-
-export const AllRecurringComponent = (props: AllRecurringComponentProps) => (
-  <ApolloReactComponents.Query<AllRecurringQuery, AllRecurringQueryVariables>
-    query={AllRecurringDocument}
-    {...props}
-  />
-);
-
-export type AllRecurringProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    AllRecurringQuery,
-    AllRecurringQueryVariables
-  >;
-} & TChildProps;
-export function withAllRecurring<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    AllRecurringQuery,
-    AllRecurringQueryVariables,
-    AllRecurringProps<TChildProps, TDataName>
-  >
-) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    AllRecurringQuery,
-    AllRecurringQueryVariables,
-    AllRecurringProps<TChildProps, TDataName>
-  >(AllRecurringDocument, {
-    alias: 'allRecurring',
-    ...operationOptions,
-  });
-}
-
-/**
- * __useAllRecurringQuery__
- *
- * To run a query within a React component, call `useAllRecurringQuery` and pass it any options that fit your needs.
- * When your component renders, `useAllRecurringQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useAllRecurringQuery({
- *   variables: {
- *      limit: // value for 'limit'
- *      offset: // value for 'offset'
- *   },
- * });
- */
-export function useAllRecurringQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    AllRecurringQuery,
-    AllRecurringQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AllRecurringQuery, AllRecurringQueryVariables>(
-    AllRecurringDocument,
-    options
-  );
-}
-export function useAllRecurringLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AllRecurringQuery,
-    AllRecurringQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AllRecurringQuery, AllRecurringQueryVariables>(
-    AllRecurringDocument,
-    options
-  );
-}
-export type AllRecurringQueryHookResult = ReturnType<
-  typeof useAllRecurringQuery
->;
-export type AllRecurringLazyQueryHookResult = ReturnType<
-  typeof useAllRecurringLazyQuery
->;
-export type AllRecurringQueryResult = Apollo.QueryResult<
-  AllRecurringQuery,
-  AllRecurringQueryVariables
->;
 export const AllRevenueAccountsDocument = gql`
   query allRevenueAccounts($limit: Int, $offset: Int) {
     revenues(limit: $limit, offset: $offset, order_by: { name: asc }) {
@@ -11743,6 +12526,261 @@ export type ActiveRevenueAccountsQueryResult = Apollo.QueryResult<
   ActiveRevenueAccountsQuery,
   ActiveRevenueAccountsQueryVariables
 >;
+export const RecurringTransactionsDocument = gql`
+  query recurringTransactions($recurringId: bigint!) {
+    transactions(
+      where: { recurring_id: { _eq: $recurringId } }
+      order_by: { transaction_date: asc }
+    ) {
+      id
+      amount
+      created_at
+      transaction_date
+      updated_at
+      description
+      recurring_id
+      category {
+        name
+      }
+      transaction_labels {
+        label {
+          name
+        }
+      }
+    }
+    transactions_aggregate(where: { recurring_id: { _eq: $recurringId } }) {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+export type RecurringTransactionsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    RecurringTransactionsQuery,
+    RecurringTransactionsQueryVariables
+  >,
+  'query'
+> &
+  (
+    | { variables: RecurringTransactionsQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const RecurringTransactionsComponent = (
+  props: RecurringTransactionsComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    RecurringTransactionsQuery,
+    RecurringTransactionsQueryVariables
+  >
+    query={RecurringTransactionsDocument}
+    {...props}
+  />
+);
+
+export type RecurringTransactionsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    RecurringTransactionsQuery,
+    RecurringTransactionsQueryVariables
+  >;
+} & TChildProps;
+export function withRecurringTransactions<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    RecurringTransactionsQuery,
+    RecurringTransactionsQueryVariables,
+    RecurringTransactionsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    RecurringTransactionsQuery,
+    RecurringTransactionsQueryVariables,
+    RecurringTransactionsProps<TChildProps, TDataName>
+  >(RecurringTransactionsDocument, {
+    alias: 'recurringTransactions',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useRecurringTransactionsQuery__
+ *
+ * To run a query within a React component, call `useRecurringTransactionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRecurringTransactionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRecurringTransactionsQuery({
+ *   variables: {
+ *      recurringId: // value for 'recurringId'
+ *   },
+ * });
+ */
+export function useRecurringTransactionsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    RecurringTransactionsQuery,
+    RecurringTransactionsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    RecurringTransactionsQuery,
+    RecurringTransactionsQueryVariables
+  >(RecurringTransactionsDocument, options);
+}
+export function useRecurringTransactionsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    RecurringTransactionsQuery,
+    RecurringTransactionsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    RecurringTransactionsQuery,
+    RecurringTransactionsQueryVariables
+  >(RecurringTransactionsDocument, options);
+}
+export type RecurringTransactionsQueryHookResult = ReturnType<
+  typeof useRecurringTransactionsQuery
+>;
+export type RecurringTransactionsLazyQueryHookResult = ReturnType<
+  typeof useRecurringTransactionsLazyQuery
+>;
+export type RecurringTransactionsQueryResult = Apollo.QueryResult<
+  RecurringTransactionsQuery,
+  RecurringTransactionsQueryVariables
+>;
+export const GetTransactionByIdDocument = gql`
+  query getTransactionById($id: bigint!) {
+    transactions_by_pk(id: $id) {
+      amount
+      category_id
+      created_at
+      description
+      id
+      recurring_id
+      transaction_date
+      updated_at
+    }
+  }
+`;
+export type GetTransactionByIdComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    GetTransactionByIdQuery,
+    GetTransactionByIdQueryVariables
+  >,
+  'query'
+> &
+  (
+    | { variables: GetTransactionByIdQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const GetTransactionByIdComponent = (
+  props: GetTransactionByIdComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    GetTransactionByIdQuery,
+    GetTransactionByIdQueryVariables
+  >
+    query={GetTransactionByIdDocument}
+    {...props}
+  />
+);
+
+export type GetTransactionByIdProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    GetTransactionByIdQuery,
+    GetTransactionByIdQueryVariables
+  >;
+} & TChildProps;
+export function withGetTransactionById<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    GetTransactionByIdQuery,
+    GetTransactionByIdQueryVariables,
+    GetTransactionByIdProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    GetTransactionByIdQuery,
+    GetTransactionByIdQueryVariables,
+    GetTransactionByIdProps<TChildProps, TDataName>
+  >(GetTransactionByIdDocument, {
+    alias: 'getTransactionById',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useGetTransactionByIdQuery__
+ *
+ * To run a query within a React component, call `useGetTransactionByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTransactionByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTransactionByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetTransactionByIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetTransactionByIdQuery,
+    GetTransactionByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetTransactionByIdQuery,
+    GetTransactionByIdQueryVariables
+  >(GetTransactionByIdDocument, options);
+}
+export function useGetTransactionByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetTransactionByIdQuery,
+    GetTransactionByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetTransactionByIdQuery,
+    GetTransactionByIdQueryVariables
+  >(GetTransactionByIdDocument, options);
+}
+export type GetTransactionByIdQueryHookResult = ReturnType<
+  typeof useGetTransactionByIdQuery
+>;
+export type GetTransactionByIdLazyQueryHookResult = ReturnType<
+  typeof useGetTransactionByIdLazyQuery
+>;
+export type GetTransactionByIdQueryResult = Apollo.QueryResult<
+  GetTransactionByIdQuery,
+  GetTransactionByIdQueryVariables
+>;
 export const FetchLabelsDocument = gql`
   subscription fetchLabels {
     labels(order_by: { created_at: desc }) {
@@ -11835,6 +12873,221 @@ export type FetchLabelsSubscriptionHookResult = ReturnType<
 >;
 export type FetchLabelsSubscriptionResult =
   Apollo.SubscriptionResult<FetchLabelsSubscription>;
+export const RecurringDocument = gql`
+  subscription recurring($limit: Int, $offset: Int) {
+    recurring(limit: $limit, offset: $offset, order_by: { title: asc }) {
+      id
+      title
+      created_at
+      updated_at
+      cycle_type
+      duration_type
+      amount
+      start_on
+      transaction_type
+      account_from
+      account_to
+      category_id
+      description
+      until_date
+      no_of_times
+      active
+      recurring_labels {
+        label_id
+      }
+      accountInfoByAccountTo {
+        name
+      }
+      account_info {
+        name
+      }
+      transactions_aggregate {
+        aggregate {
+          sum {
+            amount
+          }
+        }
+      }
+    }
+  }
+`;
+export type RecurringComponentProps = Omit<
+  ApolloReactComponents.SubscriptionComponentOptions<
+    RecurringSubscription,
+    RecurringSubscriptionVariables
+  >,
+  'subscription'
+>;
+
+export const RecurringComponent = (props: RecurringComponentProps) => (
+  <ApolloReactComponents.Subscription<
+    RecurringSubscription,
+    RecurringSubscriptionVariables
+  >
+    subscription={RecurringDocument}
+    {...props}
+  />
+);
+
+export type RecurringProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    RecurringSubscription,
+    RecurringSubscriptionVariables
+  >;
+} & TChildProps;
+export function withRecurring<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    RecurringSubscription,
+    RecurringSubscriptionVariables,
+    RecurringProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withSubscription<
+    TProps,
+    RecurringSubscription,
+    RecurringSubscriptionVariables,
+    RecurringProps<TChildProps, TDataName>
+  >(RecurringDocument, {
+    alias: 'recurring',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useRecurringSubscription__
+ *
+ * To run a query within a React component, call `useRecurringSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useRecurringSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRecurringSubscription({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useRecurringSubscription(
+  baseOptions?: Apollo.SubscriptionHookOptions<
+    RecurringSubscription,
+    RecurringSubscriptionVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSubscription<
+    RecurringSubscription,
+    RecurringSubscriptionVariables
+  >(RecurringDocument, options);
+}
+export type RecurringSubscriptionHookResult = ReturnType<
+  typeof useRecurringSubscription
+>;
+export type RecurringSubscriptionResult =
+  Apollo.SubscriptionResult<RecurringSubscription>;
+export const RecurringAggregateDocument = gql`
+  subscription recurringAggregate {
+    recurring_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+export type RecurringAggregateComponentProps = Omit<
+  ApolloReactComponents.SubscriptionComponentOptions<
+    RecurringAggregateSubscription,
+    RecurringAggregateSubscriptionVariables
+  >,
+  'subscription'
+>;
+
+export const RecurringAggregateComponent = (
+  props: RecurringAggregateComponentProps
+) => (
+  <ApolloReactComponents.Subscription<
+    RecurringAggregateSubscription,
+    RecurringAggregateSubscriptionVariables
+  >
+    subscription={RecurringAggregateDocument}
+    {...props}
+  />
+);
+
+export type RecurringAggregateProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    RecurringAggregateSubscription,
+    RecurringAggregateSubscriptionVariables
+  >;
+} & TChildProps;
+export function withRecurringAggregate<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    RecurringAggregateSubscription,
+    RecurringAggregateSubscriptionVariables,
+    RecurringAggregateProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withSubscription<
+    TProps,
+    RecurringAggregateSubscription,
+    RecurringAggregateSubscriptionVariables,
+    RecurringAggregateProps<TChildProps, TDataName>
+  >(RecurringAggregateDocument, {
+    alias: 'recurringAggregate',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useRecurringAggregateSubscription__
+ *
+ * To run a query within a React component, call `useRecurringAggregateSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useRecurringAggregateSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRecurringAggregateSubscription({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useRecurringAggregateSubscription(
+  baseOptions?: Apollo.SubscriptionHookOptions<
+    RecurringAggregateSubscription,
+    RecurringAggregateSubscriptionVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSubscription<
+    RecurringAggregateSubscription,
+    RecurringAggregateSubscriptionVariables
+  >(RecurringAggregateDocument, options);
+}
+export type RecurringAggregateSubscriptionHookResult = ReturnType<
+  typeof useRecurringAggregateSubscription
+>;
+export type RecurringAggregateSubscriptionResult =
+  Apollo.SubscriptionResult<RecurringAggregateSubscription>;
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
@@ -11944,11 +13197,9 @@ export type DirectiveResolverFn<
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  Boolean_cast_exp: Boolean_Cast_Exp;
   Boolean_comparison_exp: Boolean_Comparison_Exp;
   Float: ResolverTypeWrapper<Scalars['Float']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
-  Int_cast_exp: Int_Cast_Exp;
   Int_comparison_exp: Int_Comparison_Exp;
   String: ResolverTypeWrapper<Scalars['String']>;
   String_comparison_exp: String_Comparison_Exp;
@@ -11972,8 +13223,11 @@ export type ResolversTypes = {
   account_info_stddev_fields: ResolverTypeWrapper<Account_Info_Stddev_Fields>;
   account_info_stddev_pop_fields: ResolverTypeWrapper<Account_Info_Stddev_Pop_Fields>;
   account_info_stddev_samp_fields: ResolverTypeWrapper<Account_Info_Stddev_Samp_Fields>;
+  account_info_stream_cursor_input: Account_Info_Stream_Cursor_Input;
+  account_info_stream_cursor_value_input: Account_Info_Stream_Cursor_Value_Input;
   account_info_sum_fields: ResolverTypeWrapper<Account_Info_Sum_Fields>;
   account_info_update_column: Account_Info_Update_Column;
+  account_info_updates: Account_Info_Updates;
   account_info_var_pop_fields: ResolverTypeWrapper<Account_Info_Var_Pop_Fields>;
   account_info_var_samp_fields: ResolverTypeWrapper<Account_Info_Var_Samp_Fields>;
   account_info_variance_fields: ResolverTypeWrapper<Account_Info_Variance_Fields>;
@@ -11997,16 +13251,17 @@ export type ResolversTypes = {
   assets_stddev_fields: ResolverTypeWrapper<Assets_Stddev_Fields>;
   assets_stddev_pop_fields: ResolverTypeWrapper<Assets_Stddev_Pop_Fields>;
   assets_stddev_samp_fields: ResolverTypeWrapper<Assets_Stddev_Samp_Fields>;
+  assets_stream_cursor_input: Assets_Stream_Cursor_Input;
+  assets_stream_cursor_value_input: Assets_Stream_Cursor_Value_Input;
   assets_sum_fields: ResolverTypeWrapper<Assets_Sum_Fields>;
   assets_update_column: Assets_Update_Column;
+  assets_updates: Assets_Updates;
   assets_var_pop_fields: ResolverTypeWrapper<Assets_Var_Pop_Fields>;
   assets_var_samp_fields: ResolverTypeWrapper<Assets_Var_Samp_Fields>;
   assets_variance_fields: ResolverTypeWrapper<Assets_Variance_Fields>;
   bigint: ResolverTypeWrapper<Scalars['bigint']>;
-  bigint_cast_exp: Bigint_Cast_Exp;
   bigint_comparison_exp: Bigint_Comparison_Exp;
   bpchar: ResolverTypeWrapper<Scalars['bpchar']>;
-  bpchar_cast_exp: Bpchar_Cast_Exp;
   bpchar_comparison_exp: Bpchar_Comparison_Exp;
   categories: ResolverTypeWrapper<Categories>;
   categories_aggregate: ResolverTypeWrapper<Categories_Aggregate>;
@@ -12028,13 +13283,16 @@ export type ResolversTypes = {
   categories_stddev_fields: ResolverTypeWrapper<Categories_Stddev_Fields>;
   categories_stddev_pop_fields: ResolverTypeWrapper<Categories_Stddev_Pop_Fields>;
   categories_stddev_samp_fields: ResolverTypeWrapper<Categories_Stddev_Samp_Fields>;
+  categories_stream_cursor_input: Categories_Stream_Cursor_Input;
+  categories_stream_cursor_value_input: Categories_Stream_Cursor_Value_Input;
   categories_sum_fields: ResolverTypeWrapper<Categories_Sum_Fields>;
   categories_update_column: Categories_Update_Column;
+  categories_updates: Categories_Updates;
   categories_var_pop_fields: ResolverTypeWrapper<Categories_Var_Pop_Fields>;
   categories_var_samp_fields: ResolverTypeWrapper<Categories_Var_Samp_Fields>;
   categories_variance_fields: ResolverTypeWrapper<Categories_Variance_Fields>;
+  cursor_ordering: Cursor_Ordering;
   date: ResolverTypeWrapper<Scalars['date']>;
-  date_cast_exp: Date_Cast_Exp;
   date_comparison_exp: Date_Comparison_Exp;
   expenses: ResolverTypeWrapper<Expenses>;
   expenses_aggregate: ResolverTypeWrapper<Expenses_Aggregate>;
@@ -12056,13 +13314,15 @@ export type ResolversTypes = {
   expenses_stddev_fields: ResolverTypeWrapper<Expenses_Stddev_Fields>;
   expenses_stddev_pop_fields: ResolverTypeWrapper<Expenses_Stddev_Pop_Fields>;
   expenses_stddev_samp_fields: ResolverTypeWrapper<Expenses_Stddev_Samp_Fields>;
+  expenses_stream_cursor_input: Expenses_Stream_Cursor_Input;
+  expenses_stream_cursor_value_input: Expenses_Stream_Cursor_Value_Input;
   expenses_sum_fields: ResolverTypeWrapper<Expenses_Sum_Fields>;
   expenses_update_column: Expenses_Update_Column;
+  expenses_updates: Expenses_Updates;
   expenses_var_pop_fields: ResolverTypeWrapper<Expenses_Var_Pop_Fields>;
   expenses_var_samp_fields: ResolverTypeWrapper<Expenses_Var_Samp_Fields>;
   expenses_variance_fields: ResolverTypeWrapper<Expenses_Variance_Fields>;
   float8: ResolverTypeWrapper<Scalars['float8']>;
-  float8_cast_exp: Float8_Cast_Exp;
   float8_comparison_exp: Float8_Comparison_Exp;
   labels: ResolverTypeWrapper<Labels>;
   labels_aggregate: ResolverTypeWrapper<Labels_Aggregate>;
@@ -12084,8 +13344,11 @@ export type ResolversTypes = {
   labels_stddev_fields: ResolverTypeWrapper<Labels_Stddev_Fields>;
   labels_stddev_pop_fields: ResolverTypeWrapper<Labels_Stddev_Pop_Fields>;
   labels_stddev_samp_fields: ResolverTypeWrapper<Labels_Stddev_Samp_Fields>;
+  labels_stream_cursor_input: Labels_Stream_Cursor_Input;
+  labels_stream_cursor_value_input: Labels_Stream_Cursor_Value_Input;
   labels_sum_fields: ResolverTypeWrapper<Labels_Sum_Fields>;
   labels_update_column: Labels_Update_Column;
+  labels_updates: Labels_Updates;
   labels_var_pop_fields: ResolverTypeWrapper<Labels_Var_Pop_Fields>;
   labels_var_samp_fields: ResolverTypeWrapper<Labels_Var_Samp_Fields>;
   labels_variance_fields: ResolverTypeWrapper<Labels_Variance_Fields>;
@@ -12109,8 +13372,11 @@ export type ResolversTypes = {
   liabilities_stddev_fields: ResolverTypeWrapper<Liabilities_Stddev_Fields>;
   liabilities_stddev_pop_fields: ResolverTypeWrapper<Liabilities_Stddev_Pop_Fields>;
   liabilities_stddev_samp_fields: ResolverTypeWrapper<Liabilities_Stddev_Samp_Fields>;
+  liabilities_stream_cursor_input: Liabilities_Stream_Cursor_Input;
+  liabilities_stream_cursor_value_input: Liabilities_Stream_Cursor_Value_Input;
   liabilities_sum_fields: ResolverTypeWrapper<Liabilities_Sum_Fields>;
   liabilities_update_column: Liabilities_Update_Column;
+  liabilities_updates: Liabilities_Updates;
   liabilities_var_pop_fields: ResolverTypeWrapper<Liabilities_Var_Pop_Fields>;
   liabilities_var_samp_fields: ResolverTypeWrapper<Liabilities_Var_Samp_Fields>;
   liabilities_variance_fields: ResolverTypeWrapper<Liabilities_Variance_Fields>;
@@ -12134,8 +13400,11 @@ export type ResolversTypes = {
   notifications_stddev_fields: ResolverTypeWrapper<Notifications_Stddev_Fields>;
   notifications_stddev_pop_fields: ResolverTypeWrapper<Notifications_Stddev_Pop_Fields>;
   notifications_stddev_samp_fields: ResolverTypeWrapper<Notifications_Stddev_Samp_Fields>;
+  notifications_stream_cursor_input: Notifications_Stream_Cursor_Input;
+  notifications_stream_cursor_value_input: Notifications_Stream_Cursor_Value_Input;
   notifications_sum_fields: ResolverTypeWrapper<Notifications_Sum_Fields>;
   notifications_update_column: Notifications_Update_Column;
+  notifications_updates: Notifications_Updates;
   notifications_var_pop_fields: ResolverTypeWrapper<Notifications_Var_Pop_Fields>;
   notifications_var_samp_fields: ResolverTypeWrapper<Notifications_Var_Samp_Fields>;
   notifications_variance_fields: ResolverTypeWrapper<Notifications_Variance_Fields>;
@@ -12179,9 +13448,12 @@ export type ResolversTypes = {
   recurring_labels_stddev_pop_order_by: Recurring_Labels_Stddev_Pop_Order_By;
   recurring_labels_stddev_samp_fields: ResolverTypeWrapper<Recurring_Labels_Stddev_Samp_Fields>;
   recurring_labels_stddev_samp_order_by: Recurring_Labels_Stddev_Samp_Order_By;
+  recurring_labels_stream_cursor_input: Recurring_Labels_Stream_Cursor_Input;
+  recurring_labels_stream_cursor_value_input: Recurring_Labels_Stream_Cursor_Value_Input;
   recurring_labels_sum_fields: ResolverTypeWrapper<Recurring_Labels_Sum_Fields>;
   recurring_labels_sum_order_by: Recurring_Labels_Sum_Order_By;
   recurring_labels_update_column: Recurring_Labels_Update_Column;
+  recurring_labels_updates: Recurring_Labels_Updates;
   recurring_labels_var_pop_fields: ResolverTypeWrapper<Recurring_Labels_Var_Pop_Fields>;
   recurring_labels_var_pop_order_by: Recurring_Labels_Var_Pop_Order_By;
   recurring_labels_var_samp_fields: ResolverTypeWrapper<Recurring_Labels_Var_Samp_Fields>;
@@ -12205,9 +13477,12 @@ export type ResolversTypes = {
   recurring_stddev_pop_order_by: Recurring_Stddev_Pop_Order_By;
   recurring_stddev_samp_fields: ResolverTypeWrapper<Recurring_Stddev_Samp_Fields>;
   recurring_stddev_samp_order_by: Recurring_Stddev_Samp_Order_By;
+  recurring_stream_cursor_input: Recurring_Stream_Cursor_Input;
+  recurring_stream_cursor_value_input: Recurring_Stream_Cursor_Value_Input;
   recurring_sum_fields: ResolverTypeWrapper<Recurring_Sum_Fields>;
   recurring_sum_order_by: Recurring_Sum_Order_By;
   recurring_update_column: Recurring_Update_Column;
+  recurring_updates: Recurring_Updates;
   recurring_var_pop_fields: ResolverTypeWrapper<Recurring_Var_Pop_Fields>;
   recurring_var_pop_order_by: Recurring_Var_Pop_Order_By;
   recurring_var_samp_fields: ResolverTypeWrapper<Recurring_Var_Samp_Fields>;
@@ -12234,14 +13509,16 @@ export type ResolversTypes = {
   revenues_stddev_fields: ResolverTypeWrapper<Revenues_Stddev_Fields>;
   revenues_stddev_pop_fields: ResolverTypeWrapper<Revenues_Stddev_Pop_Fields>;
   revenues_stddev_samp_fields: ResolverTypeWrapper<Revenues_Stddev_Samp_Fields>;
+  revenues_stream_cursor_input: Revenues_Stream_Cursor_Input;
+  revenues_stream_cursor_value_input: Revenues_Stream_Cursor_Value_Input;
   revenues_sum_fields: ResolverTypeWrapper<Revenues_Sum_Fields>;
   revenues_update_column: Revenues_Update_Column;
+  revenues_updates: Revenues_Updates;
   revenues_var_pop_fields: ResolverTypeWrapper<Revenues_Var_Pop_Fields>;
   revenues_var_samp_fields: ResolverTypeWrapper<Revenues_Var_Samp_Fields>;
   revenues_variance_fields: ResolverTypeWrapper<Revenues_Variance_Fields>;
   subscription_root: ResolverTypeWrapper<{}>;
   timestamptz: ResolverTypeWrapper<Scalars['timestamptz']>;
-  timestamptz_cast_exp: Timestamptz_Cast_Exp;
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
   transaction_accounts: ResolverTypeWrapper<Transaction_Accounts>;
   transaction_accounts_aggregate: ResolverTypeWrapper<Transaction_Accounts_Aggregate>;
@@ -12270,9 +13547,12 @@ export type ResolversTypes = {
   transaction_accounts_stddev_pop_order_by: Transaction_Accounts_Stddev_Pop_Order_By;
   transaction_accounts_stddev_samp_fields: ResolverTypeWrapper<Transaction_Accounts_Stddev_Samp_Fields>;
   transaction_accounts_stddev_samp_order_by: Transaction_Accounts_Stddev_Samp_Order_By;
+  transaction_accounts_stream_cursor_input: Transaction_Accounts_Stream_Cursor_Input;
+  transaction_accounts_stream_cursor_value_input: Transaction_Accounts_Stream_Cursor_Value_Input;
   transaction_accounts_sum_fields: ResolverTypeWrapper<Transaction_Accounts_Sum_Fields>;
   transaction_accounts_sum_order_by: Transaction_Accounts_Sum_Order_By;
   transaction_accounts_update_column: Transaction_Accounts_Update_Column;
+  transaction_accounts_updates: Transaction_Accounts_Updates;
   transaction_accounts_var_pop_fields: ResolverTypeWrapper<Transaction_Accounts_Var_Pop_Fields>;
   transaction_accounts_var_pop_order_by: Transaction_Accounts_Var_Pop_Order_By;
   transaction_accounts_var_samp_fields: ResolverTypeWrapper<Transaction_Accounts_Var_Samp_Fields>;
@@ -12299,8 +13579,11 @@ export type ResolversTypes = {
   transaction_attachments_stddev_fields: ResolverTypeWrapper<Transaction_Attachments_Stddev_Fields>;
   transaction_attachments_stddev_pop_fields: ResolverTypeWrapper<Transaction_Attachments_Stddev_Pop_Fields>;
   transaction_attachments_stddev_samp_fields: ResolverTypeWrapper<Transaction_Attachments_Stddev_Samp_Fields>;
+  transaction_attachments_stream_cursor_input: Transaction_Attachments_Stream_Cursor_Input;
+  transaction_attachments_stream_cursor_value_input: Transaction_Attachments_Stream_Cursor_Value_Input;
   transaction_attachments_sum_fields: ResolverTypeWrapper<Transaction_Attachments_Sum_Fields>;
   transaction_attachments_update_column: Transaction_Attachments_Update_Column;
+  transaction_attachments_updates: Transaction_Attachments_Updates;
   transaction_attachments_var_pop_fields: ResolverTypeWrapper<Transaction_Attachments_Var_Pop_Fields>;
   transaction_attachments_var_samp_fields: ResolverTypeWrapper<Transaction_Attachments_Var_Samp_Fields>;
   transaction_attachments_variance_fields: ResolverTypeWrapper<Transaction_Attachments_Variance_Fields>;
@@ -12331,9 +13614,12 @@ export type ResolversTypes = {
   transaction_labels_stddev_pop_order_by: Transaction_Labels_Stddev_Pop_Order_By;
   transaction_labels_stddev_samp_fields: ResolverTypeWrapper<Transaction_Labels_Stddev_Samp_Fields>;
   transaction_labels_stddev_samp_order_by: Transaction_Labels_Stddev_Samp_Order_By;
+  transaction_labels_stream_cursor_input: Transaction_Labels_Stream_Cursor_Input;
+  transaction_labels_stream_cursor_value_input: Transaction_Labels_Stream_Cursor_Value_Input;
   transaction_labels_sum_fields: ResolverTypeWrapper<Transaction_Labels_Sum_Fields>;
   transaction_labels_sum_order_by: Transaction_Labels_Sum_Order_By;
   transaction_labels_update_column: Transaction_Labels_Update_Column;
+  transaction_labels_updates: Transaction_Labels_Updates;
   transaction_labels_var_pop_fields: ResolverTypeWrapper<Transaction_Labels_Var_Pop_Fields>;
   transaction_labels_var_pop_order_by: Transaction_Labels_Var_Pop_Order_By;
   transaction_labels_var_samp_fields: ResolverTypeWrapper<Transaction_Labels_Var_Samp_Fields>;
@@ -12368,9 +13654,12 @@ export type ResolversTypes = {
   transactions_stddev_pop_order_by: Transactions_Stddev_Pop_Order_By;
   transactions_stddev_samp_fields: ResolverTypeWrapper<Transactions_Stddev_Samp_Fields>;
   transactions_stddev_samp_order_by: Transactions_Stddev_Samp_Order_By;
+  transactions_stream_cursor_input: Transactions_Stream_Cursor_Input;
+  transactions_stream_cursor_value_input: Transactions_Stream_Cursor_Value_Input;
   transactions_sum_fields: ResolverTypeWrapper<Transactions_Sum_Fields>;
   transactions_sum_order_by: Transactions_Sum_Order_By;
   transactions_update_column: Transactions_Update_Column;
+  transactions_updates: Transactions_Updates;
   transactions_var_pop_fields: ResolverTypeWrapper<Transactions_Var_Pop_Fields>;
   transactions_var_pop_order_by: Transactions_Var_Pop_Order_By;
   transactions_var_samp_fields: ResolverTypeWrapper<Transactions_Var_Samp_Fields>;
@@ -12392,7 +13681,10 @@ export type ResolversTypes = {
   user_settings_pk_columns_input: User_Settings_Pk_Columns_Input;
   user_settings_select_column: User_Settings_Select_Column;
   user_settings_set_input: User_Settings_Set_Input;
+  user_settings_stream_cursor_input: User_Settings_Stream_Cursor_Input;
+  user_settings_stream_cursor_value_input: User_Settings_Stream_Cursor_Value_Input;
   user_settings_update_column: User_Settings_Update_Column;
+  user_settings_updates: User_Settings_Updates;
   users: ResolverTypeWrapper<Users>;
   users_aggregate: ResolverTypeWrapper<Users_Aggregate>;
   users_aggregate_fields: ResolverTypeWrapper<Users_Aggregate_Fields>;
@@ -12408,20 +13700,20 @@ export type ResolversTypes = {
   users_pk_columns_input: Users_Pk_Columns_Input;
   users_select_column: Users_Select_Column;
   users_set_input: Users_Set_Input;
+  users_stream_cursor_input: Users_Stream_Cursor_Input;
+  users_stream_cursor_value_input: Users_Stream_Cursor_Value_Input;
   users_update_column: Users_Update_Column;
+  users_updates: Users_Updates;
   uuid: ResolverTypeWrapper<Scalars['uuid']>;
-  uuid_cast_exp: Uuid_Cast_Exp;
   uuid_comparison_exp: Uuid_Comparison_Exp;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
-  Boolean_cast_exp: Boolean_Cast_Exp;
   Boolean_comparison_exp: Boolean_Comparison_Exp;
   Float: Scalars['Float'];
   Int: Scalars['Int'];
-  Int_cast_exp: Int_Cast_Exp;
   Int_comparison_exp: Int_Comparison_Exp;
   String: Scalars['String'];
   String_comparison_exp: String_Comparison_Exp;
@@ -12443,7 +13735,10 @@ export type ResolversParentTypes = {
   account_info_stddev_fields: Account_Info_Stddev_Fields;
   account_info_stddev_pop_fields: Account_Info_Stddev_Pop_Fields;
   account_info_stddev_samp_fields: Account_Info_Stddev_Samp_Fields;
+  account_info_stream_cursor_input: Account_Info_Stream_Cursor_Input;
+  account_info_stream_cursor_value_input: Account_Info_Stream_Cursor_Value_Input;
   account_info_sum_fields: Account_Info_Sum_Fields;
+  account_info_updates: Account_Info_Updates;
   account_info_var_pop_fields: Account_Info_Var_Pop_Fields;
   account_info_var_samp_fields: Account_Info_Var_Samp_Fields;
   account_info_variance_fields: Account_Info_Variance_Fields;
@@ -12465,15 +13760,16 @@ export type ResolversParentTypes = {
   assets_stddev_fields: Assets_Stddev_Fields;
   assets_stddev_pop_fields: Assets_Stddev_Pop_Fields;
   assets_stddev_samp_fields: Assets_Stddev_Samp_Fields;
+  assets_stream_cursor_input: Assets_Stream_Cursor_Input;
+  assets_stream_cursor_value_input: Assets_Stream_Cursor_Value_Input;
   assets_sum_fields: Assets_Sum_Fields;
+  assets_updates: Assets_Updates;
   assets_var_pop_fields: Assets_Var_Pop_Fields;
   assets_var_samp_fields: Assets_Var_Samp_Fields;
   assets_variance_fields: Assets_Variance_Fields;
   bigint: Scalars['bigint'];
-  bigint_cast_exp: Bigint_Cast_Exp;
   bigint_comparison_exp: Bigint_Comparison_Exp;
   bpchar: Scalars['bpchar'];
-  bpchar_cast_exp: Bpchar_Cast_Exp;
   bpchar_comparison_exp: Bpchar_Comparison_Exp;
   categories: Categories;
   categories_aggregate: Categories_Aggregate;
@@ -12493,12 +13789,14 @@ export type ResolversParentTypes = {
   categories_stddev_fields: Categories_Stddev_Fields;
   categories_stddev_pop_fields: Categories_Stddev_Pop_Fields;
   categories_stddev_samp_fields: Categories_Stddev_Samp_Fields;
+  categories_stream_cursor_input: Categories_Stream_Cursor_Input;
+  categories_stream_cursor_value_input: Categories_Stream_Cursor_Value_Input;
   categories_sum_fields: Categories_Sum_Fields;
+  categories_updates: Categories_Updates;
   categories_var_pop_fields: Categories_Var_Pop_Fields;
   categories_var_samp_fields: Categories_Var_Samp_Fields;
   categories_variance_fields: Categories_Variance_Fields;
   date: Scalars['date'];
-  date_cast_exp: Date_Cast_Exp;
   date_comparison_exp: Date_Comparison_Exp;
   expenses: Expenses;
   expenses_aggregate: Expenses_Aggregate;
@@ -12518,12 +13816,14 @@ export type ResolversParentTypes = {
   expenses_stddev_fields: Expenses_Stddev_Fields;
   expenses_stddev_pop_fields: Expenses_Stddev_Pop_Fields;
   expenses_stddev_samp_fields: Expenses_Stddev_Samp_Fields;
+  expenses_stream_cursor_input: Expenses_Stream_Cursor_Input;
+  expenses_stream_cursor_value_input: Expenses_Stream_Cursor_Value_Input;
   expenses_sum_fields: Expenses_Sum_Fields;
+  expenses_updates: Expenses_Updates;
   expenses_var_pop_fields: Expenses_Var_Pop_Fields;
   expenses_var_samp_fields: Expenses_Var_Samp_Fields;
   expenses_variance_fields: Expenses_Variance_Fields;
   float8: Scalars['float8'];
-  float8_cast_exp: Float8_Cast_Exp;
   float8_comparison_exp: Float8_Comparison_Exp;
   labels: Labels;
   labels_aggregate: Labels_Aggregate;
@@ -12543,7 +13843,10 @@ export type ResolversParentTypes = {
   labels_stddev_fields: Labels_Stddev_Fields;
   labels_stddev_pop_fields: Labels_Stddev_Pop_Fields;
   labels_stddev_samp_fields: Labels_Stddev_Samp_Fields;
+  labels_stream_cursor_input: Labels_Stream_Cursor_Input;
+  labels_stream_cursor_value_input: Labels_Stream_Cursor_Value_Input;
   labels_sum_fields: Labels_Sum_Fields;
+  labels_updates: Labels_Updates;
   labels_var_pop_fields: Labels_Var_Pop_Fields;
   labels_var_samp_fields: Labels_Var_Samp_Fields;
   labels_variance_fields: Labels_Variance_Fields;
@@ -12565,7 +13868,10 @@ export type ResolversParentTypes = {
   liabilities_stddev_fields: Liabilities_Stddev_Fields;
   liabilities_stddev_pop_fields: Liabilities_Stddev_Pop_Fields;
   liabilities_stddev_samp_fields: Liabilities_Stddev_Samp_Fields;
+  liabilities_stream_cursor_input: Liabilities_Stream_Cursor_Input;
+  liabilities_stream_cursor_value_input: Liabilities_Stream_Cursor_Value_Input;
   liabilities_sum_fields: Liabilities_Sum_Fields;
+  liabilities_updates: Liabilities_Updates;
   liabilities_var_pop_fields: Liabilities_Var_Pop_Fields;
   liabilities_var_samp_fields: Liabilities_Var_Samp_Fields;
   liabilities_variance_fields: Liabilities_Variance_Fields;
@@ -12587,7 +13893,10 @@ export type ResolversParentTypes = {
   notifications_stddev_fields: Notifications_Stddev_Fields;
   notifications_stddev_pop_fields: Notifications_Stddev_Pop_Fields;
   notifications_stddev_samp_fields: Notifications_Stddev_Samp_Fields;
+  notifications_stream_cursor_input: Notifications_Stream_Cursor_Input;
+  notifications_stream_cursor_value_input: Notifications_Stream_Cursor_Value_Input;
   notifications_sum_fields: Notifications_Sum_Fields;
+  notifications_updates: Notifications_Updates;
   notifications_var_pop_fields: Notifications_Var_Pop_Fields;
   notifications_var_samp_fields: Notifications_Var_Samp_Fields;
   notifications_variance_fields: Notifications_Variance_Fields;
@@ -12627,8 +13936,11 @@ export type ResolversParentTypes = {
   recurring_labels_stddev_pop_order_by: Recurring_Labels_Stddev_Pop_Order_By;
   recurring_labels_stddev_samp_fields: Recurring_Labels_Stddev_Samp_Fields;
   recurring_labels_stddev_samp_order_by: Recurring_Labels_Stddev_Samp_Order_By;
+  recurring_labels_stream_cursor_input: Recurring_Labels_Stream_Cursor_Input;
+  recurring_labels_stream_cursor_value_input: Recurring_Labels_Stream_Cursor_Value_Input;
   recurring_labels_sum_fields: Recurring_Labels_Sum_Fields;
   recurring_labels_sum_order_by: Recurring_Labels_Sum_Order_By;
+  recurring_labels_updates: Recurring_Labels_Updates;
   recurring_labels_var_pop_fields: Recurring_Labels_Var_Pop_Fields;
   recurring_labels_var_pop_order_by: Recurring_Labels_Var_Pop_Order_By;
   recurring_labels_var_samp_fields: Recurring_Labels_Var_Samp_Fields;
@@ -12651,8 +13963,11 @@ export type ResolversParentTypes = {
   recurring_stddev_pop_order_by: Recurring_Stddev_Pop_Order_By;
   recurring_stddev_samp_fields: Recurring_Stddev_Samp_Fields;
   recurring_stddev_samp_order_by: Recurring_Stddev_Samp_Order_By;
+  recurring_stream_cursor_input: Recurring_Stream_Cursor_Input;
+  recurring_stream_cursor_value_input: Recurring_Stream_Cursor_Value_Input;
   recurring_sum_fields: Recurring_Sum_Fields;
   recurring_sum_order_by: Recurring_Sum_Order_By;
+  recurring_updates: Recurring_Updates;
   recurring_var_pop_fields: Recurring_Var_Pop_Fields;
   recurring_var_pop_order_by: Recurring_Var_Pop_Order_By;
   recurring_var_samp_fields: Recurring_Var_Samp_Fields;
@@ -12677,13 +13992,15 @@ export type ResolversParentTypes = {
   revenues_stddev_fields: Revenues_Stddev_Fields;
   revenues_stddev_pop_fields: Revenues_Stddev_Pop_Fields;
   revenues_stddev_samp_fields: Revenues_Stddev_Samp_Fields;
+  revenues_stream_cursor_input: Revenues_Stream_Cursor_Input;
+  revenues_stream_cursor_value_input: Revenues_Stream_Cursor_Value_Input;
   revenues_sum_fields: Revenues_Sum_Fields;
+  revenues_updates: Revenues_Updates;
   revenues_var_pop_fields: Revenues_Var_Pop_Fields;
   revenues_var_samp_fields: Revenues_Var_Samp_Fields;
   revenues_variance_fields: Revenues_Variance_Fields;
   subscription_root: {};
   timestamptz: Scalars['timestamptz'];
-  timestamptz_cast_exp: Timestamptz_Cast_Exp;
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
   transaction_accounts: Transaction_Accounts;
   transaction_accounts_aggregate: Transaction_Accounts_Aggregate;
@@ -12710,8 +14027,11 @@ export type ResolversParentTypes = {
   transaction_accounts_stddev_pop_order_by: Transaction_Accounts_Stddev_Pop_Order_By;
   transaction_accounts_stddev_samp_fields: Transaction_Accounts_Stddev_Samp_Fields;
   transaction_accounts_stddev_samp_order_by: Transaction_Accounts_Stddev_Samp_Order_By;
+  transaction_accounts_stream_cursor_input: Transaction_Accounts_Stream_Cursor_Input;
+  transaction_accounts_stream_cursor_value_input: Transaction_Accounts_Stream_Cursor_Value_Input;
   transaction_accounts_sum_fields: Transaction_Accounts_Sum_Fields;
   transaction_accounts_sum_order_by: Transaction_Accounts_Sum_Order_By;
+  transaction_accounts_updates: Transaction_Accounts_Updates;
   transaction_accounts_var_pop_fields: Transaction_Accounts_Var_Pop_Fields;
   transaction_accounts_var_pop_order_by: Transaction_Accounts_Var_Pop_Order_By;
   transaction_accounts_var_samp_fields: Transaction_Accounts_Var_Samp_Fields;
@@ -12736,7 +14056,10 @@ export type ResolversParentTypes = {
   transaction_attachments_stddev_fields: Transaction_Attachments_Stddev_Fields;
   transaction_attachments_stddev_pop_fields: Transaction_Attachments_Stddev_Pop_Fields;
   transaction_attachments_stddev_samp_fields: Transaction_Attachments_Stddev_Samp_Fields;
+  transaction_attachments_stream_cursor_input: Transaction_Attachments_Stream_Cursor_Input;
+  transaction_attachments_stream_cursor_value_input: Transaction_Attachments_Stream_Cursor_Value_Input;
   transaction_attachments_sum_fields: Transaction_Attachments_Sum_Fields;
+  transaction_attachments_updates: Transaction_Attachments_Updates;
   transaction_attachments_var_pop_fields: Transaction_Attachments_Var_Pop_Fields;
   transaction_attachments_var_samp_fields: Transaction_Attachments_Var_Samp_Fields;
   transaction_attachments_variance_fields: Transaction_Attachments_Variance_Fields;
@@ -12765,8 +14088,11 @@ export type ResolversParentTypes = {
   transaction_labels_stddev_pop_order_by: Transaction_Labels_Stddev_Pop_Order_By;
   transaction_labels_stddev_samp_fields: Transaction_Labels_Stddev_Samp_Fields;
   transaction_labels_stddev_samp_order_by: Transaction_Labels_Stddev_Samp_Order_By;
+  transaction_labels_stream_cursor_input: Transaction_Labels_Stream_Cursor_Input;
+  transaction_labels_stream_cursor_value_input: Transaction_Labels_Stream_Cursor_Value_Input;
   transaction_labels_sum_fields: Transaction_Labels_Sum_Fields;
   transaction_labels_sum_order_by: Transaction_Labels_Sum_Order_By;
+  transaction_labels_updates: Transaction_Labels_Updates;
   transaction_labels_var_pop_fields: Transaction_Labels_Var_Pop_Fields;
   transaction_labels_var_pop_order_by: Transaction_Labels_Var_Pop_Order_By;
   transaction_labels_var_samp_fields: Transaction_Labels_Var_Samp_Fields;
@@ -12799,8 +14125,11 @@ export type ResolversParentTypes = {
   transactions_stddev_pop_order_by: Transactions_Stddev_Pop_Order_By;
   transactions_stddev_samp_fields: Transactions_Stddev_Samp_Fields;
   transactions_stddev_samp_order_by: Transactions_Stddev_Samp_Order_By;
+  transactions_stream_cursor_input: Transactions_Stream_Cursor_Input;
+  transactions_stream_cursor_value_input: Transactions_Stream_Cursor_Value_Input;
   transactions_sum_fields: Transactions_Sum_Fields;
   transactions_sum_order_by: Transactions_Sum_Order_By;
+  transactions_updates: Transactions_Updates;
   transactions_var_pop_fields: Transactions_Var_Pop_Fields;
   transactions_var_pop_order_by: Transactions_Var_Pop_Order_By;
   transactions_var_samp_fields: Transactions_Var_Samp_Fields;
@@ -12820,6 +14149,9 @@ export type ResolversParentTypes = {
   user_settings_order_by: User_Settings_Order_By;
   user_settings_pk_columns_input: User_Settings_Pk_Columns_Input;
   user_settings_set_input: User_Settings_Set_Input;
+  user_settings_stream_cursor_input: User_Settings_Stream_Cursor_Input;
+  user_settings_stream_cursor_value_input: User_Settings_Stream_Cursor_Value_Input;
+  user_settings_updates: User_Settings_Updates;
   users: Users;
   users_aggregate: Users_Aggregate;
   users_aggregate_fields: Users_Aggregate_Fields;
@@ -12833,8 +14165,10 @@ export type ResolversParentTypes = {
   users_order_by: Users_Order_By;
   users_pk_columns_input: Users_Pk_Columns_Input;
   users_set_input: Users_Set_Input;
+  users_stream_cursor_input: Users_Stream_Cursor_Input;
+  users_stream_cursor_value_input: Users_Stream_Cursor_Value_Input;
+  users_updates: Users_Updates;
   uuid: Scalars['uuid'];
-  uuid_cast_exp: Uuid_Cast_Exp;
   uuid_comparison_exp: Uuid_Comparison_Exp;
 };
 
@@ -14667,6 +16001,12 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_Account_Info_By_PkArgs, 'pk_columns'>
   >;
+  update_account_info_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['account_info_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Account_Info_ManyArgs, 'updates'>
+  >;
   update_assets?: Resolver<
     Maybe<ResolversTypes['assets_mutation_response']>,
     ParentType,
@@ -14678,6 +16018,12 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Assets_By_PkArgs, 'pk_columns'>
+  >;
+  update_assets_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['assets_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Assets_ManyArgs, 'updates'>
   >;
   update_categories?: Resolver<
     Maybe<ResolversTypes['categories_mutation_response']>,
@@ -14691,6 +16037,12 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_Categories_By_PkArgs, 'pk_columns'>
   >;
+  update_categories_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['categories_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Categories_ManyArgs, 'updates'>
+  >;
   update_expenses?: Resolver<
     Maybe<ResolversTypes['expenses_mutation_response']>,
     ParentType,
@@ -14702,6 +16054,12 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Expenses_By_PkArgs, 'pk_columns'>
+  >;
+  update_expenses_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['expenses_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Expenses_ManyArgs, 'updates'>
   >;
   update_labels?: Resolver<
     Maybe<ResolversTypes['labels_mutation_response']>,
@@ -14715,6 +16073,12 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_Labels_By_PkArgs, 'pk_columns'>
   >;
+  update_labels_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['labels_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Labels_ManyArgs, 'updates'>
+  >;
   update_liabilities?: Resolver<
     Maybe<ResolversTypes['liabilities_mutation_response']>,
     ParentType,
@@ -14727,6 +16091,12 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_Liabilities_By_PkArgs, 'pk_columns'>
   >;
+  update_liabilities_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['liabilities_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Liabilities_ManyArgs, 'updates'>
+  >;
   update_notifications?: Resolver<
     Maybe<ResolversTypes['notifications_mutation_response']>,
     ParentType,
@@ -14738,6 +16108,12 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Notifications_By_PkArgs, 'pk_columns'>
+  >;
+  update_notifications_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['notifications_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Notifications_ManyArgs, 'updates'>
   >;
   update_recurring?: Resolver<
     Maybe<ResolversTypes['recurring_mutation_response']>,
@@ -14763,6 +16139,18 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_Recurring_Labels_By_PkArgs, 'pk_columns'>
   >;
+  update_recurring_labels_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['recurring_labels_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Recurring_Labels_ManyArgs, 'updates'>
+  >;
+  update_recurring_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['recurring_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Recurring_ManyArgs, 'updates'>
+  >;
   update_revenues?: Resolver<
     Maybe<ResolversTypes['revenues_mutation_response']>,
     ParentType,
@@ -14774,6 +16162,12 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Revenues_By_PkArgs, 'pk_columns'>
+  >;
+  update_revenues_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['revenues_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Revenues_ManyArgs, 'updates'>
   >;
   update_transaction_accounts?: Resolver<
     Maybe<ResolversTypes['transaction_accounts_mutation_response']>,
@@ -14790,6 +16184,14 @@ export type Mutation_RootResolvers<
       'pk_columns'
     >
   >;
+  update_transaction_accounts_many?: Resolver<
+    Maybe<
+      Array<Maybe<ResolversTypes['transaction_accounts_mutation_response']>>
+    >,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Transaction_Accounts_ManyArgs, 'updates'>
+  >;
   update_transaction_attachments?: Resolver<
     Maybe<ResolversTypes['transaction_attachments_mutation_response']>,
     ParentType,
@@ -14803,6 +16205,17 @@ export type Mutation_RootResolvers<
     RequireFields<
       Mutation_RootUpdate_Transaction_Attachments_By_PkArgs,
       'pk_columns'
+    >
+  >;
+  update_transaction_attachments_many?: Resolver<
+    Maybe<
+      Array<Maybe<ResolversTypes['transaction_attachments_mutation_response']>>
+    >,
+    ParentType,
+    ContextType,
+    RequireFields<
+      Mutation_RootUpdate_Transaction_Attachments_ManyArgs,
+      'updates'
     >
   >;
   update_transaction_labels?: Resolver<
@@ -14820,6 +16233,12 @@ export type Mutation_RootResolvers<
       'pk_columns'
     >
   >;
+  update_transaction_labels_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['transaction_labels_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Transaction_Labels_ManyArgs, 'updates'>
+  >;
   update_transactions?: Resolver<
     Maybe<ResolversTypes['transactions_mutation_response']>,
     ParentType,
@@ -14831,6 +16250,12 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Transactions_By_PkArgs, 'pk_columns'>
+  >;
+  update_transactions_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['transactions_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Transactions_ManyArgs, 'updates'>
   >;
   update_user_settings?: Resolver<
     Maybe<ResolversTypes['user_settings_mutation_response']>,
@@ -14844,6 +16269,12 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_User_Settings_By_PkArgs, 'pk_columns'>
   >;
+  update_user_settings_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['user_settings_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_User_Settings_ManyArgs, 'updates'>
+  >;
   update_users?: Resolver<
     Maybe<ResolversTypes['users_mutation_response']>,
     ParentType,
@@ -14855,6 +16286,12 @@ export type Mutation_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Users_By_PkArgs, 'pk_columns'>
+  >;
+  update_users_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['users_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Users_ManyArgs, 'updates'>
   >;
 };
 
@@ -14872,7 +16309,7 @@ export type NotificationsResolvers<
   read_status?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
-  user_id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
+  user_id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15402,6 +16839,7 @@ export type RecurringResolvers<
     ContextType
   >;
   account_to?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   amount?: Resolver<ResolversTypes['float8'], ParentType, ContextType>;
   category?: Resolver<
     Maybe<ResolversTypes['categories']>,
@@ -16464,6 +17902,16 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootAccount_Info_By_PkArgs, 'id'>
   >;
+  account_info_stream?: SubscriptionResolver<
+    Array<ResolversTypes['account_info']>,
+    'account_info_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootAccount_Info_StreamArgs,
+      'batch_size' | 'cursor'
+    >
+  >;
   assets?: SubscriptionResolver<
     Array<ResolversTypes['assets']>,
     'assets',
@@ -16484,6 +17932,13 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootAssets_By_PkArgs, 'id'>
+  >;
+  assets_stream?: SubscriptionResolver<
+    Array<ResolversTypes['assets']>,
+    'assets_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootAssets_StreamArgs, 'batch_size' | 'cursor'>
   >;
   categories?: SubscriptionResolver<
     Array<ResolversTypes['categories']>,
@@ -16506,6 +17961,16 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootCategories_By_PkArgs, 'id'>
   >;
+  categories_stream?: SubscriptionResolver<
+    Array<ResolversTypes['categories']>,
+    'categories_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootCategories_StreamArgs,
+      'batch_size' | 'cursor'
+    >
+  >;
   expenses?: SubscriptionResolver<
     Array<ResolversTypes['expenses']>,
     'expenses',
@@ -16526,6 +17991,13 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootExpenses_By_PkArgs, 'id'>
+  >;
+  expenses_stream?: SubscriptionResolver<
+    Array<ResolversTypes['expenses']>,
+    'expenses_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootExpenses_StreamArgs, 'batch_size' | 'cursor'>
   >;
   labels?: SubscriptionResolver<
     Array<ResolversTypes['labels']>,
@@ -16548,6 +18020,13 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootLabels_By_PkArgs, 'id'>
   >;
+  labels_stream?: SubscriptionResolver<
+    Array<ResolversTypes['labels']>,
+    'labels_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootLabels_StreamArgs, 'batch_size' | 'cursor'>
+  >;
   liabilities?: SubscriptionResolver<
     Array<ResolversTypes['liabilities']>,
     'liabilities',
@@ -16569,6 +18048,16 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootLiabilities_By_PkArgs, 'id'>
   >;
+  liabilities_stream?: SubscriptionResolver<
+    Array<ResolversTypes['liabilities']>,
+    'liabilities_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootLiabilities_StreamArgs,
+      'batch_size' | 'cursor'
+    >
+  >;
   notifications?: SubscriptionResolver<
     Array<ResolversTypes['notifications']>,
     'notifications',
@@ -16589,6 +18078,16 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootNotifications_By_PkArgs, 'id'>
+  >;
+  notifications_stream?: SubscriptionResolver<
+    Array<ResolversTypes['notifications']>,
+    'notifications_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootNotifications_StreamArgs,
+      'batch_size' | 'cursor'
+    >
   >;
   recurring?: SubscriptionResolver<
     Array<ResolversTypes['recurring']>,
@@ -16635,6 +18134,26 @@ export type Subscription_RootResolvers<
       'label_id' | 'recurring_id'
     >
   >;
+  recurring_labels_stream?: SubscriptionResolver<
+    Array<ResolversTypes['recurring_labels']>,
+    'recurring_labels_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootRecurring_Labels_StreamArgs,
+      'batch_size' | 'cursor'
+    >
+  >;
+  recurring_stream?: SubscriptionResolver<
+    Array<ResolversTypes['recurring']>,
+    'recurring_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootRecurring_StreamArgs,
+      'batch_size' | 'cursor'
+    >
+  >;
   revenues?: SubscriptionResolver<
     Array<ResolversTypes['revenues']>,
     'revenues',
@@ -16656,6 +18175,13 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootRevenues_By_PkArgs, 'id'>
   >;
+  revenues_stream?: SubscriptionResolver<
+    Array<ResolversTypes['revenues']>,
+    'revenues_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootRevenues_StreamArgs, 'batch_size' | 'cursor'>
+  >;
   transaction_accounts?: SubscriptionResolver<
     Array<ResolversTypes['transaction_accounts']>,
     'transaction_accounts',
@@ -16676,6 +18202,16 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootTransaction_Accounts_By_PkArgs, 'id'>
+  >;
+  transaction_accounts_stream?: SubscriptionResolver<
+    Array<ResolversTypes['transaction_accounts']>,
+    'transaction_accounts_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootTransaction_Accounts_StreamArgs,
+      'batch_size' | 'cursor'
+    >
   >;
   transaction_attachments?: SubscriptionResolver<
     Array<ResolversTypes['transaction_attachments']>,
@@ -16699,6 +18235,16 @@ export type Subscription_RootResolvers<
     RequireFields<
       Subscription_RootTransaction_Attachments_By_PkArgs,
       'attachment_id' | 'transaction_id'
+    >
+  >;
+  transaction_attachments_stream?: SubscriptionResolver<
+    Array<ResolversTypes['transaction_attachments']>,
+    'transaction_attachments_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootTransaction_Attachments_StreamArgs,
+      'batch_size' | 'cursor'
     >
   >;
   transaction_labels?: SubscriptionResolver<
@@ -16725,6 +18271,16 @@ export type Subscription_RootResolvers<
       'label_id' | 'transaction_id'
     >
   >;
+  transaction_labels_stream?: SubscriptionResolver<
+    Array<ResolversTypes['transaction_labels']>,
+    'transaction_labels_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootTransaction_Labels_StreamArgs,
+      'batch_size' | 'cursor'
+    >
+  >;
   transactions?: SubscriptionResolver<
     Array<ResolversTypes['transactions']>,
     'transactions',
@@ -16745,6 +18301,16 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootTransactions_By_PkArgs, 'id'>
+  >;
+  transactions_stream?: SubscriptionResolver<
+    Array<ResolversTypes['transactions']>,
+    'transactions_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootTransactions_StreamArgs,
+      'batch_size' | 'cursor'
+    >
   >;
   user_settings?: SubscriptionResolver<
     Array<ResolversTypes['user_settings']>,
@@ -16767,6 +18333,16 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootUser_Settings_By_PkArgs, 'user_id'>
   >;
+  user_settings_stream?: SubscriptionResolver<
+    Array<ResolversTypes['user_settings']>,
+    'user_settings_stream',
+    ParentType,
+    ContextType,
+    RequireFields<
+      Subscription_RootUser_Settings_StreamArgs,
+      'batch_size' | 'cursor'
+    >
+  >;
   users?: SubscriptionResolver<
     Array<ResolversTypes['users']>,
     'users',
@@ -16787,6 +18363,13 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootUsers_By_PkArgs, 'id'>
+  >;
+  users_stream?: SubscriptionResolver<
+    Array<ResolversTypes['users']>,
+    'users_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootUsers_StreamArgs, 'batch_size' | 'cursor'>
   >;
 };
 
