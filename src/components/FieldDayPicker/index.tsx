@@ -7,21 +7,14 @@ import { FieldProps, useField, useForm } from '@formiz/core';
 
 export interface FieldDayPickerProps extends FieldProps, FormGroupProps {
   invalidMessage?: string;
+  value?: Date;
 }
 
 export const FieldDayPicker = (props: FieldDayPickerProps) => {
   const { t } = useTranslation();
   const { invalidMessage, ...fieldProps } = props;
   const { invalidateFields } = useForm({ subscribe: false });
-  const {
-    errorMessage,
-    id,
-    isValid,
-    isSubmitted,
-    setValue,
-    value,
-    otherProps,
-  } = useField({
+  const { errorMessage, id, isValid, isSubmitted, setValue, value, otherProps } = useField({
     debounce: 0,
     ...fieldProps,
   });
@@ -39,26 +32,20 @@ export const FieldDayPicker = (props: FieldDayPickerProps) => {
     ...rest,
   };
 
-  const handleChange = (date, isValid) => {
+  const handleChange = (date: Date | null | undefined, isValid: boolean) => {
     setValue(date);
     if (!isValid) {
       setTimeout(() => {
         invalidateFields({
-          [props.name]:
-            invalidMessage ?? t('components:fieldDayPicker.invalidMessage'),
+          [props.name]: invalidMessage ?? t('components:fieldDayPicker.invalidMessage'),
         });
       });
     }
   };
 
   return (
-    <FormGroup {...formGroupProps}>
-      <DayPicker
-        id={id}
-        value={value ?? ''}
-        onChange={handleChange}
-        placeholder={placeholder ? String(placeholder) : ''}
-      />
+    <FormGroup {...formGroupProps} size>
+      <DayPicker id={id} value={value ?? ''} onChange={handleChange} placeholder={placeholder ? String(placeholder) : ''} />
       {children}
     </FormGroup>
   );

@@ -1,7 +1,7 @@
-import { FC, createContext, useContext } from 'react';
+import dayjs, { Dayjs } from 'dayjs';
+import { createContext, FC, useContext } from 'react';
 
 import { Flex, useDisclosure } from '@chakra-ui/react';
-import dayjs, { Dayjs } from 'dayjs';
 
 type DateSelectorContextType = {
   date: Dayjs;
@@ -25,11 +25,7 @@ type DateSelectorProps = {
   onChange: (date: Dayjs) => void;
 };
 
-export const DateSelector: FC<React.PropsWithChildren<DateSelectorProps>> = ({
-  date,
-  onChange,
-  ...rest
-}) => {
+export const DateSelector: FC<React.PropsWithChildren<DateSelectorProps>> = ({ date, onChange, ...rest }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   const onDayClick = (d: Dayjs) => {
@@ -38,9 +34,7 @@ export const DateSelector: FC<React.PropsWithChildren<DateSelectorProps>> = ({
   };
 
   return (
-    <DateSelectorContext.Provider
-      value={{ date, onDayClick, isOpen, onClose, onOpen }}
-    >
+    <DateSelectorContext.Provider value={{ date, onDayClick, isOpen, onClose, onOpen }}>
       <Flex alignItems="center" {...rest} />
     </DateSelectorContext.Provider>
   );

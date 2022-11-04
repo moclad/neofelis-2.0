@@ -35,6 +35,10 @@
     },
     "deletedError": {
       "title": "Data deletion failed."
-    }
+    },
+    "inactivate": {
+      "title": "Status updated to inactive."
+    },
+    "noData": "No data available"
   }
 }

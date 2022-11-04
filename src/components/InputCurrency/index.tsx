@@ -4,8 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { forwardRef, Input, InputProps } from '@chakra-ui/react';
 
-export interface InputCurrencyProps
-  extends Omit<InputProps, 'onChange' | 'placeholder'> {
+export interface InputCurrencyProps extends Omit<InputProps, 'onChange' | 'placeholder'> {
   value?: number;
   defaultValue?: number;
   placeholder?: string | number;
@@ -15,24 +14,10 @@ export interface InputCurrencyProps
   onChange?(value?: number): void;
 }
 export const InputCurrency = forwardRef<InputCurrencyProps, 'input'>(
-  (
-    {
-      value = null,
-      defaultValue = null,
-      locale,
-      currency = 'EUR',
-      decimals = 2,
-      onChange = () => undefined,
-      placeholder,
-      ...rest
-    },
-    ref
-  ) => {
+  ({ value = null, defaultValue = null, locale, currency = 'EUR', decimals = 2, onChange = () => undefined, placeholder, ...rest }, ref) => {
     const { i18n } = useTranslation();
 
-    const [internalValue, setInternalValue] = useState(
-      String(value ?? defaultValue ?? '')
-    );
+    const [internalValue, setInternalValue] = useState(String(value ?? defaultValue ?? ''));
     const isFirstMount = useRef(true);
     const internalValueRef = useRef(internalValue);
     internalValueRef.current = internalValue;

@@ -16,11 +16,7 @@ mutation inactivateRecurring($id: bigint!) {
   }
 }
 
-mutation updateRecurring(
-  $id: bigint!
-  $changes: recurring_set_input
-  $labels: [recurring_labels_insert_input!]!
-) {
+mutation updateRecurring($id: bigint!, $changes: recurring_set_input, $labels: [recurring_labels_insert_input!]!) {
   update_recurring_by_pk(pk_columns: { id: $id }, _set: $changes) {
     id
   }

@@ -1,8 +1,4 @@
-import {
-  GraphQLResolveInfo,
-  GraphQLScalarType,
-  GraphQLScalarTypeConfig,
-} from 'graphql';
+import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as React from 'react';
@@ -10,18 +6,10 @@ import * as ApolloReactComponents from '@apollo/client/react/components';
 import * as ApolloReactHoc from '@apollo/client/react/hoc';
 export type Maybe<T> = T | undefined;
 export type InputMaybe<T> = T | undefined;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
-  [P in K]-?: NonNullable<T[P]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> };
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
@@ -1987,9 +1975,7 @@ export type Mutation_Root = {
   /** update single row of the table: "account_info" */
   update_account_info_by_pk?: Maybe<Account_Info>;
   /** update multiples rows of table: "account_info" */
-  update_account_info_many?: Maybe<
-    Array<Maybe<Account_Info_Mutation_Response>>
-  >;
+  update_account_info_many?: Maybe<Array<Maybe<Account_Info_Mutation_Response>>>;
   /** update data of the table: "assets" */
   update_assets?: Maybe<Assets_Mutation_Response>;
   /** update single row of the table: "assets" */
@@ -2025,9 +2011,7 @@ export type Mutation_Root = {
   /** update single row of the table: "notifications" */
   update_notifications_by_pk?: Maybe<Notifications>;
   /** update multiples rows of table: "notifications" */
-  update_notifications_many?: Maybe<
-    Array<Maybe<Notifications_Mutation_Response>>
-  >;
+  update_notifications_many?: Maybe<Array<Maybe<Notifications_Mutation_Response>>>;
   /** update data of the table: "recurring" */
   update_recurring?: Maybe<Recurring_Mutation_Response>;
   /** update single row of the table: "recurring" */
@@ -2037,9 +2021,7 @@ export type Mutation_Root = {
   /** update single row of the table: "recurring_labels" */
   update_recurring_labels_by_pk?: Maybe<Recurring_Labels>;
   /** update multiples rows of table: "recurring_labels" */
-  update_recurring_labels_many?: Maybe<
-    Array<Maybe<Recurring_Labels_Mutation_Response>>
-  >;
+  update_recurring_labels_many?: Maybe<Array<Maybe<Recurring_Labels_Mutation_Response>>>;
   /** update multiples rows of table: "recurring" */
   update_recurring_many?: Maybe<Array<Maybe<Recurring_Mutation_Response>>>;
   /** update data of the table: "revenues" */
@@ -2053,41 +2035,31 @@ export type Mutation_Root = {
   /** update single row of the table: "transaction_accounts" */
   update_transaction_accounts_by_pk?: Maybe<Transaction_Accounts>;
   /** update multiples rows of table: "transaction_accounts" */
-  update_transaction_accounts_many?: Maybe<
-    Array<Maybe<Transaction_Accounts_Mutation_Response>>
-  >;
+  update_transaction_accounts_many?: Maybe<Array<Maybe<Transaction_Accounts_Mutation_Response>>>;
   /** update data of the table: "transaction_attachments" */
   update_transaction_attachments?: Maybe<Transaction_Attachments_Mutation_Response>;
   /** update single row of the table: "transaction_attachments" */
   update_transaction_attachments_by_pk?: Maybe<Transaction_Attachments>;
   /** update multiples rows of table: "transaction_attachments" */
-  update_transaction_attachments_many?: Maybe<
-    Array<Maybe<Transaction_Attachments_Mutation_Response>>
-  >;
+  update_transaction_attachments_many?: Maybe<Array<Maybe<Transaction_Attachments_Mutation_Response>>>;
   /** update data of the table: "transaction_labels" */
   update_transaction_labels?: Maybe<Transaction_Labels_Mutation_Response>;
   /** update single row of the table: "transaction_labels" */
   update_transaction_labels_by_pk?: Maybe<Transaction_Labels>;
   /** update multiples rows of table: "transaction_labels" */
-  update_transaction_labels_many?: Maybe<
-    Array<Maybe<Transaction_Labels_Mutation_Response>>
-  >;
+  update_transaction_labels_many?: Maybe<Array<Maybe<Transaction_Labels_Mutation_Response>>>;
   /** update data of the table: "transactions" */
   update_transactions?: Maybe<Transactions_Mutation_Response>;
   /** update single row of the table: "transactions" */
   update_transactions_by_pk?: Maybe<Transactions>;
   /** update multiples rows of table: "transactions" */
-  update_transactions_many?: Maybe<
-    Array<Maybe<Transactions_Mutation_Response>>
-  >;
+  update_transactions_many?: Maybe<Array<Maybe<Transactions_Mutation_Response>>>;
   /** update data of the table: "user_settings" */
   update_user_settings?: Maybe<User_Settings_Mutation_Response>;
   /** update single row of the table: "user_settings" */
   update_user_settings_by_pk?: Maybe<User_Settings>;
   /** update multiples rows of table: "user_settings" */
-  update_user_settings_many?: Maybe<
-    Array<Maybe<User_Settings_Mutation_Response>>
-  >;
+  update_user_settings_many?: Maybe<Array<Maybe<User_Settings_Mutation_Response>>>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
   /** update single row of the table: "users" */
@@ -6167,6 +6139,8 @@ export type Transaction_Labels_Variance_Order_By = {
 /** columns and relationships of "transactions" */
 export type Transactions = {
   __typename?: 'transactions';
+  account_from: Scalars['Int'];
+  account_to: Scalars['Int'];
   amount: Scalars['float8'];
   /** An object relationship */
   category?: Maybe<Categories>;
@@ -6188,6 +6162,7 @@ export type Transactions = {
   transaction_labels: Array<Transaction_Labels>;
   /** An aggregate relationship */
   transaction_labels_aggregate: Transaction_Labels_Aggregate;
+  transaction_type: Scalars['Int'];
   updated_at: Scalars['timestamptz'];
 };
 
@@ -6281,18 +6256,24 @@ export type Transactions_Arr_Rel_Insert_Input = {
 /** aggregate avg on columns */
 export type Transactions_Avg_Fields = {
   __typename?: 'transactions_avg_fields';
+  account_from?: Maybe<Scalars['Float']>;
+  account_to?: Maybe<Scalars['Float']>;
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+  transaction_type?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "transactions" */
 export type Transactions_Avg_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "transactions". All fields are combined with a logical 'AND'. */
@@ -6300,6 +6281,8 @@ export type Transactions_Bool_Exp = {
   _and?: InputMaybe<Array<Transactions_Bool_Exp>>;
   _not?: InputMaybe<Transactions_Bool_Exp>;
   _or?: InputMaybe<Array<Transactions_Bool_Exp>>;
+  account_from?: InputMaybe<Int_Comparison_Exp>;
+  account_to?: InputMaybe<Int_Comparison_Exp>;
   amount?: InputMaybe<Float8_Comparison_Exp>;
   category?: InputMaybe<Categories_Bool_Exp>;
   category_id?: InputMaybe<Bigint_Comparison_Exp>;
@@ -6312,6 +6295,7 @@ export type Transactions_Bool_Exp = {
   transaction_attachment?: InputMaybe<Transaction_Attachments_Bool_Exp>;
   transaction_date?: InputMaybe<Date_Comparison_Exp>;
   transaction_labels?: InputMaybe<Transaction_Labels_Bool_Exp>;
+  transaction_type?: InputMaybe<Int_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -6323,14 +6307,19 @@ export enum Transactions_Constraint {
 
 /** input type for incrementing numeric columns in table "transactions" */
 export type Transactions_Inc_Input = {
+  account_from?: InputMaybe<Scalars['Int']>;
+  account_to?: InputMaybe<Scalars['Int']>;
   amount?: InputMaybe<Scalars['float8']>;
   category_id?: InputMaybe<Scalars['bigint']>;
   id?: InputMaybe<Scalars['bigint']>;
   recurring_id?: InputMaybe<Scalars['bigint']>;
+  transaction_type?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "transactions" */
 export type Transactions_Insert_Input = {
+  account_from?: InputMaybe<Scalars['Int']>;
+  account_to?: InputMaybe<Scalars['Int']>;
   amount?: InputMaybe<Scalars['float8']>;
   category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
   category_id?: InputMaybe<Scalars['bigint']>;
@@ -6343,12 +6332,15 @@ export type Transactions_Insert_Input = {
   transaction_attachment?: InputMaybe<Transaction_Attachments_Obj_Rel_Insert_Input>;
   transaction_date?: InputMaybe<Scalars['date']>;
   transaction_labels?: InputMaybe<Transaction_Labels_Arr_Rel_Insert_Input>;
+  transaction_type?: InputMaybe<Scalars['Int']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate max on columns */
 export type Transactions_Max_Fields = {
   __typename?: 'transactions_max_fields';
+  account_from?: Maybe<Scalars['Int']>;
+  account_to?: Maybe<Scalars['Int']>;
   amount?: Maybe<Scalars['float8']>;
   category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
@@ -6356,11 +6348,14 @@ export type Transactions_Max_Fields = {
   id?: Maybe<Scalars['bigint']>;
   recurring_id?: Maybe<Scalars['bigint']>;
   transaction_date?: Maybe<Scalars['date']>;
+  transaction_type?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by max() on columns of table "transactions" */
 export type Transactions_Max_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
@@ -6368,12 +6363,15 @@ export type Transactions_Max_Order_By = {
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
   transaction_date?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
 export type Transactions_Min_Fields = {
   __typename?: 'transactions_min_fields';
+  account_from?: Maybe<Scalars['Int']>;
+  account_to?: Maybe<Scalars['Int']>;
   amount?: Maybe<Scalars['float8']>;
   category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
@@ -6381,11 +6379,14 @@ export type Transactions_Min_Fields = {
   id?: Maybe<Scalars['bigint']>;
   recurring_id?: Maybe<Scalars['bigint']>;
   transaction_date?: Maybe<Scalars['date']>;
+  transaction_type?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 /** order by min() on columns of table "transactions" */
 export type Transactions_Min_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
@@ -6393,6 +6394,7 @@ export type Transactions_Min_Order_By = {
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
   transaction_date?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -6421,6 +6423,8 @@ export type Transactions_On_Conflict = {
 
 /** Ordering options when selecting data from "transactions". */
 export type Transactions_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category?: InputMaybe<Categories_Order_By>;
   category_id?: InputMaybe<Order_By>;
@@ -6433,6 +6437,7 @@ export type Transactions_Order_By = {
   transaction_attachment?: InputMaybe<Transaction_Attachments_Order_By>;
   transaction_date?: InputMaybe<Order_By>;
   transaction_labels_aggregate?: InputMaybe<Transaction_Labels_Aggregate_Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -6443,6 +6448,10 @@ export type Transactions_Pk_Columns_Input = {
 
 /** select columns of table "transactions" */
 export enum Transactions_Select_Column {
+  /** column name */
+  AccountFrom = 'account_from',
+  /** column name */
+  AccountTo = 'account_to',
   /** column name */
   Amount = 'amount',
   /** column name */
@@ -6458,11 +6467,15 @@ export enum Transactions_Select_Column {
   /** column name */
   TransactionDate = 'transaction_date',
   /** column name */
+  TransactionType = 'transaction_type',
+  /** column name */
   UpdatedAt = 'updated_at',
 }
 
 /** input type for updating data in table "transactions" */
 export type Transactions_Set_Input = {
+  account_from?: InputMaybe<Scalars['Int']>;
+  account_to?: InputMaybe<Scalars['Int']>;
   amount?: InputMaybe<Scalars['float8']>;
   category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
@@ -6470,58 +6483,77 @@ export type Transactions_Set_Input = {
   id?: InputMaybe<Scalars['bigint']>;
   recurring_id?: InputMaybe<Scalars['bigint']>;
   transaction_date?: InputMaybe<Scalars['date']>;
+  transaction_type?: InputMaybe<Scalars['Int']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate stddev on columns */
 export type Transactions_Stddev_Fields = {
   __typename?: 'transactions_stddev_fields';
+  account_from?: Maybe<Scalars['Float']>;
+  account_to?: Maybe<Scalars['Float']>;
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+  transaction_type?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "transactions" */
 export type Transactions_Stddev_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Transactions_Stddev_Pop_Fields = {
   __typename?: 'transactions_stddev_pop_fields';
+  account_from?: Maybe<Scalars['Float']>;
+  account_to?: Maybe<Scalars['Float']>;
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+  transaction_type?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "transactions" */
 export type Transactions_Stddev_Pop_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Transactions_Stddev_Samp_Fields = {
   __typename?: 'transactions_stddev_samp_fields';
+  account_from?: Maybe<Scalars['Float']>;
+  account_to?: Maybe<Scalars['Float']>;
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+  transaction_type?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "transactions" */
 export type Transactions_Stddev_Samp_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
 };
 
 /** Streaming cursor of the table "transactions" */
@@ -6534,6 +6566,8 @@ export type Transactions_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Transactions_Stream_Cursor_Value_Input = {
+  account_from?: InputMaybe<Scalars['Int']>;
+  account_to?: InputMaybe<Scalars['Int']>;
   amount?: InputMaybe<Scalars['float8']>;
   category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
@@ -6541,28 +6575,39 @@ export type Transactions_Stream_Cursor_Value_Input = {
   id?: InputMaybe<Scalars['bigint']>;
   recurring_id?: InputMaybe<Scalars['bigint']>;
   transaction_date?: InputMaybe<Scalars['date']>;
+  transaction_type?: InputMaybe<Scalars['Int']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
 /** aggregate sum on columns */
 export type Transactions_Sum_Fields = {
   __typename?: 'transactions_sum_fields';
+  account_from?: Maybe<Scalars['Int']>;
+  account_to?: Maybe<Scalars['Int']>;
   amount?: Maybe<Scalars['float8']>;
   category_id?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
   recurring_id?: Maybe<Scalars['bigint']>;
+  transaction_type?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "transactions" */
 export type Transactions_Sum_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "transactions" */
 export enum Transactions_Update_Column {
+  /** column name */
+  AccountFrom = 'account_from',
+  /** column name */
+  AccountTo = 'account_to',
   /** column name */
   Amount = 'amount',
   /** column name */
@@ -6577,6 +6622,8 @@ export enum Transactions_Update_Column {
   RecurringId = 'recurring_id',
   /** column name */
   TransactionDate = 'transaction_date',
+  /** column name */
+  TransactionType = 'transaction_type',
   /** column name */
   UpdatedAt = 'updated_at',
 }
@@ -6592,52 +6639,70 @@ export type Transactions_Updates = {
 /** aggregate var_pop on columns */
 export type Transactions_Var_Pop_Fields = {
   __typename?: 'transactions_var_pop_fields';
+  account_from?: Maybe<Scalars['Float']>;
+  account_to?: Maybe<Scalars['Float']>;
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+  transaction_type?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "transactions" */
 export type Transactions_Var_Pop_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Transactions_Var_Samp_Fields = {
   __typename?: 'transactions_var_samp_fields';
+  account_from?: Maybe<Scalars['Float']>;
+  account_to?: Maybe<Scalars['Float']>;
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+  transaction_type?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "transactions" */
 export type Transactions_Var_Samp_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Transactions_Variance_Fields = {
   __typename?: 'transactions_variance_fields';
+  account_from?: Maybe<Scalars['Float']>;
+  account_to?: Maybe<Scalars['Float']>;
   amount?: Maybe<Scalars['Float']>;
   category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
   recurring_id?: Maybe<Scalars['Float']>;
+  transaction_type?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "transactions" */
 export type Transactions_Variance_Order_By = {
+  account_from?: InputMaybe<Order_By>;
+  account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
+  transaction_type?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "user_settings" */
@@ -6995,27 +7060,14 @@ export type InsertAssetMutationVariables = Exact<{
 
 export type InsertAssetMutation = {
   __typename?: 'mutation_root';
-  insert_assets_one?:
-    | {
-        __typename?: 'assets';
-        id: any;
-        name: string;
-        created_at: string;
-        updated_at: string;
-      }
-    | undefined;
+  insert_assets_one?: { __typename?: 'assets'; id: any; name: string; created_at: string; updated_at: string } | undefined;
 };
 
 export type DeleteAssetMutationVariables = Exact<{
   id: Scalars['bigint'];
 }>;
 
-export type DeleteAssetMutation = {
-  __typename?: 'mutation_root';
-  delete_account_info_by_pk?:
-    | { __typename?: 'account_info'; id: any }
-    | undefined;
-};
+export type DeleteAssetMutation = { __typename?: 'mutation_root'; delete_account_info_by_pk?: { __typename?: 'account_info'; id: any } | undefined };
 
 export type UpdateAssetMutationVariables = Exact<{
   id: Scalars['bigint'];
@@ -7026,9 +7078,7 @@ export type UpdateAssetMutationVariables = Exact<{
 export type UpdateAssetMutation = {
   __typename?: 'mutation_root';
   update_assets_by_pk?: { __typename?: 'assets'; id: any } | undefined;
-  update_account_info_by_pk?:
-    | { __typename?: 'account_info'; id: any }
-    | undefined;
+  update_account_info_by_pk?: { __typename?: 'account_info'; id: any } | undefined;
 };
 
 export type UpdateAssetStateMutationVariables = Exact<{
@@ -7036,10 +7086,7 @@ export type UpdateAssetStateMutationVariables = Exact<{
   state?: InputMaybe<Scalars['Boolean']>;
 }>;
 
-export type UpdateAssetStateMutation = {
-  __typename?: 'mutation_root';
-  update_assets_by_pk?: { __typename?: 'assets'; active: boolean } | undefined;
-};
+export type UpdateAssetStateMutation = { __typename?: 'mutation_root'; update_assets_by_pk?: { __typename?: 'assets'; active: boolean } | undefined };
 
 export type UpdateAssetStandardMutationVariables = Exact<{
   id: Scalars['bigint'];
@@ -7048,9 +7095,7 @@ export type UpdateAssetStandardMutationVariables = Exact<{
 export type UpdateAssetStandardMutation = {
   __typename?: 'mutation_root';
   update_assets_by_pk?: { __typename?: 'assets'; active: boolean } | undefined;
-  update_assets?:
-    | { __typename?: 'assets_mutation_response'; affected_rows: number }
-    | undefined;
+  update_assets?: { __typename?: 'assets_mutation_response'; affected_rows: number } | undefined;
 };
 
 export type InsertCategoryMutationVariables = Exact<{
@@ -7059,16 +7104,7 @@ export type InsertCategoryMutationVariables = Exact<{
 
 export type InsertCategoryMutation = {
   __typename?: 'mutation_root';
-  insert_categories_one?:
-    | {
-        __typename?: 'categories';
-        id: any;
-        name: string;
-        active: boolean;
-        created_at: string;
-        updated_at: string;
-      }
-    | undefined;
+  insert_categories_one?: { __typename?: 'categories'; id: any; name: string; active: boolean; created_at: string; updated_at: string } | undefined;
 };
 
 export type DeleteCategoryMutationVariables = Exact<{
@@ -7077,9 +7113,7 @@ export type DeleteCategoryMutationVariables = Exact<{
 
 export type DeleteCategoryMutation = {
   __typename?: 'mutation_root';
-  delete_categories_by_pk?:
-    | { __typename?: 'categories'; id: any; name: string }
-    | undefined;
+  delete_categories_by_pk?: { __typename?: 'categories'; id: any; name: string } | undefined;
 };
 
 export type UpdateCategoryMutationVariables = Exact<{
@@ -7087,10 +7121,7 @@ export type UpdateCategoryMutationVariables = Exact<{
   changes?: InputMaybe<Categories_Set_Input>;
 }>;
 
-export type UpdateCategoryMutation = {
-  __typename?: 'mutation_root';
-  update_categories_by_pk?: { __typename?: 'categories'; id: any } | undefined;
-};
+export type UpdateCategoryMutation = { __typename?: 'mutation_root'; update_categories_by_pk?: { __typename?: 'categories'; id: any } | undefined };
 
 export type InsertExpenseAccMutationVariables = Exact<{
   object: Expenses_Insert_Input;
@@ -7098,27 +7129,14 @@ export type InsertExpenseAccMutationVariables = Exact<{
 
 export type InsertExpenseAccMutation = {
   __typename?: 'mutation_root';
-  insert_expenses_one?:
-    | {
-        __typename?: 'expenses';
-        id: any;
-        name: string;
-        created_at: string;
-        updated_at: string;
-      }
-    | undefined;
+  insert_expenses_one?: { __typename?: 'expenses'; id: any; name: string; created_at: string; updated_at: string } | undefined;
 };
 
 export type DeleteExpenseAccMutationVariables = Exact<{
   id: Scalars['bigint'];
 }>;
 
-export type DeleteExpenseAccMutation = {
-  __typename?: 'mutation_root';
-  delete_account_info_by_pk?:
-    | { __typename?: 'account_info'; id: any }
-    | undefined;
-};
+export type DeleteExpenseAccMutation = { __typename?: 'mutation_root'; delete_account_info_by_pk?: { __typename?: 'account_info'; id: any } | undefined };
 
 export type UpdateExpenseAccMutationVariables = Exact<{
   id: Scalars['bigint'];
@@ -7129,9 +7147,7 @@ export type UpdateExpenseAccMutationVariables = Exact<{
 export type UpdateExpenseAccMutation = {
   __typename?: 'mutation_root';
   update_expenses_by_pk?: { __typename?: 'expenses'; id: any } | undefined;
-  update_account_info_by_pk?:
-    | { __typename?: 'account_info'; id: any }
-    | undefined;
+  update_account_info_by_pk?: { __typename?: 'account_info'; id: any } | undefined;
 };
 
 export type UpdateExpenseStateMutationVariables = Exact<{
@@ -7139,12 +7155,7 @@ export type UpdateExpenseStateMutationVariables = Exact<{
   state?: InputMaybe<Scalars['Boolean']>;
 }>;
 
-export type UpdateExpenseStateMutation = {
-  __typename?: 'mutation_root';
-  update_expenses_by_pk?:
-    | { __typename?: 'expenses'; active: boolean }
-    | undefined;
-};
+export type UpdateExpenseStateMutation = { __typename?: 'mutation_root'; update_expenses_by_pk?: { __typename?: 'expenses'; active: boolean } | undefined };
 
 export type InsertLabelMutationVariables = Exact<{
   object: Labels_Insert_Input;
@@ -7152,37 +7163,21 @@ export type InsertLabelMutationVariables = Exact<{
 
 export type InsertLabelMutation = {
   __typename?: 'mutation_root';
-  insert_labels_one?:
-    | {
-        __typename?: 'labels';
-        id: number;
-        name: string;
-        created_at: string;
-        updated_at: string;
-      }
-    | undefined;
+  insert_labels_one?: { __typename?: 'labels'; id: number; name: string; created_at: string; updated_at: string } | undefined;
 };
 
 export type DeleteLabelMutationVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
-export type DeleteLabelMutation = {
-  __typename?: 'mutation_root';
-  delete_labels_by_pk?:
-    | { __typename?: 'labels'; id: number; name: string }
-    | undefined;
-};
+export type DeleteLabelMutation = { __typename?: 'mutation_root'; delete_labels_by_pk?: { __typename?: 'labels'; id: number; name: string } | undefined };
 
 export type UpdateLabelMutationVariables = Exact<{
   id: Scalars['Int'];
   changes?: InputMaybe<Labels_Set_Input>;
 }>;
 
-export type UpdateLabelMutation = {
-  __typename?: 'mutation_root';
-  update_labels_by_pk?: { __typename?: 'labels'; id: number } | undefined;
-};
+export type UpdateLabelMutation = { __typename?: 'mutation_root'; update_labels_by_pk?: { __typename?: 'labels'; id: number } | undefined };
 
 export type InsertLiabilityAccMutationVariables = Exact<{
   object: Liabilities_Insert_Input;
@@ -7190,27 +7185,14 @@ export type InsertLiabilityAccMutationVariables = Exact<{
 
 export type InsertLiabilityAccMutation = {
   __typename?: 'mutation_root';
-  insert_liabilities_one?:
-    | {
-        __typename?: 'liabilities';
-        id: any;
-        name: string;
-        created_at: string;
-        updated_at: string;
-      }
-    | undefined;
+  insert_liabilities_one?: { __typename?: 'liabilities'; id: any; name: string; created_at: string; updated_at: string } | undefined;
 };
 
 export type DeleteLiabilityAccMutationVariables = Exact<{
   id: Scalars['bigint'];
 }>;
 
-export type DeleteLiabilityAccMutation = {
-  __typename?: 'mutation_root';
-  delete_account_info_by_pk?:
-    | { __typename?: 'account_info'; id: any }
-    | undefined;
-};
+export type DeleteLiabilityAccMutation = { __typename?: 'mutation_root'; delete_account_info_by_pk?: { __typename?: 'account_info'; id: any } | undefined };
 
 export type UpdateLiabilityAccMutationVariables = Exact<{
   id: Scalars['bigint'];
@@ -7220,12 +7202,8 @@ export type UpdateLiabilityAccMutationVariables = Exact<{
 
 export type UpdateLiabilityAccMutation = {
   __typename?: 'mutation_root';
-  update_liabilities_by_pk?:
-    | { __typename?: 'liabilities'; id: any }
-    | undefined;
-  update_account_info_by_pk?:
-    | { __typename?: 'account_info'; id: any }
-    | undefined;
+  update_liabilities_by_pk?: { __typename?: 'liabilities'; id: any } | undefined;
+  update_account_info_by_pk?: { __typename?: 'account_info'; id: any } | undefined;
 };
 
 export type UpdateLiabilityStateMutationVariables = Exact<{
@@ -7235,37 +7213,26 @@ export type UpdateLiabilityStateMutationVariables = Exact<{
 
 export type UpdateLiabilityStateMutation = {
   __typename?: 'mutation_root';
-  update_liabilities_by_pk?:
-    | { __typename?: 'liabilities'; active: boolean }
-    | undefined;
+  update_liabilities_by_pk?: { __typename?: 'liabilities'; active: boolean } | undefined;
 };
 
 export type InsertRecurringMutationVariables = Exact<{
   object: Recurring_Insert_Input;
 }>;
 
-export type InsertRecurringMutation = {
-  __typename?: 'mutation_root';
-  insert_recurring_one?: { __typename?: 'recurring'; id: any } | undefined;
-};
+export type InsertRecurringMutation = { __typename?: 'mutation_root'; insert_recurring_one?: { __typename?: 'recurring'; id: any } | undefined };
 
 export type DeleteRecurringMutationVariables = Exact<{
   id: Scalars['bigint'];
 }>;
 
-export type DeleteRecurringMutation = {
-  __typename?: 'mutation_root';
-  delete_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined;
-};
+export type DeleteRecurringMutation = { __typename?: 'mutation_root'; delete_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined };
 
 export type InactivateRecurringMutationVariables = Exact<{
   id: Scalars['bigint'];
 }>;
 
-export type InactivateRecurringMutation = {
-  __typename?: 'mutation_root';
-  update_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined;
-};
+export type InactivateRecurringMutation = { __typename?: 'mutation_root'; update_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined };
 
 export type UpdateRecurringMutationVariables = Exact<{
   id: Scalars['bigint'];
@@ -7276,18 +7243,8 @@ export type UpdateRecurringMutationVariables = Exact<{
 export type UpdateRecurringMutation = {
   __typename?: 'mutation_root';
   update_recurring_by_pk?: { __typename?: 'recurring'; id: any } | undefined;
-  delete_recurring_labels?:
-    | {
-        __typename?: 'recurring_labels_mutation_response';
-        affected_rows: number;
-      }
-    | undefined;
-  insert_recurring_labels?:
-    | {
-        __typename?: 'recurring_labels_mutation_response';
-        affected_rows: number;
-      }
-    | undefined;
+  delete_recurring_labels?: { __typename?: 'recurring_labels_mutation_response'; affected_rows: number } | undefined;
+  insert_recurring_labels?: { __typename?: 'recurring_labels_mutation_response'; affected_rows: number } | undefined;
 };
 
 export type InsertRevenueAccMutationVariables = Exact<{
@@ -7296,27 +7253,14 @@ export type InsertRevenueAccMutationVariables = Exact<{
 
 export type InsertRevenueAccMutation = {
   __typename?: 'mutation_root';
-  insert_revenues_one?:
-    | {
-        __typename?: 'revenues';
-        id: any;
-        name: string;
-        created_at: string;
-        updated_at: string;
-      }
-    | undefined;
+  insert_revenues_one?: { __typename?: 'revenues'; id: any; name: string; created_at: string; updated_at: string } | undefined;
 };
 
 export type DeleteRevenueAccMutationVariables = Exact<{
   id: Scalars['bigint'];
 }>;
 
-export type DeleteRevenueAccMutation = {
-  __typename?: 'mutation_root';
-  delete_account_info_by_pk?:
-    | { __typename?: 'account_info'; id: any }
-    | undefined;
-};
+export type DeleteRevenueAccMutation = { __typename?: 'mutation_root'; delete_account_info_by_pk?: { __typename?: 'account_info'; id: any } | undefined };
 
 export type UpdateRevenueAccMutationVariables = Exact<{
   id: Scalars['bigint'];
@@ -7327,9 +7271,7 @@ export type UpdateRevenueAccMutationVariables = Exact<{
 export type UpdateRevenueAccMutation = {
   __typename?: 'mutation_root';
   update_revenues_by_pk?: { __typename?: 'revenues'; id: any } | undefined;
-  update_account_info_by_pk?:
-    | { __typename?: 'account_info'; id: any }
-    | undefined;
+  update_account_info_by_pk?: { __typename?: 'account_info'; id: any } | undefined;
 };
 
 export type UpdateRevenueStateMutationVariables = Exact<{
@@ -7337,12 +7279,7 @@ export type UpdateRevenueStateMutationVariables = Exact<{
   state?: InputMaybe<Scalars['Boolean']>;
 }>;
 
-export type UpdateRevenueStateMutation = {
-  __typename?: 'mutation_root';
-  update_revenues_by_pk?:
-    | { __typename?: 'revenues'; active: boolean }
-    | undefined;
-};
+export type UpdateRevenueStateMutation = { __typename?: 'mutation_root'; update_revenues_by_pk?: { __typename?: 'revenues'; active: boolean } | undefined };
 
 export type UpdateRevenueStandardMutationVariables = Exact<{
   id: Scalars['bigint'];
@@ -7350,12 +7287,8 @@ export type UpdateRevenueStandardMutationVariables = Exact<{
 
 export type UpdateRevenueStandardMutation = {
   __typename?: 'mutation_root';
-  update_revenues_by_pk?:
-    | { __typename?: 'revenues'; default: boolean }
-    | undefined;
-  update_revenues?:
-    | { __typename?: 'revenues_mutation_response'; affected_rows: number }
-    | undefined;
+  update_revenues_by_pk?: { __typename?: 'revenues'; default: boolean } | undefined;
+  update_revenues?: { __typename?: 'revenues_mutation_response'; affected_rows: number } | undefined;
 };
 
 export type InsertTransactionMutationVariables = Exact<{
@@ -7364,21 +7297,30 @@ export type InsertTransactionMutationVariables = Exact<{
 
 export type InsertTransactionMutation = {
   __typename?: 'mutation_root';
-  insert_transactions_one?:
-    | { __typename?: 'transactions'; id: any; amount: any }
-    | undefined;
+  insert_transactions_one?: { __typename?: 'transactions'; id: any; amount: any } | undefined;
+};
+
+export type UpdateTransactionMutationVariables = Exact<{
+  id: Scalars['bigint'];
+  changes: Transactions_Set_Input;
+  labels: Array<Transaction_Labels_Insert_Input> | Transaction_Labels_Insert_Input;
+  accounts: Array<Transaction_Accounts_Insert_Input> | Transaction_Accounts_Insert_Input;
+}>;
+
+export type UpdateTransactionMutation = {
+  __typename?: 'mutation_root';
+  delete_transaction_labels?: { __typename?: 'transaction_labels_mutation_response'; affected_rows: number } | undefined;
+  delete_transaction_accounts?: { __typename?: 'transaction_accounts_mutation_response'; affected_rows: number } | undefined;
+  update_transactions_by_pk?: { __typename?: 'transactions'; id: any } | undefined;
+  insert_transaction_labels?: { __typename?: 'transaction_labels_mutation_response'; affected_rows: number } | undefined;
+  insert_transaction_accounts?: { __typename?: 'transaction_accounts_mutation_response'; affected_rows: number } | undefined;
 };
 
 export type DeleteTransactionByIdMutationVariables = Exact<{
   id: Scalars['bigint'];
 }>;
 
-export type DeleteTransactionByIdMutation = {
-  __typename?: 'mutation_root';
-  delete_transactions_by_pk?:
-    | { __typename?: 'transactions'; id: any }
-    | undefined;
-};
+export type DeleteTransactionByIdMutation = { __typename?: 'mutation_root'; delete_transactions_by_pk?: { __typename?: 'transactions'; id: any } | undefined };
 
 export type UpdateUserMutationVariables = Exact<{
   userId: Scalars['uuid'];
@@ -7387,16 +7329,7 @@ export type UpdateUserMutationVariables = Exact<{
 
 export type UpdateUserMutation = {
   __typename?: 'mutation_root';
-  update_users?:
-    | {
-        __typename?: 'users_mutation_response';
-        returning: Array<{
-          __typename?: 'users';
-          id: any;
-          name?: string | undefined;
-        }>;
-      }
-    | undefined;
+  update_users?: { __typename?: 'users_mutation_response'; returning: Array<{ __typename?: 'users'; id: any; name?: string | undefined }> } | undefined;
 };
 
 export type UpdateUserSettingsMutationVariables = Exact<{
@@ -7405,14 +7338,7 @@ export type UpdateUserSettingsMutationVariables = Exact<{
 
 export type UpdateUserSettingsMutation = {
   __typename?: 'mutation_root';
-  insert_user_settings_one?:
-    | {
-        __typename?: 'user_settings';
-        user_id: any;
-        langKey: string;
-        darkMode: boolean;
-      }
-    | undefined;
+  insert_user_settings_one?: { __typename?: 'user_settings'; user_id: any; langKey: string; darkMode: boolean } | undefined;
 };
 
 export type AllAssetsQueryVariables = Exact<{
@@ -7434,46 +7360,23 @@ export type AllAssetsQuery = {
     updated_at: string;
     default: boolean;
   }>;
-  assets_aggregate: {
-    __typename?: 'assets_aggregate';
-    aggregate?:
-      | { __typename?: 'assets_aggregate_fields'; count: number }
-      | undefined;
-  };
+  assets_aggregate: { __typename?: 'assets_aggregate'; aggregate?: { __typename?: 'assets_aggregate_fields'; count: number } | undefined };
 };
 
 export type ActiveAssetAccountsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ActiveAssetAccountsQuery = {
-  __typename?: 'query_root';
-  assets: Array<{
-    __typename?: 'assets';
-    id: any;
-    name: string;
-    default: boolean;
-  }>;
-};
+export type ActiveAssetAccountsQuery = { __typename?: 'query_root'; assets: Array<{ __typename?: 'assets'; id: any; name: string; default: boolean }> };
 
 export type AllCategoriesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type AllCategoriesQuery = {
   __typename?: 'query_root';
-  categories: Array<{
-    __typename?: 'categories';
-    id: any;
-    name: string;
-    active: boolean;
-    created_at: string;
-    updated_at: string;
-  }>;
+  categories: Array<{ __typename?: 'categories'; id: any; name: string; active: boolean; created_at: string; updated_at: string }>;
 };
 
 export type ActiveCategoriesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ActiveCategoriesQuery = {
-  __typename?: 'query_root';
-  categories: Array<{ __typename?: 'categories'; id: any; name: string }>;
-};
+export type ActiveCategoriesQuery = { __typename?: 'query_root'; categories: Array<{ __typename?: 'categories'; id: any; name: string }> };
 
 export type AllExpenseAccountsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -7482,30 +7385,13 @@ export type AllExpenseAccountsQueryVariables = Exact<{
 
 export type AllExpenseAccountsQuery = {
   __typename?: 'query_root';
-  expenses: Array<{
-    __typename?: 'expenses';
-    id: any;
-    name: string;
-    active: boolean;
-    created_at: string;
-    updated_at: string;
-  }>;
-  expenses_aggregate: {
-    __typename?: 'expenses_aggregate';
-    aggregate?:
-      | { __typename?: 'expenses_aggregate_fields'; count: number }
-      | undefined;
-  };
+  expenses: Array<{ __typename?: 'expenses'; id: any; name: string; active: boolean; created_at: string; updated_at: string }>;
+  expenses_aggregate: { __typename?: 'expenses_aggregate'; aggregate?: { __typename?: 'expenses_aggregate_fields'; count: number } | undefined };
 };
 
-export type ActiveExpenseAccountsQueryVariables = Exact<{
-  [key: string]: never;
-}>;
+export type ActiveExpenseAccountsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ActiveExpenseAccountsQuery = {
-  __typename?: 'query_root';
-  expenses: Array<{ __typename?: 'expenses'; id: any; name: string }>;
-};
+export type ActiveExpenseAccountsQuery = { __typename?: 'query_root'; expenses: Array<{ __typename?: 'expenses'; id: any; name: string }> };
 
 export type FetchUserQueryVariables = Exact<{
   userId: Scalars['uuid'];
@@ -7513,15 +7399,7 @@ export type FetchUserQueryVariables = Exact<{
 
 export type FetchUserQuery = {
   __typename?: 'query_root';
-  users_by_pk?:
-    | {
-        __typename?: 'users';
-        id: any;
-        name?: string | undefined;
-        email?: string | undefined;
-        image?: string | undefined;
-      }
-    | undefined;
+  users_by_pk?: { __typename?: 'users'; id: any; name?: string | undefined; email?: string | undefined; image?: string | undefined } | undefined;
 };
 
 export type FetchUserSettingsQueryVariables = Exact<{
@@ -7530,27 +7408,14 @@ export type FetchUserSettingsQueryVariables = Exact<{
 
 export type FetchUserSettingsQuery = {
   __typename?: 'query_root';
-  user_settings_by_pk?:
-    | {
-        __typename?: 'user_settings';
-        user_id: any;
-        darkMode: boolean;
-        langKey: string;
-      }
-    | undefined;
+  user_settings_by_pk?: { __typename?: 'user_settings'; user_id: any; darkMode: boolean; langKey: string } | undefined;
 };
 
 export type AllLabelsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type AllLabelsQuery = {
   __typename?: 'query_root';
-  labels: Array<{
-    __typename?: 'labels';
-    id: number;
-    name: string;
-    created_at: string;
-    updated_at: string;
-  }>;
+  labels: Array<{ __typename?: 'labels'; id: number; name: string; created_at: string; updated_at: string }>;
 };
 
 export type AllLiabilityAccountsQueryVariables = Exact<{
@@ -7560,36 +7425,15 @@ export type AllLiabilityAccountsQueryVariables = Exact<{
 
 export type AllLiabilityAccountsQuery = {
   __typename?: 'query_root';
-  liabilities: Array<{
-    __typename?: 'liabilities';
-    id: any;
-    name: string;
-    active: boolean;
-    created_at: string;
-    updated_at: string;
-  }>;
-  liabilities_aggregate: {
-    __typename?: 'liabilities_aggregate';
-    aggregate?:
-      | { __typename?: 'liabilities_aggregate_fields'; count: number }
-      | undefined;
-  };
+  liabilities: Array<{ __typename?: 'liabilities'; id: any; name: string; active: boolean; created_at: string; updated_at: string }>;
+  liabilities_aggregate: { __typename?: 'liabilities_aggregate'; aggregate?: { __typename?: 'liabilities_aggregate_fields'; count: number } | undefined };
 };
 
-export type ActiveLiabilityAccountsQueryVariables = Exact<{
-  [key: string]: never;
-}>;
+export type ActiveLiabilityAccountsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type ActiveLiabilityAccountsQuery = {
   __typename?: 'query_root';
-  liabilities: Array<{
-    __typename?: 'liabilities';
-    id: any;
-    name: string;
-    active: boolean;
-    created_at: string;
-    updated_at: string;
-  }>;
+  liabilities: Array<{ __typename?: 'liabilities'; id: any; name: string; active: boolean; created_at: string; updated_at: string }>;
 };
 
 export type AllRevenueAccountsQueryVariables = Exact<{
@@ -7599,36 +7443,13 @@ export type AllRevenueAccountsQueryVariables = Exact<{
 
 export type AllRevenueAccountsQuery = {
   __typename?: 'query_root';
-  revenues: Array<{
-    __typename?: 'revenues';
-    id: any;
-    name: string;
-    active: boolean;
-    default: boolean;
-    created_at: string;
-    updated_at: string;
-  }>;
-  revenues_aggregate: {
-    __typename?: 'revenues_aggregate';
-    aggregate?:
-      | { __typename?: 'revenues_aggregate_fields'; count: number }
-      | undefined;
-  };
+  revenues: Array<{ __typename?: 'revenues'; id: any; name: string; active: boolean; default: boolean; created_at: string; updated_at: string }>;
+  revenues_aggregate: { __typename?: 'revenues_aggregate'; aggregate?: { __typename?: 'revenues_aggregate_fields'; count: number } | undefined };
 };
 
-export type ActiveRevenueAccountsQueryVariables = Exact<{
-  [key: string]: never;
-}>;
+export type ActiveRevenueAccountsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ActiveRevenueAccountsQuery = {
-  __typename?: 'query_root';
-  revenues: Array<{
-    __typename?: 'revenues';
-    id: any;
-    name: string;
-    default: boolean;
-  }>;
-};
+export type ActiveRevenueAccountsQuery = { __typename?: 'query_root'; revenues: Array<{ __typename?: 'revenues'; id: any; name: string; default: boolean }> };
 
 export type RecurringTransactionsQueryVariables = Exact<{
   recurringId: Scalars['bigint'];
@@ -7636,6 +7457,24 @@ export type RecurringTransactionsQueryVariables = Exact<{
 
 export type RecurringTransactionsQuery = {
   __typename?: 'query_root';
+  recurring_by_pk?:
+    | {
+        __typename?: 'recurring';
+        active: boolean;
+        amount: any;
+        category_id?: any | undefined;
+        created_at: string;
+        cycle_type: number;
+        description?: string | undefined;
+        duration_type: number;
+        no_of_times?: number | undefined;
+        start_on: any;
+        title: string;
+        transaction_type: number;
+        until_date?: any | undefined;
+        updated_at: string;
+      }
+    | undefined;
   transactions: Array<{
     __typename?: 'transactions';
     id: any;
@@ -7645,16 +7484,16 @@ export type RecurringTransactionsQuery = {
     updated_at: string;
     description?: string | undefined;
     recurring_id?: any | undefined;
-    category?: { __typename?: 'categories'; name: string } | undefined;
-    transaction_labels: Array<{
-      __typename?: 'transaction_labels';
-      label: { __typename?: 'labels'; name: string };
-    }>;
+    category_id?: any | undefined;
+    account_from: number;
+    account_to: number;
+    transaction_type: number;
+    transaction_labels: Array<{ __typename?: 'transaction_labels'; label: { __typename?: 'labels'; id: number; name: string } }>;
   }>;
   transactions_aggregate: {
     __typename?: 'transactions_aggregate';
     aggregate?:
-      | { __typename?: 'transactions_aggregate_fields'; count: number }
+      | { __typename?: 'transactions_aggregate_fields'; count: number; sum?: { __typename?: 'transactions_sum_fields'; amount?: any | undefined } | undefined }
       | undefined;
   };
 };
@@ -7684,13 +7523,7 @@ export type FetchLabelsSubscriptionVariables = Exact<{ [key: string]: never }>;
 
 export type FetchLabelsSubscription = {
   __typename?: 'subscription_root';
-  labels: Array<{
-    __typename?: 'labels';
-    id: number;
-    name: string;
-    created_at: string;
-    updated_at: string;
-  }>;
+  labels: Array<{ __typename?: 'labels'; id: number; name: string; created_at: string; updated_at: string }>;
 };
 
 export type RecurringSubscriptionVariables = Exact<{
@@ -7718,44 +7551,23 @@ export type RecurringSubscription = {
     until_date?: any | undefined;
     no_of_times?: number | undefined;
     active: boolean;
-    recurring_labels: Array<{
-      __typename?: 'recurring_labels';
-      label_id: number;
-    }>;
-    accountInfoByAccountTo: {
-      __typename?: 'account_info';
-      name?: string | undefined;
-    };
+    recurring_labels: Array<{ __typename?: 'recurring_labels'; label_id: number }>;
+    accountInfoByAccountTo: { __typename?: 'account_info'; name?: string | undefined };
     account_info: { __typename?: 'account_info'; name?: string | undefined };
     transactions_aggregate: {
       __typename?: 'transactions_aggregate';
       aggregate?:
-        | {
-            __typename?: 'transactions_aggregate_fields';
-            sum?:
-              | {
-                  __typename?: 'transactions_sum_fields';
-                  amount?: any | undefined;
-                }
-              | undefined;
-          }
+        | { __typename?: 'transactions_aggregate_fields'; sum?: { __typename?: 'transactions_sum_fields'; amount?: any | undefined } | undefined }
         | undefined;
     };
   }>;
 };
 
-export type RecurringAggregateSubscriptionVariables = Exact<{
-  [key: string]: never;
-}>;
+export type RecurringAggregateSubscriptionVariables = Exact<{ [key: string]: never }>;
 
 export type RecurringAggregateSubscription = {
   __typename?: 'subscription_root';
-  recurring_aggregate: {
-    __typename?: 'recurring_aggregate';
-    aggregate?:
-      | { __typename?: 'recurring_aggregate_fields'; count: number }
-      | undefined;
-  };
+  recurring_aggregate: { __typename?: 'recurring_aggregate'; aggregate?: { __typename?: 'recurring_aggregate_fields'; count: number } | undefined };
 };
 
 export const InsertAssetDocument = gql`
@@ -7768,55 +7580,20 @@ export const InsertAssetDocument = gql`
     }
   }
 `;
-export type InsertAssetMutationFn = Apollo.MutationFunction<
-  InsertAssetMutation,
-  InsertAssetMutationVariables
->;
-export type InsertAssetComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    InsertAssetMutation,
-    InsertAssetMutationVariables
-  >,
-  'mutation'
->;
+export type InsertAssetMutationFn = Apollo.MutationFunction<InsertAssetMutation, InsertAssetMutationVariables>;
+export type InsertAssetComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<InsertAssetMutation, InsertAssetMutationVariables>, 'mutation'>;
 
 export const InsertAssetComponent = (props: InsertAssetComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    InsertAssetMutation,
-    InsertAssetMutationVariables
-  >
-    mutation={InsertAssetDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Mutation<InsertAssetMutation, InsertAssetMutationVariables> mutation={InsertAssetDocument} {...props} />
 );
 
-export type InsertAssetProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    InsertAssetMutation,
-    InsertAssetMutationVariables
-  >;
+export type InsertAssetProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertAssetMutation, InsertAssetMutationVariables>;
 } & TChildProps;
-export function withInsertAsset<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    InsertAssetMutation,
-    InsertAssetMutationVariables,
-    InsertAssetProps<TChildProps, TDataName>
-  >
+export function withInsertAsset<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, InsertAssetMutation, InsertAssetMutationVariables, InsertAssetProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    InsertAssetMutation,
-    InsertAssetMutationVariables,
-    InsertAssetProps<TChildProps, TDataName>
-  >(InsertAssetDocument, {
+  return ApolloReactHoc.withMutation<TProps, InsertAssetMutation, InsertAssetMutationVariables, InsertAssetProps<TChildProps, TDataName>>(InsertAssetDocument, {
     alias: 'insertAsset',
     ...operationOptions,
   });
@@ -7839,27 +7616,13 @@ export function withInsertAsset<
  *   },
  * });
  */
-export function useInsertAssetMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    InsertAssetMutation,
-    InsertAssetMutationVariables
-  >
-) {
+export function useInsertAssetMutation(baseOptions?: Apollo.MutationHookOptions<InsertAssetMutation, InsertAssetMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<InsertAssetMutation, InsertAssetMutationVariables>(
-    InsertAssetDocument,
-    options
-  );
+  return Apollo.useMutation<InsertAssetMutation, InsertAssetMutationVariables>(InsertAssetDocument, options);
 }
-export type InsertAssetMutationHookResult = ReturnType<
-  typeof useInsertAssetMutation
->;
-export type InsertAssetMutationResult =
-  Apollo.MutationResult<InsertAssetMutation>;
-export type InsertAssetMutationOptions = Apollo.BaseMutationOptions<
-  InsertAssetMutation,
-  InsertAssetMutationVariables
->;
+export type InsertAssetMutationHookResult = ReturnType<typeof useInsertAssetMutation>;
+export type InsertAssetMutationResult = Apollo.MutationResult<InsertAssetMutation>;
+export type InsertAssetMutationOptions = Apollo.BaseMutationOptions<InsertAssetMutation, InsertAssetMutationVariables>;
 export const DeleteAssetDocument = gql`
   mutation deleteAsset($id: bigint!) {
     delete_account_info_by_pk(id: $id) {
@@ -7867,55 +7630,20 @@ export const DeleteAssetDocument = gql`
     }
   }
 `;
-export type DeleteAssetMutationFn = Apollo.MutationFunction<
-  DeleteAssetMutation,
-  DeleteAssetMutationVariables
->;
-export type DeleteAssetComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    DeleteAssetMutation,
-    DeleteAssetMutationVariables
-  >,
-  'mutation'
->;
+export type DeleteAssetMutationFn = Apollo.MutationFunction<DeleteAssetMutation, DeleteAssetMutationVariables>;
+export type DeleteAssetComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<DeleteAssetMutation, DeleteAssetMutationVariables>, 'mutation'>;
 
 export const DeleteAssetComponent = (props: DeleteAssetComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    DeleteAssetMutation,
-    DeleteAssetMutationVariables
-  >
-    mutation={DeleteAssetDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Mutation<DeleteAssetMutation, DeleteAssetMutationVariables> mutation={DeleteAssetDocument} {...props} />
 );
 
-export type DeleteAssetProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    DeleteAssetMutation,
-    DeleteAssetMutationVariables
-  >;
+export type DeleteAssetProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteAssetMutation, DeleteAssetMutationVariables>;
 } & TChildProps;
-export function withDeleteAsset<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    DeleteAssetMutation,
-    DeleteAssetMutationVariables,
-    DeleteAssetProps<TChildProps, TDataName>
-  >
+export function withDeleteAsset<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, DeleteAssetMutation, DeleteAssetMutationVariables, DeleteAssetProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    DeleteAssetMutation,
-    DeleteAssetMutationVariables,
-    DeleteAssetProps<TChildProps, TDataName>
-  >(DeleteAssetDocument, {
+  return ApolloReactHoc.withMutation<TProps, DeleteAssetMutation, DeleteAssetMutationVariables, DeleteAssetProps<TChildProps, TDataName>>(DeleteAssetDocument, {
     alias: 'deleteAsset',
     ...operationOptions,
   });
@@ -7938,33 +7666,15 @@ export function withDeleteAsset<
  *   },
  * });
  */
-export function useDeleteAssetMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteAssetMutation,
-    DeleteAssetMutationVariables
-  >
-) {
+export function useDeleteAssetMutation(baseOptions?: Apollo.MutationHookOptions<DeleteAssetMutation, DeleteAssetMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteAssetMutation, DeleteAssetMutationVariables>(
-    DeleteAssetDocument,
-    options
-  );
+  return Apollo.useMutation<DeleteAssetMutation, DeleteAssetMutationVariables>(DeleteAssetDocument, options);
 }
-export type DeleteAssetMutationHookResult = ReturnType<
-  typeof useDeleteAssetMutation
->;
-export type DeleteAssetMutationResult =
-  Apollo.MutationResult<DeleteAssetMutation>;
-export type DeleteAssetMutationOptions = Apollo.BaseMutationOptions<
-  DeleteAssetMutation,
-  DeleteAssetMutationVariables
->;
+export type DeleteAssetMutationHookResult = ReturnType<typeof useDeleteAssetMutation>;
+export type DeleteAssetMutationResult = Apollo.MutationResult<DeleteAssetMutation>;
+export type DeleteAssetMutationOptions = Apollo.BaseMutationOptions<DeleteAssetMutation, DeleteAssetMutationVariables>;
 export const UpdateAssetDocument = gql`
-  mutation updateAsset(
-    $id: bigint!
-    $changes: assets_set_input
-    $name: String!
-  ) {
+  mutation updateAsset($id: bigint!, $changes: assets_set_input, $name: String!) {
     update_assets_by_pk(pk_columns: { id: $id }, _set: $changes) {
       id
     }
@@ -7973,55 +7683,20 @@ export const UpdateAssetDocument = gql`
     }
   }
 `;
-export type UpdateAssetMutationFn = Apollo.MutationFunction<
-  UpdateAssetMutation,
-  UpdateAssetMutationVariables
->;
-export type UpdateAssetComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateAssetMutation,
-    UpdateAssetMutationVariables
-  >,
-  'mutation'
->;
+export type UpdateAssetMutationFn = Apollo.MutationFunction<UpdateAssetMutation, UpdateAssetMutationVariables>;
+export type UpdateAssetComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<UpdateAssetMutation, UpdateAssetMutationVariables>, 'mutation'>;
 
 export const UpdateAssetComponent = (props: UpdateAssetComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    UpdateAssetMutation,
-    UpdateAssetMutationVariables
-  >
-    mutation={UpdateAssetDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Mutation<UpdateAssetMutation, UpdateAssetMutationVariables> mutation={UpdateAssetDocument} {...props} />
 );
 
-export type UpdateAssetProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateAssetMutation,
-    UpdateAssetMutationVariables
-  >;
+export type UpdateAssetProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateAssetMutation, UpdateAssetMutationVariables>;
 } & TChildProps;
-export function withUpdateAsset<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    UpdateAssetMutation,
-    UpdateAssetMutationVariables,
-    UpdateAssetProps<TChildProps, TDataName>
-  >
+export function withUpdateAsset<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, UpdateAssetMutation, UpdateAssetMutationVariables, UpdateAssetProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateAssetMutation,
-    UpdateAssetMutationVariables,
-    UpdateAssetProps<TChildProps, TDataName>
-  >(UpdateAssetDocument, {
+  return ApolloReactHoc.withMutation<TProps, UpdateAssetMutation, UpdateAssetMutationVariables, UpdateAssetProps<TChildProps, TDataName>>(UpdateAssetDocument, {
     alias: 'updateAsset',
     ...operationOptions,
   });
@@ -8046,27 +7721,13 @@ export function withUpdateAsset<
  *   },
  * });
  */
-export function useUpdateAssetMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateAssetMutation,
-    UpdateAssetMutationVariables
-  >
-) {
+export function useUpdateAssetMutation(baseOptions?: Apollo.MutationHookOptions<UpdateAssetMutation, UpdateAssetMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateAssetMutation, UpdateAssetMutationVariables>(
-    UpdateAssetDocument,
-    options
-  );
+  return Apollo.useMutation<UpdateAssetMutation, UpdateAssetMutationVariables>(UpdateAssetDocument, options);
 }
-export type UpdateAssetMutationHookResult = ReturnType<
-  typeof useUpdateAssetMutation
->;
-export type UpdateAssetMutationResult =
-  Apollo.MutationResult<UpdateAssetMutation>;
-export type UpdateAssetMutationOptions = Apollo.BaseMutationOptions<
-  UpdateAssetMutation,
-  UpdateAssetMutationVariables
->;
+export type UpdateAssetMutationHookResult = ReturnType<typeof useUpdateAssetMutation>;
+export type UpdateAssetMutationResult = Apollo.MutationResult<UpdateAssetMutation>;
+export type UpdateAssetMutationOptions = Apollo.BaseMutationOptions<UpdateAssetMutation, UpdateAssetMutationVariables>;
 export const UpdateAssetStateDocument = gql`
   mutation updateAssetState($id: bigint!, $state: Boolean) {
     update_assets_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
@@ -8074,44 +7735,20 @@ export const UpdateAssetStateDocument = gql`
     }
   }
 `;
-export type UpdateAssetStateMutationFn = Apollo.MutationFunction<
-  UpdateAssetStateMutation,
-  UpdateAssetStateMutationVariables
->;
+export type UpdateAssetStateMutationFn = Apollo.MutationFunction<UpdateAssetStateMutation, UpdateAssetStateMutationVariables>;
 export type UpdateAssetStateComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateAssetStateMutation,
-    UpdateAssetStateMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateAssetStateMutation, UpdateAssetStateMutationVariables>,
   'mutation'
 >;
 
-export const UpdateAssetStateComponent = (
-  props: UpdateAssetStateComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateAssetStateMutation,
-    UpdateAssetStateMutationVariables
-  >
-    mutation={UpdateAssetStateDocument}
-    {...props}
-  />
+export const UpdateAssetStateComponent = (props: UpdateAssetStateComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateAssetStateMutation, UpdateAssetStateMutationVariables> mutation={UpdateAssetStateDocument} {...props} />
 );
 
-export type UpdateAssetStateProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateAssetStateMutation,
-    UpdateAssetStateMutationVariables
-  >;
+export type UpdateAssetStateProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateAssetStateMutation, UpdateAssetStateMutationVariables>;
 } & TChildProps;
-export function withUpdateAssetState<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateAssetState<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateAssetStateMutation,
@@ -8119,15 +7756,13 @@ export function withUpdateAssetState<
     UpdateAssetStateProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateAssetStateMutation,
-    UpdateAssetStateMutationVariables,
-    UpdateAssetStateProps<TChildProps, TDataName>
-  >(UpdateAssetStateDocument, {
-    alias: 'updateAssetState',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, UpdateAssetStateMutation, UpdateAssetStateMutationVariables, UpdateAssetStateProps<TChildProps, TDataName>>(
+    UpdateAssetStateDocument,
+    {
+      alias: 'updateAssetState',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -8148,78 +7783,37 @@ export function withUpdateAssetState<
  *   },
  * });
  */
-export function useUpdateAssetStateMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateAssetStateMutation,
-    UpdateAssetStateMutationVariables
-  >
-) {
+export function useUpdateAssetStateMutation(baseOptions?: Apollo.MutationHookOptions<UpdateAssetStateMutation, UpdateAssetStateMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateAssetStateMutation,
-    UpdateAssetStateMutationVariables
-  >(UpdateAssetStateDocument, options);
+  return Apollo.useMutation<UpdateAssetStateMutation, UpdateAssetStateMutationVariables>(UpdateAssetStateDocument, options);
 }
-export type UpdateAssetStateMutationHookResult = ReturnType<
-  typeof useUpdateAssetStateMutation
->;
-export type UpdateAssetStateMutationResult =
-  Apollo.MutationResult<UpdateAssetStateMutation>;
-export type UpdateAssetStateMutationOptions = Apollo.BaseMutationOptions<
-  UpdateAssetStateMutation,
-  UpdateAssetStateMutationVariables
->;
+export type UpdateAssetStateMutationHookResult = ReturnType<typeof useUpdateAssetStateMutation>;
+export type UpdateAssetStateMutationResult = Apollo.MutationResult<UpdateAssetStateMutation>;
+export type UpdateAssetStateMutationOptions = Apollo.BaseMutationOptions<UpdateAssetStateMutation, UpdateAssetStateMutationVariables>;
 export const UpdateAssetStandardDocument = gql`
   mutation updateAssetStandard($id: bigint!) {
     update_assets_by_pk(pk_columns: { id: $id }, _set: { default: true }) {
       active
     }
-    update_assets(
-      _set: { default: false }
-      where: { id: { _neq: $id }, default: { _eq: true } }
-    ) {
+    update_assets(_set: { default: false }, where: { id: { _neq: $id }, default: { _eq: true } }) {
       affected_rows
     }
   }
 `;
-export type UpdateAssetStandardMutationFn = Apollo.MutationFunction<
-  UpdateAssetStandardMutation,
-  UpdateAssetStandardMutationVariables
->;
+export type UpdateAssetStandardMutationFn = Apollo.MutationFunction<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>;
 export type UpdateAssetStandardComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateAssetStandardMutation,
-    UpdateAssetStandardMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>,
   'mutation'
 >;
 
-export const UpdateAssetStandardComponent = (
-  props: UpdateAssetStandardComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateAssetStandardMutation,
-    UpdateAssetStandardMutationVariables
-  >
-    mutation={UpdateAssetStandardDocument}
-    {...props}
-  />
+export const UpdateAssetStandardComponent = (props: UpdateAssetStandardComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables> mutation={UpdateAssetStandardDocument} {...props} />
 );
 
-export type UpdateAssetStandardProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateAssetStandardMutation,
-    UpdateAssetStandardMutationVariables
-  >;
+export type UpdateAssetStandardProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>;
 } & TChildProps;
-export function withUpdateAssetStandard<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateAssetStandard<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateAssetStandardMutation,
@@ -8255,27 +7849,13 @@ export function withUpdateAssetStandard<
  *   },
  * });
  */
-export function useUpdateAssetStandardMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateAssetStandardMutation,
-    UpdateAssetStandardMutationVariables
-  >
-) {
+export function useUpdateAssetStandardMutation(baseOptions?: Apollo.MutationHookOptions<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateAssetStandardMutation,
-    UpdateAssetStandardMutationVariables
-  >(UpdateAssetStandardDocument, options);
+  return Apollo.useMutation<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>(UpdateAssetStandardDocument, options);
 }
-export type UpdateAssetStandardMutationHookResult = ReturnType<
-  typeof useUpdateAssetStandardMutation
->;
-export type UpdateAssetStandardMutationResult =
-  Apollo.MutationResult<UpdateAssetStandardMutation>;
-export type UpdateAssetStandardMutationOptions = Apollo.BaseMutationOptions<
-  UpdateAssetStandardMutation,
-  UpdateAssetStandardMutationVariables
->;
+export type UpdateAssetStandardMutationHookResult = ReturnType<typeof useUpdateAssetStandardMutation>;
+export type UpdateAssetStandardMutationResult = Apollo.MutationResult<UpdateAssetStandardMutation>;
+export type UpdateAssetStandardMutationOptions = Apollo.BaseMutationOptions<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>;
 export const InsertCategoryDocument = gql`
   mutation insertCategory($object: categories_insert_input!) {
     insert_categories_one(object: $object) {
@@ -8287,44 +7867,20 @@ export const InsertCategoryDocument = gql`
     }
   }
 `;
-export type InsertCategoryMutationFn = Apollo.MutationFunction<
-  InsertCategoryMutation,
-  InsertCategoryMutationVariables
->;
+export type InsertCategoryMutationFn = Apollo.MutationFunction<InsertCategoryMutation, InsertCategoryMutationVariables>;
 export type InsertCategoryComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    InsertCategoryMutation,
-    InsertCategoryMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<InsertCategoryMutation, InsertCategoryMutationVariables>,
   'mutation'
 >;
 
-export const InsertCategoryComponent = (
-  props: InsertCategoryComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    InsertCategoryMutation,
-    InsertCategoryMutationVariables
-  >
-    mutation={InsertCategoryDocument}
-    {...props}
-  />
+export const InsertCategoryComponent = (props: InsertCategoryComponentProps) => (
+  <ApolloReactComponents.Mutation<InsertCategoryMutation, InsertCategoryMutationVariables> mutation={InsertCategoryDocument} {...props} />
 );
 
-export type InsertCategoryProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    InsertCategoryMutation,
-    InsertCategoryMutationVariables
-  >;
+export type InsertCategoryProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertCategoryMutation, InsertCategoryMutationVariables>;
 } & TChildProps;
-export function withInsertCategory<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withInsertCategory<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     InsertCategoryMutation,
@@ -8332,15 +7888,13 @@ export function withInsertCategory<
     InsertCategoryProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    InsertCategoryMutation,
-    InsertCategoryMutationVariables,
-    InsertCategoryProps<TChildProps, TDataName>
-  >(InsertCategoryDocument, {
-    alias: 'insertCategory',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, InsertCategoryMutation, InsertCategoryMutationVariables, InsertCategoryProps<TChildProps, TDataName>>(
+    InsertCategoryDocument,
+    {
+      alias: 'insertCategory',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -8360,27 +7914,13 @@ export function withInsertCategory<
  *   },
  * });
  */
-export function useInsertCategoryMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    InsertCategoryMutation,
-    InsertCategoryMutationVariables
-  >
-) {
+export function useInsertCategoryMutation(baseOptions?: Apollo.MutationHookOptions<InsertCategoryMutation, InsertCategoryMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    InsertCategoryMutation,
-    InsertCategoryMutationVariables
-  >(InsertCategoryDocument, options);
+  return Apollo.useMutation<InsertCategoryMutation, InsertCategoryMutationVariables>(InsertCategoryDocument, options);
 }
-export type InsertCategoryMutationHookResult = ReturnType<
-  typeof useInsertCategoryMutation
->;
-export type InsertCategoryMutationResult =
-  Apollo.MutationResult<InsertCategoryMutation>;
-export type InsertCategoryMutationOptions = Apollo.BaseMutationOptions<
-  InsertCategoryMutation,
-  InsertCategoryMutationVariables
->;
+export type InsertCategoryMutationHookResult = ReturnType<typeof useInsertCategoryMutation>;
+export type InsertCategoryMutationResult = Apollo.MutationResult<InsertCategoryMutation>;
+export type InsertCategoryMutationOptions = Apollo.BaseMutationOptions<InsertCategoryMutation, InsertCategoryMutationVariables>;
 export const DeleteCategoryDocument = gql`
   mutation deleteCategory($id: bigint!) {
     delete_categories_by_pk(id: $id) {
@@ -8389,44 +7929,20 @@ export const DeleteCategoryDocument = gql`
     }
   }
 `;
-export type DeleteCategoryMutationFn = Apollo.MutationFunction<
-  DeleteCategoryMutation,
-  DeleteCategoryMutationVariables
->;
+export type DeleteCategoryMutationFn = Apollo.MutationFunction<DeleteCategoryMutation, DeleteCategoryMutationVariables>;
 export type DeleteCategoryComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    DeleteCategoryMutation,
-    DeleteCategoryMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<DeleteCategoryMutation, DeleteCategoryMutationVariables>,
   'mutation'
 >;
 
-export const DeleteCategoryComponent = (
-  props: DeleteCategoryComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    DeleteCategoryMutation,
-    DeleteCategoryMutationVariables
-  >
-    mutation={DeleteCategoryDocument}
-    {...props}
-  />
+export const DeleteCategoryComponent = (props: DeleteCategoryComponentProps) => (
+  <ApolloReactComponents.Mutation<DeleteCategoryMutation, DeleteCategoryMutationVariables> mutation={DeleteCategoryDocument} {...props} />
 );
 
-export type DeleteCategoryProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    DeleteCategoryMutation,
-    DeleteCategoryMutationVariables
-  >;
+export type DeleteCategoryProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteCategoryMutation, DeleteCategoryMutationVariables>;
 } & TChildProps;
-export function withDeleteCategory<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withDeleteCategory<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     DeleteCategoryMutation,
@@ -8434,15 +7950,13 @@ export function withDeleteCategory<
     DeleteCategoryProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    DeleteCategoryMutation,
-    DeleteCategoryMutationVariables,
-    DeleteCategoryProps<TChildProps, TDataName>
-  >(DeleteCategoryDocument, {
-    alias: 'deleteCategory',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, DeleteCategoryMutation, DeleteCategoryMutationVariables, DeleteCategoryProps<TChildProps, TDataName>>(
+    DeleteCategoryDocument,
+    {
+      alias: 'deleteCategory',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -8462,27 +7976,13 @@ export function withDeleteCategory<
  *   },
  * });
  */
-export function useDeleteCategoryMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteCategoryMutation,
-    DeleteCategoryMutationVariables
-  >
-) {
+export function useDeleteCategoryMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCategoryMutation, DeleteCategoryMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteCategoryMutation,
-    DeleteCategoryMutationVariables
-  >(DeleteCategoryDocument, options);
+  return Apollo.useMutation<DeleteCategoryMutation, DeleteCategoryMutationVariables>(DeleteCategoryDocument, options);
 }
-export type DeleteCategoryMutationHookResult = ReturnType<
-  typeof useDeleteCategoryMutation
->;
-export type DeleteCategoryMutationResult =
-  Apollo.MutationResult<DeleteCategoryMutation>;
-export type DeleteCategoryMutationOptions = Apollo.BaseMutationOptions<
-  DeleteCategoryMutation,
-  DeleteCategoryMutationVariables
->;
+export type DeleteCategoryMutationHookResult = ReturnType<typeof useDeleteCategoryMutation>;
+export type DeleteCategoryMutationResult = Apollo.MutationResult<DeleteCategoryMutation>;
+export type DeleteCategoryMutationOptions = Apollo.BaseMutationOptions<DeleteCategoryMutation, DeleteCategoryMutationVariables>;
 export const UpdateCategoryDocument = gql`
   mutation updateCategory($id: bigint!, $changes: categories_set_input) {
     update_categories_by_pk(pk_columns: { id: $id }, _set: $changes) {
@@ -8490,44 +7990,20 @@ export const UpdateCategoryDocument = gql`
     }
   }
 `;
-export type UpdateCategoryMutationFn = Apollo.MutationFunction<
-  UpdateCategoryMutation,
-  UpdateCategoryMutationVariables
->;
+export type UpdateCategoryMutationFn = Apollo.MutationFunction<UpdateCategoryMutation, UpdateCategoryMutationVariables>;
 export type UpdateCategoryComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateCategoryMutation,
-    UpdateCategoryMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateCategoryMutation, UpdateCategoryMutationVariables>,
   'mutation'
 >;
 
-export const UpdateCategoryComponent = (
-  props: UpdateCategoryComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateCategoryMutation,
-    UpdateCategoryMutationVariables
-  >
-    mutation={UpdateCategoryDocument}
-    {...props}
-  />
+export const UpdateCategoryComponent = (props: UpdateCategoryComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateCategoryMutation, UpdateCategoryMutationVariables> mutation={UpdateCategoryDocument} {...props} />
 );
 
-export type UpdateCategoryProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateCategoryMutation,
-    UpdateCategoryMutationVariables
-  >;
+export type UpdateCategoryProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateCategoryMutation, UpdateCategoryMutationVariables>;
 } & TChildProps;
-export function withUpdateCategory<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateCategory<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateCategoryMutation,
@@ -8535,15 +8011,13 @@ export function withUpdateCategory<
     UpdateCategoryProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateCategoryMutation,
-    UpdateCategoryMutationVariables,
-    UpdateCategoryProps<TChildProps, TDataName>
-  >(UpdateCategoryDocument, {
-    alias: 'updateCategory',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, UpdateCategoryMutation, UpdateCategoryMutationVariables, UpdateCategoryProps<TChildProps, TDataName>>(
+    UpdateCategoryDocument,
+    {
+      alias: 'updateCategory',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -8564,27 +8038,13 @@ export function withUpdateCategory<
  *   },
  * });
  */
-export function useUpdateCategoryMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateCategoryMutation,
-    UpdateCategoryMutationVariables
-  >
-) {
+export function useUpdateCategoryMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCategoryMutation, UpdateCategoryMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateCategoryMutation,
-    UpdateCategoryMutationVariables
-  >(UpdateCategoryDocument, options);
+  return Apollo.useMutation<UpdateCategoryMutation, UpdateCategoryMutationVariables>(UpdateCategoryDocument, options);
 }
-export type UpdateCategoryMutationHookResult = ReturnType<
-  typeof useUpdateCategoryMutation
->;
-export type UpdateCategoryMutationResult =
-  Apollo.MutationResult<UpdateCategoryMutation>;
-export type UpdateCategoryMutationOptions = Apollo.BaseMutationOptions<
-  UpdateCategoryMutation,
-  UpdateCategoryMutationVariables
->;
+export type UpdateCategoryMutationHookResult = ReturnType<typeof useUpdateCategoryMutation>;
+export type UpdateCategoryMutationResult = Apollo.MutationResult<UpdateCategoryMutation>;
+export type UpdateCategoryMutationOptions = Apollo.BaseMutationOptions<UpdateCategoryMutation, UpdateCategoryMutationVariables>;
 export const InsertExpenseAccDocument = gql`
   mutation insertExpenseAcc($object: expenses_insert_input!) {
     insert_expenses_one(object: $object) {
@@ -8595,44 +8055,20 @@ export const InsertExpenseAccDocument = gql`
     }
   }
 `;
-export type InsertExpenseAccMutationFn = Apollo.MutationFunction<
-  InsertExpenseAccMutation,
-  InsertExpenseAccMutationVariables
->;
+export type InsertExpenseAccMutationFn = Apollo.MutationFunction<InsertExpenseAccMutation, InsertExpenseAccMutationVariables>;
 export type InsertExpenseAccComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    InsertExpenseAccMutation,
-    InsertExpenseAccMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<InsertExpenseAccMutation, InsertExpenseAccMutationVariables>,
   'mutation'
 >;
 
-export const InsertExpenseAccComponent = (
-  props: InsertExpenseAccComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    InsertExpenseAccMutation,
-    InsertExpenseAccMutationVariables
-  >
-    mutation={InsertExpenseAccDocument}
-    {...props}
-  />
+export const InsertExpenseAccComponent = (props: InsertExpenseAccComponentProps) => (
+  <ApolloReactComponents.Mutation<InsertExpenseAccMutation, InsertExpenseAccMutationVariables> mutation={InsertExpenseAccDocument} {...props} />
 );
 
-export type InsertExpenseAccProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    InsertExpenseAccMutation,
-    InsertExpenseAccMutationVariables
-  >;
+export type InsertExpenseAccProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertExpenseAccMutation, InsertExpenseAccMutationVariables>;
 } & TChildProps;
-export function withInsertExpenseAcc<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withInsertExpenseAcc<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     InsertExpenseAccMutation,
@@ -8640,15 +8076,13 @@ export function withInsertExpenseAcc<
     InsertExpenseAccProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    InsertExpenseAccMutation,
-    InsertExpenseAccMutationVariables,
-    InsertExpenseAccProps<TChildProps, TDataName>
-  >(InsertExpenseAccDocument, {
-    alias: 'insertExpenseAcc',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, InsertExpenseAccMutation, InsertExpenseAccMutationVariables, InsertExpenseAccProps<TChildProps, TDataName>>(
+    InsertExpenseAccDocument,
+    {
+      alias: 'insertExpenseAcc',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -8668,27 +8102,13 @@ export function withInsertExpenseAcc<
  *   },
  * });
  */
-export function useInsertExpenseAccMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    InsertExpenseAccMutation,
-    InsertExpenseAccMutationVariables
-  >
-) {
+export function useInsertExpenseAccMutation(baseOptions?: Apollo.MutationHookOptions<InsertExpenseAccMutation, InsertExpenseAccMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    InsertExpenseAccMutation,
-    InsertExpenseAccMutationVariables
-  >(InsertExpenseAccDocument, options);
+  return Apollo.useMutation<InsertExpenseAccMutation, InsertExpenseAccMutationVariables>(InsertExpenseAccDocument, options);
 }
-export type InsertExpenseAccMutationHookResult = ReturnType<
-  typeof useInsertExpenseAccMutation
->;
-export type InsertExpenseAccMutationResult =
-  Apollo.MutationResult<InsertExpenseAccMutation>;
-export type InsertExpenseAccMutationOptions = Apollo.BaseMutationOptions<
-  InsertExpenseAccMutation,
-  InsertExpenseAccMutationVariables
->;
+export type InsertExpenseAccMutationHookResult = ReturnType<typeof useInsertExpenseAccMutation>;
+export type InsertExpenseAccMutationResult = Apollo.MutationResult<InsertExpenseAccMutation>;
+export type InsertExpenseAccMutationOptions = Apollo.BaseMutationOptions<InsertExpenseAccMutation, InsertExpenseAccMutationVariables>;
 export const DeleteExpenseAccDocument = gql`
   mutation deleteExpenseAcc($id: bigint!) {
     delete_account_info_by_pk(id: $id) {
@@ -8696,44 +8116,20 @@ export const DeleteExpenseAccDocument = gql`
     }
   }
 `;
-export type DeleteExpenseAccMutationFn = Apollo.MutationFunction<
-  DeleteExpenseAccMutation,
-  DeleteExpenseAccMutationVariables
->;
+export type DeleteExpenseAccMutationFn = Apollo.MutationFunction<DeleteExpenseAccMutation, DeleteExpenseAccMutationVariables>;
 export type DeleteExpenseAccComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    DeleteExpenseAccMutation,
-    DeleteExpenseAccMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<DeleteExpenseAccMutation, DeleteExpenseAccMutationVariables>,
   'mutation'
 >;
 
-export const DeleteExpenseAccComponent = (
-  props: DeleteExpenseAccComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    DeleteExpenseAccMutation,
-    DeleteExpenseAccMutationVariables
-  >
-    mutation={DeleteExpenseAccDocument}
-    {...props}
-  />
+export const DeleteExpenseAccComponent = (props: DeleteExpenseAccComponentProps) => (
+  <ApolloReactComponents.Mutation<DeleteExpenseAccMutation, DeleteExpenseAccMutationVariables> mutation={DeleteExpenseAccDocument} {...props} />
 );
 
-export type DeleteExpenseAccProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    DeleteExpenseAccMutation,
-    DeleteExpenseAccMutationVariables
-  >;
+export type DeleteExpenseAccProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteExpenseAccMutation, DeleteExpenseAccMutationVariables>;
 } & TChildProps;
-export function withDeleteExpenseAcc<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withDeleteExpenseAcc<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     DeleteExpenseAccMutation,
@@ -8741,15 +8137,13 @@ export function withDeleteExpenseAcc<
     DeleteExpenseAccProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    DeleteExpenseAccMutation,
-    DeleteExpenseAccMutationVariables,
-    DeleteExpenseAccProps<TChildProps, TDataName>
-  >(DeleteExpenseAccDocument, {
-    alias: 'deleteExpenseAcc',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, DeleteExpenseAccMutation, DeleteExpenseAccMutationVariables, DeleteExpenseAccProps<TChildProps, TDataName>>(
+    DeleteExpenseAccDocument,
+    {
+      alias: 'deleteExpenseAcc',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -8769,33 +8163,15 @@ export function withDeleteExpenseAcc<
  *   },
  * });
  */
-export function useDeleteExpenseAccMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteExpenseAccMutation,
-    DeleteExpenseAccMutationVariables
-  >
-) {
+export function useDeleteExpenseAccMutation(baseOptions?: Apollo.MutationHookOptions<DeleteExpenseAccMutation, DeleteExpenseAccMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteExpenseAccMutation,
-    DeleteExpenseAccMutationVariables
-  >(DeleteExpenseAccDocument, options);
+  return Apollo.useMutation<DeleteExpenseAccMutation, DeleteExpenseAccMutationVariables>(DeleteExpenseAccDocument, options);
 }
-export type DeleteExpenseAccMutationHookResult = ReturnType<
-  typeof useDeleteExpenseAccMutation
->;
-export type DeleteExpenseAccMutationResult =
-  Apollo.MutationResult<DeleteExpenseAccMutation>;
-export type DeleteExpenseAccMutationOptions = Apollo.BaseMutationOptions<
-  DeleteExpenseAccMutation,
-  DeleteExpenseAccMutationVariables
->;
+export type DeleteExpenseAccMutationHookResult = ReturnType<typeof useDeleteExpenseAccMutation>;
+export type DeleteExpenseAccMutationResult = Apollo.MutationResult<DeleteExpenseAccMutation>;
+export type DeleteExpenseAccMutationOptions = Apollo.BaseMutationOptions<DeleteExpenseAccMutation, DeleteExpenseAccMutationVariables>;
 export const UpdateExpenseAccDocument = gql`
-  mutation updateExpenseAcc(
-    $id: bigint!
-    $changes: expenses_set_input
-    $name: String!
-  ) {
+  mutation updateExpenseAcc($id: bigint!, $changes: expenses_set_input, $name: String!) {
     update_expenses_by_pk(pk_columns: { id: $id }, _set: $changes) {
       id
     }
@@ -8804,44 +8180,20 @@ export const UpdateExpenseAccDocument = gql`
     }
   }
 `;
-export type UpdateExpenseAccMutationFn = Apollo.MutationFunction<
-  UpdateExpenseAccMutation,
-  UpdateExpenseAccMutationVariables
->;
+export type UpdateExpenseAccMutationFn = Apollo.MutationFunction<UpdateExpenseAccMutation, UpdateExpenseAccMutationVariables>;
 export type UpdateExpenseAccComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateExpenseAccMutation,
-    UpdateExpenseAccMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateExpenseAccMutation, UpdateExpenseAccMutationVariables>,
   'mutation'
 >;
 
-export const UpdateExpenseAccComponent = (
-  props: UpdateExpenseAccComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateExpenseAccMutation,
-    UpdateExpenseAccMutationVariables
-  >
-    mutation={UpdateExpenseAccDocument}
-    {...props}
-  />
+export const UpdateExpenseAccComponent = (props: UpdateExpenseAccComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateExpenseAccMutation, UpdateExpenseAccMutationVariables> mutation={UpdateExpenseAccDocument} {...props} />
 );
 
-export type UpdateExpenseAccProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateExpenseAccMutation,
-    UpdateExpenseAccMutationVariables
-  >;
+export type UpdateExpenseAccProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateExpenseAccMutation, UpdateExpenseAccMutationVariables>;
 } & TChildProps;
-export function withUpdateExpenseAcc<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateExpenseAcc<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateExpenseAccMutation,
@@ -8849,15 +8201,13 @@ export function withUpdateExpenseAcc<
     UpdateExpenseAccProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateExpenseAccMutation,
-    UpdateExpenseAccMutationVariables,
-    UpdateExpenseAccProps<TChildProps, TDataName>
-  >(UpdateExpenseAccDocument, {
-    alias: 'updateExpenseAcc',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, UpdateExpenseAccMutation, UpdateExpenseAccMutationVariables, UpdateExpenseAccProps<TChildProps, TDataName>>(
+    UpdateExpenseAccDocument,
+    {
+      alias: 'updateExpenseAcc',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -8879,27 +8229,13 @@ export function withUpdateExpenseAcc<
  *   },
  * });
  */
-export function useUpdateExpenseAccMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateExpenseAccMutation,
-    UpdateExpenseAccMutationVariables
-  >
-) {
+export function useUpdateExpenseAccMutation(baseOptions?: Apollo.MutationHookOptions<UpdateExpenseAccMutation, UpdateExpenseAccMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateExpenseAccMutation,
-    UpdateExpenseAccMutationVariables
-  >(UpdateExpenseAccDocument, options);
+  return Apollo.useMutation<UpdateExpenseAccMutation, UpdateExpenseAccMutationVariables>(UpdateExpenseAccDocument, options);
 }
-export type UpdateExpenseAccMutationHookResult = ReturnType<
-  typeof useUpdateExpenseAccMutation
->;
-export type UpdateExpenseAccMutationResult =
-  Apollo.MutationResult<UpdateExpenseAccMutation>;
-export type UpdateExpenseAccMutationOptions = Apollo.BaseMutationOptions<
-  UpdateExpenseAccMutation,
-  UpdateExpenseAccMutationVariables
->;
+export type UpdateExpenseAccMutationHookResult = ReturnType<typeof useUpdateExpenseAccMutation>;
+export type UpdateExpenseAccMutationResult = Apollo.MutationResult<UpdateExpenseAccMutation>;
+export type UpdateExpenseAccMutationOptions = Apollo.BaseMutationOptions<UpdateExpenseAccMutation, UpdateExpenseAccMutationVariables>;
 export const UpdateExpenseStateDocument = gql`
   mutation updateExpenseState($id: bigint!, $state: Boolean) {
     update_expenses_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
@@ -8907,44 +8243,20 @@ export const UpdateExpenseStateDocument = gql`
     }
   }
 `;
-export type UpdateExpenseStateMutationFn = Apollo.MutationFunction<
-  UpdateExpenseStateMutation,
-  UpdateExpenseStateMutationVariables
->;
+export type UpdateExpenseStateMutationFn = Apollo.MutationFunction<UpdateExpenseStateMutation, UpdateExpenseStateMutationVariables>;
 export type UpdateExpenseStateComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateExpenseStateMutation,
-    UpdateExpenseStateMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateExpenseStateMutation, UpdateExpenseStateMutationVariables>,
   'mutation'
 >;
 
-export const UpdateExpenseStateComponent = (
-  props: UpdateExpenseStateComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateExpenseStateMutation,
-    UpdateExpenseStateMutationVariables
-  >
-    mutation={UpdateExpenseStateDocument}
-    {...props}
-  />
+export const UpdateExpenseStateComponent = (props: UpdateExpenseStateComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateExpenseStateMutation, UpdateExpenseStateMutationVariables> mutation={UpdateExpenseStateDocument} {...props} />
 );
 
-export type UpdateExpenseStateProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateExpenseStateMutation,
-    UpdateExpenseStateMutationVariables
-  >;
+export type UpdateExpenseStateProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateExpenseStateMutation, UpdateExpenseStateMutationVariables>;
 } & TChildProps;
-export function withUpdateExpenseState<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateExpenseState<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateExpenseStateMutation,
@@ -8952,15 +8264,13 @@ export function withUpdateExpenseState<
     UpdateExpenseStateProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateExpenseStateMutation,
-    UpdateExpenseStateMutationVariables,
-    UpdateExpenseStateProps<TChildProps, TDataName>
-  >(UpdateExpenseStateDocument, {
-    alias: 'updateExpenseState',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, UpdateExpenseStateMutation, UpdateExpenseStateMutationVariables, UpdateExpenseStateProps<TChildProps, TDataName>>(
+    UpdateExpenseStateDocument,
+    {
+      alias: 'updateExpenseState',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -8981,27 +8291,13 @@ export function withUpdateExpenseState<
  *   },
  * });
  */
-export function useUpdateExpenseStateMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateExpenseStateMutation,
-    UpdateExpenseStateMutationVariables
-  >
-) {
+export function useUpdateExpenseStateMutation(baseOptions?: Apollo.MutationHookOptions<UpdateExpenseStateMutation, UpdateExpenseStateMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateExpenseStateMutation,
-    UpdateExpenseStateMutationVariables
-  >(UpdateExpenseStateDocument, options);
+  return Apollo.useMutation<UpdateExpenseStateMutation, UpdateExpenseStateMutationVariables>(UpdateExpenseStateDocument, options);
 }
-export type UpdateExpenseStateMutationHookResult = ReturnType<
-  typeof useUpdateExpenseStateMutation
->;
-export type UpdateExpenseStateMutationResult =
-  Apollo.MutationResult<UpdateExpenseStateMutation>;
-export type UpdateExpenseStateMutationOptions = Apollo.BaseMutationOptions<
-  UpdateExpenseStateMutation,
-  UpdateExpenseStateMutationVariables
->;
+export type UpdateExpenseStateMutationHookResult = ReturnType<typeof useUpdateExpenseStateMutation>;
+export type UpdateExpenseStateMutationResult = Apollo.MutationResult<UpdateExpenseStateMutation>;
+export type UpdateExpenseStateMutationOptions = Apollo.BaseMutationOptions<UpdateExpenseStateMutation, UpdateExpenseStateMutationVariables>;
 export const InsertLabelDocument = gql`
   mutation insertLabel($object: labels_insert_input!) {
     insert_labels_one(object: $object) {
@@ -9012,55 +8308,20 @@ export const InsertLabelDocument = gql`
     }
   }
 `;
-export type InsertLabelMutationFn = Apollo.MutationFunction<
-  InsertLabelMutation,
-  InsertLabelMutationVariables
->;
-export type InsertLabelComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    InsertLabelMutation,
-    InsertLabelMutationVariables
-  >,
-  'mutation'
->;
+export type InsertLabelMutationFn = Apollo.MutationFunction<InsertLabelMutation, InsertLabelMutationVariables>;
+export type InsertLabelComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<InsertLabelMutation, InsertLabelMutationVariables>, 'mutation'>;
 
 export const InsertLabelComponent = (props: InsertLabelComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    InsertLabelMutation,
-    InsertLabelMutationVariables
-  >
-    mutation={InsertLabelDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Mutation<InsertLabelMutation, InsertLabelMutationVariables> mutation={InsertLabelDocument} {...props} />
 );
 
-export type InsertLabelProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    InsertLabelMutation,
-    InsertLabelMutationVariables
-  >;
+export type InsertLabelProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertLabelMutation, InsertLabelMutationVariables>;
 } & TChildProps;
-export function withInsertLabel<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    InsertLabelMutation,
-    InsertLabelMutationVariables,
-    InsertLabelProps<TChildProps, TDataName>
-  >
+export function withInsertLabel<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, InsertLabelMutation, InsertLabelMutationVariables, InsertLabelProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    InsertLabelMutation,
-    InsertLabelMutationVariables,
-    InsertLabelProps<TChildProps, TDataName>
-  >(InsertLabelDocument, {
+  return ApolloReactHoc.withMutation<TProps, InsertLabelMutation, InsertLabelMutationVariables, InsertLabelProps<TChildProps, TDataName>>(InsertLabelDocument, {
     alias: 'insertLabel',
     ...operationOptions,
   });
@@ -9083,27 +8344,13 @@ export function withInsertLabel<
  *   },
  * });
  */
-export function useInsertLabelMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    InsertLabelMutation,
-    InsertLabelMutationVariables
-  >
-) {
+export function useInsertLabelMutation(baseOptions?: Apollo.MutationHookOptions<InsertLabelMutation, InsertLabelMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<InsertLabelMutation, InsertLabelMutationVariables>(
-    InsertLabelDocument,
-    options
-  );
+  return Apollo.useMutation<InsertLabelMutation, InsertLabelMutationVariables>(InsertLabelDocument, options);
 }
-export type InsertLabelMutationHookResult = ReturnType<
-  typeof useInsertLabelMutation
->;
-export type InsertLabelMutationResult =
-  Apollo.MutationResult<InsertLabelMutation>;
-export type InsertLabelMutationOptions = Apollo.BaseMutationOptions<
-  InsertLabelMutation,
-  InsertLabelMutationVariables
->;
+export type InsertLabelMutationHookResult = ReturnType<typeof useInsertLabelMutation>;
+export type InsertLabelMutationResult = Apollo.MutationResult<InsertLabelMutation>;
+export type InsertLabelMutationOptions = Apollo.BaseMutationOptions<InsertLabelMutation, InsertLabelMutationVariables>;
 export const DeleteLabelDocument = gql`
   mutation deleteLabel($id: Int!) {
     delete_labels_by_pk(id: $id) {
@@ -9112,55 +8359,20 @@ export const DeleteLabelDocument = gql`
     }
   }
 `;
-export type DeleteLabelMutationFn = Apollo.MutationFunction<
-  DeleteLabelMutation,
-  DeleteLabelMutationVariables
->;
-export type DeleteLabelComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables
-  >,
-  'mutation'
->;
+export type DeleteLabelMutationFn = Apollo.MutationFunction<DeleteLabelMutation, DeleteLabelMutationVariables>;
+export type DeleteLabelComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<DeleteLabelMutation, DeleteLabelMutationVariables>, 'mutation'>;
 
 export const DeleteLabelComponent = (props: DeleteLabelComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables
-  >
-    mutation={DeleteLabelDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Mutation<DeleteLabelMutation, DeleteLabelMutationVariables> mutation={DeleteLabelDocument} {...props} />
 );
 
-export type DeleteLabelProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables
-  >;
+export type DeleteLabelProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteLabelMutation, DeleteLabelMutationVariables>;
 } & TChildProps;
-export function withDeleteLabel<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables,
-    DeleteLabelProps<TChildProps, TDataName>
-  >
+export function withDeleteLabel<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, DeleteLabelMutation, DeleteLabelMutationVariables, DeleteLabelProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables,
-    DeleteLabelProps<TChildProps, TDataName>
-  >(DeleteLabelDocument, {
+  return ApolloReactHoc.withMutation<TProps, DeleteLabelMutation, DeleteLabelMutationVariables, DeleteLabelProps<TChildProps, TDataName>>(DeleteLabelDocument, {
     alias: 'deleteLabel',
     ...operationOptions,
   });
@@ -9183,27 +8395,13 @@ export function withDeleteLabel<
  *   },
  * });
  */
-export function useDeleteLabelMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteLabelMutation,
-    DeleteLabelMutationVariables
-  >
-) {
+export function useDeleteLabelMutation(baseOptions?: Apollo.MutationHookOptions<DeleteLabelMutation, DeleteLabelMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteLabelMutation, DeleteLabelMutationVariables>(
-    DeleteLabelDocument,
-    options
-  );
+  return Apollo.useMutation<DeleteLabelMutation, DeleteLabelMutationVariables>(DeleteLabelDocument, options);
 }
-export type DeleteLabelMutationHookResult = ReturnType<
-  typeof useDeleteLabelMutation
->;
-export type DeleteLabelMutationResult =
-  Apollo.MutationResult<DeleteLabelMutation>;
-export type DeleteLabelMutationOptions = Apollo.BaseMutationOptions<
-  DeleteLabelMutation,
-  DeleteLabelMutationVariables
->;
+export type DeleteLabelMutationHookResult = ReturnType<typeof useDeleteLabelMutation>;
+export type DeleteLabelMutationResult = Apollo.MutationResult<DeleteLabelMutation>;
+export type DeleteLabelMutationOptions = Apollo.BaseMutationOptions<DeleteLabelMutation, DeleteLabelMutationVariables>;
 export const UpdateLabelDocument = gql`
   mutation updateLabel($id: Int!, $changes: labels_set_input) {
     update_labels_by_pk(pk_columns: { id: $id }, _set: $changes) {
@@ -9211,55 +8409,20 @@ export const UpdateLabelDocument = gql`
     }
   }
 `;
-export type UpdateLabelMutationFn = Apollo.MutationFunction<
-  UpdateLabelMutation,
-  UpdateLabelMutationVariables
->;
-export type UpdateLabelComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateLabelMutation,
-    UpdateLabelMutationVariables
-  >,
-  'mutation'
->;
+export type UpdateLabelMutationFn = Apollo.MutationFunction<UpdateLabelMutation, UpdateLabelMutationVariables>;
+export type UpdateLabelComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<UpdateLabelMutation, UpdateLabelMutationVariables>, 'mutation'>;
 
 export const UpdateLabelComponent = (props: UpdateLabelComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    UpdateLabelMutation,
-    UpdateLabelMutationVariables
-  >
-    mutation={UpdateLabelDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Mutation<UpdateLabelMutation, UpdateLabelMutationVariables> mutation={UpdateLabelDocument} {...props} />
 );
 
-export type UpdateLabelProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateLabelMutation,
-    UpdateLabelMutationVariables
-  >;
+export type UpdateLabelProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateLabelMutation, UpdateLabelMutationVariables>;
 } & TChildProps;
-export function withUpdateLabel<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    UpdateLabelMutation,
-    UpdateLabelMutationVariables,
-    UpdateLabelProps<TChildProps, TDataName>
-  >
+export function withUpdateLabel<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, UpdateLabelMutation, UpdateLabelMutationVariables, UpdateLabelProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateLabelMutation,
-    UpdateLabelMutationVariables,
-    UpdateLabelProps<TChildProps, TDataName>
-  >(UpdateLabelDocument, {
+  return ApolloReactHoc.withMutation<TProps, UpdateLabelMutation, UpdateLabelMutationVariables, UpdateLabelProps<TChildProps, TDataName>>(UpdateLabelDocument, {
     alias: 'updateLabel',
     ...operationOptions,
   });
@@ -9283,27 +8446,13 @@ export function withUpdateLabel<
  *   },
  * });
  */
-export function useUpdateLabelMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateLabelMutation,
-    UpdateLabelMutationVariables
-  >
-) {
+export function useUpdateLabelMutation(baseOptions?: Apollo.MutationHookOptions<UpdateLabelMutation, UpdateLabelMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateLabelMutation, UpdateLabelMutationVariables>(
-    UpdateLabelDocument,
-    options
-  );
+  return Apollo.useMutation<UpdateLabelMutation, UpdateLabelMutationVariables>(UpdateLabelDocument, options);
 }
-export type UpdateLabelMutationHookResult = ReturnType<
-  typeof useUpdateLabelMutation
->;
-export type UpdateLabelMutationResult =
-  Apollo.MutationResult<UpdateLabelMutation>;
-export type UpdateLabelMutationOptions = Apollo.BaseMutationOptions<
-  UpdateLabelMutation,
-  UpdateLabelMutationVariables
->;
+export type UpdateLabelMutationHookResult = ReturnType<typeof useUpdateLabelMutation>;
+export type UpdateLabelMutationResult = Apollo.MutationResult<UpdateLabelMutation>;
+export type UpdateLabelMutationOptions = Apollo.BaseMutationOptions<UpdateLabelMutation, UpdateLabelMutationVariables>;
 export const InsertLiabilityAccDocument = gql`
   mutation insertLiabilityAcc($object: liabilities_insert_input!) {
     insert_liabilities_one(object: $object) {
@@ -9314,44 +8463,20 @@ export const InsertLiabilityAccDocument = gql`
     }
   }
 `;
-export type InsertLiabilityAccMutationFn = Apollo.MutationFunction<
-  InsertLiabilityAccMutation,
-  InsertLiabilityAccMutationVariables
->;
+export type InsertLiabilityAccMutationFn = Apollo.MutationFunction<InsertLiabilityAccMutation, InsertLiabilityAccMutationVariables>;
 export type InsertLiabilityAccComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    InsertLiabilityAccMutation,
-    InsertLiabilityAccMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<InsertLiabilityAccMutation, InsertLiabilityAccMutationVariables>,
   'mutation'
 >;
 
-export const InsertLiabilityAccComponent = (
-  props: InsertLiabilityAccComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    InsertLiabilityAccMutation,
-    InsertLiabilityAccMutationVariables
-  >
-    mutation={InsertLiabilityAccDocument}
-    {...props}
-  />
+export const InsertLiabilityAccComponent = (props: InsertLiabilityAccComponentProps) => (
+  <ApolloReactComponents.Mutation<InsertLiabilityAccMutation, InsertLiabilityAccMutationVariables> mutation={InsertLiabilityAccDocument} {...props} />
 );
 
-export type InsertLiabilityAccProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    InsertLiabilityAccMutation,
-    InsertLiabilityAccMutationVariables
-  >;
+export type InsertLiabilityAccProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertLiabilityAccMutation, InsertLiabilityAccMutationVariables>;
 } & TChildProps;
-export function withInsertLiabilityAcc<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withInsertLiabilityAcc<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     InsertLiabilityAccMutation,
@@ -9359,15 +8484,13 @@ export function withInsertLiabilityAcc<
     InsertLiabilityAccProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    InsertLiabilityAccMutation,
-    InsertLiabilityAccMutationVariables,
-    InsertLiabilityAccProps<TChildProps, TDataName>
-  >(InsertLiabilityAccDocument, {
-    alias: 'insertLiabilityAcc',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, InsertLiabilityAccMutation, InsertLiabilityAccMutationVariables, InsertLiabilityAccProps<TChildProps, TDataName>>(
+    InsertLiabilityAccDocument,
+    {
+      alias: 'insertLiabilityAcc',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -9387,27 +8510,13 @@ export function withInsertLiabilityAcc<
  *   },
  * });
  */
-export function useInsertLiabilityAccMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    InsertLiabilityAccMutation,
-    InsertLiabilityAccMutationVariables
-  >
-) {
+export function useInsertLiabilityAccMutation(baseOptions?: Apollo.MutationHookOptions<InsertLiabilityAccMutation, InsertLiabilityAccMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    InsertLiabilityAccMutation,
-    InsertLiabilityAccMutationVariables
-  >(InsertLiabilityAccDocument, options);
+  return Apollo.useMutation<InsertLiabilityAccMutation, InsertLiabilityAccMutationVariables>(InsertLiabilityAccDocument, options);
 }
-export type InsertLiabilityAccMutationHookResult = ReturnType<
-  typeof useInsertLiabilityAccMutation
->;
-export type InsertLiabilityAccMutationResult =
-  Apollo.MutationResult<InsertLiabilityAccMutation>;
-export type InsertLiabilityAccMutationOptions = Apollo.BaseMutationOptions<
-  InsertLiabilityAccMutation,
-  InsertLiabilityAccMutationVariables
->;
+export type InsertLiabilityAccMutationHookResult = ReturnType<typeof useInsertLiabilityAccMutation>;
+export type InsertLiabilityAccMutationResult = Apollo.MutationResult<InsertLiabilityAccMutation>;
+export type InsertLiabilityAccMutationOptions = Apollo.BaseMutationOptions<InsertLiabilityAccMutation, InsertLiabilityAccMutationVariables>;
 export const DeleteLiabilityAccDocument = gql`
   mutation deleteLiabilityAcc($id: bigint!) {
     delete_account_info_by_pk(id: $id) {
@@ -9415,44 +8524,20 @@ export const DeleteLiabilityAccDocument = gql`
     }
   }
 `;
-export type DeleteLiabilityAccMutationFn = Apollo.MutationFunction<
-  DeleteLiabilityAccMutation,
-  DeleteLiabilityAccMutationVariables
->;
+export type DeleteLiabilityAccMutationFn = Apollo.MutationFunction<DeleteLiabilityAccMutation, DeleteLiabilityAccMutationVariables>;
 export type DeleteLiabilityAccComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    DeleteLiabilityAccMutation,
-    DeleteLiabilityAccMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<DeleteLiabilityAccMutation, DeleteLiabilityAccMutationVariables>,
   'mutation'
 >;
 
-export const DeleteLiabilityAccComponent = (
-  props: DeleteLiabilityAccComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    DeleteLiabilityAccMutation,
-    DeleteLiabilityAccMutationVariables
-  >
-    mutation={DeleteLiabilityAccDocument}
-    {...props}
-  />
+export const DeleteLiabilityAccComponent = (props: DeleteLiabilityAccComponentProps) => (
+  <ApolloReactComponents.Mutation<DeleteLiabilityAccMutation, DeleteLiabilityAccMutationVariables> mutation={DeleteLiabilityAccDocument} {...props} />
 );
 
-export type DeleteLiabilityAccProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    DeleteLiabilityAccMutation,
-    DeleteLiabilityAccMutationVariables
-  >;
+export type DeleteLiabilityAccProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteLiabilityAccMutation, DeleteLiabilityAccMutationVariables>;
 } & TChildProps;
-export function withDeleteLiabilityAcc<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withDeleteLiabilityAcc<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     DeleteLiabilityAccMutation,
@@ -9460,15 +8545,13 @@ export function withDeleteLiabilityAcc<
     DeleteLiabilityAccProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    DeleteLiabilityAccMutation,
-    DeleteLiabilityAccMutationVariables,
-    DeleteLiabilityAccProps<TChildProps, TDataName>
-  >(DeleteLiabilityAccDocument, {
-    alias: 'deleteLiabilityAcc',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, DeleteLiabilityAccMutation, DeleteLiabilityAccMutationVariables, DeleteLiabilityAccProps<TChildProps, TDataName>>(
+    DeleteLiabilityAccDocument,
+    {
+      alias: 'deleteLiabilityAcc',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -9488,33 +8571,15 @@ export function withDeleteLiabilityAcc<
  *   },
  * });
  */
-export function useDeleteLiabilityAccMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteLiabilityAccMutation,
-    DeleteLiabilityAccMutationVariables
-  >
-) {
+export function useDeleteLiabilityAccMutation(baseOptions?: Apollo.MutationHookOptions<DeleteLiabilityAccMutation, DeleteLiabilityAccMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteLiabilityAccMutation,
-    DeleteLiabilityAccMutationVariables
-  >(DeleteLiabilityAccDocument, options);
+  return Apollo.useMutation<DeleteLiabilityAccMutation, DeleteLiabilityAccMutationVariables>(DeleteLiabilityAccDocument, options);
 }
-export type DeleteLiabilityAccMutationHookResult = ReturnType<
-  typeof useDeleteLiabilityAccMutation
->;
-export type DeleteLiabilityAccMutationResult =
-  Apollo.MutationResult<DeleteLiabilityAccMutation>;
-export type DeleteLiabilityAccMutationOptions = Apollo.BaseMutationOptions<
-  DeleteLiabilityAccMutation,
-  DeleteLiabilityAccMutationVariables
->;
+export type DeleteLiabilityAccMutationHookResult = ReturnType<typeof useDeleteLiabilityAccMutation>;
+export type DeleteLiabilityAccMutationResult = Apollo.MutationResult<DeleteLiabilityAccMutation>;
+export type DeleteLiabilityAccMutationOptions = Apollo.BaseMutationOptions<DeleteLiabilityAccMutation, DeleteLiabilityAccMutationVariables>;
 export const UpdateLiabilityAccDocument = gql`
-  mutation updateLiabilityAcc(
-    $id: bigint!
-    $changes: liabilities_set_input
-    $name: String!
-  ) {
+  mutation updateLiabilityAcc($id: bigint!, $changes: liabilities_set_input, $name: String!) {
     update_liabilities_by_pk(pk_columns: { id: $id }, _set: $changes) {
       id
     }
@@ -9523,44 +8588,20 @@ export const UpdateLiabilityAccDocument = gql`
     }
   }
 `;
-export type UpdateLiabilityAccMutationFn = Apollo.MutationFunction<
-  UpdateLiabilityAccMutation,
-  UpdateLiabilityAccMutationVariables
->;
+export type UpdateLiabilityAccMutationFn = Apollo.MutationFunction<UpdateLiabilityAccMutation, UpdateLiabilityAccMutationVariables>;
 export type UpdateLiabilityAccComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateLiabilityAccMutation,
-    UpdateLiabilityAccMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateLiabilityAccMutation, UpdateLiabilityAccMutationVariables>,
   'mutation'
 >;
 
-export const UpdateLiabilityAccComponent = (
-  props: UpdateLiabilityAccComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateLiabilityAccMutation,
-    UpdateLiabilityAccMutationVariables
-  >
-    mutation={UpdateLiabilityAccDocument}
-    {...props}
-  />
+export const UpdateLiabilityAccComponent = (props: UpdateLiabilityAccComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateLiabilityAccMutation, UpdateLiabilityAccMutationVariables> mutation={UpdateLiabilityAccDocument} {...props} />
 );
 
-export type UpdateLiabilityAccProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateLiabilityAccMutation,
-    UpdateLiabilityAccMutationVariables
-  >;
+export type UpdateLiabilityAccProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateLiabilityAccMutation, UpdateLiabilityAccMutationVariables>;
 } & TChildProps;
-export function withUpdateLiabilityAcc<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateLiabilityAcc<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateLiabilityAccMutation,
@@ -9568,15 +8609,13 @@ export function withUpdateLiabilityAcc<
     UpdateLiabilityAccProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateLiabilityAccMutation,
-    UpdateLiabilityAccMutationVariables,
-    UpdateLiabilityAccProps<TChildProps, TDataName>
-  >(UpdateLiabilityAccDocument, {
-    alias: 'updateLiabilityAcc',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, UpdateLiabilityAccMutation, UpdateLiabilityAccMutationVariables, UpdateLiabilityAccProps<TChildProps, TDataName>>(
+    UpdateLiabilityAccDocument,
+    {
+      alias: 'updateLiabilityAcc',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -9598,75 +8637,34 @@ export function withUpdateLiabilityAcc<
  *   },
  * });
  */
-export function useUpdateLiabilityAccMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateLiabilityAccMutation,
-    UpdateLiabilityAccMutationVariables
-  >
-) {
+export function useUpdateLiabilityAccMutation(baseOptions?: Apollo.MutationHookOptions<UpdateLiabilityAccMutation, UpdateLiabilityAccMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateLiabilityAccMutation,
-    UpdateLiabilityAccMutationVariables
-  >(UpdateLiabilityAccDocument, options);
+  return Apollo.useMutation<UpdateLiabilityAccMutation, UpdateLiabilityAccMutationVariables>(UpdateLiabilityAccDocument, options);
 }
-export type UpdateLiabilityAccMutationHookResult = ReturnType<
-  typeof useUpdateLiabilityAccMutation
->;
-export type UpdateLiabilityAccMutationResult =
-  Apollo.MutationResult<UpdateLiabilityAccMutation>;
-export type UpdateLiabilityAccMutationOptions = Apollo.BaseMutationOptions<
-  UpdateLiabilityAccMutation,
-  UpdateLiabilityAccMutationVariables
->;
+export type UpdateLiabilityAccMutationHookResult = ReturnType<typeof useUpdateLiabilityAccMutation>;
+export type UpdateLiabilityAccMutationResult = Apollo.MutationResult<UpdateLiabilityAccMutation>;
+export type UpdateLiabilityAccMutationOptions = Apollo.BaseMutationOptions<UpdateLiabilityAccMutation, UpdateLiabilityAccMutationVariables>;
 export const UpdateLiabilityStateDocument = gql`
   mutation updateLiabilityState($id: bigint!, $state: Boolean) {
-    update_liabilities_by_pk(
-      pk_columns: { id: $id }
-      _set: { active: $state }
-    ) {
+    update_liabilities_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
       active
     }
   }
 `;
-export type UpdateLiabilityStateMutationFn = Apollo.MutationFunction<
-  UpdateLiabilityStateMutation,
-  UpdateLiabilityStateMutationVariables
->;
+export type UpdateLiabilityStateMutationFn = Apollo.MutationFunction<UpdateLiabilityStateMutation, UpdateLiabilityStateMutationVariables>;
 export type UpdateLiabilityStateComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateLiabilityStateMutation,
-    UpdateLiabilityStateMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateLiabilityStateMutation, UpdateLiabilityStateMutationVariables>,
   'mutation'
 >;
 
-export const UpdateLiabilityStateComponent = (
-  props: UpdateLiabilityStateComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateLiabilityStateMutation,
-    UpdateLiabilityStateMutationVariables
-  >
-    mutation={UpdateLiabilityStateDocument}
-    {...props}
-  />
+export const UpdateLiabilityStateComponent = (props: UpdateLiabilityStateComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateLiabilityStateMutation, UpdateLiabilityStateMutationVariables> mutation={UpdateLiabilityStateDocument} {...props} />
 );
 
-export type UpdateLiabilityStateProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateLiabilityStateMutation,
-    UpdateLiabilityStateMutationVariables
-  >;
+export type UpdateLiabilityStateProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateLiabilityStateMutation, UpdateLiabilityStateMutationVariables>;
 } & TChildProps;
-export function withUpdateLiabilityState<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateLiabilityState<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateLiabilityStateMutation,
@@ -9703,27 +8701,13 @@ export function withUpdateLiabilityState<
  *   },
  * });
  */
-export function useUpdateLiabilityStateMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateLiabilityStateMutation,
-    UpdateLiabilityStateMutationVariables
-  >
-) {
+export function useUpdateLiabilityStateMutation(baseOptions?: Apollo.MutationHookOptions<UpdateLiabilityStateMutation, UpdateLiabilityStateMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateLiabilityStateMutation,
-    UpdateLiabilityStateMutationVariables
-  >(UpdateLiabilityStateDocument, options);
+  return Apollo.useMutation<UpdateLiabilityStateMutation, UpdateLiabilityStateMutationVariables>(UpdateLiabilityStateDocument, options);
 }
-export type UpdateLiabilityStateMutationHookResult = ReturnType<
-  typeof useUpdateLiabilityStateMutation
->;
-export type UpdateLiabilityStateMutationResult =
-  Apollo.MutationResult<UpdateLiabilityStateMutation>;
-export type UpdateLiabilityStateMutationOptions = Apollo.BaseMutationOptions<
-  UpdateLiabilityStateMutation,
-  UpdateLiabilityStateMutationVariables
->;
+export type UpdateLiabilityStateMutationHookResult = ReturnType<typeof useUpdateLiabilityStateMutation>;
+export type UpdateLiabilityStateMutationResult = Apollo.MutationResult<UpdateLiabilityStateMutation>;
+export type UpdateLiabilityStateMutationOptions = Apollo.BaseMutationOptions<UpdateLiabilityStateMutation, UpdateLiabilityStateMutationVariables>;
 export const InsertRecurringDocument = gql`
   mutation insertRecurring($object: recurring_insert_input!) {
     insert_recurring_one(object: $object) {
@@ -9731,44 +8715,20 @@ export const InsertRecurringDocument = gql`
     }
   }
 `;
-export type InsertRecurringMutationFn = Apollo.MutationFunction<
-  InsertRecurringMutation,
-  InsertRecurringMutationVariables
->;
+export type InsertRecurringMutationFn = Apollo.MutationFunction<InsertRecurringMutation, InsertRecurringMutationVariables>;
 export type InsertRecurringComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    InsertRecurringMutation,
-    InsertRecurringMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<InsertRecurringMutation, InsertRecurringMutationVariables>,
   'mutation'
 >;
 
-export const InsertRecurringComponent = (
-  props: InsertRecurringComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    InsertRecurringMutation,
-    InsertRecurringMutationVariables
-  >
-    mutation={InsertRecurringDocument}
-    {...props}
-  />
+export const InsertRecurringComponent = (props: InsertRecurringComponentProps) => (
+  <ApolloReactComponents.Mutation<InsertRecurringMutation, InsertRecurringMutationVariables> mutation={InsertRecurringDocument} {...props} />
 );
 
-export type InsertRecurringProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    InsertRecurringMutation,
-    InsertRecurringMutationVariables
-  >;
+export type InsertRecurringProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertRecurringMutation, InsertRecurringMutationVariables>;
 } & TChildProps;
-export function withInsertRecurring<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withInsertRecurring<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     InsertRecurringMutation,
@@ -9776,15 +8736,13 @@ export function withInsertRecurring<
     InsertRecurringProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    InsertRecurringMutation,
-    InsertRecurringMutationVariables,
-    InsertRecurringProps<TChildProps, TDataName>
-  >(InsertRecurringDocument, {
-    alias: 'insertRecurring',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, InsertRecurringMutation, InsertRecurringMutationVariables, InsertRecurringProps<TChildProps, TDataName>>(
+    InsertRecurringDocument,
+    {
+      alias: 'insertRecurring',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -9804,27 +8762,13 @@ export function withInsertRecurring<
  *   },
  * });
  */
-export function useInsertRecurringMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    InsertRecurringMutation,
-    InsertRecurringMutationVariables
-  >
-) {
+export function useInsertRecurringMutation(baseOptions?: Apollo.MutationHookOptions<InsertRecurringMutation, InsertRecurringMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    InsertRecurringMutation,
-    InsertRecurringMutationVariables
-  >(InsertRecurringDocument, options);
+  return Apollo.useMutation<InsertRecurringMutation, InsertRecurringMutationVariables>(InsertRecurringDocument, options);
 }
-export type InsertRecurringMutationHookResult = ReturnType<
-  typeof useInsertRecurringMutation
->;
-export type InsertRecurringMutationResult =
-  Apollo.MutationResult<InsertRecurringMutation>;
-export type InsertRecurringMutationOptions = Apollo.BaseMutationOptions<
-  InsertRecurringMutation,
-  InsertRecurringMutationVariables
->;
+export type InsertRecurringMutationHookResult = ReturnType<typeof useInsertRecurringMutation>;
+export type InsertRecurringMutationResult = Apollo.MutationResult<InsertRecurringMutation>;
+export type InsertRecurringMutationOptions = Apollo.BaseMutationOptions<InsertRecurringMutation, InsertRecurringMutationVariables>;
 export const DeleteRecurringDocument = gql`
   mutation deleteRecurring($id: bigint!) {
     delete_recurring_by_pk(id: $id) {
@@ -9832,44 +8776,20 @@ export const DeleteRecurringDocument = gql`
     }
   }
 `;
-export type DeleteRecurringMutationFn = Apollo.MutationFunction<
-  DeleteRecurringMutation,
-  DeleteRecurringMutationVariables
->;
+export type DeleteRecurringMutationFn = Apollo.MutationFunction<DeleteRecurringMutation, DeleteRecurringMutationVariables>;
 export type DeleteRecurringComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    DeleteRecurringMutation,
-    DeleteRecurringMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<DeleteRecurringMutation, DeleteRecurringMutationVariables>,
   'mutation'
 >;
 
-export const DeleteRecurringComponent = (
-  props: DeleteRecurringComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    DeleteRecurringMutation,
-    DeleteRecurringMutationVariables
-  >
-    mutation={DeleteRecurringDocument}
-    {...props}
-  />
+export const DeleteRecurringComponent = (props: DeleteRecurringComponentProps) => (
+  <ApolloReactComponents.Mutation<DeleteRecurringMutation, DeleteRecurringMutationVariables> mutation={DeleteRecurringDocument} {...props} />
 );
 
-export type DeleteRecurringProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    DeleteRecurringMutation,
-    DeleteRecurringMutationVariables
-  >;
+export type DeleteRecurringProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteRecurringMutation, DeleteRecurringMutationVariables>;
 } & TChildProps;
-export function withDeleteRecurring<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withDeleteRecurring<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     DeleteRecurringMutation,
@@ -9877,15 +8797,13 @@ export function withDeleteRecurring<
     DeleteRecurringProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    DeleteRecurringMutation,
-    DeleteRecurringMutationVariables,
-    DeleteRecurringProps<TChildProps, TDataName>
-  >(DeleteRecurringDocument, {
-    alias: 'deleteRecurring',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, DeleteRecurringMutation, DeleteRecurringMutationVariables, DeleteRecurringProps<TChildProps, TDataName>>(
+    DeleteRecurringDocument,
+    {
+      alias: 'deleteRecurring',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -9905,27 +8823,13 @@ export function withDeleteRecurring<
  *   },
  * });
  */
-export function useDeleteRecurringMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteRecurringMutation,
-    DeleteRecurringMutationVariables
-  >
-) {
+export function useDeleteRecurringMutation(baseOptions?: Apollo.MutationHookOptions<DeleteRecurringMutation, DeleteRecurringMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteRecurringMutation,
-    DeleteRecurringMutationVariables
-  >(DeleteRecurringDocument, options);
+  return Apollo.useMutation<DeleteRecurringMutation, DeleteRecurringMutationVariables>(DeleteRecurringDocument, options);
 }
-export type DeleteRecurringMutationHookResult = ReturnType<
-  typeof useDeleteRecurringMutation
->;
-export type DeleteRecurringMutationResult =
-  Apollo.MutationResult<DeleteRecurringMutation>;
-export type DeleteRecurringMutationOptions = Apollo.BaseMutationOptions<
-  DeleteRecurringMutation,
-  DeleteRecurringMutationVariables
->;
+export type DeleteRecurringMutationHookResult = ReturnType<typeof useDeleteRecurringMutation>;
+export type DeleteRecurringMutationResult = Apollo.MutationResult<DeleteRecurringMutation>;
+export type DeleteRecurringMutationOptions = Apollo.BaseMutationOptions<DeleteRecurringMutation, DeleteRecurringMutationVariables>;
 export const InactivateRecurringDocument = gql`
   mutation inactivateRecurring($id: bigint!) {
     update_recurring_by_pk(pk_columns: { id: $id }, _set: { active: false }) {
@@ -9933,44 +8837,20 @@ export const InactivateRecurringDocument = gql`
     }
   }
 `;
-export type InactivateRecurringMutationFn = Apollo.MutationFunction<
-  InactivateRecurringMutation,
-  InactivateRecurringMutationVariables
->;
+export type InactivateRecurringMutationFn = Apollo.MutationFunction<InactivateRecurringMutation, InactivateRecurringMutationVariables>;
 export type InactivateRecurringComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    InactivateRecurringMutation,
-    InactivateRecurringMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<InactivateRecurringMutation, InactivateRecurringMutationVariables>,
   'mutation'
 >;
 
-export const InactivateRecurringComponent = (
-  props: InactivateRecurringComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    InactivateRecurringMutation,
-    InactivateRecurringMutationVariables
-  >
-    mutation={InactivateRecurringDocument}
-    {...props}
-  />
+export const InactivateRecurringComponent = (props: InactivateRecurringComponentProps) => (
+  <ApolloReactComponents.Mutation<InactivateRecurringMutation, InactivateRecurringMutationVariables> mutation={InactivateRecurringDocument} {...props} />
 );
 
-export type InactivateRecurringProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    InactivateRecurringMutation,
-    InactivateRecurringMutationVariables
-  >;
+export type InactivateRecurringProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InactivateRecurringMutation, InactivateRecurringMutationVariables>;
 } & TChildProps;
-export function withInactivateRecurring<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withInactivateRecurring<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     InactivateRecurringMutation,
@@ -10006,33 +8886,15 @@ export function withInactivateRecurring<
  *   },
  * });
  */
-export function useInactivateRecurringMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    InactivateRecurringMutation,
-    InactivateRecurringMutationVariables
-  >
-) {
+export function useInactivateRecurringMutation(baseOptions?: Apollo.MutationHookOptions<InactivateRecurringMutation, InactivateRecurringMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    InactivateRecurringMutation,
-    InactivateRecurringMutationVariables
-  >(InactivateRecurringDocument, options);
+  return Apollo.useMutation<InactivateRecurringMutation, InactivateRecurringMutationVariables>(InactivateRecurringDocument, options);
 }
-export type InactivateRecurringMutationHookResult = ReturnType<
-  typeof useInactivateRecurringMutation
->;
-export type InactivateRecurringMutationResult =
-  Apollo.MutationResult<InactivateRecurringMutation>;
-export type InactivateRecurringMutationOptions = Apollo.BaseMutationOptions<
-  InactivateRecurringMutation,
-  InactivateRecurringMutationVariables
->;
+export type InactivateRecurringMutationHookResult = ReturnType<typeof useInactivateRecurringMutation>;
+export type InactivateRecurringMutationResult = Apollo.MutationResult<InactivateRecurringMutation>;
+export type InactivateRecurringMutationOptions = Apollo.BaseMutationOptions<InactivateRecurringMutation, InactivateRecurringMutationVariables>;
 export const UpdateRecurringDocument = gql`
-  mutation updateRecurring(
-    $id: bigint!
-    $changes: recurring_set_input
-    $labels: [recurring_labels_insert_input!]!
-  ) {
+  mutation updateRecurring($id: bigint!, $changes: recurring_set_input, $labels: [recurring_labels_insert_input!]!) {
     update_recurring_by_pk(pk_columns: { id: $id }, _set: $changes) {
       id
     }
@@ -10044,44 +8906,20 @@ export const UpdateRecurringDocument = gql`
     }
   }
 `;
-export type UpdateRecurringMutationFn = Apollo.MutationFunction<
-  UpdateRecurringMutation,
-  UpdateRecurringMutationVariables
->;
+export type UpdateRecurringMutationFn = Apollo.MutationFunction<UpdateRecurringMutation, UpdateRecurringMutationVariables>;
 export type UpdateRecurringComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateRecurringMutation,
-    UpdateRecurringMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateRecurringMutation, UpdateRecurringMutationVariables>,
   'mutation'
 >;
 
-export const UpdateRecurringComponent = (
-  props: UpdateRecurringComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateRecurringMutation,
-    UpdateRecurringMutationVariables
-  >
-    mutation={UpdateRecurringDocument}
-    {...props}
-  />
+export const UpdateRecurringComponent = (props: UpdateRecurringComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateRecurringMutation, UpdateRecurringMutationVariables> mutation={UpdateRecurringDocument} {...props} />
 );
 
-export type UpdateRecurringProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateRecurringMutation,
-    UpdateRecurringMutationVariables
-  >;
+export type UpdateRecurringProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateRecurringMutation, UpdateRecurringMutationVariables>;
 } & TChildProps;
-export function withUpdateRecurring<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateRecurring<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateRecurringMutation,
@@ -10089,15 +8927,13 @@ export function withUpdateRecurring<
     UpdateRecurringProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateRecurringMutation,
-    UpdateRecurringMutationVariables,
-    UpdateRecurringProps<TChildProps, TDataName>
-  >(UpdateRecurringDocument, {
-    alias: 'updateRecurring',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, UpdateRecurringMutation, UpdateRecurringMutationVariables, UpdateRecurringProps<TChildProps, TDataName>>(
+    UpdateRecurringDocument,
+    {
+      alias: 'updateRecurring',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -10119,27 +8955,13 @@ export function withUpdateRecurring<
  *   },
  * });
  */
-export function useUpdateRecurringMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateRecurringMutation,
-    UpdateRecurringMutationVariables
-  >
-) {
+export function useUpdateRecurringMutation(baseOptions?: Apollo.MutationHookOptions<UpdateRecurringMutation, UpdateRecurringMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateRecurringMutation,
-    UpdateRecurringMutationVariables
-  >(UpdateRecurringDocument, options);
+  return Apollo.useMutation<UpdateRecurringMutation, UpdateRecurringMutationVariables>(UpdateRecurringDocument, options);
 }
-export type UpdateRecurringMutationHookResult = ReturnType<
-  typeof useUpdateRecurringMutation
->;
-export type UpdateRecurringMutationResult =
-  Apollo.MutationResult<UpdateRecurringMutation>;
-export type UpdateRecurringMutationOptions = Apollo.BaseMutationOptions<
-  UpdateRecurringMutation,
-  UpdateRecurringMutationVariables
->;
+export type UpdateRecurringMutationHookResult = ReturnType<typeof useUpdateRecurringMutation>;
+export type UpdateRecurringMutationResult = Apollo.MutationResult<UpdateRecurringMutation>;
+export type UpdateRecurringMutationOptions = Apollo.BaseMutationOptions<UpdateRecurringMutation, UpdateRecurringMutationVariables>;
 export const InsertRevenueAccDocument = gql`
   mutation insertRevenueAcc($object: revenues_insert_input!) {
     insert_revenues_one(object: $object) {
@@ -10150,44 +8972,20 @@ export const InsertRevenueAccDocument = gql`
     }
   }
 `;
-export type InsertRevenueAccMutationFn = Apollo.MutationFunction<
-  InsertRevenueAccMutation,
-  InsertRevenueAccMutationVariables
->;
+export type InsertRevenueAccMutationFn = Apollo.MutationFunction<InsertRevenueAccMutation, InsertRevenueAccMutationVariables>;
 export type InsertRevenueAccComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    InsertRevenueAccMutation,
-    InsertRevenueAccMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<InsertRevenueAccMutation, InsertRevenueAccMutationVariables>,
   'mutation'
 >;
 
-export const InsertRevenueAccComponent = (
-  props: InsertRevenueAccComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    InsertRevenueAccMutation,
-    InsertRevenueAccMutationVariables
-  >
-    mutation={InsertRevenueAccDocument}
-    {...props}
-  />
+export const InsertRevenueAccComponent = (props: InsertRevenueAccComponentProps) => (
+  <ApolloReactComponents.Mutation<InsertRevenueAccMutation, InsertRevenueAccMutationVariables> mutation={InsertRevenueAccDocument} {...props} />
 );
 
-export type InsertRevenueAccProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    InsertRevenueAccMutation,
-    InsertRevenueAccMutationVariables
-  >;
+export type InsertRevenueAccProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertRevenueAccMutation, InsertRevenueAccMutationVariables>;
 } & TChildProps;
-export function withInsertRevenueAcc<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withInsertRevenueAcc<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     InsertRevenueAccMutation,
@@ -10195,15 +8993,13 @@ export function withInsertRevenueAcc<
     InsertRevenueAccProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    InsertRevenueAccMutation,
-    InsertRevenueAccMutationVariables,
-    InsertRevenueAccProps<TChildProps, TDataName>
-  >(InsertRevenueAccDocument, {
-    alias: 'insertRevenueAcc',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, InsertRevenueAccMutation, InsertRevenueAccMutationVariables, InsertRevenueAccProps<TChildProps, TDataName>>(
+    InsertRevenueAccDocument,
+    {
+      alias: 'insertRevenueAcc',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -10223,27 +9019,13 @@ export function withInsertRevenueAcc<
  *   },
  * });
  */
-export function useInsertRevenueAccMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    InsertRevenueAccMutation,
-    InsertRevenueAccMutationVariables
-  >
-) {
+export function useInsertRevenueAccMutation(baseOptions?: Apollo.MutationHookOptions<InsertRevenueAccMutation, InsertRevenueAccMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    InsertRevenueAccMutation,
-    InsertRevenueAccMutationVariables
-  >(InsertRevenueAccDocument, options);
+  return Apollo.useMutation<InsertRevenueAccMutation, InsertRevenueAccMutationVariables>(InsertRevenueAccDocument, options);
 }
-export type InsertRevenueAccMutationHookResult = ReturnType<
-  typeof useInsertRevenueAccMutation
->;
-export type InsertRevenueAccMutationResult =
-  Apollo.MutationResult<InsertRevenueAccMutation>;
-export type InsertRevenueAccMutationOptions = Apollo.BaseMutationOptions<
-  InsertRevenueAccMutation,
-  InsertRevenueAccMutationVariables
->;
+export type InsertRevenueAccMutationHookResult = ReturnType<typeof useInsertRevenueAccMutation>;
+export type InsertRevenueAccMutationResult = Apollo.MutationResult<InsertRevenueAccMutation>;
+export type InsertRevenueAccMutationOptions = Apollo.BaseMutationOptions<InsertRevenueAccMutation, InsertRevenueAccMutationVariables>;
 export const DeleteRevenueAccDocument = gql`
   mutation deleteRevenueAcc($id: bigint!) {
     delete_account_info_by_pk(id: $id) {
@@ -10251,44 +9033,20 @@ export const DeleteRevenueAccDocument = gql`
     }
   }
 `;
-export type DeleteRevenueAccMutationFn = Apollo.MutationFunction<
-  DeleteRevenueAccMutation,
-  DeleteRevenueAccMutationVariables
->;
+export type DeleteRevenueAccMutationFn = Apollo.MutationFunction<DeleteRevenueAccMutation, DeleteRevenueAccMutationVariables>;
 export type DeleteRevenueAccComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    DeleteRevenueAccMutation,
-    DeleteRevenueAccMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<DeleteRevenueAccMutation, DeleteRevenueAccMutationVariables>,
   'mutation'
 >;
 
-export const DeleteRevenueAccComponent = (
-  props: DeleteRevenueAccComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    DeleteRevenueAccMutation,
-    DeleteRevenueAccMutationVariables
-  >
-    mutation={DeleteRevenueAccDocument}
-    {...props}
-  />
+export const DeleteRevenueAccComponent = (props: DeleteRevenueAccComponentProps) => (
+  <ApolloReactComponents.Mutation<DeleteRevenueAccMutation, DeleteRevenueAccMutationVariables> mutation={DeleteRevenueAccDocument} {...props} />
 );
 
-export type DeleteRevenueAccProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    DeleteRevenueAccMutation,
-    DeleteRevenueAccMutationVariables
-  >;
+export type DeleteRevenueAccProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteRevenueAccMutation, DeleteRevenueAccMutationVariables>;
 } & TChildProps;
-export function withDeleteRevenueAcc<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withDeleteRevenueAcc<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     DeleteRevenueAccMutation,
@@ -10296,15 +9054,13 @@ export function withDeleteRevenueAcc<
     DeleteRevenueAccProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    DeleteRevenueAccMutation,
-    DeleteRevenueAccMutationVariables,
-    DeleteRevenueAccProps<TChildProps, TDataName>
-  >(DeleteRevenueAccDocument, {
-    alias: 'deleteRevenueAcc',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, DeleteRevenueAccMutation, DeleteRevenueAccMutationVariables, DeleteRevenueAccProps<TChildProps, TDataName>>(
+    DeleteRevenueAccDocument,
+    {
+      alias: 'deleteRevenueAcc',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -10324,33 +9080,15 @@ export function withDeleteRevenueAcc<
  *   },
  * });
  */
-export function useDeleteRevenueAccMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteRevenueAccMutation,
-    DeleteRevenueAccMutationVariables
-  >
-) {
+export function useDeleteRevenueAccMutation(baseOptions?: Apollo.MutationHookOptions<DeleteRevenueAccMutation, DeleteRevenueAccMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteRevenueAccMutation,
-    DeleteRevenueAccMutationVariables
-  >(DeleteRevenueAccDocument, options);
+  return Apollo.useMutation<DeleteRevenueAccMutation, DeleteRevenueAccMutationVariables>(DeleteRevenueAccDocument, options);
 }
-export type DeleteRevenueAccMutationHookResult = ReturnType<
-  typeof useDeleteRevenueAccMutation
->;
-export type DeleteRevenueAccMutationResult =
-  Apollo.MutationResult<DeleteRevenueAccMutation>;
-export type DeleteRevenueAccMutationOptions = Apollo.BaseMutationOptions<
-  DeleteRevenueAccMutation,
-  DeleteRevenueAccMutationVariables
->;
+export type DeleteRevenueAccMutationHookResult = ReturnType<typeof useDeleteRevenueAccMutation>;
+export type DeleteRevenueAccMutationResult = Apollo.MutationResult<DeleteRevenueAccMutation>;
+export type DeleteRevenueAccMutationOptions = Apollo.BaseMutationOptions<DeleteRevenueAccMutation, DeleteRevenueAccMutationVariables>;
 export const UpdateRevenueAccDocument = gql`
-  mutation updateRevenueAcc(
-    $id: bigint!
-    $changes: revenues_set_input
-    $name: String!
-  ) {
+  mutation updateRevenueAcc($id: bigint!, $changes: revenues_set_input, $name: String!) {
     update_revenues_by_pk(pk_columns: { id: $id }, _set: $changes) {
       id
     }
@@ -10359,44 +9097,20 @@ export const UpdateRevenueAccDocument = gql`
     }
   }
 `;
-export type UpdateRevenueAccMutationFn = Apollo.MutationFunction<
-  UpdateRevenueAccMutation,
-  UpdateRevenueAccMutationVariables
->;
+export type UpdateRevenueAccMutationFn = Apollo.MutationFunction<UpdateRevenueAccMutation, UpdateRevenueAccMutationVariables>;
 export type UpdateRevenueAccComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateRevenueAccMutation,
-    UpdateRevenueAccMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateRevenueAccMutation, UpdateRevenueAccMutationVariables>,
   'mutation'
 >;
 
-export const UpdateRevenueAccComponent = (
-  props: UpdateRevenueAccComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateRevenueAccMutation,
-    UpdateRevenueAccMutationVariables
-  >
-    mutation={UpdateRevenueAccDocument}
-    {...props}
-  />
+export const UpdateRevenueAccComponent = (props: UpdateRevenueAccComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateRevenueAccMutation, UpdateRevenueAccMutationVariables> mutation={UpdateRevenueAccDocument} {...props} />
 );
 
-export type UpdateRevenueAccProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateRevenueAccMutation,
-    UpdateRevenueAccMutationVariables
-  >;
+export type UpdateRevenueAccProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateRevenueAccMutation, UpdateRevenueAccMutationVariables>;
 } & TChildProps;
-export function withUpdateRevenueAcc<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateRevenueAcc<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateRevenueAccMutation,
@@ -10404,15 +9118,13 @@ export function withUpdateRevenueAcc<
     UpdateRevenueAccProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateRevenueAccMutation,
-    UpdateRevenueAccMutationVariables,
-    UpdateRevenueAccProps<TChildProps, TDataName>
-  >(UpdateRevenueAccDocument, {
-    alias: 'updateRevenueAcc',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, UpdateRevenueAccMutation, UpdateRevenueAccMutationVariables, UpdateRevenueAccProps<TChildProps, TDataName>>(
+    UpdateRevenueAccDocument,
+    {
+      alias: 'updateRevenueAcc',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -10434,27 +9146,13 @@ export function withUpdateRevenueAcc<
  *   },
  * });
  */
-export function useUpdateRevenueAccMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateRevenueAccMutation,
-    UpdateRevenueAccMutationVariables
-  >
-) {
+export function useUpdateRevenueAccMutation(baseOptions?: Apollo.MutationHookOptions<UpdateRevenueAccMutation, UpdateRevenueAccMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateRevenueAccMutation,
-    UpdateRevenueAccMutationVariables
-  >(UpdateRevenueAccDocument, options);
+  return Apollo.useMutation<UpdateRevenueAccMutation, UpdateRevenueAccMutationVariables>(UpdateRevenueAccDocument, options);
 }
-export type UpdateRevenueAccMutationHookResult = ReturnType<
-  typeof useUpdateRevenueAccMutation
->;
-export type UpdateRevenueAccMutationResult =
-  Apollo.MutationResult<UpdateRevenueAccMutation>;
-export type UpdateRevenueAccMutationOptions = Apollo.BaseMutationOptions<
-  UpdateRevenueAccMutation,
-  UpdateRevenueAccMutationVariables
->;
+export type UpdateRevenueAccMutationHookResult = ReturnType<typeof useUpdateRevenueAccMutation>;
+export type UpdateRevenueAccMutationResult = Apollo.MutationResult<UpdateRevenueAccMutation>;
+export type UpdateRevenueAccMutationOptions = Apollo.BaseMutationOptions<UpdateRevenueAccMutation, UpdateRevenueAccMutationVariables>;
 export const UpdateRevenueStateDocument = gql`
   mutation updateRevenueState($id: bigint!, $state: Boolean) {
     update_revenues_by_pk(pk_columns: { id: $id }, _set: { active: $state }) {
@@ -10462,44 +9160,20 @@ export const UpdateRevenueStateDocument = gql`
     }
   }
 `;
-export type UpdateRevenueStateMutationFn = Apollo.MutationFunction<
-  UpdateRevenueStateMutation,
-  UpdateRevenueStateMutationVariables
->;
+export type UpdateRevenueStateMutationFn = Apollo.MutationFunction<UpdateRevenueStateMutation, UpdateRevenueStateMutationVariables>;
 export type UpdateRevenueStateComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateRevenueStateMutation,
-    UpdateRevenueStateMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateRevenueStateMutation, UpdateRevenueStateMutationVariables>,
   'mutation'
 >;
 
-export const UpdateRevenueStateComponent = (
-  props: UpdateRevenueStateComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateRevenueStateMutation,
-    UpdateRevenueStateMutationVariables
-  >
-    mutation={UpdateRevenueStateDocument}
-    {...props}
-  />
+export const UpdateRevenueStateComponent = (props: UpdateRevenueStateComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateRevenueStateMutation, UpdateRevenueStateMutationVariables> mutation={UpdateRevenueStateDocument} {...props} />
 );
 
-export type UpdateRevenueStateProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateRevenueStateMutation,
-    UpdateRevenueStateMutationVariables
-  >;
+export type UpdateRevenueStateProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateRevenueStateMutation, UpdateRevenueStateMutationVariables>;
 } & TChildProps;
-export function withUpdateRevenueState<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateRevenueState<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateRevenueStateMutation,
@@ -10507,15 +9181,13 @@ export function withUpdateRevenueState<
     UpdateRevenueStateProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateRevenueStateMutation,
-    UpdateRevenueStateMutationVariables,
-    UpdateRevenueStateProps<TChildProps, TDataName>
-  >(UpdateRevenueStateDocument, {
-    alias: 'updateRevenueState',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, UpdateRevenueStateMutation, UpdateRevenueStateMutationVariables, UpdateRevenueStateProps<TChildProps, TDataName>>(
+    UpdateRevenueStateDocument,
+    {
+      alias: 'updateRevenueState',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -10536,78 +9208,37 @@ export function withUpdateRevenueState<
  *   },
  * });
  */
-export function useUpdateRevenueStateMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateRevenueStateMutation,
-    UpdateRevenueStateMutationVariables
-  >
-) {
+export function useUpdateRevenueStateMutation(baseOptions?: Apollo.MutationHookOptions<UpdateRevenueStateMutation, UpdateRevenueStateMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateRevenueStateMutation,
-    UpdateRevenueStateMutationVariables
-  >(UpdateRevenueStateDocument, options);
+  return Apollo.useMutation<UpdateRevenueStateMutation, UpdateRevenueStateMutationVariables>(UpdateRevenueStateDocument, options);
 }
-export type UpdateRevenueStateMutationHookResult = ReturnType<
-  typeof useUpdateRevenueStateMutation
->;
-export type UpdateRevenueStateMutationResult =
-  Apollo.MutationResult<UpdateRevenueStateMutation>;
-export type UpdateRevenueStateMutationOptions = Apollo.BaseMutationOptions<
-  UpdateRevenueStateMutation,
-  UpdateRevenueStateMutationVariables
->;
+export type UpdateRevenueStateMutationHookResult = ReturnType<typeof useUpdateRevenueStateMutation>;
+export type UpdateRevenueStateMutationResult = Apollo.MutationResult<UpdateRevenueStateMutation>;
+export type UpdateRevenueStateMutationOptions = Apollo.BaseMutationOptions<UpdateRevenueStateMutation, UpdateRevenueStateMutationVariables>;
 export const UpdateRevenueStandardDocument = gql`
   mutation updateRevenueStandard($id: bigint!) {
     update_revenues_by_pk(pk_columns: { id: $id }, _set: { default: true }) {
       default
     }
-    update_revenues(
-      _set: { default: false }
-      where: { id: { _neq: $id }, default: { _eq: true } }
-    ) {
+    update_revenues(_set: { default: false }, where: { id: { _neq: $id }, default: { _eq: true } }) {
       affected_rows
     }
   }
 `;
-export type UpdateRevenueStandardMutationFn = Apollo.MutationFunction<
-  UpdateRevenueStandardMutation,
-  UpdateRevenueStandardMutationVariables
->;
+export type UpdateRevenueStandardMutationFn = Apollo.MutationFunction<UpdateRevenueStandardMutation, UpdateRevenueStandardMutationVariables>;
 export type UpdateRevenueStandardComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateRevenueStandardMutation,
-    UpdateRevenueStandardMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateRevenueStandardMutation, UpdateRevenueStandardMutationVariables>,
   'mutation'
 >;
 
-export const UpdateRevenueStandardComponent = (
-  props: UpdateRevenueStandardComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateRevenueStandardMutation,
-    UpdateRevenueStandardMutationVariables
-  >
-    mutation={UpdateRevenueStandardDocument}
-    {...props}
-  />
+export const UpdateRevenueStandardComponent = (props: UpdateRevenueStandardComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateRevenueStandardMutation, UpdateRevenueStandardMutationVariables> mutation={UpdateRevenueStandardDocument} {...props} />
 );
 
-export type UpdateRevenueStandardProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateRevenueStandardMutation,
-    UpdateRevenueStandardMutationVariables
-  >;
+export type UpdateRevenueStandardProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateRevenueStandardMutation, UpdateRevenueStandardMutationVariables>;
 } & TChildProps;
-export function withUpdateRevenueStandard<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateRevenueStandard<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateRevenueStandardMutation,
@@ -10644,26 +9275,14 @@ export function withUpdateRevenueStandard<
  * });
  */
 export function useUpdateRevenueStandardMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateRevenueStandardMutation,
-    UpdateRevenueStandardMutationVariables
-  >
+  baseOptions?: Apollo.MutationHookOptions<UpdateRevenueStandardMutation, UpdateRevenueStandardMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateRevenueStandardMutation,
-    UpdateRevenueStandardMutationVariables
-  >(UpdateRevenueStandardDocument, options);
+  return Apollo.useMutation<UpdateRevenueStandardMutation, UpdateRevenueStandardMutationVariables>(UpdateRevenueStandardDocument, options);
 }
-export type UpdateRevenueStandardMutationHookResult = ReturnType<
-  typeof useUpdateRevenueStandardMutation
->;
-export type UpdateRevenueStandardMutationResult =
-  Apollo.MutationResult<UpdateRevenueStandardMutation>;
-export type UpdateRevenueStandardMutationOptions = Apollo.BaseMutationOptions<
-  UpdateRevenueStandardMutation,
-  UpdateRevenueStandardMutationVariables
->;
+export type UpdateRevenueStandardMutationHookResult = ReturnType<typeof useUpdateRevenueStandardMutation>;
+export type UpdateRevenueStandardMutationResult = Apollo.MutationResult<UpdateRevenueStandardMutation>;
+export type UpdateRevenueStandardMutationOptions = Apollo.BaseMutationOptions<UpdateRevenueStandardMutation, UpdateRevenueStandardMutationVariables>;
 export const InsertTransactionDocument = gql`
   mutation insertTransaction($object: transactions_insert_input!) {
     insert_transactions_one(object: $object) {
@@ -10672,44 +9291,20 @@ export const InsertTransactionDocument = gql`
     }
   }
 `;
-export type InsertTransactionMutationFn = Apollo.MutationFunction<
-  InsertTransactionMutation,
-  InsertTransactionMutationVariables
->;
+export type InsertTransactionMutationFn = Apollo.MutationFunction<InsertTransactionMutation, InsertTransactionMutationVariables>;
 export type InsertTransactionComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    InsertTransactionMutation,
-    InsertTransactionMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<InsertTransactionMutation, InsertTransactionMutationVariables>,
   'mutation'
 >;
 
-export const InsertTransactionComponent = (
-  props: InsertTransactionComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    InsertTransactionMutation,
-    InsertTransactionMutationVariables
-  >
-    mutation={InsertTransactionDocument}
-    {...props}
-  />
+export const InsertTransactionComponent = (props: InsertTransactionComponentProps) => (
+  <ApolloReactComponents.Mutation<InsertTransactionMutation, InsertTransactionMutationVariables> mutation={InsertTransactionDocument} {...props} />
 );
 
-export type InsertTransactionProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    InsertTransactionMutation,
-    InsertTransactionMutationVariables
-  >;
+export type InsertTransactionProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertTransactionMutation, InsertTransactionMutationVariables>;
 } & TChildProps;
-export function withInsertTransaction<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withInsertTransaction<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     InsertTransactionMutation,
@@ -10717,15 +9312,13 @@ export function withInsertTransaction<
     InsertTransactionProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    InsertTransactionMutation,
-    InsertTransactionMutationVariables,
-    InsertTransactionProps<TChildProps, TDataName>
-  >(InsertTransactionDocument, {
-    alias: 'insertTransaction',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, InsertTransactionMutation, InsertTransactionMutationVariables, InsertTransactionProps<TChildProps, TDataName>>(
+    InsertTransactionDocument,
+    {
+      alias: 'insertTransaction',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -10745,27 +9338,94 @@ export function withInsertTransaction<
  *   },
  * });
  */
-export function useInsertTransactionMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    InsertTransactionMutation,
-    InsertTransactionMutationVariables
+export function useInsertTransactionMutation(baseOptions?: Apollo.MutationHookOptions<InsertTransactionMutation, InsertTransactionMutationVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<InsertTransactionMutation, InsertTransactionMutationVariables>(InsertTransactionDocument, options);
+}
+export type InsertTransactionMutationHookResult = ReturnType<typeof useInsertTransactionMutation>;
+export type InsertTransactionMutationResult = Apollo.MutationResult<InsertTransactionMutation>;
+export type InsertTransactionMutationOptions = Apollo.BaseMutationOptions<InsertTransactionMutation, InsertTransactionMutationVariables>;
+export const UpdateTransactionDocument = gql`
+  mutation updateTransaction(
+    $id: bigint!
+    $changes: transactions_set_input!
+    $labels: [transaction_labels_insert_input!]!
+    $accounts: [transaction_accounts_insert_input!]!
+  ) {
+    delete_transaction_labels(where: { transaction_id: { _eq: $id } }) {
+      affected_rows
+    }
+    delete_transaction_accounts(where: { transaction_id: { _eq: $id } }) {
+      affected_rows
+    }
+    update_transactions_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+    insert_transaction_labels(objects: $labels) {
+      affected_rows
+    }
+    insert_transaction_accounts(objects: $accounts) {
+      affected_rows
+    }
+  }
+`;
+export type UpdateTransactionMutationFn = Apollo.MutationFunction<UpdateTransactionMutation, UpdateTransactionMutationVariables>;
+export type UpdateTransactionComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<UpdateTransactionMutation, UpdateTransactionMutationVariables>,
+  'mutation'
+>;
+
+export const UpdateTransactionComponent = (props: UpdateTransactionComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateTransactionMutation, UpdateTransactionMutationVariables> mutation={UpdateTransactionDocument} {...props} />
+);
+
+export type UpdateTransactionProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateTransactionMutation, UpdateTransactionMutationVariables>;
+} & TChildProps;
+export function withUpdateTransaction<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UpdateTransactionMutation,
+    UpdateTransactionMutationVariables,
+    UpdateTransactionProps<TChildProps, TDataName>
   >
 ) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    InsertTransactionMutation,
-    InsertTransactionMutationVariables
-  >(InsertTransactionDocument, options);
+  return ApolloReactHoc.withMutation<TProps, UpdateTransactionMutation, UpdateTransactionMutationVariables, UpdateTransactionProps<TChildProps, TDataName>>(
+    UpdateTransactionDocument,
+    {
+      alias: 'updateTransaction',
+      ...operationOptions,
+    }
+  );
 }
-export type InsertTransactionMutationHookResult = ReturnType<
-  typeof useInsertTransactionMutation
->;
-export type InsertTransactionMutationResult =
-  Apollo.MutationResult<InsertTransactionMutation>;
-export type InsertTransactionMutationOptions = Apollo.BaseMutationOptions<
-  InsertTransactionMutation,
-  InsertTransactionMutationVariables
->;
+
+/**
+ * __useUpdateTransactionMutation__
+ *
+ * To run a mutation, you first call `useUpdateTransactionMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTransactionMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTransactionMutation, { data, loading, error }] = useUpdateTransactionMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      changes: // value for 'changes'
+ *      labels: // value for 'labels'
+ *      accounts: // value for 'accounts'
+ *   },
+ * });
+ */
+export function useUpdateTransactionMutation(baseOptions?: Apollo.MutationHookOptions<UpdateTransactionMutation, UpdateTransactionMutationVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<UpdateTransactionMutation, UpdateTransactionMutationVariables>(UpdateTransactionDocument, options);
+}
+export type UpdateTransactionMutationHookResult = ReturnType<typeof useUpdateTransactionMutation>;
+export type UpdateTransactionMutationResult = Apollo.MutationResult<UpdateTransactionMutation>;
+export type UpdateTransactionMutationOptions = Apollo.BaseMutationOptions<UpdateTransactionMutation, UpdateTransactionMutationVariables>;
 export const DeleteTransactionByIdDocument = gql`
   mutation deleteTransactionById($id: bigint!) {
     delete_transactions_by_pk(id: $id) {
@@ -10773,44 +9433,20 @@ export const DeleteTransactionByIdDocument = gql`
     }
   }
 `;
-export type DeleteTransactionByIdMutationFn = Apollo.MutationFunction<
-  DeleteTransactionByIdMutation,
-  DeleteTransactionByIdMutationVariables
->;
+export type DeleteTransactionByIdMutationFn = Apollo.MutationFunction<DeleteTransactionByIdMutation, DeleteTransactionByIdMutationVariables>;
 export type DeleteTransactionByIdComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    DeleteTransactionByIdMutation,
-    DeleteTransactionByIdMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<DeleteTransactionByIdMutation, DeleteTransactionByIdMutationVariables>,
   'mutation'
 >;
 
-export const DeleteTransactionByIdComponent = (
-  props: DeleteTransactionByIdComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    DeleteTransactionByIdMutation,
-    DeleteTransactionByIdMutationVariables
-  >
-    mutation={DeleteTransactionByIdDocument}
-    {...props}
-  />
+export const DeleteTransactionByIdComponent = (props: DeleteTransactionByIdComponentProps) => (
+  <ApolloReactComponents.Mutation<DeleteTransactionByIdMutation, DeleteTransactionByIdMutationVariables> mutation={DeleteTransactionByIdDocument} {...props} />
 );
 
-export type DeleteTransactionByIdProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    DeleteTransactionByIdMutation,
-    DeleteTransactionByIdMutationVariables
-  >;
+export type DeleteTransactionByIdProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteTransactionByIdMutation, DeleteTransactionByIdMutationVariables>;
 } & TChildProps;
-export function withDeleteTransactionById<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withDeleteTransactionById<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     DeleteTransactionByIdMutation,
@@ -10847,26 +9483,14 @@ export function withDeleteTransactionById<
  * });
  */
 export function useDeleteTransactionByIdMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    DeleteTransactionByIdMutation,
-    DeleteTransactionByIdMutationVariables
-  >
+  baseOptions?: Apollo.MutationHookOptions<DeleteTransactionByIdMutation, DeleteTransactionByIdMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    DeleteTransactionByIdMutation,
-    DeleteTransactionByIdMutationVariables
-  >(DeleteTransactionByIdDocument, options);
+  return Apollo.useMutation<DeleteTransactionByIdMutation, DeleteTransactionByIdMutationVariables>(DeleteTransactionByIdDocument, options);
 }
-export type DeleteTransactionByIdMutationHookResult = ReturnType<
-  typeof useDeleteTransactionByIdMutation
->;
-export type DeleteTransactionByIdMutationResult =
-  Apollo.MutationResult<DeleteTransactionByIdMutation>;
-export type DeleteTransactionByIdMutationOptions = Apollo.BaseMutationOptions<
-  DeleteTransactionByIdMutation,
-  DeleteTransactionByIdMutationVariables
->;
+export type DeleteTransactionByIdMutationHookResult = ReturnType<typeof useDeleteTransactionByIdMutation>;
+export type DeleteTransactionByIdMutationResult = Apollo.MutationResult<DeleteTransactionByIdMutation>;
+export type DeleteTransactionByIdMutationOptions = Apollo.BaseMutationOptions<DeleteTransactionByIdMutation, DeleteTransactionByIdMutationVariables>;
 export const UpdateUserDocument = gql`
   mutation updateUser($userId: uuid!, $changes: users_set_input) {
     update_users(where: { id: { _eq: $userId } }, _set: $changes) {
@@ -10877,55 +9501,20 @@ export const UpdateUserDocument = gql`
     }
   }
 `;
-export type UpdateUserMutationFn = Apollo.MutationFunction<
-  UpdateUserMutation,
-  UpdateUserMutationVariables
->;
-export type UpdateUserComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateUserMutation,
-    UpdateUserMutationVariables
-  >,
-  'mutation'
->;
+export type UpdateUserMutationFn = Apollo.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>;
+export type UpdateUserComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<UpdateUserMutation, UpdateUserMutationVariables>, 'mutation'>;
 
 export const UpdateUserComponent = (props: UpdateUserComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    UpdateUserMutation,
-    UpdateUserMutationVariables
-  >
-    mutation={UpdateUserDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Mutation<UpdateUserMutation, UpdateUserMutationVariables> mutation={UpdateUserDocument} {...props} />
 );
 
-export type UpdateUserProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateUserMutation,
-    UpdateUserMutationVariables
-  >;
+export type UpdateUserProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>;
 } & TChildProps;
-export function withUpdateUser<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    UpdateUserMutation,
-    UpdateUserMutationVariables,
-    UpdateUserProps<TChildProps, TDataName>
-  >
+export function withUpdateUser<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, UpdateUserMutation, UpdateUserMutationVariables, UpdateUserProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateUserMutation,
-    UpdateUserMutationVariables,
-    UpdateUserProps<TChildProps, TDataName>
-  >(UpdateUserDocument, {
+  return ApolloReactHoc.withMutation<TProps, UpdateUserMutation, UpdateUserMutationVariables, UpdateUserProps<TChildProps, TDataName>>(UpdateUserDocument, {
     alias: 'updateUser',
     ...operationOptions,
   });
@@ -10949,80 +9538,36 @@ export function withUpdateUser<
  *   },
  * });
  */
-export function useUpdateUserMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateUserMutation,
-    UpdateUserMutationVariables
-  >
-) {
+export function useUpdateUserMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUserMutation, UpdateUserMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(
-    UpdateUserDocument,
-    options
-  );
+  return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(UpdateUserDocument, options);
 }
-export type UpdateUserMutationHookResult = ReturnType<
-  typeof useUpdateUserMutation
->;
-export type UpdateUserMutationResult =
-  Apollo.MutationResult<UpdateUserMutation>;
-export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<
-  UpdateUserMutation,
-  UpdateUserMutationVariables
->;
+export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
+export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>;
+export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
 export const UpdateUserSettingsDocument = gql`
   mutation updateUserSettings($object: user_settings_insert_input!) {
-    insert_user_settings_one(
-      object: $object
-      on_conflict: {
-        constraint: user_settings_pkey
-        update_columns: [darkMode, langKey]
-      }
-    ) {
+    insert_user_settings_one(object: $object, on_conflict: { constraint: user_settings_pkey, update_columns: [darkMode, langKey] }) {
       user_id
       langKey
       darkMode
     }
   }
 `;
-export type UpdateUserSettingsMutationFn = Apollo.MutationFunction<
-  UpdateUserSettingsMutation,
-  UpdateUserSettingsMutationVariables
->;
+export type UpdateUserSettingsMutationFn = Apollo.MutationFunction<UpdateUserSettingsMutation, UpdateUserSettingsMutationVariables>;
 export type UpdateUserSettingsComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateUserSettingsMutation,
-    UpdateUserSettingsMutationVariables
-  >,
+  ApolloReactComponents.MutationComponentOptions<UpdateUserSettingsMutation, UpdateUserSettingsMutationVariables>,
   'mutation'
 >;
 
-export const UpdateUserSettingsComponent = (
-  props: UpdateUserSettingsComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateUserSettingsMutation,
-    UpdateUserSettingsMutationVariables
-  >
-    mutation={UpdateUserSettingsDocument}
-    {...props}
-  />
+export const UpdateUserSettingsComponent = (props: UpdateUserSettingsComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateUserSettingsMutation, UpdateUserSettingsMutationVariables> mutation={UpdateUserSettingsDocument} {...props} />
 );
 
-export type UpdateUserSettingsProps<
-  TChildProps = {},
-  TDataName extends string = 'mutate'
-> = {
-  [key in TDataName]: Apollo.MutationFunction<
-    UpdateUserSettingsMutation,
-    UpdateUserSettingsMutationVariables
-  >;
+export type UpdateUserSettingsProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateUserSettingsMutation, UpdateUserSettingsMutationVariables>;
 } & TChildProps;
-export function withUpdateUserSettings<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'mutate'
->(
+export function withUpdateUserSettings<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     UpdateUserSettingsMutation,
@@ -11030,15 +9575,13 @@ export function withUpdateUserSettings<
     UpdateUserSettingsProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateUserSettingsMutation,
-    UpdateUserSettingsMutationVariables,
-    UpdateUserSettingsProps<TChildProps, TDataName>
-  >(UpdateUserSettingsDocument, {
-    alias: 'updateUserSettings',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, UpdateUserSettingsMutation, UpdateUserSettingsMutationVariables, UpdateUserSettingsProps<TChildProps, TDataName>>(
+    UpdateUserSettingsDocument,
+    {
+      alias: 'updateUserSettings',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -11058,27 +9601,13 @@ export function withUpdateUserSettings<
  *   },
  * });
  */
-export function useUpdateUserSettingsMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateUserSettingsMutation,
-    UpdateUserSettingsMutationVariables
-  >
-) {
+export function useUpdateUserSettingsMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUserSettingsMutation, UpdateUserSettingsMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateUserSettingsMutation,
-    UpdateUserSettingsMutationVariables
-  >(UpdateUserSettingsDocument, options);
+  return Apollo.useMutation<UpdateUserSettingsMutation, UpdateUserSettingsMutationVariables>(UpdateUserSettingsDocument, options);
 }
-export type UpdateUserSettingsMutationHookResult = ReturnType<
-  typeof useUpdateUserSettingsMutation
->;
-export type UpdateUserSettingsMutationResult =
-  Apollo.MutationResult<UpdateUserSettingsMutation>;
-export type UpdateUserSettingsMutationOptions = Apollo.BaseMutationOptions<
-  UpdateUserSettingsMutation,
-  UpdateUserSettingsMutationVariables
->;
+export type UpdateUserSettingsMutationHookResult = ReturnType<typeof useUpdateUserSettingsMutation>;
+export type UpdateUserSettingsMutationResult = Apollo.MutationResult<UpdateUserSettingsMutation>;
+export type UpdateUserSettingsMutationOptions = Apollo.BaseMutationOptions<UpdateUserSettingsMutation, UpdateUserSettingsMutationVariables>;
 export const AllAssetsDocument = gql`
   query allAssets($limit: Int, $offset: Int) {
     assets(limit: $limit, offset: $offset, order_by: { name: asc }) {
@@ -11099,48 +9628,19 @@ export const AllAssetsDocument = gql`
     }
   }
 `;
-export type AllAssetsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    AllAssetsQuery,
-    AllAssetsQueryVariables
-  >,
-  'query'
->;
+export type AllAssetsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllAssetsQuery, AllAssetsQueryVariables>, 'query'>;
 
 export const AllAssetsComponent = (props: AllAssetsComponentProps) => (
-  <ApolloReactComponents.Query<AllAssetsQuery, AllAssetsQueryVariables>
-    query={AllAssetsDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Query<AllAssetsQuery, AllAssetsQueryVariables> query={AllAssetsDocument} {...props} />
 );
 
-export type AllAssetsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    AllAssetsQuery,
-    AllAssetsQueryVariables
-  >;
+export type AllAssetsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<AllAssetsQuery, AllAssetsQueryVariables>;
 } & TChildProps;
-export function withAllAssets<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    AllAssetsQuery,
-    AllAssetsQueryVariables,
-    AllAssetsProps<TChildProps, TDataName>
-  >
+export function withAllAssets<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, AllAssetsQuery, AllAssetsQueryVariables, AllAssetsProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    AllAssetsQuery,
-    AllAssetsQueryVariables,
-    AllAssetsProps<TChildProps, TDataName>
-  >(AllAssetsDocument, {
+  return ApolloReactHoc.withQuery<TProps, AllAssetsQuery, AllAssetsQueryVariables, AllAssetsProps<TChildProps, TDataName>>(AllAssetsDocument, {
     alias: 'allAssets',
     ...operationOptions,
   });
@@ -11163,35 +9663,17 @@ export function withAllAssets<
  *   },
  * });
  */
-export function useAllAssetsQuery(
-  baseOptions?: Apollo.QueryHookOptions<AllAssetsQuery, AllAssetsQueryVariables>
-) {
+export function useAllAssetsQuery(baseOptions?: Apollo.QueryHookOptions<AllAssetsQuery, AllAssetsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AllAssetsQuery, AllAssetsQueryVariables>(
-    AllAssetsDocument,
-    options
-  );
+  return Apollo.useQuery<AllAssetsQuery, AllAssetsQueryVariables>(AllAssetsDocument, options);
 }
-export function useAllAssetsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AllAssetsQuery,
-    AllAssetsQueryVariables
-  >
-) {
+export function useAllAssetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllAssetsQuery, AllAssetsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AllAssetsQuery, AllAssetsQueryVariables>(
-    AllAssetsDocument,
-    options
-  );
+  return Apollo.useLazyQuery<AllAssetsQuery, AllAssetsQueryVariables>(AllAssetsDocument, options);
 }
 export type AllAssetsQueryHookResult = ReturnType<typeof useAllAssetsQuery>;
-export type AllAssetsLazyQueryHookResult = ReturnType<
-  typeof useAllAssetsLazyQuery
->;
-export type AllAssetsQueryResult = Apollo.QueryResult<
-  AllAssetsQuery,
-  AllAssetsQueryVariables
->;
+export type AllAssetsLazyQueryHookResult = ReturnType<typeof useAllAssetsLazyQuery>;
+export type AllAssetsQueryResult = Apollo.QueryResult<AllAssetsQuery, AllAssetsQueryVariables>;
 export const ActiveAssetAccountsDocument = gql`
   query activeAssetAccounts {
     assets(order_by: { name: asc }, where: { active: { _eq: true } }) {
@@ -11202,39 +9684,18 @@ export const ActiveAssetAccountsDocument = gql`
   }
 `;
 export type ActiveAssetAccountsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    ActiveAssetAccountsQuery,
-    ActiveAssetAccountsQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<ActiveAssetAccountsQuery, ActiveAssetAccountsQueryVariables>,
   'query'
 >;
 
-export const ActiveAssetAccountsComponent = (
-  props: ActiveAssetAccountsComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    ActiveAssetAccountsQuery,
-    ActiveAssetAccountsQueryVariables
-  >
-    query={ActiveAssetAccountsDocument}
-    {...props}
-  />
+export const ActiveAssetAccountsComponent = (props: ActiveAssetAccountsComponentProps) => (
+  <ApolloReactComponents.Query<ActiveAssetAccountsQuery, ActiveAssetAccountsQueryVariables> query={ActiveAssetAccountsDocument} {...props} />
 );
 
-export type ActiveAssetAccountsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    ActiveAssetAccountsQuery,
-    ActiveAssetAccountsQueryVariables
-  >;
+export type ActiveAssetAccountsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<ActiveAssetAccountsQuery, ActiveAssetAccountsQueryVariables>;
 } & TChildProps;
-export function withActiveAssetAccounts<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withActiveAssetAccounts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     ActiveAssetAccountsQuery,
@@ -11242,15 +9703,13 @@ export function withActiveAssetAccounts<
     ActiveAssetAccountsProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    ActiveAssetAccountsQuery,
-    ActiveAssetAccountsQueryVariables,
-    ActiveAssetAccountsProps<TChildProps, TDataName>
-  >(ActiveAssetAccountsDocument, {
-    alias: 'activeAssetAccounts',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, ActiveAssetAccountsQuery, ActiveAssetAccountsQueryVariables, ActiveAssetAccountsProps<TChildProps, TDataName>>(
+    ActiveAssetAccountsDocument,
+    {
+      alias: 'activeAssetAccounts',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -11268,40 +9727,17 @@ export function withActiveAssetAccounts<
  *   },
  * });
  */
-export function useActiveAssetAccountsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    ActiveAssetAccountsQuery,
-    ActiveAssetAccountsQueryVariables
-  >
-) {
+export function useActiveAssetAccountsQuery(baseOptions?: Apollo.QueryHookOptions<ActiveAssetAccountsQuery, ActiveAssetAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    ActiveAssetAccountsQuery,
-    ActiveAssetAccountsQueryVariables
-  >(ActiveAssetAccountsDocument, options);
+  return Apollo.useQuery<ActiveAssetAccountsQuery, ActiveAssetAccountsQueryVariables>(ActiveAssetAccountsDocument, options);
 }
-export function useActiveAssetAccountsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    ActiveAssetAccountsQuery,
-    ActiveAssetAccountsQueryVariables
-  >
-) {
+export function useActiveAssetAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ActiveAssetAccountsQuery, ActiveAssetAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    ActiveAssetAccountsQuery,
-    ActiveAssetAccountsQueryVariables
-  >(ActiveAssetAccountsDocument, options);
+  return Apollo.useLazyQuery<ActiveAssetAccountsQuery, ActiveAssetAccountsQueryVariables>(ActiveAssetAccountsDocument, options);
 }
-export type ActiveAssetAccountsQueryHookResult = ReturnType<
-  typeof useActiveAssetAccountsQuery
->;
-export type ActiveAssetAccountsLazyQueryHookResult = ReturnType<
-  typeof useActiveAssetAccountsLazyQuery
->;
-export type ActiveAssetAccountsQueryResult = Apollo.QueryResult<
-  ActiveAssetAccountsQuery,
-  ActiveAssetAccountsQueryVariables
->;
+export type ActiveAssetAccountsQueryHookResult = ReturnType<typeof useActiveAssetAccountsQuery>;
+export type ActiveAssetAccountsLazyQueryHookResult = ReturnType<typeof useActiveAssetAccountsLazyQuery>;
+export type ActiveAssetAccountsQueryResult = Apollo.QueryResult<ActiveAssetAccountsQuery, ActiveAssetAccountsQueryVariables>;
 export const AllCategoriesDocument = gql`
   query allCategories {
     categories(order_by: { name: asc }) {
@@ -11313,48 +9749,19 @@ export const AllCategoriesDocument = gql`
     }
   }
 `;
-export type AllCategoriesComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    AllCategoriesQuery,
-    AllCategoriesQueryVariables
-  >,
-  'query'
->;
+export type AllCategoriesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllCategoriesQuery, AllCategoriesQueryVariables>, 'query'>;
 
 export const AllCategoriesComponent = (props: AllCategoriesComponentProps) => (
-  <ApolloReactComponents.Query<AllCategoriesQuery, AllCategoriesQueryVariables>
-    query={AllCategoriesDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Query<AllCategoriesQuery, AllCategoriesQueryVariables> query={AllCategoriesDocument} {...props} />
 );
 
-export type AllCategoriesProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    AllCategoriesQuery,
-    AllCategoriesQueryVariables
-  >;
+export type AllCategoriesProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<AllCategoriesQuery, AllCategoriesQueryVariables>;
 } & TChildProps;
-export function withAllCategories<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    AllCategoriesQuery,
-    AllCategoriesQueryVariables,
-    AllCategoriesProps<TChildProps, TDataName>
-  >
+export function withAllCategories<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, AllCategoriesQuery, AllCategoriesQueryVariables, AllCategoriesProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    AllCategoriesQuery,
-    AllCategoriesQueryVariables,
-    AllCategoriesProps<TChildProps, TDataName>
-  >(AllCategoriesDocument, {
+  return ApolloReactHoc.withQuery<TProps, AllCategoriesQuery, AllCategoriesQueryVariables, AllCategoriesProps<TChildProps, TDataName>>(AllCategoriesDocument, {
     alias: 'allCategories',
     ...operationOptions,
   });
@@ -11375,40 +9782,17 @@ export function withAllCategories<
  *   },
  * });
  */
-export function useAllCategoriesQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    AllCategoriesQuery,
-    AllCategoriesQueryVariables
-  >
-) {
+export function useAllCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<AllCategoriesQuery, AllCategoriesQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AllCategoriesQuery, AllCategoriesQueryVariables>(
-    AllCategoriesDocument,
-    options
-  );
+  return Apollo.useQuery<AllCategoriesQuery, AllCategoriesQueryVariables>(AllCategoriesDocument, options);
 }
-export function useAllCategoriesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AllCategoriesQuery,
-    AllCategoriesQueryVariables
-  >
-) {
+export function useAllCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllCategoriesQuery, AllCategoriesQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AllCategoriesQuery, AllCategoriesQueryVariables>(
-    AllCategoriesDocument,
-    options
-  );
+  return Apollo.useLazyQuery<AllCategoriesQuery, AllCategoriesQueryVariables>(AllCategoriesDocument, options);
 }
-export type AllCategoriesQueryHookResult = ReturnType<
-  typeof useAllCategoriesQuery
->;
-export type AllCategoriesLazyQueryHookResult = ReturnType<
-  typeof useAllCategoriesLazyQuery
->;
-export type AllCategoriesQueryResult = Apollo.QueryResult<
-  AllCategoriesQuery,
-  AllCategoriesQueryVariables
->;
+export type AllCategoriesQueryHookResult = ReturnType<typeof useAllCategoriesQuery>;
+export type AllCategoriesLazyQueryHookResult = ReturnType<typeof useAllCategoriesLazyQuery>;
+export type AllCategoriesQueryResult = Apollo.QueryResult<AllCategoriesQuery, AllCategoriesQueryVariables>;
 export const ActiveCategoriesDocument = gql`
   query activeCategories {
     categories(order_by: { name: asc }, where: { active: { _eq: true } }) {
@@ -11417,40 +9801,16 @@ export const ActiveCategoriesDocument = gql`
     }
   }
 `;
-export type ActiveCategoriesComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    ActiveCategoriesQuery,
-    ActiveCategoriesQueryVariables
-  >,
-  'query'
->;
+export type ActiveCategoriesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<ActiveCategoriesQuery, ActiveCategoriesQueryVariables>, 'query'>;
 
-export const ActiveCategoriesComponent = (
-  props: ActiveCategoriesComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    ActiveCategoriesQuery,
-    ActiveCategoriesQueryVariables
-  >
-    query={ActiveCategoriesDocument}
-    {...props}
-  />
+export const ActiveCategoriesComponent = (props: ActiveCategoriesComponentProps) => (
+  <ApolloReactComponents.Query<ActiveCategoriesQuery, ActiveCategoriesQueryVariables> query={ActiveCategoriesDocument} {...props} />
 );
 
-export type ActiveCategoriesProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    ActiveCategoriesQuery,
-    ActiveCategoriesQueryVariables
-  >;
+export type ActiveCategoriesProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<ActiveCategoriesQuery, ActiveCategoriesQueryVariables>;
 } & TChildProps;
-export function withActiveCategories<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withActiveCategories<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     ActiveCategoriesQuery,
@@ -11458,15 +9818,13 @@ export function withActiveCategories<
     ActiveCategoriesProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    ActiveCategoriesQuery,
-    ActiveCategoriesQueryVariables,
-    ActiveCategoriesProps<TChildProps, TDataName>
-  >(ActiveCategoriesDocument, {
-    alias: 'activeCategories',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, ActiveCategoriesQuery, ActiveCategoriesQueryVariables, ActiveCategoriesProps<TChildProps, TDataName>>(
+    ActiveCategoriesDocument,
+    {
+      alias: 'activeCategories',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -11484,40 +9842,17 @@ export function withActiveCategories<
  *   },
  * });
  */
-export function useActiveCategoriesQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    ActiveCategoriesQuery,
-    ActiveCategoriesQueryVariables
-  >
-) {
+export function useActiveCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<ActiveCategoriesQuery, ActiveCategoriesQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<ActiveCategoriesQuery, ActiveCategoriesQueryVariables>(
-    ActiveCategoriesDocument,
-    options
-  );
+  return Apollo.useQuery<ActiveCategoriesQuery, ActiveCategoriesQueryVariables>(ActiveCategoriesDocument, options);
 }
-export function useActiveCategoriesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    ActiveCategoriesQuery,
-    ActiveCategoriesQueryVariables
-  >
-) {
+export function useActiveCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ActiveCategoriesQuery, ActiveCategoriesQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    ActiveCategoriesQuery,
-    ActiveCategoriesQueryVariables
-  >(ActiveCategoriesDocument, options);
+  return Apollo.useLazyQuery<ActiveCategoriesQuery, ActiveCategoriesQueryVariables>(ActiveCategoriesDocument, options);
 }
-export type ActiveCategoriesQueryHookResult = ReturnType<
-  typeof useActiveCategoriesQuery
->;
-export type ActiveCategoriesLazyQueryHookResult = ReturnType<
-  typeof useActiveCategoriesLazyQuery
->;
-export type ActiveCategoriesQueryResult = Apollo.QueryResult<
-  ActiveCategoriesQuery,
-  ActiveCategoriesQueryVariables
->;
+export type ActiveCategoriesQueryHookResult = ReturnType<typeof useActiveCategoriesQuery>;
+export type ActiveCategoriesLazyQueryHookResult = ReturnType<typeof useActiveCategoriesLazyQuery>;
+export type ActiveCategoriesQueryResult = Apollo.QueryResult<ActiveCategoriesQuery, ActiveCategoriesQueryVariables>;
 export const AllExpenseAccountsDocument = gql`
   query allExpenseAccounts($limit: Int, $offset: Int) {
     expenses(limit: $limit, offset: $offset, order_by: { name: asc }) {
@@ -11535,39 +9870,18 @@ export const AllExpenseAccountsDocument = gql`
   }
 `;
 export type AllExpenseAccountsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    AllExpenseAccountsQuery,
-    AllExpenseAccountsQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<AllExpenseAccountsQuery, AllExpenseAccountsQueryVariables>,
   'query'
 >;
 
-export const AllExpenseAccountsComponent = (
-  props: AllExpenseAccountsComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    AllExpenseAccountsQuery,
-    AllExpenseAccountsQueryVariables
-  >
-    query={AllExpenseAccountsDocument}
-    {...props}
-  />
+export const AllExpenseAccountsComponent = (props: AllExpenseAccountsComponentProps) => (
+  <ApolloReactComponents.Query<AllExpenseAccountsQuery, AllExpenseAccountsQueryVariables> query={AllExpenseAccountsDocument} {...props} />
 );
 
-export type AllExpenseAccountsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    AllExpenseAccountsQuery,
-    AllExpenseAccountsQueryVariables
-  >;
+export type AllExpenseAccountsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<AllExpenseAccountsQuery, AllExpenseAccountsQueryVariables>;
 } & TChildProps;
-export function withAllExpenseAccounts<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withAllExpenseAccounts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     AllExpenseAccountsQuery,
@@ -11575,15 +9889,13 @@ export function withAllExpenseAccounts<
     AllExpenseAccountsProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    AllExpenseAccountsQuery,
-    AllExpenseAccountsQueryVariables,
-    AllExpenseAccountsProps<TChildProps, TDataName>
-  >(AllExpenseAccountsDocument, {
-    alias: 'allExpenseAccounts',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, AllExpenseAccountsQuery, AllExpenseAccountsQueryVariables, AllExpenseAccountsProps<TChildProps, TDataName>>(
+    AllExpenseAccountsDocument,
+    {
+      alias: 'allExpenseAccounts',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -11603,40 +9915,17 @@ export function withAllExpenseAccounts<
  *   },
  * });
  */
-export function useAllExpenseAccountsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    AllExpenseAccountsQuery,
-    AllExpenseAccountsQueryVariables
-  >
-) {
+export function useAllExpenseAccountsQuery(baseOptions?: Apollo.QueryHookOptions<AllExpenseAccountsQuery, AllExpenseAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    AllExpenseAccountsQuery,
-    AllExpenseAccountsQueryVariables
-  >(AllExpenseAccountsDocument, options);
+  return Apollo.useQuery<AllExpenseAccountsQuery, AllExpenseAccountsQueryVariables>(AllExpenseAccountsDocument, options);
 }
-export function useAllExpenseAccountsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AllExpenseAccountsQuery,
-    AllExpenseAccountsQueryVariables
-  >
-) {
+export function useAllExpenseAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllExpenseAccountsQuery, AllExpenseAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    AllExpenseAccountsQuery,
-    AllExpenseAccountsQueryVariables
-  >(AllExpenseAccountsDocument, options);
+  return Apollo.useLazyQuery<AllExpenseAccountsQuery, AllExpenseAccountsQueryVariables>(AllExpenseAccountsDocument, options);
 }
-export type AllExpenseAccountsQueryHookResult = ReturnType<
-  typeof useAllExpenseAccountsQuery
->;
-export type AllExpenseAccountsLazyQueryHookResult = ReturnType<
-  typeof useAllExpenseAccountsLazyQuery
->;
-export type AllExpenseAccountsQueryResult = Apollo.QueryResult<
-  AllExpenseAccountsQuery,
-  AllExpenseAccountsQueryVariables
->;
+export type AllExpenseAccountsQueryHookResult = ReturnType<typeof useAllExpenseAccountsQuery>;
+export type AllExpenseAccountsLazyQueryHookResult = ReturnType<typeof useAllExpenseAccountsLazyQuery>;
+export type AllExpenseAccountsQueryResult = Apollo.QueryResult<AllExpenseAccountsQuery, AllExpenseAccountsQueryVariables>;
 export const ActiveExpenseAccountsDocument = gql`
   query activeExpenseAccounts {
     expenses(order_by: { name: asc }, where: { active: { _eq: true } }) {
@@ -11646,39 +9935,18 @@ export const ActiveExpenseAccountsDocument = gql`
   }
 `;
 export type ActiveExpenseAccountsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    ActiveExpenseAccountsQuery,
-    ActiveExpenseAccountsQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<ActiveExpenseAccountsQuery, ActiveExpenseAccountsQueryVariables>,
   'query'
 >;
 
-export const ActiveExpenseAccountsComponent = (
-  props: ActiveExpenseAccountsComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    ActiveExpenseAccountsQuery,
-    ActiveExpenseAccountsQueryVariables
-  >
-    query={ActiveExpenseAccountsDocument}
-    {...props}
-  />
+export const ActiveExpenseAccountsComponent = (props: ActiveExpenseAccountsComponentProps) => (
+  <ApolloReactComponents.Query<ActiveExpenseAccountsQuery, ActiveExpenseAccountsQueryVariables> query={ActiveExpenseAccountsDocument} {...props} />
 );
 
-export type ActiveExpenseAccountsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    ActiveExpenseAccountsQuery,
-    ActiveExpenseAccountsQueryVariables
-  >;
+export type ActiveExpenseAccountsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<ActiveExpenseAccountsQuery, ActiveExpenseAccountsQueryVariables>;
 } & TChildProps;
-export function withActiveExpenseAccounts<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withActiveExpenseAccounts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     ActiveExpenseAccountsQuery,
@@ -11686,15 +9954,13 @@ export function withActiveExpenseAccounts<
     ActiveExpenseAccountsProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    ActiveExpenseAccountsQuery,
-    ActiveExpenseAccountsQueryVariables,
-    ActiveExpenseAccountsProps<TChildProps, TDataName>
-  >(ActiveExpenseAccountsDocument, {
-    alias: 'activeExpenseAccounts',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, ActiveExpenseAccountsQuery, ActiveExpenseAccountsQueryVariables, ActiveExpenseAccountsProps<TChildProps, TDataName>>(
+    ActiveExpenseAccountsDocument,
+    {
+      alias: 'activeExpenseAccounts',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -11712,40 +9978,17 @@ export function withActiveExpenseAccounts<
  *   },
  * });
  */
-export function useActiveExpenseAccountsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    ActiveExpenseAccountsQuery,
-    ActiveExpenseAccountsQueryVariables
-  >
-) {
+export function useActiveExpenseAccountsQuery(baseOptions?: Apollo.QueryHookOptions<ActiveExpenseAccountsQuery, ActiveExpenseAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    ActiveExpenseAccountsQuery,
-    ActiveExpenseAccountsQueryVariables
-  >(ActiveExpenseAccountsDocument, options);
+  return Apollo.useQuery<ActiveExpenseAccountsQuery, ActiveExpenseAccountsQueryVariables>(ActiveExpenseAccountsDocument, options);
 }
-export function useActiveExpenseAccountsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    ActiveExpenseAccountsQuery,
-    ActiveExpenseAccountsQueryVariables
-  >
-) {
+export function useActiveExpenseAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ActiveExpenseAccountsQuery, ActiveExpenseAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    ActiveExpenseAccountsQuery,
-    ActiveExpenseAccountsQueryVariables
-  >(ActiveExpenseAccountsDocument, options);
+  return Apollo.useLazyQuery<ActiveExpenseAccountsQuery, ActiveExpenseAccountsQueryVariables>(ActiveExpenseAccountsDocument, options);
 }
-export type ActiveExpenseAccountsQueryHookResult = ReturnType<
-  typeof useActiveExpenseAccountsQuery
->;
-export type ActiveExpenseAccountsLazyQueryHookResult = ReturnType<
-  typeof useActiveExpenseAccountsLazyQuery
->;
-export type ActiveExpenseAccountsQueryResult = Apollo.QueryResult<
-  ActiveExpenseAccountsQuery,
-  ActiveExpenseAccountsQueryVariables
->;
+export type ActiveExpenseAccountsQueryHookResult = ReturnType<typeof useActiveExpenseAccountsQuery>;
+export type ActiveExpenseAccountsLazyQueryHookResult = ReturnType<typeof useActiveExpenseAccountsLazyQuery>;
+export type ActiveExpenseAccountsQueryResult = Apollo.QueryResult<ActiveExpenseAccountsQuery, ActiveExpenseAccountsQueryVariables>;
 export const FetchUserDocument = gql`
   query fetchUser($userId: uuid!) {
     users_by_pk(id: $userId) {
@@ -11756,49 +9999,20 @@ export const FetchUserDocument = gql`
     }
   }
 `;
-export type FetchUserComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    FetchUserQuery,
-    FetchUserQueryVariables
-  >,
-  'query'
-> &
+export type FetchUserComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<FetchUserQuery, FetchUserQueryVariables>, 'query'> &
   ({ variables: FetchUserQueryVariables; skip?: boolean } | { skip: boolean });
 
 export const FetchUserComponent = (props: FetchUserComponentProps) => (
-  <ApolloReactComponents.Query<FetchUserQuery, FetchUserQueryVariables>
-    query={FetchUserDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Query<FetchUserQuery, FetchUserQueryVariables> query={FetchUserDocument} {...props} />
 );
 
-export type FetchUserProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    FetchUserQuery,
-    FetchUserQueryVariables
-  >;
+export type FetchUserProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<FetchUserQuery, FetchUserQueryVariables>;
 } & TChildProps;
-export function withFetchUser<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    FetchUserQuery,
-    FetchUserQueryVariables,
-    FetchUserProps<TChildProps, TDataName>
-  >
+export function withFetchUser<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, FetchUserQuery, FetchUserQueryVariables, FetchUserProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    FetchUserQuery,
-    FetchUserQueryVariables,
-    FetchUserProps<TChildProps, TDataName>
-  >(FetchUserDocument, {
+  return ApolloReactHoc.withQuery<TProps, FetchUserQuery, FetchUserQueryVariables, FetchUserProps<TChildProps, TDataName>>(FetchUserDocument, {
     alias: 'fetchUser',
     ...operationOptions,
   });
@@ -11820,35 +10034,17 @@ export function withFetchUser<
  *   },
  * });
  */
-export function useFetchUserQuery(
-  baseOptions: Apollo.QueryHookOptions<FetchUserQuery, FetchUserQueryVariables>
-) {
+export function useFetchUserQuery(baseOptions: Apollo.QueryHookOptions<FetchUserQuery, FetchUserQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<FetchUserQuery, FetchUserQueryVariables>(
-    FetchUserDocument,
-    options
-  );
+  return Apollo.useQuery<FetchUserQuery, FetchUserQueryVariables>(FetchUserDocument, options);
 }
-export function useFetchUserLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    FetchUserQuery,
-    FetchUserQueryVariables
-  >
-) {
+export function useFetchUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FetchUserQuery, FetchUserQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<FetchUserQuery, FetchUserQueryVariables>(
-    FetchUserDocument,
-    options
-  );
+  return Apollo.useLazyQuery<FetchUserQuery, FetchUserQueryVariables>(FetchUserDocument, options);
 }
 export type FetchUserQueryHookResult = ReturnType<typeof useFetchUserQuery>;
-export type FetchUserLazyQueryHookResult = ReturnType<
-  typeof useFetchUserLazyQuery
->;
-export type FetchUserQueryResult = Apollo.QueryResult<
-  FetchUserQuery,
-  FetchUserQueryVariables
->;
+export type FetchUserLazyQueryHookResult = ReturnType<typeof useFetchUserLazyQuery>;
+export type FetchUserQueryResult = Apollo.QueryResult<FetchUserQuery, FetchUserQueryVariables>;
 export const FetchUserSettingsDocument = gql`
   query fetchUserSettings($userId: uuid!) {
     user_settings_by_pk(user_id: $userId) {
@@ -11859,43 +10055,19 @@ export const FetchUserSettingsDocument = gql`
   }
 `;
 export type FetchUserSettingsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    FetchUserSettingsQuery,
-    FetchUserSettingsQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<FetchUserSettingsQuery, FetchUserSettingsQueryVariables>,
   'query'
 > &
-  (
-    | { variables: FetchUserSettingsQueryVariables; skip?: boolean }
-    | { skip: boolean }
-  );
+  ({ variables: FetchUserSettingsQueryVariables; skip?: boolean } | { skip: boolean });
 
-export const FetchUserSettingsComponent = (
-  props: FetchUserSettingsComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    FetchUserSettingsQuery,
-    FetchUserSettingsQueryVariables
-  >
-    query={FetchUserSettingsDocument}
-    {...props}
-  />
+export const FetchUserSettingsComponent = (props: FetchUserSettingsComponentProps) => (
+  <ApolloReactComponents.Query<FetchUserSettingsQuery, FetchUserSettingsQueryVariables> query={FetchUserSettingsDocument} {...props} />
 );
 
-export type FetchUserSettingsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    FetchUserSettingsQuery,
-    FetchUserSettingsQueryVariables
-  >;
+export type FetchUserSettingsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<FetchUserSettingsQuery, FetchUserSettingsQueryVariables>;
 } & TChildProps;
-export function withFetchUserSettings<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withFetchUserSettings<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     FetchUserSettingsQuery,
@@ -11903,15 +10075,13 @@ export function withFetchUserSettings<
     FetchUserSettingsProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    FetchUserSettingsQuery,
-    FetchUserSettingsQueryVariables,
-    FetchUserSettingsProps<TChildProps, TDataName>
-  >(FetchUserSettingsDocument, {
-    alias: 'fetchUserSettings',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, FetchUserSettingsQuery, FetchUserSettingsQueryVariables, FetchUserSettingsProps<TChildProps, TDataName>>(
+    FetchUserSettingsDocument,
+    {
+      alias: 'fetchUserSettings',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -11930,40 +10100,17 @@ export function withFetchUserSettings<
  *   },
  * });
  */
-export function useFetchUserSettingsQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    FetchUserSettingsQuery,
-    FetchUserSettingsQueryVariables
-  >
-) {
+export function useFetchUserSettingsQuery(baseOptions: Apollo.QueryHookOptions<FetchUserSettingsQuery, FetchUserSettingsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    FetchUserSettingsQuery,
-    FetchUserSettingsQueryVariables
-  >(FetchUserSettingsDocument, options);
+  return Apollo.useQuery<FetchUserSettingsQuery, FetchUserSettingsQueryVariables>(FetchUserSettingsDocument, options);
 }
-export function useFetchUserSettingsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    FetchUserSettingsQuery,
-    FetchUserSettingsQueryVariables
-  >
-) {
+export function useFetchUserSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FetchUserSettingsQuery, FetchUserSettingsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    FetchUserSettingsQuery,
-    FetchUserSettingsQueryVariables
-  >(FetchUserSettingsDocument, options);
+  return Apollo.useLazyQuery<FetchUserSettingsQuery, FetchUserSettingsQueryVariables>(FetchUserSettingsDocument, options);
 }
-export type FetchUserSettingsQueryHookResult = ReturnType<
-  typeof useFetchUserSettingsQuery
->;
-export type FetchUserSettingsLazyQueryHookResult = ReturnType<
-  typeof useFetchUserSettingsLazyQuery
->;
-export type FetchUserSettingsQueryResult = Apollo.QueryResult<
-  FetchUserSettingsQuery,
-  FetchUserSettingsQueryVariables
->;
+export type FetchUserSettingsQueryHookResult = ReturnType<typeof useFetchUserSettingsQuery>;
+export type FetchUserSettingsLazyQueryHookResult = ReturnType<typeof useFetchUserSettingsLazyQuery>;
+export type FetchUserSettingsQueryResult = Apollo.QueryResult<FetchUserSettingsQuery, FetchUserSettingsQueryVariables>;
 export const AllLabelsDocument = gql`
   query allLabels {
     labels(order_by: { name: asc }) {
@@ -11974,48 +10121,19 @@ export const AllLabelsDocument = gql`
     }
   }
 `;
-export type AllLabelsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    AllLabelsQuery,
-    AllLabelsQueryVariables
-  >,
-  'query'
->;
+export type AllLabelsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllLabelsQuery, AllLabelsQueryVariables>, 'query'>;
 
 export const AllLabelsComponent = (props: AllLabelsComponentProps) => (
-  <ApolloReactComponents.Query<AllLabelsQuery, AllLabelsQueryVariables>
-    query={AllLabelsDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Query<AllLabelsQuery, AllLabelsQueryVariables> query={AllLabelsDocument} {...props} />
 );
 
-export type AllLabelsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    AllLabelsQuery,
-    AllLabelsQueryVariables
-  >;
+export type AllLabelsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<AllLabelsQuery, AllLabelsQueryVariables>;
 } & TChildProps;
-export function withAllLabels<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    AllLabelsQuery,
-    AllLabelsQueryVariables,
-    AllLabelsProps<TChildProps, TDataName>
-  >
+export function withAllLabels<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, AllLabelsQuery, AllLabelsQueryVariables, AllLabelsProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    AllLabelsQuery,
-    AllLabelsQueryVariables,
-    AllLabelsProps<TChildProps, TDataName>
-  >(AllLabelsDocument, {
+  return ApolloReactHoc.withQuery<TProps, AllLabelsQuery, AllLabelsQueryVariables, AllLabelsProps<TChildProps, TDataName>>(AllLabelsDocument, {
     alias: 'allLabels',
     ...operationOptions,
   });
@@ -12036,35 +10154,17 @@ export function withAllLabels<
  *   },
  * });
  */
-export function useAllLabelsQuery(
-  baseOptions?: Apollo.QueryHookOptions<AllLabelsQuery, AllLabelsQueryVariables>
-) {
+export function useAllLabelsQuery(baseOptions?: Apollo.QueryHookOptions<AllLabelsQuery, AllLabelsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AllLabelsQuery, AllLabelsQueryVariables>(
-    AllLabelsDocument,
-    options
-  );
+  return Apollo.useQuery<AllLabelsQuery, AllLabelsQueryVariables>(AllLabelsDocument, options);
 }
-export function useAllLabelsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AllLabelsQuery,
-    AllLabelsQueryVariables
-  >
-) {
+export function useAllLabelsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllLabelsQuery, AllLabelsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AllLabelsQuery, AllLabelsQueryVariables>(
-    AllLabelsDocument,
-    options
-  );
+  return Apollo.useLazyQuery<AllLabelsQuery, AllLabelsQueryVariables>(AllLabelsDocument, options);
 }
 export type AllLabelsQueryHookResult = ReturnType<typeof useAllLabelsQuery>;
-export type AllLabelsLazyQueryHookResult = ReturnType<
-  typeof useAllLabelsLazyQuery
->;
-export type AllLabelsQueryResult = Apollo.QueryResult<
-  AllLabelsQuery,
-  AllLabelsQueryVariables
->;
+export type AllLabelsLazyQueryHookResult = ReturnType<typeof useAllLabelsLazyQuery>;
+export type AllLabelsQueryResult = Apollo.QueryResult<AllLabelsQuery, AllLabelsQueryVariables>;
 export const AllLiabilityAccountsDocument = gql`
   query allLiabilityAccounts($limit: Int, $offset: Int) {
     liabilities(limit: $limit, offset: $offset, order_by: { name: asc }) {
@@ -12082,39 +10182,18 @@ export const AllLiabilityAccountsDocument = gql`
   }
 `;
 export type AllLiabilityAccountsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    AllLiabilityAccountsQuery,
-    AllLiabilityAccountsQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<AllLiabilityAccountsQuery, AllLiabilityAccountsQueryVariables>,
   'query'
 >;
 
-export const AllLiabilityAccountsComponent = (
-  props: AllLiabilityAccountsComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    AllLiabilityAccountsQuery,
-    AllLiabilityAccountsQueryVariables
-  >
-    query={AllLiabilityAccountsDocument}
-    {...props}
-  />
+export const AllLiabilityAccountsComponent = (props: AllLiabilityAccountsComponentProps) => (
+  <ApolloReactComponents.Query<AllLiabilityAccountsQuery, AllLiabilityAccountsQueryVariables> query={AllLiabilityAccountsDocument} {...props} />
 );
 
-export type AllLiabilityAccountsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    AllLiabilityAccountsQuery,
-    AllLiabilityAccountsQueryVariables
-  >;
+export type AllLiabilityAccountsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<AllLiabilityAccountsQuery, AllLiabilityAccountsQueryVariables>;
 } & TChildProps;
-export function withAllLiabilityAccounts<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withAllLiabilityAccounts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     AllLiabilityAccountsQuery,
@@ -12122,15 +10201,13 @@ export function withAllLiabilityAccounts<
     AllLiabilityAccountsProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    AllLiabilityAccountsQuery,
-    AllLiabilityAccountsQueryVariables,
-    AllLiabilityAccountsProps<TChildProps, TDataName>
-  >(AllLiabilityAccountsDocument, {
-    alias: 'allLiabilityAccounts',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, AllLiabilityAccountsQuery, AllLiabilityAccountsQueryVariables, AllLiabilityAccountsProps<TChildProps, TDataName>>(
+    AllLiabilityAccountsDocument,
+    {
+      alias: 'allLiabilityAccounts',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -12150,40 +10227,17 @@ export function withAllLiabilityAccounts<
  *   },
  * });
  */
-export function useAllLiabilityAccountsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    AllLiabilityAccountsQuery,
-    AllLiabilityAccountsQueryVariables
-  >
-) {
+export function useAllLiabilityAccountsQuery(baseOptions?: Apollo.QueryHookOptions<AllLiabilityAccountsQuery, AllLiabilityAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    AllLiabilityAccountsQuery,
-    AllLiabilityAccountsQueryVariables
-  >(AllLiabilityAccountsDocument, options);
+  return Apollo.useQuery<AllLiabilityAccountsQuery, AllLiabilityAccountsQueryVariables>(AllLiabilityAccountsDocument, options);
 }
-export function useAllLiabilityAccountsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AllLiabilityAccountsQuery,
-    AllLiabilityAccountsQueryVariables
-  >
-) {
+export function useAllLiabilityAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllLiabilityAccountsQuery, AllLiabilityAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    AllLiabilityAccountsQuery,
-    AllLiabilityAccountsQueryVariables
-  >(AllLiabilityAccountsDocument, options);
+  return Apollo.useLazyQuery<AllLiabilityAccountsQuery, AllLiabilityAccountsQueryVariables>(AllLiabilityAccountsDocument, options);
 }
-export type AllLiabilityAccountsQueryHookResult = ReturnType<
-  typeof useAllLiabilityAccountsQuery
->;
-export type AllLiabilityAccountsLazyQueryHookResult = ReturnType<
-  typeof useAllLiabilityAccountsLazyQuery
->;
-export type AllLiabilityAccountsQueryResult = Apollo.QueryResult<
-  AllLiabilityAccountsQuery,
-  AllLiabilityAccountsQueryVariables
->;
+export type AllLiabilityAccountsQueryHookResult = ReturnType<typeof useAllLiabilityAccountsQuery>;
+export type AllLiabilityAccountsLazyQueryHookResult = ReturnType<typeof useAllLiabilityAccountsLazyQuery>;
+export type AllLiabilityAccountsQueryResult = Apollo.QueryResult<AllLiabilityAccountsQuery, AllLiabilityAccountsQueryVariables>;
 export const ActiveLiabilityAccountsDocument = gql`
   query activeLiabilityAccounts {
     liabilities(order_by: { name: asc }, where: { active: { _eq: true } }) {
@@ -12196,39 +10250,18 @@ export const ActiveLiabilityAccountsDocument = gql`
   }
 `;
 export type ActiveLiabilityAccountsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    ActiveLiabilityAccountsQuery,
-    ActiveLiabilityAccountsQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<ActiveLiabilityAccountsQuery, ActiveLiabilityAccountsQueryVariables>,
   'query'
 >;
 
-export const ActiveLiabilityAccountsComponent = (
-  props: ActiveLiabilityAccountsComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    ActiveLiabilityAccountsQuery,
-    ActiveLiabilityAccountsQueryVariables
-  >
-    query={ActiveLiabilityAccountsDocument}
-    {...props}
-  />
+export const ActiveLiabilityAccountsComponent = (props: ActiveLiabilityAccountsComponentProps) => (
+  <ApolloReactComponents.Query<ActiveLiabilityAccountsQuery, ActiveLiabilityAccountsQueryVariables> query={ActiveLiabilityAccountsDocument} {...props} />
 );
 
-export type ActiveLiabilityAccountsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    ActiveLiabilityAccountsQuery,
-    ActiveLiabilityAccountsQueryVariables
-  >;
+export type ActiveLiabilityAccountsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<ActiveLiabilityAccountsQuery, ActiveLiabilityAccountsQueryVariables>;
 } & TChildProps;
-export function withActiveLiabilityAccounts<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withActiveLiabilityAccounts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     ActiveLiabilityAccountsQuery,
@@ -12262,40 +10295,19 @@ export function withActiveLiabilityAccounts<
  *   },
  * });
  */
-export function useActiveLiabilityAccountsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    ActiveLiabilityAccountsQuery,
-    ActiveLiabilityAccountsQueryVariables
-  >
-) {
+export function useActiveLiabilityAccountsQuery(baseOptions?: Apollo.QueryHookOptions<ActiveLiabilityAccountsQuery, ActiveLiabilityAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    ActiveLiabilityAccountsQuery,
-    ActiveLiabilityAccountsQueryVariables
-  >(ActiveLiabilityAccountsDocument, options);
+  return Apollo.useQuery<ActiveLiabilityAccountsQuery, ActiveLiabilityAccountsQueryVariables>(ActiveLiabilityAccountsDocument, options);
 }
 export function useActiveLiabilityAccountsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    ActiveLiabilityAccountsQuery,
-    ActiveLiabilityAccountsQueryVariables
-  >
+  baseOptions?: Apollo.LazyQueryHookOptions<ActiveLiabilityAccountsQuery, ActiveLiabilityAccountsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    ActiveLiabilityAccountsQuery,
-    ActiveLiabilityAccountsQueryVariables
-  >(ActiveLiabilityAccountsDocument, options);
+  return Apollo.useLazyQuery<ActiveLiabilityAccountsQuery, ActiveLiabilityAccountsQueryVariables>(ActiveLiabilityAccountsDocument, options);
 }
-export type ActiveLiabilityAccountsQueryHookResult = ReturnType<
-  typeof useActiveLiabilityAccountsQuery
->;
-export type ActiveLiabilityAccountsLazyQueryHookResult = ReturnType<
-  typeof useActiveLiabilityAccountsLazyQuery
->;
-export type ActiveLiabilityAccountsQueryResult = Apollo.QueryResult<
-  ActiveLiabilityAccountsQuery,
-  ActiveLiabilityAccountsQueryVariables
->;
+export type ActiveLiabilityAccountsQueryHookResult = ReturnType<typeof useActiveLiabilityAccountsQuery>;
+export type ActiveLiabilityAccountsLazyQueryHookResult = ReturnType<typeof useActiveLiabilityAccountsLazyQuery>;
+export type ActiveLiabilityAccountsQueryResult = Apollo.QueryResult<ActiveLiabilityAccountsQuery, ActiveLiabilityAccountsQueryVariables>;
 export const AllRevenueAccountsDocument = gql`
   query allRevenueAccounts($limit: Int, $offset: Int) {
     revenues(limit: $limit, offset: $offset, order_by: { name: asc }) {
@@ -12314,39 +10326,18 @@ export const AllRevenueAccountsDocument = gql`
   }
 `;
 export type AllRevenueAccountsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    AllRevenueAccountsQuery,
-    AllRevenueAccountsQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<AllRevenueAccountsQuery, AllRevenueAccountsQueryVariables>,
   'query'
 >;
 
-export const AllRevenueAccountsComponent = (
-  props: AllRevenueAccountsComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    AllRevenueAccountsQuery,
-    AllRevenueAccountsQueryVariables
-  >
-    query={AllRevenueAccountsDocument}
-    {...props}
-  />
+export const AllRevenueAccountsComponent = (props: AllRevenueAccountsComponentProps) => (
+  <ApolloReactComponents.Query<AllRevenueAccountsQuery, AllRevenueAccountsQueryVariables> query={AllRevenueAccountsDocument} {...props} />
 );
 
-export type AllRevenueAccountsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    AllRevenueAccountsQuery,
-    AllRevenueAccountsQueryVariables
-  >;
+export type AllRevenueAccountsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<AllRevenueAccountsQuery, AllRevenueAccountsQueryVariables>;
 } & TChildProps;
-export function withAllRevenueAccounts<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withAllRevenueAccounts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     AllRevenueAccountsQuery,
@@ -12354,15 +10345,13 @@ export function withAllRevenueAccounts<
     AllRevenueAccountsProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    AllRevenueAccountsQuery,
-    AllRevenueAccountsQueryVariables,
-    AllRevenueAccountsProps<TChildProps, TDataName>
-  >(AllRevenueAccountsDocument, {
-    alias: 'allRevenueAccounts',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, AllRevenueAccountsQuery, AllRevenueAccountsQueryVariables, AllRevenueAccountsProps<TChildProps, TDataName>>(
+    AllRevenueAccountsDocument,
+    {
+      alias: 'allRevenueAccounts',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -12382,40 +10371,17 @@ export function withAllRevenueAccounts<
  *   },
  * });
  */
-export function useAllRevenueAccountsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    AllRevenueAccountsQuery,
-    AllRevenueAccountsQueryVariables
-  >
-) {
+export function useAllRevenueAccountsQuery(baseOptions?: Apollo.QueryHookOptions<AllRevenueAccountsQuery, AllRevenueAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    AllRevenueAccountsQuery,
-    AllRevenueAccountsQueryVariables
-  >(AllRevenueAccountsDocument, options);
+  return Apollo.useQuery<AllRevenueAccountsQuery, AllRevenueAccountsQueryVariables>(AllRevenueAccountsDocument, options);
 }
-export function useAllRevenueAccountsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AllRevenueAccountsQuery,
-    AllRevenueAccountsQueryVariables
-  >
-) {
+export function useAllRevenueAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllRevenueAccountsQuery, AllRevenueAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    AllRevenueAccountsQuery,
-    AllRevenueAccountsQueryVariables
-  >(AllRevenueAccountsDocument, options);
+  return Apollo.useLazyQuery<AllRevenueAccountsQuery, AllRevenueAccountsQueryVariables>(AllRevenueAccountsDocument, options);
 }
-export type AllRevenueAccountsQueryHookResult = ReturnType<
-  typeof useAllRevenueAccountsQuery
->;
-export type AllRevenueAccountsLazyQueryHookResult = ReturnType<
-  typeof useAllRevenueAccountsLazyQuery
->;
-export type AllRevenueAccountsQueryResult = Apollo.QueryResult<
-  AllRevenueAccountsQuery,
-  AllRevenueAccountsQueryVariables
->;
+export type AllRevenueAccountsQueryHookResult = ReturnType<typeof useAllRevenueAccountsQuery>;
+export type AllRevenueAccountsLazyQueryHookResult = ReturnType<typeof useAllRevenueAccountsLazyQuery>;
+export type AllRevenueAccountsQueryResult = Apollo.QueryResult<AllRevenueAccountsQuery, AllRevenueAccountsQueryVariables>;
 export const ActiveRevenueAccountsDocument = gql`
   query activeRevenueAccounts {
     revenues(order_by: { name: asc }, where: { active: { _eq: true } }) {
@@ -12426,39 +10392,18 @@ export const ActiveRevenueAccountsDocument = gql`
   }
 `;
 export type ActiveRevenueAccountsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    ActiveRevenueAccountsQuery,
-    ActiveRevenueAccountsQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables>,
   'query'
 >;
 
-export const ActiveRevenueAccountsComponent = (
-  props: ActiveRevenueAccountsComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    ActiveRevenueAccountsQuery,
-    ActiveRevenueAccountsQueryVariables
-  >
-    query={ActiveRevenueAccountsDocument}
-    {...props}
-  />
+export const ActiveRevenueAccountsComponent = (props: ActiveRevenueAccountsComponentProps) => (
+  <ApolloReactComponents.Query<ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables> query={ActiveRevenueAccountsDocument} {...props} />
 );
 
-export type ActiveRevenueAccountsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    ActiveRevenueAccountsQuery,
-    ActiveRevenueAccountsQueryVariables
-  >;
+export type ActiveRevenueAccountsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables>;
 } & TChildProps;
-export function withActiveRevenueAccounts<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withActiveRevenueAccounts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     ActiveRevenueAccountsQuery,
@@ -12466,15 +10411,13 @@ export function withActiveRevenueAccounts<
     ActiveRevenueAccountsProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    ActiveRevenueAccountsQuery,
-    ActiveRevenueAccountsQueryVariables,
-    ActiveRevenueAccountsProps<TChildProps, TDataName>
-  >(ActiveRevenueAccountsDocument, {
-    alias: 'activeRevenueAccounts',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables, ActiveRevenueAccountsProps<TChildProps, TDataName>>(
+    ActiveRevenueAccountsDocument,
+    {
+      alias: 'activeRevenueAccounts',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -12492,46 +10435,35 @@ export function withActiveRevenueAccounts<
  *   },
  * });
  */
-export function useActiveRevenueAccountsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    ActiveRevenueAccountsQuery,
-    ActiveRevenueAccountsQueryVariables
-  >
-) {
+export function useActiveRevenueAccountsQuery(baseOptions?: Apollo.QueryHookOptions<ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    ActiveRevenueAccountsQuery,
-    ActiveRevenueAccountsQueryVariables
-  >(ActiveRevenueAccountsDocument, options);
+  return Apollo.useQuery<ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables>(ActiveRevenueAccountsDocument, options);
 }
-export function useActiveRevenueAccountsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    ActiveRevenueAccountsQuery,
-    ActiveRevenueAccountsQueryVariables
-  >
-) {
+export function useActiveRevenueAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    ActiveRevenueAccountsQuery,
-    ActiveRevenueAccountsQueryVariables
-  >(ActiveRevenueAccountsDocument, options);
+  return Apollo.useLazyQuery<ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables>(ActiveRevenueAccountsDocument, options);
 }
-export type ActiveRevenueAccountsQueryHookResult = ReturnType<
-  typeof useActiveRevenueAccountsQuery
->;
-export type ActiveRevenueAccountsLazyQueryHookResult = ReturnType<
-  typeof useActiveRevenueAccountsLazyQuery
->;
-export type ActiveRevenueAccountsQueryResult = Apollo.QueryResult<
-  ActiveRevenueAccountsQuery,
-  ActiveRevenueAccountsQueryVariables
->;
+export type ActiveRevenueAccountsQueryHookResult = ReturnType<typeof useActiveRevenueAccountsQuery>;
+export type ActiveRevenueAccountsLazyQueryHookResult = ReturnType<typeof useActiveRevenueAccountsLazyQuery>;
+export type ActiveRevenueAccountsQueryResult = Apollo.QueryResult<ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables>;
 export const RecurringTransactionsDocument = gql`
   query recurringTransactions($recurringId: bigint!) {
-    transactions(
-      where: { recurring_id: { _eq: $recurringId } }
-      order_by: { transaction_date: asc }
-    ) {
+    recurring_by_pk(id: $recurringId) {
+      active
+      amount
+      category_id
+      created_at
+      cycle_type
+      description
+      duration_type
+      no_of_times
+      start_on
+      title
+      transaction_type
+      until_date
+      updated_at
+    }
+    transactions(where: { recurring_id: { _eq: $recurringId } }, order_by: { transaction_date: asc }) {
       id
       amount
       created_at
@@ -12539,11 +10471,13 @@ export const RecurringTransactionsDocument = gql`
       updated_at
       description
       recurring_id
-      category {
-        name
-      }
+      category_id
+      account_from
+      account_to
+      transaction_type
       transaction_labels {
         label {
+          id
           name
         }
       }
@@ -12551,48 +10485,27 @@ export const RecurringTransactionsDocument = gql`
     transactions_aggregate(where: { recurring_id: { _eq: $recurringId } }) {
       aggregate {
         count
+        sum {
+          amount
+        }
       }
     }
   }
 `;
 export type RecurringTransactionsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    RecurringTransactionsQuery,
-    RecurringTransactionsQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<RecurringTransactionsQuery, RecurringTransactionsQueryVariables>,
   'query'
 > &
-  (
-    | { variables: RecurringTransactionsQueryVariables; skip?: boolean }
-    | { skip: boolean }
-  );
+  ({ variables: RecurringTransactionsQueryVariables; skip?: boolean } | { skip: boolean });
 
-export const RecurringTransactionsComponent = (
-  props: RecurringTransactionsComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    RecurringTransactionsQuery,
-    RecurringTransactionsQueryVariables
-  >
-    query={RecurringTransactionsDocument}
-    {...props}
-  />
+export const RecurringTransactionsComponent = (props: RecurringTransactionsComponentProps) => (
+  <ApolloReactComponents.Query<RecurringTransactionsQuery, RecurringTransactionsQueryVariables> query={RecurringTransactionsDocument} {...props} />
 );
 
-export type RecurringTransactionsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    RecurringTransactionsQuery,
-    RecurringTransactionsQueryVariables
-  >;
+export type RecurringTransactionsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<RecurringTransactionsQuery, RecurringTransactionsQueryVariables>;
 } & TChildProps;
-export function withRecurringTransactions<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withRecurringTransactions<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     RecurringTransactionsQuery,
@@ -12600,15 +10513,13 @@ export function withRecurringTransactions<
     RecurringTransactionsProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    RecurringTransactionsQuery,
-    RecurringTransactionsQueryVariables,
-    RecurringTransactionsProps<TChildProps, TDataName>
-  >(RecurringTransactionsDocument, {
-    alias: 'recurringTransactions',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, RecurringTransactionsQuery, RecurringTransactionsQueryVariables, RecurringTransactionsProps<TChildProps, TDataName>>(
+    RecurringTransactionsDocument,
+    {
+      alias: 'recurringTransactions',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -12627,40 +10538,17 @@ export function withRecurringTransactions<
  *   },
  * });
  */
-export function useRecurringTransactionsQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    RecurringTransactionsQuery,
-    RecurringTransactionsQueryVariables
-  >
-) {
+export function useRecurringTransactionsQuery(baseOptions: Apollo.QueryHookOptions<RecurringTransactionsQuery, RecurringTransactionsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    RecurringTransactionsQuery,
-    RecurringTransactionsQueryVariables
-  >(RecurringTransactionsDocument, options);
+  return Apollo.useQuery<RecurringTransactionsQuery, RecurringTransactionsQueryVariables>(RecurringTransactionsDocument, options);
 }
-export function useRecurringTransactionsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    RecurringTransactionsQuery,
-    RecurringTransactionsQueryVariables
-  >
-) {
+export function useRecurringTransactionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RecurringTransactionsQuery, RecurringTransactionsQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    RecurringTransactionsQuery,
-    RecurringTransactionsQueryVariables
-  >(RecurringTransactionsDocument, options);
+  return Apollo.useLazyQuery<RecurringTransactionsQuery, RecurringTransactionsQueryVariables>(RecurringTransactionsDocument, options);
 }
-export type RecurringTransactionsQueryHookResult = ReturnType<
-  typeof useRecurringTransactionsQuery
->;
-export type RecurringTransactionsLazyQueryHookResult = ReturnType<
-  typeof useRecurringTransactionsLazyQuery
->;
-export type RecurringTransactionsQueryResult = Apollo.QueryResult<
-  RecurringTransactionsQuery,
-  RecurringTransactionsQueryVariables
->;
+export type RecurringTransactionsQueryHookResult = ReturnType<typeof useRecurringTransactionsQuery>;
+export type RecurringTransactionsLazyQueryHookResult = ReturnType<typeof useRecurringTransactionsLazyQuery>;
+export type RecurringTransactionsQueryResult = Apollo.QueryResult<RecurringTransactionsQuery, RecurringTransactionsQueryVariables>;
 export const GetTransactionByIdDocument = gql`
   query getTransactionById($id: bigint!) {
     transactions_by_pk(id: $id) {
@@ -12676,43 +10564,19 @@ export const GetTransactionByIdDocument = gql`
   }
 `;
 export type GetTransactionByIdComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    GetTransactionByIdQuery,
-    GetTransactionByIdQueryVariables
-  >,
+  ApolloReactComponents.QueryComponentOptions<GetTransactionByIdQuery, GetTransactionByIdQueryVariables>,
   'query'
 > &
-  (
-    | { variables: GetTransactionByIdQueryVariables; skip?: boolean }
-    | { skip: boolean }
-  );
+  ({ variables: GetTransactionByIdQueryVariables; skip?: boolean } | { skip: boolean });
 
-export const GetTransactionByIdComponent = (
-  props: GetTransactionByIdComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    GetTransactionByIdQuery,
-    GetTransactionByIdQueryVariables
-  >
-    query={GetTransactionByIdDocument}
-    {...props}
-  />
+export const GetTransactionByIdComponent = (props: GetTransactionByIdComponentProps) => (
+  <ApolloReactComponents.Query<GetTransactionByIdQuery, GetTransactionByIdQueryVariables> query={GetTransactionByIdDocument} {...props} />
 );
 
-export type GetTransactionByIdProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    GetTransactionByIdQuery,
-    GetTransactionByIdQueryVariables
-  >;
+export type GetTransactionByIdProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<GetTransactionByIdQuery, GetTransactionByIdQueryVariables>;
 } & TChildProps;
-export function withGetTransactionById<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withGetTransactionById<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     GetTransactionByIdQuery,
@@ -12720,15 +10584,13 @@ export function withGetTransactionById<
     GetTransactionByIdProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withQuery<
-    TProps,
-    GetTransactionByIdQuery,
-    GetTransactionByIdQueryVariables,
-    GetTransactionByIdProps<TChildProps, TDataName>
-  >(GetTransactionByIdDocument, {
-    alias: 'getTransactionById',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withQuery<TProps, GetTransactionByIdQuery, GetTransactionByIdQueryVariables, GetTransactionByIdProps<TChildProps, TDataName>>(
+    GetTransactionByIdDocument,
+    {
+      alias: 'getTransactionById',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -12747,40 +10609,17 @@ export function withGetTransactionById<
  *   },
  * });
  */
-export function useGetTransactionByIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetTransactionByIdQuery,
-    GetTransactionByIdQueryVariables
-  >
-) {
+export function useGetTransactionByIdQuery(baseOptions: Apollo.QueryHookOptions<GetTransactionByIdQuery, GetTransactionByIdQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    GetTransactionByIdQuery,
-    GetTransactionByIdQueryVariables
-  >(GetTransactionByIdDocument, options);
+  return Apollo.useQuery<GetTransactionByIdQuery, GetTransactionByIdQueryVariables>(GetTransactionByIdDocument, options);
 }
-export function useGetTransactionByIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetTransactionByIdQuery,
-    GetTransactionByIdQueryVariables
-  >
-) {
+export function useGetTransactionByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTransactionByIdQuery, GetTransactionByIdQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    GetTransactionByIdQuery,
-    GetTransactionByIdQueryVariables
-  >(GetTransactionByIdDocument, options);
+  return Apollo.useLazyQuery<GetTransactionByIdQuery, GetTransactionByIdQueryVariables>(GetTransactionByIdDocument, options);
 }
-export type GetTransactionByIdQueryHookResult = ReturnType<
-  typeof useGetTransactionByIdQuery
->;
-export type GetTransactionByIdLazyQueryHookResult = ReturnType<
-  typeof useGetTransactionByIdLazyQuery
->;
-export type GetTransactionByIdQueryResult = Apollo.QueryResult<
-  GetTransactionByIdQuery,
-  GetTransactionByIdQueryVariables
->;
+export type GetTransactionByIdQueryHookResult = ReturnType<typeof useGetTransactionByIdQuery>;
+export type GetTransactionByIdLazyQueryHookResult = ReturnType<typeof useGetTransactionByIdLazyQuery>;
+export type GetTransactionByIdQueryResult = Apollo.QueryResult<GetTransactionByIdQuery, GetTransactionByIdQueryVariables>;
 export const FetchLabelsDocument = gql`
   subscription fetchLabels {
     labels(order_by: { created_at: desc }) {
@@ -12792,53 +10631,27 @@ export const FetchLabelsDocument = gql`
   }
 `;
 export type FetchLabelsComponentProps = Omit<
-  ApolloReactComponents.SubscriptionComponentOptions<
-    FetchLabelsSubscription,
-    FetchLabelsSubscriptionVariables
-  >,
+  ApolloReactComponents.SubscriptionComponentOptions<FetchLabelsSubscription, FetchLabelsSubscriptionVariables>,
   'subscription'
 >;
 
 export const FetchLabelsComponent = (props: FetchLabelsComponentProps) => (
-  <ApolloReactComponents.Subscription<
-    FetchLabelsSubscription,
-    FetchLabelsSubscriptionVariables
-  >
-    subscription={FetchLabelsDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Subscription<FetchLabelsSubscription, FetchLabelsSubscriptionVariables> subscription={FetchLabelsDocument} {...props} />
 );
 
-export type FetchLabelsProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    FetchLabelsSubscription,
-    FetchLabelsSubscriptionVariables
-  >;
+export type FetchLabelsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<FetchLabelsSubscription, FetchLabelsSubscriptionVariables>;
 } & TChildProps;
-export function withFetchLabels<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    FetchLabelsSubscription,
-    FetchLabelsSubscriptionVariables,
-    FetchLabelsProps<TChildProps, TDataName>
-  >
+export function withFetchLabels<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, FetchLabelsSubscription, FetchLabelsSubscriptionVariables, FetchLabelsProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withSubscription<
-    TProps,
-    FetchLabelsSubscription,
-    FetchLabelsSubscriptionVariables,
-    FetchLabelsProps<TChildProps, TDataName>
-  >(FetchLabelsDocument, {
-    alias: 'fetchLabels',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withSubscription<TProps, FetchLabelsSubscription, FetchLabelsSubscriptionVariables, FetchLabelsProps<TChildProps, TDataName>>(
+    FetchLabelsDocument,
+    {
+      alias: 'fetchLabels',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -12856,23 +10669,12 @@ export function withFetchLabels<
  *   },
  * });
  */
-export function useFetchLabelsSubscription(
-  baseOptions?: Apollo.SubscriptionHookOptions<
-    FetchLabelsSubscription,
-    FetchLabelsSubscriptionVariables
-  >
-) {
+export function useFetchLabelsSubscription(baseOptions?: Apollo.SubscriptionHookOptions<FetchLabelsSubscription, FetchLabelsSubscriptionVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSubscription<
-    FetchLabelsSubscription,
-    FetchLabelsSubscriptionVariables
-  >(FetchLabelsDocument, options);
+  return Apollo.useSubscription<FetchLabelsSubscription, FetchLabelsSubscriptionVariables>(FetchLabelsDocument, options);
 }
-export type FetchLabelsSubscriptionHookResult = ReturnType<
-  typeof useFetchLabelsSubscription
->;
-export type FetchLabelsSubscriptionResult =
-  Apollo.SubscriptionResult<FetchLabelsSubscription>;
+export type FetchLabelsSubscriptionHookResult = ReturnType<typeof useFetchLabelsSubscription>;
+export type FetchLabelsSubscriptionResult = Apollo.SubscriptionResult<FetchLabelsSubscription>;
 export const RecurringDocument = gql`
   subscription recurring($limit: Int, $offset: Int) {
     recurring(limit: $limit, offset: $offset, order_by: { title: asc }) {
@@ -12912,53 +10714,27 @@ export const RecurringDocument = gql`
   }
 `;
 export type RecurringComponentProps = Omit<
-  ApolloReactComponents.SubscriptionComponentOptions<
-    RecurringSubscription,
-    RecurringSubscriptionVariables
-  >,
+  ApolloReactComponents.SubscriptionComponentOptions<RecurringSubscription, RecurringSubscriptionVariables>,
   'subscription'
 >;
 
 export const RecurringComponent = (props: RecurringComponentProps) => (
-  <ApolloReactComponents.Subscription<
-    RecurringSubscription,
-    RecurringSubscriptionVariables
-  >
-    subscription={RecurringDocument}
-    {...props}
-  />
+  <ApolloReactComponents.Subscription<RecurringSubscription, RecurringSubscriptionVariables> subscription={RecurringDocument} {...props} />
 );
 
-export type RecurringProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    RecurringSubscription,
-    RecurringSubscriptionVariables
-  >;
+export type RecurringProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<RecurringSubscription, RecurringSubscriptionVariables>;
 } & TChildProps;
-export function withRecurring<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
-  operationOptions?: ApolloReactHoc.OperationOption<
-    TProps,
-    RecurringSubscription,
-    RecurringSubscriptionVariables,
-    RecurringProps<TChildProps, TDataName>
-  >
+export function withRecurring<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, RecurringSubscription, RecurringSubscriptionVariables, RecurringProps<TChildProps, TDataName>>
 ) {
-  return ApolloReactHoc.withSubscription<
-    TProps,
-    RecurringSubscription,
-    RecurringSubscriptionVariables,
-    RecurringProps<TChildProps, TDataName>
-  >(RecurringDocument, {
-    alias: 'recurring',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withSubscription<TProps, RecurringSubscription, RecurringSubscriptionVariables, RecurringProps<TChildProps, TDataName>>(
+    RecurringDocument,
+    {
+      alias: 'recurring',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
@@ -12978,23 +10754,12 @@ export function withRecurring<
  *   },
  * });
  */
-export function useRecurringSubscription(
-  baseOptions?: Apollo.SubscriptionHookOptions<
-    RecurringSubscription,
-    RecurringSubscriptionVariables
-  >
-) {
+export function useRecurringSubscription(baseOptions?: Apollo.SubscriptionHookOptions<RecurringSubscription, RecurringSubscriptionVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSubscription<
-    RecurringSubscription,
-    RecurringSubscriptionVariables
-  >(RecurringDocument, options);
+  return Apollo.useSubscription<RecurringSubscription, RecurringSubscriptionVariables>(RecurringDocument, options);
 }
-export type RecurringSubscriptionHookResult = ReturnType<
-  typeof useRecurringSubscription
->;
-export type RecurringSubscriptionResult =
-  Apollo.SubscriptionResult<RecurringSubscription>;
+export type RecurringSubscriptionHookResult = ReturnType<typeof useRecurringSubscription>;
+export type RecurringSubscriptionResult = Apollo.SubscriptionResult<RecurringSubscription>;
 export const RecurringAggregateDocument = gql`
   subscription recurringAggregate {
     recurring_aggregate {
@@ -13005,39 +10770,21 @@ export const RecurringAggregateDocument = gql`
   }
 `;
 export type RecurringAggregateComponentProps = Omit<
-  ApolloReactComponents.SubscriptionComponentOptions<
-    RecurringAggregateSubscription,
-    RecurringAggregateSubscriptionVariables
-  >,
+  ApolloReactComponents.SubscriptionComponentOptions<RecurringAggregateSubscription, RecurringAggregateSubscriptionVariables>,
   'subscription'
 >;
 
-export const RecurringAggregateComponent = (
-  props: RecurringAggregateComponentProps
-) => (
-  <ApolloReactComponents.Subscription<
-    RecurringAggregateSubscription,
-    RecurringAggregateSubscriptionVariables
-  >
+export const RecurringAggregateComponent = (props: RecurringAggregateComponentProps) => (
+  <ApolloReactComponents.Subscription<RecurringAggregateSubscription, RecurringAggregateSubscriptionVariables>
     subscription={RecurringAggregateDocument}
     {...props}
   />
 );
 
-export type RecurringAggregateProps<
-  TChildProps = {},
-  TDataName extends string = 'data'
-> = {
-  [key in TDataName]: ApolloReactHoc.DataValue<
-    RecurringAggregateSubscription,
-    RecurringAggregateSubscriptionVariables
-  >;
+export type RecurringAggregateProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<RecurringAggregateSubscription, RecurringAggregateSubscriptionVariables>;
 } & TChildProps;
-export function withRecurringAggregate<
-  TProps,
-  TChildProps = {},
-  TDataName extends string = 'data'
->(
+export function withRecurringAggregate<TProps, TChildProps = {}, TDataName extends string = 'data'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
     RecurringAggregateSubscription,
@@ -13072,22 +10819,13 @@ export function withRecurringAggregate<
  * });
  */
 export function useRecurringAggregateSubscription(
-  baseOptions?: Apollo.SubscriptionHookOptions<
-    RecurringAggregateSubscription,
-    RecurringAggregateSubscriptionVariables
-  >
+  baseOptions?: Apollo.SubscriptionHookOptions<RecurringAggregateSubscription, RecurringAggregateSubscriptionVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSubscription<
-    RecurringAggregateSubscription,
-    RecurringAggregateSubscriptionVariables
-  >(RecurringAggregateDocument, options);
+  return Apollo.useSubscription<RecurringAggregateSubscription, RecurringAggregateSubscriptionVariables>(RecurringAggregateDocument, options);
 }
-export type RecurringAggregateSubscriptionHookResult = ReturnType<
-  typeof useRecurringAggregateSubscription
->;
-export type RecurringAggregateSubscriptionResult =
-  Apollo.SubscriptionResult<RecurringAggregateSubscription>;
+export type RecurringAggregateSubscriptionHookResult = ReturnType<typeof useRecurringAggregateSubscription>;
+export type RecurringAggregateSubscriptionResult = Apollo.SubscriptionResult<RecurringAggregateSubscription>;
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
@@ -13119,25 +10857,9 @@ export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
   info: GraphQLResolveInfo
 ) => TResult | Promise<TResult>;
 
-export interface SubscriptionSubscriberObject<
-  TResult,
-  TKey extends string,
-  TParent,
-  TContext,
-  TArgs
-> {
-  subscribe: SubscriptionSubscribeFn<
-    { [key in TKey]: TResult },
-    TParent,
-    TContext,
-    TArgs
-  >;
-  resolve?: SubscriptionResolveFn<
-    TResult,
-    { [key in TKey]: TResult },
-    TContext,
-    TArgs
-  >;
+export interface SubscriptionSubscriberObject<TResult, TKey extends string, TParent, TContext, TArgs> {
+  subscribe: SubscriptionSubscribeFn<{ [key in TKey]: TResult }, TParent, TContext, TArgs>;
+  resolve?: SubscriptionResolveFn<TResult, { [key in TKey]: TResult }, TContext, TArgs>;
 }
 
 export interface SubscriptionResolverObject<TResult, TParent, TContext, TArgs> {
@@ -13145,26 +10867,12 @@ export interface SubscriptionResolverObject<TResult, TParent, TContext, TArgs> {
   resolve: SubscriptionResolveFn<TResult, any, TContext, TArgs>;
 }
 
-export type SubscriptionObject<
-  TResult,
-  TKey extends string,
-  TParent,
-  TContext,
-  TArgs
-> =
+export type SubscriptionObject<TResult, TKey extends string, TParent, TContext, TArgs> =
   | SubscriptionSubscriberObject<TResult, TKey, TParent, TContext, TArgs>
   | SubscriptionResolverObject<TResult, TParent, TContext, TArgs>;
 
-export type SubscriptionResolver<
-  TResult,
-  TKey extends string,
-  TParent = {},
-  TContext = {},
-  TArgs = {}
-> =
-  | ((
-      ...args: any[]
-    ) => SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>)
+export type SubscriptionResolver<TResult, TKey extends string, TParent = {}, TContext = {}, TArgs = {}> =
+  | ((...args: any[]) => SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>)
   | SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>;
 
 export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (
@@ -13173,20 +10881,11 @@ export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (
   info: GraphQLResolveInfo
 ) => Maybe<TTypes> | Promise<Maybe<TTypes>>;
 
-export type IsTypeOfResolverFn<T = {}, TContext = {}> = (
-  obj: T,
-  context: TContext,
-  info: GraphQLResolveInfo
-) => boolean | Promise<boolean>;
+export type IsTypeOfResolverFn<T = {}, TContext = {}> = (obj: T, context: TContext, info: GraphQLResolveInfo) => boolean | Promise<boolean>;
 
 export type NextResolverFn<T> = () => Promise<T>;
 
-export type DirectiveResolverFn<
-  TResult = {},
-  TParent = {},
-  TContext = {},
-  TArgs = {}
-> = (
+export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs = {}> = (
   next: NextResolverFn<TResult>,
   parent: TParent,
   args: TArgs,
@@ -14177,66 +11876,26 @@ export type CachedDirectiveArgs = {
   ttl?: Scalars['Int'];
 };
 
-export type CachedDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = any,
-  Args = CachedDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+export type CachedDirectiveResolver<Result, Parent, ContextType = any, Args = CachedDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
-export type Account_InfoResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['account_info'] = ResolversParentTypes['account_info']
-> = {
+export type Account_InfoResolvers<ContextType = any, ParentType extends ResolversParentTypes['account_info'] = ResolversParentTypes['account_info']> = {
   asset?: Resolver<Maybe<ResolversTypes['assets']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
-  expense?: Resolver<
-    Maybe<ResolversTypes['expenses']>,
-    ParentType,
-    ContextType
-  >;
+  expense?: Resolver<Maybe<ResolversTypes['expenses']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
-  liability?: Resolver<
-    Maybe<ResolversTypes['liabilities']>,
-    ParentType,
-    ContextType
-  >;
+  liability?: Resolver<Maybe<ResolversTypes['liabilities']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  recurrings?: Resolver<
-    Array<ResolversTypes['recurring']>,
-    ParentType,
-    ContextType,
-    Partial<Account_InfoRecurringsArgs>
-  >;
-  recurringsByAccountTo?: Resolver<
-    Array<ResolversTypes['recurring']>,
-    ParentType,
-    ContextType,
-    Partial<Account_InfoRecurringsByAccountToArgs>
-  >;
+  recurrings?: Resolver<Array<ResolversTypes['recurring']>, ParentType, ContextType, Partial<Account_InfoRecurringsArgs>>;
+  recurringsByAccountTo?: Resolver<Array<ResolversTypes['recurring']>, ParentType, ContextType, Partial<Account_InfoRecurringsByAccountToArgs>>;
   recurringsByAccountTo_aggregate?: Resolver<
     ResolversTypes['recurring_aggregate'],
     ParentType,
     ContextType,
     Partial<Account_InfoRecurringsByAccountTo_AggregateArgs>
   >;
-  recurrings_aggregate?: Resolver<
-    ResolversTypes['recurring_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Account_InfoRecurrings_AggregateArgs>
-  >;
-  revenue?: Resolver<
-    Maybe<ResolversTypes['revenues']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_accounts?: Resolver<
-    Array<ResolversTypes['transaction_accounts']>,
-    ParentType,
-    ContextType,
-    Partial<Account_InfoTransaction_AccountsArgs>
-  >;
+  recurrings_aggregate?: Resolver<ResolversTypes['recurring_aggregate'], ParentType, ContextType, Partial<Account_InfoRecurrings_AggregateArgs>>;
+  revenue?: Resolver<Maybe<ResolversTypes['revenues']>, ParentType, ContextType>;
+  transaction_accounts?: Resolver<Array<ResolversTypes['transaction_accounts']>, ParentType, ContextType, Partial<Account_InfoTransaction_AccountsArgs>>;
   transaction_accounts_aggregate?: Resolver<
     ResolversTypes['transaction_accounts_aggregate'],
     ParentType,
@@ -14252,16 +11911,8 @@ export type Account_Info_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['account_info_aggregate'] = ResolversParentTypes['account_info_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['account_info_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['account_info']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['account_info_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['account_info']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14269,62 +11920,17 @@ export type Account_Info_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['account_info_aggregate_fields'] = ResolversParentTypes['account_info_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['account_info_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Account_Info_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['account_info_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['account_info_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['account_info_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['account_info_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['account_info_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['account_info_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['account_info_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['account_info_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['account_info_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['account_info_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Account_Info_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['account_info_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['account_info_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['account_info_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['account_info_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['account_info_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['account_info_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['account_info_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['account_info_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['account_info_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14340,19 +11946,11 @@ export type Account_Info_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['account_info_max_fields'] = ResolversParentTypes['account_info_max_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   type?: Resolver<Maybe<ResolversTypes['bpchar']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14360,19 +11958,11 @@ export type Account_Info_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['account_info_min_fields'] = ResolversParentTypes['account_info_min_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   type?: Resolver<Maybe<ResolversTypes['bpchar']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14381,11 +11971,7 @@ export type Account_Info_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['account_info_mutation_response'] = ResolversParentTypes['account_info_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['account_info']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['account_info']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14445,27 +12031,12 @@ export type Account_Info_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type AssetsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['assets'] = ResolversParentTypes['assets']
-> = {
-  account_info?: Resolver<
-    ResolversTypes['account_info'],
-    ParentType,
-    ContextType
-  >;
-  account_no?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+export type AssetsResolvers<ContextType = any, ParentType extends ResolversParentTypes['assets'] = ResolversParentTypes['assets']> = {
+  account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   balance?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  balance_date?: Resolver<
-    Maybe<ResolversTypes['date']>,
-    ParentType,
-    ContextType
-  >;
+  balance_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   default?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
@@ -14478,11 +12049,7 @@ export type Assets_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['assets_aggregate'] = ResolversParentTypes['assets_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['assets_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['assets_aggregate_fields']>, ParentType, ContextType>;
   nodes?: Resolver<Array<ResolversTypes['assets']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14491,62 +12058,17 @@ export type Assets_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['assets_aggregate_fields'] = ResolversParentTypes['assets_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['assets_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Assets_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['assets_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['assets_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['assets_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['assets_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['assets_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['assets_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['assets_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['assets_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['assets_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['assets_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Assets_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['assets_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['assets_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['assets_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['assets_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['assets_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['assets_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['assets_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['assets_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['assets_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14563,29 +12085,13 @@ export type Assets_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['assets_max_fields'] = ResolversParentTypes['assets_max_fields']
 > = {
-  account_no?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   balance?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  balance_date?: Resolver<
-    Maybe<ResolversTypes['date']>,
-    ParentType,
-    ContextType
-  >;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  balance_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14593,29 +12099,13 @@ export type Assets_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['assets_min_fields'] = ResolversParentTypes['assets_min_fields']
 > = {
-  account_no?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   balance?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  balance_date?: Resolver<
-    Maybe<ResolversTypes['date']>,
-    ParentType,
-    ContextType
-  >;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  balance_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14624,11 +12114,7 @@ export type Assets_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['assets_mutation_response'] = ResolversParentTypes['assets_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['assets']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['assets']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14695,48 +12181,23 @@ export type Assets_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export interface BigintScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes['bigint'], any> {
+export interface BigintScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['bigint'], any> {
   name: 'bigint';
 }
 
-export interface BpcharScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes['bpchar'], any> {
+export interface BpcharScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['bpchar'], any> {
   name: 'bpchar';
 }
 
-export type CategoriesResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['categories'] = ResolversParentTypes['categories']
-> = {
+export type CategoriesResolvers<ContextType = any, ParentType extends ResolversParentTypes['categories'] = ResolversParentTypes['categories']> = {
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  recurrings?: Resolver<
-    Array<ResolversTypes['recurring']>,
-    ParentType,
-    ContextType,
-    Partial<CategoriesRecurringsArgs>
-  >;
-  recurrings_aggregate?: Resolver<
-    ResolversTypes['recurring_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<CategoriesRecurrings_AggregateArgs>
-  >;
-  transactions?: Resolver<
-    Array<ResolversTypes['transactions']>,
-    ParentType,
-    ContextType,
-    Partial<CategoriesTransactionsArgs>
-  >;
-  transactions_aggregate?: Resolver<
-    ResolversTypes['transactions_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<CategoriesTransactions_AggregateArgs>
-  >;
+  recurrings?: Resolver<Array<ResolversTypes['recurring']>, ParentType, ContextType, Partial<CategoriesRecurringsArgs>>;
+  recurrings_aggregate?: Resolver<ResolversTypes['recurring_aggregate'], ParentType, ContextType, Partial<CategoriesRecurrings_AggregateArgs>>;
+  transactions?: Resolver<Array<ResolversTypes['transactions']>, ParentType, ContextType, Partial<CategoriesTransactionsArgs>>;
+  transactions_aggregate?: Resolver<ResolversTypes['transactions_aggregate'], ParentType, ContextType, Partial<CategoriesTransactions_AggregateArgs>>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14745,16 +12206,8 @@ export type Categories_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['categories_aggregate'] = ResolversParentTypes['categories_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['categories_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['categories']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['categories_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['categories']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14762,62 +12215,17 @@ export type Categories_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['categories_aggregate_fields'] = ResolversParentTypes['categories_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['categories_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Categories_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['categories_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['categories_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['categories_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['categories_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['categories_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['categories_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['categories_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['categories_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['categories_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['categories_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Categories_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['categories_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['categories_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['categories_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['categories_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['categories_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['categories_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['categories_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['categories_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['categories_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14833,18 +12241,10 @@ export type Categories_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['categories_max_fields'] = ResolversParentTypes['categories_max_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14852,18 +12252,10 @@ export type Categories_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['categories_min_fields'] = ResolversParentTypes['categories_min_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14872,11 +12264,7 @@ export type Categories_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['categories_mutation_response'] = ResolversParentTypes['categories_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['categories']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['categories']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14936,20 +12324,12 @@ export type Categories_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export interface DateScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes['date'], any> {
+export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['date'], any> {
   name: 'date';
 }
 
-export type ExpensesResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['expenses'] = ResolversParentTypes['expenses']
-> = {
-  account_info?: Resolver<
-    ResolversTypes['account_info'],
-    ParentType,
-    ContextType
-  >;
+export type ExpensesResolvers<ContextType = any, ParentType extends ResolversParentTypes['expenses'] = ResolversParentTypes['expenses']> = {
+  account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
@@ -14962,11 +12342,7 @@ export type Expenses_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_aggregate'] = ResolversParentTypes['expenses_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['expenses_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['expenses_aggregate_fields']>, ParentType, ContextType>;
   nodes?: Resolver<Array<ResolversTypes['expenses']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14975,62 +12351,17 @@ export type Expenses_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_aggregate_fields'] = ResolversParentTypes['expenses_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['expenses_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Expenses_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['expenses_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['expenses_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['expenses_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['expenses_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['expenses_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['expenses_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['expenses_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['expenses_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['expenses_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['expenses_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Expenses_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['expenses_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['expenses_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['expenses_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['expenses_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['expenses_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['expenses_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['expenses_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['expenses_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['expenses_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15046,18 +12377,10 @@ export type Expenses_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_max_fields'] = ResolversParentTypes['expenses_max_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15065,18 +12388,10 @@ export type Expenses_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_min_fields'] = ResolversParentTypes['expenses_min_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15085,11 +12400,7 @@ export type Expenses_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['expenses_mutation_response'] = ResolversParentTypes['expenses_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['expenses']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['expenses']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15149,36 +12460,17 @@ export type Expenses_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export interface Float8ScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes['float8'], any> {
+export interface Float8ScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['float8'], any> {
   name: 'float8';
 }
 
-export type LabelsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['labels'] = ResolversParentTypes['labels']
-> = {
+export type LabelsResolvers<ContextType = any, ParentType extends ResolversParentTypes['labels'] = ResolversParentTypes['labels']> = {
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  recurring_labels?: Resolver<
-    Array<ResolversTypes['recurring_labels']>,
-    ParentType,
-    ContextType,
-    Partial<LabelsRecurring_LabelsArgs>
-  >;
-  recurring_labels_aggregate?: Resolver<
-    ResolversTypes['recurring_labels_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<LabelsRecurring_Labels_AggregateArgs>
-  >;
-  transaction_labels?: Resolver<
-    Array<ResolversTypes['transaction_labels']>,
-    ParentType,
-    ContextType,
-    Partial<LabelsTransaction_LabelsArgs>
-  >;
+  recurring_labels?: Resolver<Array<ResolversTypes['recurring_labels']>, ParentType, ContextType, Partial<LabelsRecurring_LabelsArgs>>;
+  recurring_labels_aggregate?: Resolver<ResolversTypes['recurring_labels_aggregate'], ParentType, ContextType, Partial<LabelsRecurring_Labels_AggregateArgs>>;
+  transaction_labels?: Resolver<Array<ResolversTypes['transaction_labels']>, ParentType, ContextType, Partial<LabelsTransaction_LabelsArgs>>;
   transaction_labels_aggregate?: Resolver<
     ResolversTypes['transaction_labels_aggregate'],
     ParentType,
@@ -15193,11 +12485,7 @@ export type Labels_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['labels_aggregate'] = ResolversParentTypes['labels_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['labels_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['labels_aggregate_fields']>, ParentType, ContextType>;
   nodes?: Resolver<Array<ResolversTypes['labels']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15206,62 +12494,17 @@ export type Labels_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['labels_aggregate_fields'] = ResolversParentTypes['labels_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['labels_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Labels_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['labels_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['labels_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['labels_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['labels_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['labels_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['labels_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['labels_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['labels_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['labels_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['labels_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Labels_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['labels_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['labels_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['labels_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['labels_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['labels_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['labels_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['labels_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['labels_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['labels_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15277,18 +12520,10 @@ export type Labels_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['labels_max_fields'] = ResolversParentTypes['labels_max_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15296,18 +12531,10 @@ export type Labels_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['labels_min_fields'] = ResolversParentTypes['labels_min_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15316,11 +12543,7 @@ export type Labels_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['labels_mutation_response'] = ResolversParentTypes['labels_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['labels']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['labels']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15380,15 +12603,8 @@ export type Labels_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type LiabilitiesResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['liabilities'] = ResolversParentTypes['liabilities']
-> = {
-  account_info?: Resolver<
-    ResolversTypes['account_info'],
-    ParentType,
-    ContextType
-  >;
+export type LiabilitiesResolvers<ContextType = any, ParentType extends ResolversParentTypes['liabilities'] = ResolversParentTypes['liabilities']> = {
+  account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
@@ -15401,16 +12617,8 @@ export type Liabilities_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_aggregate'] = ResolversParentTypes['liabilities_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['liabilities_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['liabilities']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['liabilities_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['liabilities']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15418,62 +12626,17 @@ export type Liabilities_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_aggregate_fields'] = ResolversParentTypes['liabilities_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['liabilities_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Liabilities_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['liabilities_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['liabilities_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['liabilities_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['liabilities_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['liabilities_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['liabilities_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['liabilities_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['liabilities_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['liabilities_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['liabilities_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Liabilities_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['liabilities_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['liabilities_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['liabilities_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['liabilities_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['liabilities_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['liabilities_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['liabilities_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['liabilities_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['liabilities_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15489,18 +12652,10 @@ export type Liabilities_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_max_fields'] = ResolversParentTypes['liabilities_max_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15508,18 +12663,10 @@ export type Liabilities_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_min_fields'] = ResolversParentTypes['liabilities_min_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15528,11 +12675,7 @@ export type Liabilities_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['liabilities_mutation_response'] = ResolversParentTypes['liabilities_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['liabilities']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['liabilities']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -15592,10 +12735,7 @@ export type Liabilities_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Mutation_RootResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['mutation_root'] = ResolversParentTypes['mutation_root']
-> = {
+export type Mutation_RootResolvers<ContextType = any, ParentType extends ResolversParentTypes['mutation_root'] = ResolversParentTypes['mutation_root']> = {
   delete_account_info?: Resolver<
     Maybe<ResolversTypes['account_info_mutation_response']>,
     ParentType,
@@ -15608,18 +12748,8 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_Account_Info_By_PkArgs, 'id'>
   >;
-  delete_assets?: Resolver<
-    Maybe<ResolversTypes['assets_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_AssetsArgs, 'where'>
-  >;
-  delete_assets_by_pk?: Resolver<
-    Maybe<ResolversTypes['assets']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_Assets_By_PkArgs, 'id'>
-  >;
+  delete_assets?: Resolver<Maybe<ResolversTypes['assets_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_AssetsArgs, 'where'>>;
+  delete_assets_by_pk?: Resolver<Maybe<ResolversTypes['assets']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Assets_By_PkArgs, 'id'>>;
   delete_categories?: Resolver<
     Maybe<ResolversTypes['categories_mutation_response']>,
     ParentType,
@@ -15638,24 +12768,9 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_ExpensesArgs, 'where'>
   >;
-  delete_expenses_by_pk?: Resolver<
-    Maybe<ResolversTypes['expenses']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_Expenses_By_PkArgs, 'id'>
-  >;
-  delete_labels?: Resolver<
-    Maybe<ResolversTypes['labels_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_LabelsArgs, 'where'>
-  >;
-  delete_labels_by_pk?: Resolver<
-    Maybe<ResolversTypes['labels']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_Labels_By_PkArgs, 'id'>
-  >;
+  delete_expenses_by_pk?: Resolver<Maybe<ResolversTypes['expenses']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Expenses_By_PkArgs, 'id'>>;
+  delete_labels?: Resolver<Maybe<ResolversTypes['labels_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_LabelsArgs, 'where'>>;
+  delete_labels_by_pk?: Resolver<Maybe<ResolversTypes['labels']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Labels_By_PkArgs, 'id'>>;
   delete_liabilities?: Resolver<
     Maybe<ResolversTypes['liabilities_mutation_response']>,
     ParentType,
@@ -15686,12 +12801,7 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_RecurringArgs, 'where'>
   >;
-  delete_recurring_by_pk?: Resolver<
-    Maybe<ResolversTypes['recurring']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_Recurring_By_PkArgs, 'id'>
-  >;
+  delete_recurring_by_pk?: Resolver<Maybe<ResolversTypes['recurring']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Recurring_By_PkArgs, 'id'>>;
   delete_recurring_labels?: Resolver<
     Maybe<ResolversTypes['recurring_labels_mutation_response']>,
     ParentType,
@@ -15702,10 +12812,7 @@ export type Mutation_RootResolvers<
     Maybe<ResolversTypes['recurring_labels']>,
     ParentType,
     ContextType,
-    RequireFields<
-      Mutation_RootDelete_Recurring_Labels_By_PkArgs,
-      'label_id' | 'recurring_id'
-    >
+    RequireFields<Mutation_RootDelete_Recurring_Labels_By_PkArgs, 'label_id' | 'recurring_id'>
   >;
   delete_revenues?: Resolver<
     Maybe<ResolversTypes['revenues_mutation_response']>,
@@ -15713,12 +12820,7 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_RevenuesArgs, 'where'>
   >;
-  delete_revenues_by_pk?: Resolver<
-    Maybe<ResolversTypes['revenues']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_Revenues_By_PkArgs, 'id'>
-  >;
+  delete_revenues_by_pk?: Resolver<Maybe<ResolversTypes['revenues']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Revenues_By_PkArgs, 'id'>>;
   delete_transaction_accounts?: Resolver<
     Maybe<ResolversTypes['transaction_accounts_mutation_response']>,
     ParentType,
@@ -15741,10 +12843,7 @@ export type Mutation_RootResolvers<
     Maybe<ResolversTypes['transaction_attachments']>,
     ParentType,
     ContextType,
-    RequireFields<
-      Mutation_RootDelete_Transaction_Attachments_By_PkArgs,
-      'attachment_id' | 'transaction_id'
-    >
+    RequireFields<Mutation_RootDelete_Transaction_Attachments_By_PkArgs, 'attachment_id' | 'transaction_id'>
   >;
   delete_transaction_labels?: Resolver<
     Maybe<ResolversTypes['transaction_labels_mutation_response']>,
@@ -15756,10 +12855,7 @@ export type Mutation_RootResolvers<
     Maybe<ResolversTypes['transaction_labels']>,
     ParentType,
     ContextType,
-    RequireFields<
-      Mutation_RootDelete_Transaction_Labels_By_PkArgs,
-      'label_id' | 'transaction_id'
-    >
+    RequireFields<Mutation_RootDelete_Transaction_Labels_By_PkArgs, 'label_id' | 'transaction_id'>
   >;
   delete_transactions?: Resolver<
     Maybe<ResolversTypes['transactions_mutation_response']>,
@@ -15785,18 +12881,8 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootDelete_User_Settings_By_PkArgs, 'user_id'>
   >;
-  delete_users?: Resolver<
-    Maybe<ResolversTypes['users_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_UsersArgs, 'where'>
-  >;
-  delete_users_by_pk?: Resolver<
-    Maybe<ResolversTypes['users']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootDelete_Users_By_PkArgs, 'id'>
-  >;
+  delete_users?: Resolver<Maybe<ResolversTypes['users_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_UsersArgs, 'where'>>;
+  delete_users_by_pk?: Resolver<Maybe<ResolversTypes['users']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Users_By_PkArgs, 'id'>>;
   insert_account_info?: Resolver<
     Maybe<ResolversTypes['account_info_mutation_response']>,
     ParentType,
@@ -15815,12 +12901,7 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_AssetsArgs, 'objects'>
   >;
-  insert_assets_one?: Resolver<
-    Maybe<ResolversTypes['assets']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_Assets_OneArgs, 'object'>
-  >;
+  insert_assets_one?: Resolver<Maybe<ResolversTypes['assets']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_Assets_OneArgs, 'object'>>;
   insert_categories?: Resolver<
     Maybe<ResolversTypes['categories_mutation_response']>,
     ParentType,
@@ -15839,24 +12920,14 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_ExpensesArgs, 'objects'>
   >;
-  insert_expenses_one?: Resolver<
-    Maybe<ResolversTypes['expenses']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_Expenses_OneArgs, 'object'>
-  >;
+  insert_expenses_one?: Resolver<Maybe<ResolversTypes['expenses']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_Expenses_OneArgs, 'object'>>;
   insert_labels?: Resolver<
     Maybe<ResolversTypes['labels_mutation_response']>,
     ParentType,
     ContextType,
     RequireFields<Mutation_RootInsert_LabelsArgs, 'objects'>
   >;
-  insert_labels_one?: Resolver<
-    Maybe<ResolversTypes['labels']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_Labels_OneArgs, 'object'>
-  >;
+  insert_labels_one?: Resolver<Maybe<ResolversTypes['labels']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_Labels_OneArgs, 'object'>>;
   insert_liabilities?: Resolver<
     Maybe<ResolversTypes['liabilities_mutation_response']>,
     ParentType,
@@ -15899,24 +12970,14 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_Recurring_Labels_OneArgs, 'object'>
   >;
-  insert_recurring_one?: Resolver<
-    Maybe<ResolversTypes['recurring']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_Recurring_OneArgs, 'object'>
-  >;
+  insert_recurring_one?: Resolver<Maybe<ResolversTypes['recurring']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_Recurring_OneArgs, 'object'>>;
   insert_revenues?: Resolver<
     Maybe<ResolversTypes['revenues_mutation_response']>,
     ParentType,
     ContextType,
     RequireFields<Mutation_RootInsert_RevenuesArgs, 'objects'>
   >;
-  insert_revenues_one?: Resolver<
-    Maybe<ResolversTypes['revenues']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_Revenues_OneArgs, 'object'>
-  >;
+  insert_revenues_one?: Resolver<Maybe<ResolversTypes['revenues']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_Revenues_OneArgs, 'object'>>;
   insert_transaction_accounts?: Resolver<
     Maybe<ResolversTypes['transaction_accounts_mutation_response']>,
     ParentType,
@@ -15977,18 +13038,8 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootInsert_User_Settings_OneArgs, 'object'>
   >;
-  insert_users?: Resolver<
-    Maybe<ResolversTypes['users_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_UsersArgs, 'objects'>
-  >;
-  insert_users_one?: Resolver<
-    Maybe<ResolversTypes['users']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootInsert_Users_OneArgs, 'object'>
-  >;
+  insert_users?: Resolver<Maybe<ResolversTypes['users_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_UsersArgs, 'objects'>>;
+  insert_users_one?: Resolver<Maybe<ResolversTypes['users']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_Users_OneArgs, 'object'>>;
   update_account_info?: Resolver<
     Maybe<ResolversTypes['account_info_mutation_response']>,
     ParentType,
@@ -16007,18 +13058,8 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_Account_Info_ManyArgs, 'updates'>
   >;
-  update_assets?: Resolver<
-    Maybe<ResolversTypes['assets_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootUpdate_AssetsArgs, 'where'>
-  >;
-  update_assets_by_pk?: Resolver<
-    Maybe<ResolversTypes['assets']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootUpdate_Assets_By_PkArgs, 'pk_columns'>
-  >;
+  update_assets?: Resolver<Maybe<ResolversTypes['assets_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_AssetsArgs, 'where'>>;
+  update_assets_by_pk?: Resolver<Maybe<ResolversTypes['assets']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_Assets_By_PkArgs, 'pk_columns'>>;
   update_assets_many?: Resolver<
     Maybe<Array<Maybe<ResolversTypes['assets_mutation_response']>>>,
     ParentType,
@@ -16061,18 +13102,8 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_Expenses_ManyArgs, 'updates'>
   >;
-  update_labels?: Resolver<
-    Maybe<ResolversTypes['labels_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootUpdate_LabelsArgs, 'where'>
-  >;
-  update_labels_by_pk?: Resolver<
-    Maybe<ResolversTypes['labels']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootUpdate_Labels_By_PkArgs, 'pk_columns'>
-  >;
+  update_labels?: Resolver<Maybe<ResolversTypes['labels_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_LabelsArgs, 'where'>>;
+  update_labels_by_pk?: Resolver<Maybe<ResolversTypes['labels']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_Labels_By_PkArgs, 'pk_columns'>>;
   update_labels_many?: Resolver<
     Maybe<Array<Maybe<ResolversTypes['labels_mutation_response']>>>,
     ParentType,
@@ -16179,15 +13210,10 @@ export type Mutation_RootResolvers<
     Maybe<ResolversTypes['transaction_accounts']>,
     ParentType,
     ContextType,
-    RequireFields<
-      Mutation_RootUpdate_Transaction_Accounts_By_PkArgs,
-      'pk_columns'
-    >
+    RequireFields<Mutation_RootUpdate_Transaction_Accounts_By_PkArgs, 'pk_columns'>
   >;
   update_transaction_accounts_many?: Resolver<
-    Maybe<
-      Array<Maybe<ResolversTypes['transaction_accounts_mutation_response']>>
-    >,
+    Maybe<Array<Maybe<ResolversTypes['transaction_accounts_mutation_response']>>>,
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Transaction_Accounts_ManyArgs, 'updates'>
@@ -16202,21 +13228,13 @@ export type Mutation_RootResolvers<
     Maybe<ResolversTypes['transaction_attachments']>,
     ParentType,
     ContextType,
-    RequireFields<
-      Mutation_RootUpdate_Transaction_Attachments_By_PkArgs,
-      'pk_columns'
-    >
+    RequireFields<Mutation_RootUpdate_Transaction_Attachments_By_PkArgs, 'pk_columns'>
   >;
   update_transaction_attachments_many?: Resolver<
-    Maybe<
-      Array<Maybe<ResolversTypes['transaction_attachments_mutation_response']>>
-    >,
+    Maybe<Array<Maybe<ResolversTypes['transaction_attachments_mutation_response']>>>,
     ParentType,
     ContextType,
-    RequireFields<
-      Mutation_RootUpdate_Transaction_Attachments_ManyArgs,
-      'updates'
-    >
+    RequireFields<Mutation_RootUpdate_Transaction_Attachments_ManyArgs, 'updates'>
   >;
   update_transaction_labels?: Resolver<
     Maybe<ResolversTypes['transaction_labels_mutation_response']>,
@@ -16228,10 +13246,7 @@ export type Mutation_RootResolvers<
     Maybe<ResolversTypes['transaction_labels']>,
     ParentType,
     ContextType,
-    RequireFields<
-      Mutation_RootUpdate_Transaction_Labels_By_PkArgs,
-      'pk_columns'
-    >
+    RequireFields<Mutation_RootUpdate_Transaction_Labels_By_PkArgs, 'pk_columns'>
   >;
   update_transaction_labels_many?: Resolver<
     Maybe<Array<Maybe<ResolversTypes['transaction_labels_mutation_response']>>>,
@@ -16275,18 +13290,8 @@ export type Mutation_RootResolvers<
     ContextType,
     RequireFields<Mutation_RootUpdate_User_Settings_ManyArgs, 'updates'>
   >;
-  update_users?: Resolver<
-    Maybe<ResolversTypes['users_mutation_response']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootUpdate_UsersArgs, 'where'>
-  >;
-  update_users_by_pk?: Resolver<
-    Maybe<ResolversTypes['users']>,
-    ParentType,
-    ContextType,
-    RequireFields<Mutation_RootUpdate_Users_By_PkArgs, 'pk_columns'>
-  >;
+  update_users?: Resolver<Maybe<ResolversTypes['users_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_UsersArgs, 'where'>>;
+  update_users_by_pk?: Resolver<Maybe<ResolversTypes['users']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_Users_By_PkArgs, 'pk_columns'>>;
   update_users_many?: Resolver<
     Maybe<Array<Maybe<ResolversTypes['users_mutation_response']>>>,
     ParentType,
@@ -16295,16 +13300,9 @@ export type Mutation_RootResolvers<
   >;
 };
 
-export type NotificationsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['notifications'] = ResolversParentTypes['notifications']
-> = {
+export type NotificationsResolvers<ContextType = any, ParentType extends ResolversParentTypes['notifications'] = ResolversParentTypes['notifications']> = {
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   read_status?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -16317,16 +13315,8 @@ export type Notifications_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['notifications_aggregate'] = ResolversParentTypes['notifications_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['notifications_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['notifications']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['notifications_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['notifications']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -16334,62 +13324,17 @@ export type Notifications_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['notifications_aggregate_fields'] = ResolversParentTypes['notifications_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['notifications_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Notifications_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['notifications_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['notifications_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['notifications_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['notifications_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['notifications_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['notifications_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['notifications_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['notifications_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['notifications_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['notifications_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Notifications_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['notifications_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['notifications_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['notifications_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['notifications_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['notifications_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['notifications_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['notifications_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['notifications_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['notifications_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -16405,23 +13350,11 @@ export type Notifications_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['notifications_max_fields'] = ResolversParentTypes['notifications_max_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   user_id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16430,23 +13363,11 @@ export type Notifications_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['notifications_min_fields'] = ResolversParentTypes['notifications_min_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   user_id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16456,11 +13377,7 @@ export type Notifications_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['notifications_mutation_response'] = ResolversParentTypes['notifications_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['notifications']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['notifications']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -16520,160 +13437,32 @@ export type Notifications_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Query_RootResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['query_root'] = ResolversParentTypes['query_root']
-> = {
-  account_info?: Resolver<
-    Array<ResolversTypes['account_info']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootAccount_InfoArgs>
-  >;
-  account_info_aggregate?: Resolver<
-    ResolversTypes['account_info_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootAccount_Info_AggregateArgs>
-  >;
-  account_info_by_pk?: Resolver<
-    Maybe<ResolversTypes['account_info']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootAccount_Info_By_PkArgs, 'id'>
-  >;
-  assets?: Resolver<
-    Array<ResolversTypes['assets']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootAssetsArgs>
-  >;
-  assets_aggregate?: Resolver<
-    ResolversTypes['assets_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootAssets_AggregateArgs>
-  >;
-  assets_by_pk?: Resolver<
-    Maybe<ResolversTypes['assets']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootAssets_By_PkArgs, 'id'>
-  >;
-  categories?: Resolver<
-    Array<ResolversTypes['categories']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootCategoriesArgs>
-  >;
-  categories_aggregate?: Resolver<
-    ResolversTypes['categories_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootCategories_AggregateArgs>
-  >;
-  categories_by_pk?: Resolver<
-    Maybe<ResolversTypes['categories']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootCategories_By_PkArgs, 'id'>
-  >;
-  expenses?: Resolver<
-    Array<ResolversTypes['expenses']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootExpensesArgs>
-  >;
-  expenses_aggregate?: Resolver<
-    ResolversTypes['expenses_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootExpenses_AggregateArgs>
-  >;
-  expenses_by_pk?: Resolver<
-    Maybe<ResolversTypes['expenses']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootExpenses_By_PkArgs, 'id'>
-  >;
-  labels?: Resolver<
-    Array<ResolversTypes['labels']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootLabelsArgs>
-  >;
-  labels_aggregate?: Resolver<
-    ResolversTypes['labels_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootLabels_AggregateArgs>
-  >;
-  labels_by_pk?: Resolver<
-    Maybe<ResolversTypes['labels']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootLabels_By_PkArgs, 'id'>
-  >;
-  liabilities?: Resolver<
-    Array<ResolversTypes['liabilities']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootLiabilitiesArgs>
-  >;
-  liabilities_aggregate?: Resolver<
-    ResolversTypes['liabilities_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootLiabilities_AggregateArgs>
-  >;
-  liabilities_by_pk?: Resolver<
-    Maybe<ResolversTypes['liabilities']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootLiabilities_By_PkArgs, 'id'>
-  >;
-  notifications?: Resolver<
-    Array<ResolversTypes['notifications']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootNotificationsArgs>
-  >;
-  notifications_aggregate?: Resolver<
-    ResolversTypes['notifications_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootNotifications_AggregateArgs>
-  >;
-  notifications_by_pk?: Resolver<
-    Maybe<ResolversTypes['notifications']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootNotifications_By_PkArgs, 'id'>
-  >;
-  recurring?: Resolver<
-    Array<ResolversTypes['recurring']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootRecurringArgs>
-  >;
-  recurring_aggregate?: Resolver<
-    ResolversTypes['recurring_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootRecurring_AggregateArgs>
-  >;
-  recurring_by_pk?: Resolver<
-    Maybe<ResolversTypes['recurring']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootRecurring_By_PkArgs, 'id'>
-  >;
-  recurring_labels?: Resolver<
-    Array<ResolversTypes['recurring_labels']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootRecurring_LabelsArgs>
-  >;
+export type Query_RootResolvers<ContextType = any, ParentType extends ResolversParentTypes['query_root'] = ResolversParentTypes['query_root']> = {
+  account_info?: Resolver<Array<ResolversTypes['account_info']>, ParentType, ContextType, Partial<Query_RootAccount_InfoArgs>>;
+  account_info_aggregate?: Resolver<ResolversTypes['account_info_aggregate'], ParentType, ContextType, Partial<Query_RootAccount_Info_AggregateArgs>>;
+  account_info_by_pk?: Resolver<Maybe<ResolversTypes['account_info']>, ParentType, ContextType, RequireFields<Query_RootAccount_Info_By_PkArgs, 'id'>>;
+  assets?: Resolver<Array<ResolversTypes['assets']>, ParentType, ContextType, Partial<Query_RootAssetsArgs>>;
+  assets_aggregate?: Resolver<ResolversTypes['assets_aggregate'], ParentType, ContextType, Partial<Query_RootAssets_AggregateArgs>>;
+  assets_by_pk?: Resolver<Maybe<ResolversTypes['assets']>, ParentType, ContextType, RequireFields<Query_RootAssets_By_PkArgs, 'id'>>;
+  categories?: Resolver<Array<ResolversTypes['categories']>, ParentType, ContextType, Partial<Query_RootCategoriesArgs>>;
+  categories_aggregate?: Resolver<ResolversTypes['categories_aggregate'], ParentType, ContextType, Partial<Query_RootCategories_AggregateArgs>>;
+  categories_by_pk?: Resolver<Maybe<ResolversTypes['categories']>, ParentType, ContextType, RequireFields<Query_RootCategories_By_PkArgs, 'id'>>;
+  expenses?: Resolver<Array<ResolversTypes['expenses']>, ParentType, ContextType, Partial<Query_RootExpensesArgs>>;
+  expenses_aggregate?: Resolver<ResolversTypes['expenses_aggregate'], ParentType, ContextType, Partial<Query_RootExpenses_AggregateArgs>>;
+  expenses_by_pk?: Resolver<Maybe<ResolversTypes['expenses']>, ParentType, ContextType, RequireFields<Query_RootExpenses_By_PkArgs, 'id'>>;
+  labels?: Resolver<Array<ResolversTypes['labels']>, ParentType, ContextType, Partial<Query_RootLabelsArgs>>;
+  labels_aggregate?: Resolver<ResolversTypes['labels_aggregate'], ParentType, ContextType, Partial<Query_RootLabels_AggregateArgs>>;
+  labels_by_pk?: Resolver<Maybe<ResolversTypes['labels']>, ParentType, ContextType, RequireFields<Query_RootLabels_By_PkArgs, 'id'>>;
+  liabilities?: Resolver<Array<ResolversTypes['liabilities']>, ParentType, ContextType, Partial<Query_RootLiabilitiesArgs>>;
+  liabilities_aggregate?: Resolver<ResolversTypes['liabilities_aggregate'], ParentType, ContextType, Partial<Query_RootLiabilities_AggregateArgs>>;
+  liabilities_by_pk?: Resolver<Maybe<ResolversTypes['liabilities']>, ParentType, ContextType, RequireFields<Query_RootLiabilities_By_PkArgs, 'id'>>;
+  notifications?: Resolver<Array<ResolversTypes['notifications']>, ParentType, ContextType, Partial<Query_RootNotificationsArgs>>;
+  notifications_aggregate?: Resolver<ResolversTypes['notifications_aggregate'], ParentType, ContextType, Partial<Query_RootNotifications_AggregateArgs>>;
+  notifications_by_pk?: Resolver<Maybe<ResolversTypes['notifications']>, ParentType, ContextType, RequireFields<Query_RootNotifications_By_PkArgs, 'id'>>;
+  recurring?: Resolver<Array<ResolversTypes['recurring']>, ParentType, ContextType, Partial<Query_RootRecurringArgs>>;
+  recurring_aggregate?: Resolver<ResolversTypes['recurring_aggregate'], ParentType, ContextType, Partial<Query_RootRecurring_AggregateArgs>>;
+  recurring_by_pk?: Resolver<Maybe<ResolversTypes['recurring']>, ParentType, ContextType, RequireFields<Query_RootRecurring_By_PkArgs, 'id'>>;
+  recurring_labels?: Resolver<Array<ResolversTypes['recurring_labels']>, ParentType, ContextType, Partial<Query_RootRecurring_LabelsArgs>>;
   recurring_labels_aggregate?: Resolver<
     ResolversTypes['recurring_labels_aggregate'],
     ParentType,
@@ -16684,35 +13473,12 @@ export type Query_RootResolvers<
     Maybe<ResolversTypes['recurring_labels']>,
     ParentType,
     ContextType,
-    RequireFields<
-      Query_RootRecurring_Labels_By_PkArgs,
-      'label_id' | 'recurring_id'
-    >
+    RequireFields<Query_RootRecurring_Labels_By_PkArgs, 'label_id' | 'recurring_id'>
   >;
-  revenues?: Resolver<
-    Array<ResolversTypes['revenues']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootRevenuesArgs>
-  >;
-  revenues_aggregate?: Resolver<
-    ResolversTypes['revenues_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootRevenues_AggregateArgs>
-  >;
-  revenues_by_pk?: Resolver<
-    Maybe<ResolversTypes['revenues']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootRevenues_By_PkArgs, 'id'>
-  >;
-  transaction_accounts?: Resolver<
-    Array<ResolversTypes['transaction_accounts']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootTransaction_AccountsArgs>
-  >;
+  revenues?: Resolver<Array<ResolversTypes['revenues']>, ParentType, ContextType, Partial<Query_RootRevenuesArgs>>;
+  revenues_aggregate?: Resolver<ResolversTypes['revenues_aggregate'], ParentType, ContextType, Partial<Query_RootRevenues_AggregateArgs>>;
+  revenues_by_pk?: Resolver<Maybe<ResolversTypes['revenues']>, ParentType, ContextType, RequireFields<Query_RootRevenues_By_PkArgs, 'id'>>;
+  transaction_accounts?: Resolver<Array<ResolversTypes['transaction_accounts']>, ParentType, ContextType, Partial<Query_RootTransaction_AccountsArgs>>;
   transaction_accounts_aggregate?: Resolver<
     ResolversTypes['transaction_accounts_aggregate'],
     ParentType,
@@ -16725,12 +13491,7 @@ export type Query_RootResolvers<
     ContextType,
     RequireFields<Query_RootTransaction_Accounts_By_PkArgs, 'id'>
   >;
-  transaction_attachments?: Resolver<
-    Array<ResolversTypes['transaction_attachments']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootTransaction_AttachmentsArgs>
-  >;
+  transaction_attachments?: Resolver<Array<ResolversTypes['transaction_attachments']>, ParentType, ContextType, Partial<Query_RootTransaction_AttachmentsArgs>>;
   transaction_attachments_aggregate?: Resolver<
     ResolversTypes['transaction_attachments_aggregate'],
     ParentType,
@@ -16741,17 +13502,9 @@ export type Query_RootResolvers<
     Maybe<ResolversTypes['transaction_attachments']>,
     ParentType,
     ContextType,
-    RequireFields<
-      Query_RootTransaction_Attachments_By_PkArgs,
-      'attachment_id' | 'transaction_id'
-    >
+    RequireFields<Query_RootTransaction_Attachments_By_PkArgs, 'attachment_id' | 'transaction_id'>
   >;
-  transaction_labels?: Resolver<
-    Array<ResolversTypes['transaction_labels']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootTransaction_LabelsArgs>
-  >;
+  transaction_labels?: Resolver<Array<ResolversTypes['transaction_labels']>, ParentType, ContextType, Partial<Query_RootTransaction_LabelsArgs>>;
   transaction_labels_aggregate?: Resolver<
     ResolversTypes['transaction_labels_aggregate'],
     ParentType,
@@ -16762,111 +13515,35 @@ export type Query_RootResolvers<
     Maybe<ResolversTypes['transaction_labels']>,
     ParentType,
     ContextType,
-    RequireFields<
-      Query_RootTransaction_Labels_By_PkArgs,
-      'label_id' | 'transaction_id'
-    >
+    RequireFields<Query_RootTransaction_Labels_By_PkArgs, 'label_id' | 'transaction_id'>
   >;
-  transactions?: Resolver<
-    Array<ResolversTypes['transactions']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootTransactionsArgs>
-  >;
-  transactions_aggregate?: Resolver<
-    ResolversTypes['transactions_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootTransactions_AggregateArgs>
-  >;
-  transactions_by_pk?: Resolver<
-    Maybe<ResolversTypes['transactions']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootTransactions_By_PkArgs, 'id'>
-  >;
-  user_settings?: Resolver<
-    Array<ResolversTypes['user_settings']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootUser_SettingsArgs>
-  >;
-  user_settings_aggregate?: Resolver<
-    ResolversTypes['user_settings_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootUser_Settings_AggregateArgs>
-  >;
-  user_settings_by_pk?: Resolver<
-    Maybe<ResolversTypes['user_settings']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootUser_Settings_By_PkArgs, 'user_id'>
-  >;
-  users?: Resolver<
-    Array<ResolversTypes['users']>,
-    ParentType,
-    ContextType,
-    Partial<Query_RootUsersArgs>
-  >;
-  users_aggregate?: Resolver<
-    ResolversTypes['users_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<Query_RootUsers_AggregateArgs>
-  >;
-  users_by_pk?: Resolver<
-    Maybe<ResolversTypes['users']>,
-    ParentType,
-    ContextType,
-    RequireFields<Query_RootUsers_By_PkArgs, 'id'>
-  >;
+  transactions?: Resolver<Array<ResolversTypes['transactions']>, ParentType, ContextType, Partial<Query_RootTransactionsArgs>>;
+  transactions_aggregate?: Resolver<ResolversTypes['transactions_aggregate'], ParentType, ContextType, Partial<Query_RootTransactions_AggregateArgs>>;
+  transactions_by_pk?: Resolver<Maybe<ResolversTypes['transactions']>, ParentType, ContextType, RequireFields<Query_RootTransactions_By_PkArgs, 'id'>>;
+  user_settings?: Resolver<Array<ResolversTypes['user_settings']>, ParentType, ContextType, Partial<Query_RootUser_SettingsArgs>>;
+  user_settings_aggregate?: Resolver<ResolversTypes['user_settings_aggregate'], ParentType, ContextType, Partial<Query_RootUser_Settings_AggregateArgs>>;
+  user_settings_by_pk?: Resolver<Maybe<ResolversTypes['user_settings']>, ParentType, ContextType, RequireFields<Query_RootUser_Settings_By_PkArgs, 'user_id'>>;
+  users?: Resolver<Array<ResolversTypes['users']>, ParentType, ContextType, Partial<Query_RootUsersArgs>>;
+  users_aggregate?: Resolver<ResolversTypes['users_aggregate'], ParentType, ContextType, Partial<Query_RootUsers_AggregateArgs>>;
+  users_by_pk?: Resolver<Maybe<ResolversTypes['users']>, ParentType, ContextType, RequireFields<Query_RootUsers_By_PkArgs, 'id'>>;
 };
 
-export type RecurringResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['recurring'] = ResolversParentTypes['recurring']
-> = {
-  accountInfoByAccountTo?: Resolver<
-    ResolversTypes['account_info'],
-    ParentType,
-    ContextType
-  >;
+export type RecurringResolvers<ContextType = any, ParentType extends ResolversParentTypes['recurring'] = ResolversParentTypes['recurring']> = {
+  accountInfoByAccountTo?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
   account_from?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
-  account_info?: Resolver<
-    ResolversTypes['account_info'],
-    ParentType,
-    ContextType
-  >;
+  account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
   account_to?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   amount?: Resolver<ResolversTypes['float8'], ParentType, ContextType>;
-  category?: Resolver<
-    Maybe<ResolversTypes['categories']>,
-    ParentType,
-    ContextType
-  >;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  category?: Resolver<Maybe<ResolversTypes['categories']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   cycle_type?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   duration_type?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   no_of_times?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  recurring_labels?: Resolver<
-    Array<ResolversTypes['recurring_labels']>,
-    ParentType,
-    ContextType,
-    Partial<RecurringRecurring_LabelsArgs>
-  >;
+  recurring_labels?: Resolver<Array<ResolversTypes['recurring_labels']>, ParentType, ContextType, Partial<RecurringRecurring_LabelsArgs>>;
   recurring_labels_aggregate?: Resolver<
     ResolversTypes['recurring_labels_aggregate'],
     ParentType,
@@ -16876,18 +13553,8 @@ export type RecurringResolvers<
   start_on?: Resolver<ResolversTypes['date'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   transaction_type?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  transactions?: Resolver<
-    Array<ResolversTypes['transactions']>,
-    ParentType,
-    ContextType,
-    Partial<RecurringTransactionsArgs>
-  >;
-  transactions_aggregate?: Resolver<
-    ResolversTypes['transactions_aggregate'],
-    ParentType,
-    ContextType,
-    Partial<RecurringTransactions_AggregateArgs>
-  >;
+  transactions?: Resolver<Array<ResolversTypes['transactions']>, ParentType, ContextType, Partial<RecurringTransactionsArgs>>;
+  transactions_aggregate?: Resolver<ResolversTypes['transactions_aggregate'], ParentType, ContextType, Partial<RecurringTransactions_AggregateArgs>>;
   until_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -16897,11 +13564,7 @@ export type Recurring_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_aggregate'] = ResolversParentTypes['recurring_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['recurring_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['recurring_aggregate_fields']>, ParentType, ContextType>;
   nodes?: Resolver<Array<ResolversTypes['recurring']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16910,62 +13573,17 @@ export type Recurring_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_aggregate_fields'] = ResolversParentTypes['recurring_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['recurring_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Recurring_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['recurring_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['recurring_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['recurring_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['recurring_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['recurring_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['recurring_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['recurring_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['recurring_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['recurring_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['recurring_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Recurring_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['recurring_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['recurring_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['recurring_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['recurring_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['recurring_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['recurring_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['recurring_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['recurring_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['recurring_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -16973,43 +13591,15 @@ export type Recurring_Avg_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_avg_fields'] = ResolversParentTypes['recurring_avg_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  cycle_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  cycle_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  duration_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  no_of_times?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17028,16 +13618,8 @@ export type Recurring_Labels_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_labels_aggregate'] = ResolversParentTypes['recurring_labels_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['recurring_labels']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['recurring_labels_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['recurring_labels']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17045,62 +13627,17 @@ export type Recurring_Labels_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_labels_aggregate_fields'] = ResolversParentTypes['recurring_labels_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Recurring_Labels_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['recurring_labels_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['recurring_labels_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Recurring_Labels_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['recurring_labels_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['recurring_labels_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['recurring_labels_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['recurring_labels_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['recurring_labels_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['recurring_labels_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['recurring_labels_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['recurring_labels_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['recurring_labels_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17109,11 +13646,7 @@ export type Recurring_Labels_Avg_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_avg_fields'] = ResolversParentTypes['recurring_labels_avg_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17122,11 +13655,7 @@ export type Recurring_Labels_Max_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_max_fields'] = ResolversParentTypes['recurring_labels_max_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17135,11 +13664,7 @@ export type Recurring_Labels_Min_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_min_fields'] = ResolversParentTypes['recurring_labels_min_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17148,11 +13673,7 @@ export type Recurring_Labels_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_mutation_response'] = ResolversParentTypes['recurring_labels_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['recurring_labels']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['recurring_labels']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17161,11 +13682,7 @@ export type Recurring_Labels_Stddev_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_stddev_fields'] = ResolversParentTypes['recurring_labels_stddev_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17174,11 +13691,7 @@ export type Recurring_Labels_Stddev_Pop_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_stddev_pop_fields'] = ResolversParentTypes['recurring_labels_stddev_pop_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17187,11 +13700,7 @@ export type Recurring_Labels_Stddev_Samp_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_stddev_samp_fields'] = ResolversParentTypes['recurring_labels_stddev_samp_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17200,11 +13709,7 @@ export type Recurring_Labels_Sum_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_sum_fields'] = ResolversParentTypes['recurring_labels_sum_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17213,11 +13718,7 @@ export type Recurring_Labels_Var_Pop_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_var_pop_fields'] = ResolversParentTypes['recurring_labels_var_pop_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17226,11 +13727,7 @@ export type Recurring_Labels_Var_Samp_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_var_samp_fields'] = ResolversParentTypes['recurring_labels_var_samp_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17239,11 +13736,7 @@ export type Recurring_Labels_Variance_FieldsResolvers<
   ParentType extends ResolversParentTypes['recurring_labels_variance_fields'] = ResolversParentTypes['recurring_labels_variance_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17251,53 +13744,21 @@ export type Recurring_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_max_fields'] = ResolversParentTypes['recurring_max_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   cycle_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  duration_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   no_of_times?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   start_on?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   until_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17305,53 +13766,21 @@ export type Recurring_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_min_fields'] = ResolversParentTypes['recurring_min_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   cycle_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  duration_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   no_of_times?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   start_on?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   until_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17360,11 +13789,7 @@ export type Recurring_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['recurring_mutation_response'] = ResolversParentTypes['recurring_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['recurring']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['recurring']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17372,43 +13797,15 @@ export type Recurring_Stddev_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_stddev_fields'] = ResolversParentTypes['recurring_stddev_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  cycle_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  cycle_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  duration_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  no_of_times?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17416,43 +13813,15 @@ export type Recurring_Stddev_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_stddev_pop_fields'] = ResolversParentTypes['recurring_stddev_pop_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  cycle_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  cycle_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  duration_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  no_of_times?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17460,43 +13829,15 @@ export type Recurring_Stddev_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_stddev_samp_fields'] = ResolversParentTypes['recurring_stddev_samp_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  cycle_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  cycle_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  duration_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  no_of_times?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17504,35 +13845,15 @@ export type Recurring_Sum_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_sum_fields'] = ResolversParentTypes['recurring_sum_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   cycle_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
+  duration_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   no_of_times?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17540,43 +13861,15 @@ export type Recurring_Var_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_var_pop_fields'] = ResolversParentTypes['recurring_var_pop_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  cycle_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  cycle_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  duration_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  no_of_times?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17584,43 +13877,15 @@ export type Recurring_Var_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_var_samp_fields'] = ResolversParentTypes['recurring_var_samp_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  cycle_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  cycle_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  duration_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  no_of_times?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17628,55 +13893,20 @@ export type Recurring_Variance_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['recurring_variance_fields'] = ResolversParentTypes['recurring_variance_fields']
 > = {
-  account_from?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  account_to?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  cycle_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  duration_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  cycle_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  duration_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  no_of_times?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_type?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  no_of_times?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type RevenuesResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['revenues'] = ResolversParentTypes['revenues']
-> = {
-  account_info?: Resolver<
-    ResolversTypes['account_info'],
-    ParentType,
-    ContextType
-  >;
+export type RevenuesResolvers<ContextType = any, ParentType extends ResolversParentTypes['revenues'] = ResolversParentTypes['revenues']> = {
+  account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   default?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -17690,11 +13920,7 @@ export type Revenues_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_aggregate'] = ResolversParentTypes['revenues_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['revenues_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['revenues_aggregate_fields']>, ParentType, ContextType>;
   nodes?: Resolver<Array<ResolversTypes['revenues']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -17703,62 +13929,17 @@ export type Revenues_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_aggregate_fields'] = ResolversParentTypes['revenues_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['revenues_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Revenues_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['revenues_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['revenues_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['revenues_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['revenues_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['revenues_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['revenues_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['revenues_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['revenues_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['revenues_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['revenues_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Revenues_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['revenues_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['revenues_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['revenues_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['revenues_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['revenues_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['revenues_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['revenues_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['revenues_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['revenues_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17774,18 +13955,10 @@ export type Revenues_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_max_fields'] = ResolversParentTypes['revenues_max_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17793,18 +13966,10 @@ export type Revenues_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_min_fields'] = ResolversParentTypes['revenues_min_fields']
 > = {
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17813,11 +13978,7 @@ export type Revenues_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['revenues_mutation_response'] = ResolversParentTypes['revenues_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['revenues']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['revenues']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -17907,18 +14068,9 @@ export type Subscription_RootResolvers<
     'account_info_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootAccount_Info_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootAccount_Info_StreamArgs, 'batch_size' | 'cursor'>
   >;
-  assets?: SubscriptionResolver<
-    Array<ResolversTypes['assets']>,
-    'assets',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootAssetsArgs>
-  >;
+  assets?: SubscriptionResolver<Array<ResolversTypes['assets']>, 'assets', ParentType, ContextType, Partial<Subscription_RootAssetsArgs>>;
   assets_aggregate?: SubscriptionResolver<
     ResolversTypes['assets_aggregate'],
     'assets_aggregate',
@@ -17940,13 +14092,7 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootAssets_StreamArgs, 'batch_size' | 'cursor'>
   >;
-  categories?: SubscriptionResolver<
-    Array<ResolversTypes['categories']>,
-    'categories',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootCategoriesArgs>
-  >;
+  categories?: SubscriptionResolver<Array<ResolversTypes['categories']>, 'categories', ParentType, ContextType, Partial<Subscription_RootCategoriesArgs>>;
   categories_aggregate?: SubscriptionResolver<
     ResolversTypes['categories_aggregate'],
     'categories_aggregate',
@@ -17966,18 +14112,9 @@ export type Subscription_RootResolvers<
     'categories_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootCategories_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootCategories_StreamArgs, 'batch_size' | 'cursor'>
   >;
-  expenses?: SubscriptionResolver<
-    Array<ResolversTypes['expenses']>,
-    'expenses',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootExpensesArgs>
-  >;
+  expenses?: SubscriptionResolver<Array<ResolversTypes['expenses']>, 'expenses', ParentType, ContextType, Partial<Subscription_RootExpensesArgs>>;
   expenses_aggregate?: SubscriptionResolver<
     ResolversTypes['expenses_aggregate'],
     'expenses_aggregate',
@@ -17999,13 +14136,7 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootExpenses_StreamArgs, 'batch_size' | 'cursor'>
   >;
-  labels?: SubscriptionResolver<
-    Array<ResolversTypes['labels']>,
-    'labels',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootLabelsArgs>
-  >;
+  labels?: SubscriptionResolver<Array<ResolversTypes['labels']>, 'labels', ParentType, ContextType, Partial<Subscription_RootLabelsArgs>>;
   labels_aggregate?: SubscriptionResolver<
     ResolversTypes['labels_aggregate'],
     'labels_aggregate',
@@ -18027,13 +14158,7 @@ export type Subscription_RootResolvers<
     ContextType,
     RequireFields<Subscription_RootLabels_StreamArgs, 'batch_size' | 'cursor'>
   >;
-  liabilities?: SubscriptionResolver<
-    Array<ResolversTypes['liabilities']>,
-    'liabilities',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootLiabilitiesArgs>
-  >;
+  liabilities?: SubscriptionResolver<Array<ResolversTypes['liabilities']>, 'liabilities', ParentType, ContextType, Partial<Subscription_RootLiabilitiesArgs>>;
   liabilities_aggregate?: SubscriptionResolver<
     ResolversTypes['liabilities_aggregate'],
     'liabilities_aggregate',
@@ -18053,10 +14178,7 @@ export type Subscription_RootResolvers<
     'liabilities_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootLiabilities_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootLiabilities_StreamArgs, 'batch_size' | 'cursor'>
   >;
   notifications?: SubscriptionResolver<
     Array<ResolversTypes['notifications']>,
@@ -18084,18 +14206,9 @@ export type Subscription_RootResolvers<
     'notifications_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootNotifications_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootNotifications_StreamArgs, 'batch_size' | 'cursor'>
   >;
-  recurring?: SubscriptionResolver<
-    Array<ResolversTypes['recurring']>,
-    'recurring',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootRecurringArgs>
-  >;
+  recurring?: SubscriptionResolver<Array<ResolversTypes['recurring']>, 'recurring', ParentType, ContextType, Partial<Subscription_RootRecurringArgs>>;
   recurring_aggregate?: SubscriptionResolver<
     ResolversTypes['recurring_aggregate'],
     'recurring_aggregate',
@@ -18129,38 +14242,23 @@ export type Subscription_RootResolvers<
     'recurring_labels_by_pk',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootRecurring_Labels_By_PkArgs,
-      'label_id' | 'recurring_id'
-    >
+    RequireFields<Subscription_RootRecurring_Labels_By_PkArgs, 'label_id' | 'recurring_id'>
   >;
   recurring_labels_stream?: SubscriptionResolver<
     Array<ResolversTypes['recurring_labels']>,
     'recurring_labels_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootRecurring_Labels_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootRecurring_Labels_StreamArgs, 'batch_size' | 'cursor'>
   >;
   recurring_stream?: SubscriptionResolver<
     Array<ResolversTypes['recurring']>,
     'recurring_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootRecurring_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootRecurring_StreamArgs, 'batch_size' | 'cursor'>
   >;
-  revenues?: SubscriptionResolver<
-    Array<ResolversTypes['revenues']>,
-    'revenues',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootRevenuesArgs>
-  >;
+  revenues?: SubscriptionResolver<Array<ResolversTypes['revenues']>, 'revenues', ParentType, ContextType, Partial<Subscription_RootRevenuesArgs>>;
   revenues_aggregate?: SubscriptionResolver<
     ResolversTypes['revenues_aggregate'],
     'revenues_aggregate',
@@ -18208,10 +14306,7 @@ export type Subscription_RootResolvers<
     'transaction_accounts_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootTransaction_Accounts_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootTransaction_Accounts_StreamArgs, 'batch_size' | 'cursor'>
   >;
   transaction_attachments?: SubscriptionResolver<
     Array<ResolversTypes['transaction_attachments']>,
@@ -18232,20 +14327,14 @@ export type Subscription_RootResolvers<
     'transaction_attachments_by_pk',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootTransaction_Attachments_By_PkArgs,
-      'attachment_id' | 'transaction_id'
-    >
+    RequireFields<Subscription_RootTransaction_Attachments_By_PkArgs, 'attachment_id' | 'transaction_id'>
   >;
   transaction_attachments_stream?: SubscriptionResolver<
     Array<ResolversTypes['transaction_attachments']>,
     'transaction_attachments_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootTransaction_Attachments_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootTransaction_Attachments_StreamArgs, 'batch_size' | 'cursor'>
   >;
   transaction_labels?: SubscriptionResolver<
     Array<ResolversTypes['transaction_labels']>,
@@ -18266,20 +14355,14 @@ export type Subscription_RootResolvers<
     'transaction_labels_by_pk',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootTransaction_Labels_By_PkArgs,
-      'label_id' | 'transaction_id'
-    >
+    RequireFields<Subscription_RootTransaction_Labels_By_PkArgs, 'label_id' | 'transaction_id'>
   >;
   transaction_labels_stream?: SubscriptionResolver<
     Array<ResolversTypes['transaction_labels']>,
     'transaction_labels_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootTransaction_Labels_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootTransaction_Labels_StreamArgs, 'batch_size' | 'cursor'>
   >;
   transactions?: SubscriptionResolver<
     Array<ResolversTypes['transactions']>,
@@ -18307,10 +14390,7 @@ export type Subscription_RootResolvers<
     'transactions_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootTransactions_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootTransactions_StreamArgs, 'batch_size' | 'cursor'>
   >;
   user_settings?: SubscriptionResolver<
     Array<ResolversTypes['user_settings']>,
@@ -18338,18 +14418,9 @@ export type Subscription_RootResolvers<
     'user_settings_stream',
     ParentType,
     ContextType,
-    RequireFields<
-      Subscription_RootUser_Settings_StreamArgs,
-      'batch_size' | 'cursor'
-    >
+    RequireFields<Subscription_RootUser_Settings_StreamArgs, 'batch_size' | 'cursor'>
   >;
-  users?: SubscriptionResolver<
-    Array<ResolversTypes['users']>,
-    'users',
-    ParentType,
-    ContextType,
-    Partial<Subscription_RootUsersArgs>
-  >;
+  users?: SubscriptionResolver<Array<ResolversTypes['users']>, 'users', ParentType, ContextType, Partial<Subscription_RootUsersArgs>>;
   users_aggregate?: SubscriptionResolver<
     ResolversTypes['users_aggregate'],
     'users_aggregate',
@@ -18373,8 +14444,7 @@ export type Subscription_RootResolvers<
   >;
 };
 
-export interface TimestamptzScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes['timestamptz'], any> {
+export interface TimestamptzScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['timestamptz'], any> {
   name: 'timestamptz';
 }
 
@@ -18383,19 +14453,11 @@ export type Transaction_AccountsResolvers<
   ParentType extends ResolversParentTypes['transaction_accounts'] = ResolversParentTypes['transaction_accounts']
 > = {
   account_id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  account_info?: Resolver<
-    ResolversTypes['account_info'],
-    ParentType,
-    ContextType
-  >;
+  account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
   amount?: Resolver<ResolversTypes['float8'], ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
-  transaction?: Resolver<
-    ResolversTypes['transactions'],
-    ParentType,
-    ContextType
-  >;
+  transaction?: Resolver<ResolversTypes['transactions'], ParentType, ContextType>;
   transaction_id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -18405,16 +14467,8 @@ export type Transaction_Accounts_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_accounts_aggregate'] = ResolversParentTypes['transaction_accounts_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['transaction_accounts']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['transaction_accounts_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['transaction_accounts']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18422,62 +14476,17 @@ export type Transaction_Accounts_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_accounts_aggregate_fields'] = ResolversParentTypes['transaction_accounts_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Transaction_Accounts_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['transaction_accounts_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['transaction_accounts_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Transaction_Accounts_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['transaction_accounts_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['transaction_accounts_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['transaction_accounts_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['transaction_accounts_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['transaction_accounts_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['transaction_accounts_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['transaction_accounts_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['transaction_accounts_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['transaction_accounts_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18485,18 +14494,10 @@ export type Transaction_Accounts_Avg_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_accounts_avg_fields'] = ResolversParentTypes['transaction_accounts_avg_fields']
 > = {
-  account_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18506,22 +14507,10 @@ export type Transaction_Accounts_Max_FieldsResolvers<
 > = {
   account_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18531,22 +14520,10 @@ export type Transaction_Accounts_Min_FieldsResolvers<
 > = {
   account_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18555,11 +14532,7 @@ export type Transaction_Accounts_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['transaction_accounts_mutation_response'] = ResolversParentTypes['transaction_accounts_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['transaction_accounts']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['transaction_accounts']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18567,18 +14540,10 @@ export type Transaction_Accounts_Stddev_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_accounts_stddev_fields'] = ResolversParentTypes['transaction_accounts_stddev_fields']
 > = {
-  account_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18586,18 +14551,10 @@ export type Transaction_Accounts_Stddev_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_accounts_stddev_pop_fields'] = ResolversParentTypes['transaction_accounts_stddev_pop_fields']
 > = {
-  account_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18605,18 +14562,10 @@ export type Transaction_Accounts_Stddev_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_accounts_stddev_samp_fields'] = ResolversParentTypes['transaction_accounts_stddev_samp_fields']
 > = {
-  account_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18627,11 +14576,7 @@ export type Transaction_Accounts_Sum_FieldsResolvers<
   account_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18639,18 +14584,10 @@ export type Transaction_Accounts_Var_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_accounts_var_pop_fields'] = ResolversParentTypes['transaction_accounts_var_pop_fields']
 > = {
-  account_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18658,18 +14595,10 @@ export type Transaction_Accounts_Var_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_accounts_var_samp_fields'] = ResolversParentTypes['transaction_accounts_var_samp_fields']
 > = {
-  account_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18677,18 +14606,10 @@ export type Transaction_Accounts_Variance_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_accounts_variance_fields'] = ResolversParentTypes['transaction_accounts_variance_fields']
 > = {
-  account_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  account_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18699,11 +14620,7 @@ export type Transaction_AttachmentsResolvers<
   attachment_id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  transaction?: Resolver<
-    ResolversTypes['transactions'],
-    ParentType,
-    ContextType
-  >;
+  transaction?: Resolver<ResolversTypes['transactions'], ParentType, ContextType>;
   transaction_id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -18713,16 +14630,8 @@ export type Transaction_Attachments_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_aggregate'] = ResolversParentTypes['transaction_attachments_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['transaction_attachments']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['transaction_attachments_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['transaction_attachments']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18730,62 +14639,17 @@ export type Transaction_Attachments_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_aggregate_fields'] = ResolversParentTypes['transaction_attachments_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Transaction_Attachments_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['transaction_attachments_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Transaction_Attachments_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['transaction_attachments_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['transaction_attachments_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['transaction_attachments_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['transaction_attachments_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['transaction_attachments_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['transaction_attachments_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['transaction_attachments_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['transaction_attachments_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['transaction_attachments_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18793,16 +14657,8 @@ export type Transaction_Attachments_Avg_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_avg_fields'] = ResolversParentTypes['transaction_attachments_avg_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18810,31 +14666,11 @@ export type Transaction_Attachments_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_max_fields'] = ResolversParentTypes['transaction_attachments_max_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18842,31 +14678,11 @@ export type Transaction_Attachments_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_min_fields'] = ResolversParentTypes['transaction_attachments_min_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18875,11 +14691,7 @@ export type Transaction_Attachments_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['transaction_attachments_mutation_response'] = ResolversParentTypes['transaction_attachments_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['transaction_attachments']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['transaction_attachments']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18887,16 +14699,8 @@ export type Transaction_Attachments_Stddev_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_stddev_fields'] = ResolversParentTypes['transaction_attachments_stddev_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18904,16 +14708,8 @@ export type Transaction_Attachments_Stddev_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_stddev_pop_fields'] = ResolversParentTypes['transaction_attachments_stddev_pop_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18921,16 +14717,8 @@ export type Transaction_Attachments_Stddev_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_stddev_samp_fields'] = ResolversParentTypes['transaction_attachments_stddev_samp_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18938,16 +14726,8 @@ export type Transaction_Attachments_Sum_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_sum_fields'] = ResolversParentTypes['transaction_attachments_sum_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Int']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18955,16 +14735,8 @@ export type Transaction_Attachments_Var_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_var_pop_fields'] = ResolversParentTypes['transaction_attachments_var_pop_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18972,16 +14744,8 @@ export type Transaction_Attachments_Var_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_var_samp_fields'] = ResolversParentTypes['transaction_attachments_var_samp_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -18989,16 +14753,8 @@ export type Transaction_Attachments_Variance_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_attachments_variance_fields'] = ResolversParentTypes['transaction_attachments_variance_fields']
 > = {
-  attachment_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  attachment_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19008,11 +14764,7 @@ export type Transaction_LabelsResolvers<
 > = {
   label?: Resolver<ResolversTypes['labels'], ParentType, ContextType>;
   label_id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  transaction?: Resolver<
-    ResolversTypes['transactions'],
-    ParentType,
-    ContextType
-  >;
+  transaction?: Resolver<ResolversTypes['transactions'], ParentType, ContextType>;
   transaction_id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -19021,16 +14773,8 @@ export type Transaction_Labels_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_labels_aggregate'] = ResolversParentTypes['transaction_labels_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['transaction_labels']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['transaction_labels_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['transaction_labels']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19038,62 +14782,17 @@ export type Transaction_Labels_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transaction_labels_aggregate_fields'] = ResolversParentTypes['transaction_labels_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Transaction_Labels_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['transaction_labels_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['transaction_labels_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Transaction_Labels_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['transaction_labels_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['transaction_labels_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['transaction_labels_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['transaction_labels_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['transaction_labels_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['transaction_labels_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['transaction_labels_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['transaction_labels_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['transaction_labels_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19102,11 +14801,7 @@ export type Transaction_Labels_Avg_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_avg_fields'] = ResolversParentTypes['transaction_labels_avg_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19115,11 +14810,7 @@ export type Transaction_Labels_Max_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_max_fields'] = ResolversParentTypes['transaction_labels_max_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19128,11 +14819,7 @@ export type Transaction_Labels_Min_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_min_fields'] = ResolversParentTypes['transaction_labels_min_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19141,11 +14828,7 @@ export type Transaction_Labels_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_mutation_response'] = ResolversParentTypes['transaction_labels_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['transaction_labels']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['transaction_labels']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19154,11 +14837,7 @@ export type Transaction_Labels_Stddev_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_stddev_fields'] = ResolversParentTypes['transaction_labels_stddev_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19167,11 +14846,7 @@ export type Transaction_Labels_Stddev_Pop_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_stddev_pop_fields'] = ResolversParentTypes['transaction_labels_stddev_pop_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19180,11 +14855,7 @@ export type Transaction_Labels_Stddev_Samp_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_stddev_samp_fields'] = ResolversParentTypes['transaction_labels_stddev_samp_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19193,11 +14864,7 @@ export type Transaction_Labels_Sum_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_sum_fields'] = ResolversParentTypes['transaction_labels_sum_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19206,11 +14873,7 @@ export type Transaction_Labels_Var_Pop_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_var_pop_fields'] = ResolversParentTypes['transaction_labels_var_pop_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19219,11 +14882,7 @@ export type Transaction_Labels_Var_Samp_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_var_samp_fields'] = ResolversParentTypes['transaction_labels_var_samp_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19232,76 +14891,38 @@ export type Transaction_Labels_Variance_FieldsResolvers<
   ParentType extends ResolversParentTypes['transaction_labels_variance_fields'] = ResolversParentTypes['transaction_labels_variance_fields']
 > = {
   label_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  transaction_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type TransactionsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['transactions'] = ResolversParentTypes['transactions']
-> = {
+export type TransactionsResolvers<ContextType = any, ParentType extends ResolversParentTypes['transactions'] = ResolversParentTypes['transactions']> = {
+  account_from?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  account_to?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   amount?: Resolver<ResolversTypes['float8'], ParentType, ContextType>;
-  category?: Resolver<
-    Maybe<ResolversTypes['categories']>,
-    ParentType,
-    ContextType
-  >;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  category?: Resolver<Maybe<ResolversTypes['categories']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
-  recurring?: Resolver<
-    Maybe<ResolversTypes['recurring']>,
-    ParentType,
-    ContextType
-  >;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_accounts?: Resolver<
-    Array<ResolversTypes['transaction_accounts']>,
-    ParentType,
-    ContextType,
-    Partial<TransactionsTransaction_AccountsArgs>
-  >;
+  recurring?: Resolver<Maybe<ResolversTypes['recurring']>, ParentType, ContextType>;
+  recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  transaction_accounts?: Resolver<Array<ResolversTypes['transaction_accounts']>, ParentType, ContextType, Partial<TransactionsTransaction_AccountsArgs>>;
   transaction_accounts_aggregate?: Resolver<
     ResolversTypes['transaction_accounts_aggregate'],
     ParentType,
     ContextType,
     Partial<TransactionsTransaction_Accounts_AggregateArgs>
   >;
-  transaction_attachment?: Resolver<
-    Maybe<ResolversTypes['transaction_attachments']>,
-    ParentType,
-    ContextType
-  >;
+  transaction_attachment?: Resolver<Maybe<ResolversTypes['transaction_attachments']>, ParentType, ContextType>;
   transaction_date?: Resolver<ResolversTypes['date'], ParentType, ContextType>;
-  transaction_labels?: Resolver<
-    Array<ResolversTypes['transaction_labels']>,
-    ParentType,
-    ContextType,
-    Partial<TransactionsTransaction_LabelsArgs>
-  >;
+  transaction_labels?: Resolver<Array<ResolversTypes['transaction_labels']>, ParentType, ContextType, Partial<TransactionsTransaction_LabelsArgs>>;
   transaction_labels_aggregate?: Resolver<
     ResolversTypes['transaction_labels_aggregate'],
     ParentType,
     ContextType,
     Partial<TransactionsTransaction_Labels_AggregateArgs>
   >;
+  transaction_type?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -19310,16 +14931,8 @@ export type Transactions_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_aggregate'] = ResolversParentTypes['transactions_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['transactions_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['transactions']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['transactions_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['transactions']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19327,62 +14940,17 @@ export type Transactions_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_aggregate_fields'] = ResolversParentTypes['transactions_aggregate_fields']
 > = {
-  avg?: Resolver<
-    Maybe<ResolversTypes['transactions_avg_fields']>,
-    ParentType,
-    ContextType
-  >;
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Transactions_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['transactions_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['transactions_min_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev?: Resolver<
-    Maybe<ResolversTypes['transactions_stddev_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_pop?: Resolver<
-    Maybe<ResolversTypes['transactions_stddev_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  stddev_samp?: Resolver<
-    Maybe<ResolversTypes['transactions_stddev_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  sum?: Resolver<
-    Maybe<ResolversTypes['transactions_sum_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_pop?: Resolver<
-    Maybe<ResolversTypes['transactions_var_pop_fields']>,
-    ParentType,
-    ContextType
-  >;
-  var_samp?: Resolver<
-    Maybe<ResolversTypes['transactions_var_samp_fields']>,
-    ParentType,
-    ContextType
-  >;
-  variance?: Resolver<
-    Maybe<ResolversTypes['transactions_variance_fields']>,
-    ParentType,
-    ContextType
-  >;
+  avg?: Resolver<Maybe<ResolversTypes['transactions_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Transactions_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['transactions_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['transactions_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['transactions_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['transactions_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['transactions_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['transactions_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['transactions_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['transactions_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['transactions_variance_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19390,18 +14958,13 @@ export type Transactions_Avg_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_avg_fields'] = ResolversParentTypes['transactions_avg_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19409,38 +14972,17 @@ export type Transactions_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_max_fields'] = ResolversParentTypes['transactions_max_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_date?: Resolver<
-    Maybe<ResolversTypes['date']>,
-    ParentType,
-    ContextType
-  >;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  transaction_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19448,38 +14990,17 @@ export type Transactions_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_min_fields'] = ResolversParentTypes['transactions_min_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  created_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
-  description?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
-  transaction_date?: Resolver<
-    Maybe<ResolversTypes['date']>,
-    ParentType,
-    ContextType
-  >;
-  updated_at?: Resolver<
-    Maybe<ResolversTypes['timestamptz']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  transaction_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19488,11 +15009,7 @@ export type Transactions_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['transactions_mutation_response'] = ResolversParentTypes['transactions_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['transactions']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['transactions']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19500,18 +15017,13 @@ export type Transactions_Stddev_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_stddev_fields'] = ResolversParentTypes['transactions_stddev_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19519,18 +15031,13 @@ export type Transactions_Stddev_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_stddev_pop_fields'] = ResolversParentTypes['transactions_stddev_pop_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19538,18 +15045,13 @@ export type Transactions_Stddev_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_stddev_samp_fields'] = ResolversParentTypes['transactions_stddev_samp_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19557,18 +15059,13 @@ export type Transactions_Sum_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_sum_fields'] = ResolversParentTypes['transactions_sum_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['bigint']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19576,18 +15073,13 @@ export type Transactions_Var_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_var_pop_fields'] = ResolversParentTypes['transactions_var_pop_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19595,18 +15087,13 @@ export type Transactions_Var_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_var_samp_fields'] = ResolversParentTypes['transactions_var_samp_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19614,25 +15101,17 @@ export type Transactions_Variance_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_variance_fields'] = ResolversParentTypes['transactions_variance_fields']
 > = {
+  account_from?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  account_to?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  category_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  recurring_id?: Resolver<
-    Maybe<ResolversTypes['Float']>,
-    ParentType,
-    ContextType
-  >;
+  recurring_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  transaction_type?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type User_SettingsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['user_settings'] = ResolversParentTypes['user_settings']
-> = {
+export type User_SettingsResolvers<ContextType = any, ParentType extends ResolversParentTypes['user_settings'] = ResolversParentTypes['user_settings']> = {
   darkMode?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   langKey?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   user?: Resolver<ResolversTypes['users'], ParentType, ContextType>;
@@ -19644,16 +15123,8 @@ export type User_Settings_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['user_settings_aggregate'] = ResolversParentTypes['user_settings_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['user_settings_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
-  nodes?: Resolver<
-    Array<ResolversTypes['user_settings']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['user_settings_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['user_settings']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19661,22 +15132,9 @@ export type User_Settings_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['user_settings_aggregate_fields'] = ResolversParentTypes['user_settings_aggregate_fields']
 > = {
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<User_Settings_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['user_settings_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['user_settings_min_fields']>,
-    ParentType,
-    ContextType
-  >;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<User_Settings_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['user_settings_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['user_settings_min_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19703,32 +15161,17 @@ export type User_Settings_Mutation_ResponseResolvers<
   ParentType extends ResolversParentTypes['user_settings_mutation_response'] = ResolversParentTypes['user_settings_mutation_response']
 > = {
   affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  returning?: Resolver<
-    Array<ResolversTypes['user_settings']>,
-    ParentType,
-    ContextType
-  >;
+  returning?: Resolver<Array<ResolversTypes['user_settings']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type UsersResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['users'] = ResolversParentTypes['users']
-> = {
+export type UsersResolvers<ContextType = any, ParentType extends ResolversParentTypes['users'] = ResolversParentTypes['users']> = {
   email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  emailVerified?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  emailVerified?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  user_setting?: Resolver<
-    Maybe<ResolversTypes['user_settings']>,
-    ParentType,
-    ContextType
-  >;
+  user_setting?: Resolver<Maybe<ResolversTypes['user_settings']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19736,11 +15179,7 @@ export type Users_AggregateResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['users_aggregate'] = ResolversParentTypes['users_aggregate']
 > = {
-  aggregate?: Resolver<
-    Maybe<ResolversTypes['users_aggregate_fields']>,
-    ParentType,
-    ContextType
-  >;
+  aggregate?: Resolver<Maybe<ResolversTypes['users_aggregate_fields']>, ParentType, ContextType>;
   nodes?: Resolver<Array<ResolversTypes['users']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -19749,22 +15188,9 @@ export type Users_Aggregate_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['users_aggregate_fields'] = ResolversParentTypes['users_aggregate_fields']
 > = {
-  count?: Resolver<
-    ResolversTypes['Int'],
-    ParentType,
-    ContextType,
-    Partial<Users_Aggregate_FieldsCountArgs>
-  >;
-  max?: Resolver<
-    Maybe<ResolversTypes['users_max_fields']>,
-    ParentType,
-    ContextType
-  >;
-  min?: Resolver<
-    Maybe<ResolversTypes['users_min_fields']>,
-    ParentType,
-    ContextType
-  >;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Users_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['users_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['users_min_fields']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -19773,11 +15199,7 @@ export type Users_Max_FieldsResolvers<
   ParentType extends ResolversParentTypes['users_max_fields'] = ResolversParentTypes['users_max_fields']
 > = {
   email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  emailVerified?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  emailVerified?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -19789,11 +15211,7 @@ export type Users_Min_FieldsResolvers<
   ParentType extends ResolversParentTypes['users_min_fields'] = ResolversParentTypes['users_min_fields']
 > = {
   email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  emailVerified?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  emailVerified?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -19809,8 +15227,7 @@ export type Users_Mutation_ResponseResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export interface UuidScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes['uuid'], any> {
+export interface UuidScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['uuid'], any> {
   name: 'uuid';
 }
 

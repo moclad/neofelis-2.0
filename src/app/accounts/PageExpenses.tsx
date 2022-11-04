@@ -28,6 +28,7 @@ import {
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastSuccess } from '@/components/Toast';
 import {
+  Expenses,
   useAllExpenseAccountsQuery,
   useDeleteExpenseAccMutation,
   useInsertExpenseAccMutation,
@@ -56,8 +57,7 @@ export const PageExpenses = () => {
   const { t } = useTranslation();
   const { mutationOptions } = useMutationOptions();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } =
-    useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Expenses>();
   const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
@@ -69,19 +69,15 @@ export const PageExpenses = () => {
     },
   });
 
-  const [deleteExpense, { loading: deleteFetching }] =
-    useDeleteExpenseAccMutation();
+  const [deleteExpense, { loading: deleteFetching }] = useDeleteExpenseAccMutation();
 
-  const [updateExpense, { loading: updateLoading }] =
-    useUpdateExpenseAccMutation(mutationOptions);
+  const [updateExpense, { loading: updateLoading }] = useUpdateExpenseAccMutation(mutationOptions);
 
-  const [updateExpenseState, { loading: updateStateLoading }] =
-    useUpdateExpenseStateMutation(mutationOptions);
+  const [updateExpenseState, { loading: updateStateLoading }] = useUpdateExpenseStateMutation(mutationOptions);
 
-  const [insertExpense, { loading: insertLoading }] =
-    useInsertExpenseAccMutation(mutationOptions);
+  const [insertExpense, { loading: insertLoading }] = useInsertExpenseAccMutation(mutationOptions);
 
-  const onConfirmCreate = async (values) => {
+  const onConfirmCreate = async (values: any) => {
     const { name } = values;
     const newData = {
       ...values,
@@ -97,7 +93,7 @@ export const PageExpenses = () => {
     });
   };
 
-  const deactivate = async (item) => {
+  const deactivate = async (item: any) => {
     await updateExpenseState({
       variables: {
         id: item.id,
@@ -107,7 +103,7 @@ export const PageExpenses = () => {
     });
   };
 
-  const onConfirmEdit = async (values) => {
+  const onConfirmEdit = async (values: any) => {
     const newData = {
       ...values,
     };
@@ -142,12 +138,7 @@ export const PageExpenses = () => {
           loading={loading || deleteFetching || insertLoading || updateLoading}
           title={t('accounts:expenses.title')}
           actions={[
-            <ResponsiveIconButton
-              key="createExpense"
-              icon={<FiPlus />}
-              variant="@primary"
-              onClick={() => onOpen()}
-            >
+            <ResponsiveIconButton key="createExpense" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
               {t('accounts:expenses.actions.create')}
             </ResponsiveIconButton>,
           ]}
@@ -157,18 +148,10 @@ export const PageExpenses = () => {
               <DataListCell colName="name" colWidth="1.5">
                 {t('accounts:expenses.header.name')}
               </DataListCell>
-              <DataListCell
-                colName="status"
-                colWidth="0.5"
-                isVisible={{ base: false, md: true }}
-              >
+              <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
                 {t('accounts:expenses.header.status')}
               </DataListCell>
-              <DataListCell
-                colName="actions"
-                colWidth="4rem"
-                align="flex-end"
-              />
+              <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
             {data &&
               data.expenses.map((item, index) => (
@@ -178,43 +161,25 @@ export const PageExpenses = () => {
                       <Avvvatars value={item.name} />
                       <Box minW="0">
                         <Text noOfLines={0} maxW="full" fontWeight="bold">
-                          {item.active ? (
-                            <LinkOverlay href="#">{item.name}</LinkOverlay>
-                          ) : (
-                            item.name
-                          )}
+                          {item.active ? <LinkOverlay href="#">{item.name}</LinkOverlay> : item.name}
                         </Text>
                       </Box>
                     </HStack>
                   </DataListCell>
                   <DataListCell colName="status">
-                    <Badge
-                      size="sm"
-                      colorScheme={item.active ? 'success' : 'gray'}
-                    >
-                      {item.active
-                        ? t('accounts:expenses.data.active')
-                        : t('accounts:expenses.data.inactive')}
+                    <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
+                      {item.active ? t('accounts:expenses.data.active') : t('accounts:expenses.data.inactive')}
                     </Badge>
                   </DataListCell>
                   <DataListCell colName="actions">
                     <Menu isLazy>
-                      <MenuButton
-                        as={ActionsButton}
-                        isDisabled={!item.active}
-                      />
+                      <MenuButton as={ActionsButton} isDisabled={!item.active} />
                       <Portal>
                         <MenuList>
-                          <MenuItem
-                            onClick={() => onEdit(item.id, item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
                             {t('common:actions.edit')}
                           </MenuItem>
-                          <MenuItem
-                            onClick={() => deactivate(item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
                             {t('common:actions.deactivate')}
                           </MenuItem>
                           <MenuDivider />
@@ -251,28 +216,18 @@ export const PageExpenses = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={
-          isEditing
-            ? t('accounts:expenses.actions.edit')
-            : t('accounts:expenses.actions.create')
-        }
+        title={isEditing ? t('accounts:expenses.actions.edit') : t('accounts:expenses.actions.create')}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
           onClose();
         }}
         onConfirm={isEditing ? onConfirmEdit : onConfirmCreate}
-        loading={
-          loading || insertLoading || updateLoading || updateStateLoading
-        }
+        loading={loading || insertLoading || updateLoading || updateStateLoading}
         formId="expense-form-id"
         initialValues={dataContext}
       >
-        <FieldInput
-          name="name"
-          label={t('accounts:expenses.data.name')}
-          required={t('accounts:expenses.data.nameRequired') as string}
-        />
+        <FieldInput name="name" label={t('accounts:expenses.data.name')} required={t('accounts:expenses.data.nameRequired') as string} />
       </ModalDialog>
     </>
   );

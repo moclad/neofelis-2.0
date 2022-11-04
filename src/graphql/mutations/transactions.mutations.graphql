@@ -5,6 +5,29 @@ mutation insertTransaction($object: transactions_insert_input!) {
   }
 }
 
+mutation updateTransaction(
+  $id: bigint!
+  $changes: transactions_set_input!
+  $labels: [transaction_labels_insert_input!]!
+  $accounts: [transaction_accounts_insert_input!]!
+) {
+  delete_transaction_labels(where: { transaction_id: { _eq: $id } }) {
+    affected_rows
+  }
+  delete_transaction_accounts(where: { transaction_id: { _eq: $id } }) {
+    affected_rows
+  }
+  update_transactions_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+  insert_transaction_labels(objects: $labels) {
+    affected_rows
+  }
+  insert_transaction_accounts(objects: $accounts) {
+    affected_rows
+  }
+}
+
 mutation deleteTransactionById($id: bigint!) {
   delete_transactions_by_pk(id: $id) {
     id

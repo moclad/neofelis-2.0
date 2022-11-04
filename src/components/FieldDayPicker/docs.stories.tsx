@@ -22,28 +22,17 @@ export default {
   },
 };
 
-const Template = ({
-  label,
-  disabled,
-  required,
-  helper,
-  onSubmit,
-  readonly,
-  placeholder,
-  size,
-  date,
-  onChange,
-}) => {
+const Template = ({ label, disabled, required, helper, onSubmit, readonly, placeholder, size, date, onChange }) => {
   return (
-    <Formiz onSubmit={onSubmit} autoForm>
+    <Formiz onSubmit={onSubmit} autoForm initialValues={{ fieldDayPickerId: date }}>
       <Stack spacing={6}>
         <FieldDayPicker
           size={size}
-          id="fieldDayPicker-id1"
-          name="fieldDayPicker-id"
+          id="fieldDayPickerId1"
+          name="fieldDayPickerId"
           label={label}
-          helper={helper}
           defaultValue={date}
+          helper={helper}
           required={required}
           isReadOnly={readonly}
           isDisabled={disabled}

@@ -8,5 +8,7 @@
   "importOrder": ["^react$", "^(?!^react$|^@/|^[./]).*", "^@/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
-  "importOrderParserPlugins": ["jsx", "typescript"]
+  "importOrderParserPlugins": ["jsx", "typescript"],
+  "printWidth": 160,
+  "proseWrap": "always"
 }

@@ -51,6 +51,9 @@
       }
     },
     "transactionType": {
+      "1": "Expense",
+      "2": "Deposit",
+      "3": "Transfer",
       "expense": "Expense",
       "deposit": "Deposit",
       "transfer": "Transfer"
@@ -76,6 +79,9 @@
       "2": "Quarterly",
       "3": "Half-yearly",
       "4": "Annually"
+    },
+    "transactions": {
+      "totalPaid": "Total paid"
     }
   },
   "nav": {

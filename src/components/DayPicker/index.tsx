@@ -22,20 +22,14 @@ import {
 
 const FORMAT = 'DD/MM/YYYY';
 
-const ReactDayPickerInput = forwardRef<InputProps, 'input'>(
-  ({ isDisabled, ...rest }, ref) => (
-    <InputGroup>
-      <InputLeftElement pointerEvents="none">
-        <Icon
-          icon={FiCalendar}
-          fontSize="lg"
-          color={isDisabled ? 'gray.300' : 'gray.400'}
-        />
-      </InputLeftElement>
-      <Input ref={ref} {...rest} />
-    </InputGroup>
-  )
-);
+const ReactDayPickerInput = forwardRef<InputProps, 'input'>(({ isDisabled, ...rest }, ref) => (
+  <InputGroup>
+    <InputLeftElement pointerEvents="none">
+      <Icon icon={FiCalendar} fontSize="lg" color={isDisabled ? 'gray.300' : 'gray.400'} />
+    </InputLeftElement>
+    <Input ref={ref} {...rest} />
+  </InputGroup>
+));
 
 // DISCLAIMER: This code is written using v7 of react-day-picker. Here are some
 // code comments containing permalinks to the v7 documentation as the website
@@ -44,40 +38,32 @@ const ReactDayPickerInput = forwardRef<InputProps, 'input'>(
 // On v7, react-day-picker doesn't provide typings. Following typings are based
 // on the proptypes in the source code.
 // https://github.com/gpbl/react-day-picker/blob/v7/src/DayPickerInput.js#L32
-interface CustomDayPickerOverlayProps {
+type CustomDayPickerOverlayProps = {
   selectedDay?: Date;
   month?: Date;
-  input?: any;
+  input?: Element | null;
   classNames?: Record<string, string>;
-}
+};
 
 // The CustomOverlay to control the way the day picker is displayed
 // https://github.com/gpbl/react-day-picker/blob/v7/docs/src/code-samples/examples/input-custom-overlay.js
 // Check the following permalink for v7 props documentation
 // https://github.com/gpbl/react-day-picker/blob/750f6cd808b2ac29772c8df5c497a66e818080e8/docs/src/pages/api/DayPickerInput.js#L163
-const CustomDayPickerOverlay = forwardRef<CustomDayPickerOverlayProps, 'div'>(
-  ({ children, input, classNames, ...props }, ref) => {
-    const [popperElement, setPopperElement] = useState(null);
+const CustomDayPickerOverlay = forwardRef<CustomDayPickerOverlayProps, 'div'>(({ children, input, classNames, selectedDay, month, ...props }, ref) => {
+  const [popperElement, setPopperElement] = useState<ExplicitAny>(null);
 
-    const { styles, attributes } = usePopper(input, popperElement, {
-      placement: 'bottom-start',
-    });
+  const { styles, attributes } = usePopper(input, popperElement, {
+    placement: 'bottom-start',
+  });
 
-    return (
-      <chakra.div className={classNames.overlayWrapper} {...props} ref={ref}>
-        <chakra.div
-          ref={setPopperElement}
-          className={classNames.overlay}
-          style={styles.popper}
-          zIndex="dayPicker"
-          {...attributes.popper}
-        >
-          {children}
-        </chakra.div>
+  return (
+    <chakra.div className={classNames?.overlayWrapper} {...props} ref={ref}>
+      <chakra.div ref={setPopperElement} className={classNames?.overlay} style={styles.popper} zIndex="dayPicker" {...attributes.popper}>
+        {children}
       </chakra.div>
-    );
-  }
-);
+    </chakra.div>
+  );
+});
 
 type CustomProps = {
   placeholder?: string;
@@ -87,7 +73,7 @@ type CustomProps = {
   dayPickerProps?: DayPickerProps;
 };
 
-interface DayPickerProps extends Overwrite<BoxProps, CustomProps> {}
+type DayPickerProps = Overwrite<BoxProps, CustomProps>;
 
 export const DayPicker: FC<React.PropsWithChildren<DayPickerProps>> = ({
   id,
@@ -102,18 +88,14 @@ export const DayPicker: FC<React.PropsWithChildren<DayPickerProps>> = ({
   const { i18n } = useTranslation();
   const isSmartphoneFormat = useBreakpointValue({ base: true, sm: false });
 
-  const formatDate = (date, format) => dayjs(date).format(format);
+  const formatDate = (date: Date, format: string) => dayjs(date).format(format);
 
-  const parseDate = (str, format) => {
+  const parseDate = (str: string, format: string) => {
     const parsed = dayjs(str, format);
     return parsed.isValid() ? parsed.toDate() : undefined;
   };
 
-  const handleChange = (
-    day: Date,
-    dayModifiers: DayModifiers,
-    dayPickerInput: DayPickerInput
-  ) => {
+  const handleChange = (day: Date, dayModifiers: DayModifiers, dayPickerInput: DayPickerInput) => {
     const inputValue = dayPickerInput?.getInput?.()?.value;
     if (!inputValue) {
       onChange(null, true);
@@ -133,19 +115,13 @@ export const DayPicker: FC<React.PropsWithChildren<DayPickerProps>> = ({
         format={FORMAT}
         parseDate={parseDate}
         placeholder={placeholder}
-        value={value}
+        value={value ?? undefined}
         dayPickerProps={{
           dir: theme.direction,
           locale: i18n.language,
-          months: Array.from({ length: 12 }).map((_, i) =>
-            dayjs().month(i).format('MMMM')
-          ),
-          weekdaysLong: Array.from({ length: 7 }).map((_, i) =>
-            dayjs().day(i).format('dddd')
-          ),
-          weekdaysShort: Array.from({ length: 7 }).map((_, i) =>
-            dayjs().day(i).format('dd')
-          ),
+          months: Array.from({ length: 12 }).map((_, i) => dayjs().month(i).format('MMMM')),
+          weekdaysLong: Array.from({ length: 7 }).map((_, i) => dayjs().day(i).format('dddd')),
+          weekdaysShort: Array.from({ length: 7 }).map((_, i) => dayjs().day(i).format('dd')),
           firstDayOfWeek: 1,
           ...dayPickerProps,
         }}

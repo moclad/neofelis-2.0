@@ -5,12 +5,7 @@ import { FormGroup, FormGroupProps } from '@/components/FormGroup';
 import { Select, SelectProps } from '@/components/Select';
 import { FieldProps, useField } from '@formiz/core';
 
-export interface FieldSelectProps<
-  Option,
-  IsMulti extends boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
-> extends FieldProps,
-    FormGroupProps {
+export interface FieldSelectProps<Option, IsMulti extends boolean, Group extends GroupBase<Option> = GroupBase<Option>> extends FieldProps, FormGroupProps {
   placeholder?: string;
   size?: 'sm' | 'md' | 'lg';
   options?: Option[];
@@ -24,23 +19,10 @@ export interface FieldSelectProps<
   onCreateOption?: (inputLabel: string) => Promise<number | string | void>;
 }
 
-export const FieldSelect = <
-  Option,
-  IsMulti extends boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
->(
+export const FieldSelect = <Option, IsMulti extends boolean, Group extends GroupBase<Option> = GroupBase<Option>>(
   props: FieldSelectProps<Option, IsMulti, Group>
 ) => {
-  const {
-    errorMessage,
-    id,
-    isValid,
-    isSubmitted,
-    resetKey,
-    setValue,
-    value,
-    otherProps,
-  } = useField(props);
+  const { errorMessage, id, isValid, isSubmitted, resetKey, setValue, value, otherProps } = useField(props);
   const { required } = props;
   const {
     children,
@@ -80,7 +62,7 @@ export const FieldSelect = <
 
   const getCreate = (input: string): void => {
     if (!isCreatable || !onCreateOption) {
-      return null;
+      return;
     }
 
     onCreateOption(input);
@@ -90,18 +72,17 @@ export const FieldSelect = <
     if (isMulti && Array.isArray(value)) {
       const result = value.map(
         (v) =>
-          options?.filter((option) => {
+          options?.filter((option: Option) => {
             if (option.value === v) {
               return option;
             }
           })[0]
       );
 
-      console.log(result);
       return result;
     }
 
-    return options?.find((option) => option.value === value) || '';
+    return options?.find((option: Option) => option.value === value) || '';
   };
 
   return (

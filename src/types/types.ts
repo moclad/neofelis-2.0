@@ -23,10 +23,10 @@ export interface IUser {
   email: string;
 }
 
-export interface ISelectOptions {
+export interface ISelectOptions<T> {
   label: string;
   value: number;
-  data: object;
+  data: T;
 }
 
 export interface ITransactionInput {
@@ -34,11 +34,12 @@ export interface ITransactionInput {
   category_id: number;
   amount: number;
   transaction_date: Date;
-  destiny_account: number;
-  source_account: number;
+  account_from: number;
+  account_to: number;
   labels: number[];
 }
 export interface ITransactionAccount {
+  transaction_id?: number;
   amount: number;
   account_id: number;
 }

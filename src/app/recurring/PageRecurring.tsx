@@ -2,7 +2,7 @@ import Avvvatars from 'avvvatars-react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiEye, FiPlus, FiTrash2, FiXCircle } from 'react-icons/fi';
-import { Link, RouteMatch, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
@@ -39,6 +39,7 @@ import {
   MenuList,
   Portal,
   Text,
+  Tooltip,
   useDisclosure,
   Wrap,
   WrapItem
@@ -50,6 +51,8 @@ import { RecurringNav } from './RecurringNav';
 export const PageRecurring = () => {
   const { colorModeValue } = useDarkMode();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataContext, isEditing, onEdit, onFinish } = useEditMode<
     number,
@@ -153,11 +156,7 @@ export const PageRecurring = () => {
             </DataListHeader>
             {data &&
               data.recurring.map((item) => (
-                <DataListRow
-                  as={LinkBox}
-                  key={item.id}
-                  isDisabled={!item.active}
-                >
+                <DataListRow as={LinkBox} key={item.id}>
                   <DataListCell colName="title" colWidth={1.5}>
                     <HStack maxW="100%">
                       <Avvvatars value={item.title} />
@@ -211,7 +210,7 @@ export const PageRecurring = () => {
                   <DataListCell colName="status">
                     <Badge
                       size="sm"
-                      colorScheme={item.active ? 'success' : 'gray'}
+                      colorScheme={item.active ? 'success' : 'red'}
                     >
                       {item.active
                         ? t('recurring:recurring.status.active')
@@ -236,45 +235,51 @@ export const PageRecurring = () => {
                     />
                   </DataListCell>
                   <DataListCell colName="actions">
-                    <Menu isLazy>
-                      <MenuButton as={ActionsButton} />
-                      <Portal>
-                        <MenuList>
-                          <MenuItem
-                            onClick={() => onEdit(item.id, item)}
-                            icon={<FiEdit />}
-                          >
-                            {t('common:actions.edit')}
-                          </MenuItem>
-                          <MenuItem
-                            as={Link}
-                            to={`/recurring//transactions/${item.id}`}
-                            icon={<FiEye />}
-                          >
-                            {t('common:actions.view')}
-                          </MenuItem>
-                          <ConfirmMenuItem
-                            icon={<FiXCircle />}
-                            onClick={() => onDeactivate(item.id)}
-                          >
-                            {t('common:actions.deactivate')}
-                          </ConfirmMenuItem>
-                          <MenuDivider />
-                          <ConfirmMenuItem
-                            isDisabled={
-                              item?.transactions_aggregate?.aggregate?.sum
-                                ?.amount > 0
-                            }
-                            icon={<FiTrash2 />}
-                            onClick={() => {
-                              onDelete(item.id);
-                            }}
-                          >
-                            {t('common:actions.delete')}
-                          </ConfirmMenuItem>
-                        </MenuList>
-                      </Portal>
-                    </Menu>
+                    <HStack>
+                      <Tooltip hasArrow label={t('common:actions.view')}>
+                        <ActionsButton
+                          icon={<FiEye />}
+                          onClick={() =>
+                            navigate(`/recurring//transactions/${item.id}`)
+                          }
+                        />
+                      </Tooltip>
+                      <Menu isLazy>
+                        <MenuButton
+                          as={ActionsButton}
+                          disabled={!item.active}
+                        />
+                        <Portal>
+                          <MenuList>
+                            <MenuItem
+                              onClick={() => onEdit(item.id, item)}
+                              icon={<FiEdit />}
+                            >
+                              {t('common:actions.edit')}
+                            </MenuItem>
+                            <ConfirmMenuItem
+                              icon={<FiXCircle />}
+                              onClick={() => onDeactivate(item.id)}
+                            >
+                              {t('common:actions.deactivate')}
+                            </ConfirmMenuItem>
+                            <MenuDivider />
+                            <ConfirmMenuItem
+                              isDisabled={
+                                item?.transactions_aggregate?.aggregate?.sum
+                                  ?.amount > 0
+                              }
+                              icon={<FiTrash2 />}
+                              onClick={() => {
+                                onDelete(item.id);
+                              }}
+                            >
+                              {t('common:actions.delete')}
+                            </ConfirmMenuItem>
+                          </MenuList>
+                        </Portal>
+                      </Menu>
+                    </HStack>
                   </DataListCell>
                 </DataListRow>
               ))}
