@@ -38,15 +38,7 @@ const PageContainer = ({ children, ...rest }: FlexProps) => {
   if (hideContainer) return <>{children}</>;
 
   return (
-    <Flex
-      direction="column"
-      flex="1"
-      w="full"
-      px="6"
-      mx="auto"
-      maxW={containerSizes[containerSize]}
-      {...rest}
-    >
+    <Flex direction="column" flex="1" w="full" px="6" mx="auto" maxW={containerSizes[containerSize]} {...rest}>
       {children}
     </Flex>
   );
@@ -58,13 +50,7 @@ type PageTopBarProps = FlexProps & {
   isFixed?: boolean;
 };
 
-export const PageTopBar = ({
-  children,
-  onBack = () => undefined,
-  showBack = false,
-  isFixed = false,
-  ...rest
-}: PageTopBarProps) => {
+export const PageTopBar = ({ children, onBack = () => undefined, showBack = false, isFixed = false, ...rest }: PageTopBarProps) => {
   const { isFocusMode } = useLayoutContext();
   const theme = useTheme();
   const [ref, { height }] = useMeasure();
@@ -98,12 +84,7 @@ export const PageTopBar = ({
           <HStack spacing="4">
             {showBack && (
               <Box ms={{ base: 0, lg: '-3.5rem' }}>
-                <IconButton
-                  aria-label="Go Back"
-                  icon={rtlValue(<FiArrowLeft />, <FiArrowRight />)}
-                  variant="ghost"
-                  onClick={() => onBack()}
-                />
+                <IconButton aria-label="Go Back" icon={rtlValue(<FiArrowLeft />, <FiArrowRight />)} variant="ghost" onClick={() => onBack()} />
               </Box>
             )}
             <Box flex="1">{children}</Box>
@@ -122,29 +103,15 @@ type PageContentProps = FlexProps & {
   actions?: React.ReactNode[];
 };
 
-export const PageContent = ({
-  children,
-  loading,
-  title = '',
-  actions = [],
-  ...rest
-}: PageContentProps) => {
+export const PageContent = ({ children, loading, title = '', actions = [], ...rest }: PageContentProps) => {
   const { nav } = useContext(PageContext);
   return (
     <Flex zIndex="1" direction="column" flex="1" py="4" {...rest}>
       <PageContainer>
         <Skeleton h="100%" isLoaded={!loading}>
-          <Stack
-            direction={{ base: 'column', lg: 'row' }}
-            spacing={{ base: '4', lg: '8' }}
-            flex="1"
-          >
+          <Stack direction={{ base: 'column', lg: 'row' }} spacing={{ base: '4', lg: '8' }} flex="1">
             {nav && (
-              <Flex
-                direction="column"
-                minW="0"
-                w={{ base: 'full', lg: '12rem' }}
-              >
+              <Flex direction="column" minW="0" w={{ base: 'full', lg: '12rem' }}>
                 {nav}
               </Flex>
             )}
@@ -202,13 +169,7 @@ type PageProps = FlexProps & {
   nav?: React.ReactNode;
 };
 
-export const Page = ({
-  isFocusMode = false,
-  hideContainer = false,
-  containerSize = 'xl',
-  nav = null,
-  ...rest
-}: PageProps) => {
+export const Page = ({ isFocusMode = false, hideContainer = false, containerSize = 'xl', nav = null, ...rest }: PageProps) => {
   useFocusMode(isFocusMode);
   return (
     <PageContext.Provider
