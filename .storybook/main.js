@@ -3,6 +3,11 @@ const path = require('path');
 const toPath = (_path) => path.join(process.cwd(), _path);
 
 module.exports = {
+  framework: '@storybook/react',
+  core: {
+    builder: 'webpack5',
+  },
+  features: { storyStoreV7: true, babelModeV7: true },
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: [
     '@storybook/addon-links',
@@ -14,6 +19,9 @@ module.exports = {
     reactDocgen: false,
   },
   webpackFinal: (config) => {
+    config.module.rules = config.module.rules ?? [];
+    config.resolve.plugins = config.resolve.plugins ?? [];
+
     config.resolve.plugins.push(new TsconfigPathsPlugin());
 
     // Fix issue between Chakra UI and storybook

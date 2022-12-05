@@ -25,9 +25,7 @@ import {
 const AppVersion = ({ ...rest }) => {
   const { t } = useTranslation();
   const { colorModeValue } = useDarkMode();
-  const { hasCopied, onCopy } = useClipboard(
-    JSON.stringify(buildInfo, null, 2)
-  );
+  const { hasCopied, onCopy } = useClipboard(JSON.stringify(buildInfo, null, 2));
 
   if (!buildInfo?.version) {
     return null;
@@ -70,20 +68,15 @@ const AppVersion = ({ ...rest }) => {
           px="3"
           fontWeight="bold"
           bg={colorModeValue('gray.50', 'gray.800')}
-          color={
-            hasCopied ? colorModeValue('success.500', 'success.300') : undefined
-          }
+          color={hasCopied ? colorModeValue('success.500', 'success.300') : undefined}
           transition="0.2s"
           _groupHover={{ d: 'flex' }}
         >
           <Icon icon={hasCopied ? FiCheck : FiCopy} me="2" fontSize="sm" />
-          {hasCopied
-            ? t('layout:accountMenu.version.copied')
-            : t('layout:accountMenu.version.copy')}
+          {hasCopied ? t('layout:accountMenu.version.copied') : t('layout:accountMenu.version.copy')}
         </Flex>
         <Text as="span" noOfLines={2}>
-          {t('layout:accountMenu.version.label')}{' '}
-          <strong>{buildInfo?.display ?? buildInfo?.version}</strong>
+          {t('layout:accountMenu.version.label')} <strong>{buildInfo?.display ?? buildInfo?.version}</strong>
         </Text>
       </Flex>
     </>
@@ -106,46 +99,20 @@ export const AccountMenu = ({ ...rest }) => {
   return (
     <Menu placement="bottom-end" {...rest}>
       <MenuButton borderRadius="full" _focusVisible={{ shadow: 'outline' }}>
-        <Avvvatars
-          value={
-            !loading && `${data?.users_by_pk?.name ?? data?.users_by_pk?.email}`
-          }
-        />
+        <Avvvatars value={(!loading && `${data?.users_by_pk?.name}`) || ''} />
       </MenuButton>
-      <MenuList
-        color={colorModeValue('gray.800', 'white')}
-        maxW="12rem"
-        overflow="hidden"
-      >
+      <MenuList color={colorModeValue('gray.800', 'white')} maxW="12rem" overflow="hidden">
         <MenuGroup title={data?.users_by_pk?.email} noOfLines={1}>
-          <MenuItem
-            as={Link}
-            to="/profile"
-            icon={<Icon icon={FiUser} fontSize="lg" color="gray.400" />}
-          >
+          <MenuItem as={Link} to="/profile" icon={<Icon icon={FiUser} fontSize="lg" color="gray.400" />}>
             {t('layout:accountMenu.myAccount')}
           </MenuItem>
         </MenuGroup>
         <MenuDivider />
-        <MenuItem
-          icon={
-            <Icon
-              icon={colorMode === 'dark' ? FiSun : FiMoon}
-              fontSize="lg"
-              color="gray.400"
-            />
-          }
-          onClick={() => toggleColorMode()}
-        >
-          {colorMode === 'dark'
-            ? t('layout:accountMenu.switchColorModeLight')
-            : t('layout:accountMenu.switchColorModeDark')}
+        <MenuItem icon={<Icon icon={colorMode === 'dark' ? FiSun : FiMoon} fontSize="lg" color="gray.400" />} onClick={() => toggleColorMode()}>
+          {colorMode === 'dark' ? t('layout:accountMenu.switchColorModeLight') : t('layout:accountMenu.switchColorModeDark')}
         </MenuItem>
         <MenuDivider />
-        <MenuItem
-          icon={<Icon icon={FiLogOut} fontSize="lg" color="gray.400" />}
-          onClick={() => navigate('/logout')}
-        >
+        <MenuItem icon={<Icon icon={FiLogOut} fontSize="lg" color="gray.400" />} onClick={() => navigate('/logout')}>
           {t('layout:accountMenu.logout')}
         </MenuItem>
         <AppVersion />

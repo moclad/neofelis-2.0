@@ -12,7 +12,7 @@ i18n.use(initReactI18next).init({
   resources: locales,
   lng: DEFAULT_LANGUAGE_KEY,
   fallbackLng: DEFAULT_LANGUAGE_KEY,
-
+  returnNull: false,
   interpolation: {
     escapeValue: false, // react already safes from xss
   },
@@ -24,9 +24,7 @@ i18n.on('languageChanged', (langKey) => {
   if (isBrowser) {
     document.documentElement.lang = langKey;
     document.documentElement.dir = language?.dir ?? 'ltr';
-    document.documentElement.style.fontSize = `${
-      (language?.fontScale ?? 1) * 100
-    }%`;
+    document.documentElement.style.fontSize = `${(language?.fontScale ?? 1) * 100}%`;
   }
 });
 

@@ -5,7 +5,7 @@ import { Radio, RadioGroup, Wrap, WrapItem } from '@chakra-ui/react';
 import { FieldProps, useField } from '@formiz/core';
 
 interface Option {
-  value: any;
+  value: string | undefined;
   label?: ReactNode;
 }
 
@@ -15,25 +15,9 @@ export interface FieldRadiosProps extends FieldProps, FormGroupProps {
 }
 
 export const FieldRadios = (props: FieldRadiosProps) => {
-  const {
-    errorMessage,
-    id,
-    isValid,
-    isSubmitted,
-    resetKey,
-    setValue,
-    value,
-    otherProps,
-  } = useField(props);
+  const { errorMessage, id, isValid, isSubmitted, resetKey, setValue, value, otherProps } = useField(props);
   const { required } = props;
-  const {
-    children,
-    label,
-    options = [],
-    helper,
-    size = 'md',
-    ...rest
-  } = otherProps;
+  const { children, label, options = [], helper, size = 'md', ...rest } = otherProps;
   const [isTouched, setIsTouched] = useState(false);
   const showError = !isValid && (isTouched || isSubmitted);
 
@@ -57,11 +41,7 @@ export const FieldRadios = (props: FieldRadiosProps) => {
         <Wrap spacing="4">
           {options.map((option) => (
             <WrapItem key={option.value}>
-              <Radio
-                id={`${id}-${option.value}`}
-                name={id}
-                value={option.value}
-              >
+              <Radio id={`${id}-${option.value}`} name={id} value={option.value}>
                 {option.label ?? option.value}
               </Radio>
             </WrapItem>

@@ -7,4 +7,14 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "latex",
+    "plaintext"
+  ],
+  "spellright.languageContext": {
+
+  },
 }
