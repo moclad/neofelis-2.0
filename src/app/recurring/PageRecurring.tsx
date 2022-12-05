@@ -54,10 +54,7 @@ export const PageRecurring = () => {
   const navigate = useNavigate();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataContext, isEditing, onEdit, onFinish } = useEditMode<
-    number,
-    Recurring
-  >();
+  const { dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Recurring>();
   const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
@@ -71,11 +68,9 @@ export const PageRecurring = () => {
 
   const { data: aggregateData } = useRecurringAggregateSubscription();
 
-  const [deleteRecurring, { loading: deleteFetching }] =
-    useDeleteRecurringMutation();
+  const [deleteRecurring, { loading: deleteFetching }] = useDeleteRecurringMutation();
 
-  const [inactivateRecurring, { loading: inactivateFetching }] =
-    useInactivateRecurringMutation();
+  const [inactivateRecurring, { loading: inactivateFetching }] = useInactivateRecurringMutation();
 
   const onDeactivate = async (id: number) => {
     inactivateRecurring({
@@ -112,47 +107,28 @@ export const PageRecurring = () => {
           loading={loading || deleteFetching || inactivateFetching}
           title={t('recurring:recurring.title')}
           actions={[
-            <ResponsiveIconButton
-              key="createRecurring"
-              icon={<FiPlus />}
-              variant="@primary"
-              onClick={() => onOpen()}
-            >
+            <ResponsiveIconButton key="createRecurring" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
               {t('recurring:recurring.actions.create')}
             </ResponsiveIconButton>,
           ]}
         >
           <DataList>
-            <DataListHeader isVisible={{ base: false, md: true }}>
+            <DataListHeader>
               <DataListCell colName="name" colWidth={1.5}>
                 {t('recurring:recurring.table.header.title')}
               </DataListCell>
-              <DataListCell
-                colName="accounts"
-                isVisible={{ base: false, lg: true }}
-              >
+              <DataListCell colName="accounts" isVisible={{ base: false, lg: true }}>
                 {t('recurring:recurring.table.header.accounts')}
               </DataListCell>
-              <DataListCell
-                colName="cycle"
-                isVisible={{ base: false, lg: true }}
-              >
+              <DataListCell colName="cycle" isVisible={{ base: false, lg: true }}>
                 {t('recurring:recurring.table.header.cycle')}
               </DataListCell>
-              <DataListCell colName="status">
-                {t('recurring:recurring.table.header.status')}
-              </DataListCell>
-              <DataListCell colName="amount">
-                {t('recurring:recurring.table.header.amount')}
-              </DataListCell>
-              <DataListCell colName="total">
+              <DataListCell colName="status">{t('recurring:recurring.table.header.status')}</DataListCell>
+              <DataListCell colName="amount">{t('recurring:recurring.table.header.amount')}</DataListCell>
+              <DataListCell colName="total" isVisible={{ base: false, lg: true }}>
                 {t('recurring:recurring.table.header.totalPaid')}
               </DataListCell>
-              <DataListCell
-                colName="actions"
-                colWidth="4rem"
-                align="flex-end"
-              />
+              <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
             {data &&
               data.recurring.map((item) => (
@@ -168,22 +144,12 @@ export const PageRecurring = () => {
                   <DataListCell colName="accounts">
                     <Wrap>
                       <WrapItem>
-                        <Text
-                          noOfLines={0}
-                          maxW="full"
-                          fontSize="sm"
-                          color={colorModeValue('gray.600', 'gray.300')}
-                        >
+                        <Text noOfLines={0} maxW="full" fontSize="sm" color={colorModeValue('gray.600', 'gray.300')}>
                           {item?.account_info?.name}
                         </Text>
                       </WrapItem>
                       <WrapItem>
-                        <Text
-                          noOfLines={0}
-                          maxW="full"
-                          fontSize="sm"
-                          color={colorModeValue('gray.600', 'gray.300')}
-                        >
+                        <Text noOfLines={0} maxW="full" fontSize="sm" color={colorModeValue('gray.600', 'gray.300')}>
                           {item?.accountInfoByAccountTo?.name}
                         </Text>
                       </WrapItem>
@@ -193,82 +159,45 @@ export const PageRecurring = () => {
                     <Wrap>
                       <WrapItem>
                         <Badge size="sm" colorScheme="success">
-                          {t(
-                            `recurring:recurring.cycleType.${item.cycle_type}`
-                          )}
+                          {t(`recurring:recurring.cycleType.${item.cycle_type}`)}
                         </Badge>
                       </WrapItem>
                       <WrapItem>
                         <Badge size="sm" colorScheme="gray">
-                          {t(
-                            `recurring:recurring.durationType.${item.duration_type}`
-                          )}
+                          {t(`recurring:recurring.durationType.${item.duration_type}`)}
                         </Badge>
                       </WrapItem>
                     </Wrap>
                   </DataListCell>
                   <DataListCell colName="status">
-                    <Badge
-                      size="sm"
-                      colorScheme={item.active ? 'success' : 'red'}
-                    >
-                      {item.active
-                        ? t('recurring:recurring.status.active')
-                        : t('recurring:recurring.status.inactive')}
+                    <Badge size="sm" colorScheme={item.active ? 'success' : 'red'}>
+                      {item.active ? t('recurring:recurring.status.active') : t('recurring:recurring.status.inactive')}
                     </Badge>
                   </DataListCell>
                   <DataListCell colName="amount">
-                    <TextCurrency
-                      value={item.amount}
-                      locale="de"
-                      currency="EUR"
-                    />
+                    <TextCurrency value={item.amount} locale="de" currency="EUR" />
                   </DataListCell>
                   <DataListCell colName="total">
-                    <TextCurrency
-                      value={
-                        item?.transactions_aggregate?.aggregate?.sum?.amount ??
-                        0
-                      }
-                      locale="de"
-                      currency="EUR"
-                    />
+                    <TextCurrency value={item?.transactions_aggregate?.aggregate?.sum?.amount ?? 0} locale="de" currency="EUR" />
                   </DataListCell>
                   <DataListCell colName="actions">
                     <HStack>
                       <Tooltip hasArrow label={t('common:actions.view')}>
-                        <ActionsButton
-                          icon={<FiEye />}
-                          onClick={() =>
-                            navigate(`/recurring//transactions/${item.id}`)
-                          }
-                        />
+                        <ActionsButton icon={<FiEye />} onClick={() => navigate(`/recurring//transactions/${item.id}`)} />
                       </Tooltip>
                       <Menu isLazy>
-                        <MenuButton
-                          as={ActionsButton}
-                          disabled={!item.active}
-                        />
+                        <MenuButton as={ActionsButton} disabled={!item.active} />
                         <Portal>
                           <MenuList>
-                            <MenuItem
-                              onClick={() => onEdit(item.id, item)}
-                              icon={<FiEdit />}
-                            >
+                            <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
                               {t('common:actions.edit')}
                             </MenuItem>
-                            <ConfirmMenuItem
-                              icon={<FiXCircle />}
-                              onClick={() => onDeactivate(item.id)}
-                            >
+                            <ConfirmMenuItem icon={<FiXCircle />} onClick={() => onDeactivate(item.id)}>
                               {t('common:actions.deactivate')}
                             </ConfirmMenuItem>
                             <MenuDivider />
                             <ConfirmMenuItem
-                              isDisabled={
-                                item?.transactions_aggregate?.aggregate?.sum
-                                  ?.amount > 0
-                              }
+                              isDisabled={item?.transactions_aggregate?.aggregate?.sum?.amount > 0}
                               icon={<FiTrash2 />}
                               onClick={() => {
                                 onDelete(item.id);
