@@ -43,7 +43,7 @@ export const DateAgo: FC<React.PropsWithChildren<DateAgoProps>> = forwardRef(fun
   }
 
   return (
-    <Tooltip ref={ref} label={dayjsDate.format(format ?? t('components:dateAgo.format'))} placement="top-start" {...rest}>
+    <Tooltip ref={ref} label={dayjsDate.format(format ?? t('dateAgo.format'))} placement="top-start" {...rest}>
       {dayjsDate.fromNow()}
     </Tooltip>
   );

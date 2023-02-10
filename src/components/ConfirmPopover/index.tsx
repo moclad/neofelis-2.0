@@ -39,7 +39,7 @@ export const ConfirmPopover: React.FC<React.PropsWithChildren<ConfirmPopoverProp
   const { t } = useTranslation(['components', 'common']);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const displayHeading = !title && !message ? t('components:confirmPopover.heading') : title;
+  const displayHeading = !title && !message ? t('confirmPopover.heading') : title;
 
   const initialFocusRef = useRef<TODO>();
 
@@ -74,7 +74,7 @@ export const ConfirmPopover: React.FC<React.PropsWithChildren<ConfirmPopoverProp
                       }}
                       ref={initialFocusRef}
                     >
-                      {confirmText ?? t('components:confirmPopover.confirmText')}
+                      {confirmText ?? t('confirmPopover.confirmText')}
                     </Button>
                   </ButtonGroup>
                 </HStack>

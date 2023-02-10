@@ -7,18 +7,7 @@ import { FiCalendar } from 'react-icons/fi';
 import { usePopper } from 'react-popper';
 
 import { Icon } from '@/components/Icons';
-import {
-  Box,
-  BoxProps,
-  chakra,
-  forwardRef,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputProps,
-  useBreakpointValue,
-  useTheme
-} from '@chakra-ui/react';
+import { Box, BoxProps, chakra, forwardRef, Input, InputGroup, InputLeftElement, InputProps, useBreakpointValue, useTheme } from '@chakra-ui/react';
 
 const FORMAT = 'DD/MM/YYYY';
 
@@ -114,6 +103,7 @@ export const DayPicker: FC<React.PropsWithChildren<DayPickerProps>> = ({
         formatDate={formatDate}
         format={FORMAT}
         parseDate={parseDate}
+        keepFocus={false}
         placeholder={placeholder}
         value={value ?? undefined}
         dayPickerProps={{

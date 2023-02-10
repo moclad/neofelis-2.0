@@ -9,7 +9,7 @@ const Page500 = () => {
   return (
     <>
       <Head>
-        <title>{t('components:errorPage.default.title')}</title>
+        <title>{t('errorPage.default.title')}</title>
       </Head>
       <ErrorPage errorCode={500} />
     </>

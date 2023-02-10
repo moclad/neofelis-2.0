@@ -62,10 +62,10 @@ const AppVersion = ({ ...rest }) => {
           _groupHover={{ d: 'flex' }}
         >
           <Icon icon={hasCopied ? FiCheck : FiCopy} me="2" fontSize="sm" />
-          {hasCopied ? t('layout:accountMenu.version.copied') : t('layout:accountMenu.version.copy')}
+          {hasCopied ? t('accountMenu.version.copied').toString() : t('accountMenu.version.copy').toString()}
         </Flex>
         <Text as="span" noOfLines={2}>
-          {t('layout:accountMenu.version.label')} <strong>{buildInfo?.display ?? buildInfo?.version}</strong>
+          {t('accountMenu.version.label').toString()} <strong>{buildInfo?.display ?? buildInfo?.version}</strong>
         </Text>
       </Flex>
     </>
@@ -93,16 +93,16 @@ export const AccountMenu = ({ ...rest }) => {
       <MenuList color={colorModeValue('gray.800', 'white')} maxW="12rem" overflow="hidden">
         <MenuGroup title={data?.users_by_pk?.email} noOfLines={1}>
           <MenuItem as={Link} to="/profile" icon={<Icon icon={FiUser} fontSize="lg" color="gray.400" />}>
-            {t('layout:accountMenu.myAccount')}
+            {t('accountMenu.myAccount').toString()}
           </MenuItem>
         </MenuGroup>
         <MenuDivider />
         <MenuItem icon={<Icon icon={colorMode === 'dark' ? FiSun : FiMoon} fontSize="lg" color="gray.400" />} onClick={() => toggleColorMode()}>
-          {colorMode === 'dark' ? t('layout:accountMenu.switchColorModeLight') : t('layout:accountMenu.switchColorModeDark')}
+          {colorMode === 'dark' ? t('accountMenu.switchColorModeLight').toString() : t('accountMenu.switchColorModeDark').toString()}
         </MenuItem>
         <MenuDivider />
         <MenuItem icon={<Icon icon={FiLogOut} fontSize="lg" color="gray.400" />} onClick={() => navigate('/logout')}>
-          {t('layout:accountMenu.logout')}
+          {t('accountMenu.logout').toString()}
         </MenuItem>
         <AppVersion />
       </MenuList>

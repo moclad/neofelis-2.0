@@ -26,11 +26,9 @@ export const ErrorPage = ({ errorCode }: { errorCode?: number }) => {
         {illustration}
         <Stack textAlign={{ base: 'center', md: 'left' }} alignItems={{ base: 'center', md: 'flex-start' }}>
           <Link href="/" passHref>
-            <chakra.a>
-              <Logo my={4} />
-            </chakra.a>
+            <Logo my={4} />
           </Link>
-          <Heading>{t(`components:errorPage.${errorType}.title`)}</Heading>
+          <Heading>{t(`components:errorPage.${errorType}.title`) as string}</Heading>
           <Text>{t(`components:errorPage.${errorType}.description`)}</Text>
           {!!errorCode && (
             <Text color="gray.500" _dark={{ color: 'gray.400' }} fontSize="sm" mt={4}>

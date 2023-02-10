@@ -11,14 +11,13 @@ import { Box, Button, Center, Heading, Text, VStack } from '@chakra-ui/react';
 
 export const PageAuthError = () => {
   const { data: session } = useSession();
+  const { t } = useTranslation('auth');
+  const { colorModeValue } = useDarkMode();
+  const { searchParams } = useSearchParams();
 
   if (session) {
     return <Navigate to="/" replace />;
   }
-
-  const { t } = useTranslation('auth');
-  const { colorModeValue } = useDarkMode();
-  const { searchParams } = useSearchParams();
 
   const error = searchParams.get('error');
 
@@ -30,17 +29,17 @@ export const PageAuthError = () => {
           <Center>
             <VStack spacing="4">
               <Heading as="h3" size="lg" mb="8">
-                {t(`auth:error.${error}.title`)}
+                {t(`error.${error}.title`).toString()}
               </Heading>
 
-              <Text fontSize="md">{t(`auth:error.${error}.message`)}</Text>
-              <Text fontSize="md">{t(`auth:error.${error}.extra`)}</Text>
+              <Text fontSize="md">{t(`error.${error}.message`).toString()}</Text>
+              <Text fontSize="md">{t(`error.${error}.extra`).toString()}</Text>
             </VStack>
           </Center>
         </Box>
         <Center mt="8">
           <Button as={RouterLink} to="/" variant="link">
-            {t('auth:login.verify.back')}{' '}
+            {t('login.verify.back').toString()}{' '}
             <Box as="strong" color={colorModeValue('brand.500', 'brand.300')} ms="2">
               Neofelis Home
             </Box>

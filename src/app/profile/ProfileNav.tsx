@@ -8,15 +8,15 @@ import { Nav, NavGroup, NavItem } from '@/components/Nav';
 export const ProfileNav = () => {
   const { t } = useTranslation('profile');
   const { pathname } = useLocation();
-  const isActive = (to) => pathname.startsWith(to);
+  const isActive = (to: string) => pathname.startsWith(to);
   return (
     <Nav>
-      <NavGroup title={t('profile:nav.myAccount')}>
+      <NavGroup title={t('nav.myAccount')}>
         <NavItem as={Link} to="/profile/me" isActive={isActive('/profile/me')} icon={FiUser}>
-          {t('profile:nav.profile')}
+          {t('nav.profile')}
         </NavItem>
         <NavItem as={Link} to="/profile/settings" isActive={isActive('/profile/settings')} icon={FiSettings}>
-          {t('profile:nav.settings')}
+          {t('nav.settings')}
         </NavItem>
       </NavGroup>
     </Nav>

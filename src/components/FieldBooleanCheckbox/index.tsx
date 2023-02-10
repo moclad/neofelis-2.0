@@ -4,24 +4,16 @@ import { FormGroup, FormGroupProps } from '@/components/FormGroup';
 import { Checkbox } from '@chakra-ui/react';
 import { FieldProps, useField } from '@formiz/core';
 
-export interface FieldBooleanCheckboxProps extends FieldProps, FormGroupProps {
-  optionLabel?: string;
-  size?: 'sm' | 'md' | 'lg';
-}
+export type FieldBooleanCheckboxProps = FieldProps<boolean> &
+  FormGroupProps & {
+    optionLabel?: string;
+    size?: 'sm' | 'md' | 'lg';
+  };
 
 export const FieldBooleanCheckbox = (props: FieldBooleanCheckboxProps) => {
-  const { errorMessage, id, isValid, isSubmitted, resetKey, setValue, value } =
-    useField(props);
+  const { errorMessage, id, isValid, isSubmitted, resetKey, setValue, value, otherProps } = useField({ debounce: 0, defaultValue: false, ...props });
   const { required } = props;
-  const {
-    children,
-    label,
-    helper,
-    optionLabel,
-    size = 'md',
-    isDisabled,
-    ...otherProps
-  } = props;
+  const { children, label, helper, optionLabel, size = 'md', isDisabled, ...rest } = otherProps;
   const [isTouched, setIsTouched] = useState(false);
   const showError = !isValid && (isTouched || isSubmitted);
 
@@ -37,18 +29,12 @@ export const FieldBooleanCheckbox = (props: FieldBooleanCheckboxProps) => {
     isDisabled,
     label,
     showError,
-    ...otherProps,
+    ...rest,
   };
 
   return (
     <FormGroup {...formGroupProps}>
-      <Checkbox
-        id={id}
-        size={size}
-        value={value ?? false}
-        isDisabled={isDisabled}
-        onChange={() => setValue(!value)}
-      >
+      <Checkbox id={id} size={size} value={`${value}`} isDisabled={isDisabled} onChange={() => setValue(!value)}>
         {optionLabel || <>&nbsp;</>}
       </Checkbox>
       {children}

@@ -231,16 +231,11 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
     if (transactionType === TransactionType.Expense) {
       return (
         <>
-          <FieldSelect
-            name="account_from"
-            label={t('dashboard:transaction.data.asset')}
-            required={t('dashboard:transaction.data.assetRequired') as string}
-            options={assets}
-          />
+          <FieldSelect name="account_from" label={t('transaction.data.asset')} required={t('transaction.data.assetRequired') as string} options={assets} />
           <FieldSelect
             name="account_to"
-            label={t('dashboard:transaction.data.expense')}
-            required={t('dashboard:transaction.data.expenseRequired') as string}
+            label={t('transaction.data.expense')}
+            required={t('transaction.data.expenseRequired') as string}
             options={expenses}
             isCreatable={true}
             onCreateOption={onCreateExpenseAccount}
@@ -254,19 +249,14 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
         <>
           <FieldSelect
             name="account_from"
-            label={t('dashboard:transaction.data.revenue')}
-            required={t('dashboard:transaction.data.revenueRequired') as string}
+            label={t('transaction.data.revenue')}
+            required={t('transaction.data.revenueRequired') as string}
             options={revenues}
             isCreatable={true}
             onCreateOption={onCreateRevenueAccount}
           />
 
-          <FieldSelect
-            name="account_to"
-            label={t('dashboard:transaction.data.asset')}
-            required={t('dashboard:transaction.data.assetRequired') as string}
-            options={assets}
-          />
+          <FieldSelect name="account_to" label={t('transaction.data.asset')} required={t('transaction.data.assetRequired') as string} options={assets} />
         </>
       );
     }
@@ -274,17 +264,12 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
     if (transactionType === TransactionType.Transfer) {
       return (
         <>
-          <FieldSelect
-            name="account_from"
-            label={t('dashboard:transaction.data.fromAsset')}
-            required={t('dashboard:transaction.data.assetRequired') as string}
-            options={assets}
-          />
+          <FieldSelect name="account_from" label={t('transaction.data.fromAsset')} required={t('transaction.data.assetRequired') as string} options={assets} />
 
           <FieldSelect
             name="account_to"
-            label={t('dashboard:transaction.data.toAsset')}
-            required={t('dashboard:transaction.data.assetRequired') as string}
+            label={t('transaction.data.toAsset')}
+            required={t('transaction.data.assetRequired') as string}
             options={assets}
             validations={[
               {
@@ -292,7 +277,7 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
                   return form.values.account_from !== value;
                 },
                 deps: [form.values.account_from],
-                message: t('dashboard:transaction.error.sameAccount'),
+                message: t('transaction.error.sameAccount'),
               },
             ]}
           />
@@ -303,7 +288,7 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
 
   return (
     <ModalDialog
-      title={t('dashboard:actions.createExpense')}
+      title={t('actions.createExpense')}
       dialogForm={form}
       isOpen={isOpen}
       onCancel={() => {
@@ -325,30 +310,20 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldCurrency
           name="amount"
-          label={t('dashboard:transaction.data.amount')}
+          label={t('transaction.data.amount')}
           placeholder={0}
           currency="EUR"
-          required={t('dashboard:transaction.data.amountRequired') as string}
+          required={t('transaction.data.amountRequired') as string}
         />
-        <FieldDayPicker
-          name="transaction_date"
-          label={t('dashboard:transaction.data.bookDate')}
-          required={t('dashboard:transaction.data.bookDateRequired') as string}
-        />
+        <FieldDayPicker name="transaction_date" label={t('transaction.data.bookDate')} required={t('transaction.data.bookDateRequired') as string} />
       </Stack>
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-        <FieldSelect
-          name="category_id"
-          label={t('dashboard:transaction.data.category')}
-          options={categories}
-          isCreatable={true}
-          onCreateOption={onCreateCategory}
-        />
+        <FieldSelect name="category_id" label={t('transaction.data.category')} options={categories} isCreatable={true} onCreateOption={onCreateCategory} />
       </Stack>
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldSelect
           name="labels"
-          label={t('dashboard:transaction.data.labels')}
+          label={t('transaction.data.labels')}
           options={labels}
           size="sm"
           isCreatable={true}
@@ -357,12 +332,7 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
           isMulti={true}
         />
       </Stack>
-      <FieldInput
-        name="description"
-        label={t('dashboard:transaction.data.description')}
-        type={'text'}
-        placeholder={t('dashboard:transaction.data.description') as string}
-      />
+      <FieldInput name="description" label={t('transaction.data.description')} type={'text'} placeholder={t('transaction.data.description') as string} />
     </ModalDialog>
   );
 };

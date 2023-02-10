@@ -22,6 +22,7 @@ import {
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastSuccess } from '@/components/Toast';
 import {
+  Revenues,
   useAllRevenueAccountsQuery,
   useDeleteRevenueAccMutation,
   useInsertRevenueAccMutation,
@@ -35,10 +36,10 @@ import { useMutationOptions } from '@/hooks/useMutationOptions';
 import { Badge, Box, HStack, LinkBox, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageRevenues = () => {
-  const { t } = useTranslation('accounts');
+  const { t } = useTranslation(['accounts', 'common']);
   const { colorModeValue } = useDarkMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Revenues>();
   const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
@@ -62,7 +63,7 @@ export const PageRevenues = () => {
 
   const [insertRevenue, { loading: insertLoading }] = useInsertRevenueAccMutation(mutationOptions);
 
-  const onConfirmCreate = async (values) => {
+  const onConfirmCreate = async (values: any) => {
     const { name } = values;
     const newData = {
       ...values,
@@ -78,7 +79,7 @@ export const PageRevenues = () => {
     });
   };
 
-  const deactivate = async (item) => {
+  const deactivate = async (item: any) => {
     await updateRevenueState({
       variables: {
         id: item.id,
@@ -87,7 +88,7 @@ export const PageRevenues = () => {
     });
   };
 
-  const setStandard = async (item) => {
+  const setStandard = async (item: any) => {
     await updateRevenueStandard({
       variables: {
         id: item.id,
@@ -96,7 +97,7 @@ export const PageRevenues = () => {
     });
   };
 
-  const onConfirmEdit = async (values) => {
+  const onConfirmEdit = async (values: any) => {
     const newData = {
       ...values,
     };
@@ -119,7 +120,7 @@ export const PageRevenues = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('common:feedbacks.deletedSuccess.title'),
+        title: t('feedbacks.deletedSuccess.title').toString(),
       });
     });
   };
@@ -129,20 +130,20 @@ export const PageRevenues = () => {
       <Page nav={<AccountsNav />}>
         <PageContent
           loading={loading || deleteFetching || insertLoading || updateLoading}
-          title={t('accounts:revenues.title')}
+          title={t('revenues.title').toString()}
           actions={[
             <ResponsiveIconButton key="createRevenue" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
-              {t('accounts:revenues.actions.create')}
+              {t('revenues.actions.create').toString()}
             </ResponsiveIconButton>,
           ]}
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
               <DataListCell colName="name" colWidth="1.5">
-                {t('accounts:revenues.header.name')}
+                {t('revenues.header.name').toString()}
               </DataListCell>
               <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
-                {t('accounts:revenues.header.status')}
+                {t('revenues.header.status').toString()}
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
@@ -162,11 +163,11 @@ export const PageRevenues = () => {
                   <DataListCell colName="status">
                     <HStack>
                       <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
-                        {item.active ? t('accounts:revenues.data.active') : t('accounts:revenues.data.inactive')}
+                        {item.active ? t('revenues.data.active').toString() : t('revenues.data.inactive').toString()}
                       </Badge>
                       {item.default ? (
                         <Badge size="sm" colorScheme="green" color={colorModeValue('brand.500', 'brand.500')}>
-                          {t('accounts:assets.data.defaultAsset')}
+                          {t('assets.data.defaultAsset').toString()}
                         </Badge>
                       ) : (
                         <></>
@@ -179,13 +180,13 @@ export const PageRevenues = () => {
                       <Portal>
                         <MenuList>
                           <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('common:actions.edit')}
+                            {t('actions.edit').toString()}
                           </MenuItem>
                           <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('common:actions.deactivate')}
+                            {t('actions.deactivate').toString()}
                           </MenuItem>
                           <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
-                            {t('common:actions.setAsStandard')}
+                            {t('actions.setAsStandard').toString()}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -194,7 +195,7 @@ export const PageRevenues = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('common:actions.delete')}
+                            {t('actions.delete').toString()}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>
@@ -221,7 +222,7 @@ export const PageRevenues = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={isEditing ? t('accounts:revenues.actions.edit') : t('accounts:revenues.actions.create')}
+        title={isEditing ? t('revenues.actions.edit').toString() : t('revenues.actions.create').toString()}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -232,7 +233,7 @@ export const PageRevenues = () => {
         formId="revenue-form-id"
         initialValues={dataContext}
       >
-        <FieldInput name="name" label={t('accounts:revenues.data.name')} required={t('accounts:revenues.data.nameRequired') as string} />
+        <FieldInput name="name" label={t('revenues.data.name').toString()} required={t('revenues.data.nameRequired').toString()} />
       </ModalDialog>
     </>
   );

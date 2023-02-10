@@ -9,7 +9,7 @@ const Page404 = () => {
   return (
     <>
       <Head>
-        <title>{t('components:errorPage.404.title')}</title>
+        <title>{t('errorPage.404.title')}</title>
       </Head>
       <ErrorPage errorCode={404} />
     </>

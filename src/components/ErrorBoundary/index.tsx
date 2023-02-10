@@ -26,15 +26,15 @@ const ErrorFallback = ({ error }: FallbackProps) => {
       <Alert status="error" borderRadius="md">
         <AlertIcon />
         <Box flex="1">
-          <AlertTitle>{t('components:errorBoundary.title')}</AlertTitle>
+          <AlertTitle>{t('errorBoundary.title')}</AlertTitle>
           <AlertDescription display="block" lineHeight="1.4">
             <Button variant="link" size="sm" textDecoration="underline" onClick={onOpen} color="red.800" _dark={{ color: 'red.100' }}>
-              {t('components:errorBoundary.actions.expand')}
+              {t('errorBoundary.actions.expand')}
             </Button>
             <Modal isOpen={isOpen} onClose={onClose}>
               <ModalOverlay />
               <ModalContent>
-                <ModalHeader>{t('components:errorBoundary.title')}</ModalHeader>
+                <ModalHeader>{t('errorBoundary.title')}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                   <Box fontFamily="monospace">{error.message}</Box>

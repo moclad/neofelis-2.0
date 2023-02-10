@@ -11,9 +11,9 @@ export const RecurringNav = () => {
   const isActive = (to: string) => pathname.startsWith(to);
   return (
     <Nav>
-      <NavGroup title={t('recurring:nav.recurring')}>
+      <NavGroup title={t('nav.recurring')}>
         <NavItem as={Link} to="/recurring" isActive={isActive('/recurring')} icon={RiBankLine}>
-          {t('recurring:nav.transactions')}
+          {t('nav.transactions')}
         </NavItem>
       </NavGroup>
     </Nav>

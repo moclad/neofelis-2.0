@@ -70,7 +70,7 @@ export const FieldSelect = <Option, IsMulti extends boolean, Group extends Group
 
   const selectedValues = () => {
     if (isMulti && Array.isArray(value)) {
-      const result = value.map(
+      return value.map(
         (v) =>
           options?.filter((option: Option) => {
             if (option.value === v) {
@@ -78,8 +78,6 @@ export const FieldSelect = <Option, IsMulti extends boolean, Group extends Group
             }
           })[0]
       );
-
-      return result;
     }
 
     return options?.find((option: Option) => option.value === value) || '';

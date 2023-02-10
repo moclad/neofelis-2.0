@@ -43,7 +43,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
 
   const { id, initialValues, isEditing, isOpen, onClose } = props;
 
-  const [transactionType, setTransactionType] = useState<number>(1);
+  const [transactionType, setTransactionType] = useState<number | undefined>(1);
   const [durationType, setDurationType] = useState<number>(1);
   const { t } = useTranslation('recurring');
   const { mutationOptions } = useMutationOptions();
@@ -102,7 +102,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
         object: newData,
       },
       refetchQueries: 'active',
-    }).then((x) => x.data.insert_expenses_one.id);
+    }).then((x) => x.data?.insert_expenses_one?.id);
   };
 
   const onCreateRevenueAccount = async (value: string) => {
@@ -116,7 +116,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
         object: newData,
       },
       refetchQueries: 'active',
-    }).then((x) => x.data.insert_revenues_one.id);
+    }).then((x) => x.data?.insert_revenues_one?.id);
   };
 
   const onCreateCategory = async (value: string) => {
@@ -200,8 +200,8 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
           name="until_date"
           isDisabled={isEditing}
           size="sm"
-          label={t('recurring:recurring.fields.data.untilDate')}
-          required={t('recurring:recurring.fields.data.untilDate') as string}
+          label={t('recurring.fields.data.untilDate').toString()}
+          required={t('recurring.fields.data.untilDate').toString()}
         />
       );
     }
@@ -212,9 +212,9 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
           name="no_of_times"
           isDisabled={isEditing}
           size="sm"
-          label={t('recurring:recurring.fields.data.numberOfTimes')}
+          label={t('recurring.fields.data.numberOfTimes').toString()}
           type={'number'}
-          placeholder={t('recurring:recurring.fields.data.numberOfTimes') as string}
+          placeholder={t('recurring.fields.data.numberOfTimes').toString()}
         />
       );
     }
@@ -228,14 +228,14 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
         <>
           <FieldSelect
             name="account_from"
-            label={t('recurring:recurring.fields.data.asset')}
-            required={t('recurring:recurring.fields.data.assetRequired') as string}
+            label={t('recurring.fields.data.asset')}
+            required={t('recurring.fields.data.assetRequired').toString()}
             options={assets}
           />
           <FieldSelect
             name="account_to"
-            label={t('recurring:recurring.fields.data.expense')}
-            required={t('recurring:recurring.fields.data.expenseRequired') as string}
+            label={t('recurring.fields.data.expense')}
+            required={t('recurring.fields.data.expenseRequired').toString()}
             options={expenses}
             isCreatable={true}
             onCreateOption={onCreateExpenseAccount}
@@ -249,8 +249,8 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
         <>
           <FieldSelect
             name="account_from"
-            label={t('recurring:recurring.fields.data.revenue')}
-            required={t('recurring:recurring.fields.data.revenueRequired') as string}
+            label={t('recurring.fields.data.revenue')}
+            required={t('recurring.fields.data.revenueRequired').toString()}
             options={revenues}
             isCreatable={true}
             onCreateOption={onCreateRevenueAccount}
@@ -258,8 +258,8 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
 
           <FieldSelect
             name="account_to"
-            label={t('recurring:recurring.fields.data.asset')}
-            required={t('recurring:recurring.fields.data.assetRequired') as string}
+            label={t('recurring.fields.data.asset')}
+            required={t('recurring.fields.data.assetRequired').toString()}
             options={assets}
           />
         </>
@@ -271,15 +271,15 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
         <>
           <FieldSelect
             name="account_from"
-            label={t('recurring:recurring.fields.data.fromAsset')}
-            required={t('recurring:recurring.fields.data.assetRequired') as string}
+            label={t('recurring.fields.data.fromAsset')}
+            required={t('recurring.fields.data.assetRequired').toString()}
             options={assets}
           />
 
           <FieldSelect
             name="account_to"
-            label={t('recurring:recurring.fields.data.toAsset')}
-            required={t('recurring:recurring.fields.data.assetRequired') as string}
+            label={t('recurring.fields.data.toAsset')}
+            required={t('recurring.fields.data.assetRequired').toString()}
             options={assets}
             validations={[
               {
@@ -287,7 +287,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
                   return form.values.source_account !== value;
                 },
                 deps: [form.values.source_account],
-                message: t('recurring:recurring.fields.error.sameAccount'),
+                message: t('recurring.fields.error.sameAccount').toString(),
               },
             ]}
           />
@@ -299,28 +299,28 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
   const cycles = (): ISelectOptions[] => {
     const options: ISelectOptions[] = [];
     const monthly: ISelectOptions = {
-      label: t('recurring:recurring.cycleType.monthly'),
+      label: t('recurring.cycleType.monthly'),
       value: 1,
       data: {},
     };
     options.push(monthly);
 
     const quarterly: ISelectOptions = {
-      label: t('recurring:recurring.cycleType.quarterly'),
+      label: t('recurring.cycleType.quarterly'),
       value: 2,
       data: {},
     };
     options.push(quarterly);
 
     const halfYearly: ISelectOptions = {
-      label: t('recurring:recurring.cycleType.halfYearly'),
+      label: t('recurring.cycleType.halfYearly'),
       value: 3,
       data: {},
     };
     options.push(halfYearly);
 
     const annually: ISelectOptions = {
-      label: t('recurring:recurring.cycleType.annually'),
+      label: t('recurring.cycleType.annually'),
       value: 4,
       data: {},
     };
@@ -332,21 +332,21 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
   const durations = (): ISelectOptions[] => {
     const options: ISelectOptions[] = [];
     const forever: ISelectOptions = {
-      label: t('recurring:recurring.durationType.forever'),
+      label: t('recurring.durationType.forever'),
       value: 1,
       data: {},
     };
     options.push(forever);
 
     const untilDate: ISelectOptions = {
-      label: t('recurring:recurring.durationType.untilDate'),
+      label: t('recurring.durationType.untilDate'),
       value: 2,
       data: {},
     };
     options.push(untilDate);
 
     const numberOfTimes: ISelectOptions = {
-      label: t('recurring:recurring.durationType.numberOfTimes'),
+      label: t('recurring.durationType.numberOfTimes'),
       value: 3,
       data: {},
     };
@@ -358,21 +358,21 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
   const transactionTypes = (): ISelectOptions[] => {
     const options: ISelectOptions[] = [];
     const expense: ISelectOptions = {
-      label: t('recurring:recurring.transactionType.expense'),
+      label: t('recurring.transactionType.expense'),
       value: 1,
       data: {},
     };
     options.push(expense);
 
     const deposit: ISelectOptions = {
-      label: t('recurring:recurring.transactionType.deposit'),
+      label: t('recurring.transactionType.deposit'),
       value: 2,
       data: {},
     };
     options.push(deposit);
 
     const transfer: ISelectOptions = {
-      label: t('recurring:recurring.transactionType.transfer'),
+      label: t('recurring.transactionType.transfer'),
       value: 3,
       data: {},
     };
@@ -393,7 +393,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
 
   return (
     <ModalDialog
-      title={isEditing ? t('recurring:recurring.actions.edit') : t('recurring:recurring.actions.create')}
+      title={isEditing ? t('recurring.actions.edit') : t('recurring.actions.create')}
       dialogForm={form}
       isOpen={isOpen}
       onCancel={() => {
@@ -413,28 +413,28 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
         start_on: isEditing ? dayjs(initialValues.start_on).toDate() : dayjs().toDate(),
       }}
     >
-      <FieldInput name="title" label={t('recurring:recurring.fields.data.title')} required={t('recurring:recurring.fields.data.titleRequired') as string} />
+      <FieldInput name="title" label={t('recurring.fields.data.title')} required={t('recurring.fields.data.titleRequired')} />
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldCurrency
           name="amount"
-          label={t('recurring:recurring.fields.data.amount')}
+          label={t('recurring.fields.data.amount')}
           placeholder={0}
           currency="EUR"
-          required={t('recurring:recurring.fields.data.amountRequired') as string}
+          required={t('recurring.fields.data.amountRequired')}
         />
         <FieldDayPicker
           name="start_on"
           isDisabled={isEditing}
-          label={t('recurring:recurring.fields.data.startOn')}
-          required={t('recurring:recurring.fields.data.startOnRequired') as string}
+          label={t('recurring.fields.data.startOn')}
+          required={t('recurring.fields.data.startOnRequired')}
         />
       </Stack>
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-        <FieldSelect name="cycle_type" isDisabled={isEditing} label={t('recurring:recurring.fields.data.cycleType')} options={cycles()} isClearable={false} />
+        <FieldSelect name="cycle_type" isDisabled={isEditing} label={t('recurring.fields.data.cycleType')} options={cycles()} isClearable={false} />
         <FieldSelect
           name="duration_type"
           isDisabled={isEditing}
-          label={t('recurring:recurring.fields.data.durationType')}
+          label={t('recurring.fields.data.durationType')}
           options={durations()}
           onChange={(e) => setDurationType(e)}
           isClearable={false}
@@ -444,7 +444,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       <FieldSelect
         name="transaction_type"
         isDisabled={isEditing}
-        label={t('recurring:recurring.fields.data.transactionType')}
+        label={t('recurring.fields.data.transactionType')}
         options={transactionTypes()}
         onChange={(e) => setTransactionType(e)}
         isClearable={false}
@@ -455,7 +455,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
       <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
         <FieldSelect
           name="category_id"
-          label={t('recurring:recurring.fields.data.category')}
+          label={t('recurring.fields.data.category')}
           options={categories}
           size="sm"
           isCreatable={true}
@@ -464,7 +464,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
         />
         <FieldSelect
           name="labels"
-          label={t('recurring:recurring.fields.data.labels')}
+          label={t('recurring.fields.data.labels')}
           options={allLabels}
           size="sm"
           isCreatable={true}
@@ -474,12 +474,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
           defaultValue={initialValues?.recurring_labels.map((x) => x.label_id)}
         />
       </Stack>
-      <FieldInput
-        name="description"
-        label={t('recurring:recurring.fields.data.description')}
-        type={'text'}
-        placeholder={t('recurring:recurring.fields.data.description') as string}
-      />
+      <FieldInput name="description" label={t('recurring.fields.data.description')} type={'text'} placeholder={t('recurring.fields.data.description')} />
     </ModalDialog>
   );
 };

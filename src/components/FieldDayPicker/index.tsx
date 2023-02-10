@@ -5,10 +5,11 @@ import { DayPicker } from '@/components/DayPicker';
 import { FormGroup, FormGroupProps } from '@/components/FormGroup';
 import { FieldProps, useField, useForm } from '@formiz/core';
 
-export interface FieldDayPickerProps extends FieldProps, FormGroupProps {
-  invalidMessage?: string;
-  value?: Date;
-}
+export type FieldDayPickerProps = FieldProps<Date> &
+  FormGroupProps & {
+    invalidMessage?: string;
+    value?: Date;
+  };
 
 export const FieldDayPicker = (props: FieldDayPickerProps) => {
   const { t } = useTranslation('components');
@@ -33,11 +34,11 @@ export const FieldDayPicker = (props: FieldDayPickerProps) => {
   };
 
   const handleChange = (date: Date | null | undefined, isValid: boolean) => {
-    setValue(date);
+    setValue(date ?? null);
     if (!isValid) {
       setTimeout(() => {
         invalidateFields({
-          [props.name]: invalidMessage ?? t('components:fieldDayPicker.invalidMessage'),
+          [props.name]: invalidMessage ?? t('fieldDayPicker.invalidMessage'),
         });
       });
     }

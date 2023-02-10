@@ -53,13 +53,13 @@ export const LoginModalInterceptor = () => {
   };
 
   return (
-    <Modal isOpen={session && isOpen} onClose={handleClose} closeOnOverlayClick={false} trapFocus={false}>
+    <Modal isOpen={session !== null && isOpen} onClose={handleClose} closeOnOverlayClick={false} trapFocus={false}>
       <ModalOverlay style={{ backdropFilter: 'blur(6px)' }} />
       <ModalContent>
         <ModalCloseButton />
         <ModalBody p="6">
-          <Heading size="lg">{t('auth:interceptor.title')}</Heading>
-          <Text mb="2">{t('auth:interceptor.description')}</Text>
+          <Heading size="lg">{t('interceptor.title')}</Heading>
+          <Text mb="2">{t('interceptor.description')}</Text>
           <LoginForm onSuccess={handleLogin} />
         </ModalBody>
       </ModalContent>

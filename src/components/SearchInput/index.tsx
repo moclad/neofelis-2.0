@@ -68,13 +68,13 @@ export const SearchInput = forwardRef<SearchInputProps, 'input'>(
           ref={refs}
           onChange={handleChange}
           value={search || ''}
-          placeholder={placeholder ?? t('components:searchInput.placeholder')}
+          placeholder={placeholder ?? t('searchInput.placeholder')}
           isDisabled={isDisabled}
           onKeyDown={handleEscape}
         />
         <InputRightElement color={isDisabled ? colorModeValue('gray.300', 'gray.600') : colorModeValue('brand.600', 'brand.300')}>
           {!isDisabled && search ? (
-            <IconButton onClick={handleClear} variant="@secondary" size="xs" aria-label={clearLabel ?? t('components:searchInput.clear')}>
+            <IconButton onClick={handleClear} variant="@secondary" size="xs" aria-label={clearLabel ?? t('searchInput.clear')}>
               <FiX />
             </IconButton>
           ) : (

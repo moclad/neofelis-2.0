@@ -4,18 +4,19 @@ import { FormGroup, FormGroupProps } from '@/components/FormGroup';
 import { Radio, RadioGroup, Wrap, WrapItem } from '@chakra-ui/react';
 import { FieldProps, useField } from '@formiz/core';
 
-interface Option {
+type Option = {
   value: string | undefined;
   label?: ReactNode;
-}
+};
 
-export interface FieldRadiosProps extends FieldProps, FormGroupProps {
-  size?: 'sm' | 'md' | 'lg';
-  options?: Option[];
-}
+export type FieldRadiosProps = FieldProps<Option['value']> &
+  FormGroupProps & {
+    size?: 'sm' | 'md' | 'lg';
+    options?: Option[];
+  };
 
 export const FieldRadios = (props: FieldRadiosProps) => {
-  const { errorMessage, id, isValid, isSubmitted, resetKey, setValue, value, otherProps } = useField(props);
+  const { errorMessage, id, isValid, isSubmitted, resetKey, setValue, value, otherProps } = useField({ debounce: 0, ...props });
   const { required } = props;
   const { children, label, options = [], helper, size = 'md', ...rest } = otherProps;
   const [isTouched, setIsTouched] = useState(false);
@@ -37,8 +38,8 @@ export const FieldRadios = (props: FieldRadiosProps) => {
 
   return (
     <FormGroup {...formGroupProps}>
-      <RadioGroup size={size} id={id} value={value || []} onChange={setValue}>
-        <Wrap spacing="4">
+      <RadioGroup size={size} id={id} value={value ?? undefined} onChange={setValue}>
+        <Wrap spacing="4" overflow="visible">
           {options.map((option) => (
             <WrapItem key={option.value}>
               <Radio id={`${id}-${option.value}`} name={id} value={option.value}>

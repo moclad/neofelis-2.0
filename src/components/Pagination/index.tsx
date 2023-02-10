@@ -59,7 +59,7 @@ export const PaginationButtonFirstPage: FC<React.PropsWithChildren<Omit<IconButt
   return (
     <IconButton
       onClick={() => setPage(firstPage)}
-      aria-label={t('components:pagination.firstPage')}
+      aria-label={t('pagination.firstPage')}
       icon={<Icon icon={rtlValue(FiChevronsLeft, FiChevronsRight)} fontSize="lg" />}
       size="sm"
       isDisabled={isFirstPage}
@@ -75,7 +75,7 @@ export const PaginationButtonPrevPage: FC<React.PropsWithChildren<Omit<IconButto
   return (
     <IconButton
       onClick={() => setPage(page - 1)}
-      aria-label={t('components:pagination.prevPage')}
+      aria-label={t('pagination.prevPage')}
       icon={<Icon icon={rtlValue(FiChevronLeft, FiChevronRight)} fontSize="lg" />}
       size="sm"
       isDisabled={isFirstPage}
@@ -91,7 +91,7 @@ export const PaginationButtonLastPage: FC<React.PropsWithChildren<Omit<IconButto
   return (
     <IconButton
       onClick={() => setPage(lastPage)}
-      aria-label={t('components:pagination.lastPage')}
+      aria-label={t('pagination.lastPage')}
       icon={<Icon icon={rtlValue(FiChevronsRight, FiChevronsLeft)} fontSize="lg" />}
       size="sm"
       isDisabled={isLastPage}
@@ -107,7 +107,7 @@ export const PaginationButtonNextPage: FC<React.PropsWithChildren<Omit<IconButto
   return (
     <IconButton
       onClick={() => setPage(page + 1)}
-      aria-label={t('components:pagination.nextPage')}
+      aria-label={t('pagination.nextPage')}
       icon={<Icon icon={rtlValue(FiChevronRight, FiChevronLeft)} fontSize="lg" />}
       size="sm"
       isDisabled={isLastPage}

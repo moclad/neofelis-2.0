@@ -27,22 +27,22 @@ export const PageResetPasswordConfirm = () => {
     onError: (error: any) => {
       const { title } = error?.response?.data || {};
       toastError({
-        title: t('profile:resetPassword.feedbacks.confirmError.title'),
+        title: t('resetPassword.feedbacks.confirmError.title').toString(),
         description: title,
       });
     },
     onSuccess: () => {
       toastSuccess({
-        title: t('profile:resetPassword.feedbacks.confirmSuccess.title'),
-        description: t('profile:resetPassword.feedbacks.confirmSuccess.description'),
+        title: t('resetPassword.feedbacks.confirmSuccess.title').toString(),
+        description: t('resetPassword.feedbacks.confirmSuccess.description').toString(),
       });
       navigate('/login');
     },
   });
 
-  const submitResetPasswordFinish = async (values) => {
+  const submitResetPasswordFinish = async (values: any) => {
     await resetPasswordFinish({
-      key: searchParams.get('key'),
+      key: searchParams.get('key') || '',
       newPassword: values.password,
     });
   };
@@ -50,11 +50,11 @@ export const PageResetPasswordConfirm = () => {
   const passwordValidations = [
     {
       rule: isMinLength(4),
-      message: t('profile:data.password.tooShort', { min: 4 }),
+      message: t('data.password.tooShort', { min: 4 }),
     },
     {
       rule: isMaxLength(50),
-      message: t('profile:data.password.tooLong', { max: 50 }),
+      message: t('data.password.tooLong', { max: 50 }),
     },
   ];
 
@@ -63,7 +63,7 @@ export const PageResetPasswordConfirm = () => {
       <Box p="2" pb="4rem" w="22rem" maxW="full" m="auto">
         <Box p="6" bg={colorModeValue('white', 'blackAlpha.400')} borderRadius="md" boxShadow="md">
           <Heading size="lg" mb="4">
-            {t('profile:resetPassword.title')}
+            {t('resetPassword.title')}
           </Heading>
           <Formiz id="reset-password-finish-form" onValidSubmit={submitResetPasswordFinish} connect={resetPasswordFinishForm}>
             <form noValidate onSubmit={resetPasswordFinishForm.submit}>
@@ -71,27 +71,27 @@ export const PageResetPasswordConfirm = () => {
                 <FieldInput
                   name="password"
                   type="password"
-                  label={t('profile:data.newPassword.label')}
-                  required={t('profile:data.newPassword.required') as string}
+                  label={t('data.newPassword.label')}
+                  required={t('data.newPassword.required') as string}
                   validations={passwordValidations}
                 />
                 <FieldInput
                   name="confirmPassword"
                   type="password"
-                  label={t('profile:data.confirmNewPassword.label')}
-                  required={t('profile:data.confirmNewPassword.required') as string}
+                  label={t('data.confirmNewPassword.label')}
+                  required={t('data.confirmNewPassword.required') as string}
                   validations={[
                     ...passwordValidations,
                     {
                       rule: (value) => value === resetPasswordFinishForm?.values?.password,
-                      message: t('profile:data.confirmNewPassword.notEqual'),
+                      message: t('data.confirmNewPassword.notEqual'),
                       deps: [resetPasswordFinishForm?.values?.password],
                     },
                   ]}
                 />
                 <Flex>
                   <Button type="submit" variant="@primary" ms="auto" isLoading={resetPasswordLoading}>
-                    {t('profile:resetPassword.actions.reset')}
+                    {t('resetPassword.actions.reset')}
                   </Button>
                 </Flex>
               </Stack>

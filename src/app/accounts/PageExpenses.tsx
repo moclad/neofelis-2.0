@@ -34,7 +34,7 @@ import { useMutationOptions } from '@/hooks/useMutationOptions';
 import { Badge, Box, HStack, LinkBox, LinkOverlay, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageExpenses = () => {
-  const { t } = useTranslation('accounts');
+  const { t } = useTranslation(['accounts', 'common']);
   const { mutationOptions } = useMutationOptions();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Expenses>();
@@ -106,7 +106,7 @@ export const PageExpenses = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('common:feedbacks.deletedSuccess.title'),
+        title: t('feedbacks.deletedSuccess.title').toString(),
       });
     });
   };
@@ -116,20 +116,20 @@ export const PageExpenses = () => {
       <Page nav={<AccountsNav />}>
         <PageContent
           loading={loading || deleteFetching || insertLoading || updateLoading}
-          title={t('accounts:expenses.title')}
+          title={t('expenses.title').toString()}
           actions={[
             <ResponsiveIconButton key="createExpense" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
-              {t('accounts:expenses.actions.create')}
+              {t('expenses.actions.create').toString()}
             </ResponsiveIconButton>,
           ]}
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
               <DataListCell colName="name" colWidth="1.5">
-                {t('accounts:expenses.header.name')}
+                {t('expenses.header.name').toString()}
               </DataListCell>
               <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
-                {t('accounts:expenses.header.status')}
+                {t('expenses.header.status').toString()}
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
@@ -148,7 +148,7 @@ export const PageExpenses = () => {
                   </DataListCell>
                   <DataListCell colName="status">
                     <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
-                      {item.active ? t('accounts:expenses.data.active') : t('accounts:expenses.data.inactive')}
+                      {item.active ? t('expenses.data.active').toString() : t('expenses.data.inactive').toString()}
                     </Badge>
                   </DataListCell>
                   <DataListCell colName="actions">
@@ -157,10 +157,10 @@ export const PageExpenses = () => {
                       <Portal>
                         <MenuList>
                           <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('common:actions.edit')}
+                            {t('actions.edit').toString()}
                           </MenuItem>
                           <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('common:actions.deactivate')}
+                            {t('actions.deactivate').toString()}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -169,7 +169,7 @@ export const PageExpenses = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('common:actions.delete')}
+                            {t('actions.delete').toString()}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>
@@ -196,7 +196,7 @@ export const PageExpenses = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={isEditing ? t('accounts:expenses.actions.edit') : t('accounts:expenses.actions.create')}
+        title={isEditing ? t('expenses.actions.edit').toString() : t('expenses.actions.create').toString()}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -207,7 +207,7 @@ export const PageExpenses = () => {
         formId="expense-form-id"
         initialValues={dataContext}
       >
-        <FieldInput name="name" label={t('accounts:expenses.data.name')} required={t('accounts:expenses.data.nameRequired') as string} />
+        <FieldInput name="name" label={t('expenses.data.name').toString()} required={t('expenses.data.nameRequired').toString()} />
       </ModalDialog>
     </>
   );

@@ -26,18 +26,18 @@ export const PageProfile = () => {
   const [updateUser, { loading: updateLoading }] = useUpdateUserMutation({
     onError: (error) => {
       toastError({
-        title: t('common:feedbacks.updateError.title'),
+        title: t('feedbacks.updateError.title').toString(),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('common:feedbacks.updateSuccess.title'),
+        title: t('feedbacks.updateSuccess.title').toString(),
       });
     },
   });
 
-  const submitGeneralInformation = async (values) => {
+  const submitGeneralInformation = async (values: any) => {
     const newData = {
       ...data.users_by_pk,
       ...values,
@@ -45,7 +45,7 @@ export const PageProfile = () => {
 
     await updateUser({
       variables: {
-        userId: session.id,
+        userId: session?.id,
         changes: newData,
       },
     });
@@ -55,29 +55,29 @@ export const PageProfile = () => {
     <Page nav={<ProfileNav />}>
       <PageContent loading={loading}>
         <Heading size="md" mb="4">
-          {t('profile:profile.title')}
+          {t('profile.title').toString()}
         </Heading>
         {data && (
           <Formiz id="profile-form" onValidSubmit={submitGeneralInformation} connect={generalInformationForm} initialValues={data.users_by_pk}>
             <form noValidate onSubmit={generalInformationForm.submit}>
               <Stack direction="column" bg={colorModeValue('white', 'blackAlpha.400')} p="6" borderRadius="lg" spacing="6" shadow="md">
                 <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-                  <FieldInput name="name" label={t('profile:data.firstname.label')} required={t('profile:data.firstname.required') as string} />
+                  <FieldInput name="name" label={t('data.firstname.label').toString()} required={t('data.firstname.required').toString()} />
                 </Stack>
                 <FieldInput
                   name="email"
-                  label={t('profile:data.email.label')}
-                  required={t('profile:data.email.required') as string}
+                  label={t('data.email.label').toString()}
+                  required={t('data.email.required').toString()}
                   validations={[
                     {
                       rule: isEmail(),
-                      message: t('profile:data.email.invalid'),
+                      message: t('data.email.invalid').toString(),
                     },
                   ]}
                 />
                 <Flex>
                   <Button type="submit" variant="@primary" ms="auto" isLoading={updateLoading}>
-                    {t('profile:profile.actions.save')}
+                    {t('profile.actions.save').toString()}
                   </Button>
                 </Flex>
               </Stack>

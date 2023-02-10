@@ -10,15 +10,15 @@ import { FieldInput } from '@/components/FieldInput';
 import { ModalDialog } from '@/components/ModalDialog';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastError, useToastSuccess } from '@/components/Toast';
-import { useAllCategoriesQuery, useDeleteCategoryMutation, useInsertCategoryMutation, useUpdateCategoryMutation } from '@/generated/graphql';
+import { Categories, useAllCategoriesQuery, useDeleteCategoryMutation, useInsertCategoryMutation, useUpdateCategoryMutation } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
 import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, Tag, TagLabel, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
 
 export const PageCategories = () => {
-  const { t } = useTranslation('classification');
+  const { t } = useTranslation(['classification', 'common']);
   const { loading, data } = useAllCategoriesQuery();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Categories>();
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
@@ -27,13 +27,13 @@ export const PageCategories = () => {
   const [updateCategory, { loading: updateLoading }] = useUpdateCategoryMutation({
     onError: (error) => {
       toastError({
-        title: t('common:feedbacks.updateError.title'),
+        title: t('feedbacks.updateError.title').toString(),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('common:feedbacks.updateSuccess.title'),
+        title: t('feedbacks.updateSuccess.title').toString(),
       });
     },
   });
@@ -41,18 +41,18 @@ export const PageCategories = () => {
   const [insertCategory, { loading: insertLoading }] = useInsertCategoryMutation({
     onError: (error) => {
       toastError({
-        title: t('common:feedbacks.createdError.title'),
+        title: t('feedbacks.createdError.title').toString(),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('common:feedbacks.createdSuccess.title'),
+        title: t('feedbacks.createdSuccess.title').toString(),
       });
     },
   });
 
-  const onConfirmCreate = async (values) => {
+  const onConfirmCreate = async (values: any) => {
     const newData = {
       ...values,
     };
@@ -65,7 +65,7 @@ export const PageCategories = () => {
     });
   };
 
-  const onConfirmEdit = async (values) => {
+  const onConfirmEdit = async (values: any) => {
     const newData = {
       ...values,
     };
@@ -87,7 +87,7 @@ export const PageCategories = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('common:feedbacks.deletedSuccess.title'),
+        title: t('feedbacks.deletedSuccess.title').toString(),
       });
     });
   };
@@ -97,10 +97,10 @@ export const PageCategories = () => {
       <Page nav={<ClassificationNav />}>
         <PageContent
           loading={loading || deleteFetching || insertLoading}
-          title={t('classification:categories.title')}
+          title={t('categories.title').toString()}
           actions={[
             <ResponsiveIconButton key="createCategory" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
-              {t('classification:categories.actions.create')}
+              {t('categories.actions.create').toString()}
             </ResponsiveIconButton>,
           ]}
         >
@@ -119,7 +119,7 @@ export const PageCategories = () => {
                             onEdit(data.id, data);
                           }}
                         >
-                          {t('classification:categories.actions.edit')}
+                          {t('categories.actions.edit').toString()}
                         </MenuItem>
                         <MenuDivider />
                         <ConfirmMenuItem
@@ -128,7 +128,7 @@ export const PageCategories = () => {
                             onDelete(data.id);
                           }}
                         >
-                          {t('classification:categories.actions.delete')}
+                          {t('categories.actions.delete').toString()}
                         </ConfirmMenuItem>
                       </MenuList>
                     </Menu>
@@ -139,7 +139,7 @@ export const PageCategories = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={isEditing ? t('classification:categories.actions.edit') : t('classification:categories.actions.create')}
+        title={isEditing ? t('categories.actions.edit').toString() : t('categories.actions.create').toString()}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -150,7 +150,7 @@ export const PageCategories = () => {
         formId="category-form-id"
         initialValues={dataContext}
       >
-        <FieldInput name="name" label={t('classification:categories.data.name')} required={t('classification:categories.data.nameRequired') as string} />
+        <FieldInput name="name" label={t('categories.data.name').toString()} required={t('categories.data.nameRequired').toString()} />
       </ModalDialog>
     </>
   );

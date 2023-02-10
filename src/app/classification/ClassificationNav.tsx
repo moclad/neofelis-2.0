@@ -8,18 +8,18 @@ import { Nav, NavGroup, NavItem } from '@/components/Nav';
 export const ClassificationNav = () => {
   const { t } = useTranslation('classification');
   const { pathname } = useLocation();
-  const isActive = (to) => pathname.startsWith(to);
+  const isActive = (to: string) => pathname.startsWith(to);
   return (
     <Nav>
-      <NavGroup title={t('classification:nav.title')}>
+      <NavGroup title={t('nav.title').toString()}>
         <NavItem as={Link} to="/classification/labels" isActive={isActive('/classification/labels')} icon={RiPriceTag3Line}>
-          {t('classification:nav.labels')}
+          {t('nav.labels').toString()}
         </NavItem>
         <NavItem as={Link} to="/classification/categories" isActive={isActive('/classification/categories')} icon={RiPantoneLine}>
-          {t('classification:nav.categories')}
+          {t('nav.categories').toString()}
         </NavItem>
         <NavItem as={Link} to="/classification/groups" isActive={isActive('/classification/groups')} icon={RiArchiveDrawerLine}>
-          {t('classification:nav.groups')}
+          {t('nav.groups').toString()}
         </NavItem>
       </NavGroup>
     </Nav>

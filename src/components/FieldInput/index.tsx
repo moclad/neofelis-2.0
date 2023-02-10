@@ -13,19 +13,19 @@ import {
 } from '@chakra-ui/react';
 import { FieldProps, useField } from '@formiz/core';
 
-export interface FieldInputProps
-  extends FieldProps,
-    Omit<FormGroupProps, 'placeholder'>,
-    Pick<InputProps, 'type' | 'placeholder'> {
-  size?: 'sm' | 'md' | 'lg';
-  autoFocus?: boolean;
-}
+export type FieldInputProps = FieldProps<string> &
+  Omit<FormGroupProps, 'placeholder'> &
+  Pick<InputProps, 'type' | 'placeholder'> & {
+    size?: 'sm' | 'md' | 'lg';
+    autoFocus?: boolean;
+  };
 
 export const FieldInput = (props: FieldInputProps) => {
   const {
     errorMessage,
     id,
     isValid,
+    isPristine,
     isSubmitted,
     isValidating,
     resetKey,
@@ -46,7 +46,7 @@ export const FieldInput = (props: FieldInputProps) => {
   const { required } = props;
   const [isTouched, setIsTouched] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const showError = !isValid && (isTouched || isSubmitted);
+  const showError = !isValid && ((isTouched && !isPristine) || isSubmitted);
 
   useEffect(() => {
     setIsTouched(false);
@@ -70,6 +70,7 @@ export const FieldInput = (props: FieldInputProps) => {
           id={id}
           value={value ?? ''}
           onChange={(e) => setValue(e.target.value)}
+          onFocus={() => setIsTouched(false)}
           onBlur={() => setIsTouched(true)}
           placeholder={placeholder ? String(placeholder) : ''}
           autoFocus={autoFocus}

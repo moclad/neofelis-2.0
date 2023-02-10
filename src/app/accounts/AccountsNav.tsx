@@ -11,18 +11,18 @@ export const AccountsNav = () => {
   const isActive = (to: string) => pathname.startsWith(to);
   return (
     <Nav>
-      <NavGroup title={t('accounts:nav.title')}>
+      <NavGroup title={t('nav.title')}>
         <NavItem as={Link} to="/accounts/assets" isActive={isActive('/accounts/assets')} icon={RiBankLine}>
-          {t('accounts:nav.assets')}
+          {t('nav.assets')}
         </NavItem>
         <NavItem as={Link} to="/accounts/expense" isActive={isActive('/accounts/expense')} icon={RiShoppingCartLine}>
-          {t('accounts:nav.expense')}
+          {t('nav.expense')}
         </NavItem>
         <NavItem as={Link} to="/accounts/revenue" isActive={isActive('/accounts/revenue')} icon={RiRefund2Line}>
-          {t('accounts:nav.revenue')}
+          {t('nav.revenue')}
         </NavItem>
         <NavItem as={Link} to="/accounts/liabilities" isActive={isActive('/accounts/liabilities')} icon={RiExchangeLine}>
-          {t('accounts:nav.liabilities')}
+          {t('nav.liabilities')}
         </NavItem>
       </NavGroup>
     </Nav>

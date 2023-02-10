@@ -26,16 +26,16 @@ export const PageVerifyRequest = () => {
           <Center>
             <VStack>
               <Heading as="h3" size="lg" mb="8">
-                {t('auth:login.verify.title')}
+                {t('login.verify.title').toString()}
               </Heading>
 
-              <Text fontSize="md">{t('auth:login.verify.message')}</Text>
+              <Text fontSize="md">{t('login.verify.message').toString()}</Text>
             </VStack>
           </Center>
         </Box>
         <Center mt="8">
           <Button as={RouterLink} to="/" variant="link">
-            {t('auth:login.verify.closeMessage')}{' '}
+            {t('login.verify.closeMessage').toString()}{' '}
             <Box as="strong" color={colorModeValue('brand.500', 'brand.300')} ms="2">
               Neofelis Home
             </Box>

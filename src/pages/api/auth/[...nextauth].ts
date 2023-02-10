@@ -71,20 +71,16 @@ export default NextAuth({
 
       const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY);
 
-      const encodedToken = jwt.sign(tokenContents, jwtSecret.key, {
+      return jwt.sign(tokenContents, jwtSecret.key, {
         algorithm: jwtSecret.type,
       });
-
-      return encodedToken;
     },
     async decode({ token }) {
       const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY);
 
-      const decodedToken = jwt.verify(token, jwtSecret.key, {
+      return jwt.verify(token, jwtSecret.key, {
         algorithms: jwtSecret.type,
       });
-
-      return decodedToken;
     },
   },
   debug: true,

@@ -25,7 +25,7 @@ export const ActionsButton: FC<React.PropsWithChildren<ActionsButtonProps>> = fo
       _focusVisible={{ opacity: 1, boxShadow: 'outline' }}
       _active={{ bg: 'rgba(0, 0, 0, 0.1)' }}
       icon={<FiMoreVertical />}
-      aria-label={label ?? t('components:actionsButton.label')}
+      aria-label={label ?? t('actionsButton.label')}
       {...rest}
     />
   );

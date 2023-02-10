@@ -53,9 +53,9 @@ import {
 } from '@chakra-ui/react';
 
 export const PageAssets = () => {
-  const { t } = useTranslation('accounts');
+  const { t } = useTranslation(['accounts', 'common']);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, any>();
   const toastSuccess = useToastSuccess();
   const { colorModeValue } = useDarkMode();
   const { page, setPage } = usePaginationFromUrl();
@@ -77,7 +77,7 @@ export const PageAssets = () => {
   const [updateAssetState] = useUpdateAssetStateMutation(mutationOptions);
   const [updateAssetStandard] = useUpdateAssetStandardMutation(mutationOptions);
 
-  const onConfirmCreate = async (values) => {
+  const onConfirmCreate = async (values: any) => {
     const { name } = values;
     const newData = {
       ...values,
@@ -93,7 +93,7 @@ export const PageAssets = () => {
     });
   };
 
-  const setStandard = async (item) => {
+  const setStandard = async (item: any) => {
     await updateAssetStandard({
       variables: {
         id: item.id,
@@ -102,7 +102,7 @@ export const PageAssets = () => {
     });
   };
 
-  const deactivate = async (item) => {
+  const deactivate = async (item: any) => {
     await updateAssetState({
       variables: {
         id: item.id,
@@ -112,7 +112,7 @@ export const PageAssets = () => {
     });
   };
 
-  const onConfirmEdit = async (values) => {
+  const onConfirmEdit = async (values: any) => {
     const newData = {
       ...values,
     };
@@ -135,7 +135,7 @@ export const PageAssets = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('common:feedbacks.deletedSuccess.title'),
+        title: t('feedbacks.deletedSuccess.title'),
       });
     });
   };
@@ -145,23 +145,23 @@ export const PageAssets = () => {
       <Page nav={<AccountsNav />}>
         <PageContent
           loading={loading || deleteFetching || insertLoading || updateLoading}
-          title={t('accounts:assets.title')}
+          title={t('assets.title').toString()}
           actions={[
             <ResponsiveIconButton key="createAsset" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
-              {t('accounts:assets.actions.create')}
+              {t('assets.actions.create').toString()}
             </ResponsiveIconButton>,
           ]}
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
               <DataListCell colName="name" colWidth="1.5">
-                {t('accounts:assets.header.name')}
+                {t('assets.header.name').toString()}
               </DataListCell>
               <DataListCell colName="balance" colWidth="0.5">
-                {t('accounts:assets.header.currentBalance')}
+                {t('assets.header.currentBalance').toString()}
               </DataListCell>
               <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
-                {t('accounts:assets.header.status')}
+                {t('assets.header.status').toString()}
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
@@ -188,12 +188,12 @@ export const PageAssets = () => {
                   <DataListCell colName="status">
                     <HStack maxW="100%">
                       <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
-                        {item.active ? t('accounts:assets.data.active') : t('accounts:assets.data.inactive')}
+                        {item.active ? t('assets.data.active').toString() : t('assets.data.inactive').toString()}
                       </Badge>
 
                       {item.default ? (
                         <Badge size="sm" colorScheme="green" color={colorModeValue('brand.500', 'brand.500')}>
-                          {t('accounts:assets.data.defaultAsset')}
+                          {t('assets.data.defaultAsset').toString()}
                         </Badge>
                       ) : (
                         <></>
@@ -206,13 +206,13 @@ export const PageAssets = () => {
                       <Portal>
                         <MenuList>
                           <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('common:actions.edit')}
+                            {t('actions.edit').toString()}
                           </MenuItem>
                           <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('common:actions.deactivate')}
+                            {t('actions.deactivate').toString()}
                           </MenuItem>
                           <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
-                            {t('common:actions.setAsStandard')}
+                            {t('actions.setAsStandard').toString()}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -221,7 +221,7 @@ export const PageAssets = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('common:actions.delete')}
+                            {t('actions.delete')}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>
@@ -248,7 +248,7 @@ export const PageAssets = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={isEditing ? t('accounts:assets.actions.edit') : t('accounts:assets.actions.create')}
+        title={isEditing ? t('assets.actions.edit').toString() : t('assets.actions.create').toString()}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -259,11 +259,11 @@ export const PageAssets = () => {
         formId="asset-form-id"
         initialValues={dataContext}
       >
-        <FieldInput name="name" label={t('accounts:assets.data.name')} required={t('accounts:assets.data.nameRequired') as string} />
-        <FieldInput name="account_no" label={t('accounts:assets.data.accountNo')} />
+        <FieldInput name="name" label={t('assets.data.name').toString()} required={t('assets.data.nameRequired').toString()} />
+        <FieldInput name="account_no" label={t('assets.data.accountNo').toString()} />
         <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-          <FieldCurrency name="balance" label={t('accounts:assets.data.balance')} placeholder={0} currency="EUR" />
-          <FieldDayPicker name="balance_date" label={t('accounts:assets.data.balanceDate')} />
+          <FieldCurrency name="balance" label={t('assets.data.balance').toString()} placeholder={0} currency="EUR" />
+          <FieldDayPicker name="balance_date" label={t('assets.data.balanceDate').toString()} />
         </Stack>
       </ModalDialog>
     </>

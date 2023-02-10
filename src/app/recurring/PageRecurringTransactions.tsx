@@ -44,7 +44,7 @@ export const PageRecurringTransactions = () => {
     })
       .then(() => {
         toastSuccess({
-          title: t('common:feedbacks.deletedSuccess.title'),
+          title: t('feedbacks.deletedSuccess.title'),
         });
       })
       .catch((error) => toastError(error));
@@ -60,17 +60,17 @@ export const PageRecurringTransactions = () => {
     return (
       <VStack align={'flex-start'} spacing={1} pb={5}>
         <HStack spacing="5px">
-          <Text as="b">{t('recurring:recurring.fields.data.title')}:</Text>
+          <Text as="b">{t('recurring.fields.data.title').toString()}:</Text>
           <Text>{recurring.title}</Text>
           <Badge size="sm" colorScheme={recurring.active ? 'success' : 'red'}>
-            {recurring.active ? t('recurring:recurring.status.active') : t('recurring:recurring.status.inactive')}
+            {recurring.active ? t('recurring.status.active').toString() : t('recurring.status.inactive').toString()}
           </Badge>
         </HStack>
         <Wrap spacingX="30px">
           <WrapItem>
             <HStack>
               <Text as="b" fontSize={'sm'}>
-                {t('recurring:recurring.fields.data.startOn')}:
+                {t('recurring.fields.data.startOn').toString()}:
               </Text>
               <Text fontSize={'sm'}>{dayjs(recurring.start_on).format('DD MMM YYYY')}</Text>
             </HStack>
@@ -78,17 +78,17 @@ export const PageRecurringTransactions = () => {
           <WrapItem>
             <HStack>
               <Text as="b" fontSize={'sm'}>
-                {t('recurring:recurring.fields.data.cycleType')}:
+                {t('recurring.fields.data.cycleType').toString()}:
               </Text>
-              <Text fontSize={'sm'}>{t(`recurring:recurring.cycleType.${recurring.cycle_type}`)}</Text>
+              <Text fontSize={'sm'}>{t(`recurring.cycleType.${recurring.cycle_type}`).toString()}</Text>
             </HStack>
           </WrapItem>
           <WrapItem>
             <HStack>
               <Text as="b" fontSize={'sm'}>
-                {t('recurring:recurring.fields.data.durationType')}:
+                {t('recurring.fields.data.durationType').toString()}:
               </Text>
-              <Text fontSize={'sm'}>{t(`recurring:recurring.durationType.${recurring.duration_type}`)}</Text>
+              <Text fontSize={'sm'}>{t(`recurring.durationType.${recurring.duration_type}`).toString()}</Text>
               {recurring.duration_type != 1 ? (
                 <Text fontSize={'sm'}>{recurring.duration_type === 3 ? `(${recurring.no_of_times})` : recurring.until_date}</Text>
               ) : (
@@ -99,15 +99,15 @@ export const PageRecurringTransactions = () => {
           <WrapItem>
             <HStack>
               <Text as="b" fontSize={'sm'}>
-                {t('recurring:recurring.fields.data.transactionType')}:
+                {t('recurring.fields.data.transactionType').toString()}:
               </Text>
-              <Text fontSize={'sm'}>{t(`recurring:recurring.transactionType.${recurring.transaction_type}`)}</Text>
+              <Text fontSize={'sm'}>{t(`recurring.transactionType.${recurring.transaction_type}`).toString()}</Text>
             </HStack>
           </WrapItem>
           <WrapItem>
             <HStack>
               <Text as="b" fontSize={'sm'}>
-                {t('recurring:recurring.transactions.totalPaid')}:
+                {t('recurring.transactions.totalPaid').toString()}:
               </Text>
               <TextCurrency value={data?.transactions_aggregate?.aggregate?.sum?.amount ?? 0} locale="de" currency="EUR" />
             </HStack>
@@ -125,8 +125,8 @@ export const PageRecurringTransactions = () => {
     return (
       <DataList>
         <DataListHeader isVisible={{ base: false, md: true }}>
-          <DataListCell colName="date">{t('recurring:recurring.table.header.date')}</DataListCell>
-          <DataListCell colName="amount">{t('recurring:recurring.table.header.amount')}</DataListCell>
+          <DataListCell colName="date">{t('recurring.table.header.date').toString()}</DataListCell>
+          <DataListCell colName="amount">{t('recurring.table.header.amount').toString()}</DataListCell>
           <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
         </DataListHeader>
         {data &&
@@ -146,7 +146,7 @@ export const PageRecurringTransactions = () => {
                   <Portal>
                     <MenuList>
                       <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                        {t('common:actions.edit')}
+                        {t('actions.edit')}
                       </MenuItem>
                       <MenuDivider />
                       <ConfirmMenuItem
@@ -155,7 +155,7 @@ export const PageRecurringTransactions = () => {
                           onDelete(item.id);
                         }}
                       >
-                        {t('common:actions.delete')}
+                        {t('actions.delete')}
                       </ConfirmMenuItem>
                     </MenuList>
                   </Portal>
@@ -180,10 +180,10 @@ export const PageRecurringTransactions = () => {
     <Page>
       <PageContent
         loading={loading}
-        title={t('recurring:recurring.title')}
+        title={t('recurring.title').toString()}
         actions={[
           <ResponsiveIconButton key="goBack" icon={<FiArrowLeft />} variant="@primary" onClick={() => navigate('/recurring')}>
-            {t('common:actions.back')}
+            {t('actions.back')}
           </ResponsiveIconButton>,
         ]}
       >

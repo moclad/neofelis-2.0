@@ -11,7 +11,7 @@ export const PageActivate = () => {
   const { searchParams } = useSearchParams();
 
   useEffect(() => {
-    activateAccount({ key: searchParams.get('key') });
+    activateAccount({ key: searchParams.get('key') || '' });
   }, [activateAccount, searchParams]);
 
   return (
@@ -19,11 +19,11 @@ export const PageActivate = () => {
       {isLoading && (
         <HStack>
           <Spinner size="sm" me="2" />
-          <Text>{t('profile:activate.feedbacks.activationLoading.title')}</Text>
+          <Text>{t('activate.feedbacks.activationLoading.title').toString()}</Text>
         </HStack>
       )}
-      {isSuccess && t('profile:activate.feedbacks.activationSuccess.title')}
-      {isError && t('profile:activate.feedbacks.activationError.title')}
+      {isSuccess && t('activate.feedbacks.activationSuccess.title').toString()}
+      {isError && t('activate.feedbacks.activationError.title').toString()}
     </Box>
   );
 };

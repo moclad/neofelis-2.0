@@ -4,17 +4,7 @@ import useMeasure from 'react-use-measure';
 
 import { useFocusMode, useLayoutContext } from '@/app/layout';
 import { useRtl } from '@/hooks/useRtl';
-import {
-  Box,
-  Flex,
-  FlexProps,
-  Heading,
-  HStack,
-  IconButton,
-  Skeleton,
-  Stack,
-  useTheme
-} from '@chakra-ui/react';
+import { Box, Flex, FlexProps, Heading, HStack, IconButton, Skeleton, Stack, useTheme } from '@chakra-ui/react';
 
 type PageContextValue = {
   nav: React.ReactNode;

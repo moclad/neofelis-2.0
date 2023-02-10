@@ -1,21 +1,33 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { GroupBase } from 'react-select';
+import { GroupBase, MultiValue } from 'react-select';
 
-import { FieldSelectProps } from '@/components/FieldSelect';
-import { FormGroup } from '@/components/FormGroup';
-import { Select } from '@/components/Select';
-import { useField } from '@formiz/core';
+import { FormGroup, FormGroupProps } from '@/components/FormGroup';
+import { Select, SelectProps } from '@/components/Select';
+import { FieldProps, useField } from '@formiz/core';
 
-export interface FieldMultiSelectProps<Option, IsMulti extends boolean = true, Group extends GroupBase<Option> = GroupBase<Option>>
-  extends FieldSelectProps<Option, IsMulti, Group> {
+type MinimumOption = { value: unknown; label: ReactNode };
+
+export type FieldMultiSelectProps<
+  Option extends MinimumOption,
+  IsMulti extends boolean = true,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = FieldProps<MultiValue<Option['value']>> & {
   isNotClearable?: boolean;
-}
+  noOptionsMessage?: string;
+} & FormGroupProps & {
+    placeholder?: string;
+    size?: 'sm' | 'md' | 'lg';
+    options?: Option[];
+    isClearable?: boolean;
+    isSearchable?: boolean;
+    selectProps?: SelectProps<Option, IsMulti, Group>;
+  };
 
-export const FieldMultiSelect = <Option, IsMulti extends boolean = true, Group extends GroupBase<Option> = GroupBase<Option>>(
+export const FieldMultiSelect = <Option extends MinimumOption, IsMulti extends boolean = true, Group extends GroupBase<Option> = GroupBase<Option>>(
   props: FieldMultiSelectProps<Option, IsMulti, Group>
 ) => {
-  const { errorMessage, id, isValid, isSubmitted, resetKey, setValue, value, otherProps } = useField(props);
+  const { errorMessage, id, isValid, isSubmitted, isPristine, resetKey, setValue, value, otherProps } = useField({ debounce: 0, ...props });
   const { required } = props;
   const {
     children,
@@ -32,13 +44,13 @@ export const FieldMultiSelect = <Option, IsMulti extends boolean = true, Group e
     ...rest
   } = otherProps;
   const [isTouched, setIsTouched] = useState(false);
-  const showError = !isValid && (isTouched || isSubmitted);
+  const showError = !isValid && ((isTouched && !isPristine) || isSubmitted);
 
   useEffect(() => {
     setIsTouched(false);
   }, [resetKey]);
 
-  const { t } = useTranslation('components');
+  const { t } = useTranslation(['components']);
 
   const formGroupProps = {
     errorMessage,
@@ -50,12 +62,12 @@ export const FieldMultiSelect = <Option, IsMulti extends boolean = true, Group e
     ...rest,
   };
 
-  const handleChange = (optionsSelected) => {
+  const handleChange = (optionsSelected: Option[]) => {
     if (!optionsSelected || !optionsSelected.length) {
       setValue(null);
       return;
     }
-    setValue(optionsSelected?.map((option) => option.value));
+    setValue(optionsSelected?.map((option) => option?.value));
   };
 
   return (
@@ -63,14 +75,15 @@ export const FieldMultiSelect = <Option, IsMulti extends boolean = true, Group e
       <Select
         id={id}
         value={options?.filter((option) => value?.includes(option.value)) || []}
+        onFocus={() => setIsTouched(false)}
         onBlur={() => setIsTouched(true)}
         placeholder={placeholder}
-        onChange={handleChange}
+        onChange={handleChange as TODO}
         options={options}
         isDisabled={isDisabled}
         isClearable={!isNotClearable}
         isSearchable={isSearchable}
-        noOptionsMessage={() => noOptionsMessage || t('components:fieldMultiSelect.noOption')}
+        noOptionsMessage={() => noOptionsMessage || t('fieldMultiSelect.noOption')}
         isError={showError}
         size={size}
         isMulti

@@ -21,7 +21,7 @@ export const PageDashboard = () => {
     <Panel allowConfiguration={false}>
       <PanelContent
         loading={false}
-        title={t('dashboard:title')}
+        title={t('title').toString()}
         actions={[
           <Button
             key="createExpense"
@@ -32,7 +32,7 @@ export const PageDashboard = () => {
               onOpen();
             }}
           >
-            {t('dashboard:actions.createExpense')}
+            {t('actions.createExpense').toString()}
           </Button>,
           <Button
             key="createIncome"
@@ -42,7 +42,7 @@ export const PageDashboard = () => {
               onOpen();
             }}
           >
-            {t('dashboard:actions.createIncome')}
+            {t('actions.createIncome').toString()}
           </Button>,
           <Button
             key="createTransfer"
@@ -52,7 +52,7 @@ export const PageDashboard = () => {
               onOpen();
             }}
           >
-            {t('dashboard:actions.createTransfer')}
+            {t('actions.createTransfer').toString()}
           </Button>,
         ]}
       ></PanelContent>

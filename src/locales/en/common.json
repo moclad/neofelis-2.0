@@ -39,6 +39,12 @@
     "inactivate": {
       "title": "Status updated to inactive."
     },
-    "noData": "No data available"
+    "noData": "No data available",
+    "createdError": {
+      "title": "Data successfully created"
+    },
+    "createdSuccess": {
+      "title": "Success"
+    }
   }
 }

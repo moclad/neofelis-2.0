@@ -8,7 +8,7 @@ import { Logo } from '@/components/Logo';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { Box, Flex, IconButton, SlideFade, useBreakpointValue, useTheme } from '@chakra-ui/react';
 
-const MenuButton = (props) => {
+const MenuButton = (props: any) => {
   const { navOnOpen } = useLayoutContext();
   return (
     <IconButton
@@ -48,11 +48,7 @@ export const TopBar = () => {
           shadow="2xl"
         >
           <MenuButton display={{ base: 'flex', md: 'none' }} ms="-0.5rem" />
-          <Box
-            as={RouterLink}
-            to="/"
-            mx={{ base: 'auto', [theme.layout.breakpoints.desktop]: 0 }}
-          >
+          <Box as={RouterLink} to="/" mx={{ base: 'auto', [theme.layout.breakpoints.desktop]: 0 }}>
             <Logo />
           </Box>
           <MainMenu me="auto" ms="4" display={{ base: 'none', md: 'flex' }} />

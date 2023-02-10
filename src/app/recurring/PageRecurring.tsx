@@ -73,7 +73,7 @@ export const PageRecurring = () => {
       },
     }).then(() => {
       toastSuccess({
-        title: t('common:feedbacks.inactivate.title'),
+        title: t('feedbacks.inactivate.title'),
       });
     });
   };
@@ -85,7 +85,7 @@ export const PageRecurring = () => {
       },
     }).then(() => {
       toastSuccess({
-        title: t('common:feedbacks.deletedSuccess.title'),
+        title: t('feedbacks.deletedSuccess.title'),
       });
     });
   };
@@ -99,28 +99,28 @@ export const PageRecurring = () => {
       <Page nav={<RecurringNav />}>
         <PageContent
           loading={loading || deleteFetching || inactivateFetching}
-          title={t('recurring:recurring.title')}
+          title={t('recurring.title')}
           actions={[
             <ResponsiveIconButton key="createRecurring" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
-              {t('recurring:recurring.actions.create')}
+              {t('recurring.actions.create')}
             </ResponsiveIconButton>,
           ]}
         >
           <DataList>
             <DataListHeader>
               <DataListCell colName="name" colWidth={1.5}>
-                {t('recurring:recurring.table.header.title')}
+                {t('recurring.table.header.title')}
               </DataListCell>
               <DataListCell colName="accounts" isVisible={{ base: false, lg: true }}>
-                {t('recurring:recurring.table.header.accounts')}
+                {t('recurring.table.header.accounts')}
               </DataListCell>
               <DataListCell colName="cycle" isVisible={{ base: false, lg: true }}>
-                {t('recurring:recurring.table.header.cycle')}
+                {t('recurring.table.header.cycle')}
               </DataListCell>
-              <DataListCell colName="status">{t('recurring:recurring.table.header.status')}</DataListCell>
-              <DataListCell colName="amount">{t('recurring:recurring.table.header.amount')}</DataListCell>
+              <DataListCell colName="status">{t('recurring.table.header.status')}</DataListCell>
+              <DataListCell colName="amount">{t('recurring.table.header.amount')}</DataListCell>
               <DataListCell colName="total" isVisible={{ base: false, lg: true }}>
-                {t('recurring:recurring.table.header.totalPaid')}
+                {t('recurring.table.header.totalPaid')}
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
@@ -153,19 +153,19 @@ export const PageRecurring = () => {
                     <Wrap>
                       <WrapItem>
                         <Badge size="sm" colorScheme="success">
-                          {t(`recurring:recurring.cycleType.${item.cycle_type}`)}
+                          {t(`recurring.cycleType.${item.cycle_type}`).toString()}
                         </Badge>
                       </WrapItem>
                       <WrapItem>
                         <Badge size="sm" colorScheme="gray">
-                          {t(`recurring:recurring.durationType.${item.duration_type}`)}
+                          {t(`recurring.durationType.${item.duration_type}`).toString()}
                         </Badge>
                       </WrapItem>
                     </Wrap>
                   </DataListCell>
                   <DataListCell colName="status">
                     <Badge size="sm" colorScheme={item.active ? 'success' : 'red'}>
-                      {item.active ? t('recurring:recurring.status.active') : t('recurring:recurring.status.inactive')}
+                      {item.active ? t('recurring.status.active') : t('recurring.status.inactive')}
                     </Badge>
                   </DataListCell>
                   <DataListCell colName="amount">
@@ -176,7 +176,7 @@ export const PageRecurring = () => {
                   </DataListCell>
                   <DataListCell colName="actions">
                     <HStack>
-                      <Tooltip hasArrow label={t('common:actions.view')}>
+                      <Tooltip hasArrow label={t('actions.view')}>
                         <ActionsButton icon={<FiEye />} onClick={() => navigate(`/recurring/transactions/${item.id}`)} />
                       </Tooltip>
                       <Menu isLazy>
@@ -184,10 +184,10 @@ export const PageRecurring = () => {
                         <Portal>
                           <MenuList>
                             <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                              {t('common:actions.edit')}
+                              {t('actions.edit')}
                             </MenuItem>
                             <ConfirmMenuItem icon={<FiXCircle />} onClick={() => onDeactivate(item.id)}>
-                              {t('common:actions.deactivate')}
+                              {t('actions.deactivate')}
                             </ConfirmMenuItem>
                             <MenuDivider />
                             <ConfirmMenuItem
@@ -197,7 +197,7 @@ export const PageRecurring = () => {
                                 onDelete(item.id);
                               }}
                             >
-                              {t('common:actions.delete')}
+                              {t('actions.delete')}
                             </ConfirmMenuItem>
                           </MenuList>
                         </Portal>

@@ -51,7 +51,7 @@ export function useEditMode<T, P>(props: UseEditModeProps<P> = {}) {
       }
       onEditProp?.(values);
     },
-    [dataContext, isControlled, onEditProp]
+    [isControlled, onEditProp]
   );
 
   const onToggle = React.useCallback(

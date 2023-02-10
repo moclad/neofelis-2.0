@@ -34,14 +34,14 @@ export const PageResetPasswordRequest = () => {
     onError: (error: any) => {
       const { title } = error?.response?.data || {};
       toastError({
-        title: t('profile:resetPassword.feedbacks.initError.title'),
+        title: t('resetPassword.feedbacks.initError.title').toString(),
         description: title,
       });
     },
   });
 
-  const submitResetPasswordInit = async (values) => {
-    await resetPasswordInit(values.email);
+  const submitResetPasswordInit = async (values: any) => {
+    resetPasswordInit(values.email);
   };
 
   if (resetPasswordSuccess) {
@@ -62,15 +62,15 @@ export const PageResetPasswordRequest = () => {
           >
             <Box fontSize="3rem">✉️</Box>
             <AlertTitle mt={4} mb={1} fontSize="lg">
-              {t('profile:resetPassword.feedbacks.initSuccess.title')}
+              {t('resetPassword.feedbacks.initSuccess.title').toString()}
             </AlertTitle>
             <AlertDescription>
-              <Trans t={t} i18nKey="profile:resetPassword.feedbacks.initSuccess.description" values={{ email: accountEmail }} />
+              <Trans t={t} i18nKey="resetPassword.feedbacks.initSuccess.description" values={{ email: accountEmail }} />
             </AlertDescription>
           </Alert>
           <Center mt="8">
             <Button as={RouterLink} to="/login" variant="link" color={colorModeValue('brand.500', 'brand.300')}>
-              {t('profile:resetPassword.actions.goToLogin')}
+              {t('resetPassword.actions.goToLogin').toString()}
             </Button>
           </Center>
         </ScaleFade>
@@ -82,28 +82,28 @@ export const PageResetPasswordRequest = () => {
     <SlideIn>
       <Box p="2" pb="4rem" w="22rem" maxW="full" m="auto">
         <Box p="6" bg={colorModeValue('white', 'blackAlpha.400')} borderRadius="md" boxShadow="md">
-          <Heading size="lg">{t('profile:resetPassword.title')}</Heading>
+          <Heading size="lg">{t('resetPassword.title').toString()}</Heading>
           <Formiz id="reset-password-init-form" onValidSubmit={submitResetPasswordInit} connect={resetPasswordInitForm}>
             <form noValidate onSubmit={resetPasswordInitForm.submit}>
               <FieldInput
                 name="email"
-                label={t('profile:data.email.label')}
+                label={t('data.email.label')}
                 my="6"
-                helper={t('profile:data.email.resetHelper')}
-                required={t('profile:data.email.required') as string}
+                helper={t('data.email.resetHelper').toString()}
+                required={t('data.email.required').toString()}
                 validations={[
                   {
                     rule: isEmail(),
-                    message: t('profile:data.email.invalid'),
+                    message: t('data.email.invalid').toString(),
                   },
                 ]}
               />
               <Flex>
                 <Button leftIcon={rtlValue(<FiArrowLeft />, <FiArrowRight />)} as={RouterLink} to="/login" variant="link">
-                  {t('profile:resetPassword.actions.cancel')}
+                  {t('resetPassword.actions.cancel').toString()}
                 </Button>
                 <Button type="submit" variant="@primary" ms="auto" isLoading={resetPasswordLoading}>
-                  {t('profile:resetPassword.actions.send')}
+                  {t('resetPassword.actions.send').toString()}
                 </Button>
               </Flex>
             </form>

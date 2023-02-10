@@ -22,7 +22,7 @@ const OAuthProviders = () => {
     <>
       <HStack paddingTop={5}>
         <Divider />
-        <Text>{t('auth:login.or')}</Text>
+        <Text>{t('login.or')}</Text>
         <Divider />
       </HStack>
       <VStack divider={<StackDivider />} paddingTop={5} spacing={4} align="stretch">
@@ -30,7 +30,7 @@ const OAuthProviders = () => {
           .filter((provider) => provider.id !== 'email')
           .map((provider: any) => (
             <Button onClick={() => signIn(provider.id)} key={provider.name}>
-              {t('auth:login.with')} {provider.name}
+              {t('login.with')} {provider.name}
             </Button>
           ))}
       </VStack>
@@ -38,16 +38,16 @@ const OAuthProviders = () => {
   );
 };
 
-export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
+export const LoginForm = ({ onSuccess = (): void => undefined, ...rest }) => {
   const { t } = useTranslation('auth');
   const form = useForm({ subscribe: 'form' });
   const toastError = useToastError();
 
-  const { mutate: login, isLoading } = useLogin({
+  const { isLoading } = useLogin({
     onSuccess,
     onError: (error: any) => {
       toastError({
-        title: t('auth:login.feedbacks.loginError.title'),
+        title: t('login.feedbacks.loginError.title').toString(),
         description: error?.response?.data?.title,
       });
     },
@@ -66,17 +66,17 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
         <Stack spacing="4">
           <FieldInput
             name="email"
-            label={t('auth:data.email.label')}
+            label={t('data.email.label').toString()}
             validations={[
               {
                 rule: isEmail(),
-                message: t('auth:data.email.invalid'),
+                message: t('data.email.invalid').toString(),
               },
             ]}
-            required={t('auth:data.email.required') as string}
+            required={t('data.email.required').toString()}
           />
           <Button isLoading={isLoading} isDisabled={form.isSubmitted && !form.isValid} type="submit" variant="@primary" ms="auto">
-            {t('auth:login.actions.loginWithEmail')}
+            {t('login.actions.loginWithEmail').toString()}
           </Button>
         </Stack>
         <OAuthProviders />

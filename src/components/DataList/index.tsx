@@ -193,7 +193,7 @@ export const DataListRow: FC<React.PropsWithChildren<DataListRowProps>> = ({
   );
 };
 
-export interface DataListHeaderProps extends DataListRowProps {}
+export type DataListHeaderProps = DataListRowProps
 
 export const DataListHeader: FC<
   React.PropsWithChildren<DataListHeaderProps>
@@ -246,7 +246,7 @@ export const DataListPaginationFooter: FC<
   );
 };
 
-export interface DataListFooterProps extends DataListRowProps {}
+export type DataListFooterProps = DataListRowProps
 
 export const DataListFooter: FC<
   React.PropsWithChildren<DataListFooterProps>

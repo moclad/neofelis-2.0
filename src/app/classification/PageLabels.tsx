@@ -10,7 +10,7 @@ import { FieldInput } from '@/components/FieldInput';
 import { ModalDialog } from '@/components/ModalDialog';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastError, useToastSuccess } from '@/components/Toast';
-import { useAllLabelsQuery, useDeleteLabelMutation, useInsertLabelMutation, useUpdateLabelMutation } from '@/generated/graphql';
+import { Labels, useAllLabelsQuery, useDeleteLabelMutation, useInsertLabelMutation, useUpdateLabelMutation } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
 import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, Tag, TagLabel, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
 
@@ -18,7 +18,7 @@ export const PageLabels = () => {
   const { t } = useTranslation(['common', 'classification']);
   const { loading, data } = useAllLabelsQuery();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Labels>();
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
@@ -27,13 +27,13 @@ export const PageLabels = () => {
   const [updateLabel, { loading: updateLoading }] = useUpdateLabelMutation({
     onError: (error) => {
       toastError({
-        title: t('common:feedbacks.updateError.title'),
+        title: t('feedbacks.updateError.title').toString(),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('common:feedbacks.updateSuccess.title'),
+        title: t('feedbacks.updateSuccess.title').toString(),
       });
     },
   });
@@ -41,18 +41,18 @@ export const PageLabels = () => {
   const [insertLabel, { loading: insertLoading }] = useInsertLabelMutation({
     onError: (error) => {
       toastError({
-        title: t('common:feedbacks.createdError.title'),
+        title: t('feedbacks.createdError.title').toString(),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('common:feedbacks.createdSuccess.title'),
+        title: t('feedbacks.createdSuccess.title').toString(),
       });
     },
   });
 
-  const onConfirmCreate = async (values) => {
+  const onConfirmCreate = async (values: any) => {
     const newData = {
       ...values,
     };
@@ -65,7 +65,7 @@ export const PageLabels = () => {
     });
   };
 
-  const onConfirmEdit = async (values) => {
+  const onConfirmEdit = async (values: any) => {
     const newData = {
       ...values,
     };
@@ -87,7 +87,7 @@ export const PageLabels = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('common:feedbacks.deletedSuccess.title'),
+        title: t('feedbacks.deletedSuccess.title').toString(),
       });
     });
   };
@@ -97,10 +97,10 @@ export const PageLabels = () => {
       <Page nav={<ClassificationNav />}>
         <PageContent
           loading={loading || deleteLabelFetching || insertLoading}
-          title={t('classification:labels.title')}
+          title={t('labels.title').toString()}
           actions={[
             <ResponsiveIconButton key="createLabel" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
-              {t('classification:labels.actions.create')}
+              {t('labels.actions.create').toString()}
             </ResponsiveIconButton>,
           ]}
         >
@@ -119,7 +119,7 @@ export const PageLabels = () => {
                             onEdit(label.id, label);
                           }}
                         >
-                          {t('classification:labels.actions.edit')}
+                          {t('labels.actions.edit').toString()}
                         </MenuItem>
                         <MenuDivider />
                         <ConfirmMenuItem
@@ -128,7 +128,7 @@ export const PageLabels = () => {
                             onDelete(label.id);
                           }}
                         >
-                          {t('classification:labels.actions.delete')}
+                          {t('labels.actions.delete').toString()}
                         </ConfirmMenuItem>
                       </MenuList>
                     </Menu>
@@ -139,7 +139,7 @@ export const PageLabels = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={isEditing ? t('classification:labels.actions.edit') : t('classification:labels.actions.create')}
+        title={isEditing ? t('labels.actions.edit').toString() : t('labels.actions.create').toString()}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -150,7 +150,7 @@ export const PageLabels = () => {
         formId="label-form-id"
         initialValues={dataContext}
       >
-        <FieldInput name="name" label={t('classification:labels.data.name')} required={t('classification:labels.data.nameRequired') as string} />
+        <FieldInput name="name" label={t('labels.data.name').toString()} required={t('labels.data.nameRequired').toString()} />
       </ModalDialog>
     </>
   );

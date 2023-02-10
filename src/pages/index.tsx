@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-
-import { Center } from '@chakra-ui/react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 
 import { Loader } from '@/app/layout';
 import { APP_BASENAME } from '@/constants/routing';
+import { Center } from '@chakra-ui/react';
 
 const Index = () => {
   const router = useRouter();
@@ -14,14 +12,9 @@ const Index = () => {
   }, [router]);
 
   return (
-    <>
-      <Head>
-        <title>Neofelis</title>
-      </Head>
-      <Center flex="1">
-        <Loader />
-      </Center>
-    </>
+    <Center flex="1">
+      <Loader />
+    </Center>
   );
 };
 export default Index;

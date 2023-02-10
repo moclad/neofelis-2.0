@@ -30,18 +30,18 @@ export const PageSettings = () => {
   const [updateUser, { loading: updateLoading }] = useUpdateUserSettingsMutation({
     onError: (error) => {
       toastError({
-        title: t('common:feedbacks.updateError.title'),
+        title: t('feedbacks.updateError.title').toString(),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('common:feedbacks.updateSuccess.title'),
+        title: t('feedbacks.updateSuccess.title').toString(),
       });
     },
   });
 
-  const submitGeneralInformation = async (values) => {
+  const submitGeneralInformation = async (values: any) => {
     const newData = {
       ...data.user_settings_by_pk,
       ...values,
@@ -59,7 +59,7 @@ export const PageSettings = () => {
     <Page nav={<ProfileNav />}>
       <PageContent loading={loading}>
         <Heading size="md" mb="4">
-          {t('profile:settings.title')}
+          {t('settings.title').toString()}
         </Heading>
         {data && (
           <Formiz id="account-form" onValidSubmit={submitGeneralInformation} connect={generalInformationForm} initialValues={data.user_settings_by_pk}>
@@ -67,7 +67,7 @@ export const PageSettings = () => {
               <Stack direction="column" bg={colorModeValue('white', 'blackAlpha.400')} p="6" borderRadius="lg" spacing="6" shadow="md">
                 <FieldSelect
                   name="langKey"
-                  label={t('profile:data.language.label')}
+                  label={t('data.language.label').toString()}
                   options={AVAILABLE_LANGUAGES.map(({ key }) => ({
                     label: t(`languages.${key}`),
                     value: key,
@@ -75,7 +75,7 @@ export const PageSettings = () => {
                 />
                 <Flex>
                   <Button type="submit" variant="@primary" ms="auto" isLoading={updateLoading}>
-                    {t('profile:settings.actions.save')}
+                    {t('settings.actions.save').toString()}
                   </Button>
                 </Flex>
               </Stack>

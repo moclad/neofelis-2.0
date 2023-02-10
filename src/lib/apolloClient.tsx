@@ -9,7 +9,7 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 
 const createHttpLink = (token: string) => {
-  const httpLink = new HttpLink({
+  return new HttpLink({
     uri: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/v1/graphql',
     credentials: 'include',
     headers: {
@@ -18,7 +18,6 @@ const createHttpLink = (token: string) => {
     },
     fetch,
   });
-  return httpLink;
 };
 
 const createWSLink = (token: string) => {
@@ -85,6 +84,5 @@ export const initializeApollo = (initialState = {}, token: string | unknown) => 
 };
 
 export function useApollo(initialState: any, token: string) {
-  const store = React.useMemo(() => initializeApollo(initialState, token), [initialState, token]);
-  return store;
+  return React.useMemo(() => initializeApollo(initialState, token), [initialState, token]);
 }
