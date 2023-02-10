@@ -11,7 +11,7 @@ import { Formiz, useForm } from '@formiz/core';
 import { isEmail } from '@formiz/validations';
 
 const OAuthProviders = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('auth');
   const { providers, isLoading } = useProvidersList();
 
   if (isLoading || !providers) {
@@ -25,12 +25,7 @@ const OAuthProviders = () => {
         <Text>{t('auth:login.or')}</Text>
         <Divider />
       </HStack>
-      <VStack
-        divider={<StackDivider />}
-        paddingTop={5}
-        spacing={4}
-        align="stretch"
-      >
+      <VStack divider={<StackDivider />} paddingTop={5} spacing={4} align="stretch">
         {Object.values(providers)
           .filter((provider) => provider.id !== 'email')
           .map((provider: any) => (
@@ -44,7 +39,7 @@ const OAuthProviders = () => {
 };
 
 export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('auth');
   const form = useForm({ subscribe: 'form' });
   const toastError = useToastError();
 
@@ -80,13 +75,7 @@ export const LoginForm = ({ onSuccess = () => undefined, ...rest }) => {
             ]}
             required={t('auth:data.email.required') as string}
           />
-          <Button
-            isLoading={isLoading}
-            isDisabled={form.isSubmitted && !form.isValid}
-            type="submit"
-            variant="@primary"
-            ms="auto"
-          >
+          <Button isLoading={isLoading} isDisabled={form.isSubmitted && !form.isValid} type="submit" variant="@primary" ms="auto">
             {t('auth:login.actions.loginWithEmail')}
           </Button>
         </Stack>

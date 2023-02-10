@@ -6,18 +6,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Nav, NavGroup, NavItem } from '@/components/Nav';
 
 export const AdminNav = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('users');
   const { pathname } = useLocation();
   const isActive = (to) => pathname.startsWith(to);
   return (
     <Nav>
       <NavGroup title={t('admin:nav.administration')}>
-        <NavItem
-          as={Link}
-          to="/admin/api"
-          isActive={isActive('/admin/api')}
-          icon={GoBook}
-        >
+        <NavItem as={Link} to="/admin/api" isActive={isActive('/admin/api')} icon={GoBook}>
           {t('admin:nav.apiDocumentation')}
         </NavItem>
       </NavGroup>

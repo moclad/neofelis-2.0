@@ -21,7 +21,7 @@ import {
   useInsertLabelMutation,
   useInsertRevenueAccMutation,
   useInsertTransactionMutation,
-  useUpdateTransactionMutation
+  useUpdateTransactionMutation,
 } from '@/generated/graphql';
 import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
@@ -44,7 +44,7 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
 
   const selectedLabelIds: number[] = [];
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('dashboard');
   const { mutationOptions } = useMutationOptions();
   const form = useForm();
 

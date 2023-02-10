@@ -8,36 +8,12 @@ import { Page, PageContent } from '@/app/layout';
 import { TransactionDialog } from '@/app/transactions/transaction-dialog';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
-import {
-  DataList,
-  DataListCell,
-  DataListHeader,
-  DataListPaginationFooter,
-  DataListRow
-} from '@/components/DataList';
+import { DataList, DataListCell, DataListHeader, DataListPaginationFooter, DataListRow } from '@/components/DataList';
 import { TextCurrency } from '@/components/TextCurrency';
 import { useToastError, useToastSuccess } from '@/components/Toast';
-import {
-  Transactions,
-  useDeleteTransactionByIdMutation,
-  useRecurringTransactionsQuery
-} from '@/generated/graphql';
+import { Transactions, useDeleteTransactionByIdMutation, useRecurringTransactionsQuery } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
-import {
-  Badge,
-  Box,
-  HStack,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Portal,
-  Text,
-  VStack,
-  Wrap,
-  WrapItem
-} from '@chakra-ui/react';
+import { Badge, Box, HStack, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 
 import { NoData } from '../../components/no-data';
 import { ResponsiveIconButton } from '../../components/ResponsiveIconButton';
@@ -45,7 +21,7 @@ import { TransactionType } from '../../types/types';
 
 export const PageRecurringTransactions = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t } = useTranslation(['recurring', 'common']);
 
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();

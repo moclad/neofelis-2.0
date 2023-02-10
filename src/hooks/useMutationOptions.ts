@@ -10,7 +10,7 @@ export interface useMutationOptionProps {
 export const useMutationOptions = (props: useMutationOptionProps = {}) => {
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const {
     successMessage = 'common:feedbacks.saveSuccess.title',

@@ -15,7 +15,7 @@ import { isEmail } from '@formiz/validations';
 
 export const PageGroups = () => {
   const { data: session } = useSession();
-  const { t } = useTranslation();
+  const { t } = useTranslation('classification');
   const { colorModeValue } = useDarkMode();
   const { loading, data } = useAccount();
   const generalInformationForm = useForm();
@@ -58,31 +58,12 @@ export const PageGroups = () => {
           {t('profile:profile.title')}
         </Heading>
         {data && (
-          <Formiz
-            id="account-form"
-            onValidSubmit={submitGeneralInformation}
-            connect={generalInformationForm}
-            initialValues={data.users_by_pk}
-          >
+          <Formiz id="account-form" onValidSubmit={submitGeneralInformation} connect={generalInformationForm} initialValues={data.users_by_pk}>
             <form noValidate onSubmit={generalInformationForm.submit}>
-              <Stack
-                direction="column"
-                bg={colorModeValue('white', 'blackAlpha.400')}
-                p="6"
-                borderRadius="lg"
-                spacing="6"
-                shadow="md"
-              >
+              <Stack direction="column" bg={colorModeValue('white', 'blackAlpha.400')} p="6" borderRadius="lg" spacing="6" shadow="md">
                 <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-                  <FieldInput
-                    name="name"
-                    label={t('profile:data.firstname.label')}
-                    required={t('profile:data.firstname.required') as string}
-                  />
-                  <FieldInput
-                    name="lastName"
-                    label={t('profile:data.lastname.label')}
-                  />
+                  <FieldInput name="name" label={t('profile:data.firstname.label')} required={t('profile:data.firstname.required') as string} />
+                  <FieldInput name="lastName" label={t('profile:data.lastname.label')} />
                 </Stack>
                 <FieldInput
                   name="email"
@@ -96,12 +77,7 @@ export const PageGroups = () => {
                   ]}
                 />
                 <Flex>
-                  <Button
-                    type="submit"
-                    variant="@primary"
-                    ms="auto"
-                    isLoading={updateLoading}
-                  >
+                  <Button type="submit" variant="@primary" ms="auto" isLoading={updateLoading}>
                     {t('profile:profile.actions.save')}
                   </Button>
                 </Flex>

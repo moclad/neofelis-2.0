@@ -8,7 +8,6 @@ import { useFetchUserQuery } from '@/generated/graphql';
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export const useAccount = () => {
-  // const { i18n } = useTranslation();
   const { data: session } = useSession();
 
   return useFetchUserQuery({

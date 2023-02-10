@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ErrorPage } from '@/components/ErrorPage';
 
 const Page500 = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('components');
   return (
     <>
       <Head>

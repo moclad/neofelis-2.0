@@ -8,32 +8,18 @@ import { Loader, Page, PageBottomBar, PageContent, PageTopBar } from '@/app/layo
 import { ErrorPage } from '@/components/ErrorPage';
 import { useToastError, useToastSuccess } from '@/components/Toast';
 import { useDarkMode } from '@/hooks/useDarkMode';
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Heading,
-  HStack,
-  SkeletonText,
-  Stack,
-  Text
-} from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Heading, HStack, SkeletonText, Stack, Text } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 
 import { UserForm } from './UserForm';
 import { UserStatus } from './UserStatus';
 
 export const PageUserUpdate = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('users');
   const { colorModeValue } = useDarkMode();
   const { login } = useParams();
   const navigate = useNavigate();
-  const {
-    user,
-    isLoading: userIsLoading,
-    isFetching: userIsFetching,
-    isError: userIsError,
-  } = useUser(login, { refetchOnWindowFocus: false });
+  const { user, isLoading: userIsLoading, isFetching: userIsFetching, isError: userIsError } = useUser(login, { refetchOnWindowFocus: false });
 
   const form = useForm({ subscribe: false });
 
@@ -85,10 +71,7 @@ export const PageUserUpdate = () => {
             ) : (
               <Stack spacing="0">
                 <Heading size="sm">{user?.login}</Heading>
-                <Text
-                  fontSize="xs"
-                  color={colorModeValue('gray.600', 'gray.300')}
-                >
+                <Text fontSize="xs" color={colorModeValue('gray.600', 'gray.300')}>
                   {t('users:data.id.label')}: {user?.id}
                 </Text>
               </Stack>
@@ -104,26 +87,15 @@ export const PageUserUpdate = () => {
       {userIsFetching && <Loader />}
       {userIsError && !userIsFetching && <ErrorPage errorCode={404} />}
       {!userIsError && !userIsFetching && (
-        <Formiz
-          id="create-user-form"
-          onValidSubmit={submitEditUser}
-          connect={form}
-          initialValues={user}
-        >
+        <Formiz id="create-user-form" onValidSubmit={submitEditUser} connect={form} initialValues={user}>
           <form noValidate onSubmit={form.submit}>
             <PageContent>
               <UserForm />
             </PageContent>
             <PageBottomBar>
               <ButtonGroup justifyContent="space-between">
-                <Button onClick={() => navigate(-1)}>
-                  {t('actions.cancel')}
-                </Button>
-                <Button
-                  type="submit"
-                  variant="@primary"
-                  isLoading={editUserIsLoading}
-                >
+                <Button onClick={() => navigate(-1)}>{t('actions.cancel')}</Button>
+                <Button type="submit" variant="@primary" isLoading={editUserIsLoading}>
                   {t('users:update.action.save')}
                 </Button>
               </ButtonGroup>

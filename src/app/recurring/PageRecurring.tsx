@@ -8,13 +8,7 @@ import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
-import {
-  DataList,
-  DataListCell,
-  DataListHeader,
-  DataListPaginationFooter,
-  DataListRow
-} from '@/components/DataList';
+import { DataList, DataListCell, DataListHeader, DataListPaginationFooter, DataListRow } from '@/components/DataList';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { TextCurrency } from '@/components/TextCurrency';
 import { useToastSuccess } from '@/components/Toast';
@@ -23,7 +17,7 @@ import {
   useDeleteRecurringMutation,
   useInactivateRecurringMutation,
   useRecurringAggregateSubscription,
-  useRecurringSubscription
+  useRecurringSubscription,
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
@@ -42,7 +36,7 @@ import {
   Tooltip,
   useDisclosure,
   Wrap,
-  WrapItem
+  WrapItem,
 } from '@chakra-ui/react';
 
 import { RecurringDialog } from './dialogs/recurring-dialog';
@@ -50,7 +44,7 @@ import { RecurringNav } from './RecurringNav';
 
 export const PageRecurring = () => {
   const { colorModeValue } = useDarkMode();
-  const { t } = useTranslation();
+  const { t } = useTranslation(['recurring', 'common']);
   const navigate = useNavigate();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -183,7 +177,7 @@ export const PageRecurring = () => {
                   <DataListCell colName="actions">
                     <HStack>
                       <Tooltip hasArrow label={t('common:actions.view')}>
-                        <ActionsButton icon={<FiEye />} onClick={() => navigate(`/recurring//transactions/${item.id}`)} />
+                        <ActionsButton icon={<FiEye />} onClick={() => navigate(`/recurring/transactions/${item.id}`)} />
                       </Tooltip>
                       <Menu isLazy>
                         <MenuButton as={ActionsButton} disabled={!item.active} />

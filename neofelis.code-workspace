@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "..\\neofelis-backend"
+		},
+		{
+			"path": "../neofelis-containers"
 		}
 	],
 	"settings": {
@@ -21,6 +24,16 @@
 				"name": "Neofelis",
 				"database": "neofelis",
 				"username": "master"
+			},
+			{
+				"previewLimit": 50,
+				"server": "sbrubbles-srv3",
+				"port": 5432,
+				"askForPassword": true,
+				"driver": "PostgreSQL",
+				"name": "sbrubbles-srv3",
+				"database": "postgres",
+				"username": "moclad"
 			}
 		],
 		"i18n-ally.extract.keyMaxLength": 40,
@@ -29,7 +42,9 @@
 			"src/locales"
 		],
 		"cSpell.words": [
-			"Avvvatars"
+			"Avvvatars",
+			"stringvalue",
+			"ZAMBRETTIS"
 		]
 	}
 }

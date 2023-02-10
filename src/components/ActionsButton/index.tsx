@@ -9,7 +9,7 @@ export interface ActionsButtonProps extends Omit<IconButtonProps, 'aria-label'> 
 }
 
 export const ActionsButton: FC<React.PropsWithChildren<ActionsButtonProps>> = forwardRef(({ label, ...rest }, ref) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('components');
   return (
     <IconButton
       ref={ref}

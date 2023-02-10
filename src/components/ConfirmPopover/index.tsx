@@ -1,10 +1,12 @@
 import React, { ReactNode, useRef } from 'react';
+import FocusLock from 'react-focus-lock';
+import { useTranslation } from 'react-i18next';
 
 import {
   Button,
   ButtonGroup,
-  HStack,
   Heading,
+  HStack,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -15,8 +17,6 @@ import {
   Portal,
   useDisclosure,
 } from '@chakra-ui/react';
-import FocusLock from 'react-focus-lock';
-import { useTranslation } from 'react-i18next';
 
 interface ConfirmPopoverProps extends PopoverProps {
   children: ReactNode;
@@ -27,9 +27,7 @@ interface ConfirmPopoverProps extends PopoverProps {
   confirmVariant?: string;
 }
 
-export const ConfirmPopover: React.FC<
-  React.PropsWithChildren<ConfirmPopoverProps>
-> = ({
+export const ConfirmPopover: React.FC<React.PropsWithChildren<ConfirmPopoverProps>> = ({
   children,
   title,
   message,
@@ -38,24 +36,16 @@ export const ConfirmPopover: React.FC<
   confirmVariant = '@primary',
   ...rest
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['components', 'common']);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const displayHeading =
-    !title && !message ? t('components:confirmPopover.heading') : title;
+  const displayHeading = !title && !message ? t('components:confirmPopover.heading') : title;
 
   const initialFocusRef = useRef<TODO>();
 
   return (
     <>
-      <Popover
-        isLazy
-        isOpen={isOpen}
-        onClose={onClose}
-        onOpen={onOpen}
-        initialFocusRef={initialFocusRef}
-        {...rest}
-      >
+      <Popover isLazy isOpen={isOpen} onClose={onClose} onOpen={onOpen} initialFocusRef={initialFocusRef} {...rest}>
         <PopoverTrigger>{children}</PopoverTrigger>
         <Portal>
           <PopoverContent>
@@ -84,8 +74,7 @@ export const ConfirmPopover: React.FC<
                       }}
                       ref={initialFocusRef}
                     >
-                      {confirmText ??
-                        t('components:confirmPopover.confirmText')}
+                      {confirmText ?? t('components:confirmPopover.confirmText')}
                     </Button>
                   </ButtonGroup>
                 </HStack>

@@ -15,53 +15,42 @@ import {
   Text,
   useMenuItem,
   useMenuState,
-  useMultiStyleConfig
+  useMultiStyleConfig,
 } from '@chakra-ui/react';
 
 export type StyledMenuItemProps = HTMLChakraProps<'button'>;
 
 const [StylesProvider, useStyles] = createStylesContext('Menu');
 
-const StyledMenuItem = forwardRef<StyledMenuItemProps, 'button'>(
-  (props, ref) => {
-    const { type, ...rest } = props;
-    const styles = useStyles();
+const StyledMenuItem = forwardRef<StyledMenuItemProps, 'button'>((props, ref) => {
+  const { type, ...rest } = props;
+  const styles = useStyles();
 
-    /**
-     * Given another component, use its type if present
-     * Else, use no type to avoid invalid html, e.g. <a type="button" />
-     * Else, fall back to "button"
-     */
-    const btnType = rest.as ? type ?? undefined : 'button';
+  /**
+   * Given another component, use its type if present
+   * Else, use no type to avoid invalid html, e.g. <a type="button" />
+   * Else, fall back to "button"
+   */
+  const btnType = rest.as ? type ?? undefined : 'button';
 
-    const buttonStyles = {
-      textDecoration: 'none',
-      color: 'inherit',
-      userSelect: 'none',
-      display: 'flex',
-      width: '100%',
-      alignItems: 'center',
-      textAlign: 'left',
-      flex: '0 0 auto',
-      outline: 0,
-      ...styles.item,
-    };
+  const buttonStyles = {
+    textDecoration: 'none',
+    color: 'inherit',
+    userSelect: 'none',
+    display: 'flex',
+    width: '100%',
+    alignItems: 'center',
+    textAlign: 'left',
+    flex: '0 0 auto',
+    outline: 0,
+    ...styles.item,
+  };
 
-    return (
-      <chakra.button ref={ref} type={btnType} {...rest} __css={buttonStyles} />
-    );
-  }
-);
+  return <chakra.button ref={ref} type={btnType} {...rest} __css={buttonStyles} />;
+});
 
 export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
-  const {
-    icon,
-    iconSpacing = '0.75rem',
-    command,
-    commandSpacing = '0.75rem',
-    children,
-    ...rest
-  } = props;
+  const { icon, iconSpacing = '0.75rem', command, commandSpacing = '0.75rem', children, ...rest } = props;
 
   const styles = useMultiStyleConfig('Menu', props);
 
@@ -91,9 +80,7 @@ export const MenuItem = forwardRef<MenuItemProps, 'button'>((props, ref) => {
           </MenuIcon>
         )}
         {_children}
-        {command && (
-          <MenuCommand marginStart={commandSpacing}>{command}</MenuCommand>
-        )}
+        {command && <MenuCommand marginStart={commandSpacing}>{command}</MenuCommand>}
       </StyledMenuItem>
     </StylesProvider>
   );
@@ -109,29 +96,17 @@ type ConfirmMenuItemProps = MenuItemProps & {
 
 export const ConfirmMenuItem = forwardRef<ConfirmMenuItemProps, 'button'>(
   (
-    {
-      children,
-      confirmColorScheme = 'error',
-      confirmContent = '',
-      confirmIcon = FiAlertCircle,
-      confirmText,
-      confirmDelay = 2000,
-      icon,
-      onClick,
-      ...rest
-    },
+    { children, confirmColorScheme = 'error', confirmContent = '', confirmIcon = FiAlertCircle, confirmText, confirmDelay = 2000, icon, onClick, ...rest },
     ref
   ) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('components');
 
     const [isConfirmActive, setIsConfirmActive] = useState(false);
     const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
     const { onClose: onCloseMenu } = useMenuState();
 
-    const handleClickConfirm = (
-      event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
+    const handleClickConfirm = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       if (isConfirmActive) {
         if (timeoutRef.current) {
           clearTimeout(timeoutRef.current);
@@ -177,26 +152,13 @@ export const ConfirmMenuItem = forwardRef<ConfirmMenuItemProps, 'button'>(
               bg: `${confirmColorScheme}.900`,
             },
           },
-          icon: icon
-            ? React.cloneElement(icon, { color: 'transparent' })
-            : icon,
+          icon: icon ? React.cloneElement(icon, { color: 'transparent' }) : icon,
         }
       : {};
 
     return (
-      <MenuItem
-        position="relative"
-        onClick={handleClickConfirm}
-        ref={ref}
-        icon={icon}
-        {...rest}
-        {...confirmActiveProps}
-      >
-        <Flex
-          as="span"
-          alignItems="center"
-          opacity={isConfirmActive ? 0 : undefined}
-        >
+      <MenuItem position="relative" onClick={handleClickConfirm} ref={ref} icon={icon} {...rest} {...confirmActiveProps}>
+        <Flex as="span" alignItems="center" opacity={isConfirmActive ? 0 : undefined}>
           {children}
         </Flex>
 

@@ -10,67 +10,47 @@ import { FieldInput } from '@/components/FieldInput';
 import { ModalDialog } from '@/components/ModalDialog';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastError, useToastSuccess } from '@/components/Toast';
-import {
-  useAllCategoriesQuery,
-  useDeleteCategoryMutation,
-  useInsertCategoryMutation,
-  useUpdateCategoryMutation
-} from '@/generated/graphql';
+import { useAllCategoriesQuery, useDeleteCategoryMutation, useInsertCategoryMutation, useUpdateCategoryMutation } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
-import {
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Tag,
-  TagLabel,
-  useDisclosure,
-  Wrap,
-  WrapItem
-} from '@chakra-ui/react';
+import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, Tag, TagLabel, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
 
 export const PageCategories = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('classification');
   const { loading, data } = useAllCategoriesQuery();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } =
-    useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number>();
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
-  const [deleteCategory, { loading: deleteFetching }] =
-    useDeleteCategoryMutation();
+  const [deleteCategory, { loading: deleteFetching }] = useDeleteCategoryMutation();
 
-  const [updateCategory, { loading: updateLoading }] =
-    useUpdateCategoryMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
+  const [updateCategory, { loading: updateLoading }] = useUpdateCategoryMutation({
+    onError: (error) => {
+      toastError({
+        title: t('common:feedbacks.updateError.title'),
+        description: error.message,
+      });
+    },
+    onCompleted: () => {
+      toastSuccess({
+        title: t('common:feedbacks.updateSuccess.title'),
+      });
+    },
+  });
 
-  const [insertCategory, { loading: insertLoading }] =
-    useInsertCategoryMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.createdError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.createdSuccess.title'),
-        });
-      },
-    });
+  const [insertCategory, { loading: insertLoading }] = useInsertCategoryMutation({
+    onError: (error) => {
+      toastError({
+        title: t('common:feedbacks.createdError.title'),
+        description: error.message,
+      });
+    },
+    onCompleted: () => {
+      toastSuccess({
+        title: t('common:feedbacks.createdSuccess.title'),
+      });
+    },
+  });
 
   const onConfirmCreate = async (values) => {
     const newData = {
@@ -119,12 +99,7 @@ export const PageCategories = () => {
           loading={loading || deleteFetching || insertLoading}
           title={t('classification:categories.title')}
           actions={[
-            <ResponsiveIconButton
-              key="createCategory"
-              icon={<FiPlus />}
-              variant="@primary"
-              onClick={() => onOpen()}
-            >
+            <ResponsiveIconButton key="createCategory" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
               {t('classification:categories.actions.create')}
             </ResponsiveIconButton>,
           ]}
@@ -164,11 +139,7 @@ export const PageCategories = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={
-          isEditing
-            ? t('classification:categories.actions.edit')
-            : t('classification:categories.actions.create')
-        }
+        title={isEditing ? t('classification:categories.actions.edit') : t('classification:categories.actions.create')}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -179,11 +150,7 @@ export const PageCategories = () => {
         formId="category-form-id"
         initialValues={dataContext}
       >
-        <FieldInput
-          name="name"
-          label={t('classification:categories.data.name')}
-          required={t('classification:categories.data.nameRequired') as string}
-        />
+        <FieldInput name="name" label={t('classification:categories.data.name')} required={t('classification:categories.data.nameRequired') as string} />
       </ModalDialog>
     </>
   );

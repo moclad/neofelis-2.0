@@ -7,31 +7,15 @@ import { FormGroup } from '@/components/FormGroup';
 import { Select } from '@/components/Select';
 import { useField } from '@formiz/core';
 
-export interface FieldMultiSelectProps<
-  Option,
-  IsMulti extends boolean = true,
-  Group extends GroupBase<Option> = GroupBase<Option>
-> extends FieldSelectProps<Option, IsMulti, Group> {
+export interface FieldMultiSelectProps<Option, IsMulti extends boolean = true, Group extends GroupBase<Option> = GroupBase<Option>>
+  extends FieldSelectProps<Option, IsMulti, Group> {
   isNotClearable?: boolean;
 }
 
-export const FieldMultiSelect = <
-  Option,
-  IsMulti extends boolean = true,
-  Group extends GroupBase<Option> = GroupBase<Option>
->(
+export const FieldMultiSelect = <Option, IsMulti extends boolean = true, Group extends GroupBase<Option> = GroupBase<Option>>(
   props: FieldMultiSelectProps<Option, IsMulti, Group>
 ) => {
-  const {
-    errorMessage,
-    id,
-    isValid,
-    isSubmitted,
-    resetKey,
-    setValue,
-    value,
-    otherProps,
-  } = useField(props);
+  const { errorMessage, id, isValid, isSubmitted, resetKey, setValue, value, otherProps } = useField(props);
   const { required } = props;
   const {
     children,
@@ -54,7 +38,7 @@ export const FieldMultiSelect = <
     setIsTouched(false);
   }, [resetKey]);
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('components');
 
   const formGroupProps = {
     errorMessage,
@@ -86,9 +70,7 @@ export const FieldMultiSelect = <
         isDisabled={isDisabled}
         isClearable={!isNotClearable}
         isSearchable={isSearchable}
-        noOptionsMessage={() =>
-          noOptionsMessage || t('components:fieldMultiSelect.noOption')
-        }
+        noOptionsMessage={() => noOptionsMessage || t('components:fieldMultiSelect.noOption')}
         isError={showError}
         size={size}
         isMulti

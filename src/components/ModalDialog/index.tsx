@@ -2,18 +2,7 @@ import React, { FC, ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useDarkMode } from '@/hooks/useDarkMode';
-import {
-  Button,
-  Checkbox,
-  HStack,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Stack
-} from '@chakra-ui/react';
+import { Button, Checkbox, HStack, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 import { UseFormValues } from '@formiz/core/dist/types/form.types';
 
@@ -31,9 +20,7 @@ export interface ModalDialogProps {
   showAddAnotherOne?: boolean;
 }
 
-export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
-  props
-) => {
+export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (props) => {
   const {
     children,
     isOpen,
@@ -48,7 +35,7 @@ export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
     showAddAnotherOne = false,
   } = props;
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const generalInformationForm = dialogForm ? dialogForm : useForm();
   const { colorModeValue } = useDarkMode();
   const [continueToAdd, setContinueToAdd] = useState(false);
@@ -77,36 +64,17 @@ export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>{title}</ModalHeader>
-        <Formiz
-          id={formId}
-          onValidSubmit={submitFormData}
-          connect={generalInformationForm}
-          initialValues={initialValues}
-        >
+        <Formiz id={formId} onValidSubmit={submitFormData} connect={generalInformationForm} initialValues={initialValues}>
           <form noValidate onSubmit={generalInformationForm.submit}>
             <ModalBody>
-              <Stack
-                direction="column"
-                bg={colorModeValue('white', 'blackAlpha.400')}
-                pl="6"
-                pr="6"
-                pb="6"
-                pt="2"
-                borderRadius="lg"
-                spacing="6"
-                shadow="md"
-              >
+              <Stack direction="column" bg={colorModeValue('white', 'blackAlpha.400')} pl="6" pr="6" pb="6" pt="2" borderRadius="lg" spacing="6" shadow="md">
                 {children}
               </Stack>
             </ModalBody>
             <ModalFooter>
               <HStack pt="3" spacing={4}>
                 {showAddAnotherOne ? (
-                  <Checkbox
-                    onChange={(e) => setContinueToAdd(e.target.checked)}
-                    isChecked={continueToAdd}
-                    readOnly={loading}
-                  >
+                  <Checkbox onChange={(e) => setContinueToAdd(e.target.checked)} isChecked={continueToAdd} readOnly={loading}>
                     {t('common:actions.addAnotherOne')}
                   </Checkbox>
                 ) : null}
@@ -119,12 +87,7 @@ export const ModalDialog: FC<React.PropsWithChildren<ModalDialogProps>> = (
                 >
                   {t('common:actions.cancel')}
                 </Button>
-                <Button
-                  type="submit"
-                  variant="@primary"
-                  isLoading={loading}
-                  loadingText={t('common:actions.submitting')}
-                >
+                <Button type="submit" variant="@primary" isLoading={loading} loadingText={t('common:actions.submitting')}>
                   {t('common:actions.confirm')}
                 </Button>
               </HStack>

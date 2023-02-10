@@ -13,7 +13,7 @@ import { Formiz, useForm } from '@formiz/core';
 import { isMaxLength, isMinLength } from '@formiz/validations';
 
 export const PageResetPasswordConfirm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('profile');
   const { colorModeValue } = useDarkMode();
   const { searchParams } = useSearchParams();
 
@@ -23,25 +23,22 @@ export const PageResetPasswordConfirm = () => {
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
-  const { mutate: resetPasswordFinish, isLoading: resetPasswordLoading } =
-    useResetPasswordFinish({
-      onError: (error: any) => {
-        const { title } = error?.response?.data || {};
-        toastError({
-          title: t('profile:resetPassword.feedbacks.confirmError.title'),
-          description: title,
-        });
-      },
-      onSuccess: () => {
-        toastSuccess({
-          title: t('profile:resetPassword.feedbacks.confirmSuccess.title'),
-          description: t(
-            'profile:resetPassword.feedbacks.confirmSuccess.description'
-          ),
-        });
-        navigate('/login');
-      },
-    });
+  const { mutate: resetPasswordFinish, isLoading: resetPasswordLoading } = useResetPasswordFinish({
+    onError: (error: any) => {
+      const { title } = error?.response?.data || {};
+      toastError({
+        title: t('profile:resetPassword.feedbacks.confirmError.title'),
+        description: title,
+      });
+    },
+    onSuccess: () => {
+      toastSuccess({
+        title: t('profile:resetPassword.feedbacks.confirmSuccess.title'),
+        description: t('profile:resetPassword.feedbacks.confirmSuccess.description'),
+      });
+      navigate('/login');
+    },
+  });
 
   const submitResetPasswordFinish = async (values) => {
     await resetPasswordFinish({
@@ -64,20 +61,11 @@ export const PageResetPasswordConfirm = () => {
   return (
     <SlideIn>
       <Box p="2" pb="4rem" w="22rem" maxW="full" m="auto">
-        <Box
-          p="6"
-          bg={colorModeValue('white', 'blackAlpha.400')}
-          borderRadius="md"
-          boxShadow="md"
-        >
+        <Box p="6" bg={colorModeValue('white', 'blackAlpha.400')} borderRadius="md" boxShadow="md">
           <Heading size="lg" mb="4">
             {t('profile:resetPassword.title')}
           </Heading>
-          <Formiz
-            id="reset-password-finish-form"
-            onValidSubmit={submitResetPasswordFinish}
-            connect={resetPasswordFinishForm}
-          >
+          <Formiz id="reset-password-finish-form" onValidSubmit={submitResetPasswordFinish} connect={resetPasswordFinishForm}>
             <form noValidate onSubmit={resetPasswordFinishForm.submit}>
               <Stack spacing="4">
                 <FieldInput
@@ -91,26 +79,18 @@ export const PageResetPasswordConfirm = () => {
                   name="confirmPassword"
                   type="password"
                   label={t('profile:data.confirmNewPassword.label')}
-                  required={
-                    t('profile:data.confirmNewPassword.required') as string
-                  }
+                  required={t('profile:data.confirmNewPassword.required') as string}
                   validations={[
                     ...passwordValidations,
                     {
-                      rule: (value) =>
-                        value === resetPasswordFinishForm?.values?.password,
+                      rule: (value) => value === resetPasswordFinishForm?.values?.password,
                       message: t('profile:data.confirmNewPassword.notEqual'),
                       deps: [resetPasswordFinishForm?.values?.password],
                     },
                   ]}
                 />
                 <Flex>
-                  <Button
-                    type="submit"
-                    variant="@primary"
-                    ms="auto"
-                    isLoading={resetPasswordLoading}
-                  >
+                  <Button type="submit" variant="@primary" ms="auto" isLoading={resetPasswordLoading}>
                     {t('profile:resetPassword.actions.reset')}
                   </Button>
                 </Flex>

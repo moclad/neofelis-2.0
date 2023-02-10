@@ -10,37 +10,19 @@ import { FieldInput } from '@/components/FieldInput';
 import { ModalDialog } from '@/components/ModalDialog';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastError, useToastSuccess } from '@/components/Toast';
-import {
-  useAllLabelsQuery,
-  useDeleteLabelMutation,
-  useInsertLabelMutation,
-  useUpdateLabelMutation
-} from '@/generated/graphql';
+import { useAllLabelsQuery, useDeleteLabelMutation, useInsertLabelMutation, useUpdateLabelMutation } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
-import {
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Tag,
-  TagLabel,
-  useDisclosure,
-  Wrap,
-  WrapItem
-} from '@chakra-ui/react';
+import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, Tag, TagLabel, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
 
 export const PageLabels = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['common', 'classification']);
   const { loading, data } = useAllLabelsQuery();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } =
-    useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number>();
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
-  const [deleteLabel, { loading: deleteLabelFetching }] =
-    useDeleteLabelMutation();
+  const [deleteLabel, { loading: deleteLabelFetching }] = useDeleteLabelMutation();
 
   const [updateLabel, { loading: updateLoading }] = useUpdateLabelMutation({
     onError: (error) => {
@@ -117,12 +99,7 @@ export const PageLabels = () => {
           loading={loading || deleteLabelFetching || insertLoading}
           title={t('classification:labels.title')}
           actions={[
-            <ResponsiveIconButton
-              key="createLabel"
-              icon={<FiPlus />}
-              variant="@primary"
-              onClick={() => onOpen()}
-            >
+            <ResponsiveIconButton key="createLabel" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
               {t('classification:labels.actions.create')}
             </ResponsiveIconButton>,
           ]}
@@ -162,11 +139,7 @@ export const PageLabels = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={
-          isEditing
-            ? t('classification:labels.actions.edit')
-            : t('classification:labels.actions.create')
-        }
+        title={isEditing ? t('classification:labels.actions.edit') : t('classification:labels.actions.create')}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -177,11 +150,7 @@ export const PageLabels = () => {
         formId="label-form-id"
         initialValues={dataContext}
       >
-        <FieldInput
-          name="name"
-          label={t('classification:labels.data.name')}
-          required={t('classification:labels.data.nameRequired') as string}
-        />
+        <FieldInput name="name" label={t('classification:labels.data.name')} required={t('classification:labels.data.nameRequired') as string} />
       </ModalDialog>
     </>
   );

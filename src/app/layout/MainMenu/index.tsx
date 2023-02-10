@@ -59,27 +59,17 @@ const MainMenuItem = ({ to, ...rest }: any) => {
 };
 
 export const MainMenu = ({ ...rest }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('layout');
   // const { isAdmin } = useAccount();
   const isAdmin = true;
   return (
     <Stack direction="row" spacing="1" {...rest}>
-      <MainMenuItem to="/dashboard">
-        {t('layout:mainMenu.dashboard')}
-      </MainMenuItem>
-      <MainMenuItem to="/accounts">
-        {t('layout:mainMenu.accounts')}
-      </MainMenuItem>
-      <MainMenuItem to="/classification">
-        {t('layout:mainMenu.classification')}
-      </MainMenuItem>
-      <MainMenuItem to="/recurring">
-        {t('layout:mainMenu.recurring')}
-      </MainMenuItem>
+      <MainMenuItem to="/dashboard">{t('layout:mainMenu.dashboard')}</MainMenuItem>
+      <MainMenuItem to="/accounts">{t('layout:mainMenu.accounts')}</MainMenuItem>
+      <MainMenuItem to="/classification">{t('layout:mainMenu.classification')}</MainMenuItem>
+      <MainMenuItem to="/recurring">{t('layout:mainMenu.recurring')}</MainMenuItem>
       <MainMenuItem to="/tools">{t('layout:mainMenu.tools')}</MainMenuItem>
-      {isAdmin && (
-        <MainMenuItem to="/admin">{t('layout:mainMenu.admin')}</MainMenuItem>
-      )}
+      {isAdmin && <MainMenuItem to="/admin">{t('layout:mainMenu.admin')}</MainMenuItem>}
     </Stack>
   );
 };

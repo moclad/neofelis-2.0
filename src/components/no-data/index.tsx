@@ -2,18 +2,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useDarkMode } from '@/hooks/useDarkMode';
-import {
-  Box,
-  Center,
-  chakra,
-  HTMLChakraProps,
-  Text,
-  ThemingProps,
-  useTheme
-} from '@chakra-ui/react';
+import { Box, Center, chakra, HTMLChakraProps, Text, ThemingProps, useTheme } from '@chakra-ui/react';
 
 export const NoData = ({ colorScheme = 'gray', ...rest }: HTMLChakraProps<'svg'> & { colorScheme?: ThemingProps['colorScheme'] }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const theme = useTheme();
   const { colorModeValue } = useDarkMode();
 

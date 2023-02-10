@@ -20,7 +20,7 @@ import {
   useInsertLabelMutation,
   useInsertRecurringMutation,
   useInsertRevenueAccMutation,
-  useUpdateRecurringMutation
+  useUpdateRecurringMutation,
 } from '@/generated/graphql';
 import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
@@ -45,7 +45,7 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
 
   const [transactionType, setTransactionType] = useState<number>(1);
   const [durationType, setDurationType] = useState<number>(1);
-  const { t } = useTranslation();
+  const { t } = useTranslation('recurring');
   const { mutationOptions } = useMutationOptions();
   const form = useForm();
 

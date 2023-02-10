@@ -8,13 +8,7 @@ import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
-import {
-  DataList,
-  DataListCell,
-  DataListFooter,
-  DataListHeader,
-  DataListRow
-} from '@/components/DataList';
+import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
 import { FieldInput } from '@/components/FieldInput';
 import { ModalDialog } from '@/components/ModalDialog';
 import {
@@ -23,7 +17,7 @@ import {
   PaginationButtonLastPage,
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
-  PaginationInfo
+  PaginationInfo,
 } from '@/components/Pagination';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastSuccess } from '@/components/Toast';
@@ -33,28 +27,14 @@ import {
   useDeleteExpenseAccMutation,
   useInsertExpenseAccMutation,
   useUpdateExpenseAccMutation,
-  useUpdateExpenseStateMutation
+  useUpdateExpenseStateMutation,
 } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import {
-  Badge,
-  Box,
-  HStack,
-  LinkBox,
-  LinkOverlay,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Portal,
-  Text,
-  useDisclosure
-} from '@chakra-ui/react';
+import { Badge, Box, HStack, LinkBox, LinkOverlay, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageExpenses = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('accounts');
   const { mutationOptions } = useMutationOptions();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Expenses>();

@@ -15,12 +15,12 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react';
 
 const ErrorFallback = ({ error }: FallbackProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { t } = useTranslation();
+  const { t } = useTranslation('components');
   return (
     <Box p="4" m="auto">
       <Alert status="error" borderRadius="md">
@@ -28,14 +28,7 @@ const ErrorFallback = ({ error }: FallbackProps) => {
         <Box flex="1">
           <AlertTitle>{t('components:errorBoundary.title')}</AlertTitle>
           <AlertDescription display="block" lineHeight="1.4">
-            <Button
-              variant="link"
-              size="sm"
-              textDecoration="underline"
-              onClick={onOpen}
-              color="red.800"
-              _dark={{ color: 'red.100' }}
-            >
+            <Button variant="link" size="sm" textDecoration="underline" onClick={onOpen} color="red.800" _dark={{ color: 'red.100' }}>
               {t('components:errorBoundary.actions.expand')}
             </Button>
             <Modal isOpen={isOpen} onClose={onClose}>

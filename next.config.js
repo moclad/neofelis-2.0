@@ -1,4 +1,4 @@
-require('./.env.validator');
+
 
 /**
  * Don't be scared of the generics here.
@@ -8,12 +8,16 @@ require('./.env.validator');
  * @param {T} config - A generic parameter that flows through to the return type
  * @constraint {{import('next').NextConfig}}
  */
-function defineNextConfig(config) {
+function nextConfig(config) {
   return config;
 }
 
-module.exports = defineNextConfig({
+module.exports = nextConfig({
   output: 'standalone',
+  experimental: {
+    appDir: true,
+  }
+  ,
   async redirects() {
     return [
       {

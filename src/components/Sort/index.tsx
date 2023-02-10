@@ -2,19 +2,7 @@ import { FC, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { IconSortAsc, IconSortDesc } from '@/components/Icons';
-import {
-  Box,
-  Button,
-  ButtonProps,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItemOption,
-  MenuList,
-  MenuOptionGroup,
-  Portal,
-  Text
-} from '@chakra-ui/react';
+import { Box, Button, ButtonProps, Menu, MenuButton, MenuDivider, MenuItemOption, MenuList, MenuOptionGroup, Portal, Text } from '@chakra-ui/react';
 
 type OptionProps = {
   value: string;
@@ -46,7 +34,7 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
   descIcon = <IconSortDesc />,
   ...rest
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('components');
 
   const { by, order } = sort;
 
@@ -103,13 +91,7 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
             }
           >
             {options?.map((option) => (
-              <MenuItemOption
-                key={option?.value}
-                value={option?.value}
-                fontSize="sm"
-                color="gray.600"
-                _dark={{ color: 'gray.100' }}
-              >
+              <MenuItemOption key={option?.value} value={option?.value} fontSize="sm" color="gray.600" _dark={{ color: 'gray.100' }}>
                 {option?.label}
               </MenuItemOption>
             ))}
@@ -124,24 +106,13 @@ export const Sort: FC<React.PropsWithChildren<SortProps>> = ({
             color="gray.500"
             _dark={{ color: 'gray.50' }}
             onChange={
-              (value: string | string[]) =>
-                handleOrderChange(value as SortValue['order']) // type === radio, so value always be "asc" or "desc"
+              (value: string | string[]) => handleOrderChange(value as SortValue['order']) // type === radio, so value always be "asc" or "desc"
             }
           >
-            <MenuItemOption
-              value="asc"
-              fontSize="sm"
-              color="gray.600"
-              _dark={{ color: 'gray.100' }}
-            >
+            <MenuItemOption value="asc" fontSize="sm" color="gray.600" _dark={{ color: 'gray.100' }}>
               {t('components:sort.sortAscending')}
             </MenuItemOption>
-            <MenuItemOption
-              value="desc"
-              fontSize="sm"
-              color="gray.600"
-              _dark={{ color: 'gray.100' }}
-            >
+            <MenuItemOption value="desc" fontSize="sm" color="gray.600" _dark={{ color: 'gray.100' }}>
               {t('components:sort.sortDescending')}
             </MenuItemOption>
           </MenuOptionGroup>

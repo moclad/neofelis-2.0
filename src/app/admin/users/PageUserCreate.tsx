@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { UserForm } from '@/app/admin/users/UserForm';
 import { useUserCreate } from '@/app/admin/users/users.service';
@@ -11,8 +11,8 @@ import { Button, ButtonGroup, Heading } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 
 export const PageUserCreate = () => {
-  const { t } = useTranslation();
-  const history = useHistory();
+  const { t } = useTranslation('users');
+  const navigate = useNavigate();
   const form = useForm({ subscribe: false });
 
   const toastError = useToastError();
@@ -42,7 +42,7 @@ export const PageUserCreate = () => {
       toastSuccess({
         title: t('users:create.feedbacks.updateSuccess.title'),
       });
-      history.push('/admin/users');
+      navigate('/admin/users');
     },
   });
 
@@ -55,13 +55,9 @@ export const PageUserCreate = () => {
 
   return (
     <Page containerSize="md" isFocusMode>
-      <Formiz
-        id="create-user-form"
-        onValidSubmit={submitCreateUser}
-        connect={form}
-      >
+      <Formiz id="create-user-form" onValidSubmit={submitCreateUser} connect={form}>
         <form noValidate onSubmit={form.submit}>
-          <PageTopBar showBack onBack={() => history.goBack()}>
+          <PageTopBar showBack onBack={() => navigate(-1)}>
             <Heading size="md">{t('users:create.title')}</Heading>
           </PageTopBar>
           <PageContent>
@@ -69,14 +65,8 @@ export const PageUserCreate = () => {
           </PageContent>
           <PageBottomBar>
             <ButtonGroup justifyContent="space-between">
-              <Button onClick={() => history.goBack()}>
-                {t('actions.cancel')}
-              </Button>
-              <Button
-                type="submit"
-                variant="@primary"
-                isLoading={createUserLoading}
-              >
+              <Button onClick={() => navigate(-1)}>{t('actions.cancel')}</Button>
+              <Button type="submit" variant="@primary" isLoading={createUserLoading}>
                 {t('users:create.action.save')}
               </Button>
             </ButtonGroup>

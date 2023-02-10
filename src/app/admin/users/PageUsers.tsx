@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiCheckCircle, FiEdit, FiPlus, FiTrash2, FiXCircle } from 'react-icons/fi';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useUserList, useUserRemove, useUserUpdate } from '@/app/admin/users/users.service';
 import { UserStatus } from '@/app/admin/users/UserStatus';
@@ -9,13 +9,7 @@ import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
-import {
-  DataList,
-  DataListCell,
-  DataListFooter,
-  DataListHeader,
-  DataListRow
-} from '@/components/DataList';
+import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
 import { DateAgo } from '@/components/DateAgo';
 import { Icon } from '@/components/Icons';
 import {
@@ -24,9 +18,9 @@ import {
   PaginationButtonLastPage,
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
-  PaginationInfo
+  PaginationInfo,
 } from '@/components/Pagination';
-import { useToastSuccess } from '@/components/Toast';
+import { useToastError, useToastSuccess } from '@/components/Toast';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Avatar,
@@ -47,15 +41,14 @@ import {
   Portal,
   Text,
   Wrap,
-  WrapItem
+  WrapItem,
 } from '@chakra-ui/react';
 import { useQueryClient } from '@tanstack/react-query';
 
 import { AdminNav } from '../AdminNav';
 
 const UserActions = ({ user, ...rest }) => {
-  const { t } = useTranslation();
-  const { url } = useRouteMatch();
+  const { t } = useTranslation('users');
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
   const { mutate: userUpdate, ...userUpdateData } = useUserUpdate({
@@ -108,7 +101,7 @@ const UserActions = ({ user, ...rest }) => {
           login,
         }),
       });
-      queryClient.invalidateQueries('users');
+      queryClient.invalidateQueries({ queryKey: 'users' }, undefined);
     },
     onError: (_, { login }) => {
       toastError({
@@ -124,41 +117,23 @@ const UserActions = ({ user, ...rest }) => {
 
   return (
     <Menu isLazy placement="left-start" {...rest}>
-      <MenuButton
-        as={ActionsButton}
-        isLoading={isActionsLoading || isRemovalLoading}
-      />
+      <MenuButton as={ActionsButton} isLoading={isActionsLoading || isRemovalLoading} />
       <Portal>
         <MenuList>
-          <MenuItem
-            as={Link}
-            to={`${url}/${user.login}`}
-            icon={<Icon icon={FiEdit} fontSize="lg" color="gray.400" />}
-          >
+          <MenuItem as={Link} to={user.login} icon={<Icon icon={FiEdit} fontSize="lg" color="gray.400" />}>
             {t('actions.edit')}
           </MenuItem>
           {user.activated ? (
-            <MenuItem
-              onClick={deactivateUser}
-              icon={<Icon icon={FiXCircle} fontSize="lg" color="gray.400" />}
-            >
+            <MenuItem onClick={() => deactivateUser()} icon={<Icon icon={FiXCircle} fontSize="lg" color="gray.400" />}>
               {t('actions.deactivate')}
             </MenuItem>
           ) : (
-            <MenuItem
-              onClick={activateUser}
-              icon={
-                <Icon icon={FiCheckCircle} fontSize="lg" color="gray.400" />
-              }
-            >
+            <MenuItem onClick={() => activateUser()} icon={<Icon icon={FiCheckCircle} fontSize="lg" color="gray.400" />}>
               {t('actions.activate')}
             </MenuItem>
           )}
           <MenuDivider />
-          <ConfirmMenuItem
-            icon={<Icon icon={FiTrash2} fontSize="lg" color="gray.400" />}
-            onClick={removeUser}
-          >
+          <ConfirmMenuItem icon={<Icon icon={FiTrash2} fontSize="lg" color="gray.400" />} onClick={() => removeUser()}>
             {t('actions.delete')}
           </ConfirmMenuItem>
         </MenuList>
@@ -168,9 +143,8 @@ const UserActions = ({ user, ...rest }) => {
 };
 
 export const PageUsers = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('users');
   const { colorModeValue } = useDarkMode();
-  const { url } = useRouteMatch();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 20;
   const { users, totalItems, isLoadingPage } = useUserList({
@@ -186,20 +160,14 @@ export const PageUsers = () => {
             <Heading size="md">{t('users:list.title')}</Heading>
           </Box>
           <Box>
-            <Button
-              display={{ base: 'none', sm: 'flex' }}
-              as={Link}
-              to={`${url}/create`}
-              variant="@primary"
-              leftIcon={<FiPlus />}
-            >
+            <Button display={{ base: 'none', sm: 'flex' }} as={Link} to="create" variant="@primary" leftIcon={<FiPlus />}>
               {t('users:list.actions.createUser')}
             </Button>
             <IconButton
               display={{ base: 'flex', sm: 'none' }}
               aria-label={t('users:list.actions.createUser')}
               as={Link}
-              to={`${url}/create`}
+              to="create"
               size="sm"
               variant="@primary"
               icon={<FiPlus />}
@@ -211,36 +179,19 @@ export const PageUsers = () => {
             <DataListCell colName="login" colWidth="2">
               {t('users:data.login.label')} / {t('users:data.email.label')}
             </DataListCell>
-            <DataListCell
-              colName="id"
-              colWidth="4rem"
-              isVisible={{ base: false, lg: true }}
-            >
+            <DataListCell colName="id" colWidth="4rem" isVisible={{ base: false, lg: true }}>
               {t('users:data.id.label')}
             </DataListCell>
-            <DataListCell
-              colName="authorities"
-              isVisible={{ base: false, lg: true }}
-            >
+            <DataListCell colName="authorities" isVisible={{ base: false, lg: true }}>
               {t('users:data.authorities.label')}
             </DataListCell>
-            <DataListCell
-              colName="created"
-              isVisible={{ base: false, lg: true }}
-            >
+            <DataListCell colName="created" isVisible={{ base: false, lg: true }}>
               {t('users:data.createdBy.label')}
             </DataListCell>
-            <DataListCell
-              colName="lastModified"
-              isVisible={{ base: false, md: true }}
-            >
+            <DataListCell colName="lastModified" isVisible={{ base: false, md: true }}>
               {t('users:data.modifiedBy.label')}
             </DataListCell>
-            <DataListCell
-              colName="status"
-              colWidth={{ base: '2rem', md: '0.5' }}
-              align="center"
-            >
+            <DataListCell colName="status" colWidth={{ base: '2rem', md: '0.5' }} align="center">
               <Box as="span" display={{ base: 'none', md: 'block' }}>
                 {t('users:data.status.label')}
               </Box>
@@ -254,16 +205,11 @@ export const PageUsers = () => {
                   <Avatar size="sm" name={user.login} mx="1" />
                   <Box minW="0">
                     <Text noOfLines={0} maxW="full" fontWeight="bold">
-                      <LinkOverlay as={Link} to={`${url}/${user.login}`}>
+                      <LinkOverlay as={Link} to={user.login}>
                         {user.login}
                       </LinkOverlay>
                     </Text>
-                    <Text
-                      noOfLines={0}
-                      maxW="full"
-                      fontSize="sm"
-                      color={colorModeValue('gray.600', 'gray.300')}
-                    >
+                    <Text noOfLines={0} maxW="full" fontSize="sm" color={colorModeValue('gray.600', 'gray.300')}>
                       {user.email}
                     </Text>
                   </Box>
@@ -283,42 +229,22 @@ export const PageUsers = () => {
                   ))}
                 </Wrap>
               </DataListCell>
-              <DataListCell
-                colName="created"
-                fontSize="sm"
-                position="relative"
-                pointerEvents="none"
-              >
+              <DataListCell colName="created" fontSize="sm" position="relative" pointerEvents="none">
                 <Text noOfLines={0} maxW="full">
                   {user.createdBy}
                 </Text>
                 {!!user.createdDate && (
-                  <Text
-                    noOfLines={0}
-                    maxW="full"
-                    color={colorModeValue('gray.600', 'gray.300')}
-                    pointerEvents="auto"
-                  >
+                  <Text noOfLines={0} maxW="full" color={colorModeValue('gray.600', 'gray.300')} pointerEvents="auto">
                     <DateAgo date={user.createdDate} />
                   </Text>
                 )}
               </DataListCell>
-              <DataListCell
-                colName="lastModified"
-                fontSize="sm"
-                position="relative"
-                pointerEvents="none"
-              >
+              <DataListCell colName="lastModified" fontSize="sm" position="relative" pointerEvents="none">
                 <Text noOfLines={0} maxW="full">
                   {user.lastModifiedBy}
                 </Text>
                 {!!user.lastModifiedDate && (
-                  <Text
-                    noOfLines={0}
-                    maxW="full"
-                    color={colorModeValue('gray.600', 'gray.300')}
-                    pointerEvents="auto"
-                  >
+                  <Text noOfLines={0} maxW="full" color={colorModeValue('gray.600', 'gray.300')} pointerEvents="auto">
                     <DateAgo position="relative" date={user.lastModifiedDate} />
                   </Text>
                 )}
@@ -332,13 +258,7 @@ export const PageUsers = () => {
             </DataListRow>
           ))}
           <DataListFooter>
-            <Pagination
-              isLoadingPage={isLoadingPage}
-              setPage={setPage}
-              page={page}
-              pageSize={pageSize}
-              totalItems={totalItems}
-            >
+            <Pagination isLoadingPage={isLoadingPage} setPage={setPage} page={page} pageSize={pageSize} totalItems={totalItems}>
               <PaginationButtonFirstPage />
               <PaginationButtonPrevPage />
               <PaginationInfo flex="1" />

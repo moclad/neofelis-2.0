@@ -5,8 +5,6 @@ import GithubProvider from 'next-auth/providers/github';
 
 import { TypeORMLegacyAdapter } from '@next-auth/typeorm-legacy-adapter';
 
-const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY || 'secret');
-
 export default NextAuth({
   pages: {
     signIn: '/neofelis/login',
@@ -19,8 +17,8 @@ export default NextAuth({
       from: process.env.EMAIL_FROM,
     }),
     GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientId: process.env.GITHUB_CLIENT_ID || "",
+      clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
       profile(profile) {
         return {
           id: profile.id.toString(),
@@ -31,9 +29,9 @@ export default NextAuth({
       },
     }),
   ],
-  secret: process.env.SECRET,
   adapter: TypeORMLegacyAdapter({
     type: 'postgres',
+    applicationName: 'Neofelis',
     host: process.env.DATABASE_HOST,
     port: +(process.env.DATABASE_PORT || 5432),
     username: process.env.DATABASE_USERNAME,
@@ -46,13 +44,13 @@ export default NextAuth({
       },
     },
   }),
+  secret: process.env.NEXT_SECRET,
   session: {
     strategy: 'database',
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
   jwt: {
-    secret: 'Z33gSJUZhwo+sdYQcYmmkahiQFPt7PLaP+EROFWjuw0EBS+5jUJAZTsSp5Oo++e3',
     maxAge: 60 * 60 * 24 * 30,
     async encode({ token }) {
       const tokenContents = {
@@ -71,6 +69,8 @@ export default NextAuth({
         sub: token?.id,
       };
 
+      const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY);
+
       const encodedToken = jwt.sign(tokenContents, jwtSecret.key, {
         algorithm: jwtSecret.type,
       });
@@ -78,6 +78,8 @@ export default NextAuth({
       return encodedToken;
     },
     async decode({ token }) {
+      const jwtSecret = JSON.parse(process.env.AUTH_PRIVATE_KEY);
+
       const decodedToken = jwt.verify(token, jwtSecret.key, {
         algorithms: jwtSecret.type,
       });

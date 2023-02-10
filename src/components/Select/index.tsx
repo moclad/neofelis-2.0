@@ -20,11 +20,7 @@ declare module 'react' {
   ): (props: P & React.RefAttributes<T>) => React.ReactElement | null;
 }
 
-export type SelectProps<
-  Option,
-  IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
-> = {
+export type SelectProps<Option, IsMulti extends boolean = false, Group extends GroupBase<Option> = GroupBase<Option>> = {
   isAsync?: boolean;
   isCreatable?: boolean;
   isError?: boolean;
@@ -36,11 +32,7 @@ export type SelectProps<
 } & Props<Option, IsMulti, Group> &
   Omit<BoxProps, 'defaultValue'>;
 
-const SelectInner = <
-  Option,
-  IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
->(
+const SelectInner = <Option, IsMulti extends boolean = false, Group extends GroupBase<Option> = GroupBase<Option>>(
   {
     isAsync,
     isCreatable,
@@ -62,25 +54,15 @@ const SelectInner = <
   const stylesFromTheme: any = useStyleConfig('Select', {
     size,
   });
-  const [fieldFontSize] = useToken('fontSizes', [
-    stylesFromTheme.field.fontSize,
-  ]);
-  const [
-    fieldTextColor,
-    fieldBg,
-    fieldBorderColor,
-    fieldFocusBorderColor,
-    fieldErrorBorderColor,
-  ] = useToken('colors', [
+  const [fieldFontSize] = useToken('fontSizes', [stylesFromTheme.field.fontSize]);
+  const [fieldTextColor, fieldBg, fieldBorderColor, fieldFocusBorderColor, fieldErrorBorderColor] = useToken('colors', [
     stylesFromTheme.field.color,
     stylesFromTheme.field.bg,
     stylesFromTheme.field.borderColor,
     stylesFromTheme.field._focusVisible.borderColor,
     stylesFromTheme.field._invalid.borderColor,
   ]);
-  const [fieldBorderRadius] = useToken('radii', [
-    stylesFromTheme.field.borderRadius,
-  ]);
+  const [fieldBorderRadius] = useToken('radii', [stylesFromTheme.field.borderRadius]);
   const [fieldHeight] = useToken('sizes', [stylesFromTheme.field.h]);
 
   const Element = (() => {
@@ -107,8 +89,7 @@ const SelectInner = <
     ? {
         defaultOptions,
         cacheOptions: true,
-        loadOptions: (input: unknown) =>
-          debounce(() => loadOptions(input), debounceDelay),
+        loadOptions: (input: unknown) => debounce(() => loadOptions(input), debounceDelay),
       }
     : {};
 
@@ -118,10 +99,7 @@ const SelectInner = <
     isSelected: boolean;
   };
 
-  const getComponentStyles = (
-    componentName: string,
-    callback: (state: state) => CSSObject
-  ) => ({
+  const getComponentStyles = (componentName: string, callback: (state: state) => CSSObject) => ({
     [componentName]: (provided: CSSObject, state: state) => {
       const componentsStyles = callback(state);
       const combinedStyles = {
@@ -132,10 +110,7 @@ const SelectInner = <
     },
   });
 
-  const getConditionalStyles = (
-    condition: boolean,
-    conditionalStyles: CSSObject
-  ): CSSObject => (condition ? conditionalStyles : {});
+  const getConditionalStyles = (condition: boolean, conditionalStyles: CSSObject): CSSObject => (condition ? conditionalStyles : {});
 
   const selectStyle = {
     ...styles,
@@ -155,30 +130,18 @@ const SelectInner = <
       height: `calc(${fieldHeight} - 2px)`,
     })),
     ...getComponentStyles('multiValue', () => ({
-      backgroundColor: colorModeValue(
-        theme.colors.brand['100'],
-        theme.colors.brand['300']
-      ),
+      backgroundColor: colorModeValue(theme.colors.brand['100'], theme.colors.brand['300']),
     })),
     ...getComponentStyles('multiValueLabel', () => ({
       fontWeight: 'bold',
-      color: colorModeValue(
-        theme.colors.brand['800'],
-        theme.colors.brand['900']
-      ),
+      color: colorModeValue(theme.colors.brand['800'], theme.colors.brand['900']),
     })),
     ...getComponentStyles('multiValueRemove', () => ({
-      color: colorModeValue(
-        theme.colors.brand['800'],
-        theme.colors.brand['900']
-      ),
+      color: colorModeValue(theme.colors.brand['800'], theme.colors.brand['900']),
       opacity: 0.5,
       '&:hover': {
         background: 'transparent',
-        color: colorModeValue(
-          theme.colors.brand['800'],
-          theme.colors.brand['900']
-        ),
+        color: colorModeValue(theme.colors.brand['800'], theme.colors.brand['900']),
         opacity: 1,
       },
     })),
@@ -215,49 +178,28 @@ const SelectInner = <
         opacity: 0.6,
       }),
     })),
-    ...getComponentStyles(
-      'option',
-      ({ isFocused, isDisabled, isSelected }) => ({
-        fontSize: fieldFontSize,
-        ':active': {
-          backgroundColor: colorModeValue(
-            theme.colors.gray['100'],
-            theme.colors.blackAlpha['500']
-          ),
-        },
-        ...getConditionalStyles(isFocused, {
-          backgroundColor: colorModeValue(
-            theme.colors.gray['100'],
-            theme.colors.blackAlpha['400']
-          ),
-          color: colorModeValue(
-            theme.colors.gray['600'],
-            theme.colors.gray['100']
-          ),
-        }),
-        ...getConditionalStyles(isSelected, {
-          backgroundColor: colorModeValue(
-            theme.colors.gray['50'],
-            theme.colors.blackAlpha['500']
-          ),
-          color: colorModeValue(theme.colors.gray['700'], 'white'),
-          borderLeft: `2px solid ${theme.colors.brand['500']}`,
-        }),
-        ...getConditionalStyles(isFocused && isSelected, {
-          backgroundColor: colorModeValue(
-            theme.colors.gray['100'],
-            theme.colors.blackAlpha['400']
-          ),
-          color: colorModeValue(
-            theme.colors.gray['600'],
-            theme.colors.gray['100']
-          ),
-        }),
-        ...getConditionalStyles(isDisabled, {
-          opacity: 0.4,
-        }),
-      })
-    ),
+    ...getComponentStyles('option', ({ isFocused, isDisabled, isSelected }) => ({
+      fontSize: fieldFontSize,
+      ':active': {
+        backgroundColor: colorModeValue(theme.colors.gray['100'], theme.colors.blackAlpha['500']),
+      },
+      ...getConditionalStyles(isFocused, {
+        backgroundColor: colorModeValue(theme.colors.gray['100'], theme.colors.blackAlpha['400']),
+        color: colorModeValue(theme.colors.gray['600'], theme.colors.gray['100']),
+      }),
+      ...getConditionalStyles(isSelected, {
+        backgroundColor: colorModeValue(theme.colors.gray['50'], theme.colors.blackAlpha['500']),
+        color: colorModeValue(theme.colors.gray['700'], 'white'),
+        borderLeft: `2px solid ${theme.colors.brand['500']}`,
+      }),
+      ...getConditionalStyles(isFocused && isSelected, {
+        backgroundColor: colorModeValue(theme.colors.gray['100'], theme.colors.blackAlpha['400']),
+        color: colorModeValue(theme.colors.gray['600'], theme.colors.gray['100']),
+      }),
+      ...getConditionalStyles(isDisabled, {
+        opacity: 0.4,
+      }),
+    })),
     ...getComponentStyles('menu', () => ({
       zIndex: 10,
       backgroundColor: colorModeValue('white', theme.colors.gray['700']),
@@ -271,6 +213,7 @@ const SelectInner = <
     <BoxAny
       as={Element}
       inputId={`select-input-${id}`}
+      instanceId={`select-instance-${id}`}
       instanceId={`select-instance-${id}`}
       styles={selectStyle}
       menuPortalTarget={document.body}

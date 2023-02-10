@@ -9,23 +9,13 @@ import { SlideIn } from '@/components/SlideIn';
 import { useToastError } from '@/components/Toast';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useRtl } from '@/hooks/useRtl';
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Box,
-  Button,
-  Center,
-  Flex,
-  Heading,
-  ScaleFade
-} from '@chakra-ui/react';
+import { Alert, AlertDescription, AlertTitle, Box, Button, Center, Flex, Heading, ScaleFade } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 import { isEmail } from '@formiz/validations';
 
 export const PageResetPasswordRequest = () => {
   const { rtlValue } = useRtl();
-  const { t } = useTranslation();
+  const { t } = useTranslation('profile');
   const { colorModeValue } = useDarkMode();
   const resetPasswordInitForm = useForm();
 
@@ -75,20 +65,11 @@ export const PageResetPasswordRequest = () => {
               {t('profile:resetPassword.feedbacks.initSuccess.title')}
             </AlertTitle>
             <AlertDescription>
-              <Trans
-                t={t}
-                i18nKey="profile:resetPassword.feedbacks.initSuccess.description"
-                values={{ email: accountEmail }}
-              />
+              <Trans t={t} i18nKey="profile:resetPassword.feedbacks.initSuccess.description" values={{ email: accountEmail }} />
             </AlertDescription>
           </Alert>
           <Center mt="8">
-            <Button
-              as={RouterLink}
-              to="/login"
-              variant="link"
-              color={colorModeValue('brand.500', 'brand.300')}
-            >
+            <Button as={RouterLink} to="/login" variant="link" color={colorModeValue('brand.500', 'brand.300')}>
               {t('profile:resetPassword.actions.goToLogin')}
             </Button>
           </Center>
@@ -100,18 +81,9 @@ export const PageResetPasswordRequest = () => {
   return (
     <SlideIn>
       <Box p="2" pb="4rem" w="22rem" maxW="full" m="auto">
-        <Box
-          p="6"
-          bg={colorModeValue('white', 'blackAlpha.400')}
-          borderRadius="md"
-          boxShadow="md"
-        >
+        <Box p="6" bg={colorModeValue('white', 'blackAlpha.400')} borderRadius="md" boxShadow="md">
           <Heading size="lg">{t('profile:resetPassword.title')}</Heading>
-          <Formiz
-            id="reset-password-init-form"
-            onValidSubmit={submitResetPasswordInit}
-            connect={resetPasswordInitForm}
-          >
+          <Formiz id="reset-password-init-form" onValidSubmit={submitResetPasswordInit} connect={resetPasswordInitForm}>
             <form noValidate onSubmit={resetPasswordInitForm.submit}>
               <FieldInput
                 name="email"
@@ -127,20 +99,10 @@ export const PageResetPasswordRequest = () => {
                 ]}
               />
               <Flex>
-                <Button
-                  leftIcon={rtlValue(<FiArrowLeft />, <FiArrowRight />)}
-                  as={RouterLink}
-                  to="/login"
-                  variant="link"
-                >
+                <Button leftIcon={rtlValue(<FiArrowLeft />, <FiArrowRight />)} as={RouterLink} to="/login" variant="link">
                   {t('profile:resetPassword.actions.cancel')}
                 </Button>
-                <Button
-                  type="submit"
-                  variant="@primary"
-                  ms="auto"
-                  isLoading={resetPasswordLoading}
-                >
+                <Button type="submit" variant="@primary" ms="auto" isLoading={resetPasswordLoading}>
                   {t('profile:resetPassword.actions.send')}
                 </Button>
               </Flex>

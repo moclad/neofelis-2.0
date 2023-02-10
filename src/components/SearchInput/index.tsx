@@ -3,16 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FiSearch, FiX } from 'react-icons/fi';
 
 import { useDarkMode } from '@/hooks/useDarkMode';
-import {
-  forwardRef,
-  IconButton,
-  Input,
-  InputGroup,
-  InputProps,
-  InputRightElement,
-  useControllableState,
-  useMergeRefs
-} from '@chakra-ui/react';
+import { forwardRef, IconButton, Input, InputGroup, InputProps, InputRightElement, useControllableState, useMergeRefs } from '@chakra-ui/react';
 
 interface SearchInputProps extends Omit<InputProps, 'onChange'> {
   onChange?(value?: string): void;
@@ -23,20 +14,8 @@ interface SearchInputProps extends Omit<InputProps, 'onChange'> {
 }
 
 export const SearchInput = forwardRef<SearchInputProps, 'input'>(
-  (
-    {
-      value,
-      defaultValue,
-      onChange,
-      delay = 500,
-      placeholder,
-      clearLabel,
-      isDisabled = false,
-      ...rest
-    },
-    ref
-  ) => {
-    const { t } = useTranslation();
+  ({ value, defaultValue, onChange, delay = 500, placeholder, clearLabel, isDisabled = false, ...rest }, ref) => {
+    const { t } = useTranslation('components');
     const { colorModeValue } = useDarkMode();
     const [externalValue, setExternalValue] = useControllableState({
       value,
@@ -93,20 +72,9 @@ export const SearchInput = forwardRef<SearchInputProps, 'input'>(
           isDisabled={isDisabled}
           onKeyDown={handleEscape}
         />
-        <InputRightElement
-          color={
-            isDisabled
-              ? colorModeValue('gray.300', 'gray.600')
-              : colorModeValue('brand.600', 'brand.300')
-          }
-        >
+        <InputRightElement color={isDisabled ? colorModeValue('gray.300', 'gray.600') : colorModeValue('brand.600', 'brand.300')}>
           {!isDisabled && search ? (
-            <IconButton
-              onClick={handleClear}
-              variant="@secondary"
-              size="xs"
-              aria-label={clearLabel ?? t('components:searchInput.clear')}
-            >
+            <IconButton onClick={handleClear} variant="@secondary" size="xs" aria-label={clearLabel ?? t('components:searchInput.clear')}>
               <FiX />
             </IconButton>
           ) : (

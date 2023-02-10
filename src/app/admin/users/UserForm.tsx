@@ -15,18 +15,11 @@ const AUTHORITIES = {
 };
 
 export const UserForm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('users');
   const { colorModeValue } = useDarkMode();
   const authorities = Object.values(AUTHORITIES).map((value) => ({ value }));
   return (
-    <Stack
-      direction="column"
-      bg={colorModeValue('white', 'gray.900')}
-      p="6"
-      borderRadius="lg"
-      spacing="6"
-      shadow="md"
-    >
+    <Stack direction="column" bg={colorModeValue('white', 'gray.900')} p="6" borderRadius="lg" spacing="6" shadow="md">
       <FieldInput
         name="login"
         label={t('users:data.login.label')}
@@ -41,9 +34,7 @@ export const UserForm = () => {
             message: t('users:data.login.tooLong', { max: 50 }),
           },
           {
-            rule: isPattern(
-              '^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$'
-            ),
+            rule: isPattern('^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$'),
             message: t('users:data.login.invalid'),
           },
         ]}

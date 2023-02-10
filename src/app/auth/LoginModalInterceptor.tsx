@@ -5,20 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { LoginForm } from '@/app/auth/LoginForm';
-import {
-  Heading,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalOverlay,
-  Text,
-  useDisclosure
-} from '@chakra-ui/react';
+import { Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, useDisclosure } from '@chakra-ui/react';
 import { useQueryClient } from '@tanstack/react-query';
 
 export const LoginModalInterceptor = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('auth');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { data: session } = useSession();
   const queryCache = useQueryClient();
@@ -31,10 +22,7 @@ export const LoginModalInterceptor = () => {
     const interceptor = Axios.interceptors.response.use(
       (r) => r,
       (error) => {
-        if (
-          error?.response?.status === 401 &&
-          pathnameRef.current !== '/login'
-        ) {
+        if (error?.response?.status === 401 && pathnameRef.current !== '/login') {
           queryCache.cancelQueries();
           onOpen();
         }
@@ -65,12 +53,7 @@ export const LoginModalInterceptor = () => {
   };
 
   return (
-    <Modal
-      isOpen={session && isOpen}
-      onClose={handleClose}
-      closeOnOverlayClick={false}
-      trapFocus={false}
-    >
+    <Modal isOpen={session && isOpen} onClose={handleClose} closeOnOverlayClick={false} trapFocus={false}>
       <ModalOverlay style={{ backdropFilter: 'blur(6px)' }} />
       <ModalContent>
         <ModalCloseButton />

@@ -8,13 +8,7 @@ import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
-import {
-  DataList,
-  DataListCell,
-  DataListFooter,
-  DataListHeader,
-  DataListRow
-} from '@/components/DataList';
+import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
 import { FieldInput } from '@/components/FieldInput';
 import { ModalDialog } from '@/components/ModalDialog';
 import {
@@ -23,7 +17,7 @@ import {
   PaginationButtonLastPage,
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
-  PaginationInfo
+  PaginationInfo,
 } from '@/components/Pagination';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastSuccess } from '@/components/Toast';
@@ -32,31 +26,16 @@ import {
   useDeleteLiabilityAccMutation,
   useInsertLiabilityAccMutation,
   useUpdateLiabilityAccMutation,
-  useUpdateLiabilityStateMutation
+  useUpdateLiabilityStateMutation,
 } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import {
-  Badge,
-  Box,
-  HStack,
-  LinkBox,
-  LinkOverlay,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Portal,
-  Text,
-  useDisclosure
-} from '@chakra-ui/react';
+import { Badge, Box, HStack, LinkBox, LinkOverlay, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageLiabilities = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('accounts');
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } =
-    useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number>();
   const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
@@ -70,17 +49,13 @@ export const PageLiabilities = () => {
     },
   });
 
-  const [deleteLiability, { loading: deleteFetching }] =
-    useDeleteLiabilityAccMutation();
+  const [deleteLiability, { loading: deleteFetching }] = useDeleteLiabilityAccMutation();
 
-  const [updateLiability, { loading: updateLoading }] =
-    useUpdateLiabilityAccMutation(mutationOptions);
+  const [updateLiability, { loading: updateLoading }] = useUpdateLiabilityAccMutation(mutationOptions);
 
-  const [updateLiabilityState, { loading: updateStateLoading }] =
-    useUpdateLiabilityStateMutation(mutationOptions);
+  const [updateLiabilityState, { loading: updateStateLoading }] = useUpdateLiabilityStateMutation(mutationOptions);
 
-  const [insertLiability, { loading: insertLoading }] =
-    useInsertLiabilityAccMutation(mutationOptions);
+  const [insertLiability, { loading: insertLoading }] = useInsertLiabilityAccMutation(mutationOptions);
 
   const onConfirmCreate = async (values) => {
     const { name } = values;
@@ -143,12 +118,7 @@ export const PageLiabilities = () => {
           loading={loading || deleteFetching || insertLoading || updateLoading}
           title={t('accounts:liabilities.title')}
           actions={[
-            <ResponsiveIconButton
-              key="createLiability"
-              icon={<FiPlus />}
-              variant="@primary"
-              onClick={() => onOpen()}
-            >
+            <ResponsiveIconButton key="createLiability" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
               {t('accounts:liabilities.actions.create')}
             </ResponsiveIconButton>,
           ]}
@@ -158,18 +128,10 @@ export const PageLiabilities = () => {
               <DataListCell colName="name" colWidth="1.5">
                 {t('accounts:liabilities.header.name')}
               </DataListCell>
-              <DataListCell
-                colName="status"
-                colWidth="0.5"
-                isVisible={{ base: false, md: true }}
-              >
+              <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
                 {t('accounts:liabilities.header.status')}
               </DataListCell>
-              <DataListCell
-                colName="actions"
-                colWidth="4rem"
-                align="flex-end"
-              />
+              <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
             {data &&
               data.liabilities.map((item, index) => (
@@ -179,43 +141,25 @@ export const PageLiabilities = () => {
                       <Avvvatars value={item.name} />
                       <Box minW="0">
                         <Text noOfLines={0} maxW="full" fontWeight="bold">
-                          {item.active ? (
-                            <LinkOverlay href="#">{item.name}</LinkOverlay>
-                          ) : (
-                            item.name
-                          )}
+                          {item.active ? <LinkOverlay href="#">{item.name}</LinkOverlay> : item.name}
                         </Text>
                       </Box>
                     </HStack>
                   </DataListCell>
                   <DataListCell colName="status">
-                    <Badge
-                      size="sm"
-                      colorScheme={item.active ? 'success' : 'gray'}
-                    >
-                      {item.active
-                        ? t('accounts:liabilities.data.active')
-                        : t('accounts:liabilities.data.inactive')}
+                    <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
+                      {item.active ? t('accounts:liabilities.data.active') : t('accounts:liabilities.data.inactive')}
                     </Badge>
                   </DataListCell>
                   <DataListCell colName="actions">
                     <Menu isLazy>
-                      <MenuButton
-                        as={ActionsButton}
-                        isDisabled={!item.active}
-                      />
+                      <MenuButton as={ActionsButton} isDisabled={!item.active} />
                       <Portal>
                         <MenuList>
-                          <MenuItem
-                            onClick={() => onEdit(item.id, item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
                             {t('common:actions.edit')}
                           </MenuItem>
-                          <MenuItem
-                            onClick={() => deactivate(item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
                             {t('common:actions.deactivate')}
                           </MenuItem>
                           <MenuDivider />
@@ -235,12 +179,7 @@ export const PageLiabilities = () => {
               ))}
             <DataListFooter>
               <Pagination
-                isLoadingPage={
-                  loading ||
-                  insertLoading ||
-                  updateLoading ||
-                  updateStateLoading
-                }
+                isLoadingPage={loading || insertLoading || updateLoading || updateStateLoading}
                 setPage={setPage}
                 page={page}
                 pageSize={pageSize}
@@ -257,11 +196,7 @@ export const PageLiabilities = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={
-          isEditing
-            ? t('accounts:liabilities.actions.edit')
-            : t('accounts:liabilities.actions.create')
-        }
+        title={isEditing ? t('accounts:liabilities.actions.edit') : t('accounts:liabilities.actions.create')}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -272,11 +207,7 @@ export const PageLiabilities = () => {
         formId="liability-form-id"
         initialValues={dataContext}
       >
-        <FieldInput
-          name="name"
-          label={t('accounts:liabilities.data.name')}
-          required={t('accounts:liabilities.data.nameRequired') as string}
-        />
+        <FieldInput name="name" label={t('accounts:liabilities.data.name')} required={t('accounts:liabilities.data.nameRequired') as string} />
       </ModalDialog>
     </>
   );

@@ -6,13 +6,8 @@ import { useSearchParams } from '@/app/router';
 import { Box, HStack, Spinner, Text } from '@chakra-ui/react';
 
 export const PageActivate = () => {
-  const { t } = useTranslation();
-  const {
-    mutate: activateAccount,
-    isError,
-    isSuccess,
-    isLoading,
-  } = useActivateAccount();
+  const { t } = useTranslation('profile');
+  const { mutate: activateAccount, isError, isSuccess, isLoading } = useActivateAccount();
   const { searchParams } = useSearchParams();
 
   useEffect(() => {

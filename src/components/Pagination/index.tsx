@@ -6,16 +6,9 @@ import { Icon } from '@/components/Icons';
 import { useRtl } from '@/hooks/useRtl';
 import { Box, HStack, IconButton, IconButtonProps, Spinner, StackProps } from '@chakra-ui/react';
 
-export const getPaginationInfo = ({
-  page = 1,
-  pageSize = 10,
-  totalItems = 0,
-}) => {
+export const getPaginationInfo = ({ page = 1, pageSize = 10, totalItems = 0 }) => {
   const firstItemOnPage = (page - 1) * pageSize + 1;
-  const lastItemOnPage = Math.min(
-    (page - 1) * pageSize + pageSize,
-    totalItems ?? 0
-  );
+  const lastItemOnPage = Math.min((page - 1) * pageSize + pageSize, totalItems ?? 0);
   const isFirstPage = firstItemOnPage <= 1;
   const isLastPage = lastItemOnPage >= totalItems;
   const firstPage = 1;
@@ -59,19 +52,15 @@ export const PaginationContext = React.createContext<PaginationContextValue>({
   lastItemOnPage: 0,
 });
 
-export const PaginationButtonFirstPage: FC<
-  React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>
-> = ({ ...rest }) => {
+export const PaginationButtonFirstPage: FC<React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>> = ({ ...rest }) => {
   const { rtlValue } = useRtl();
-  const { t } = useTranslation();
+  const { t } = useTranslation('components');
   const { setPage, firstPage, isFirstPage } = useContext(PaginationContext);
   return (
     <IconButton
       onClick={() => setPage(firstPage)}
       aria-label={t('components:pagination.firstPage')}
-      icon={
-        <Icon icon={rtlValue(FiChevronsLeft, FiChevronsRight)} fontSize="lg" />
-      }
+      icon={<Icon icon={rtlValue(FiChevronsLeft, FiChevronsRight)} fontSize="lg" />}
       size="sm"
       isDisabled={isFirstPage}
       {...rest}
@@ -79,19 +68,15 @@ export const PaginationButtonFirstPage: FC<
   );
 };
 
-export const PaginationButtonPrevPage: FC<
-  React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>
-> = ({ ...rest }) => {
+export const PaginationButtonPrevPage: FC<React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>> = ({ ...rest }) => {
   const { rtlValue } = useRtl();
-  const { t } = useTranslation();
+  const { t } = useTranslation('components');
   const { setPage, page, isFirstPage } = useContext(PaginationContext);
   return (
     <IconButton
       onClick={() => setPage(page - 1)}
       aria-label={t('components:pagination.prevPage')}
-      icon={
-        <Icon icon={rtlValue(FiChevronLeft, FiChevronRight)} fontSize="lg" />
-      }
+      icon={<Icon icon={rtlValue(FiChevronLeft, FiChevronRight)} fontSize="lg" />}
       size="sm"
       isDisabled={isFirstPage}
       {...rest}
@@ -99,19 +84,15 @@ export const PaginationButtonPrevPage: FC<
   );
 };
 
-export const PaginationButtonLastPage: FC<
-  React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>
-> = ({ ...rest }) => {
+export const PaginationButtonLastPage: FC<React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>> = ({ ...rest }) => {
   const { rtlValue } = useRtl();
-  const { t } = useTranslation();
+  const { t } = useTranslation('components');
   const { setPage, lastPage, isLastPage } = useContext(PaginationContext);
   return (
     <IconButton
       onClick={() => setPage(lastPage)}
       aria-label={t('components:pagination.lastPage')}
-      icon={
-        <Icon icon={rtlValue(FiChevronsRight, FiChevronsLeft)} fontSize="lg" />
-      }
+      icon={<Icon icon={rtlValue(FiChevronsRight, FiChevronsLeft)} fontSize="lg" />}
       size="sm"
       isDisabled={isLastPage}
       {...rest}
@@ -119,19 +100,15 @@ export const PaginationButtonLastPage: FC<
   );
 };
 
-export const PaginationButtonNextPage: FC<
-  React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>
-> = ({ ...rest }) => {
+export const PaginationButtonNextPage: FC<React.PropsWithChildren<Omit<IconButtonProps, 'aria-label'>>> = ({ ...rest }) => {
   const { rtlValue } = useRtl();
-  const { t } = useTranslation();
+  const { t } = useTranslation('components');
   const { setPage, page, isLastPage } = useContext(PaginationContext);
   return (
     <IconButton
       onClick={() => setPage(page + 1)}
       aria-label={t('components:pagination.nextPage')}
-      icon={
-        <Icon icon={rtlValue(FiChevronRight, FiChevronLeft)} fontSize="lg" />
-      }
+      icon={<Icon icon={rtlValue(FiChevronRight, FiChevronLeft)} fontSize="lg" />}
       size="sm"
       isDisabled={isLastPage}
       {...rest}
@@ -140,15 +117,14 @@ export const PaginationButtonNextPage: FC<
 };
 
 export const PaginationInfo = ({ ...rest }) => {
-  const { t } = useTranslation();
-  const { firstItemOnPage, lastItemOnPage, totalItems, isLoadingPage } =
-    useContext(PaginationContext);
+  const { t } = useTranslation('components');
+  const { firstItemOnPage, lastItemOnPage, pageSize, totalItems, isLoadingPage } = useContext(PaginationContext);
   const translationProps = {
     t,
     values: {
-      firstItemOnPage,
-      lastItemOnPage,
-      totalItems,
+      firstItemOnPage: !lastItemOnPage ? 0 : firstItemOnPage,
+      lastItemOnPage: isLoadingPage && !lastItemOnPage ? pageSize : lastItemOnPage,
+      totalItems: !isLoadingPage ? totalItems : '--',
     },
     components: {
       span: <span />,
@@ -157,26 +133,12 @@ export const PaginationInfo = ({ ...rest }) => {
     },
   };
   return (
-    <HStack
-      spacing="1"
-      align="center"
-      textAlign="center"
-      justify="center"
-      {...rest}
-    >
-      {totalItems > 0 ? (
-        isLoadingPage ? (
-          <Trans
-            i18nKey="components:pagination.loading"
-            {...translationProps}
-          />
-        ) : (
-          <Trans
-            i18nKey="components:pagination.showing"
-            {...translationProps}
-          />
-        )
-      ) : null}
+    <HStack spacing="1" align="center" textAlign="center" justify="center" {...rest}>
+      {isLoadingPage ? (
+        <Trans i18nKey="components:pagination.loading" {...translationProps} />
+      ) : (
+        <Trans i18nKey="components:pagination.showing" {...translationProps} />
+      )}
     </HStack>
   );
 };
@@ -189,14 +151,7 @@ export type PaginationProps = StackProps & {
   isLoadingPage?: boolean;
 };
 
-export const Pagination = ({
-  setPage,
-  page = 1,
-  pageSize = 10,
-  totalItems = 0,
-  isLoadingPage = false,
-  ...rest
-}: PaginationProps) => {
+export const Pagination = ({ setPage, page = 1, pageSize = 10, totalItems = 0, isLoadingPage = false, ...rest }: PaginationProps) => {
   const pagination = getPaginationInfo({ page, pageSize, totalItems });
   return (
     <PaginationContext.Provider

@@ -8,13 +8,7 @@ import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
-import {
-  DataList,
-  DataListCell,
-  DataListFooter,
-  DataListHeader,
-  DataListRow
-} from '@/components/DataList';
+import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
 import { FieldInput } from '@/components/FieldInput';
 import { ModalDialog } from '@/components/ModalDialog';
 import {
@@ -23,7 +17,7 @@ import {
   PaginationButtonLastPage,
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
-  PaginationInfo
+  PaginationInfo,
 } from '@/components/Pagination';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastSuccess } from '@/components/Toast';
@@ -33,32 +27,18 @@ import {
   useInsertRevenueAccMutation,
   useUpdateRevenueAccMutation,
   useUpdateRevenueStandardMutation,
-  useUpdateRevenueStateMutation
+  useUpdateRevenueStateMutation,
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import {
-  Badge,
-  Box,
-  HStack,
-  LinkBox,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Portal,
-  Text,
-  useDisclosure
-} from '@chakra-ui/react';
+import { Badge, Box, HStack, LinkBox, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageRevenues = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('accounts');
   const { colorModeValue } = useDarkMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } =
-    useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number>();
   const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
@@ -72,20 +52,15 @@ export const PageRevenues = () => {
     },
   });
 
-  const [deleteRevenue, { loading: deleteFetching }] =
-    useDeleteRevenueAccMutation();
+  const [deleteRevenue, { loading: deleteFetching }] = useDeleteRevenueAccMutation();
 
-  const [updateRevenue, { loading: updateLoading }] =
-    useUpdateRevenueAccMutation(mutationOptions);
+  const [updateRevenue, { loading: updateLoading }] = useUpdateRevenueAccMutation(mutationOptions);
 
-  const [updateRevenueState, { loading: updateStateLoading }] =
-    useUpdateRevenueStateMutation(mutationOptions);
+  const [updateRevenueState, { loading: updateStateLoading }] = useUpdateRevenueStateMutation(mutationOptions);
 
-  const [updateRevenueStandard, { loading: updateStandardLoading }] =
-    useUpdateRevenueStandardMutation(mutationOptions);
+  const [updateRevenueStandard, { loading: updateStandardLoading }] = useUpdateRevenueStandardMutation(mutationOptions);
 
-  const [insertRevenue, { loading: insertLoading }] =
-    useInsertRevenueAccMutation(mutationOptions);
+  const [insertRevenue, { loading: insertLoading }] = useInsertRevenueAccMutation(mutationOptions);
 
   const onConfirmCreate = async (values) => {
     const { name } = values;
@@ -156,12 +131,7 @@ export const PageRevenues = () => {
           loading={loading || deleteFetching || insertLoading || updateLoading}
           title={t('accounts:revenues.title')}
           actions={[
-            <ResponsiveIconButton
-              key="createRevenue"
-              icon={<FiPlus />}
-              variant="@primary"
-              onClick={() => onOpen()}
-            >
+            <ResponsiveIconButton key="createRevenue" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
               {t('accounts:revenues.actions.create')}
             </ResponsiveIconButton>,
           ]}
@@ -171,18 +141,10 @@ export const PageRevenues = () => {
               <DataListCell colName="name" colWidth="1.5">
                 {t('accounts:revenues.header.name')}
               </DataListCell>
-              <DataListCell
-                colName="status"
-                colWidth="0.5"
-                isVisible={{ base: false, md: true }}
-              >
+              <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
                 {t('accounts:revenues.header.status')}
               </DataListCell>
-              <DataListCell
-                colName="actions"
-                colWidth="4rem"
-                align="flex-end"
-              />
+              <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
             {data &&
               data.revenues.map((item, index) => (
@@ -199,20 +161,11 @@ export const PageRevenues = () => {
                   </DataListCell>
                   <DataListCell colName="status">
                     <HStack>
-                      <Badge
-                        size="sm"
-                        colorScheme={item.active ? 'success' : 'gray'}
-                      >
-                        {item.active
-                          ? t('accounts:revenues.data.active')
-                          : t('accounts:revenues.data.inactive')}
+                      <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
+                        {item.active ? t('accounts:revenues.data.active') : t('accounts:revenues.data.inactive')}
                       </Badge>
                       {item.default ? (
-                        <Badge
-                          size="sm"
-                          colorScheme="green"
-                          color={colorModeValue('brand.500', 'brand.500')}
-                        >
+                        <Badge size="sm" colorScheme="green" color={colorModeValue('brand.500', 'brand.500')}>
                           {t('accounts:assets.data.defaultAsset')}
                         </Badge>
                       ) : (
@@ -222,28 +175,16 @@ export const PageRevenues = () => {
                   </DataListCell>
                   <DataListCell colName="actions">
                     <Menu isLazy>
-                      <MenuButton
-                        as={ActionsButton}
-                        isDisabled={!item.active}
-                      />
+                      <MenuButton as={ActionsButton} isDisabled={!item.active} />
                       <Portal>
                         <MenuList>
-                          <MenuItem
-                            onClick={() => onEdit(item.id, item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
                             {t('common:actions.edit')}
                           </MenuItem>
-                          <MenuItem
-                            onClick={() => deactivate(item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
                             {t('common:actions.deactivate')}
                           </MenuItem>
-                          <MenuItem
-                            onClick={() => setStandard(item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
                             {t('common:actions.setAsStandard')}
                           </MenuItem>
                           <MenuDivider />
@@ -263,13 +204,7 @@ export const PageRevenues = () => {
               ))}
             <DataListFooter>
               <Pagination
-                isLoadingPage={
-                  loading ||
-                  insertLoading ||
-                  updateLoading ||
-                  updateStateLoading ||
-                  updateStandardLoading
-                }
+                isLoadingPage={loading || insertLoading || updateLoading || updateStateLoading || updateStandardLoading}
                 setPage={setPage}
                 page={page}
                 pageSize={pageSize}
@@ -286,11 +221,7 @@ export const PageRevenues = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={
-          isEditing
-            ? t('accounts:revenues.actions.edit')
-            : t('accounts:revenues.actions.create')
-        }
+        title={isEditing ? t('accounts:revenues.actions.edit') : t('accounts:revenues.actions.create')}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -301,11 +232,7 @@ export const PageRevenues = () => {
         formId="revenue-form-id"
         initialValues={dataContext}
       >
-        <FieldInput
-          name="name"
-          label={t('accounts:revenues.data.name')}
-          required={t('accounts:revenues.data.nameRequired') as string}
-        />
+        <FieldInput name="name" label={t('accounts:revenues.data.name')} required={t('accounts:revenues.data.nameRequired') as string} />
       </ModalDialog>
     </>
   );

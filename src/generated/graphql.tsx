@@ -23,6 +23,8 @@ export type Scalars = {
   bpchar: any;
   date: any;
   float8: any;
+  smallint: any;
+  timestamp: any;
   timestamptz: string;
   uuid: any;
 };
@@ -453,6 +455,7 @@ export type Account_Info_Updates = {
   _inc?: InputMaybe<Account_Info_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Account_Info_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Account_Info_Bool_Exp;
 };
 
@@ -746,6 +749,7 @@ export type Assets_Updates = {
   _inc?: InputMaybe<Assets_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Assets_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Assets_Bool_Exp;
 };
 
@@ -1083,6 +1087,7 @@ export type Categories_Updates = {
   _inc?: InputMaybe<Categories_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Categories_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Categories_Bool_Exp;
 };
 
@@ -1345,6 +1350,7 @@ export type Expenses_Updates = {
   _inc?: InputMaybe<Expenses_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Expenses_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Expenses_Bool_Exp;
 };
 
@@ -1377,6 +1383,569 @@ export type Float8_Comparison_Exp = {
   _lte?: InputMaybe<Scalars['float8']>;
   _neq?: InputMaybe<Scalars['float8']>;
   _nin?: InputMaybe<Array<Scalars['float8']>>;
+};
+
+/** columns and relationships of "gauge_data" */
+export type Gauge_Data = {
+  __typename?: 'gauge_data';
+  battery?: Maybe<Scalars['float8']>;
+  id: Scalars['uuid'];
+  sensor_name: Scalars['String'];
+  tick: Scalars['float8'];
+  ts: Scalars['timestamp'];
+};
+
+/** aggregated selection of "gauge_data" */
+export type Gauge_Data_Aggregate = {
+  __typename?: 'gauge_data_aggregate';
+  aggregate?: Maybe<Gauge_Data_Aggregate_Fields>;
+  nodes: Array<Gauge_Data>;
+};
+
+/** aggregate fields of "gauge_data" */
+export type Gauge_Data_Aggregate_Fields = {
+  __typename?: 'gauge_data_aggregate_fields';
+  avg?: Maybe<Gauge_Data_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Gauge_Data_Max_Fields>;
+  min?: Maybe<Gauge_Data_Min_Fields>;
+  stddev?: Maybe<Gauge_Data_Stddev_Fields>;
+  stddev_pop?: Maybe<Gauge_Data_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Gauge_Data_Stddev_Samp_Fields>;
+  sum?: Maybe<Gauge_Data_Sum_Fields>;
+  var_pop?: Maybe<Gauge_Data_Var_Pop_Fields>;
+  var_samp?: Maybe<Gauge_Data_Var_Samp_Fields>;
+  variance?: Maybe<Gauge_Data_Variance_Fields>;
+};
+
+/** aggregate fields of "gauge_data" */
+export type Gauge_Data_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Gauge_Data_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Gauge_Data_Avg_Fields = {
+  __typename?: 'gauge_data_avg_fields';
+  battery?: Maybe<Scalars['Float']>;
+  tick?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "gauge_data". All fields are combined with a logical 'AND'. */
+export type Gauge_Data_Bool_Exp = {
+  _and?: InputMaybe<Array<Gauge_Data_Bool_Exp>>;
+  _not?: InputMaybe<Gauge_Data_Bool_Exp>;
+  _or?: InputMaybe<Array<Gauge_Data_Bool_Exp>>;
+  battery?: InputMaybe<Float8_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  sensor_name?: InputMaybe<String_Comparison_Exp>;
+  tick?: InputMaybe<Float8_Comparison_Exp>;
+  ts?: InputMaybe<Timestamp_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "gauge_data" */
+export enum Gauge_Data_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  GaugeDataIdKey = 'gauge_data_id_key',
+  /** unique or primary key constraint on columns "ts", "id" */
+  GaugeDataPkey = 'gauge_data_pkey',
+}
+
+/** input type for incrementing numeric columns in table "gauge_data" */
+export type Gauge_Data_Inc_Input = {
+  battery?: InputMaybe<Scalars['float8']>;
+  tick?: InputMaybe<Scalars['float8']>;
+};
+
+/** input type for inserting data into table "gauge_data" */
+export type Gauge_Data_Insert_Input = {
+  battery?: InputMaybe<Scalars['float8']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  sensor_name?: InputMaybe<Scalars['String']>;
+  tick?: InputMaybe<Scalars['float8']>;
+  ts?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate max on columns */
+export type Gauge_Data_Max_Fields = {
+  __typename?: 'gauge_data_max_fields';
+  battery?: Maybe<Scalars['float8']>;
+  id?: Maybe<Scalars['uuid']>;
+  sensor_name?: Maybe<Scalars['String']>;
+  tick?: Maybe<Scalars['float8']>;
+  ts?: Maybe<Scalars['timestamp']>;
+};
+
+/** aggregate min on columns */
+export type Gauge_Data_Min_Fields = {
+  __typename?: 'gauge_data_min_fields';
+  battery?: Maybe<Scalars['float8']>;
+  id?: Maybe<Scalars['uuid']>;
+  sensor_name?: Maybe<Scalars['String']>;
+  tick?: Maybe<Scalars['float8']>;
+  ts?: Maybe<Scalars['timestamp']>;
+};
+
+/** response of any mutation on the table "gauge_data" */
+export type Gauge_Data_Mutation_Response = {
+  __typename?: 'gauge_data_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Gauge_Data>;
+};
+
+/** on_conflict condition type for table "gauge_data" */
+export type Gauge_Data_On_Conflict = {
+  constraint: Gauge_Data_Constraint;
+  update_columns?: Array<Gauge_Data_Update_Column>;
+  where?: InputMaybe<Gauge_Data_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "gauge_data". */
+export type Gauge_Data_Order_By = {
+  battery?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  sensor_name?: InputMaybe<Order_By>;
+  tick?: InputMaybe<Order_By>;
+  ts?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: gauge_data */
+export type Gauge_Data_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+  ts: Scalars['timestamp'];
+};
+
+/** select columns of table "gauge_data" */
+export enum Gauge_Data_Select_Column {
+  /** column name */
+  Battery = 'battery',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  SensorName = 'sensor_name',
+  /** column name */
+  Tick = 'tick',
+  /** column name */
+  Ts = 'ts',
+}
+
+/** input type for updating data in table "gauge_data" */
+export type Gauge_Data_Set_Input = {
+  battery?: InputMaybe<Scalars['float8']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  sensor_name?: InputMaybe<Scalars['String']>;
+  tick?: InputMaybe<Scalars['float8']>;
+  ts?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate stddev on columns */
+export type Gauge_Data_Stddev_Fields = {
+  __typename?: 'gauge_data_stddev_fields';
+  battery?: Maybe<Scalars['Float']>;
+  tick?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Gauge_Data_Stddev_Pop_Fields = {
+  __typename?: 'gauge_data_stddev_pop_fields';
+  battery?: Maybe<Scalars['Float']>;
+  tick?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Gauge_Data_Stddev_Samp_Fields = {
+  __typename?: 'gauge_data_stddev_samp_fields';
+  battery?: Maybe<Scalars['Float']>;
+  tick?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "gauge_data" */
+export type Gauge_Data_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Gauge_Data_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Gauge_Data_Stream_Cursor_Value_Input = {
+  battery?: InputMaybe<Scalars['float8']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  sensor_name?: InputMaybe<Scalars['String']>;
+  tick?: InputMaybe<Scalars['float8']>;
+  ts?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate sum on columns */
+export type Gauge_Data_Sum_Fields = {
+  __typename?: 'gauge_data_sum_fields';
+  battery?: Maybe<Scalars['float8']>;
+  tick?: Maybe<Scalars['float8']>;
+};
+
+/** update columns of table "gauge_data" */
+export enum Gauge_Data_Update_Column {
+  /** column name */
+  Battery = 'battery',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  SensorName = 'sensor_name',
+  /** column name */
+  Tick = 'tick',
+  /** column name */
+  Ts = 'ts',
+}
+
+export type Gauge_Data_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Gauge_Data_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Gauge_Data_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Gauge_Data_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Gauge_Data_Var_Pop_Fields = {
+  __typename?: 'gauge_data_var_pop_fields';
+  battery?: Maybe<Scalars['Float']>;
+  tick?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Gauge_Data_Var_Samp_Fields = {
+  __typename?: 'gauge_data_var_samp_fields';
+  battery?: Maybe<Scalars['Float']>;
+  tick?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Gauge_Data_Variance_Fields = {
+  __typename?: 'gauge_data_variance_fields';
+  battery?: Maybe<Scalars['Float']>;
+  tick?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "historical_data" */
+export type Historical_Data = {
+  __typename?: 'historical_data';
+  absolute_pressure?: Maybe<Scalars['float8']>;
+  battery?: Maybe<Scalars['float8']>;
+  humidity?: Maybe<Scalars['float8']>;
+  id: Scalars['uuid'];
+  relative_pressure?: Maybe<Scalars['float8']>;
+  sensor_name: Scalars['String'];
+  temperature?: Maybe<Scalars['float8']>;
+  ts: Scalars['timestamp'];
+  zambretti?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "historical_data" */
+export type Historical_Data_Aggregate = {
+  __typename?: 'historical_data_aggregate';
+  aggregate?: Maybe<Historical_Data_Aggregate_Fields>;
+  nodes: Array<Historical_Data>;
+};
+
+/** aggregate fields of "historical_data" */
+export type Historical_Data_Aggregate_Fields = {
+  __typename?: 'historical_data_aggregate_fields';
+  avg?: Maybe<Historical_Data_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Historical_Data_Max_Fields>;
+  min?: Maybe<Historical_Data_Min_Fields>;
+  stddev?: Maybe<Historical_Data_Stddev_Fields>;
+  stddev_pop?: Maybe<Historical_Data_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Historical_Data_Stddev_Samp_Fields>;
+  sum?: Maybe<Historical_Data_Sum_Fields>;
+  var_pop?: Maybe<Historical_Data_Var_Pop_Fields>;
+  var_samp?: Maybe<Historical_Data_Var_Samp_Fields>;
+  variance?: Maybe<Historical_Data_Variance_Fields>;
+};
+
+/** aggregate fields of "historical_data" */
+export type Historical_Data_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Historical_Data_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Historical_Data_Avg_Fields = {
+  __typename?: 'historical_data_avg_fields';
+  absolute_pressure?: Maybe<Scalars['Float']>;
+  battery?: Maybe<Scalars['Float']>;
+  humidity?: Maybe<Scalars['Float']>;
+  relative_pressure?: Maybe<Scalars['Float']>;
+  temperature?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "historical_data". All fields are combined with a logical 'AND'. */
+export type Historical_Data_Bool_Exp = {
+  _and?: InputMaybe<Array<Historical_Data_Bool_Exp>>;
+  _not?: InputMaybe<Historical_Data_Bool_Exp>;
+  _or?: InputMaybe<Array<Historical_Data_Bool_Exp>>;
+  absolute_pressure?: InputMaybe<Float8_Comparison_Exp>;
+  battery?: InputMaybe<Float8_Comparison_Exp>;
+  humidity?: InputMaybe<Float8_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  relative_pressure?: InputMaybe<Float8_Comparison_Exp>;
+  sensor_name?: InputMaybe<String_Comparison_Exp>;
+  temperature?: InputMaybe<Float8_Comparison_Exp>;
+  ts?: InputMaybe<Timestamp_Comparison_Exp>;
+  zambretti?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "historical_data" */
+export enum Historical_Data_Constraint {
+  /** unique or primary key constraint on columns "ts", "id" */
+  HistoricalDataIdTsKey = 'historical_data_id_ts_key',
+  /** unique or primary key constraint on columns "ts", "id" */
+  HistoricalDataPkey = 'historical_data_pkey',
+}
+
+/** input type for incrementing numeric columns in table "historical_data" */
+export type Historical_Data_Inc_Input = {
+  absolute_pressure?: InputMaybe<Scalars['float8']>;
+  battery?: InputMaybe<Scalars['float8']>;
+  humidity?: InputMaybe<Scalars['float8']>;
+  relative_pressure?: InputMaybe<Scalars['float8']>;
+  temperature?: InputMaybe<Scalars['float8']>;
+};
+
+/** input type for inserting data into table "historical_data" */
+export type Historical_Data_Insert_Input = {
+  absolute_pressure?: InputMaybe<Scalars['float8']>;
+  battery?: InputMaybe<Scalars['float8']>;
+  humidity?: InputMaybe<Scalars['float8']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  relative_pressure?: InputMaybe<Scalars['float8']>;
+  sensor_name?: InputMaybe<Scalars['String']>;
+  temperature?: InputMaybe<Scalars['float8']>;
+  ts?: InputMaybe<Scalars['timestamp']>;
+  zambretti?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Historical_Data_Max_Fields = {
+  __typename?: 'historical_data_max_fields';
+  absolute_pressure?: Maybe<Scalars['float8']>;
+  battery?: Maybe<Scalars['float8']>;
+  humidity?: Maybe<Scalars['float8']>;
+  id?: Maybe<Scalars['uuid']>;
+  relative_pressure?: Maybe<Scalars['float8']>;
+  sensor_name?: Maybe<Scalars['String']>;
+  temperature?: Maybe<Scalars['float8']>;
+  ts?: Maybe<Scalars['timestamp']>;
+  zambretti?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Historical_Data_Min_Fields = {
+  __typename?: 'historical_data_min_fields';
+  absolute_pressure?: Maybe<Scalars['float8']>;
+  battery?: Maybe<Scalars['float8']>;
+  humidity?: Maybe<Scalars['float8']>;
+  id?: Maybe<Scalars['uuid']>;
+  relative_pressure?: Maybe<Scalars['float8']>;
+  sensor_name?: Maybe<Scalars['String']>;
+  temperature?: Maybe<Scalars['float8']>;
+  ts?: Maybe<Scalars['timestamp']>;
+  zambretti?: Maybe<Scalars['String']>;
+};
+
+/** response of any mutation on the table "historical_data" */
+export type Historical_Data_Mutation_Response = {
+  __typename?: 'historical_data_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Historical_Data>;
+};
+
+/** on_conflict condition type for table "historical_data" */
+export type Historical_Data_On_Conflict = {
+  constraint: Historical_Data_Constraint;
+  update_columns?: Array<Historical_Data_Update_Column>;
+  where?: InputMaybe<Historical_Data_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "historical_data". */
+export type Historical_Data_Order_By = {
+  absolute_pressure?: InputMaybe<Order_By>;
+  battery?: InputMaybe<Order_By>;
+  humidity?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  relative_pressure?: InputMaybe<Order_By>;
+  sensor_name?: InputMaybe<Order_By>;
+  temperature?: InputMaybe<Order_By>;
+  ts?: InputMaybe<Order_By>;
+  zambretti?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: historical_data */
+export type Historical_Data_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+  ts: Scalars['timestamp'];
+};
+
+/** select columns of table "historical_data" */
+export enum Historical_Data_Select_Column {
+  /** column name */
+  AbsolutePressure = 'absolute_pressure',
+  /** column name */
+  Battery = 'battery',
+  /** column name */
+  Humidity = 'humidity',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  RelativePressure = 'relative_pressure',
+  /** column name */
+  SensorName = 'sensor_name',
+  /** column name */
+  Temperature = 'temperature',
+  /** column name */
+  Ts = 'ts',
+  /** column name */
+  Zambretti = 'zambretti',
+}
+
+/** input type for updating data in table "historical_data" */
+export type Historical_Data_Set_Input = {
+  absolute_pressure?: InputMaybe<Scalars['float8']>;
+  battery?: InputMaybe<Scalars['float8']>;
+  humidity?: InputMaybe<Scalars['float8']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  relative_pressure?: InputMaybe<Scalars['float8']>;
+  sensor_name?: InputMaybe<Scalars['String']>;
+  temperature?: InputMaybe<Scalars['float8']>;
+  ts?: InputMaybe<Scalars['timestamp']>;
+  zambretti?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Historical_Data_Stddev_Fields = {
+  __typename?: 'historical_data_stddev_fields';
+  absolute_pressure?: Maybe<Scalars['Float']>;
+  battery?: Maybe<Scalars['Float']>;
+  humidity?: Maybe<Scalars['Float']>;
+  relative_pressure?: Maybe<Scalars['Float']>;
+  temperature?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Historical_Data_Stddev_Pop_Fields = {
+  __typename?: 'historical_data_stddev_pop_fields';
+  absolute_pressure?: Maybe<Scalars['Float']>;
+  battery?: Maybe<Scalars['Float']>;
+  humidity?: Maybe<Scalars['Float']>;
+  relative_pressure?: Maybe<Scalars['Float']>;
+  temperature?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Historical_Data_Stddev_Samp_Fields = {
+  __typename?: 'historical_data_stddev_samp_fields';
+  absolute_pressure?: Maybe<Scalars['Float']>;
+  battery?: Maybe<Scalars['Float']>;
+  humidity?: Maybe<Scalars['Float']>;
+  relative_pressure?: Maybe<Scalars['Float']>;
+  temperature?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "historical_data" */
+export type Historical_Data_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Historical_Data_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Historical_Data_Stream_Cursor_Value_Input = {
+  absolute_pressure?: InputMaybe<Scalars['float8']>;
+  battery?: InputMaybe<Scalars['float8']>;
+  humidity?: InputMaybe<Scalars['float8']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  relative_pressure?: InputMaybe<Scalars['float8']>;
+  sensor_name?: InputMaybe<Scalars['String']>;
+  temperature?: InputMaybe<Scalars['float8']>;
+  ts?: InputMaybe<Scalars['timestamp']>;
+  zambretti?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate sum on columns */
+export type Historical_Data_Sum_Fields = {
+  __typename?: 'historical_data_sum_fields';
+  absolute_pressure?: Maybe<Scalars['float8']>;
+  battery?: Maybe<Scalars['float8']>;
+  humidity?: Maybe<Scalars['float8']>;
+  relative_pressure?: Maybe<Scalars['float8']>;
+  temperature?: Maybe<Scalars['float8']>;
+};
+
+/** update columns of table "historical_data" */
+export enum Historical_Data_Update_Column {
+  /** column name */
+  AbsolutePressure = 'absolute_pressure',
+  /** column name */
+  Battery = 'battery',
+  /** column name */
+  Humidity = 'humidity',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  RelativePressure = 'relative_pressure',
+  /** column name */
+  SensorName = 'sensor_name',
+  /** column name */
+  Temperature = 'temperature',
+  /** column name */
+  Ts = 'ts',
+  /** column name */
+  Zambretti = 'zambretti',
+}
+
+export type Historical_Data_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Historical_Data_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Historical_Data_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Historical_Data_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Historical_Data_Var_Pop_Fields = {
+  __typename?: 'historical_data_var_pop_fields';
+  absolute_pressure?: Maybe<Scalars['Float']>;
+  battery?: Maybe<Scalars['Float']>;
+  humidity?: Maybe<Scalars['Float']>;
+  relative_pressure?: Maybe<Scalars['Float']>;
+  temperature?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Historical_Data_Var_Samp_Fields = {
+  __typename?: 'historical_data_var_samp_fields';
+  absolute_pressure?: Maybe<Scalars['Float']>;
+  battery?: Maybe<Scalars['Float']>;
+  humidity?: Maybe<Scalars['Float']>;
+  relative_pressure?: Maybe<Scalars['Float']>;
+  temperature?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Historical_Data_Variance_Fields = {
+  __typename?: 'historical_data_variance_fields';
+  absolute_pressure?: Maybe<Scalars['Float']>;
+  battery?: Maybe<Scalars['Float']>;
+  humidity?: Maybe<Scalars['Float']>;
+  relative_pressure?: Maybe<Scalars['Float']>;
+  temperature?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "labels" */
@@ -1636,6 +2205,7 @@ export type Labels_Updates = {
   _inc?: InputMaybe<Labels_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Labels_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Labels_Bool_Exp;
 };
 
@@ -1877,6 +2447,7 @@ export type Liabilities_Updates = {
   _inc?: InputMaybe<Liabilities_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Liabilities_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Liabilities_Bool_Exp;
 };
 
@@ -1917,6 +2488,14 @@ export type Mutation_Root = {
   delete_expenses?: Maybe<Expenses_Mutation_Response>;
   /** delete single row from the table: "expenses" */
   delete_expenses_by_pk?: Maybe<Expenses>;
+  /** delete data from the table: "gauge_data" */
+  delete_gauge_data?: Maybe<Gauge_Data_Mutation_Response>;
+  /** delete single row from the table: "gauge_data" */
+  delete_gauge_data_by_pk?: Maybe<Gauge_Data>;
+  /** delete data from the table: "historical_data" */
+  delete_historical_data?: Maybe<Historical_Data_Mutation_Response>;
+  /** delete single row from the table: "historical_data" */
+  delete_historical_data_by_pk?: Maybe<Historical_Data>;
   /** delete data from the table: "labels" */
   delete_labels?: Maybe<Labels_Mutation_Response>;
   /** delete single row from the table: "labels" */
@@ -1941,6 +2520,10 @@ export type Mutation_Root = {
   delete_revenues?: Maybe<Revenues_Mutation_Response>;
   /** delete single row from the table: "revenues" */
   delete_revenues_by_pk?: Maybe<Revenues>;
+  /** delete data from the table: "status_data" */
+  delete_status_data?: Maybe<Status_Data_Mutation_Response>;
+  /** delete single row from the table: "status_data" */
+  delete_status_data_by_pk?: Maybe<Status_Data>;
   /** delete data from the table: "transaction_accounts" */
   delete_transaction_accounts?: Maybe<Transaction_Accounts_Mutation_Response>;
   /** delete single row from the table: "transaction_accounts" */
@@ -1981,6 +2564,14 @@ export type Mutation_Root = {
   insert_expenses?: Maybe<Expenses_Mutation_Response>;
   /** insert a single row into the table: "expenses" */
   insert_expenses_one?: Maybe<Expenses>;
+  /** insert data into the table: "gauge_data" */
+  insert_gauge_data?: Maybe<Gauge_Data_Mutation_Response>;
+  /** insert a single row into the table: "gauge_data" */
+  insert_gauge_data_one?: Maybe<Gauge_Data>;
+  /** insert data into the table: "historical_data" */
+  insert_historical_data?: Maybe<Historical_Data_Mutation_Response>;
+  /** insert a single row into the table: "historical_data" */
+  insert_historical_data_one?: Maybe<Historical_Data>;
   /** insert data into the table: "labels" */
   insert_labels?: Maybe<Labels_Mutation_Response>;
   /** insert a single row into the table: "labels" */
@@ -2005,6 +2596,10 @@ export type Mutation_Root = {
   insert_revenues?: Maybe<Revenues_Mutation_Response>;
   /** insert a single row into the table: "revenues" */
   insert_revenues_one?: Maybe<Revenues>;
+  /** insert data into the table: "status_data" */
+  insert_status_data?: Maybe<Status_Data_Mutation_Response>;
+  /** insert a single row into the table: "status_data" */
+  insert_status_data_one?: Maybe<Status_Data>;
   /** insert data into the table: "transaction_accounts" */
   insert_transaction_accounts?: Maybe<Transaction_Accounts_Mutation_Response>;
   /** insert a single row into the table: "transaction_accounts" */
@@ -2053,6 +2648,18 @@ export type Mutation_Root = {
   update_expenses_by_pk?: Maybe<Expenses>;
   /** update multiples rows of table: "expenses" */
   update_expenses_many?: Maybe<Array<Maybe<Expenses_Mutation_Response>>>;
+  /** update data of the table: "gauge_data" */
+  update_gauge_data?: Maybe<Gauge_Data_Mutation_Response>;
+  /** update single row of the table: "gauge_data" */
+  update_gauge_data_by_pk?: Maybe<Gauge_Data>;
+  /** update multiples rows of table: "gauge_data" */
+  update_gauge_data_many?: Maybe<Array<Maybe<Gauge_Data_Mutation_Response>>>;
+  /** update data of the table: "historical_data" */
+  update_historical_data?: Maybe<Historical_Data_Mutation_Response>;
+  /** update single row of the table: "historical_data" */
+  update_historical_data_by_pk?: Maybe<Historical_Data>;
+  /** update multiples rows of table: "historical_data" */
+  update_historical_data_many?: Maybe<Array<Maybe<Historical_Data_Mutation_Response>>>;
   /** update data of the table: "labels" */
   update_labels?: Maybe<Labels_Mutation_Response>;
   /** update single row of the table: "labels" */
@@ -2089,6 +2696,12 @@ export type Mutation_Root = {
   update_revenues_by_pk?: Maybe<Revenues>;
   /** update multiples rows of table: "revenues" */
   update_revenues_many?: Maybe<Array<Maybe<Revenues_Mutation_Response>>>;
+  /** update data of the table: "status_data" */
+  update_status_data?: Maybe<Status_Data_Mutation_Response>;
+  /** update single row of the table: "status_data" */
+  update_status_data_by_pk?: Maybe<Status_Data>;
+  /** update multiples rows of table: "status_data" */
+  update_status_data_many?: Maybe<Array<Maybe<Status_Data_Mutation_Response>>>;
   /** update data of the table: "transaction_accounts" */
   update_transaction_accounts?: Maybe<Transaction_Accounts_Mutation_Response>;
   /** update single row of the table: "transaction_accounts" */
@@ -2168,6 +2781,28 @@ export type Mutation_RootDelete_Expenses_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootDelete_Gauge_DataArgs = {
+  where: Gauge_Data_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Gauge_Data_By_PkArgs = {
+  id: Scalars['uuid'];
+  ts: Scalars['timestamp'];
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Historical_DataArgs = {
+  where: Historical_Data_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Historical_Data_By_PkArgs = {
+  id: Scalars['uuid'];
+  ts: Scalars['timestamp'];
+};
+
+/** mutation root */
 export type Mutation_RootDelete_LabelsArgs = {
   where: Labels_Bool_Exp;
 };
@@ -2226,6 +2861,17 @@ export type Mutation_RootDelete_RevenuesArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Revenues_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Status_DataArgs = {
+  where: Status_Data_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Status_Data_By_PkArgs = {
+  pin: Scalars['smallint'];
+  sensor_name: Scalars['String'];
 };
 
 /** mutation root */
@@ -2339,6 +2985,30 @@ export type Mutation_RootInsert_Expenses_OneArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootInsert_Gauge_DataArgs = {
+  objects: Array<Gauge_Data_Insert_Input>;
+  on_conflict?: InputMaybe<Gauge_Data_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Gauge_Data_OneArgs = {
+  object: Gauge_Data_Insert_Input;
+  on_conflict?: InputMaybe<Gauge_Data_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Historical_DataArgs = {
+  objects: Array<Historical_Data_Insert_Input>;
+  on_conflict?: InputMaybe<Historical_Data_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Historical_Data_OneArgs = {
+  object: Historical_Data_Insert_Input;
+  on_conflict?: InputMaybe<Historical_Data_On_Conflict>;
+};
+
+/** mutation root */
 export type Mutation_RootInsert_LabelsArgs = {
   objects: Array<Labels_Insert_Input>;
   on_conflict?: InputMaybe<Labels_On_Conflict>;
@@ -2408,6 +3078,18 @@ export type Mutation_RootInsert_RevenuesArgs = {
 export type Mutation_RootInsert_Revenues_OneArgs = {
   object: Revenues_Insert_Input;
   on_conflict?: InputMaybe<Revenues_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Status_DataArgs = {
+  objects: Array<Status_Data_Insert_Input>;
+  on_conflict?: InputMaybe<Status_Data_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Status_Data_OneArgs = {
+  object: Status_Data_Insert_Input;
+  on_conflict?: InputMaybe<Status_Data_On_Conflict>;
 };
 
 /** mutation root */
@@ -2559,6 +3241,44 @@ export type Mutation_RootUpdate_Expenses_ManyArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootUpdate_Gauge_DataArgs = {
+  _inc?: InputMaybe<Gauge_Data_Inc_Input>;
+  _set?: InputMaybe<Gauge_Data_Set_Input>;
+  where: Gauge_Data_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Gauge_Data_By_PkArgs = {
+  _inc?: InputMaybe<Gauge_Data_Inc_Input>;
+  _set?: InputMaybe<Gauge_Data_Set_Input>;
+  pk_columns: Gauge_Data_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Gauge_Data_ManyArgs = {
+  updates: Array<Gauge_Data_Updates>;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Historical_DataArgs = {
+  _inc?: InputMaybe<Historical_Data_Inc_Input>;
+  _set?: InputMaybe<Historical_Data_Set_Input>;
+  where: Historical_Data_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Historical_Data_By_PkArgs = {
+  _inc?: InputMaybe<Historical_Data_Inc_Input>;
+  _set?: InputMaybe<Historical_Data_Set_Input>;
+  pk_columns: Historical_Data_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Historical_Data_ManyArgs = {
+  updates: Array<Historical_Data_Updates>;
+};
+
+/** mutation root */
 export type Mutation_RootUpdate_LabelsArgs = {
   _inc?: InputMaybe<Labels_Inc_Input>;
   _set?: InputMaybe<Labels_Set_Input>;
@@ -2670,6 +3390,25 @@ export type Mutation_RootUpdate_Revenues_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Revenues_ManyArgs = {
   updates: Array<Revenues_Updates>;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Status_DataArgs = {
+  _inc?: InputMaybe<Status_Data_Inc_Input>;
+  _set?: InputMaybe<Status_Data_Set_Input>;
+  where: Status_Data_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Status_Data_By_PkArgs = {
+  _inc?: InputMaybe<Status_Data_Inc_Input>;
+  _set?: InputMaybe<Status_Data_Set_Input>;
+  pk_columns: Status_Data_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Status_Data_ManyArgs = {
+  updates: Array<Status_Data_Updates>;
 };
 
 /** mutation root */
@@ -3014,6 +3753,7 @@ export type Notifications_Updates = {
   _inc?: InputMaybe<Notifications_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Notifications_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Notifications_Bool_Exp;
 };
 
@@ -3077,6 +3817,18 @@ export type Query_Root = {
   expenses_aggregate: Expenses_Aggregate;
   /** fetch data from the table: "expenses" using primary key columns */
   expenses_by_pk?: Maybe<Expenses>;
+  /** fetch data from the table: "gauge_data" */
+  gauge_data: Array<Gauge_Data>;
+  /** fetch aggregated fields from the table: "gauge_data" */
+  gauge_data_aggregate: Gauge_Data_Aggregate;
+  /** fetch data from the table: "gauge_data" using primary key columns */
+  gauge_data_by_pk?: Maybe<Gauge_Data>;
+  /** fetch data from the table: "historical_data" */
+  historical_data: Array<Historical_Data>;
+  /** fetch aggregated fields from the table: "historical_data" */
+  historical_data_aggregate: Historical_Data_Aggregate;
+  /** fetch data from the table: "historical_data" using primary key columns */
+  historical_data_by_pk?: Maybe<Historical_Data>;
   /** fetch data from the table: "labels" */
   labels: Array<Labels>;
   /** fetch aggregated fields from the table: "labels" */
@@ -3113,6 +3865,12 @@ export type Query_Root = {
   revenues_aggregate: Revenues_Aggregate;
   /** fetch data from the table: "revenues" using primary key columns */
   revenues_by_pk?: Maybe<Revenues>;
+  /** fetch data from the table: "status_data" */
+  status_data: Array<Status_Data>;
+  /** fetch aggregated fields from the table: "status_data" */
+  status_data_aggregate: Status_Data_Aggregate;
+  /** fetch data from the table: "status_data" using primary key columns */
+  status_data_by_pk?: Maybe<Status_Data>;
   /** An array relationship */
   transaction_accounts: Array<Transaction_Accounts>;
   /** An aggregate relationship */
@@ -3229,6 +3987,48 @@ export type Query_RootExpenses_AggregateArgs = {
 
 export type Query_RootExpenses_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+export type Query_RootGauge_DataArgs = {
+  distinct_on?: InputMaybe<Array<Gauge_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gauge_Data_Order_By>>;
+  where?: InputMaybe<Gauge_Data_Bool_Exp>;
+};
+
+export type Query_RootGauge_Data_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Gauge_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gauge_Data_Order_By>>;
+  where?: InputMaybe<Gauge_Data_Bool_Exp>;
+};
+
+export type Query_RootGauge_Data_By_PkArgs = {
+  id: Scalars['uuid'];
+  ts: Scalars['timestamp'];
+};
+
+export type Query_RootHistorical_DataArgs = {
+  distinct_on?: InputMaybe<Array<Historical_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Historical_Data_Order_By>>;
+  where?: InputMaybe<Historical_Data_Bool_Exp>;
+};
+
+export type Query_RootHistorical_Data_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Historical_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Historical_Data_Order_By>>;
+  where?: InputMaybe<Historical_Data_Bool_Exp>;
+};
+
+export type Query_RootHistorical_Data_By_PkArgs = {
+  id: Scalars['uuid'];
+  ts: Scalars['timestamp'];
 };
 
 export type Query_RootLabelsArgs = {
@@ -3350,6 +4150,27 @@ export type Query_RootRevenues_AggregateArgs = {
 
 export type Query_RootRevenues_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+export type Query_RootStatus_DataArgs = {
+  distinct_on?: InputMaybe<Array<Status_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Status_Data_Order_By>>;
+  where?: InputMaybe<Status_Data_Bool_Exp>;
+};
+
+export type Query_RootStatus_Data_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Status_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Status_Data_Order_By>>;
+  where?: InputMaybe<Status_Data_Bool_Exp>;
+};
+
+export type Query_RootStatus_Data_By_PkArgs = {
+  pin: Scalars['smallint'];
+  sensor_name: Scalars['String'];
 };
 
 export type Query_RootTransaction_AccountsArgs = {
@@ -4064,6 +4885,7 @@ export type Recurring_Labels_Updates = {
   _inc?: InputMaybe<Recurring_Labels_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Recurring_Labels_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Recurring_Labels_Bool_Exp;
 };
 
@@ -4530,6 +5352,7 @@ export type Recurring_Updates = {
   _inc?: InputMaybe<Recurring_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Recurring_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Recurring_Bool_Exp;
 };
 
@@ -4844,6 +5667,7 @@ export type Revenues_Updates = {
   _inc?: InputMaybe<Revenues_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Revenues_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Revenues_Bool_Exp;
 };
 
@@ -4863,6 +5687,263 @@ export type Revenues_Var_Samp_Fields = {
 export type Revenues_Variance_Fields = {
   __typename?: 'revenues_variance_fields';
   id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to compare columns of type "smallint". All fields are combined with logical 'AND'. */
+export type Smallint_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['smallint']>;
+  _gt?: InputMaybe<Scalars['smallint']>;
+  _gte?: InputMaybe<Scalars['smallint']>;
+  _in?: InputMaybe<Array<Scalars['smallint']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['smallint']>;
+  _lte?: InputMaybe<Scalars['smallint']>;
+  _neq?: InputMaybe<Scalars['smallint']>;
+  _nin?: InputMaybe<Array<Scalars['smallint']>>;
+};
+
+/** columns and relationships of "status_data" */
+export type Status_Data = {
+  __typename?: 'status_data';
+  doublevalue?: Maybe<Scalars['float8']>;
+  pin: Scalars['smallint'];
+  sensor_name: Scalars['String'];
+  stringvalue?: Maybe<Scalars['String']>;
+  ts: Scalars['timestamp'];
+};
+
+/** aggregated selection of "status_data" */
+export type Status_Data_Aggregate = {
+  __typename?: 'status_data_aggregate';
+  aggregate?: Maybe<Status_Data_Aggregate_Fields>;
+  nodes: Array<Status_Data>;
+};
+
+/** aggregate fields of "status_data" */
+export type Status_Data_Aggregate_Fields = {
+  __typename?: 'status_data_aggregate_fields';
+  avg?: Maybe<Status_Data_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Status_Data_Max_Fields>;
+  min?: Maybe<Status_Data_Min_Fields>;
+  stddev?: Maybe<Status_Data_Stddev_Fields>;
+  stddev_pop?: Maybe<Status_Data_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Status_Data_Stddev_Samp_Fields>;
+  sum?: Maybe<Status_Data_Sum_Fields>;
+  var_pop?: Maybe<Status_Data_Var_Pop_Fields>;
+  var_samp?: Maybe<Status_Data_Var_Samp_Fields>;
+  variance?: Maybe<Status_Data_Variance_Fields>;
+};
+
+/** aggregate fields of "status_data" */
+export type Status_Data_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Status_Data_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Status_Data_Avg_Fields = {
+  __typename?: 'status_data_avg_fields';
+  doublevalue?: Maybe<Scalars['Float']>;
+  pin?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "status_data". All fields are combined with a logical 'AND'. */
+export type Status_Data_Bool_Exp = {
+  _and?: InputMaybe<Array<Status_Data_Bool_Exp>>;
+  _not?: InputMaybe<Status_Data_Bool_Exp>;
+  _or?: InputMaybe<Array<Status_Data_Bool_Exp>>;
+  doublevalue?: InputMaybe<Float8_Comparison_Exp>;
+  pin?: InputMaybe<Smallint_Comparison_Exp>;
+  sensor_name?: InputMaybe<String_Comparison_Exp>;
+  stringvalue?: InputMaybe<String_Comparison_Exp>;
+  ts?: InputMaybe<Timestamp_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "status_data" */
+export enum Status_Data_Constraint {
+  /** unique or primary key constraint on columns "pin", "sensor_name" */
+  StatusDataPkey = 'status_data_pkey',
+  /** unique or primary key constraint on columns "pin", "sensor_name" */
+  StatusDataSensorNamePinKey = 'status_data_sensor_name_pin_key',
+}
+
+/** input type for incrementing numeric columns in table "status_data" */
+export type Status_Data_Inc_Input = {
+  doublevalue?: InputMaybe<Scalars['float8']>;
+  pin?: InputMaybe<Scalars['smallint']>;
+};
+
+/** input type for inserting data into table "status_data" */
+export type Status_Data_Insert_Input = {
+  doublevalue?: InputMaybe<Scalars['float8']>;
+  pin?: InputMaybe<Scalars['smallint']>;
+  sensor_name?: InputMaybe<Scalars['String']>;
+  stringvalue?: InputMaybe<Scalars['String']>;
+  ts?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate max on columns */
+export type Status_Data_Max_Fields = {
+  __typename?: 'status_data_max_fields';
+  doublevalue?: Maybe<Scalars['float8']>;
+  pin?: Maybe<Scalars['smallint']>;
+  sensor_name?: Maybe<Scalars['String']>;
+  stringvalue?: Maybe<Scalars['String']>;
+  ts?: Maybe<Scalars['timestamp']>;
+};
+
+/** aggregate min on columns */
+export type Status_Data_Min_Fields = {
+  __typename?: 'status_data_min_fields';
+  doublevalue?: Maybe<Scalars['float8']>;
+  pin?: Maybe<Scalars['smallint']>;
+  sensor_name?: Maybe<Scalars['String']>;
+  stringvalue?: Maybe<Scalars['String']>;
+  ts?: Maybe<Scalars['timestamp']>;
+};
+
+/** response of any mutation on the table "status_data" */
+export type Status_Data_Mutation_Response = {
+  __typename?: 'status_data_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Status_Data>;
+};
+
+/** on_conflict condition type for table "status_data" */
+export type Status_Data_On_Conflict = {
+  constraint: Status_Data_Constraint;
+  update_columns?: Array<Status_Data_Update_Column>;
+  where?: InputMaybe<Status_Data_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "status_data". */
+export type Status_Data_Order_By = {
+  doublevalue?: InputMaybe<Order_By>;
+  pin?: InputMaybe<Order_By>;
+  sensor_name?: InputMaybe<Order_By>;
+  stringvalue?: InputMaybe<Order_By>;
+  ts?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: status_data */
+export type Status_Data_Pk_Columns_Input = {
+  pin: Scalars['smallint'];
+  sensor_name: Scalars['String'];
+};
+
+/** select columns of table "status_data" */
+export enum Status_Data_Select_Column {
+  /** column name */
+  Doublevalue = 'doublevalue',
+  /** column name */
+  Pin = 'pin',
+  /** column name */
+  SensorName = 'sensor_name',
+  /** column name */
+  Stringvalue = 'stringvalue',
+  /** column name */
+  Ts = 'ts',
+}
+
+/** input type for updating data in table "status_data" */
+export type Status_Data_Set_Input = {
+  doublevalue?: InputMaybe<Scalars['float8']>;
+  pin?: InputMaybe<Scalars['smallint']>;
+  sensor_name?: InputMaybe<Scalars['String']>;
+  stringvalue?: InputMaybe<Scalars['String']>;
+  ts?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate stddev on columns */
+export type Status_Data_Stddev_Fields = {
+  __typename?: 'status_data_stddev_fields';
+  doublevalue?: Maybe<Scalars['Float']>;
+  pin?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Status_Data_Stddev_Pop_Fields = {
+  __typename?: 'status_data_stddev_pop_fields';
+  doublevalue?: Maybe<Scalars['Float']>;
+  pin?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Status_Data_Stddev_Samp_Fields = {
+  __typename?: 'status_data_stddev_samp_fields';
+  doublevalue?: Maybe<Scalars['Float']>;
+  pin?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "status_data" */
+export type Status_Data_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Status_Data_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Status_Data_Stream_Cursor_Value_Input = {
+  doublevalue?: InputMaybe<Scalars['float8']>;
+  pin?: InputMaybe<Scalars['smallint']>;
+  sensor_name?: InputMaybe<Scalars['String']>;
+  stringvalue?: InputMaybe<Scalars['String']>;
+  ts?: InputMaybe<Scalars['timestamp']>;
+};
+
+/** aggregate sum on columns */
+export type Status_Data_Sum_Fields = {
+  __typename?: 'status_data_sum_fields';
+  doublevalue?: Maybe<Scalars['float8']>;
+  pin?: Maybe<Scalars['smallint']>;
+};
+
+/** update columns of table "status_data" */
+export enum Status_Data_Update_Column {
+  /** column name */
+  Doublevalue = 'doublevalue',
+  /** column name */
+  Pin = 'pin',
+  /** column name */
+  SensorName = 'sensor_name',
+  /** column name */
+  Stringvalue = 'stringvalue',
+  /** column name */
+  Ts = 'ts',
+}
+
+export type Status_Data_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Status_Data_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Status_Data_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Status_Data_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Status_Data_Var_Pop_Fields = {
+  __typename?: 'status_data_var_pop_fields';
+  doublevalue?: Maybe<Scalars['Float']>;
+  pin?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Status_Data_Var_Samp_Fields = {
+  __typename?: 'status_data_var_samp_fields';
+  doublevalue?: Maybe<Scalars['Float']>;
+  pin?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Status_Data_Variance_Fields = {
+  __typename?: 'status_data_variance_fields';
+  doublevalue?: Maybe<Scalars['Float']>;
+  pin?: Maybe<Scalars['Float']>;
 };
 
 export type Subscription_Root = {
@@ -4899,6 +5980,22 @@ export type Subscription_Root = {
   expenses_by_pk?: Maybe<Expenses>;
   /** fetch data from the table in a streaming manner: "expenses" */
   expenses_stream: Array<Expenses>;
+  /** fetch data from the table: "gauge_data" */
+  gauge_data: Array<Gauge_Data>;
+  /** fetch aggregated fields from the table: "gauge_data" */
+  gauge_data_aggregate: Gauge_Data_Aggregate;
+  /** fetch data from the table: "gauge_data" using primary key columns */
+  gauge_data_by_pk?: Maybe<Gauge_Data>;
+  /** fetch data from the table in a streaming manner: "gauge_data" */
+  gauge_data_stream: Array<Gauge_Data>;
+  /** fetch data from the table: "historical_data" */
+  historical_data: Array<Historical_Data>;
+  /** fetch aggregated fields from the table: "historical_data" */
+  historical_data_aggregate: Historical_Data_Aggregate;
+  /** fetch data from the table: "historical_data" using primary key columns */
+  historical_data_by_pk?: Maybe<Historical_Data>;
+  /** fetch data from the table in a streaming manner: "historical_data" */
+  historical_data_stream: Array<Historical_Data>;
   /** fetch data from the table: "labels" */
   labels: Array<Labels>;
   /** fetch aggregated fields from the table: "labels" */
@@ -4947,6 +6044,14 @@ export type Subscription_Root = {
   revenues_by_pk?: Maybe<Revenues>;
   /** fetch data from the table in a streaming manner: "revenues" */
   revenues_stream: Array<Revenues>;
+  /** fetch data from the table: "status_data" */
+  status_data: Array<Status_Data>;
+  /** fetch aggregated fields from the table: "status_data" */
+  status_data_aggregate: Status_Data_Aggregate;
+  /** fetch data from the table: "status_data" using primary key columns */
+  status_data_by_pk?: Maybe<Status_Data>;
+  /** fetch data from the table in a streaming manner: "status_data" */
+  status_data_stream: Array<Status_Data>;
   /** An array relationship */
   transaction_accounts: Array<Transaction_Accounts>;
   /** An aggregate relationship */
@@ -5099,6 +6204,60 @@ export type Subscription_RootExpenses_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Expenses_Stream_Cursor_Input>>;
   where?: InputMaybe<Expenses_Bool_Exp>;
+};
+
+export type Subscription_RootGauge_DataArgs = {
+  distinct_on?: InputMaybe<Array<Gauge_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gauge_Data_Order_By>>;
+  where?: InputMaybe<Gauge_Data_Bool_Exp>;
+};
+
+export type Subscription_RootGauge_Data_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Gauge_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Gauge_Data_Order_By>>;
+  where?: InputMaybe<Gauge_Data_Bool_Exp>;
+};
+
+export type Subscription_RootGauge_Data_By_PkArgs = {
+  id: Scalars['uuid'];
+  ts: Scalars['timestamp'];
+};
+
+export type Subscription_RootGauge_Data_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Gauge_Data_Stream_Cursor_Input>>;
+  where?: InputMaybe<Gauge_Data_Bool_Exp>;
+};
+
+export type Subscription_RootHistorical_DataArgs = {
+  distinct_on?: InputMaybe<Array<Historical_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Historical_Data_Order_By>>;
+  where?: InputMaybe<Historical_Data_Bool_Exp>;
+};
+
+export type Subscription_RootHistorical_Data_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Historical_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Historical_Data_Order_By>>;
+  where?: InputMaybe<Historical_Data_Bool_Exp>;
+};
+
+export type Subscription_RootHistorical_Data_By_PkArgs = {
+  id: Scalars['uuid'];
+  ts: Scalars['timestamp'];
+};
+
+export type Subscription_RootHistorical_Data_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Historical_Data_Stream_Cursor_Input>>;
+  where?: InputMaybe<Historical_Data_Bool_Exp>;
 };
 
 export type Subscription_RootLabelsArgs = {
@@ -5258,6 +6417,33 @@ export type Subscription_RootRevenues_StreamArgs = {
   where?: InputMaybe<Revenues_Bool_Exp>;
 };
 
+export type Subscription_RootStatus_DataArgs = {
+  distinct_on?: InputMaybe<Array<Status_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Status_Data_Order_By>>;
+  where?: InputMaybe<Status_Data_Bool_Exp>;
+};
+
+export type Subscription_RootStatus_Data_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Status_Data_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Status_Data_Order_By>>;
+  where?: InputMaybe<Status_Data_Bool_Exp>;
+};
+
+export type Subscription_RootStatus_Data_By_PkArgs = {
+  pin: Scalars['smallint'];
+  sensor_name: Scalars['String'];
+};
+
+export type Subscription_RootStatus_Data_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Status_Data_Stream_Cursor_Input>>;
+  where?: InputMaybe<Status_Data_Bool_Exp>;
+};
+
 export type Subscription_RootTransaction_AccountsArgs = {
   distinct_on?: InputMaybe<Array<Transaction_Accounts_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -5414,6 +6600,19 @@ export type Subscription_RootUsers_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Users_Stream_Cursor_Input>>;
   where?: InputMaybe<Users_Bool_Exp>;
+};
+
+/** Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'. */
+export type Timestamp_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['timestamp']>;
+  _gt?: InputMaybe<Scalars['timestamp']>;
+  _gte?: InputMaybe<Scalars['timestamp']>;
+  _in?: InputMaybe<Array<Scalars['timestamp']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['timestamp']>;
+  _lte?: InputMaybe<Scalars['timestamp']>;
+  _neq?: InputMaybe<Scalars['timestamp']>;
+  _nin?: InputMaybe<Array<Scalars['timestamp']>>;
 };
 
 /** Boolean expression to compare columns of type "timestamptz". All fields are combined with logical 'AND'. */
@@ -5894,6 +7093,7 @@ export type Transaction_Accounts_Updates = {
   _inc?: InputMaybe<Transaction_Accounts_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Transaction_Accounts_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Transaction_Accounts_Bool_Exp;
 };
 
@@ -6181,6 +7381,7 @@ export type Transaction_Attachments_Updates = {
   _inc?: InputMaybe<Transaction_Attachments_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Transaction_Attachments_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Transaction_Attachments_Bool_Exp;
 };
 
@@ -6471,6 +7672,7 @@ export type Transaction_Labels_Updates = {
   _inc?: InputMaybe<Transaction_Labels_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Transaction_Labels_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Transaction_Labels_Bool_Exp;
 };
 
@@ -7155,6 +8357,7 @@ export type Transactions_Updates = {
   _inc?: InputMaybe<Transactions_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Transactions_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Transactions_Bool_Exp;
 };
 
@@ -7378,6 +8581,7 @@ export enum User_Settings_Update_Column {
 export type User_Settings_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<User_Settings_Set_Input>;
+  /** filter the rows which have to be updated */
   where: User_Settings_Bool_Exp;
 };
 
@@ -7560,6 +8764,7 @@ export enum Users_Update_Column {
 export type Users_Updates = {
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<Users_Set_Input>;
+  /** filter the rows which have to be updated */
   where: Users_Bool_Exp;
 };
 
@@ -11545,6 +12750,60 @@ export type ResolversTypes = {
   expenses_variance_fields: ResolverTypeWrapper<Expenses_Variance_Fields>;
   float8: ResolverTypeWrapper<Scalars['float8']>;
   float8_comparison_exp: Float8_Comparison_Exp;
+  gauge_data: ResolverTypeWrapper<Gauge_Data>;
+  gauge_data_aggregate: ResolverTypeWrapper<Gauge_Data_Aggregate>;
+  gauge_data_aggregate_fields: ResolverTypeWrapper<Gauge_Data_Aggregate_Fields>;
+  gauge_data_avg_fields: ResolverTypeWrapper<Gauge_Data_Avg_Fields>;
+  gauge_data_bool_exp: Gauge_Data_Bool_Exp;
+  gauge_data_constraint: Gauge_Data_Constraint;
+  gauge_data_inc_input: Gauge_Data_Inc_Input;
+  gauge_data_insert_input: Gauge_Data_Insert_Input;
+  gauge_data_max_fields: ResolverTypeWrapper<Gauge_Data_Max_Fields>;
+  gauge_data_min_fields: ResolverTypeWrapper<Gauge_Data_Min_Fields>;
+  gauge_data_mutation_response: ResolverTypeWrapper<Gauge_Data_Mutation_Response>;
+  gauge_data_on_conflict: Gauge_Data_On_Conflict;
+  gauge_data_order_by: Gauge_Data_Order_By;
+  gauge_data_pk_columns_input: Gauge_Data_Pk_Columns_Input;
+  gauge_data_select_column: Gauge_Data_Select_Column;
+  gauge_data_set_input: Gauge_Data_Set_Input;
+  gauge_data_stddev_fields: ResolverTypeWrapper<Gauge_Data_Stddev_Fields>;
+  gauge_data_stddev_pop_fields: ResolverTypeWrapper<Gauge_Data_Stddev_Pop_Fields>;
+  gauge_data_stddev_samp_fields: ResolverTypeWrapper<Gauge_Data_Stddev_Samp_Fields>;
+  gauge_data_stream_cursor_input: Gauge_Data_Stream_Cursor_Input;
+  gauge_data_stream_cursor_value_input: Gauge_Data_Stream_Cursor_Value_Input;
+  gauge_data_sum_fields: ResolverTypeWrapper<Gauge_Data_Sum_Fields>;
+  gauge_data_update_column: Gauge_Data_Update_Column;
+  gauge_data_updates: Gauge_Data_Updates;
+  gauge_data_var_pop_fields: ResolverTypeWrapper<Gauge_Data_Var_Pop_Fields>;
+  gauge_data_var_samp_fields: ResolverTypeWrapper<Gauge_Data_Var_Samp_Fields>;
+  gauge_data_variance_fields: ResolverTypeWrapper<Gauge_Data_Variance_Fields>;
+  historical_data: ResolverTypeWrapper<Historical_Data>;
+  historical_data_aggregate: ResolverTypeWrapper<Historical_Data_Aggregate>;
+  historical_data_aggregate_fields: ResolverTypeWrapper<Historical_Data_Aggregate_Fields>;
+  historical_data_avg_fields: ResolverTypeWrapper<Historical_Data_Avg_Fields>;
+  historical_data_bool_exp: Historical_Data_Bool_Exp;
+  historical_data_constraint: Historical_Data_Constraint;
+  historical_data_inc_input: Historical_Data_Inc_Input;
+  historical_data_insert_input: Historical_Data_Insert_Input;
+  historical_data_max_fields: ResolverTypeWrapper<Historical_Data_Max_Fields>;
+  historical_data_min_fields: ResolverTypeWrapper<Historical_Data_Min_Fields>;
+  historical_data_mutation_response: ResolverTypeWrapper<Historical_Data_Mutation_Response>;
+  historical_data_on_conflict: Historical_Data_On_Conflict;
+  historical_data_order_by: Historical_Data_Order_By;
+  historical_data_pk_columns_input: Historical_Data_Pk_Columns_Input;
+  historical_data_select_column: Historical_Data_Select_Column;
+  historical_data_set_input: Historical_Data_Set_Input;
+  historical_data_stddev_fields: ResolverTypeWrapper<Historical_Data_Stddev_Fields>;
+  historical_data_stddev_pop_fields: ResolverTypeWrapper<Historical_Data_Stddev_Pop_Fields>;
+  historical_data_stddev_samp_fields: ResolverTypeWrapper<Historical_Data_Stddev_Samp_Fields>;
+  historical_data_stream_cursor_input: Historical_Data_Stream_Cursor_Input;
+  historical_data_stream_cursor_value_input: Historical_Data_Stream_Cursor_Value_Input;
+  historical_data_sum_fields: ResolverTypeWrapper<Historical_Data_Sum_Fields>;
+  historical_data_update_column: Historical_Data_Update_Column;
+  historical_data_updates: Historical_Data_Updates;
+  historical_data_var_pop_fields: ResolverTypeWrapper<Historical_Data_Var_Pop_Fields>;
+  historical_data_var_samp_fields: ResolverTypeWrapper<Historical_Data_Var_Samp_Fields>;
+  historical_data_variance_fields: ResolverTypeWrapper<Historical_Data_Variance_Fields>;
   labels: ResolverTypeWrapper<Labels>;
   labels_aggregate: ResolverTypeWrapper<Labels_Aggregate>;
   labels_aggregate_fields: ResolverTypeWrapper<Labels_Aggregate_Fields>;
@@ -11764,7 +13023,38 @@ export type ResolversTypes = {
   revenues_var_pop_fields: ResolverTypeWrapper<Revenues_Var_Pop_Fields>;
   revenues_var_samp_fields: ResolverTypeWrapper<Revenues_Var_Samp_Fields>;
   revenues_variance_fields: ResolverTypeWrapper<Revenues_Variance_Fields>;
+  smallint: ResolverTypeWrapper<Scalars['smallint']>;
+  smallint_comparison_exp: Smallint_Comparison_Exp;
+  status_data: ResolverTypeWrapper<Status_Data>;
+  status_data_aggregate: ResolverTypeWrapper<Status_Data_Aggregate>;
+  status_data_aggregate_fields: ResolverTypeWrapper<Status_Data_Aggregate_Fields>;
+  status_data_avg_fields: ResolverTypeWrapper<Status_Data_Avg_Fields>;
+  status_data_bool_exp: Status_Data_Bool_Exp;
+  status_data_constraint: Status_Data_Constraint;
+  status_data_inc_input: Status_Data_Inc_Input;
+  status_data_insert_input: Status_Data_Insert_Input;
+  status_data_max_fields: ResolverTypeWrapper<Status_Data_Max_Fields>;
+  status_data_min_fields: ResolverTypeWrapper<Status_Data_Min_Fields>;
+  status_data_mutation_response: ResolverTypeWrapper<Status_Data_Mutation_Response>;
+  status_data_on_conflict: Status_Data_On_Conflict;
+  status_data_order_by: Status_Data_Order_By;
+  status_data_pk_columns_input: Status_Data_Pk_Columns_Input;
+  status_data_select_column: Status_Data_Select_Column;
+  status_data_set_input: Status_Data_Set_Input;
+  status_data_stddev_fields: ResolverTypeWrapper<Status_Data_Stddev_Fields>;
+  status_data_stddev_pop_fields: ResolverTypeWrapper<Status_Data_Stddev_Pop_Fields>;
+  status_data_stddev_samp_fields: ResolverTypeWrapper<Status_Data_Stddev_Samp_Fields>;
+  status_data_stream_cursor_input: Status_Data_Stream_Cursor_Input;
+  status_data_stream_cursor_value_input: Status_Data_Stream_Cursor_Value_Input;
+  status_data_sum_fields: ResolverTypeWrapper<Status_Data_Sum_Fields>;
+  status_data_update_column: Status_Data_Update_Column;
+  status_data_updates: Status_Data_Updates;
+  status_data_var_pop_fields: ResolverTypeWrapper<Status_Data_Var_Pop_Fields>;
+  status_data_var_samp_fields: ResolverTypeWrapper<Status_Data_Var_Samp_Fields>;
+  status_data_variance_fields: ResolverTypeWrapper<Status_Data_Variance_Fields>;
   subscription_root: ResolverTypeWrapper<{}>;
+  timestamp: ResolverTypeWrapper<Scalars['timestamp']>;
+  timestamp_comparison_exp: Timestamp_Comparison_Exp;
   timestamptz: ResolverTypeWrapper<Scalars['timestamptz']>;
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
   transaction_accounts: ResolverTypeWrapper<Transaction_Accounts>;
@@ -12114,6 +13404,54 @@ export type ResolversParentTypes = {
   expenses_variance_fields: Expenses_Variance_Fields;
   float8: Scalars['float8'];
   float8_comparison_exp: Float8_Comparison_Exp;
+  gauge_data: Gauge_Data;
+  gauge_data_aggregate: Gauge_Data_Aggregate;
+  gauge_data_aggregate_fields: Gauge_Data_Aggregate_Fields;
+  gauge_data_avg_fields: Gauge_Data_Avg_Fields;
+  gauge_data_bool_exp: Gauge_Data_Bool_Exp;
+  gauge_data_inc_input: Gauge_Data_Inc_Input;
+  gauge_data_insert_input: Gauge_Data_Insert_Input;
+  gauge_data_max_fields: Gauge_Data_Max_Fields;
+  gauge_data_min_fields: Gauge_Data_Min_Fields;
+  gauge_data_mutation_response: Gauge_Data_Mutation_Response;
+  gauge_data_on_conflict: Gauge_Data_On_Conflict;
+  gauge_data_order_by: Gauge_Data_Order_By;
+  gauge_data_pk_columns_input: Gauge_Data_Pk_Columns_Input;
+  gauge_data_set_input: Gauge_Data_Set_Input;
+  gauge_data_stddev_fields: Gauge_Data_Stddev_Fields;
+  gauge_data_stddev_pop_fields: Gauge_Data_Stddev_Pop_Fields;
+  gauge_data_stddev_samp_fields: Gauge_Data_Stddev_Samp_Fields;
+  gauge_data_stream_cursor_input: Gauge_Data_Stream_Cursor_Input;
+  gauge_data_stream_cursor_value_input: Gauge_Data_Stream_Cursor_Value_Input;
+  gauge_data_sum_fields: Gauge_Data_Sum_Fields;
+  gauge_data_updates: Gauge_Data_Updates;
+  gauge_data_var_pop_fields: Gauge_Data_Var_Pop_Fields;
+  gauge_data_var_samp_fields: Gauge_Data_Var_Samp_Fields;
+  gauge_data_variance_fields: Gauge_Data_Variance_Fields;
+  historical_data: Historical_Data;
+  historical_data_aggregate: Historical_Data_Aggregate;
+  historical_data_aggregate_fields: Historical_Data_Aggregate_Fields;
+  historical_data_avg_fields: Historical_Data_Avg_Fields;
+  historical_data_bool_exp: Historical_Data_Bool_Exp;
+  historical_data_inc_input: Historical_Data_Inc_Input;
+  historical_data_insert_input: Historical_Data_Insert_Input;
+  historical_data_max_fields: Historical_Data_Max_Fields;
+  historical_data_min_fields: Historical_Data_Min_Fields;
+  historical_data_mutation_response: Historical_Data_Mutation_Response;
+  historical_data_on_conflict: Historical_Data_On_Conflict;
+  historical_data_order_by: Historical_Data_Order_By;
+  historical_data_pk_columns_input: Historical_Data_Pk_Columns_Input;
+  historical_data_set_input: Historical_Data_Set_Input;
+  historical_data_stddev_fields: Historical_Data_Stddev_Fields;
+  historical_data_stddev_pop_fields: Historical_Data_Stddev_Pop_Fields;
+  historical_data_stddev_samp_fields: Historical_Data_Stddev_Samp_Fields;
+  historical_data_stream_cursor_input: Historical_Data_Stream_Cursor_Input;
+  historical_data_stream_cursor_value_input: Historical_Data_Stream_Cursor_Value_Input;
+  historical_data_sum_fields: Historical_Data_Sum_Fields;
+  historical_data_updates: Historical_Data_Updates;
+  historical_data_var_pop_fields: Historical_Data_Var_Pop_Fields;
+  historical_data_var_samp_fields: Historical_Data_Var_Samp_Fields;
+  historical_data_variance_fields: Historical_Data_Variance_Fields;
   labels: Labels;
   labels_aggregate: Labels_Aggregate;
   labels_aggregate_fields: Labels_Aggregate_Fields;
@@ -12304,7 +13642,35 @@ export type ResolversParentTypes = {
   revenues_var_pop_fields: Revenues_Var_Pop_Fields;
   revenues_var_samp_fields: Revenues_Var_Samp_Fields;
   revenues_variance_fields: Revenues_Variance_Fields;
+  smallint: Scalars['smallint'];
+  smallint_comparison_exp: Smallint_Comparison_Exp;
+  status_data: Status_Data;
+  status_data_aggregate: Status_Data_Aggregate;
+  status_data_aggregate_fields: Status_Data_Aggregate_Fields;
+  status_data_avg_fields: Status_Data_Avg_Fields;
+  status_data_bool_exp: Status_Data_Bool_Exp;
+  status_data_inc_input: Status_Data_Inc_Input;
+  status_data_insert_input: Status_Data_Insert_Input;
+  status_data_max_fields: Status_Data_Max_Fields;
+  status_data_min_fields: Status_Data_Min_Fields;
+  status_data_mutation_response: Status_Data_Mutation_Response;
+  status_data_on_conflict: Status_Data_On_Conflict;
+  status_data_order_by: Status_Data_Order_By;
+  status_data_pk_columns_input: Status_Data_Pk_Columns_Input;
+  status_data_set_input: Status_Data_Set_Input;
+  status_data_stddev_fields: Status_Data_Stddev_Fields;
+  status_data_stddev_pop_fields: Status_Data_Stddev_Pop_Fields;
+  status_data_stddev_samp_fields: Status_Data_Stddev_Samp_Fields;
+  status_data_stream_cursor_input: Status_Data_Stream_Cursor_Input;
+  status_data_stream_cursor_value_input: Status_Data_Stream_Cursor_Value_Input;
+  status_data_sum_fields: Status_Data_Sum_Fields;
+  status_data_updates: Status_Data_Updates;
+  status_data_var_pop_fields: Status_Data_Var_Pop_Fields;
+  status_data_var_samp_fields: Status_Data_Var_Samp_Fields;
+  status_data_variance_fields: Status_Data_Variance_Fields;
   subscription_root: {};
+  timestamp: Scalars['timestamp'];
+  timestamp_comparison_exp: Timestamp_Comparison_Exp;
   timestamptz: Scalars['timestamptz'];
   timestamptz_comparison_exp: Timestamptz_Comparison_Exp;
   transaction_accounts: Transaction_Accounts;
@@ -13105,6 +14471,327 @@ export interface Float8ScalarConfig extends GraphQLScalarTypeConfig<ResolversTyp
   name: 'float8';
 }
 
+export type Gauge_DataResolvers<ContextType = any, ParentType extends ResolversParentTypes['gauge_data'] = ResolversParentTypes['gauge_data']> = {
+  battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
+  sensor_name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  tick?: Resolver<ResolversTypes['float8'], ParentType, ContextType>;
+  ts?: Resolver<ResolversTypes['timestamp'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_AggregateResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_aggregate'] = ResolversParentTypes['gauge_data_aggregate']
+> = {
+  aggregate?: Resolver<Maybe<ResolversTypes['gauge_data_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['gauge_data']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Aggregate_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_aggregate_fields'] = ResolversParentTypes['gauge_data_aggregate_fields']
+> = {
+  avg?: Resolver<Maybe<ResolversTypes['gauge_data_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Gauge_Data_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['gauge_data_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['gauge_data_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['gauge_data_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['gauge_data_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['gauge_data_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['gauge_data_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['gauge_data_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['gauge_data_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['gauge_data_variance_fields']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Avg_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_avg_fields'] = ResolversParentTypes['gauge_data_avg_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Max_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_max_fields'] = ResolversParentTypes['gauge_data_max_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
+  sensor_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  ts?: Resolver<Maybe<ResolversTypes['timestamp']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Min_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_min_fields'] = ResolversParentTypes['gauge_data_min_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
+  sensor_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  ts?: Resolver<Maybe<ResolversTypes['timestamp']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Mutation_ResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_mutation_response'] = ResolversParentTypes['gauge_data_mutation_response']
+> = {
+  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  returning?: Resolver<Array<ResolversTypes['gauge_data']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Stddev_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_stddev_fields'] = ResolversParentTypes['gauge_data_stddev_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Stddev_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_stddev_pop_fields'] = ResolversParentTypes['gauge_data_stddev_pop_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Stddev_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_stddev_samp_fields'] = ResolversParentTypes['gauge_data_stddev_samp_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Sum_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_sum_fields'] = ResolversParentTypes['gauge_data_sum_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Var_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_var_pop_fields'] = ResolversParentTypes['gauge_data_var_pop_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Var_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_var_samp_fields'] = ResolversParentTypes['gauge_data_var_samp_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Gauge_Data_Variance_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['gauge_data_variance_fields'] = ResolversParentTypes['gauge_data_variance_fields']
+> = {
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_DataResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data'] = ResolversParentTypes['historical_data']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  sensor_name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  ts?: Resolver<ResolversTypes['timestamp'], ParentType, ContextType>;
+  zambretti?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_AggregateResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_aggregate'] = ResolversParentTypes['historical_data_aggregate']
+> = {
+  aggregate?: Resolver<Maybe<ResolversTypes['historical_data_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['historical_data']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Aggregate_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_aggregate_fields'] = ResolversParentTypes['historical_data_aggregate_fields']
+> = {
+  avg?: Resolver<Maybe<ResolversTypes['historical_data_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Historical_Data_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['historical_data_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['historical_data_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['historical_data_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['historical_data_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['historical_data_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['historical_data_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['historical_data_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['historical_data_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['historical_data_variance_fields']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Avg_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_avg_fields'] = ResolversParentTypes['historical_data_avg_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Max_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_max_fields'] = ResolversParentTypes['historical_data_max_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  sensor_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  ts?: Resolver<Maybe<ResolversTypes['timestamp']>, ParentType, ContextType>;
+  zambretti?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Min_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_min_fields'] = ResolversParentTypes['historical_data_min_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  sensor_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  ts?: Resolver<Maybe<ResolversTypes['timestamp']>, ParentType, ContextType>;
+  zambretti?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Mutation_ResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_mutation_response'] = ResolversParentTypes['historical_data_mutation_response']
+> = {
+  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  returning?: Resolver<Array<ResolversTypes['historical_data']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Stddev_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_stddev_fields'] = ResolversParentTypes['historical_data_stddev_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Stddev_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_stddev_pop_fields'] = ResolversParentTypes['historical_data_stddev_pop_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Stddev_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_stddev_samp_fields'] = ResolversParentTypes['historical_data_stddev_samp_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Sum_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_sum_fields'] = ResolversParentTypes['historical_data_sum_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Var_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_var_pop_fields'] = ResolversParentTypes['historical_data_var_pop_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Var_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_var_samp_fields'] = ResolversParentTypes['historical_data_var_samp_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Historical_Data_Variance_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['historical_data_variance_fields'] = ResolversParentTypes['historical_data_variance_fields']
+> = {
+  absolute_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  humidity?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  relative_pressure?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  temperature?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type LabelsResolvers<ContextType = any, ParentType extends ResolversParentTypes['labels'] = ResolversParentTypes['labels']> = {
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -13410,6 +15097,30 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     RequireFields<Mutation_RootDelete_ExpensesArgs, 'where'>
   >;
   delete_expenses_by_pk?: Resolver<Maybe<ResolversTypes['expenses']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Expenses_By_PkArgs, 'id'>>;
+  delete_gauge_data?: Resolver<
+    Maybe<ResolversTypes['gauge_data_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Gauge_DataArgs, 'where'>
+  >;
+  delete_gauge_data_by_pk?: Resolver<
+    Maybe<ResolversTypes['gauge_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Gauge_Data_By_PkArgs, 'id' | 'ts'>
+  >;
+  delete_historical_data?: Resolver<
+    Maybe<ResolversTypes['historical_data_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Historical_DataArgs, 'where'>
+  >;
+  delete_historical_data_by_pk?: Resolver<
+    Maybe<ResolversTypes['historical_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Historical_Data_By_PkArgs, 'id' | 'ts'>
+  >;
   delete_labels?: Resolver<Maybe<ResolversTypes['labels_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_LabelsArgs, 'where'>>;
   delete_labels_by_pk?: Resolver<Maybe<ResolversTypes['labels']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Labels_By_PkArgs, 'id'>>;
   delete_liabilities?: Resolver<
@@ -13462,6 +15173,18 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     RequireFields<Mutation_RootDelete_RevenuesArgs, 'where'>
   >;
   delete_revenues_by_pk?: Resolver<Maybe<ResolversTypes['revenues']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Revenues_By_PkArgs, 'id'>>;
+  delete_status_data?: Resolver<
+    Maybe<ResolversTypes['status_data_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Status_DataArgs, 'where'>
+  >;
+  delete_status_data_by_pk?: Resolver<
+    Maybe<ResolversTypes['status_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Status_Data_By_PkArgs, 'pin' | 'sensor_name'>
+  >;
   delete_transaction_accounts?: Resolver<
     Maybe<ResolversTypes['transaction_accounts_mutation_response']>,
     ParentType,
@@ -13562,6 +15285,30 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     RequireFields<Mutation_RootInsert_ExpensesArgs, 'objects'>
   >;
   insert_expenses_one?: Resolver<Maybe<ResolversTypes['expenses']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_Expenses_OneArgs, 'object'>>;
+  insert_gauge_data?: Resolver<
+    Maybe<ResolversTypes['gauge_data_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Gauge_DataArgs, 'objects'>
+  >;
+  insert_gauge_data_one?: Resolver<
+    Maybe<ResolversTypes['gauge_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Gauge_Data_OneArgs, 'object'>
+  >;
+  insert_historical_data?: Resolver<
+    Maybe<ResolversTypes['historical_data_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Historical_DataArgs, 'objects'>
+  >;
+  insert_historical_data_one?: Resolver<
+    Maybe<ResolversTypes['historical_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Historical_Data_OneArgs, 'object'>
+  >;
   insert_labels?: Resolver<
     Maybe<ResolversTypes['labels_mutation_response']>,
     ParentType,
@@ -13619,6 +15366,18 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     RequireFields<Mutation_RootInsert_RevenuesArgs, 'objects'>
   >;
   insert_revenues_one?: Resolver<Maybe<ResolversTypes['revenues']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_Revenues_OneArgs, 'object'>>;
+  insert_status_data?: Resolver<
+    Maybe<ResolversTypes['status_data_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Status_DataArgs, 'objects'>
+  >;
+  insert_status_data_one?: Resolver<
+    Maybe<ResolversTypes['status_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Status_Data_OneArgs, 'object'>
+  >;
   insert_transaction_accounts?: Resolver<
     Maybe<ResolversTypes['transaction_accounts_mutation_response']>,
     ParentType,
@@ -13743,6 +15502,42 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     ContextType,
     RequireFields<Mutation_RootUpdate_Expenses_ManyArgs, 'updates'>
   >;
+  update_gauge_data?: Resolver<
+    Maybe<ResolversTypes['gauge_data_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Gauge_DataArgs, 'where'>
+  >;
+  update_gauge_data_by_pk?: Resolver<
+    Maybe<ResolversTypes['gauge_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Gauge_Data_By_PkArgs, 'pk_columns'>
+  >;
+  update_gauge_data_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['gauge_data_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Gauge_Data_ManyArgs, 'updates'>
+  >;
+  update_historical_data?: Resolver<
+    Maybe<ResolversTypes['historical_data_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Historical_DataArgs, 'where'>
+  >;
+  update_historical_data_by_pk?: Resolver<
+    Maybe<ResolversTypes['historical_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Historical_Data_By_PkArgs, 'pk_columns'>
+  >;
+  update_historical_data_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['historical_data_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Historical_Data_ManyArgs, 'updates'>
+  >;
   update_labels?: Resolver<Maybe<ResolversTypes['labels_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_LabelsArgs, 'where'>>;
   update_labels_by_pk?: Resolver<Maybe<ResolversTypes['labels']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_Labels_By_PkArgs, 'pk_columns'>>;
   update_labels_many?: Resolver<
@@ -13840,6 +15635,24 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Revenues_ManyArgs, 'updates'>
+  >;
+  update_status_data?: Resolver<
+    Maybe<ResolversTypes['status_data_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Status_DataArgs, 'where'>
+  >;
+  update_status_data_by_pk?: Resolver<
+    Maybe<ResolversTypes['status_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Status_Data_By_PkArgs, 'pk_columns'>
+  >;
+  update_status_data_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['status_data_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Status_Data_ManyArgs, 'updates'>
   >;
   update_transaction_accounts?: Resolver<
     Maybe<ResolversTypes['transaction_accounts_mutation_response']>,
@@ -14091,6 +15904,17 @@ export type Query_RootResolvers<ContextType = any, ParentType extends ResolversP
   expenses?: Resolver<Array<ResolversTypes['expenses']>, ParentType, ContextType, Partial<Query_RootExpensesArgs>>;
   expenses_aggregate?: Resolver<ResolversTypes['expenses_aggregate'], ParentType, ContextType, Partial<Query_RootExpenses_AggregateArgs>>;
   expenses_by_pk?: Resolver<Maybe<ResolversTypes['expenses']>, ParentType, ContextType, RequireFields<Query_RootExpenses_By_PkArgs, 'id'>>;
+  gauge_data?: Resolver<Array<ResolversTypes['gauge_data']>, ParentType, ContextType, Partial<Query_RootGauge_DataArgs>>;
+  gauge_data_aggregate?: Resolver<ResolversTypes['gauge_data_aggregate'], ParentType, ContextType, Partial<Query_RootGauge_Data_AggregateArgs>>;
+  gauge_data_by_pk?: Resolver<Maybe<ResolversTypes['gauge_data']>, ParentType, ContextType, RequireFields<Query_RootGauge_Data_By_PkArgs, 'id' | 'ts'>>;
+  historical_data?: Resolver<Array<ResolversTypes['historical_data']>, ParentType, ContextType, Partial<Query_RootHistorical_DataArgs>>;
+  historical_data_aggregate?: Resolver<ResolversTypes['historical_data_aggregate'], ParentType, ContextType, Partial<Query_RootHistorical_Data_AggregateArgs>>;
+  historical_data_by_pk?: Resolver<
+    Maybe<ResolversTypes['historical_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootHistorical_Data_By_PkArgs, 'id' | 'ts'>
+  >;
   labels?: Resolver<Array<ResolversTypes['labels']>, ParentType, ContextType, Partial<Query_RootLabelsArgs>>;
   labels_aggregate?: Resolver<ResolversTypes['labels_aggregate'], ParentType, ContextType, Partial<Query_RootLabels_AggregateArgs>>;
   labels_by_pk?: Resolver<Maybe<ResolversTypes['labels']>, ParentType, ContextType, RequireFields<Query_RootLabels_By_PkArgs, 'id'>>;
@@ -14119,6 +15943,14 @@ export type Query_RootResolvers<ContextType = any, ParentType extends ResolversP
   revenues?: Resolver<Array<ResolversTypes['revenues']>, ParentType, ContextType, Partial<Query_RootRevenuesArgs>>;
   revenues_aggregate?: Resolver<ResolversTypes['revenues_aggregate'], ParentType, ContextType, Partial<Query_RootRevenues_AggregateArgs>>;
   revenues_by_pk?: Resolver<Maybe<ResolversTypes['revenues']>, ParentType, ContextType, RequireFields<Query_RootRevenues_By_PkArgs, 'id'>>;
+  status_data?: Resolver<Array<ResolversTypes['status_data']>, ParentType, ContextType, Partial<Query_RootStatus_DataArgs>>;
+  status_data_aggregate?: Resolver<ResolversTypes['status_data_aggregate'], ParentType, ContextType, Partial<Query_RootStatus_Data_AggregateArgs>>;
+  status_data_by_pk?: Resolver<
+    Maybe<ResolversTypes['status_data']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootStatus_Data_By_PkArgs, 'pin' | 'sensor_name'>
+  >;
   transaction_accounts?: Resolver<Array<ResolversTypes['transaction_accounts']>, ParentType, ContextType, Partial<Query_RootTransaction_AccountsArgs>>;
   transaction_accounts_aggregate?: Resolver<
     ResolversTypes['transaction_accounts_aggregate'],
@@ -14679,6 +16511,151 @@ export type Revenues_Variance_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export interface SmallintScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['smallint'], any> {
+  name: 'smallint';
+}
+
+export type Status_DataResolvers<ContextType = any, ParentType extends ResolversParentTypes['status_data'] = ResolversParentTypes['status_data']> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  pin?: Resolver<ResolversTypes['smallint'], ParentType, ContextType>;
+  sensor_name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  stringvalue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  ts?: Resolver<ResolversTypes['timestamp'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_AggregateResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_aggregate'] = ResolversParentTypes['status_data_aggregate']
+> = {
+  aggregate?: Resolver<Maybe<ResolversTypes['status_data_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['status_data']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Aggregate_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_aggregate_fields'] = ResolversParentTypes['status_data_aggregate_fields']
+> = {
+  avg?: Resolver<Maybe<ResolversTypes['status_data_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Status_Data_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['status_data_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['status_data_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['status_data_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['status_data_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['status_data_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['status_data_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['status_data_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['status_data_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['status_data_variance_fields']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Avg_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_avg_fields'] = ResolversParentTypes['status_data_avg_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Max_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_max_fields'] = ResolversParentTypes['status_data_max_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
+  sensor_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  stringvalue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  ts?: Resolver<Maybe<ResolversTypes['timestamp']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Min_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_min_fields'] = ResolversParentTypes['status_data_min_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
+  sensor_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  stringvalue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  ts?: Resolver<Maybe<ResolversTypes['timestamp']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Mutation_ResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_mutation_response'] = ResolversParentTypes['status_data_mutation_response']
+> = {
+  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  returning?: Resolver<Array<ResolversTypes['status_data']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Stddev_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_stddev_fields'] = ResolversParentTypes['status_data_stddev_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Stddev_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_stddev_pop_fields'] = ResolversParentTypes['status_data_stddev_pop_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Stddev_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_stddev_samp_fields'] = ResolversParentTypes['status_data_stddev_samp_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Sum_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_sum_fields'] = ResolversParentTypes['status_data_sum_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Var_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_var_pop_fields'] = ResolversParentTypes['status_data_var_pop_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Var_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_var_samp_fields'] = ResolversParentTypes['status_data_var_samp_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Status_Data_Variance_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['status_data_variance_fields'] = ResolversParentTypes['status_data_variance_fields']
+> = {
+  doublevalue?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  pin?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Subscription_RootResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['subscription_root'] = ResolversParentTypes['subscription_root']
@@ -14776,6 +16753,56 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootExpenses_StreamArgs, 'batch_size' | 'cursor'>
+  >;
+  gauge_data?: SubscriptionResolver<Array<ResolversTypes['gauge_data']>, 'gauge_data', ParentType, ContextType, Partial<Subscription_RootGauge_DataArgs>>;
+  gauge_data_aggregate?: SubscriptionResolver<
+    ResolversTypes['gauge_data_aggregate'],
+    'gauge_data_aggregate',
+    ParentType,
+    ContextType,
+    Partial<Subscription_RootGauge_Data_AggregateArgs>
+  >;
+  gauge_data_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['gauge_data']>,
+    'gauge_data_by_pk',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootGauge_Data_By_PkArgs, 'id' | 'ts'>
+  >;
+  gauge_data_stream?: SubscriptionResolver<
+    Array<ResolversTypes['gauge_data']>,
+    'gauge_data_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootGauge_Data_StreamArgs, 'batch_size' | 'cursor'>
+  >;
+  historical_data?: SubscriptionResolver<
+    Array<ResolversTypes['historical_data']>,
+    'historical_data',
+    ParentType,
+    ContextType,
+    Partial<Subscription_RootHistorical_DataArgs>
+  >;
+  historical_data_aggregate?: SubscriptionResolver<
+    ResolversTypes['historical_data_aggregate'],
+    'historical_data_aggregate',
+    ParentType,
+    ContextType,
+    Partial<Subscription_RootHistorical_Data_AggregateArgs>
+  >;
+  historical_data_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['historical_data']>,
+    'historical_data_by_pk',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootHistorical_Data_By_PkArgs, 'id' | 'ts'>
+  >;
+  historical_data_stream?: SubscriptionResolver<
+    Array<ResolversTypes['historical_data']>,
+    'historical_data_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootHistorical_Data_StreamArgs, 'batch_size' | 'cursor'>
   >;
   labels?: SubscriptionResolver<Array<ResolversTypes['labels']>, 'labels', ParentType, ContextType, Partial<Subscription_RootLabelsArgs>>;
   labels_aggregate?: SubscriptionResolver<
@@ -14920,6 +16947,28 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootRevenues_StreamArgs, 'batch_size' | 'cursor'>
+  >;
+  status_data?: SubscriptionResolver<Array<ResolversTypes['status_data']>, 'status_data', ParentType, ContextType, Partial<Subscription_RootStatus_DataArgs>>;
+  status_data_aggregate?: SubscriptionResolver<
+    ResolversTypes['status_data_aggregate'],
+    'status_data_aggregate',
+    ParentType,
+    ContextType,
+    Partial<Subscription_RootStatus_Data_AggregateArgs>
+  >;
+  status_data_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['status_data']>,
+    'status_data_by_pk',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootStatus_Data_By_PkArgs, 'pin' | 'sensor_name'>
+  >;
+  status_data_stream?: SubscriptionResolver<
+    Array<ResolversTypes['status_data']>,
+    'status_data_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootStatus_Data_StreamArgs, 'batch_size' | 'cursor'>
   >;
   transaction_accounts?: SubscriptionResolver<
     Array<ResolversTypes['transaction_accounts']>,
@@ -15084,6 +17133,10 @@ export type Subscription_RootResolvers<
     RequireFields<Subscription_RootUsers_StreamArgs, 'batch_size' | 'cursor'>
   >;
 };
+
+export interface TimestampScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['timestamp'], any> {
+  name: 'timestamp';
+}
 
 export interface TimestamptzScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['timestamptz'], any> {
   name: 'timestamptz';
@@ -15935,6 +17988,34 @@ export type Resolvers<ContextType = any> = {
   expenses_var_samp_fields?: Expenses_Var_Samp_FieldsResolvers<ContextType>;
   expenses_variance_fields?: Expenses_Variance_FieldsResolvers<ContextType>;
   float8?: GraphQLScalarType;
+  gauge_data?: Gauge_DataResolvers<ContextType>;
+  gauge_data_aggregate?: Gauge_Data_AggregateResolvers<ContextType>;
+  gauge_data_aggregate_fields?: Gauge_Data_Aggregate_FieldsResolvers<ContextType>;
+  gauge_data_avg_fields?: Gauge_Data_Avg_FieldsResolvers<ContextType>;
+  gauge_data_max_fields?: Gauge_Data_Max_FieldsResolvers<ContextType>;
+  gauge_data_min_fields?: Gauge_Data_Min_FieldsResolvers<ContextType>;
+  gauge_data_mutation_response?: Gauge_Data_Mutation_ResponseResolvers<ContextType>;
+  gauge_data_stddev_fields?: Gauge_Data_Stddev_FieldsResolvers<ContextType>;
+  gauge_data_stddev_pop_fields?: Gauge_Data_Stddev_Pop_FieldsResolvers<ContextType>;
+  gauge_data_stddev_samp_fields?: Gauge_Data_Stddev_Samp_FieldsResolvers<ContextType>;
+  gauge_data_sum_fields?: Gauge_Data_Sum_FieldsResolvers<ContextType>;
+  gauge_data_var_pop_fields?: Gauge_Data_Var_Pop_FieldsResolvers<ContextType>;
+  gauge_data_var_samp_fields?: Gauge_Data_Var_Samp_FieldsResolvers<ContextType>;
+  gauge_data_variance_fields?: Gauge_Data_Variance_FieldsResolvers<ContextType>;
+  historical_data?: Historical_DataResolvers<ContextType>;
+  historical_data_aggregate?: Historical_Data_AggregateResolvers<ContextType>;
+  historical_data_aggregate_fields?: Historical_Data_Aggregate_FieldsResolvers<ContextType>;
+  historical_data_avg_fields?: Historical_Data_Avg_FieldsResolvers<ContextType>;
+  historical_data_max_fields?: Historical_Data_Max_FieldsResolvers<ContextType>;
+  historical_data_min_fields?: Historical_Data_Min_FieldsResolvers<ContextType>;
+  historical_data_mutation_response?: Historical_Data_Mutation_ResponseResolvers<ContextType>;
+  historical_data_stddev_fields?: Historical_Data_Stddev_FieldsResolvers<ContextType>;
+  historical_data_stddev_pop_fields?: Historical_Data_Stddev_Pop_FieldsResolvers<ContextType>;
+  historical_data_stddev_samp_fields?: Historical_Data_Stddev_Samp_FieldsResolvers<ContextType>;
+  historical_data_sum_fields?: Historical_Data_Sum_FieldsResolvers<ContextType>;
+  historical_data_var_pop_fields?: Historical_Data_Var_Pop_FieldsResolvers<ContextType>;
+  historical_data_var_samp_fields?: Historical_Data_Var_Samp_FieldsResolvers<ContextType>;
+  historical_data_variance_fields?: Historical_Data_Variance_FieldsResolvers<ContextType>;
   labels?: LabelsResolvers<ContextType>;
   labels_aggregate?: Labels_AggregateResolvers<ContextType>;
   labels_aggregate_fields?: Labels_Aggregate_FieldsResolvers<ContextType>;
@@ -16021,7 +18102,23 @@ export type Resolvers<ContextType = any> = {
   revenues_var_pop_fields?: Revenues_Var_Pop_FieldsResolvers<ContextType>;
   revenues_var_samp_fields?: Revenues_Var_Samp_FieldsResolvers<ContextType>;
   revenues_variance_fields?: Revenues_Variance_FieldsResolvers<ContextType>;
+  smallint?: GraphQLScalarType;
+  status_data?: Status_DataResolvers<ContextType>;
+  status_data_aggregate?: Status_Data_AggregateResolvers<ContextType>;
+  status_data_aggregate_fields?: Status_Data_Aggregate_FieldsResolvers<ContextType>;
+  status_data_avg_fields?: Status_Data_Avg_FieldsResolvers<ContextType>;
+  status_data_max_fields?: Status_Data_Max_FieldsResolvers<ContextType>;
+  status_data_min_fields?: Status_Data_Min_FieldsResolvers<ContextType>;
+  status_data_mutation_response?: Status_Data_Mutation_ResponseResolvers<ContextType>;
+  status_data_stddev_fields?: Status_Data_Stddev_FieldsResolvers<ContextType>;
+  status_data_stddev_pop_fields?: Status_Data_Stddev_Pop_FieldsResolvers<ContextType>;
+  status_data_stddev_samp_fields?: Status_Data_Stddev_Samp_FieldsResolvers<ContextType>;
+  status_data_sum_fields?: Status_Data_Sum_FieldsResolvers<ContextType>;
+  status_data_var_pop_fields?: Status_Data_Var_Pop_FieldsResolvers<ContextType>;
+  status_data_var_samp_fields?: Status_Data_Var_Samp_FieldsResolvers<ContextType>;
+  status_data_variance_fields?: Status_Data_Variance_FieldsResolvers<ContextType>;
   subscription_root?: Subscription_RootResolvers<ContextType>;
+  timestamp?: GraphQLScalarType;
   timestamptz?: GraphQLScalarType;
   transaction_accounts?: Transaction_AccountsResolvers<ContextType>;
   transaction_accounts_aggregate?: Transaction_Accounts_AggregateResolvers<ContextType>;

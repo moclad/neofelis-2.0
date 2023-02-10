@@ -9,23 +9,12 @@ import { SlideIn } from '@/components/SlideIn';
 import { useToastError } from '@/components/Toast';
 import { AVAILABLE_LANGUAGES } from '@/constants/i18n';
 import { useDarkMode } from '@/hooks/useDarkMode';
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Box,
-  Button,
-  Center,
-  Flex,
-  Heading,
-  ScaleFade,
-  Stack
-} from '@chakra-ui/react';
+import { Alert, AlertDescription, AlertTitle, Box, Button, Center, Flex, Heading, ScaleFade, Stack } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 import { isEmail, isMaxLength, isMinLength, isPattern } from '@formiz/validations';
 
 export const PageRegister = () => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation('profile');
   const { colorModeValue } = useDarkMode();
   const form = useForm({
     subscribe: { form: true, fields: ['langKey'] },
@@ -86,20 +75,11 @@ export const PageRegister = () => {
               {t('profile:register.feedbacks.registrationSuccess.title')}
             </AlertTitle>
             <AlertDescription>
-              <Trans
-                t={t}
-                i18nKey="profile:register.feedbacks.registrationSuccess.description"
-                values={{ email: accountEmail }}
-              />
+              <Trans t={t} i18nKey="profile:register.feedbacks.registrationSuccess.description" values={{ email: accountEmail }} />
             </AlertDescription>
           </Alert>
           <Center mt="8">
-            <Button
-              as={RouterLink}
-              to="/login"
-              variant="link"
-              color={colorModeValue('brand.500', 'brand.300')}
-            >
+            <Button as={RouterLink} to="/login" variant="link" color={colorModeValue('brand.500', 'brand.300')}>
               {t('profile:register.actions.goToLogin')}
             </Button>
           </Center>
@@ -111,18 +91,8 @@ export const PageRegister = () => {
   return (
     <SlideIn>
       <Box p="2" pb="4rem" w="22rem" maxW="full" m="auto">
-        <Formiz
-          id="register-form"
-          autoForm
-          onValidSubmit={createUser}
-          connect={form}
-        >
-          <Box
-            p="6"
-            bg={colorModeValue('white', 'blackAlpha.400')}
-            borderRadius="md"
-            boxShadow="md"
-          >
+        <Formiz id="register-form" autoForm onValidSubmit={createUser} connect={form}>
+          <Box p="6" bg={colorModeValue('white', 'blackAlpha.400')} borderRadius="md" boxShadow="md">
             <Heading size="lg" mb="4">
               {t('profile:register.title')}
             </Heading>
@@ -150,9 +120,7 @@ export const PageRegister = () => {
                     message: t('profile:data.login.tooLong', { max: 50 }),
                   },
                   {
-                    rule: isPattern(
-                      '^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$'
-                    ),
+                    rule: isPattern('^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$'),
                     message: t('profile:data.login.invalid'),
                   },
                 ]}
@@ -193,13 +161,7 @@ export const PageRegister = () => {
                 ]}
               />
               <Flex>
-                <Button
-                  isLoading={isLoading}
-                  isDisabled={form.isSubmitted && !form.isValid}
-                  type="submit"
-                  variant="@primary"
-                  ms="auto"
-                >
+                <Button isLoading={isLoading} isDisabled={form.isSubmitted && !form.isValid} type="submit" variant="@primary" ms="auto">
                   {t('profile:register.actions.create')}
                 </Button>
               </Flex>
@@ -208,11 +170,7 @@ export const PageRegister = () => {
           <Center mt="8">
             <Button as={RouterLink} to="/login" variant="link">
               {t('profile:register.actions.alreadyHaveAnAccount')}{' '}
-              <Box
-                as="strong"
-                color={colorModeValue('brand.500', 'brand.300')}
-                ms="2"
-              >
+              <Box as="strong" color={colorModeValue('brand.500', 'brand.300')} ms="2">
                 {t('profile:register.actions.login')}
               </Box>
             </Button>

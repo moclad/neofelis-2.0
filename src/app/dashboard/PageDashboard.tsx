@@ -8,7 +8,7 @@ import { TransactionType } from '@/types/types';
 import { Button, useDisclosure } from '@chakra-ui/react';
 
 export const PageDashboard = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('dashboard');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [transactionType, setTransactionType] = useState(TransactionType.None);
 
@@ -56,11 +56,7 @@ export const PageDashboard = () => {
           </Button>,
         ]}
       ></PanelContent>
-      <TransactionDialog
-        isOpen={isOpen}
-        onClose={onCloseDialog}
-        transactionType={transactionType}
-      />
+      <TransactionDialog isOpen={isOpen} onClose={onCloseDialog} transactionType={transactionType} />
     </Panel>
   );
 };

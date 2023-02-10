@@ -8,13 +8,7 @@ import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
-import {
-  DataList,
-  DataListCell,
-  DataListFooter,
-  DataListHeader,
-  DataListRow
-} from '@/components/DataList';
+import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
 import { FieldCurrency } from '@/components/FieldCurrency';
 import { FieldDayPicker } from '@/components/FieldDayPicker';
 import { FieldInput } from '@/components/FieldInput';
@@ -25,7 +19,7 @@ import {
   PaginationButtonLastPage,
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
-  PaginationInfo
+  PaginationInfo,
 } from '@/components/Pagination';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { TextCurrency } from '@/components/TextCurrency';
@@ -36,7 +30,7 @@ import {
   useInsertAssetMutation,
   useUpdateAssetMutation,
   useUpdateAssetStandardMutation,
-  useUpdateAssetStateMutation
+  useUpdateAssetStateMutation,
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useEditMode } from '@/hooks/useEditMode';
@@ -55,14 +49,13 @@ import {
   Portal,
   Stack,
   Text,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react';
 
 export const PageAssets = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('accounts');
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { dataKey, dataContext, isEditing, onEdit, onFinish } =
-    useEditMode<number>();
+  const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number>();
   const toastSuccess = useToastSuccess();
   const { colorModeValue } = useDarkMode();
   const { page, setPage } = usePaginationFromUrl();
@@ -79,10 +72,8 @@ export const PageAssets = () => {
 
   const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
 
-  const [updateAsset, { loading: updateLoading }] =
-    useUpdateAssetMutation(mutationOptions);
-  const [insertAsset, { loading: insertLoading }] =
-    useInsertAssetMutation(mutationOptions);
+  const [updateAsset, { loading: updateLoading }] = useUpdateAssetMutation(mutationOptions);
+  const [insertAsset, { loading: insertLoading }] = useInsertAssetMutation(mutationOptions);
   const [updateAssetState] = useUpdateAssetStateMutation(mutationOptions);
   const [updateAssetStandard] = useUpdateAssetStandardMutation(mutationOptions);
 
@@ -156,12 +147,7 @@ export const PageAssets = () => {
           loading={loading || deleteFetching || insertLoading || updateLoading}
           title={t('accounts:assets.title')}
           actions={[
-            <ResponsiveIconButton
-              key="createAsset"
-              icon={<FiPlus />}
-              variant="@primary"
-              onClick={() => onOpen()}
-            >
+            <ResponsiveIconButton key="createAsset" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
               {t('accounts:assets.actions.create')}
             </ResponsiveIconButton>,
           ]}
@@ -174,18 +160,10 @@ export const PageAssets = () => {
               <DataListCell colName="balance" colWidth="0.5">
                 {t('accounts:assets.header.currentBalance')}
               </DataListCell>
-              <DataListCell
-                colName="status"
-                colWidth="0.5"
-                isVisible={{ base: false, md: true }}
-              >
+              <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
                 {t('accounts:assets.header.status')}
               </DataListCell>
-              <DataListCell
-                colName="actions"
-                colWidth="4rem"
-                align="flex-end"
-              />
+              <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
             {data &&
               data.assets.map((item, index) => (
@@ -196,18 +174,9 @@ export const PageAssets = () => {
 
                       <Box minW="0">
                         <Text noOfLines={0} maxW="full">
-                          {item.active ? (
-                            <LinkOverlay href="#">{item.name}</LinkOverlay>
-                          ) : (
-                            item.name
-                          )}
+                          {item.active ? <LinkOverlay href="#">{item.name}</LinkOverlay> : item.name}
                         </Text>
-                        <Text
-                          noOfLines={0}
-                          maxW="full"
-                          fontSize="sm"
-                          color={colorModeValue('gray.600', 'gray.300')}
-                        >
+                        <Text noOfLines={0} maxW="full" fontSize="sm" color={colorModeValue('gray.600', 'gray.300')}>
                           {item.account_no}
                         </Text>
                       </Box>
@@ -218,21 +187,12 @@ export const PageAssets = () => {
                   </DataListCell>
                   <DataListCell colName="status">
                     <HStack maxW="100%">
-                      <Badge
-                        size="sm"
-                        colorScheme={item.active ? 'success' : 'gray'}
-                      >
-                        {item.active
-                          ? t('accounts:assets.data.active')
-                          : t('accounts:assets.data.inactive')}
+                      <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
+                        {item.active ? t('accounts:assets.data.active') : t('accounts:assets.data.inactive')}
                       </Badge>
 
                       {item.default ? (
-                        <Badge
-                          size="sm"
-                          colorScheme="green"
-                          color={colorModeValue('brand.500', 'brand.500')}
-                        >
+                        <Badge size="sm" colorScheme="green" color={colorModeValue('brand.500', 'brand.500')}>
                           {t('accounts:assets.data.defaultAsset')}
                         </Badge>
                       ) : (
@@ -242,28 +202,16 @@ export const PageAssets = () => {
                   </DataListCell>
                   <DataListCell colName="actions">
                     <Menu isLazy>
-                      <MenuButton
-                        as={ActionsButton}
-                        isDisabled={!item.active}
-                      />
+                      <MenuButton as={ActionsButton} isDisabled={!item.active} />
                       <Portal>
                         <MenuList>
-                          <MenuItem
-                            onClick={() => onEdit(item.id, item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
                             {t('common:actions.edit')}
                           </MenuItem>
-                          <MenuItem
-                            onClick={() => deactivate(item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
                             {t('common:actions.deactivate')}
                           </MenuItem>
-                          <MenuItem
-                            onClick={() => setStandard(item)}
-                            icon={<FiEdit />}
-                          >
+                          <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
                             {t('common:actions.setAsStandard')}
                           </MenuItem>
                           <MenuDivider />
@@ -300,11 +248,7 @@ export const PageAssets = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={
-          isEditing
-            ? t('accounts:assets.actions.edit')
-            : t('accounts:assets.actions.create')
-        }
+        title={isEditing ? t('accounts:assets.actions.edit') : t('accounts:assets.actions.create')}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -315,26 +259,11 @@ export const PageAssets = () => {
         formId="asset-form-id"
         initialValues={dataContext}
       >
-        <FieldInput
-          name="name"
-          label={t('accounts:assets.data.name')}
-          required={t('accounts:assets.data.nameRequired') as string}
-        />
-        <FieldInput
-          name="account_no"
-          label={t('accounts:assets.data.accountNo')}
-        />
+        <FieldInput name="name" label={t('accounts:assets.data.name')} required={t('accounts:assets.data.nameRequired') as string} />
+        <FieldInput name="account_no" label={t('accounts:assets.data.accountNo')} />
         <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
-          <FieldCurrency
-            name="balance"
-            label={t('accounts:assets.data.balance')}
-            placeholder={0}
-            currency="EUR"
-          />
-          <FieldDayPicker
-            name="balance_date"
-            label={t('accounts:assets.data.balanceDate')}
-          />
+          <FieldCurrency name="balance" label={t('accounts:assets.data.balance')} placeholder={0} currency="EUR" />
+          <FieldDayPicker name="balance_date" label={t('accounts:assets.data.balanceDate')} />
         </Stack>
       </ModalDialog>
     </>

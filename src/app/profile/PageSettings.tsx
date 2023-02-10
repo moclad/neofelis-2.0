@@ -14,7 +14,7 @@ import { Formiz, useForm } from '@formiz/core';
 
 export const PageSettings = () => {
   const { data: session } = useSession();
-  const { t } = useTranslation();
+  const { t } = useTranslation(['profile', 'common']);
   const { colorModeValue } = useDarkMode();
   const { loading, data } = useFetchUserSettingsQuery({
     variables: {
@@ -27,20 +27,19 @@ export const PageSettings = () => {
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
 
-  const [updateUser, { loading: updateLoading }] =
-    useUpdateUserSettingsMutation({
-      onError: (error) => {
-        toastError({
-          title: t('common:feedbacks.updateError.title'),
-          description: error.message,
-        });
-      },
-      onCompleted: () => {
-        toastSuccess({
-          title: t('common:feedbacks.updateSuccess.title'),
-        });
-      },
-    });
+  const [updateUser, { loading: updateLoading }] = useUpdateUserSettingsMutation({
+    onError: (error) => {
+      toastError({
+        title: t('common:feedbacks.updateError.title'),
+        description: error.message,
+      });
+    },
+    onCompleted: () => {
+      toastSuccess({
+        title: t('common:feedbacks.updateSuccess.title'),
+      });
+    },
+  });
 
   const submitGeneralInformation = async (values) => {
     const newData = {
@@ -63,21 +62,9 @@ export const PageSettings = () => {
           {t('profile:settings.title')}
         </Heading>
         {data && (
-          <Formiz
-            id="account-form"
-            onValidSubmit={submitGeneralInformation}
-            connect={generalInformationForm}
-            initialValues={data.user_settings_by_pk}
-          >
+          <Formiz id="account-form" onValidSubmit={submitGeneralInformation} connect={generalInformationForm} initialValues={data.user_settings_by_pk}>
             <form noValidate onSubmit={generalInformationForm.submit}>
-              <Stack
-                direction="column"
-                bg={colorModeValue('white', 'blackAlpha.400')}
-                p="6"
-                borderRadius="lg"
-                spacing="6"
-                shadow="md"
-              >
+              <Stack direction="column" bg={colorModeValue('white', 'blackAlpha.400')} p="6" borderRadius="lg" spacing="6" shadow="md">
                 <FieldSelect
                   name="langKey"
                   label={t('profile:data.language.label')}
@@ -87,12 +74,7 @@ export const PageSettings = () => {
                   }))}
                 />
                 <Flex>
-                  <Button
-                    type="submit"
-                    variant="@primary"
-                    ms="auto"
-                    isLoading={updateLoading}
-                  >
+                  <Button type="submit" variant="@primary" ms="auto" isLoading={updateLoading}>
                     {t('profile:settings.actions.save')}
                   </Button>
                 </Flex>
