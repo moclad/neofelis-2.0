@@ -206,13 +206,13 @@ export const PageAssets = () => {
                       <Portal>
                         <MenuList>
                           <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('actions.edit').toString()}
+                            {t('common:actions.edit').toString()}
                           </MenuItem>
                           <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('actions.deactivate').toString()}
+                            {t('common:actions.deactivate').toString()}
                           </MenuItem>
                           <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
-                            {t('actions.setAsStandard').toString()}
+                            {t('common:actions.setAsStandard').toString()}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -221,7 +221,7 @@ export const PageAssets = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('actions.delete')}
+                            {t('common:actions.delete')}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>

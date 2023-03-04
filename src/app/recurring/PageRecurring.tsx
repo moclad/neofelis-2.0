@@ -2,7 +2,7 @@ import Avvvatars from 'avvvatars-react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiEye, FiPlus, FiTrash2, FiXCircle } from 'react-icons/fi';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
@@ -99,28 +99,28 @@ export const PageRecurring = () => {
       <Page nav={<RecurringNav />}>
         <PageContent
           loading={loading || deleteFetching || inactivateFetching}
-          title={t('recurring.title')}
+          title={t('recurring.title').toString()}
           actions={[
             <ResponsiveIconButton key="createRecurring" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
-              {t('recurring.actions.create')}
+              {t('recurring.actions.create').toString()}
             </ResponsiveIconButton>,
           ]}
         >
           <DataList>
             <DataListHeader>
               <DataListCell colName="name" colWidth={1.5}>
-                {t('recurring.table.header.title')}
+                {t('recurring.table.header.title').toString()}
               </DataListCell>
               <DataListCell colName="accounts" isVisible={{ base: false, lg: true }}>
-                {t('recurring.table.header.accounts')}
+                {t('recurring.table.header.accounts').toString()}
               </DataListCell>
               <DataListCell colName="cycle" isVisible={{ base: false, lg: true }}>
-                {t('recurring.table.header.cycle')}
+                {t('recurring.table.header.cycle').toString()}
               </DataListCell>
-              <DataListCell colName="status">{t('recurring.table.header.status')}</DataListCell>
-              <DataListCell colName="amount">{t('recurring.table.header.amount')}</DataListCell>
+              <DataListCell colName="status">{t('recurring.table.header.status').toString()}</DataListCell>
+              <DataListCell colName="amount">{t('recurring.table.header.amount').toString()}</DataListCell>
               <DataListCell colName="total" isVisible={{ base: false, lg: true }}>
-                {t('recurring.table.header.totalPaid')}
+                {t('recurring.table.header.totalPaid').toString()}
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
@@ -165,7 +165,7 @@ export const PageRecurring = () => {
                   </DataListCell>
                   <DataListCell colName="status">
                     <Badge size="sm" colorScheme={item.active ? 'success' : 'red'}>
-                      {item.active ? t('recurring.status.active') : t('recurring.status.inactive')}
+                      {item.active ? t('recurring.status.active').toString() : t('recurring.status.inactive').toString()}
                     </Badge>
                   </DataListCell>
                   <DataListCell colName="amount">
@@ -175,8 +175,9 @@ export const PageRecurring = () => {
                     <TextCurrency value={item?.transactions_aggregate?.aggregate?.sum?.amount ?? 0} locale="de" currency="EUR" />
                   </DataListCell>
                   <DataListCell colName="actions">
+                    1
                     <HStack>
-                      <Tooltip hasArrow label={t('actions.view')}>
+                      <Tooltip hasArrow label={t('common:actions.view')}>
                         <ActionsButton icon={<FiEye />} onClick={() => navigate(`/recurring/transactions/${item.id}`)} />
                       </Tooltip>
                       <Menu isLazy>
@@ -184,10 +185,10 @@ export const PageRecurring = () => {
                         <Portal>
                           <MenuList>
                             <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                              {t('actions.edit')}
+                              {t('common:actions.edit')}
                             </MenuItem>
                             <ConfirmMenuItem icon={<FiXCircle />} onClick={() => onDeactivate(item.id)}>
-                              {t('actions.deactivate')}
+                              {t('common:actions.deactivate')}
                             </ConfirmMenuItem>
                             <MenuDivider />
                             <ConfirmMenuItem
@@ -197,7 +198,7 @@ export const PageRecurring = () => {
                                 onDelete(item.id);
                               }}
                             >
-                              {t('actions.delete')}
+                              {t('common:actions.delete')}
                             </ConfirmMenuItem>
                           </MenuList>
                         </Portal>

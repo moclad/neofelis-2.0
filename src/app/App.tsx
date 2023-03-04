@@ -7,22 +7,19 @@ import { PageLogout } from '@/app/auth/PageLogout';
 import { PageVerifyRequest } from '@/app/auth/PageVerifyRequest';
 import ClassificationRoutes from '@/app/classification/ClassificationRoutes';
 import { Layout, Loader } from '@/app/layout';
+import RecurringRoutes from '@/app/recurring/RecurringRoutes';
+import ToolsRoutes from '@/app/tools/ToolsRoutes';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ErrorPage } from '@/components/ErrorPage';
 import { APP_BASENAME } from '@/constants/routing';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import RecurringRoutes from './recurring/RecurringRoutes';
 import { SecuredPage } from './router';
 
 const AdminRoutes = React.lazy(() => import('@/app/admin/AdminRoutes'));
 const AccountRoutes = React.lazy(() => import('@/app/profile/ProfileRoutes'));
-const AccountsRoutes = React.lazy(
-  () => import('@/app/accounts/AccountsRoutes')
-);
-const DashboardRoutes = React.lazy(
-  () => import('@/app/dashboard/DashboardRoutes')
-);
+const AccountsRoutes = React.lazy(() => import('@/app/accounts/AccountsRoutes'));
+const DashboardRoutes = React.lazy(() => import('@/app/dashboard/DashboardRoutes'));
 
 const getRoutes = () => {
   return (
@@ -85,6 +82,15 @@ const getRoutes = () => {
         element={
           <SecuredPage>
             <RecurringRoutes />
+          </SecuredPage>
+        }
+      />
+
+      <Route
+        path="/tools/*"
+        element={
+          <SecuredPage>
+            <ToolsRoutes />
           </SecuredPage>
         }
       />

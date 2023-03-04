@@ -121,11 +121,11 @@ const UserActions = ({ user, ...rest }) => {
       <Portal>
         <MenuList>
           <MenuItem as={Link} to={user.login} icon={<Icon icon={FiEdit} fontSize="lg" color="gray.400" />}>
-            {t('actions.edit')}
+            {t('common:actions.edit')}
           </MenuItem>
           {user.activated ? (
             <MenuItem onClick={() => deactivateUser()} icon={<Icon icon={FiXCircle} fontSize="lg" color="gray.400" />}>
-              {t('actions.deactivate')}
+              {t('common:actions.deactivate')}
             </MenuItem>
           ) : (
             <MenuItem onClick={() => activateUser()} icon={<Icon icon={FiCheckCircle} fontSize="lg" color="gray.400" />}>
@@ -134,7 +134,7 @@ const UserActions = ({ user, ...rest }) => {
           )}
           <MenuDivider />
           <ConfirmMenuItem icon={<Icon icon={FiTrash2} fontSize="lg" color="gray.400" />} onClick={() => removeUser()}>
-            {t('actions.delete')}
+            {t('common:actions.delete')}
           </ConfirmMenuItem>
         </MenuList>
       </Portal>

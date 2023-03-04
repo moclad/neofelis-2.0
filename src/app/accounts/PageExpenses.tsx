@@ -34,7 +34,8 @@ import { useMutationOptions } from '@/hooks/useMutationOptions';
 import { Badge, Box, HStack, LinkBox, LinkOverlay, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageExpenses = () => {
-  const { t } = useTranslation(['accounts', 'common']);
+  const { t } = useTranslation('accounts');
+  const { t: tCommon } = useTranslation('common');
   const { mutationOptions } = useMutationOptions();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Expenses>();
@@ -106,7 +107,7 @@ export const PageExpenses = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('feedbacks.deletedSuccess.title').toString(),
+        title: tCommon('feedbacks.deletedSuccess.title').toString(),
       });
     });
   };
@@ -157,10 +158,10 @@ export const PageExpenses = () => {
                       <Portal>
                         <MenuList>
                           <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('actions.edit').toString()}
+                            {tCommon('actions.edit').toString()}
                           </MenuItem>
                           <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('actions.deactivate').toString()}
+                            {tCommon('actions.deactivate').toString()}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -169,7 +170,7 @@ export const PageExpenses = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('actions.delete').toString()}
+                            {tCommon('actions.delete').toString()}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>

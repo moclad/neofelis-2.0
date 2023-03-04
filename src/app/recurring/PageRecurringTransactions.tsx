@@ -146,7 +146,7 @@ export const PageRecurringTransactions = () => {
                   <Portal>
                     <MenuList>
                       <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                        {t('actions.edit')}
+                        {t('common:actions.edit')}
                       </MenuItem>
                       <MenuDivider />
                       <ConfirmMenuItem
@@ -155,7 +155,7 @@ export const PageRecurringTransactions = () => {
                           onDelete(item.id);
                         }}
                       >
-                        {t('actions.delete')}
+                        {t('common:actions.delete')}
                       </ConfirmMenuItem>
                     </MenuList>
                   </Portal>
@@ -183,7 +183,7 @@ export const PageRecurringTransactions = () => {
         title={t('recurring.title').toString()}
         actions={[
           <ResponsiveIconButton key="goBack" icon={<FiArrowLeft />} variant="@primary" onClick={() => navigate('/recurring')}>
-            {t('actions.back')}
+            {t('common:actions.back')}
           </ResponsiveIconButton>,
         ]}
       >

@@ -8,6 +8,7 @@ import dashboard from './dashboard.json';
 import layout from './layout.json';
 import profile from './profile.json';
 import recurring from './recurring.json';
+import tools from './tools.json';
 import users from './users.json';
 
 export default {
@@ -22,4 +23,5 @@ export default {
     recurring,
     layout,
     users,
+    tools,
 } as const;

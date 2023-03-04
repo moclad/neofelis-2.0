@@ -1,0 +1,12 @@
+{
+  "importer": "Importer",
+  "nav": {
+    "tools": "Tools",
+    "importer": "CSV Importer"
+  },
+  "tools": {
+    "importer": {
+      "title": "CSV Importer"
+    }
+  }
+}

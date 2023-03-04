@@ -158,10 +158,10 @@ export const PageLiabilities = () => {
                       <Portal>
                         <MenuList>
                           <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('actions.edit').toString()}
+                            {t('common:actions.edit').toString()}
                           </MenuItem>
                           <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('actions.deactivate').toString()}
+                            {t('common:actions.deactivate').toString()}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -170,7 +170,7 @@ export const PageLiabilities = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('actions.delete').toString()}
+                            {t('common:actions.delete').toString()}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>

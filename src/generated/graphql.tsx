@@ -1388,10 +1388,11 @@ export type Float8_Comparison_Exp = {
 /** columns and relationships of "gauge_data" */
 export type Gauge_Data = {
   __typename?: 'gauge_data';
+  amount?: Maybe<Scalars['float8']>;
   battery?: Maybe<Scalars['float8']>;
   id: Scalars['uuid'];
   sensor_name: Scalars['String'];
-  tick: Scalars['float8'];
+  tick?: Maybe<Scalars['smallint']>;
   ts: Scalars['timestamp'];
 };
 
@@ -1427,6 +1428,7 @@ export type Gauge_Data_Aggregate_FieldsCountArgs = {
 /** aggregate avg on columns */
 export type Gauge_Data_Avg_Fields = {
   __typename?: 'gauge_data_avg_fields';
+  amount?: Maybe<Scalars['Float']>;
   battery?: Maybe<Scalars['Float']>;
   tick?: Maybe<Scalars['Float']>;
 };
@@ -1436,10 +1438,11 @@ export type Gauge_Data_Bool_Exp = {
   _and?: InputMaybe<Array<Gauge_Data_Bool_Exp>>;
   _not?: InputMaybe<Gauge_Data_Bool_Exp>;
   _or?: InputMaybe<Array<Gauge_Data_Bool_Exp>>;
+  amount?: InputMaybe<Float8_Comparison_Exp>;
   battery?: InputMaybe<Float8_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   sensor_name?: InputMaybe<String_Comparison_Exp>;
-  tick?: InputMaybe<Float8_Comparison_Exp>;
+  tick?: InputMaybe<Smallint_Comparison_Exp>;
   ts?: InputMaybe<Timestamp_Comparison_Exp>;
 };
 
@@ -1453,36 +1456,40 @@ export enum Gauge_Data_Constraint {
 
 /** input type for incrementing numeric columns in table "gauge_data" */
 export type Gauge_Data_Inc_Input = {
+  amount?: InputMaybe<Scalars['float8']>;
   battery?: InputMaybe<Scalars['float8']>;
-  tick?: InputMaybe<Scalars['float8']>;
+  tick?: InputMaybe<Scalars['smallint']>;
 };
 
 /** input type for inserting data into table "gauge_data" */
 export type Gauge_Data_Insert_Input = {
+  amount?: InputMaybe<Scalars['float8']>;
   battery?: InputMaybe<Scalars['float8']>;
   id?: InputMaybe<Scalars['uuid']>;
   sensor_name?: InputMaybe<Scalars['String']>;
-  tick?: InputMaybe<Scalars['float8']>;
+  tick?: InputMaybe<Scalars['smallint']>;
   ts?: InputMaybe<Scalars['timestamp']>;
 };
 
 /** aggregate max on columns */
 export type Gauge_Data_Max_Fields = {
   __typename?: 'gauge_data_max_fields';
+  amount?: Maybe<Scalars['float8']>;
   battery?: Maybe<Scalars['float8']>;
   id?: Maybe<Scalars['uuid']>;
   sensor_name?: Maybe<Scalars['String']>;
-  tick?: Maybe<Scalars['float8']>;
+  tick?: Maybe<Scalars['smallint']>;
   ts?: Maybe<Scalars['timestamp']>;
 };
 
 /** aggregate min on columns */
 export type Gauge_Data_Min_Fields = {
   __typename?: 'gauge_data_min_fields';
+  amount?: Maybe<Scalars['float8']>;
   battery?: Maybe<Scalars['float8']>;
   id?: Maybe<Scalars['uuid']>;
   sensor_name?: Maybe<Scalars['String']>;
-  tick?: Maybe<Scalars['float8']>;
+  tick?: Maybe<Scalars['smallint']>;
   ts?: Maybe<Scalars['timestamp']>;
 };
 
@@ -1504,6 +1511,7 @@ export type Gauge_Data_On_Conflict = {
 
 /** Ordering options when selecting data from "gauge_data". */
 export type Gauge_Data_Order_By = {
+  amount?: InputMaybe<Order_By>;
   battery?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   sensor_name?: InputMaybe<Order_By>;
@@ -1520,6 +1528,8 @@ export type Gauge_Data_Pk_Columns_Input = {
 /** select columns of table "gauge_data" */
 export enum Gauge_Data_Select_Column {
   /** column name */
+  Amount = 'amount',
+  /** column name */
   Battery = 'battery',
   /** column name */
   Id = 'id',
@@ -1533,16 +1543,18 @@ export enum Gauge_Data_Select_Column {
 
 /** input type for updating data in table "gauge_data" */
 export type Gauge_Data_Set_Input = {
+  amount?: InputMaybe<Scalars['float8']>;
   battery?: InputMaybe<Scalars['float8']>;
   id?: InputMaybe<Scalars['uuid']>;
   sensor_name?: InputMaybe<Scalars['String']>;
-  tick?: InputMaybe<Scalars['float8']>;
+  tick?: InputMaybe<Scalars['smallint']>;
   ts?: InputMaybe<Scalars['timestamp']>;
 };
 
 /** aggregate stddev on columns */
 export type Gauge_Data_Stddev_Fields = {
   __typename?: 'gauge_data_stddev_fields';
+  amount?: Maybe<Scalars['Float']>;
   battery?: Maybe<Scalars['Float']>;
   tick?: Maybe<Scalars['Float']>;
 };
@@ -1550,6 +1562,7 @@ export type Gauge_Data_Stddev_Fields = {
 /** aggregate stddev_pop on columns */
 export type Gauge_Data_Stddev_Pop_Fields = {
   __typename?: 'gauge_data_stddev_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
   battery?: Maybe<Scalars['Float']>;
   tick?: Maybe<Scalars['Float']>;
 };
@@ -1557,6 +1570,7 @@ export type Gauge_Data_Stddev_Pop_Fields = {
 /** aggregate stddev_samp on columns */
 export type Gauge_Data_Stddev_Samp_Fields = {
   __typename?: 'gauge_data_stddev_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
   battery?: Maybe<Scalars['Float']>;
   tick?: Maybe<Scalars['Float']>;
 };
@@ -1571,22 +1585,26 @@ export type Gauge_Data_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Gauge_Data_Stream_Cursor_Value_Input = {
+  amount?: InputMaybe<Scalars['float8']>;
   battery?: InputMaybe<Scalars['float8']>;
   id?: InputMaybe<Scalars['uuid']>;
   sensor_name?: InputMaybe<Scalars['String']>;
-  tick?: InputMaybe<Scalars['float8']>;
+  tick?: InputMaybe<Scalars['smallint']>;
   ts?: InputMaybe<Scalars['timestamp']>;
 };
 
 /** aggregate sum on columns */
 export type Gauge_Data_Sum_Fields = {
   __typename?: 'gauge_data_sum_fields';
+  amount?: Maybe<Scalars['float8']>;
   battery?: Maybe<Scalars['float8']>;
-  tick?: Maybe<Scalars['float8']>;
+  tick?: Maybe<Scalars['smallint']>;
 };
 
 /** update columns of table "gauge_data" */
 export enum Gauge_Data_Update_Column {
+  /** column name */
+  Amount = 'amount',
   /** column name */
   Battery = 'battery',
   /** column name */
@@ -1611,6 +1629,7 @@ export type Gauge_Data_Updates = {
 /** aggregate var_pop on columns */
 export type Gauge_Data_Var_Pop_Fields = {
   __typename?: 'gauge_data_var_pop_fields';
+  amount?: Maybe<Scalars['Float']>;
   battery?: Maybe<Scalars['Float']>;
   tick?: Maybe<Scalars['Float']>;
 };
@@ -1618,6 +1637,7 @@ export type Gauge_Data_Var_Pop_Fields = {
 /** aggregate var_samp on columns */
 export type Gauge_Data_Var_Samp_Fields = {
   __typename?: 'gauge_data_var_samp_fields';
+  amount?: Maybe<Scalars['Float']>;
   battery?: Maybe<Scalars['Float']>;
   tick?: Maybe<Scalars['Float']>;
 };
@@ -1625,6 +1645,7 @@ export type Gauge_Data_Var_Samp_Fields = {
 /** aggregate variance on columns */
 export type Gauge_Data_Variance_Fields = {
   __typename?: 'gauge_data_variance_fields';
+  amount?: Maybe<Scalars['Float']>;
   battery?: Maybe<Scalars['Float']>;
   tick?: Maybe<Scalars['Float']>;
 };
@@ -14472,10 +14493,11 @@ export interface Float8ScalarConfig extends GraphQLScalarTypeConfig<ResolversTyp
 }
 
 export type Gauge_DataResolvers<ContextType = any, ParentType extends ResolversParentTypes['gauge_data'] = ResolversParentTypes['gauge_data']> = {
+  amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['uuid'], ParentType, ContextType>;
   sensor_name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  tick?: Resolver<ResolversTypes['float8'], ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
   ts?: Resolver<ResolversTypes['timestamp'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14511,6 +14533,7 @@ export type Gauge_Data_Avg_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_avg_fields'] = ResolversParentTypes['gauge_data_avg_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -14520,10 +14543,11 @@ export type Gauge_Data_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_max_fields'] = ResolversParentTypes['gauge_data_max_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   sensor_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  tick?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
   ts?: Resolver<Maybe<ResolversTypes['timestamp']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14532,10 +14556,11 @@ export type Gauge_Data_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_min_fields'] = ResolversParentTypes['gauge_data_min_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['uuid']>, ParentType, ContextType>;
   sensor_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  tick?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
   ts?: Resolver<Maybe<ResolversTypes['timestamp']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14553,6 +14578,7 @@ export type Gauge_Data_Stddev_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_stddev_fields'] = ResolversParentTypes['gauge_data_stddev_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -14562,6 +14588,7 @@ export type Gauge_Data_Stddev_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_stddev_pop_fields'] = ResolversParentTypes['gauge_data_stddev_pop_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -14571,6 +14598,7 @@ export type Gauge_Data_Stddev_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_stddev_samp_fields'] = ResolversParentTypes['gauge_data_stddev_samp_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -14580,8 +14608,9 @@ export type Gauge_Data_Sum_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_sum_fields'] = ResolversParentTypes['gauge_data_sum_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
-  tick?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  tick?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14589,6 +14618,7 @@ export type Gauge_Data_Var_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_var_pop_fields'] = ResolversParentTypes['gauge_data_var_pop_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -14598,6 +14628,7 @@ export type Gauge_Data_Var_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_var_samp_fields'] = ResolversParentTypes['gauge_data_var_samp_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -14607,6 +14638,7 @@ export type Gauge_Data_Variance_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['gauge_data_variance_fields'] = ResolversParentTypes['gauge_data_variance_fields']
 > = {
+  amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;

@@ -119,7 +119,7 @@ export const PageLabels = () => {
                             onEdit(label.id, label);
                           }}
                         >
-                          {t('labels.actions.edit').toString()}
+                          {t('common:actions.edit').toString()}
                         </MenuItem>
                         <MenuDivider />
                         <ConfirmMenuItem
@@ -128,7 +128,7 @@ export const PageLabels = () => {
                             onDelete(label.id);
                           }}
                         >
-                          {t('labels.actions.delete').toString()}
+                          {t('common:actions.delete').toString()}
                         </ConfirmMenuItem>
                       </MenuList>
                     </Menu>
@@ -139,7 +139,7 @@ export const PageLabels = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={isEditing ? t('labels.actions.edit').toString() : t('labels.actions.create').toString()}
+        title={isEditing ? t('common:actions.edit').toString() : t('labels.actions.create').toString()}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();

@@ -10417,6 +10417,18 @@
         "description": "columns and relationships of \"gauge_data\"",
         "fields": [
           {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "float8",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "args": [],
@@ -10465,13 +10477,9 @@
             "description": null,
             "args": [],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "float8",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "smallint",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -10731,6 +10739,18 @@
         "description": "aggregate avg on columns",
         "fields": [
           {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "args": [],
@@ -10819,6 +10839,18 @@
             "deprecationReason": null
           },
           {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "float8_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "type": {
@@ -10859,7 +10891,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "float8_comparison_exp",
+              "name": "smallint_comparison_exp",
               "ofType": null
             },
             "defaultValue": null,
@@ -10913,6 +10945,18 @@
         "fields": null,
         "inputFields": [
           {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "float8",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "type": {
@@ -10929,7 +10973,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "smallint",
               "ofType": null
             },
             "defaultValue": null,
@@ -10947,6 +10991,18 @@
         "description": "input type for inserting data into table \"gauge_data\"",
         "fields": null,
         "inputFields": [
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "float8",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "battery",
             "description": null,
@@ -10988,7 +11044,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "smallint",
               "ofType": null
             },
             "defaultValue": null,
@@ -11018,6 +11074,18 @@
         "description": "aggregate max on columns",
         "fields": [
           {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "float8",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "args": [],
@@ -11059,7 +11127,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "smallint",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11089,6 +11157,18 @@
         "description": "aggregate min on columns",
         "fields": [
           {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "float8",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "args": [],
@@ -11130,7 +11210,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "smallint",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11275,6 +11355,18 @@
         "fields": null,
         "inputFields": [
           {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "order_by",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "type": {
@@ -11391,6 +11483,12 @@
         "interfaces": null,
         "enumValues": [
           {
+            "name": "amount",
+            "description": "column name",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": "column name",
             "isDeprecated": false,
@@ -11429,6 +11527,18 @@
         "description": "input type for updating data in table \"gauge_data\"",
         "fields": null,
         "inputFields": [
+          {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "float8",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "battery",
             "description": null,
@@ -11470,7 +11580,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "smallint",
               "ofType": null
             },
             "defaultValue": null,
@@ -11499,6 +11609,18 @@
         "name": "gauge_data_stddev_fields",
         "description": "aggregate stddev on columns",
         "fields": [
+          {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "battery",
             "description": null,
@@ -11535,6 +11657,18 @@
         "description": "aggregate stddev_pop on columns",
         "fields": [
           {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "args": [],
@@ -11569,6 +11703,18 @@
         "name": "gauge_data_stddev_samp_fields",
         "description": "aggregate stddev_samp on columns",
         "fields": [
+          {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "battery",
             "description": null,
@@ -11645,6 +11791,18 @@
         "fields": null,
         "inputFields": [
           {
+            "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "float8",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "type": {
@@ -11685,7 +11843,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "smallint",
               "ofType": null
             },
             "defaultValue": null,
@@ -11715,6 +11873,18 @@
         "description": "aggregate sum on columns",
         "fields": [
           {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "float8",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "args": [],
@@ -11732,7 +11902,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "float8",
+              "name": "smallint",
               "ofType": null
             },
             "isDeprecated": false,
@@ -11752,6 +11922,12 @@
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
+          {
+            "name": "amount",
+            "description": "column name",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "battery",
             "description": "column name",
@@ -11842,6 +12018,18 @@
         "description": "aggregate var_pop on columns",
         "fields": [
           {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "args": [],
@@ -11877,6 +12065,18 @@
         "description": "aggregate var_samp on columns",
         "fields": [
           {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "battery",
             "description": null,
             "args": [],
@@ -11911,6 +12111,18 @@
         "name": "gauge_data_variance_fields",
         "description": "aggregate variance on columns",
         "fields": [
+          {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "battery",
             "description": null,

@@ -134,11 +134,7 @@ export const PaginationInfo = ({ ...rest }) => {
   };
   return (
     <HStack spacing="1" align="center" textAlign="center" justify="center" {...rest}>
-      {isLoadingPage ? (
-        <Trans i18nKey="components:pagination.loading" {...translationProps} />
-      ) : (
-        <Trans i18nKey="components:pagination.showing" {...translationProps} />
-      )}
+      {isLoadingPage ? <Trans i18nKey="pagination.loading" {...translationProps} /> : <Trans i18nKey="pagination.showing" {...translationProps} />}
     </HStack>
   );
 };
