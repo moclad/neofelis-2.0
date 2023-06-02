@@ -41,7 +41,7 @@
     },
     "noData": "No data available",
     "createdError": {
-      "title": "Data successfully created"
+      "title": "Data could not be created."
     },
     "createdSuccess": {
       "title": "Success"

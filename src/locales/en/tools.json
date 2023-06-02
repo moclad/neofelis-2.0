@@ -1,12 +1,91 @@
 {
-  "importer": "Importer",
   "nav": {
     "tools": "Tools",
     "importer": "CSV Importer"
   },
-  "tools": {
-    "importer": {
-      "title": "CSV Importer"
+  "importer": {
+    "title": "CSV Importer",
+    "page": {
+      "title": "Import new file",
+      "asset": "Asset account",
+      "assetRequired": "Asset is required",
+      "start": "Start import"
+    },
+    "actions": {
+      "import": "Import new file"
+    },
+    "header": {
+      "fileName": "File name",
+      "asset": "Asset",
+      "status": "Status",
+      "created": "Created",
+      "updated": "Updated"
+    },
+    "fields": {
+      "bookingDate": {
+        "label": "Booking day",
+        "errorMessage": "Date is required",
+        "alternateMatch1": "Buchungstag"
+      },
+      "asset": {
+        "label": "Asset",
+        "errorMessage": "Assent is required",
+        "example": "Acme Ltd."
+      },
+      "beneficiary": {
+        "label": "Beneficiary",
+        "alternateMatch1": "Auftraggeber",
+        "alternateMatch2": "Begünstigter / Auftraggeber",
+        "alternateMatch3": "Name Zahlungsbeteiligter"
+      },
+      "sourceAccount": {
+        "label": "Source accounts"
+      },
+      "amount": {
+        "label": "Amount",
+        "errorMessage": "Amount is required",
+        "alternateMatch1": "soll",
+        "alternateMatch1": "Betrag"
+      },
+      "incomeAmount": {
+        "label": "Income amount",
+        "alternateMatch1": "Haben"
+      },
+      "description": {
+        "label": "Description",
+        "example": "Lastschrifteinzug zu Vertrag V-0010637680",
+        "alternateMatch1": "Verwendungszweck"
+      },
+      "account_no": {
+        "label": "Account No",
+        "example": "DExx370700600119078401",
+        "alternateMatch1": "IBAN",
+        "alternateMatch2": "IBAN Zahlungsbeteiligter"
+      },
+      "clientReference": {
+        "label": "Client reference",
+        "alternateMatch1": "Kundenreferenz",
+        "alternateMatch2": "Glaeubiger ID"
+      },
+      "mandateReference": {
+        "label": "Mandate reference",
+        "alternateMatch1": "Mandatsreferenz"
+      },
+      "currency": {
+        "label": "Currency",
+        "alternateMatch1": "Währung"
+      },
+      "category": {
+        "label": "Category",
+        "errorMessage": "Category is required"
+      },
+      "type": {
+        "label": "Transaction type",
+        "errorMessage": "Type is required",
+        "expense": "Expense",
+        "income": "Income",
+        "transfer": "Transfer"
+      }
     }
   }
 }

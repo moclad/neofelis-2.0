@@ -5,6 +5,12 @@ query allLiabilityAccounts($limit: Int, $offset: Int) {
     active
     created_at
     updated_at
+    category_id
+    alternate_name
+    account_no
+    category {
+      name
+    }
   }
   liabilities_aggregate {
     aggregate {

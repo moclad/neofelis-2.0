@@ -58,7 +58,7 @@ export const PageProfile = () => {
           {t('profile.title').toString()}
         </Heading>
         {data && (
-          <Formiz id="profile-form" onValidSubmit={submitGeneralInformation} connect={generalInformationForm} initialValues={data.users_by_pk}>
+          <Formiz id="profile-form" onValidSubmit={submitGeneralInformation} initialValues={data.users_by_pk}>
             <form noValidate onSubmit={generalInformationForm.submit}>
               <Stack direction="column" bg={colorModeValue('white', 'blackAlpha.400')} p="6" borderRadius="lg" spacing="6" shadow="md">
                 <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">

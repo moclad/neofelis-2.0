@@ -36,14 +36,14 @@ export function useEditMode<T, P>(props: UseEditModeProps<P> = {}) {
   const onFinish = React.useCallback(() => {
     if (!isControlled) {
       setIsEditing(false);
-      setDataContext(null);
-      setDataKey(null);
+      setDataContext(undefined);
+      setDataKey(undefined);
     }
     onFinishProp?.();
   }, [isControlled, onFinishProp]);
 
   const onEdit = React.useCallback(
-    (id, values) => {
+    (id: T, values: any) => {
       if (!isControlled) {
         setIsEditing(true);
         setDataContext(values);
@@ -55,7 +55,7 @@ export function useEditMode<T, P>(props: UseEditModeProps<P> = {}) {
   );
 
   const onToggle = React.useCallback(
-    (id, values) => {
+    (id: T, values: any) => {
       if (isEditing) {
         onFinish();
       } else {

@@ -9,6 +9,10 @@ query allAssets($limit: Int, $offset: Int) {
     created_at
     updated_at
     default
+    category_id
+    category {
+      name
+    }
   }
   assets_aggregate {
     aggregate {
@@ -22,5 +26,8 @@ query activeAssetAccounts {
     id
     name
     default
+    alternate_name
+    account_no
+    category_id
   }
 }

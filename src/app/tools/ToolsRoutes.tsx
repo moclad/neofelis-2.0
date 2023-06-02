@@ -5,6 +5,7 @@ import { SecuredPage } from '@/app/router';
 import { ErrorPage } from '@/components/ErrorPage';
 
 import { PageImporter } from './PageImporter';
+import { PageImportNew } from './PageImportNew';
 
 const ToolsRoutes = () => {
   return (
@@ -14,6 +15,15 @@ const ToolsRoutes = () => {
         element={
           <SecuredPage>
             <PageImporter />
+          </SecuredPage>
+        }
+      />
+
+      <Route
+        path="/import/new"
+        element={
+          <SecuredPage>
+            <PageImportNew />
           </SecuredPage>
         }
       />

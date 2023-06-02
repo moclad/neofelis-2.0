@@ -10,6 +10,7 @@ import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
 import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
 import { FieldInput } from '@/components/FieldInput';
+import { FieldSelect } from '@/components/FieldSelect';
 import { ModalDialog } from '@/components/ModalDialog';
 import {
   Pagination,
@@ -22,22 +23,42 @@ import {
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastSuccess } from '@/components/Toast';
 import {
+  ActiveCategoriesDocument,
   Expenses,
   useAllExpenseAccountsQuery,
   useDeleteExpenseAccMutation,
+  useInsertCategoryMutation,
   useInsertExpenseAccMutation,
   useUpdateExpenseAccMutation,
   useUpdateExpenseStateMutation,
 } from '@/generated/graphql';
+import { useDarkMode } from '@/hooks/useDarkMode';
+import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import { Badge, Box, HStack, LinkBox, LinkOverlay, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, useDisclosure } from '@chakra-ui/react';
+import {
+  Badge,
+  Box,
+  HStack,
+  LinkBox,
+  LinkOverlay,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Portal,
+  Stack,
+  Text,
+  useDisclosure,
+} from '@chakra-ui/react';
 
 export const PageExpenses = () => {
   const { t } = useTranslation('accounts');
   const { t: tCommon } = useTranslation('common');
   const { mutationOptions } = useMutationOptions();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorModeValue } = useDarkMode();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Expenses>();
   const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
@@ -51,12 +72,28 @@ export const PageExpenses = () => {
   });
 
   const [deleteExpense, { loading: deleteFetching }] = useDeleteExpenseAccMutation();
-
   const [updateExpense, { loading: updateLoading }] = useUpdateExpenseAccMutation(mutationOptions);
-
   const [updateExpenseState, { loading: updateStateLoading }] = useUpdateExpenseStateMutation(mutationOptions);
-
   const [insertExpense, { loading: insertLoading }] = useInsertExpenseAccMutation(mutationOptions);
+  const [insertCategory] = useInsertCategoryMutation(mutationOptions);
+
+  const { selectOptions: categories } = useDataToSelectorConverter({
+    entity: 'categories',
+    query: ActiveCategoriesDocument,
+  });
+
+  const onCreateCategory = async (value: string) => {
+    const newData = {
+      name: value,
+    };
+
+    return insertCategory({
+      variables: {
+        object: newData,
+      },
+      refetchQueries: 'active',
+    }).then((x) => x.data?.insert_categories_one?.id);
+  };
 
   const onConfirmCreate = async (values: any) => {
     const { name } = values;
@@ -129,14 +166,17 @@ export const PageExpenses = () => {
               <DataListCell colName="name" colWidth="1.5">
                 {t('expenses.header.name').toString()}
               </DataListCell>
-              <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
+              <DataListCell colName="category" colWidth="0.5" isVisible={{ base: false, md: true }}>
+                {t('expenses.header.category').toString()}
+              </DataListCell>
+              <DataListCell colName="status" colWidth="0.3" isVisible={{ base: false, md: true }}>
                 {t('expenses.header.status').toString()}
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
             {data &&
-              data.expenses.map((item, index) => (
-                <DataListRow as={LinkBox} key={index} isDisabled={!item.active}>
+              data.expenses.map((item) => (
+                <DataListRow as={LinkBox} key={item.id} isDisabled={!item.active}>
                   <DataListCell colName="name">
                     <HStack maxW="100%">
                       <Avvvatars value={item.name} />
@@ -144,8 +184,14 @@ export const PageExpenses = () => {
                         <Text noOfLines={0} maxW="full" fontWeight="bold">
                           {item.active ? <LinkOverlay href="#">{item.name}</LinkOverlay> : item.name}
                         </Text>
+                        <Text noOfLines={0} maxW="full" fontSize="xs" color={colorModeValue('gray.600', 'gray.300')}>
+                          {item.account_no}
+                        </Text>
                       </Box>
                     </HStack>
+                  </DataListCell>
+                  <DataListCell colName="category">
+                    <Text size={'sm'}>{item.category?.name}</Text>
                   </DataListCell>
                   <DataListCell colName="status">
                     <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
@@ -209,6 +255,11 @@ export const PageExpenses = () => {
         initialValues={dataContext}
       >
         <FieldInput name="name" label={t('expenses.data.name').toString()} required={t('expenses.data.nameRequired').toString()} />
+        <FieldInput name="alternate_name" label={t('expenses.data.alternateName').toString()} />
+        <FieldInput name="account_no" label={t('expenses.data.account_no').toString()} />
+        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+          <FieldSelect name="category_id" label={t('assets.data.category')} options={categories} isCreatable={true} onCreateOption={onCreateCategory} />
+        </Stack>
       </ModalDialog>
     </>
   );

@@ -17,6 +17,18 @@
       "nameRequired": "Field name is required."
     }
   },
+  "groups": {
+    "title": "Groups",
+    "actions": {
+      "edit": "Edit group",
+      "delete": "Delete",
+      "create": "Create"
+    },
+    "data": {
+      "name": "Name",
+      "nameRequired": "Field name is required."
+    }
+  },
   "categories": {
     "title": "Categories",
     "actions": {

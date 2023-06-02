@@ -12,6 +12,7 @@ import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } f
 import { FieldCurrency } from '@/components/FieldCurrency';
 import { FieldDayPicker } from '@/components/FieldDayPicker';
 import { FieldInput } from '@/components/FieldInput';
+import { FieldSelect } from '@/components/FieldSelect';
 import { ModalDialog } from '@/components/ModalDialog';
 import {
   Pagination,
@@ -25,14 +26,17 @@ import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { TextCurrency } from '@/components/TextCurrency';
 import { useToastSuccess } from '@/components/Toast';
 import {
+  ActiveCategoriesDocument,
   useAllAssetsQuery,
   useDeleteAssetMutation,
   useInsertAssetMutation,
+  useInsertCategoryMutation,
   useUpdateAssetMutation,
   useUpdateAssetStandardMutation,
   useUpdateAssetStateMutation,
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
 import {
@@ -53,7 +57,7 @@ import {
 } from '@chakra-ui/react';
 
 export const PageAssets = () => {
-  const { t } = useTranslation(['accounts', 'common']);
+  const { t } = useTranslation('accounts');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, any>();
   const toastSuccess = useToastSuccess();
@@ -71,11 +75,29 @@ export const PageAssets = () => {
   });
 
   const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
-
   const [updateAsset, { loading: updateLoading }] = useUpdateAssetMutation(mutationOptions);
   const [insertAsset, { loading: insertLoading }] = useInsertAssetMutation(mutationOptions);
+  const [insertCategory] = useInsertCategoryMutation(mutationOptions);
   const [updateAssetState] = useUpdateAssetStateMutation(mutationOptions);
   const [updateAssetStandard] = useUpdateAssetStandardMutation(mutationOptions);
+
+  const { selectOptions: categories } = useDataToSelectorConverter({
+    entity: 'categories',
+    query: ActiveCategoriesDocument,
+  });
+
+  const onCreateCategory = async (value: string) => {
+    const newData = {
+      name: value,
+    };
+
+    return insertCategory({
+      variables: {
+        object: newData,
+      },
+      refetchQueries: 'active',
+    }).then((x) => x.data?.insert_categories_one?.id);
+  };
 
   const onConfirmCreate = async (values: any) => {
     const { name } = values;
@@ -135,7 +157,7 @@ export const PageAssets = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('feedbacks.deletedSuccess.title'),
+        title: t('feedbacks.deletedSuccess.title', { ns: 'common' }).toString(),
       });
     });
   };
@@ -154,8 +176,11 @@ export const PageAssets = () => {
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
-              <DataListCell colName="name" colWidth="1.5">
+              <DataListCell colName="name" colWidth="1.0">
                 {t('assets.header.name').toString()}
+              </DataListCell>
+              <DataListCell colName="category" colWidth="0.5" isVisible={{ base: false, lg: true }}>
+                {t('assets.header.category').toString()}
               </DataListCell>
               <DataListCell colName="balance" colWidth="0.5">
                 {t('assets.header.currentBalance').toString()}
@@ -166,21 +191,24 @@ export const PageAssets = () => {
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
             {data &&
-              data.assets.map((item, index) => (
-                <DataListRow as={LinkBox} key={index} isDisabled={!item.active}>
+              data.assets.map((item) => (
+                <DataListRow as={LinkBox} key={item.id} isDisabled={!item.active}>
                   <DataListCell colName="name">
                     <HStack maxW="100%">
                       <Avvvatars value={item.name} />
 
                       <Box minW="0">
-                        <Text noOfLines={0} maxW="full">
+                        <Text noOfLines={0} maxW="full" fontWeight="bold">
                           {item.active ? <LinkOverlay href="#">{item.name}</LinkOverlay> : item.name}
                         </Text>
-                        <Text noOfLines={0} maxW="full" fontSize="sm" color={colorModeValue('gray.600', 'gray.300')}>
+                        <Text noOfLines={0} maxW="full" fontSize="xs" color={colorModeValue('gray.600', 'gray.300')}>
                           {item.account_no}
                         </Text>
                       </Box>
                     </HStack>
+                  </DataListCell>
+                  <DataListCell colName="category">
+                    <Text fontSize={'sm'}>{item.category?.name}</Text>
                   </DataListCell>
                   <DataListCell colName="balance">
                     <TextCurrency value={0} locale="de" currency="EUR" />
@@ -206,13 +234,13 @@ export const PageAssets = () => {
                       <Portal>
                         <MenuList>
                           <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('common:actions.edit').toString()}
+                            {t('actions.edit', { ns: 'common' })}
                           </MenuItem>
                           <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('common:actions.deactivate').toString()}
+                            {t('actions.deactivate', { ns: 'common' })}
                           </MenuItem>
                           <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
-                            {t('common:actions.setAsStandard').toString()}
+                            {t('actions.setAsStandard', { ns: 'common' })}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -221,7 +249,7 @@ export const PageAssets = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('common:actions.delete')}
+                            {t('actions.delete', { ns: 'common' })}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>
@@ -261,9 +289,20 @@ export const PageAssets = () => {
       >
         <FieldInput name="name" label={t('assets.data.name').toString()} required={t('assets.data.nameRequired').toString()} />
         <FieldInput name="account_no" label={t('assets.data.accountNo').toString()} />
+        <FieldInput name="alternate_name" label={t('assets.data.alternateName').toString()} />
         <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
           <FieldCurrency name="balance" label={t('assets.data.balance').toString()} placeholder={0} currency="EUR" />
           <FieldDayPicker name="balance_date" label={t('assets.data.balanceDate').toString()} />
+        </Stack>
+        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+          <FieldSelect
+            name="category_id"
+            label={t('assets.data.category')}
+            options={categories}
+            isCreatable={true}
+            onCreateOption={onCreateCategory}
+            required={t('assets.data.categoryRequired').toString()}
+          />
         </Stack>
       </ModalDialog>
     </>

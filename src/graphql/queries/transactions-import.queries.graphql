@@ -1,0 +1,17 @@
+query transactions_import($limit: Int, $offset: Int) {
+  transactions_import(limit: $limit, offset: $offset, order_by: { updated_at: asc }) {
+    id
+    file_name
+    created_at
+    status
+    updated_at
+    asset {
+      name
+    }
+  }
+  transactions_import_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

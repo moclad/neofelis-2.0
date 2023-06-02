@@ -1,0 +1,28 @@
+query allActiveAccounts {
+  expenses(order_by: { name: asc }, where: { active: { _eq: true } }) {
+    id
+    name
+    alternate_name
+    account_no
+    category_id
+  }
+  assets(order_by: { name: asc }, where: { active: { _eq: true } }) {
+    id
+    name
+    default
+    alternate_name
+    account_no
+    category_id
+  }
+  revenues {
+    id
+    name
+    category_id
+    alternate_name
+  }
+  liabilities {
+    id
+    name
+    alternate_name
+  }
+}

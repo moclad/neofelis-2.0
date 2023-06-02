@@ -10,6 +10,7 @@ import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
 import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
 import { FieldInput } from '@/components/FieldInput';
+import { FieldSelect } from '@/components/FieldSelect';
 import { ModalDialog } from '@/components/ModalDialog';
 import {
   Pagination,
@@ -22,33 +23,72 @@ import {
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastSuccess } from '@/components/Toast';
 import {
+  ActiveCategoriesDocument,
   Liabilities,
   useAllLiabilityAccountsQuery,
   useDeleteLiabilityAccMutation,
+  useInsertCategoryMutation,
   useInsertLiabilityAccMutation,
   useUpdateLiabilityAccMutation,
   useUpdateLiabilityStateMutation,
 } from '@/generated/graphql';
+import { useDarkMode } from '@/hooks/useDarkMode';
+import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import { Badge, Box, HStack, LinkBox, LinkOverlay, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, useDisclosure } from '@chakra-ui/react';
+import {
+  Badge,
+  Box,
+  HStack,
+  LinkBox,
+  LinkOverlay,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Portal,
+  Stack,
+  Text,
+  useDisclosure,
+} from '@chakra-ui/react';
 
 export const PageLiabilities = () => {
-  const { t } = useTranslation(['accounts', 'common']);
+  const { t } = useTranslation('accounts');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Liabilities>();
   const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
+  const { colorModeValue } = useDarkMode();
   const pageSize = 15;
 
   const { mutationOptions } = useMutationOptions();
 
+  const [insertCategory] = useInsertCategoryMutation(mutationOptions);
   const { loading, data } = useAllLiabilityAccountsQuery({
     variables: {
       offset: (page - 1) * pageSize,
       limit: pageSize,
     },
   });
+
+  const { selectOptions: categories } = useDataToSelectorConverter({
+    entity: 'categories',
+    query: ActiveCategoriesDocument,
+  });
+
+  const onCreateCategory = async (value: string) => {
+    const newData = {
+      name: value,
+    };
+
+    return insertCategory({
+      variables: {
+        object: newData,
+      },
+      refetchQueries: 'active',
+    }).then((x) => x.data?.insert_categories_one?.id);
+  };
 
   const [deleteLiability, { loading: deleteFetching }] = useDeleteLiabilityAccMutation();
 
@@ -107,7 +147,7 @@ export const PageLiabilities = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('feedbacks.deletedSuccess.title').toString(),
+        title: t('feedbacks.deletedSuccess.title', { ns: 'common' }),
       });
     });
   };
@@ -117,26 +157,29 @@ export const PageLiabilities = () => {
       <Page nav={<AccountsNav />}>
         <PageContent
           loading={loading || deleteFetching || insertLoading || updateLoading}
-          title={t('liabilities.title').toString()}
+          title={t('liabilities.title')}
           actions={[
             <ResponsiveIconButton key="createLiability" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
-              {t('liabilities.actions.create').toString()}
+              {t('liabilities.actions.create')}
             </ResponsiveIconButton>,
           ]}
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
               <DataListCell colName="name" colWidth="1.5">
-                {t('liabilities.header.name').toString()}
+                {t('liabilities.header.name')}
+              </DataListCell>
+              <DataListCell colName="category" colWidth="0.5" isVisible={{ base: false, md: true }}>
+                {t('liabilities.header.category').toString()}
               </DataListCell>
               <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
-                {t('liabilities.header.status').toString()}
+                {t('liabilities.header.status')}
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
             {data &&
-              data.liabilities.map((item, index) => (
-                <DataListRow as={LinkBox} key={index} isDisabled={!item.active}>
+              data.liabilities.map((item) => (
+                <DataListRow as={LinkBox} key={item.id} isDisabled={!item.active}>
                   <DataListCell colName="name">
                     <HStack maxW="100%">
                       <Avvvatars value={item.name} />
@@ -144,12 +187,18 @@ export const PageLiabilities = () => {
                         <Text noOfLines={0} maxW="full" fontWeight="bold">
                           {item.active ? <LinkOverlay href="#">{item.name}</LinkOverlay> : item.name}
                         </Text>
+                        <Text noOfLines={0} maxW="full" fontSize="xs" color={colorModeValue('gray.600', 'gray.300')}>
+                          {item.account_no}
+                        </Text>
                       </Box>
                     </HStack>
                   </DataListCell>
+                  <DataListCell colName="category">
+                    <Text size={'sm'}>{item.category?.name}</Text>
+                  </DataListCell>
                   <DataListCell colName="status">
                     <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
-                      {item.active ? t('liabilities.data.active').toString() : t('liabilities.data.inactive').toString()}
+                      {item.active ? t('liabilities.data.active') : t('liabilities.data.inactive')}
                     </Badge>
                   </DataListCell>
                   <DataListCell colName="actions">
@@ -158,10 +207,10 @@ export const PageLiabilities = () => {
                       <Portal>
                         <MenuList>
                           <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('common:actions.edit').toString()}
+                            {t('actions.edit', { ns: 'common' })}
                           </MenuItem>
                           <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('common:actions.deactivate').toString()}
+                            {t('actions.deactivate', { ns: 'common' })}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -170,7 +219,7 @@ export const PageLiabilities = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('common:actions.delete').toString()}
+                            {t('actions.delete', { ns: 'common' })}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>
@@ -197,7 +246,7 @@ export const PageLiabilities = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={isEditing ? t('liabilities.actions.edit').toString() : t('liabilities.actions.create').toString()}
+        title={isEditing ? t('liabilities.actions.edit') : t('liabilities.actions.create')}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();
@@ -208,7 +257,12 @@ export const PageLiabilities = () => {
         formId="liability-form-id"
         initialValues={dataContext}
       >
-        <FieldInput name="name" label={t('liabilities.data.name').toString()} required={t('liabilities.data.nameRequired').toString()} />
+        <FieldInput name="name" label={t('liabilities.data.name')} required={t('liabilities.data.nameRequired')} />
+        <FieldInput name="alternate_name" label={t('expenses.data.alternateName')} />
+        <FieldInput name="account_no" label={t('expenses.data.account_no')} />
+        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+          <FieldSelect name="category_id" label={t('assets.data.category')} options={categories} isCreatable={true} onCreateOption={onCreateCategory} />
+        </Stack>
       </ModalDialog>
     </>
   );

@@ -2,9 +2,15 @@ query allExpenseAccounts($limit: Int, $offset: Int) {
   expenses(limit: $limit, offset: $offset, order_by: { name: asc }) {
     id
     name
+    alternate_name
+    account_no
     active
     created_at
     updated_at
+    category_id
+    category {
+      name
+    }
   }
   expenses_aggregate {
     aggregate {
@@ -17,5 +23,11 @@ query activeExpenseAccounts {
   expenses(order_by: { name: asc }, where: { active: { _eq: true } }) {
     id
     name
+    alternate_name
+    category_id
+    account_no
+    category {
+      name
+    }
   }
 }

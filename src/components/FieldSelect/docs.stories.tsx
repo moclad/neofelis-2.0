@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { FieldSelect } from '@/components/FieldSelect';
+import { Box, Button, Stack } from '@chakra-ui/react';
 import { Formiz } from '@formiz/core';
+
+import { FieldSelect } from './';
 
 const colors = [
   { label: 'Red', value: 'red' },
-  { label: 'Yellow', value: 'yellow', default: true },
+  { label: 'Yellow', value: 'yellow' },
   { label: 'Blue', value: 'blue' },
-  { label: 'Magenta', value: 'magenta' },
-  { label: 'Black', value: 'black' },
 ];
 
 export default {
@@ -16,43 +16,43 @@ export default {
 };
 
 export const Default = () => (
-  <Formiz>
-    <FieldSelect
-      name="colors"
-      label="Colors"
-      placeholder="Placeholder"
-      helper="This is an helper"
-      required="Color is required"
-      options={colors}
-    />
-  </Formiz>
-);
-
-export const InitialValue = () => (
-  <Formiz>
-    <FieldSelect
-      name="colors"
-      label="Colors"
-      placeholder="Placeholder"
-      helper="This is an helper"
-      required="Color is required"
-      options={colors}
-      defaultValue={['red', 'black']}
-      isMulti={true}
-    />
+  <Formiz autoForm onValuesChange={console.log}>
+    <Stack spacing={4}>
+      <FieldSelect name="colors" label="Colors" placeholder="Placeholder" helper="This is an helper" required="Color is required" options={colors} />
+      <Box>
+        <Button type="submit">Submit</Button>
+      </Box>
+    </Stack>
   </Formiz>
 );
 
 export const Disabled = () => (
-  <Formiz>
-    <FieldSelect
-      name="colors"
-      label="Colors"
-      placeholder="Placeholder"
-      helper="This is an helper"
-      required="Color is required"
-      options={colors}
-      isDisabled
-    />
+  <Formiz autoForm onValuesChange={console.log}>
+    <Stack spacing={4}>
+      <FieldSelect name="colors" label="Colors" placeholder="Placeholder" helper="This is an helper" options={colors} isDisabled />
+      <Box>
+        <Button type="submit">Submit</Button>
+      </Box>
+    </Stack>
+  </Formiz>
+);
+
+export const DefaultValue = () => (
+  <Formiz autoForm onValuesChange={console.log}>
+    <Stack spacing={4}>
+      <FieldSelect
+        name="colors"
+        label="Colors"
+        placeholder="Placeholder"
+        helper="This is an helper"
+        required="Color is required"
+        defaultValue={colors[0]?.value}
+        options={colors}
+        selectProps={{ isClearable: true }}
+      />
+      <Box>
+        <Button type="submit">Submit</Button>
+      </Box>
+    </Stack>
   </Formiz>
 );

@@ -6,6 +6,12 @@ query allRevenueAccounts($limit: Int, $offset: Int) {
     default
     created_at
     updated_at
+    alternate_name
+    account_no
+    category_id
+    category {
+      name
+    }
   }
   revenues_aggregate {
     aggregate {

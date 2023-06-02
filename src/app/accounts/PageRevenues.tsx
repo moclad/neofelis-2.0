@@ -10,6 +10,7 @@ import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
 import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
 import { FieldInput } from '@/components/FieldInput';
+import { FieldSelect } from '@/components/FieldSelect';
 import { ModalDialog } from '@/components/ModalDialog';
 import {
   Pagination,
@@ -22,21 +23,24 @@ import {
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastSuccess } from '@/components/Toast';
 import {
+  ActiveCategoriesDocument,
   Revenues,
   useAllRevenueAccountsQuery,
   useDeleteRevenueAccMutation,
+  useInsertCategoryMutation,
   useInsertRevenueAccMutation,
   useUpdateRevenueAccMutation,
   useUpdateRevenueStandardMutation,
   useUpdateRevenueStateMutation,
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import { Badge, Box, HStack, LinkBox, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, useDisclosure } from '@chakra-ui/react';
+import { Badge, Box, HStack, LinkBox, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageRevenues = () => {
-  const { t } = useTranslation(['accounts', 'common']);
+  const { t } = useTranslation('accounts');
   const { colorModeValue } = useDarkMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Revenues>();
@@ -54,14 +58,29 @@ export const PageRevenues = () => {
   });
 
   const [deleteRevenue, { loading: deleteFetching }] = useDeleteRevenueAccMutation();
-
   const [updateRevenue, { loading: updateLoading }] = useUpdateRevenueAccMutation(mutationOptions);
-
   const [updateRevenueState, { loading: updateStateLoading }] = useUpdateRevenueStateMutation(mutationOptions);
-
   const [updateRevenueStandard, { loading: updateStandardLoading }] = useUpdateRevenueStandardMutation(mutationOptions);
-
   const [insertRevenue, { loading: insertLoading }] = useInsertRevenueAccMutation(mutationOptions);
+  const [insertCategory] = useInsertCategoryMutation(mutationOptions);
+
+  const { selectOptions: categories } = useDataToSelectorConverter({
+    entity: 'categories',
+    query: ActiveCategoriesDocument,
+  });
+
+  const onCreateCategory = async (value: string) => {
+    const newData = {
+      name: value,
+    };
+
+    return insertCategory({
+      variables: {
+        object: newData,
+      },
+      refetchQueries: 'active',
+    }).then((x) => x.data?.insert_categories_one?.id);
+  };
 
   const onConfirmCreate = async (values: any) => {
     const { name } = values;
@@ -120,7 +139,7 @@ export const PageRevenues = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('feedbacks.deletedSuccess.title').toString(),
+        title: t('feedbacks.deletedSuccess.title', { ns: 'common' }),
       });
     });
   };
@@ -142,14 +161,17 @@ export const PageRevenues = () => {
               <DataListCell colName="name" colWidth="1.5">
                 {t('revenues.header.name').toString()}
               </DataListCell>
+              <DataListCell colName="category" colWidth="0.5">
+                {t('revenues.header.category').toString()}
+              </DataListCell>
               <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
                 {t('revenues.header.status').toString()}
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
             {data &&
-              data.revenues.map((item, index) => (
-                <DataListRow as={LinkBox} key={index} isDisabled={!item.active}>
+              data.revenues.map((item) => (
+                <DataListRow as={LinkBox} key={item.id} isDisabled={!item.active}>
                   <DataListCell colName="name">
                     <HStack maxW="100%">
                       <Avvvatars value={item.name} />
@@ -157,8 +179,14 @@ export const PageRevenues = () => {
                         <Text noOfLines={0} maxW="full" fontWeight="bold">
                           {item.name}
                         </Text>
+                        <Text noOfLines={0} maxW="full" fontSize="xs" color={colorModeValue('gray.600', 'gray.300')}>
+                          {item.account_no}
+                        </Text>
                       </Box>
                     </HStack>
+                  </DataListCell>
+                  <DataListCell colName="category">
+                    <Text fontSize={'sm'}>{item.category?.name}</Text>
                   </DataListCell>
                   <DataListCell colName="status">
                     <HStack>
@@ -180,13 +208,13 @@ export const PageRevenues = () => {
                       <Portal>
                         <MenuList>
                           <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('common:actions.edit').toString()}
+                            {t('actions.edit', { ns: 'common' })}
                           </MenuItem>
                           <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('common:actions.deactivate').toString()}
+                            {t('actions.deactivate', { ns: 'common' })}
                           </MenuItem>
                           <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
-                            {t('common:actions.setAsStandard').toString()}
+                            {t('actions.setAsStandard', { ns: 'common' })}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem
@@ -195,7 +223,7 @@ export const PageRevenues = () => {
                               onDelete(item.id);
                             }}
                           >
-                            {t('common:actions.delete').toString()}
+                            {t('actions.delete', { ns: 'common' })}
                           </ConfirmMenuItem>
                         </MenuList>
                       </Portal>
@@ -234,6 +262,18 @@ export const PageRevenues = () => {
         initialValues={dataContext}
       >
         <FieldInput name="name" label={t('revenues.data.name').toString()} required={t('revenues.data.nameRequired').toString()} />
+        <FieldInput name="alternate_name" label={t('revenues.data.alternateName').toString()} />
+        <FieldInput name="account_no" label={t('revenues.data.account_no').toString()} />
+        <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
+          <FieldSelect
+            name="category_id"
+            label={t('assets.data.category')}
+            options={categories}
+            isCreatable={true}
+            onCreateOption={onCreateCategory}
+            required={t('assets.data.categoryRequired').toString()}
+          />
+        </Stack>
       </ModalDialog>
     </>
   );

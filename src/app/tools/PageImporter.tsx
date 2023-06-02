@@ -1,64 +1,152 @@
-import 'react-csv-importer-next/dist/index.css';
-
 import React from 'react';
-import { Importer, ImporterField } from 'react-csv-importer-next';
 import { useTranslation } from 'react-i18next';
+import { FiEdit, FiFilePlus, FiTrash2 } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 import { Page, PageContent } from '@/app/layout';
+import { usePaginationFromUrl } from '@/app/router';
+import { ActionsButton } from '@/components/ActionsButton';
+import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
+import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
+import {
+  Pagination,
+  PaginationButtonFirstPage,
+  PaginationButtonLastPage,
+  PaginationButtonNextPage,
+  PaginationButtonPrevPage,
+  PaginationInfo,
+} from '@/components/Pagination';
+import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
+import { useToastSuccess } from '@/components/Toast';
+import { useDeleteTransactionByIdMutation, useInsertTransactionsImportMutation, useTransactions_ImportQuery } from '@/generated/graphql';
+import { useMutationOptions } from '@/hooks/useMutationOptions';
+import { Badge, LinkBox, LinkOverlay, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text } from '@chakra-ui/react';
 
 import { ToolsNav } from './ToolsNav';
 
 export const PageImporter = () => {
-  const { t } = useTranslation(['tools', 'common']);
+  const { t } = useTranslation('tools');
+
+  const navigate = useNavigate();
+  const toastSuccess = useToastSuccess();
+  const { page, setPage } = usePaginationFromUrl();
+  const pageSize = 15;
+
+  const { mutationOptions } = useMutationOptions();
+
+  const { loading, data } = useTransactions_ImportQuery({
+    variables: {
+      offset: (page - 1) * pageSize,
+      limit: pageSize,
+    },
+  });
+
+  const [deleteTransactionsImport, { loading: deleteLoading }] = useDeleteTransactionByIdMutation();
+
+  const onDelete = async (id: number) => {
+    deleteTransactionsImport({
+      variables: {
+        id,
+      },
+      refetchQueries: 'active',
+    }).then(() => {
+      toastSuccess({
+        title: t('feedbacks.deletedSuccess.title', { ns: 'common' }),
+      });
+    });
+  };
+
+  /*
+
+  table to register import operations
+  - asset, file name, date, imported or discaded state
+  - option to review data read from file
+  - data read from file, available in DB
+
+
+  */
 
   return (
     <>
       <Page nav={<ToolsNav />}>
-        <PageContent title={t('tools.importer.title').toString()}>
-          <Importer
-            dataHandler={async (rows, { startIndex }) => {
-              // required, may be called several times
-              // receives a list of parsed objects based on defined fields and user column mapping;
-              // (if this callback returns a promise, the widget will wait for it before parsing more data)
-              console.log(rows);
-              // for (row of rows) {
-              //   await myAppMethod(row);
-              // }
-            }}
-            defaultNoHeader={false} // optional, keeps "data has headers" checkbox off by default
-            restartable={true} // optional, lets user choose to upload another file when import is complete
-            onStart={({ file, preview, fields, columnFields }) => {
-              // optional, invoked when user has mapped columns and started import
-              console.log(file);
-              console.log(preview);
-              console.log(fields);
-              console.log(columnFields);
-            }}
-            onComplete={({ file, preview, fields, columnFields }) => {
-              // optional, invoked right after import is done (but user did not dismiss/reset the widget yet)
-              console.log(file);
-              console.log(preview);
-              console.log(fields);
-              console.log(columnFields);
-            }}
-            onClose={({ file, preview, fields, columnFields }) => {
-              // optional, if this is specified the user will see a "Finish" button after import is done,
-              // which will call this when clicked
-              console.log(file);
-              console.log(preview);
-              console.log(fields);
-              console.log(columnFields);
-            }}
-          >
-            <ImporterField name="name" label="Name" />
-            <ImporterField name="name1" label="Name" />
-            <ImporterField name="name2" label="Name" />
-            <ImporterField name="name3" label="Name" />
-            <ImporterField name="name4" label="Name" />
-            <ImporterField name="email" label="Email" />
-            <ImporterField name="dob" label="Date of Birth" optional />
-            <ImporterField name="postalCode" label="Postal Code" optional />
-          </Importer>
+        <PageContent
+          title={t('importer.title').toString()}
+          loading={loading || deleteLoading}
+          actions={[
+            <ResponsiveIconButton key="importNewFile" icon={<FiFilePlus />} variant="@primary" onClick={() => navigate(`/tools/import/new`)}>
+              {t('importer.actions.import').toString()}
+            </ResponsiveIconButton>,
+          ]}
+        >
+          <DataList>
+            <DataListHeader isVisible={{ base: false, md: true }}>
+              <DataListCell colName="name" colWidth="1.5">
+                {t('importer.header.fileName').toString()}
+              </DataListCell>
+              <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
+                {t('importer.header.status').toString()}
+              </DataListCell>
+              <DataListCell colName="asset" colWidth="1.5">
+                {t('importer.header.asset').toString()}
+              </DataListCell>
+              <DataListCell colName="created" colWidth="0.5">
+                {t('importer.header.created').toString()}
+              </DataListCell>
+              <DataListCell colName="updated" colWidth="0.5">
+                {t('importer.header.updated').toString()}
+              </DataListCell>
+              <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
+            </DataListHeader>
+            {data &&
+              data.transactions_import.map((item, index) => (
+                <DataListRow as={LinkBox} key={index}>
+                  <DataListCell colName="name">
+                    <Text noOfLines={0} maxW="full">
+                      <LinkOverlay href="#">{item.file_name}</LinkOverlay>
+                    </Text>
+                  </DataListCell>
+                  <DataListCell colName="status">
+                    <Badge size="sm" colorScheme={item.status ? 'success' : 'gray'}>
+                      {item.status ? t('tools.data.success').toString() : t('tools.data.error').toString()}
+                    </Badge>
+                  </DataListCell>
+                  <DataListCell colName="actions">
+                    <Menu isLazy>
+                      <MenuButton as={ActionsButton} />
+                      <Portal>
+                        <MenuList>
+                          <MenuItem icon={<FiEdit />}>{t('actions.edit', { ns: 'common' })}</MenuItem>
+                          <MenuDivider />
+                          <ConfirmMenuItem
+                            icon={<FiTrash2 />}
+                            onClick={() => {
+                              onDelete(item.id);
+                            }}
+                          >
+                            {t('actions.delete', { ns: 'common' })}
+                          </ConfirmMenuItem>
+                        </MenuList>
+                      </Portal>
+                    </Menu>
+                  </DataListCell>
+                </DataListRow>
+              ))}
+            <DataListFooter>
+              <Pagination
+                isLoadingPage={loading || deleteLoading}
+                setPage={setPage}
+                page={page}
+                pageSize={pageSize}
+                totalItems={data?.transactions_import_aggregate?.aggregate?.count}
+              >
+                <PaginationButtonFirstPage />
+                <PaginationButtonPrevPage />
+                <PaginationInfo flex="1" />
+                <PaginationButtonNextPage />
+                <PaginationButtonLastPage />
+              </Pagination>
+            </DataListFooter>
+          </DataList>
         </PageContent>
       </Page>
     </>

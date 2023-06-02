@@ -175,7 +175,6 @@ export const PageRecurring = () => {
                     <TextCurrency value={item?.transactions_aggregate?.aggregate?.sum?.amount ?? 0} locale="de" currency="EUR" />
                   </DataListCell>
                   <DataListCell colName="actions">
-                    1
                     <HStack>
                       <Tooltip hasArrow label={t('common:actions.view')}>
                         <ActionsButton icon={<FiEye />} onClick={() => navigate(`/recurring/transactions/${item.id}`)} />

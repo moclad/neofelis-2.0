@@ -15,7 +15,7 @@ import { useEditMode } from '@/hooks/useEditMode';
 import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, Tag, TagLabel, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
 
 export const PageLabels = () => {
-  const { t } = useTranslation(['common', 'classification']);
+  const { t } = useTranslation('classification');
   const { loading, data } = useAllLabelsQuery();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Labels>();
@@ -27,13 +27,13 @@ export const PageLabels = () => {
   const [updateLabel, { loading: updateLoading }] = useUpdateLabelMutation({
     onError: (error) => {
       toastError({
-        title: t('feedbacks.updateError.title').toString(),
+        title: t('feedbacks.updateError.title', { ns: 'common' }),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('feedbacks.updateSuccess.title').toString(),
+        title: t('feedbacks.updateSuccess.title', { ns: 'common' }),
       });
     },
   });
@@ -41,13 +41,13 @@ export const PageLabels = () => {
   const [insertLabel, { loading: insertLoading }] = useInsertLabelMutation({
     onError: (error) => {
       toastError({
-        title: t('feedbacks.createdError.title').toString(),
+        title: t('feedbacks.createdError.title', { ns: 'common' }),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('feedbacks.createdSuccess.title').toString(),
+        title: t('feedbacks.createdSuccess.title', { ns: 'common' }),
       });
     },
   });
@@ -72,7 +72,7 @@ export const PageLabels = () => {
 
     await updateLabel({
       variables: {
-        id: dataKey,
+        id: dataKey as number,
         changes: newData,
       },
       refetchQueries: 'active',
@@ -87,7 +87,7 @@ export const PageLabels = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('feedbacks.deletedSuccess.title').toString(),
+        title: t('feedbacks.deletedSuccess.title', { ns: 'common' }),
       });
     });
   };
@@ -119,7 +119,7 @@ export const PageLabels = () => {
                             onEdit(label.id, label);
                           }}
                         >
-                          {t('common:actions.edit').toString()}
+                          {t('actions.edit', { ns: 'common' })}
                         </MenuItem>
                         <MenuDivider />
                         <ConfirmMenuItem
@@ -128,7 +128,7 @@ export const PageLabels = () => {
                             onDelete(label.id);
                           }}
                         >
-                          {t('common:actions.delete').toString()}
+                          {t('actions.delete', { ns: 'common' })}
                         </ConfirmMenuItem>
                       </MenuList>
                     </Menu>
@@ -139,7 +139,7 @@ export const PageLabels = () => {
         </PageContent>
       </Page>
       <ModalDialog
-        title={isEditing ? t('common:actions.edit').toString() : t('labels.actions.create').toString()}
+        title={isEditing ? t('actions.edit', { ns: 'common' }) : t('labels.actions.create').toString()}
         isOpen={isOpen || isEditing}
         onCancel={() => {
           onFinish();

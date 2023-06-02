@@ -1,0 +1,21 @@
+mutation insertGroup($object: groups_insert_input!) {
+  insert_groups_one(object: $object) {
+    id
+    name
+    created_at
+    updated_at
+  }
+}
+
+mutation deleteGroup($id: bigint!) {
+  delete_groups_by_pk(id: $id) {
+    id
+    name
+  }
+}
+
+mutation updateGroup($id: bigint!, $changes: groups_set_input) {
+  update_groups_by_pk(pk_columns: { id: $id }, _set: $changes) {
+    id
+  }
+}

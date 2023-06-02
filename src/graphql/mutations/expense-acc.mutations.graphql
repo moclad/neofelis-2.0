@@ -2,6 +2,7 @@ mutation insertExpenseAcc($object: expenses_insert_input!) {
   insert_expenses_one(object: $object) {
     id
     name
+    account_no
     created_at
     updated_at
   }
@@ -13,11 +14,7 @@ mutation deleteExpenseAcc($id: bigint!) {
   }
 }
 
-mutation updateExpenseAcc(
-  $id: bigint!
-  $changes: expenses_set_input
-  $name: String!
-) {
+mutation updateExpenseAcc($id: bigint!, $changes: expenses_set_input, $name: String!) {
   update_expenses_by_pk(pk_columns: { id: $id }, _set: $changes) {
     id
   }

@@ -23,7 +23,7 @@
       "labels": "Labels",
       "amount": "Amount",
       "amountRequired": "Amount is required",
-      "bookDate": "Date",
+      "bookDate": "Booking date",
       "bookDateRequired": "Booking date is required"
     }
   }

@@ -1,27 +1,24 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
-const toPath = (_path) => path.join(process.cwd(), _path);
-
+const toPath = _path => path.join(process.cwd(), _path);
 module.exports = {
-  framework: '@storybook/react',
-  core: {
-    builder: 'webpack5',
+  framework: {
+    name: '@storybook/nextjs',
+    options: {}
   },
-  features: { storyStoreV7: true, babelModeV7: true },
+  features: {
+    storyStoreV7: true,
+    babelModeV7: true
+  },
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    'storybook-dark-mode/register',
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-interactions', '@storybook/addon-essentials', 'storybook-dark-mode/register', '@storybook/addon-mdx-gfm'],
   staticDir: ['../public'],
   typescript: {
-    reactDocgen: false,
+    reactDocgen: false
   },
-  webpackFinal: (config) => {
+  webpackFinal: config => {
     config.module.rules = config.module.rules ?? [];
     config.resolve.plugins = config.resolve.plugins ?? [];
-
     config.resolve.plugins.push(new TsconfigPathsPlugin());
 
     // Babel config
@@ -29,8 +26,8 @@ module.exports = {
       test: /\.([j|t]sx?)$/,
       loader: require.resolve('babel-loader'),
       options: {
-        presets: ['next/babel'],
-      },
+        presets: ['next/babel']
+      }
     });
 
     // Fix Framer Motion v5 issue
@@ -38,9 +35,11 @@ module.exports = {
     config.module.rules.push({
       type: 'javascript/auto',
       test: /\.mjs$/,
-      include: /node_modules/,
+      include: /node_modules/
     });
-
     return config;
   },
+  docs: {
+    autodocs: true
+  }
 };

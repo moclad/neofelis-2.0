@@ -17,17 +17,21 @@
       "name": "Name",
       "accountNo": "Account No",
       "status": "Status",
-      "currentBalance": "Balance"
+      "currentBalance": "Balance",
+      "category": "Category"
     },
     "data": {
       "defaultAsset": "Default",
       "active": "ACTIVE",
       "inactive": "INACTIVE",
       "name": "Name",
+      "alternateName": "Alternate name",
       "accountNo": "Account No",
       "balance": "Starting balance",
       "balanceDate": "Balance date",
-      "nameRequired": "Field name is required."
+      "nameRequired": "Field name is required.",
+      "category": "Category",
+      "categoryRequired": "Category is required."
     }
   },
   "expenses": {
@@ -39,13 +43,18 @@
     },
     "header": {
       "name": "Name",
-      "status": "Status"
+      "account_no": "Account No",
+      "status": "Status",
+      "category": "Category"
     },
     "data": {
       "active": "ACTIVE",
       "inactive": "INACTIVE",
+      "alternateName": "Alternate name",
       "name": "Name",
-      "nameRequired": "Field name is required."
+      "account_no": "Account No",
+      "nameRequired": "Field name is required.",
+      "category": "Category"
     }
   },
   "revenues": {
@@ -58,15 +67,20 @@
     },
     "header": {
       "name": "Name",
-      "status": "Status"
+      "status": "Status",
+      "category": "Category",
+      "account_no": "Account No"
     },
     "data": {
       "active": "ACTIVE",
       "inactive": "INACTIVE",
       "name": "Name",
+      "alternateName": "Alternate name",
       "nameRequired": "Field name is required.",
       "default": "Set as default revenue account",
-      "defaultHelper": "Account is pre-selected when new revenues are created"
+      "defaultHelper": "Account is pre-selected when new revenues are created",
+      "category": "Category",
+      "account_no": "Account No"
     }
   },
   "liabilities": {
@@ -78,13 +92,18 @@
     },
     "header": {
       "name": "Name",
-      "status": "Status"
+      "status": "Status",
+      "category": "Category",
+      "account_no": "Account No"
     },
     "data": {
       "active": "ACTIVE",
       "inactive": "INACTIVE",
+      "alternateName": "Alternate name",
       "name": "Name",
-      "nameRequired": "Field name is required."
+      "category": "Category",
+      "nameRequired": "Field name is required.",
+      "account_no": "Account No"
     }
   }
 }

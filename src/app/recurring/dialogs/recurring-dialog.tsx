@@ -14,6 +14,7 @@ import {
   ActiveExpenseAccountsDocument,
   ActiveRevenueAccountsDocument,
   AllLabelsDocument,
+  Assets,
   Recurring,
   useInsertCategoryMutation,
   useInsertExpenseAccMutation,
@@ -80,13 +81,13 @@ export const RecurringDialog = (props: RecurringDialogProps) => {
     onComplete: (data) => (defaultAccount = data.find((x) => x.data['default'] === true)?.value),
   });
 
-  const { selectOptions: assets } = useDataToSelectorConverter({
+  const { selectOptions: assets } = useDataToSelectorConverter<Assets>({
     entity: 'assets',
     query: ActiveAssetAccountsDocument,
     skipQuery: transactionType === TransactionType.None,
     onComplete: (data) => {
       if (transactionType === TransactionType.Expense) {
-        defaultAccount = data.find((x) => x.data['default'] === true)?.value;
+        defaultAccount = data.find((x) => x.default === true)?.value;
       }
     },
   });

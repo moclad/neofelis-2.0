@@ -8,3 +8,5 @@ export { default as Popover } from './popover';
 export { default as Radio } from './radio';
 export { default as Select } from './select';
 export { default as Textarea } from './textarea';
+export { default as FormLabel } from './form-label';
+

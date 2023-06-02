@@ -91,6 +91,7 @@ export type String_Comparison_Exp = {
 /** columns and relationships of "account_info" */
 export type Account_Info = {
   __typename?: 'account_info';
+  alternate_name?: Maybe<Scalars['String']>;
   /** An object relationship */
   asset?: Maybe<Assets>;
   created_at: Scalars['timestamptz'];
@@ -256,6 +257,7 @@ export type Account_Info_Bool_Exp = {
   _and?: InputMaybe<Array<Account_Info_Bool_Exp>>;
   _not?: InputMaybe<Account_Info_Bool_Exp>;
   _or?: InputMaybe<Array<Account_Info_Bool_Exp>>;
+  alternate_name?: InputMaybe<String_Comparison_Exp>;
   asset?: InputMaybe<Assets_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   expense?: InputMaybe<Expenses_Bool_Exp>;
@@ -290,6 +292,7 @@ export type Account_Info_Inc_Input = {
 
 /** input type for inserting data into table "account_info" */
 export type Account_Info_Insert_Input = {
+  alternate_name?: InputMaybe<Scalars['String']>;
   asset?: InputMaybe<Assets_Obj_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   expense?: InputMaybe<Expenses_Obj_Rel_Insert_Input>;
@@ -309,6 +312,7 @@ export type Account_Info_Insert_Input = {
 /** aggregate max on columns */
 export type Account_Info_Max_Fields = {
   __typename?: 'account_info_max_fields';
+  alternate_name?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
@@ -319,6 +323,7 @@ export type Account_Info_Max_Fields = {
 /** aggregate min on columns */
 export type Account_Info_Min_Fields = {
   __typename?: 'account_info_min_fields';
+  alternate_name?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
@@ -351,6 +356,7 @@ export type Account_Info_On_Conflict = {
 
 /** Ordering options when selecting data from "account_info". */
 export type Account_Info_Order_By = {
+  alternate_name?: InputMaybe<Order_By>;
   asset?: InputMaybe<Assets_Order_By>;
   created_at?: InputMaybe<Order_By>;
   expense?: InputMaybe<Expenses_Order_By>;
@@ -375,6 +381,8 @@ export type Account_Info_Pk_Columns_Input = {
 /** select columns of table "account_info" */
 export enum Account_Info_Select_Column {
   /** column name */
+  AlternateName = 'alternate_name',
+  /** column name */
   CreatedAt = 'created_at',
   /** column name */
   Id = 'id',
@@ -388,6 +396,7 @@ export enum Account_Info_Select_Column {
 
 /** input type for updating data in table "account_info" */
 export type Account_Info_Set_Input = {
+  alternate_name?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
@@ -423,6 +432,7 @@ export type Account_Info_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Account_Info_Stream_Cursor_Value_Input = {
+  alternate_name?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
@@ -438,6 +448,8 @@ export type Account_Info_Sum_Fields = {
 
 /** update columns of table "account_info" */
 export enum Account_Info_Update_Column {
+  /** column name */
+  AlternateName = 'alternate_name',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -484,13 +496,39 @@ export type Assets = {
   account_info: Account_Info;
   account_no?: Maybe<Scalars['String']>;
   active: Scalars['Boolean'];
+  alternate_name?: Maybe<Scalars['String']>;
   balance?: Maybe<Scalars['float8']>;
   balance_date?: Maybe<Scalars['date']>;
+  /** An object relationship */
+  category?: Maybe<Categories>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at: Scalars['timestamptz'];
   default: Scalars['Boolean'];
   id: Scalars['bigint'];
   name: Scalars['String'];
+  /** An array relationship */
+  transactions_imports: Array<Transactions_Import>;
+  /** An aggregate relationship */
+  transactions_imports_aggregate: Transactions_Import_Aggregate;
   updated_at: Scalars['timestamptz'];
+};
+
+/** columns and relationships of "assets" */
+export type AssetsTransactions_ImportsArgs = {
+  distinct_on?: InputMaybe<Array<Transactions_Import_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Import_Order_By>>;
+  where?: InputMaybe<Transactions_Import_Bool_Exp>;
+};
+
+/** columns and relationships of "assets" */
+export type AssetsTransactions_Imports_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transactions_Import_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Import_Order_By>>;
+  where?: InputMaybe<Transactions_Import_Bool_Exp>;
 };
 
 /** aggregated selection of "assets" */
@@ -498,6 +536,107 @@ export type Assets_Aggregate = {
   __typename?: 'assets_aggregate';
   aggregate?: Maybe<Assets_Aggregate_Fields>;
   nodes: Array<Assets>;
+};
+
+export type Assets_Aggregate_Bool_Exp = {
+  avg?: InputMaybe<Assets_Aggregate_Bool_Exp_Avg>;
+  bool_and?: InputMaybe<Assets_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Assets_Aggregate_Bool_Exp_Bool_Or>;
+  corr?: InputMaybe<Assets_Aggregate_Bool_Exp_Corr>;
+  count?: InputMaybe<Assets_Aggregate_Bool_Exp_Count>;
+  covar_samp?: InputMaybe<Assets_Aggregate_Bool_Exp_Covar_Samp>;
+  max?: InputMaybe<Assets_Aggregate_Bool_Exp_Max>;
+  min?: InputMaybe<Assets_Aggregate_Bool_Exp_Min>;
+  stddev_samp?: InputMaybe<Assets_Aggregate_Bool_Exp_Stddev_Samp>;
+  sum?: InputMaybe<Assets_Aggregate_Bool_Exp_Sum>;
+  var_samp?: InputMaybe<Assets_Aggregate_Bool_Exp_Var_Samp>;
+};
+
+export type Assets_Aggregate_Bool_Exp_Avg = {
+  arguments: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Avg_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Float8_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Corr = {
+  arguments: Assets_Aggregate_Bool_Exp_Corr_Arguments;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Float8_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Corr_Arguments = {
+  X: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Corr_Arguments_Columns;
+  Y: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Corr_Arguments_Columns;
+};
+
+export type Assets_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Assets_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Covar_Samp = {
+  arguments: Assets_Aggregate_Bool_Exp_Covar_Samp_Arguments;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Float8_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Covar_Samp_Arguments = {
+  X: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Covar_Samp_Arguments_Columns;
+  Y: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Covar_Samp_Arguments_Columns;
+};
+
+export type Assets_Aggregate_Bool_Exp_Max = {
+  arguments: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Max_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Float8_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Min = {
+  arguments: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Min_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Float8_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Stddev_Samp = {
+  arguments: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Stddev_Samp_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Float8_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Sum = {
+  arguments: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Sum_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Float8_Comparison_Exp;
+};
+
+export type Assets_Aggregate_Bool_Exp_Var_Samp = {
+  arguments: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Var_Samp_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Assets_Bool_Exp>;
+  predicate: Float8_Comparison_Exp;
 };
 
 /** aggregate fields of "assets" */
@@ -522,11 +661,41 @@ export type Assets_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "assets" */
+export type Assets_Aggregate_Order_By = {
+  avg?: InputMaybe<Assets_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Assets_Max_Order_By>;
+  min?: InputMaybe<Assets_Min_Order_By>;
+  stddev?: InputMaybe<Assets_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Assets_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Assets_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Assets_Sum_Order_By>;
+  var_pop?: InputMaybe<Assets_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Assets_Var_Samp_Order_By>;
+  variance?: InputMaybe<Assets_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "assets" */
+export type Assets_Arr_Rel_Insert_Input = {
+  data: Array<Assets_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Assets_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Assets_Avg_Fields = {
   __typename?: 'assets_avg_fields';
   balance?: Maybe<Scalars['Float']>;
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "assets" */
+export type Assets_Avg_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "assets". All fields are combined with a logical 'AND'. */
@@ -537,12 +706,17 @@ export type Assets_Bool_Exp = {
   account_info?: InputMaybe<Account_Info_Bool_Exp>;
   account_no?: InputMaybe<String_Comparison_Exp>;
   active?: InputMaybe<Boolean_Comparison_Exp>;
+  alternate_name?: InputMaybe<String_Comparison_Exp>;
   balance?: InputMaybe<Float8_Comparison_Exp>;
   balance_date?: InputMaybe<Date_Comparison_Exp>;
+  category?: InputMaybe<Categories_Bool_Exp>;
+  category_id?: InputMaybe<Bigint_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   default?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  transactions_imports?: InputMaybe<Transactions_Import_Bool_Exp>;
+  transactions_imports_aggregate?: InputMaybe<Transactions_Import_Aggregate_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -555,6 +729,7 @@ export enum Assets_Constraint {
 /** input type for incrementing numeric columns in table "assets" */
 export type Assets_Inc_Input = {
   balance?: InputMaybe<Scalars['float8']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   id?: InputMaybe<Scalars['bigint']>;
 };
 
@@ -563,12 +738,16 @@ export type Assets_Insert_Input = {
   account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
   account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
   balance?: InputMaybe<Scalars['float8']>;
   balance_date?: InputMaybe<Scalars['date']>;
+  category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
+  transactions_imports?: InputMaybe<Transactions_Import_Arr_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
@@ -576,24 +755,54 @@ export type Assets_Insert_Input = {
 export type Assets_Max_Fields = {
   __typename?: 'assets_max_fields';
   account_no?: Maybe<Scalars['String']>;
+  alternate_name?: Maybe<Scalars['String']>;
   balance?: Maybe<Scalars['float8']>;
   balance_date?: Maybe<Scalars['date']>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
+/** order by max() on columns of table "assets" */
+export type Assets_Max_Order_By = {
+  account_no?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  balance?: InputMaybe<Order_By>;
+  balance_date?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Assets_Min_Fields = {
   __typename?: 'assets_min_fields';
   account_no?: Maybe<Scalars['String']>;
+  alternate_name?: Maybe<Scalars['String']>;
   balance?: Maybe<Scalars['float8']>;
   balance_date?: Maybe<Scalars['date']>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "assets" */
+export type Assets_Min_Order_By = {
+  account_no?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  balance?: InputMaybe<Order_By>;
+  balance_date?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "assets" */
@@ -624,12 +833,16 @@ export type Assets_Order_By = {
   account_info?: InputMaybe<Account_Info_Order_By>;
   account_no?: InputMaybe<Order_By>;
   active?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
   balance?: InputMaybe<Order_By>;
   balance_date?: InputMaybe<Order_By>;
+  category?: InputMaybe<Categories_Order_By>;
+  category_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   default?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  transactions_imports_aggregate?: InputMaybe<Transactions_Import_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -645,9 +858,13 @@ export enum Assets_Select_Column {
   /** column name */
   Active = 'active',
   /** column name */
+  AlternateName = 'alternate_name',
+  /** column name */
   Balance = 'balance',
   /** column name */
   BalanceDate = 'balance_date',
+  /** column name */
+  CategoryId = 'category_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -660,12 +877,78 @@ export enum Assets_Select_Column {
   UpdatedAt = 'updated_at',
 }
 
+/** select "assets_aggregate_bool_exp_avg_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Avg_Arguments_Columns {
+  /** column name */
+  Balance = 'balance',
+}
+
+/** select "assets_aggregate_bool_exp_bool_and_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Default = 'default',
+}
+
+/** select "assets_aggregate_bool_exp_bool_or_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Default = 'default',
+}
+
+/** select "assets_aggregate_bool_exp_corr_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Corr_Arguments_Columns {
+  /** column name */
+  Balance = 'balance',
+}
+
+/** select "assets_aggregate_bool_exp_covar_samp_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Covar_Samp_Arguments_Columns {
+  /** column name */
+  Balance = 'balance',
+}
+
+/** select "assets_aggregate_bool_exp_max_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Max_Arguments_Columns {
+  /** column name */
+  Balance = 'balance',
+}
+
+/** select "assets_aggregate_bool_exp_min_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Min_Arguments_Columns {
+  /** column name */
+  Balance = 'balance',
+}
+
+/** select "assets_aggregate_bool_exp_stddev_samp_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Stddev_Samp_Arguments_Columns {
+  /** column name */
+  Balance = 'balance',
+}
+
+/** select "assets_aggregate_bool_exp_sum_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Sum_Arguments_Columns {
+  /** column name */
+  Balance = 'balance',
+}
+
+/** select "assets_aggregate_bool_exp_var_samp_arguments_columns" columns of table "assets" */
+export enum Assets_Select_Column_Assets_Aggregate_Bool_Exp_Var_Samp_Arguments_Columns {
+  /** column name */
+  Balance = 'balance',
+}
+
 /** input type for updating data in table "assets" */
 export type Assets_Set_Input = {
   account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
   balance?: InputMaybe<Scalars['float8']>;
   balance_date?: InputMaybe<Scalars['date']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
@@ -677,21 +960,45 @@ export type Assets_Set_Input = {
 export type Assets_Stddev_Fields = {
   __typename?: 'assets_stddev_fields';
   balance?: Maybe<Scalars['Float']>;
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "assets" */
+export type Assets_Stddev_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Assets_Stddev_Pop_Fields = {
   __typename?: 'assets_stddev_pop_fields';
   balance?: Maybe<Scalars['Float']>;
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "assets" */
+export type Assets_Stddev_Pop_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Assets_Stddev_Samp_Fields = {
   __typename?: 'assets_stddev_samp_fields';
   balance?: Maybe<Scalars['Float']>;
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "assets" */
+export type Assets_Stddev_Samp_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Streaming cursor of the table "assets" */
@@ -706,8 +1013,10 @@ export type Assets_Stream_Cursor_Input = {
 export type Assets_Stream_Cursor_Value_Input = {
   account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
   balance?: InputMaybe<Scalars['float8']>;
   balance_date?: InputMaybe<Scalars['date']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
@@ -719,7 +1028,15 @@ export type Assets_Stream_Cursor_Value_Input = {
 export type Assets_Sum_Fields = {
   __typename?: 'assets_sum_fields';
   balance?: Maybe<Scalars['float8']>;
+  category_id?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
+};
+
+/** order by sum() on columns of table "assets" */
+export type Assets_Sum_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "assets" */
@@ -729,9 +1046,13 @@ export enum Assets_Update_Column {
   /** column name */
   Active = 'active',
   /** column name */
+  AlternateName = 'alternate_name',
+  /** column name */
   Balance = 'balance',
   /** column name */
   BalanceDate = 'balance_date',
+  /** column name */
+  CategoryId = 'category_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -757,21 +1078,45 @@ export type Assets_Updates = {
 export type Assets_Var_Pop_Fields = {
   __typename?: 'assets_var_pop_fields';
   balance?: Maybe<Scalars['Float']>;
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "assets" */
+export type Assets_Var_Pop_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Assets_Var_Samp_Fields = {
   __typename?: 'assets_var_samp_fields';
   balance?: Maybe<Scalars['Float']>;
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "assets" */
+export type Assets_Var_Samp_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Assets_Variance_Fields = {
   __typename?: 'assets_variance_fields';
   balance?: Maybe<Scalars['Float']>;
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "assets" */
+export type Assets_Variance_Order_By = {
+  balance?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
@@ -824,18 +1169,88 @@ export type Bpchar_Comparison_Exp = {
 export type Categories = {
   __typename?: 'categories';
   active: Scalars['Boolean'];
+  /** An array relationship */
+  assets: Array<Assets>;
+  /** An aggregate relationship */
+  assets_aggregate: Assets_Aggregate;
   created_at: Scalars['timestamptz'];
+  /** An array relationship */
+  expenses: Array<Expenses>;
+  /** An aggregate relationship */
+  expenses_aggregate: Expenses_Aggregate;
   id: Scalars['bigint'];
+  /** An array relationship */
+  liabilities: Array<Liabilities>;
+  /** An aggregate relationship */
+  liabilities_aggregate: Liabilities_Aggregate;
   name: Scalars['String'];
   /** An array relationship */
   recurrings: Array<Recurring>;
   /** An aggregate relationship */
   recurrings_aggregate: Recurring_Aggregate;
   /** An array relationship */
+  revenues: Array<Revenues>;
+  /** An aggregate relationship */
+  revenues_aggregate: Revenues_Aggregate;
+  /** An array relationship */
   transactions: Array<Transactions>;
   /** An aggregate relationship */
   transactions_aggregate: Transactions_Aggregate;
   updated_at: Scalars['timestamptz'];
+};
+
+/** columns and relationships of "categories" */
+export type CategoriesAssetsArgs = {
+  distinct_on?: InputMaybe<Array<Assets_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Assets_Order_By>>;
+  where?: InputMaybe<Assets_Bool_Exp>;
+};
+
+/** columns and relationships of "categories" */
+export type CategoriesAssets_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Assets_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Assets_Order_By>>;
+  where?: InputMaybe<Assets_Bool_Exp>;
+};
+
+/** columns and relationships of "categories" */
+export type CategoriesExpensesArgs = {
+  distinct_on?: InputMaybe<Array<Expenses_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Expenses_Order_By>>;
+  where?: InputMaybe<Expenses_Bool_Exp>;
+};
+
+/** columns and relationships of "categories" */
+export type CategoriesExpenses_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Expenses_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Expenses_Order_By>>;
+  where?: InputMaybe<Expenses_Bool_Exp>;
+};
+
+/** columns and relationships of "categories" */
+export type CategoriesLiabilitiesArgs = {
+  distinct_on?: InputMaybe<Array<Liabilities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Liabilities_Order_By>>;
+  where?: InputMaybe<Liabilities_Bool_Exp>;
+};
+
+/** columns and relationships of "categories" */
+export type CategoriesLiabilities_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Liabilities_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Liabilities_Order_By>>;
+  where?: InputMaybe<Liabilities_Bool_Exp>;
 };
 
 /** columns and relationships of "categories" */
@@ -854,6 +1269,24 @@ export type CategoriesRecurrings_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Recurring_Order_By>>;
   where?: InputMaybe<Recurring_Bool_Exp>;
+};
+
+/** columns and relationships of "categories" */
+export type CategoriesRevenuesArgs = {
+  distinct_on?: InputMaybe<Array<Revenues_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Revenues_Order_By>>;
+  where?: InputMaybe<Revenues_Bool_Exp>;
+};
+
+/** columns and relationships of "categories" */
+export type CategoriesRevenues_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Revenues_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Revenues_Order_By>>;
+  where?: InputMaybe<Revenues_Bool_Exp>;
 };
 
 /** columns and relationships of "categories" */
@@ -915,11 +1348,19 @@ export type Categories_Bool_Exp = {
   _not?: InputMaybe<Categories_Bool_Exp>;
   _or?: InputMaybe<Array<Categories_Bool_Exp>>;
   active?: InputMaybe<Boolean_Comparison_Exp>;
+  assets?: InputMaybe<Assets_Bool_Exp>;
+  assets_aggregate?: InputMaybe<Assets_Aggregate_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  expenses?: InputMaybe<Expenses_Bool_Exp>;
+  expenses_aggregate?: InputMaybe<Expenses_Aggregate_Bool_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
+  liabilities?: InputMaybe<Liabilities_Bool_Exp>;
+  liabilities_aggregate?: InputMaybe<Liabilities_Aggregate_Bool_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   recurrings?: InputMaybe<Recurring_Bool_Exp>;
   recurrings_aggregate?: InputMaybe<Recurring_Aggregate_Bool_Exp>;
+  revenues?: InputMaybe<Revenues_Bool_Exp>;
+  revenues_aggregate?: InputMaybe<Revenues_Aggregate_Bool_Exp>;
   transactions?: InputMaybe<Transactions_Bool_Exp>;
   transactions_aggregate?: InputMaybe<Transactions_Aggregate_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -939,10 +1380,14 @@ export type Categories_Inc_Input = {
 /** input type for inserting data into table "categories" */
 export type Categories_Insert_Input = {
   active?: InputMaybe<Scalars['Boolean']>;
+  assets?: InputMaybe<Assets_Arr_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
+  expenses?: InputMaybe<Expenses_Arr_Rel_Insert_Input>;
   id?: InputMaybe<Scalars['bigint']>;
+  liabilities?: InputMaybe<Liabilities_Arr_Rel_Insert_Input>;
   name?: InputMaybe<Scalars['String']>;
   recurrings?: InputMaybe<Recurring_Arr_Rel_Insert_Input>;
+  revenues?: InputMaybe<Revenues_Arr_Rel_Insert_Input>;
   transactions?: InputMaybe<Transactions_Arr_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
@@ -991,10 +1436,14 @@ export type Categories_On_Conflict = {
 /** Ordering options when selecting data from "categories". */
 export type Categories_Order_By = {
   active?: InputMaybe<Order_By>;
+  assets_aggregate?: InputMaybe<Assets_Aggregate_Order_By>;
   created_at?: InputMaybe<Order_By>;
+  expenses_aggregate?: InputMaybe<Expenses_Aggregate_Order_By>;
   id?: InputMaybe<Order_By>;
+  liabilities_aggregate?: InputMaybe<Liabilities_Aggregate_Order_By>;
   name?: InputMaybe<Order_By>;
   recurrings_aggregate?: InputMaybe<Recurring_Aggregate_Order_By>;
+  revenues_aggregate?: InputMaybe<Revenues_Aggregate_Order_By>;
   transactions_aggregate?: InputMaybe<Transactions_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
@@ -1135,7 +1584,12 @@ export type Expenses = {
   __typename?: 'expenses';
   /** An object relationship */
   account_info: Account_Info;
+  account_no?: Maybe<Scalars['String']>;
   active: Scalars['Boolean'];
+  alternate_name?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  category?: Maybe<Categories>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at: Scalars['timestamptz'];
   id: Scalars['bigint'];
   name: Scalars['String'];
@@ -1147,6 +1601,33 @@ export type Expenses_Aggregate = {
   __typename?: 'expenses_aggregate';
   aggregate?: Maybe<Expenses_Aggregate_Fields>;
   nodes: Array<Expenses>;
+};
+
+export type Expenses_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Expenses_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Expenses_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Expenses_Aggregate_Bool_Exp_Count>;
+};
+
+export type Expenses_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Expenses_Select_Column_Expenses_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Expenses_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Expenses_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Expenses_Select_Column_Expenses_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Expenses_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Expenses_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Expenses_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Expenses_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "expenses" */
@@ -1171,10 +1652,39 @@ export type Expenses_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "expenses" */
+export type Expenses_Aggregate_Order_By = {
+  avg?: InputMaybe<Expenses_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Expenses_Max_Order_By>;
+  min?: InputMaybe<Expenses_Min_Order_By>;
+  stddev?: InputMaybe<Expenses_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Expenses_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Expenses_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Expenses_Sum_Order_By>;
+  var_pop?: InputMaybe<Expenses_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Expenses_Var_Samp_Order_By>;
+  variance?: InputMaybe<Expenses_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "expenses" */
+export type Expenses_Arr_Rel_Insert_Input = {
+  data: Array<Expenses_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Expenses_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Expenses_Avg_Fields = {
   __typename?: 'expenses_avg_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "expenses" */
+export type Expenses_Avg_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "expenses". All fields are combined with a logical 'AND'. */
@@ -1183,7 +1693,11 @@ export type Expenses_Bool_Exp = {
   _not?: InputMaybe<Expenses_Bool_Exp>;
   _or?: InputMaybe<Array<Expenses_Bool_Exp>>;
   account_info?: InputMaybe<Account_Info_Bool_Exp>;
+  account_no?: InputMaybe<String_Comparison_Exp>;
   active?: InputMaybe<Boolean_Comparison_Exp>;
+  alternate_name?: InputMaybe<String_Comparison_Exp>;
+  category?: InputMaybe<Categories_Bool_Exp>;
+  category_id?: InputMaybe<Bigint_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
@@ -1198,13 +1712,18 @@ export enum Expenses_Constraint {
 
 /** input type for incrementing numeric columns in table "expenses" */
 export type Expenses_Inc_Input = {
+  category_id?: InputMaybe<Scalars['bigint']>;
   id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "expenses" */
 export type Expenses_Insert_Input = {
   account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
+  category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
@@ -1214,19 +1733,47 @@ export type Expenses_Insert_Input = {
 /** aggregate max on columns */
 export type Expenses_Max_Fields = {
   __typename?: 'expenses_max_fields';
+  account_no?: Maybe<Scalars['String']>;
+  alternate_name?: Maybe<Scalars['String']>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
+/** order by max() on columns of table "expenses" */
+export type Expenses_Max_Order_By = {
+  account_no?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Expenses_Min_Fields = {
   __typename?: 'expenses_min_fields';
+  account_no?: Maybe<Scalars['String']>;
+  alternate_name?: Maybe<Scalars['String']>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "expenses" */
+export type Expenses_Min_Order_By = {
+  account_no?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "expenses" */
@@ -1255,7 +1802,11 @@ export type Expenses_On_Conflict = {
 /** Ordering options when selecting data from "expenses". */
 export type Expenses_Order_By = {
   account_info?: InputMaybe<Account_Info_Order_By>;
+  account_no?: InputMaybe<Order_By>;
   active?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  category?: InputMaybe<Categories_Order_By>;
+  category_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
@@ -1270,7 +1821,13 @@ export type Expenses_Pk_Columns_Input = {
 /** select columns of table "expenses" */
 export enum Expenses_Select_Column {
   /** column name */
+  AccountNo = 'account_no',
+  /** column name */
   Active = 'active',
+  /** column name */
+  AlternateName = 'alternate_name',
+  /** column name */
+  CategoryId = 'category_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -1281,9 +1838,24 @@ export enum Expenses_Select_Column {
   UpdatedAt = 'updated_at',
 }
 
+/** select "expenses_aggregate_bool_exp_bool_and_arguments_columns" columns of table "expenses" */
+export enum Expenses_Select_Column_Expenses_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Active = 'active',
+}
+
+/** select "expenses_aggregate_bool_exp_bool_or_arguments_columns" columns of table "expenses" */
+export enum Expenses_Select_Column_Expenses_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  Active = 'active',
+}
+
 /** input type for updating data in table "expenses" */
 export type Expenses_Set_Input = {
+  account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
@@ -1293,19 +1865,40 @@ export type Expenses_Set_Input = {
 /** aggregate stddev on columns */
 export type Expenses_Stddev_Fields = {
   __typename?: 'expenses_stddev_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "expenses" */
+export type Expenses_Stddev_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Expenses_Stddev_Pop_Fields = {
   __typename?: 'expenses_stddev_pop_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "expenses" */
+export type Expenses_Stddev_Pop_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Expenses_Stddev_Samp_Fields = {
   __typename?: 'expenses_stddev_samp_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "expenses" */
+export type Expenses_Stddev_Samp_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Streaming cursor of the table "expenses" */
@@ -1318,7 +1911,10 @@ export type Expenses_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Expenses_Stream_Cursor_Value_Input = {
+  account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
@@ -1328,13 +1924,26 @@ export type Expenses_Stream_Cursor_Value_Input = {
 /** aggregate sum on columns */
 export type Expenses_Sum_Fields = {
   __typename?: 'expenses_sum_fields';
+  category_id?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
+};
+
+/** order by sum() on columns of table "expenses" */
+export type Expenses_Sum_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "expenses" */
 export enum Expenses_Update_Column {
   /** column name */
+  AccountNo = 'account_no',
+  /** column name */
   Active = 'active',
+  /** column name */
+  AlternateName = 'alternate_name',
+  /** column name */
+  CategoryId = 'category_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -1357,19 +1966,40 @@ export type Expenses_Updates = {
 /** aggregate var_pop on columns */
 export type Expenses_Var_Pop_Fields = {
   __typename?: 'expenses_var_pop_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "expenses" */
+export type Expenses_Var_Pop_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Expenses_Var_Samp_Fields = {
   __typename?: 'expenses_var_samp_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "expenses" */
+export type Expenses_Var_Samp_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Expenses_Variance_Fields = {
   __typename?: 'expenses_variance_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "expenses" */
+export type Expenses_Variance_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to compare columns of type "float8". All fields are combined with logical 'AND'. */
@@ -1648,6 +2278,226 @@ export type Gauge_Data_Variance_Fields = {
   amount?: Maybe<Scalars['Float']>;
   battery?: Maybe<Scalars['Float']>;
   tick?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "groups" */
+export type Groups = {
+  __typename?: 'groups';
+  created_at: Scalars['timestamptz'];
+  id: Scalars['bigint'];
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "groups" */
+export type Groups_Aggregate = {
+  __typename?: 'groups_aggregate';
+  aggregate?: Maybe<Groups_Aggregate_Fields>;
+  nodes: Array<Groups>;
+};
+
+/** aggregate fields of "groups" */
+export type Groups_Aggregate_Fields = {
+  __typename?: 'groups_aggregate_fields';
+  avg?: Maybe<Groups_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Groups_Max_Fields>;
+  min?: Maybe<Groups_Min_Fields>;
+  stddev?: Maybe<Groups_Stddev_Fields>;
+  stddev_pop?: Maybe<Groups_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Groups_Stddev_Samp_Fields>;
+  sum?: Maybe<Groups_Sum_Fields>;
+  var_pop?: Maybe<Groups_Var_Pop_Fields>;
+  var_samp?: Maybe<Groups_Var_Samp_Fields>;
+  variance?: Maybe<Groups_Variance_Fields>;
+};
+
+/** aggregate fields of "groups" */
+export type Groups_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Groups_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Groups_Avg_Fields = {
+  __typename?: 'groups_avg_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "groups". All fields are combined with a logical 'AND'. */
+export type Groups_Bool_Exp = {
+  _and?: InputMaybe<Array<Groups_Bool_Exp>>;
+  _not?: InputMaybe<Groups_Bool_Exp>;
+  _or?: InputMaybe<Array<Groups_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  id?: InputMaybe<Bigint_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "groups" */
+export enum Groups_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  GroupsPkey = 'groups_pkey',
+}
+
+/** input type for incrementing numeric columns in table "groups" */
+export type Groups_Inc_Input = {
+  id?: InputMaybe<Scalars['bigint']>;
+};
+
+/** input type for inserting data into table "groups" */
+export type Groups_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Groups_Max_Fields = {
+  __typename?: 'groups_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['bigint']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Groups_Min_Fields = {
+  __typename?: 'groups_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['bigint']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "groups" */
+export type Groups_Mutation_Response = {
+  __typename?: 'groups_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Groups>;
+};
+
+/** on_conflict condition type for table "groups" */
+export type Groups_On_Conflict = {
+  constraint: Groups_Constraint;
+  update_columns?: Array<Groups_Update_Column>;
+  where?: InputMaybe<Groups_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "groups". */
+export type Groups_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: groups */
+export type Groups_Pk_Columns_Input = {
+  id: Scalars['bigint'];
+};
+
+/** select columns of table "groups" */
+export enum Groups_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+/** input type for updating data in table "groups" */
+export type Groups_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Groups_Stddev_Fields = {
+  __typename?: 'groups_stddev_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Groups_Stddev_Pop_Fields = {
+  __typename?: 'groups_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Groups_Stddev_Samp_Fields = {
+  __typename?: 'groups_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** Streaming cursor of the table "groups" */
+export type Groups_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Groups_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Groups_Stream_Cursor_Value_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  id?: InputMaybe<Scalars['bigint']>;
+  name?: InputMaybe<Scalars['String']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate sum on columns */
+export type Groups_Sum_Fields = {
+  __typename?: 'groups_sum_fields';
+  id?: Maybe<Scalars['bigint']>;
+};
+
+/** update columns of table "groups" */
+export enum Groups_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+export type Groups_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Groups_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Groups_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Groups_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Groups_Var_Pop_Fields = {
+  __typename?: 'groups_var_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Groups_Var_Samp_Fields = {
+  __typename?: 'groups_var_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Groups_Variance_Fields = {
+  __typename?: 'groups_variance_fields';
+  id?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "historical_data" */
@@ -2253,7 +3103,12 @@ export type Liabilities = {
   __typename?: 'liabilities';
   /** An object relationship */
   account_info: Account_Info;
+  account_no?: Maybe<Scalars['String']>;
   active: Scalars['Boolean'];
+  alternate_name?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  category?: Maybe<Categories>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at: Scalars['timestamptz'];
   id: Scalars['bigint'];
   name: Scalars['String'];
@@ -2265,6 +3120,33 @@ export type Liabilities_Aggregate = {
   __typename?: 'liabilities_aggregate';
   aggregate?: Maybe<Liabilities_Aggregate_Fields>;
   nodes: Array<Liabilities>;
+};
+
+export type Liabilities_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Liabilities_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Liabilities_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Liabilities_Aggregate_Bool_Exp_Count>;
+};
+
+export type Liabilities_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Liabilities_Select_Column_Liabilities_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Liabilities_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Liabilities_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Liabilities_Select_Column_Liabilities_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Liabilities_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Liabilities_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Liabilities_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Liabilities_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "liabilities" */
@@ -2289,10 +3171,39 @@ export type Liabilities_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "liabilities" */
+export type Liabilities_Aggregate_Order_By = {
+  avg?: InputMaybe<Liabilities_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Liabilities_Max_Order_By>;
+  min?: InputMaybe<Liabilities_Min_Order_By>;
+  stddev?: InputMaybe<Liabilities_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Liabilities_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Liabilities_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Liabilities_Sum_Order_By>;
+  var_pop?: InputMaybe<Liabilities_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Liabilities_Var_Samp_Order_By>;
+  variance?: InputMaybe<Liabilities_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "liabilities" */
+export type Liabilities_Arr_Rel_Insert_Input = {
+  data: Array<Liabilities_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Liabilities_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Liabilities_Avg_Fields = {
   __typename?: 'liabilities_avg_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "liabilities" */
+export type Liabilities_Avg_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "liabilities". All fields are combined with a logical 'AND'. */
@@ -2301,7 +3212,11 @@ export type Liabilities_Bool_Exp = {
   _not?: InputMaybe<Liabilities_Bool_Exp>;
   _or?: InputMaybe<Array<Liabilities_Bool_Exp>>;
   account_info?: InputMaybe<Account_Info_Bool_Exp>;
+  account_no?: InputMaybe<String_Comparison_Exp>;
   active?: InputMaybe<Boolean_Comparison_Exp>;
+  alternate_name?: InputMaybe<String_Comparison_Exp>;
+  category?: InputMaybe<Categories_Bool_Exp>;
+  category_id?: InputMaybe<Bigint_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
@@ -2316,13 +3231,18 @@ export enum Liabilities_Constraint {
 
 /** input type for incrementing numeric columns in table "liabilities" */
 export type Liabilities_Inc_Input = {
+  category_id?: InputMaybe<Scalars['bigint']>;
   id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "liabilities" */
 export type Liabilities_Insert_Input = {
   account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
+  category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
@@ -2332,19 +3252,47 @@ export type Liabilities_Insert_Input = {
 /** aggregate max on columns */
 export type Liabilities_Max_Fields = {
   __typename?: 'liabilities_max_fields';
+  account_no?: Maybe<Scalars['String']>;
+  alternate_name?: Maybe<Scalars['String']>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
+/** order by max() on columns of table "liabilities" */
+export type Liabilities_Max_Order_By = {
+  account_no?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Liabilities_Min_Fields = {
   __typename?: 'liabilities_min_fields';
+  account_no?: Maybe<Scalars['String']>;
+  alternate_name?: Maybe<Scalars['String']>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "liabilities" */
+export type Liabilities_Min_Order_By = {
+  account_no?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "liabilities" */
@@ -2373,7 +3321,11 @@ export type Liabilities_On_Conflict = {
 /** Ordering options when selecting data from "liabilities". */
 export type Liabilities_Order_By = {
   account_info?: InputMaybe<Account_Info_Order_By>;
+  account_no?: InputMaybe<Order_By>;
   active?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  category?: InputMaybe<Categories_Order_By>;
+  category_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
@@ -2388,7 +3340,13 @@ export type Liabilities_Pk_Columns_Input = {
 /** select columns of table "liabilities" */
 export enum Liabilities_Select_Column {
   /** column name */
+  AccountNo = 'account_no',
+  /** column name */
   Active = 'active',
+  /** column name */
+  AlternateName = 'alternate_name',
+  /** column name */
+  CategoryId = 'category_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -2399,9 +3357,24 @@ export enum Liabilities_Select_Column {
   UpdatedAt = 'updated_at',
 }
 
+/** select "liabilities_aggregate_bool_exp_bool_and_arguments_columns" columns of table "liabilities" */
+export enum Liabilities_Select_Column_Liabilities_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Active = 'active',
+}
+
+/** select "liabilities_aggregate_bool_exp_bool_or_arguments_columns" columns of table "liabilities" */
+export enum Liabilities_Select_Column_Liabilities_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  Active = 'active',
+}
+
 /** input type for updating data in table "liabilities" */
 export type Liabilities_Set_Input = {
+  account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
@@ -2411,19 +3384,40 @@ export type Liabilities_Set_Input = {
 /** aggregate stddev on columns */
 export type Liabilities_Stddev_Fields = {
   __typename?: 'liabilities_stddev_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "liabilities" */
+export type Liabilities_Stddev_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Liabilities_Stddev_Pop_Fields = {
   __typename?: 'liabilities_stddev_pop_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "liabilities" */
+export type Liabilities_Stddev_Pop_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Liabilities_Stddev_Samp_Fields = {
   __typename?: 'liabilities_stddev_samp_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "liabilities" */
+export type Liabilities_Stddev_Samp_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Streaming cursor of the table "liabilities" */
@@ -2436,7 +3430,10 @@ export type Liabilities_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Liabilities_Stream_Cursor_Value_Input = {
+  account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['bigint']>;
   name?: InputMaybe<Scalars['String']>;
@@ -2446,13 +3443,26 @@ export type Liabilities_Stream_Cursor_Value_Input = {
 /** aggregate sum on columns */
 export type Liabilities_Sum_Fields = {
   __typename?: 'liabilities_sum_fields';
+  category_id?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
+};
+
+/** order by sum() on columns of table "liabilities" */
+export type Liabilities_Sum_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "liabilities" */
 export enum Liabilities_Update_Column {
   /** column name */
+  AccountNo = 'account_no',
+  /** column name */
   Active = 'active',
+  /** column name */
+  AlternateName = 'alternate_name',
+  /** column name */
+  CategoryId = 'category_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -2475,19 +3485,40 @@ export type Liabilities_Updates = {
 /** aggregate var_pop on columns */
 export type Liabilities_Var_Pop_Fields = {
   __typename?: 'liabilities_var_pop_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "liabilities" */
+export type Liabilities_Var_Pop_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Liabilities_Var_Samp_Fields = {
   __typename?: 'liabilities_var_samp_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "liabilities" */
+export type Liabilities_Var_Samp_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Liabilities_Variance_Fields = {
   __typename?: 'liabilities_variance_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "liabilities" */
+export type Liabilities_Variance_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** mutation root */
@@ -2513,6 +3544,10 @@ export type Mutation_Root = {
   delete_gauge_data?: Maybe<Gauge_Data_Mutation_Response>;
   /** delete single row from the table: "gauge_data" */
   delete_gauge_data_by_pk?: Maybe<Gauge_Data>;
+  /** delete data from the table: "groups" */
+  delete_groups?: Maybe<Groups_Mutation_Response>;
+  /** delete single row from the table: "groups" */
+  delete_groups_by_pk?: Maybe<Groups>;
   /** delete data from the table: "historical_data" */
   delete_historical_data?: Maybe<Historical_Data_Mutation_Response>;
   /** delete single row from the table: "historical_data" */
@@ -2561,6 +3596,10 @@ export type Mutation_Root = {
   delete_transactions?: Maybe<Transactions_Mutation_Response>;
   /** delete single row from the table: "transactions" */
   delete_transactions_by_pk?: Maybe<Transactions>;
+  /** delete data from the table: "transactions_import" */
+  delete_transactions_import?: Maybe<Transactions_Import_Mutation_Response>;
+  /** delete single row from the table: "transactions_import" */
+  delete_transactions_import_by_pk?: Maybe<Transactions_Import>;
   /** delete data from the table: "user_settings" */
   delete_user_settings?: Maybe<User_Settings_Mutation_Response>;
   /** delete single row from the table: "user_settings" */
@@ -2589,6 +3628,10 @@ export type Mutation_Root = {
   insert_gauge_data?: Maybe<Gauge_Data_Mutation_Response>;
   /** insert a single row into the table: "gauge_data" */
   insert_gauge_data_one?: Maybe<Gauge_Data>;
+  /** insert data into the table: "groups" */
+  insert_groups?: Maybe<Groups_Mutation_Response>;
+  /** insert a single row into the table: "groups" */
+  insert_groups_one?: Maybe<Groups>;
   /** insert data into the table: "historical_data" */
   insert_historical_data?: Maybe<Historical_Data_Mutation_Response>;
   /** insert a single row into the table: "historical_data" */
@@ -2635,6 +3678,10 @@ export type Mutation_Root = {
   insert_transaction_labels_one?: Maybe<Transaction_Labels>;
   /** insert data into the table: "transactions" */
   insert_transactions?: Maybe<Transactions_Mutation_Response>;
+  /** insert data into the table: "transactions_import" */
+  insert_transactions_import?: Maybe<Transactions_Import_Mutation_Response>;
+  /** insert a single row into the table: "transactions_import" */
+  insert_transactions_import_one?: Maybe<Transactions_Import>;
   /** insert a single row into the table: "transactions" */
   insert_transactions_one?: Maybe<Transactions>;
   /** insert data into the table: "user_settings" */
@@ -2675,6 +3722,12 @@ export type Mutation_Root = {
   update_gauge_data_by_pk?: Maybe<Gauge_Data>;
   /** update multiples rows of table: "gauge_data" */
   update_gauge_data_many?: Maybe<Array<Maybe<Gauge_Data_Mutation_Response>>>;
+  /** update data of the table: "groups" */
+  update_groups?: Maybe<Groups_Mutation_Response>;
+  /** update single row of the table: "groups" */
+  update_groups_by_pk?: Maybe<Groups>;
+  /** update multiples rows of table: "groups" */
+  update_groups_many?: Maybe<Array<Maybe<Groups_Mutation_Response>>>;
   /** update data of the table: "historical_data" */
   update_historical_data?: Maybe<Historical_Data_Mutation_Response>;
   /** update single row of the table: "historical_data" */
@@ -2745,6 +3798,12 @@ export type Mutation_Root = {
   update_transactions?: Maybe<Transactions_Mutation_Response>;
   /** update single row of the table: "transactions" */
   update_transactions_by_pk?: Maybe<Transactions>;
+  /** update data of the table: "transactions_import" */
+  update_transactions_import?: Maybe<Transactions_Import_Mutation_Response>;
+  /** update single row of the table: "transactions_import" */
+  update_transactions_import_by_pk?: Maybe<Transactions_Import>;
+  /** update multiples rows of table: "transactions_import" */
+  update_transactions_import_many?: Maybe<Array<Maybe<Transactions_Import_Mutation_Response>>>;
   /** update multiples rows of table: "transactions" */
   update_transactions_many?: Maybe<Array<Maybe<Transactions_Mutation_Response>>>;
   /** update data of the table: "user_settings" */
@@ -2810,6 +3869,16 @@ export type Mutation_RootDelete_Gauge_DataArgs = {
 export type Mutation_RootDelete_Gauge_Data_By_PkArgs = {
   id: Scalars['uuid'];
   ts: Scalars['timestamp'];
+};
+
+/** mutation root */
+export type Mutation_RootDelete_GroupsArgs = {
+  where: Groups_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Groups_By_PkArgs = {
+  id: Scalars['bigint'];
 };
 
 /** mutation root */
@@ -2938,6 +4007,16 @@ export type Mutation_RootDelete_Transactions_By_PkArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootDelete_Transactions_ImportArgs = {
+  where: Transactions_Import_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootDelete_Transactions_Import_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+/** mutation root */
 export type Mutation_RootDelete_User_SettingsArgs = {
   where: User_Settings_Bool_Exp;
 };
@@ -3015,6 +4094,18 @@ export type Mutation_RootInsert_Gauge_DataArgs = {
 export type Mutation_RootInsert_Gauge_Data_OneArgs = {
   object: Gauge_Data_Insert_Input;
   on_conflict?: InputMaybe<Gauge_Data_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_GroupsArgs = {
+  objects: Array<Groups_Insert_Input>;
+  on_conflict?: InputMaybe<Groups_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Groups_OneArgs = {
+  object: Groups_Insert_Input;
+  on_conflict?: InputMaybe<Groups_On_Conflict>;
 };
 
 /** mutation root */
@@ -3156,6 +4247,18 @@ export type Mutation_RootInsert_TransactionsArgs = {
 };
 
 /** mutation root */
+export type Mutation_RootInsert_Transactions_ImportArgs = {
+  objects: Array<Transactions_Import_Insert_Input>;
+  on_conflict?: InputMaybe<Transactions_Import_On_Conflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsert_Transactions_Import_OneArgs = {
+  object: Transactions_Import_Insert_Input;
+  on_conflict?: InputMaybe<Transactions_Import_On_Conflict>;
+};
+
+/** mutation root */
 export type Mutation_RootInsert_Transactions_OneArgs = {
   object: Transactions_Insert_Input;
   on_conflict?: InputMaybe<Transactions_On_Conflict>;
@@ -3278,6 +4381,25 @@ export type Mutation_RootUpdate_Gauge_Data_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Gauge_Data_ManyArgs = {
   updates: Array<Gauge_Data_Updates>;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_GroupsArgs = {
+  _inc?: InputMaybe<Groups_Inc_Input>;
+  _set?: InputMaybe<Groups_Set_Input>;
+  where: Groups_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Groups_By_PkArgs = {
+  _inc?: InputMaybe<Groups_Inc_Input>;
+  _set?: InputMaybe<Groups_Set_Input>;
+  pk_columns: Groups_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Groups_ManyArgs = {
+  updates: Array<Groups_Updates>;
 };
 
 /** mutation root */
@@ -3501,6 +4623,25 @@ export type Mutation_RootUpdate_Transactions_By_PkArgs = {
   _inc?: InputMaybe<Transactions_Inc_Input>;
   _set?: InputMaybe<Transactions_Set_Input>;
   pk_columns: Transactions_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Transactions_ImportArgs = {
+  _inc?: InputMaybe<Transactions_Import_Inc_Input>;
+  _set?: InputMaybe<Transactions_Import_Set_Input>;
+  where: Transactions_Import_Bool_Exp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Transactions_Import_By_PkArgs = {
+  _inc?: InputMaybe<Transactions_Import_Inc_Input>;
+  _set?: InputMaybe<Transactions_Import_Set_Input>;
+  pk_columns: Transactions_Import_Pk_Columns_Input;
+};
+
+/** mutation root */
+export type Mutation_RootUpdate_Transactions_Import_ManyArgs = {
+  updates: Array<Transactions_Import_Updates>;
 };
 
 /** mutation root */
@@ -3820,9 +4961,9 @@ export type Query_Root = {
   account_info_aggregate: Account_Info_Aggregate;
   /** fetch data from the table: "account_info" using primary key columns */
   account_info_by_pk?: Maybe<Account_Info>;
-  /** fetch data from the table: "assets" */
+  /** An array relationship */
   assets: Array<Assets>;
-  /** fetch aggregated fields from the table: "assets" */
+  /** An aggregate relationship */
   assets_aggregate: Assets_Aggregate;
   /** fetch data from the table: "assets" using primary key columns */
   assets_by_pk?: Maybe<Assets>;
@@ -3832,9 +4973,9 @@ export type Query_Root = {
   categories_aggregate: Categories_Aggregate;
   /** fetch data from the table: "categories" using primary key columns */
   categories_by_pk?: Maybe<Categories>;
-  /** fetch data from the table: "expenses" */
+  /** An array relationship */
   expenses: Array<Expenses>;
-  /** fetch aggregated fields from the table: "expenses" */
+  /** An aggregate relationship */
   expenses_aggregate: Expenses_Aggregate;
   /** fetch data from the table: "expenses" using primary key columns */
   expenses_by_pk?: Maybe<Expenses>;
@@ -3844,6 +4985,12 @@ export type Query_Root = {
   gauge_data_aggregate: Gauge_Data_Aggregate;
   /** fetch data from the table: "gauge_data" using primary key columns */
   gauge_data_by_pk?: Maybe<Gauge_Data>;
+  /** fetch data from the table: "groups" */
+  groups: Array<Groups>;
+  /** fetch aggregated fields from the table: "groups" */
+  groups_aggregate: Groups_Aggregate;
+  /** fetch data from the table: "groups" using primary key columns */
+  groups_by_pk?: Maybe<Groups>;
   /** fetch data from the table: "historical_data" */
   historical_data: Array<Historical_Data>;
   /** fetch aggregated fields from the table: "historical_data" */
@@ -3856,9 +5003,9 @@ export type Query_Root = {
   labels_aggregate: Labels_Aggregate;
   /** fetch data from the table: "labels" using primary key columns */
   labels_by_pk?: Maybe<Labels>;
-  /** fetch data from the table: "liabilities" */
+  /** An array relationship */
   liabilities: Array<Liabilities>;
-  /** fetch aggregated fields from the table: "liabilities" */
+  /** An aggregate relationship */
   liabilities_aggregate: Liabilities_Aggregate;
   /** fetch data from the table: "liabilities" using primary key columns */
   liabilities_by_pk?: Maybe<Liabilities>;
@@ -3880,9 +5027,9 @@ export type Query_Root = {
   recurring_labels_aggregate: Recurring_Labels_Aggregate;
   /** fetch data from the table: "recurring_labels" using primary key columns */
   recurring_labels_by_pk?: Maybe<Recurring_Labels>;
-  /** fetch data from the table: "revenues" */
+  /** An array relationship */
   revenues: Array<Revenues>;
-  /** fetch aggregated fields from the table: "revenues" */
+  /** An aggregate relationship */
   revenues_aggregate: Revenues_Aggregate;
   /** fetch data from the table: "revenues" using primary key columns */
   revenues_by_pk?: Maybe<Revenues>;
@@ -3916,6 +5063,12 @@ export type Query_Root = {
   transactions_aggregate: Transactions_Aggregate;
   /** fetch data from the table: "transactions" using primary key columns */
   transactions_by_pk?: Maybe<Transactions>;
+  /** fetch data from the table: "transactions_import" */
+  transactions_import: Array<Transactions_Import>;
+  /** fetch aggregated fields from the table: "transactions_import" */
+  transactions_import_aggregate: Transactions_Import_Aggregate;
+  /** fetch data from the table: "transactions_import" using primary key columns */
+  transactions_import_by_pk?: Maybe<Transactions_Import>;
   /** fetch data from the table: "user_settings" */
   user_settings: Array<User_Settings>;
   /** fetch aggregated fields from the table: "user_settings" */
@@ -4029,6 +5182,26 @@ export type Query_RootGauge_Data_AggregateArgs = {
 export type Query_RootGauge_Data_By_PkArgs = {
   id: Scalars['uuid'];
   ts: Scalars['timestamp'];
+};
+
+export type Query_RootGroupsArgs = {
+  distinct_on?: InputMaybe<Array<Groups_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Groups_Order_By>>;
+  where?: InputMaybe<Groups_Bool_Exp>;
+};
+
+export type Query_RootGroups_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Groups_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Groups_Order_By>>;
+  where?: InputMaybe<Groups_Bool_Exp>;
+};
+
+export type Query_RootGroups_By_PkArgs = {
+  id: Scalars['bigint'];
 };
 
 export type Query_RootHistorical_DataArgs = {
@@ -4274,6 +5447,26 @@ export type Query_RootTransactions_AggregateArgs = {
 
 export type Query_RootTransactions_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+export type Query_RootTransactions_ImportArgs = {
+  distinct_on?: InputMaybe<Array<Transactions_Import_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Import_Order_By>>;
+  where?: InputMaybe<Transactions_Import_Bool_Exp>;
+};
+
+export type Query_RootTransactions_Import_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transactions_Import_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Import_Order_By>>;
+  where?: InputMaybe<Transactions_Import_Bool_Exp>;
+};
+
+export type Query_RootTransactions_Import_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 export type Query_RootUser_SettingsArgs = {
@@ -5463,7 +6656,12 @@ export type Revenues = {
   __typename?: 'revenues';
   /** An object relationship */
   account_info: Account_Info;
+  account_no?: Maybe<Scalars['String']>;
   active: Scalars['Boolean'];
+  alternate_name?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  category?: Maybe<Categories>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at: Scalars['timestamptz'];
   default: Scalars['Boolean'];
   id: Scalars['bigint'];
@@ -5476,6 +6674,33 @@ export type Revenues_Aggregate = {
   __typename?: 'revenues_aggregate';
   aggregate?: Maybe<Revenues_Aggregate_Fields>;
   nodes: Array<Revenues>;
+};
+
+export type Revenues_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Revenues_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Revenues_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Revenues_Aggregate_Bool_Exp_Count>;
+};
+
+export type Revenues_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Revenues_Select_Column_Revenues_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Revenues_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Revenues_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Revenues_Select_Column_Revenues_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Revenues_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Revenues_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Revenues_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Revenues_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "revenues" */
@@ -5500,10 +6725,39 @@ export type Revenues_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "revenues" */
+export type Revenues_Aggregate_Order_By = {
+  avg?: InputMaybe<Revenues_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Revenues_Max_Order_By>;
+  min?: InputMaybe<Revenues_Min_Order_By>;
+  stddev?: InputMaybe<Revenues_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Revenues_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Revenues_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Revenues_Sum_Order_By>;
+  var_pop?: InputMaybe<Revenues_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Revenues_Var_Samp_Order_By>;
+  variance?: InputMaybe<Revenues_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "revenues" */
+export type Revenues_Arr_Rel_Insert_Input = {
+  data: Array<Revenues_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Revenues_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Revenues_Avg_Fields = {
   __typename?: 'revenues_avg_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "revenues" */
+export type Revenues_Avg_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "revenues". All fields are combined with a logical 'AND'. */
@@ -5512,7 +6766,11 @@ export type Revenues_Bool_Exp = {
   _not?: InputMaybe<Revenues_Bool_Exp>;
   _or?: InputMaybe<Array<Revenues_Bool_Exp>>;
   account_info?: InputMaybe<Account_Info_Bool_Exp>;
+  account_no?: InputMaybe<String_Comparison_Exp>;
   active?: InputMaybe<Boolean_Comparison_Exp>;
+  alternate_name?: InputMaybe<String_Comparison_Exp>;
+  category?: InputMaybe<Categories_Bool_Exp>;
+  category_id?: InputMaybe<Bigint_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   default?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
@@ -5528,13 +6786,18 @@ export enum Revenues_Constraint {
 
 /** input type for incrementing numeric columns in table "revenues" */
 export type Revenues_Inc_Input = {
+  category_id?: InputMaybe<Scalars['bigint']>;
   id?: InputMaybe<Scalars['bigint']>;
 };
 
 /** input type for inserting data into table "revenues" */
 export type Revenues_Insert_Input = {
   account_info?: InputMaybe<Account_Info_Obj_Rel_Insert_Input>;
+  account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
+  category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
@@ -5545,19 +6808,47 @@ export type Revenues_Insert_Input = {
 /** aggregate max on columns */
 export type Revenues_Max_Fields = {
   __typename?: 'revenues_max_fields';
+  account_no?: Maybe<Scalars['String']>;
+  alternate_name?: Maybe<Scalars['String']>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
+/** order by max() on columns of table "revenues" */
+export type Revenues_Max_Order_By = {
+  account_no?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Revenues_Min_Fields = {
   __typename?: 'revenues_min_fields';
+  account_no?: Maybe<Scalars['String']>;
+  alternate_name?: Maybe<Scalars['String']>;
+  category_id?: Maybe<Scalars['bigint']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['bigint']>;
   name?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "revenues" */
+export type Revenues_Min_Order_By = {
+  account_no?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "revenues" */
@@ -5586,7 +6877,11 @@ export type Revenues_On_Conflict = {
 /** Ordering options when selecting data from "revenues". */
 export type Revenues_Order_By = {
   account_info?: InputMaybe<Account_Info_Order_By>;
+  account_no?: InputMaybe<Order_By>;
   active?: InputMaybe<Order_By>;
+  alternate_name?: InputMaybe<Order_By>;
+  category?: InputMaybe<Categories_Order_By>;
+  category_id?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   default?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
@@ -5602,7 +6897,13 @@ export type Revenues_Pk_Columns_Input = {
 /** select columns of table "revenues" */
 export enum Revenues_Select_Column {
   /** column name */
+  AccountNo = 'account_no',
+  /** column name */
   Active = 'active',
+  /** column name */
+  AlternateName = 'alternate_name',
+  /** column name */
+  CategoryId = 'category_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -5615,9 +6916,28 @@ export enum Revenues_Select_Column {
   UpdatedAt = 'updated_at',
 }
 
+/** select "revenues_aggregate_bool_exp_bool_and_arguments_columns" columns of table "revenues" */
+export enum Revenues_Select_Column_Revenues_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Default = 'default',
+}
+
+/** select "revenues_aggregate_bool_exp_bool_or_arguments_columns" columns of table "revenues" */
+export enum Revenues_Select_Column_Revenues_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  Active = 'active',
+  /** column name */
+  Default = 'default',
+}
+
 /** input type for updating data in table "revenues" */
 export type Revenues_Set_Input = {
+  account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
@@ -5628,19 +6948,40 @@ export type Revenues_Set_Input = {
 /** aggregate stddev on columns */
 export type Revenues_Stddev_Fields = {
   __typename?: 'revenues_stddev_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "revenues" */
+export type Revenues_Stddev_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Revenues_Stddev_Pop_Fields = {
   __typename?: 'revenues_stddev_pop_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "revenues" */
+export type Revenues_Stddev_Pop_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Revenues_Stddev_Samp_Fields = {
   __typename?: 'revenues_stddev_samp_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "revenues" */
+export type Revenues_Stddev_Samp_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Streaming cursor of the table "revenues" */
@@ -5653,7 +6994,10 @@ export type Revenues_Stream_Cursor_Input = {
 
 /** Initial value of the column from where the streaming should start */
 export type Revenues_Stream_Cursor_Value_Input = {
+  account_no?: InputMaybe<Scalars['String']>;
   active?: InputMaybe<Scalars['Boolean']>;
+  alternate_name?: InputMaybe<Scalars['String']>;
+  category_id?: InputMaybe<Scalars['bigint']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   default?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['bigint']>;
@@ -5664,13 +7008,26 @@ export type Revenues_Stream_Cursor_Value_Input = {
 /** aggregate sum on columns */
 export type Revenues_Sum_Fields = {
   __typename?: 'revenues_sum_fields';
+  category_id?: Maybe<Scalars['bigint']>;
   id?: Maybe<Scalars['bigint']>;
+};
+
+/** order by sum() on columns of table "revenues" */
+export type Revenues_Sum_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "revenues" */
 export enum Revenues_Update_Column {
   /** column name */
+  AccountNo = 'account_no',
+  /** column name */
   Active = 'active',
+  /** column name */
+  AlternateName = 'alternate_name',
+  /** column name */
+  CategoryId = 'category_id',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
@@ -5695,19 +7052,40 @@ export type Revenues_Updates = {
 /** aggregate var_pop on columns */
 export type Revenues_Var_Pop_Fields = {
   __typename?: 'revenues_var_pop_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "revenues" */
+export type Revenues_Var_Pop_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Revenues_Var_Samp_Fields = {
   __typename?: 'revenues_var_samp_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "revenues" */
+export type Revenues_Var_Samp_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Revenues_Variance_Fields = {
   __typename?: 'revenues_variance_fields';
+  category_id?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "revenues" */
+export type Revenues_Variance_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to compare columns of type "smallint". All fields are combined with logical 'AND'. */
@@ -5977,9 +7355,9 @@ export type Subscription_Root = {
   account_info_by_pk?: Maybe<Account_Info>;
   /** fetch data from the table in a streaming manner: "account_info" */
   account_info_stream: Array<Account_Info>;
-  /** fetch data from the table: "assets" */
+  /** An array relationship */
   assets: Array<Assets>;
-  /** fetch aggregated fields from the table: "assets" */
+  /** An aggregate relationship */
   assets_aggregate: Assets_Aggregate;
   /** fetch data from the table: "assets" using primary key columns */
   assets_by_pk?: Maybe<Assets>;
@@ -5993,9 +7371,9 @@ export type Subscription_Root = {
   categories_by_pk?: Maybe<Categories>;
   /** fetch data from the table in a streaming manner: "categories" */
   categories_stream: Array<Categories>;
-  /** fetch data from the table: "expenses" */
+  /** An array relationship */
   expenses: Array<Expenses>;
-  /** fetch aggregated fields from the table: "expenses" */
+  /** An aggregate relationship */
   expenses_aggregate: Expenses_Aggregate;
   /** fetch data from the table: "expenses" using primary key columns */
   expenses_by_pk?: Maybe<Expenses>;
@@ -6009,6 +7387,14 @@ export type Subscription_Root = {
   gauge_data_by_pk?: Maybe<Gauge_Data>;
   /** fetch data from the table in a streaming manner: "gauge_data" */
   gauge_data_stream: Array<Gauge_Data>;
+  /** fetch data from the table: "groups" */
+  groups: Array<Groups>;
+  /** fetch aggregated fields from the table: "groups" */
+  groups_aggregate: Groups_Aggregate;
+  /** fetch data from the table: "groups" using primary key columns */
+  groups_by_pk?: Maybe<Groups>;
+  /** fetch data from the table in a streaming manner: "groups" */
+  groups_stream: Array<Groups>;
   /** fetch data from the table: "historical_data" */
   historical_data: Array<Historical_Data>;
   /** fetch aggregated fields from the table: "historical_data" */
@@ -6025,9 +7411,9 @@ export type Subscription_Root = {
   labels_by_pk?: Maybe<Labels>;
   /** fetch data from the table in a streaming manner: "labels" */
   labels_stream: Array<Labels>;
-  /** fetch data from the table: "liabilities" */
+  /** An array relationship */
   liabilities: Array<Liabilities>;
-  /** fetch aggregated fields from the table: "liabilities" */
+  /** An aggregate relationship */
   liabilities_aggregate: Liabilities_Aggregate;
   /** fetch data from the table: "liabilities" using primary key columns */
   liabilities_by_pk?: Maybe<Liabilities>;
@@ -6057,9 +7443,9 @@ export type Subscription_Root = {
   recurring_labels_stream: Array<Recurring_Labels>;
   /** fetch data from the table in a streaming manner: "recurring" */
   recurring_stream: Array<Recurring>;
-  /** fetch data from the table: "revenues" */
+  /** An array relationship */
   revenues: Array<Revenues>;
-  /** fetch aggregated fields from the table: "revenues" */
+  /** An aggregate relationship */
   revenues_aggregate: Revenues_Aggregate;
   /** fetch data from the table: "revenues" using primary key columns */
   revenues_by_pk?: Maybe<Revenues>;
@@ -6103,6 +7489,14 @@ export type Subscription_Root = {
   transactions_aggregate: Transactions_Aggregate;
   /** fetch data from the table: "transactions" using primary key columns */
   transactions_by_pk?: Maybe<Transactions>;
+  /** fetch data from the table: "transactions_import" */
+  transactions_import: Array<Transactions_Import>;
+  /** fetch aggregated fields from the table: "transactions_import" */
+  transactions_import_aggregate: Transactions_Import_Aggregate;
+  /** fetch data from the table: "transactions_import" using primary key columns */
+  transactions_import_by_pk?: Maybe<Transactions_Import>;
+  /** fetch data from the table in a streaming manner: "transactions_import" */
+  transactions_import_stream: Array<Transactions_Import>;
   /** fetch data from the table in a streaming manner: "transactions" */
   transactions_stream: Array<Transactions>;
   /** fetch data from the table: "user_settings" */
@@ -6252,6 +7646,32 @@ export type Subscription_RootGauge_Data_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<Gauge_Data_Stream_Cursor_Input>>;
   where?: InputMaybe<Gauge_Data_Bool_Exp>;
+};
+
+export type Subscription_RootGroupsArgs = {
+  distinct_on?: InputMaybe<Array<Groups_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Groups_Order_By>>;
+  where?: InputMaybe<Groups_Bool_Exp>;
+};
+
+export type Subscription_RootGroups_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Groups_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Groups_Order_By>>;
+  where?: InputMaybe<Groups_Bool_Exp>;
+};
+
+export type Subscription_RootGroups_By_PkArgs = {
+  id: Scalars['bigint'];
+};
+
+export type Subscription_RootGroups_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Groups_Stream_Cursor_Input>>;
+  where?: InputMaybe<Groups_Bool_Exp>;
 };
 
 export type Subscription_RootHistorical_DataArgs = {
@@ -6563,6 +7983,32 @@ export type Subscription_RootTransactions_AggregateArgs = {
 
 export type Subscription_RootTransactions_By_PkArgs = {
   id: Scalars['bigint'];
+};
+
+export type Subscription_RootTransactions_ImportArgs = {
+  distinct_on?: InputMaybe<Array<Transactions_Import_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Import_Order_By>>;
+  where?: InputMaybe<Transactions_Import_Bool_Exp>;
+};
+
+export type Subscription_RootTransactions_Import_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transactions_Import_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transactions_Import_Order_By>>;
+  where?: InputMaybe<Transactions_Import_Bool_Exp>;
+};
+
+export type Subscription_RootTransactions_Import_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+export type Subscription_RootTransactions_Import_StreamArgs = {
+  batch_size: Scalars['Int'];
+  cursor: Array<InputMaybe<Transactions_Import_Stream_Cursor_Input>>;
+  where?: InputMaybe<Transactions_Import_Bool_Exp>;
 };
 
 export type Subscription_RootTransactions_StreamArgs = {
@@ -7749,9 +9195,11 @@ export type Transactions = {
   /** An object relationship */
   category?: Maybe<Categories>;
   category_id?: Maybe<Scalars['bigint']>;
+  client_reference?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
   description?: Maybe<Scalars['String']>;
   id: Scalars['bigint'];
+  mandate_reference?: Maybe<Scalars['String']>;
   /** An object relationship */
   recurring?: Maybe<Recurring>;
   recurring_id?: Maybe<Scalars['bigint']>;
@@ -7977,9 +9425,11 @@ export type Transactions_Bool_Exp = {
   amount?: InputMaybe<Float8_Comparison_Exp>;
   category?: InputMaybe<Categories_Bool_Exp>;
   category_id?: InputMaybe<Bigint_Comparison_Exp>;
+  client_reference?: InputMaybe<String_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
+  mandate_reference?: InputMaybe<String_Comparison_Exp>;
   recurring?: InputMaybe<Recurring_Bool_Exp>;
   recurring_id?: InputMaybe<Bigint_Comparison_Exp>;
   transaction_accounts?: InputMaybe<Transaction_Accounts_Bool_Exp>;
@@ -7997,6 +9447,382 @@ export enum Transactions_Constraint {
   /** unique or primary key constraint on columns "id" */
   TransactionsPkey = 'transactions_pkey',
 }
+
+/** columns and relationships of "transactions_import" */
+export type Transactions_Import = {
+  __typename?: 'transactions_import';
+  /** An object relationship */
+  asset: Assets;
+  asset_id: Scalars['bigint'];
+  created_at: Scalars['timestamptz'];
+  file_name: Scalars['String'];
+  id: Scalars['Int'];
+  status: Scalars['smallint'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "transactions_import" */
+export type Transactions_Import_Aggregate = {
+  __typename?: 'transactions_import_aggregate';
+  aggregate?: Maybe<Transactions_Import_Aggregate_Fields>;
+  nodes: Array<Transactions_Import>;
+};
+
+export type Transactions_Import_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Transactions_Import_Aggregate_Bool_Exp_Count>;
+};
+
+export type Transactions_Import_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Transactions_Import_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Transactions_Import_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "transactions_import" */
+export type Transactions_Import_Aggregate_Fields = {
+  __typename?: 'transactions_import_aggregate_fields';
+  avg?: Maybe<Transactions_Import_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Transactions_Import_Max_Fields>;
+  min?: Maybe<Transactions_Import_Min_Fields>;
+  stddev?: Maybe<Transactions_Import_Stddev_Fields>;
+  stddev_pop?: Maybe<Transactions_Import_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Transactions_Import_Stddev_Samp_Fields>;
+  sum?: Maybe<Transactions_Import_Sum_Fields>;
+  var_pop?: Maybe<Transactions_Import_Var_Pop_Fields>;
+  var_samp?: Maybe<Transactions_Import_Var_Samp_Fields>;
+  variance?: Maybe<Transactions_Import_Variance_Fields>;
+};
+
+/** aggregate fields of "transactions_import" */
+export type Transactions_Import_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Transactions_Import_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "transactions_import" */
+export type Transactions_Import_Aggregate_Order_By = {
+  avg?: InputMaybe<Transactions_Import_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Transactions_Import_Max_Order_By>;
+  min?: InputMaybe<Transactions_Import_Min_Order_By>;
+  stddev?: InputMaybe<Transactions_Import_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Transactions_Import_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Transactions_Import_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Transactions_Import_Sum_Order_By>;
+  var_pop?: InputMaybe<Transactions_Import_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Transactions_Import_Var_Samp_Order_By>;
+  variance?: InputMaybe<Transactions_Import_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "transactions_import" */
+export type Transactions_Import_Arr_Rel_Insert_Input = {
+  data: Array<Transactions_Import_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Transactions_Import_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Transactions_Import_Avg_Fields = {
+  __typename?: 'transactions_import_avg_fields';
+  asset_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  status?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "transactions_import" */
+export type Transactions_Import_Avg_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "transactions_import". All fields are combined with a logical 'AND'. */
+export type Transactions_Import_Bool_Exp = {
+  _and?: InputMaybe<Array<Transactions_Import_Bool_Exp>>;
+  _not?: InputMaybe<Transactions_Import_Bool_Exp>;
+  _or?: InputMaybe<Array<Transactions_Import_Bool_Exp>>;
+  asset?: InputMaybe<Assets_Bool_Exp>;
+  asset_id?: InputMaybe<Bigint_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  file_name?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Int_Comparison_Exp>;
+  status?: InputMaybe<Smallint_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "transactions_import" */
+export enum Transactions_Import_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  TransactionsImportPkey = 'transactions_import_pkey',
+}
+
+/** input type for incrementing numeric columns in table "transactions_import" */
+export type Transactions_Import_Inc_Input = {
+  asset_id?: InputMaybe<Scalars['bigint']>;
+  id?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['smallint']>;
+};
+
+/** input type for inserting data into table "transactions_import" */
+export type Transactions_Import_Insert_Input = {
+  asset?: InputMaybe<Assets_Obj_Rel_Insert_Input>;
+  asset_id?: InputMaybe<Scalars['bigint']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  file_name?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['smallint']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Transactions_Import_Max_Fields = {
+  __typename?: 'transactions_import_max_fields';
+  asset_id?: Maybe<Scalars['bigint']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  file_name?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['smallint']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "transactions_import" */
+export type Transactions_Import_Max_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  file_name?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Transactions_Import_Min_Fields = {
+  __typename?: 'transactions_import_min_fields';
+  asset_id?: Maybe<Scalars['bigint']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  file_name?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['smallint']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "transactions_import" */
+export type Transactions_Import_Min_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  file_name?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "transactions_import" */
+export type Transactions_Import_Mutation_Response = {
+  __typename?: 'transactions_import_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Transactions_Import>;
+};
+
+/** on_conflict condition type for table "transactions_import" */
+export type Transactions_Import_On_Conflict = {
+  constraint: Transactions_Import_Constraint;
+  update_columns?: Array<Transactions_Import_Update_Column>;
+  where?: InputMaybe<Transactions_Import_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "transactions_import". */
+export type Transactions_Import_Order_By = {
+  asset?: InputMaybe<Assets_Order_By>;
+  asset_id?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  file_name?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: transactions_import */
+export type Transactions_Import_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "transactions_import" */
+export enum Transactions_Import_Select_Column {
+  /** column name */
+  AssetId = 'asset_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  FileName = 'file_name',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+/** input type for updating data in table "transactions_import" */
+export type Transactions_Import_Set_Input = {
+  asset_id?: InputMaybe<Scalars['bigint']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  file_name?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['smallint']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Transactions_Import_Stddev_Fields = {
+  __typename?: 'transactions_import_stddev_fields';
+  asset_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  status?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "transactions_import" */
+export type Transactions_Import_Stddev_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Transactions_Import_Stddev_Pop_Fields = {
+  __typename?: 'transactions_import_stddev_pop_fields';
+  asset_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  status?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "transactions_import" */
+export type Transactions_Import_Stddev_Pop_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Transactions_Import_Stddev_Samp_Fields = {
+  __typename?: 'transactions_import_stddev_samp_fields';
+  asset_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  status?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "transactions_import" */
+export type Transactions_Import_Stddev_Samp_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+};
+
+/** Streaming cursor of the table "transactions_import" */
+export type Transactions_Import_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Transactions_Import_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Transactions_Import_Stream_Cursor_Value_Input = {
+  asset_id?: InputMaybe<Scalars['bigint']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  file_name?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['smallint']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate sum on columns */
+export type Transactions_Import_Sum_Fields = {
+  __typename?: 'transactions_import_sum_fields';
+  asset_id?: Maybe<Scalars['bigint']>;
+  id?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['smallint']>;
+};
+
+/** order by sum() on columns of table "transactions_import" */
+export type Transactions_Import_Sum_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+};
+
+/** update columns of table "transactions_import" */
+export enum Transactions_Import_Update_Column {
+  /** column name */
+  AssetId = 'asset_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  FileName = 'file_name',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Status = 'status',
+  /** column name */
+  UpdatedAt = 'updated_at',
+}
+
+export type Transactions_Import_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Transactions_Import_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Transactions_Import_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Transactions_Import_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Transactions_Import_Var_Pop_Fields = {
+  __typename?: 'transactions_import_var_pop_fields';
+  asset_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  status?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "transactions_import" */
+export type Transactions_Import_Var_Pop_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Transactions_Import_Var_Samp_Fields = {
+  __typename?: 'transactions_import_var_samp_fields';
+  asset_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  status?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "transactions_import" */
+export type Transactions_Import_Var_Samp_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Transactions_Import_Variance_Fields = {
+  __typename?: 'transactions_import_variance_fields';
+  asset_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  status?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "transactions_import" */
+export type Transactions_Import_Variance_Order_By = {
+  asset_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
+};
 
 /** input type for incrementing numeric columns in table "transactions" */
 export type Transactions_Inc_Input = {
@@ -8018,9 +9844,11 @@ export type Transactions_Insert_Input = {
   amount?: InputMaybe<Scalars['float8']>;
   category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
   category_id?: InputMaybe<Scalars['bigint']>;
+  client_reference?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['bigint']>;
+  mandate_reference?: InputMaybe<Scalars['String']>;
   recurring?: InputMaybe<Recurring_Obj_Rel_Insert_Input>;
   recurring_id?: InputMaybe<Scalars['bigint']>;
   transaction_accounts?: InputMaybe<Transaction_Accounts_Arr_Rel_Insert_Input>;
@@ -8038,9 +9866,11 @@ export type Transactions_Max_Fields = {
   account_to?: Maybe<Scalars['Int']>;
   amount?: Maybe<Scalars['float8']>;
   category_id?: Maybe<Scalars['bigint']>;
+  client_reference?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
+  mandate_reference?: Maybe<Scalars['String']>;
   recurring_id?: Maybe<Scalars['bigint']>;
   transaction_date?: Maybe<Scalars['date']>;
   transaction_type?: Maybe<Scalars['Int']>;
@@ -8053,9 +9883,11 @@ export type Transactions_Max_Order_By = {
   account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
+  client_reference?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  mandate_reference?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
   transaction_date?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
@@ -8069,9 +9901,11 @@ export type Transactions_Min_Fields = {
   account_to?: Maybe<Scalars['Int']>;
   amount?: Maybe<Scalars['float8']>;
   category_id?: Maybe<Scalars['bigint']>;
+  client_reference?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['bigint']>;
+  mandate_reference?: Maybe<Scalars['String']>;
   recurring_id?: Maybe<Scalars['bigint']>;
   transaction_date?: Maybe<Scalars['date']>;
   transaction_type?: Maybe<Scalars['Int']>;
@@ -8084,9 +9918,11 @@ export type Transactions_Min_Order_By = {
   account_to?: InputMaybe<Order_By>;
   amount?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
+  client_reference?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  mandate_reference?: InputMaybe<Order_By>;
   recurring_id?: InputMaybe<Order_By>;
   transaction_date?: InputMaybe<Order_By>;
   transaction_type?: InputMaybe<Order_By>;
@@ -8125,9 +9961,11 @@ export type Transactions_Order_By = {
   amount?: InputMaybe<Order_By>;
   category?: InputMaybe<Categories_Order_By>;
   category_id?: InputMaybe<Order_By>;
+  client_reference?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  mandate_reference?: InputMaybe<Order_By>;
   recurring?: InputMaybe<Recurring_Order_By>;
   recurring_id?: InputMaybe<Order_By>;
   transaction_accounts_aggregate?: InputMaybe<Transaction_Accounts_Aggregate_Order_By>;
@@ -8154,11 +9992,15 @@ export enum Transactions_Select_Column {
   /** column name */
   CategoryId = 'category_id',
   /** column name */
+  ClientReference = 'client_reference',
+  /** column name */
   CreatedAt = 'created_at',
   /** column name */
   Description = 'description',
   /** column name */
   Id = 'id',
+  /** column name */
+  MandateReference = 'mandate_reference',
   /** column name */
   RecurringId = 'recurring_id',
   /** column name */
@@ -8223,9 +10065,11 @@ export type Transactions_Set_Input = {
   account_to?: InputMaybe<Scalars['Int']>;
   amount?: InputMaybe<Scalars['float8']>;
   category_id?: InputMaybe<Scalars['bigint']>;
+  client_reference?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['bigint']>;
+  mandate_reference?: InputMaybe<Scalars['String']>;
   recurring_id?: InputMaybe<Scalars['bigint']>;
   transaction_date?: InputMaybe<Scalars['date']>;
   transaction_type?: InputMaybe<Scalars['Int']>;
@@ -8315,9 +10159,11 @@ export type Transactions_Stream_Cursor_Value_Input = {
   account_to?: InputMaybe<Scalars['Int']>;
   amount?: InputMaybe<Scalars['float8']>;
   category_id?: InputMaybe<Scalars['bigint']>;
+  client_reference?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['bigint']>;
+  mandate_reference?: InputMaybe<Scalars['String']>;
   recurring_id?: InputMaybe<Scalars['bigint']>;
   transaction_date?: InputMaybe<Scalars['date']>;
   transaction_type?: InputMaybe<Scalars['Int']>;
@@ -8358,11 +10204,15 @@ export enum Transactions_Update_Column {
   /** column name */
   CategoryId = 'category_id',
   /** column name */
+  ClientReference = 'client_reference',
+  /** column name */
   CreatedAt = 'created_at',
   /** column name */
   Description = 'description',
   /** column name */
   Id = 'id',
+  /** column name */
+  MandateReference = 'mandate_reference',
   /** column name */
   RecurringId = 'recurring_id',
   /** column name */
@@ -8877,7 +10727,7 @@ export type InsertExpenseAccMutationVariables = Exact<{
 
 export type InsertExpenseAccMutation = {
   __typename?: 'mutation_root';
-  insert_expenses_one?: { __typename?: 'expenses'; id: any; name: string; created_at: string; updated_at: string } | undefined;
+  insert_expenses_one?: { __typename?: 'expenses'; id: any; name: string; account_no?: string | undefined; created_at: string; updated_at: string } | undefined;
 };
 
 export type DeleteExpenseAccMutationVariables = Exact<{
@@ -8904,6 +10754,28 @@ export type UpdateExpenseStateMutationVariables = Exact<{
 }>;
 
 export type UpdateExpenseStateMutation = { __typename?: 'mutation_root'; update_expenses_by_pk?: { __typename?: 'expenses'; active: boolean } | undefined };
+
+export type InsertGroupMutationVariables = Exact<{
+  object: Groups_Insert_Input;
+}>;
+
+export type InsertGroupMutation = {
+  __typename?: 'mutation_root';
+  insert_groups_one?: { __typename?: 'groups'; id: any; name: string; created_at: string; updated_at: string } | undefined;
+};
+
+export type DeleteGroupMutationVariables = Exact<{
+  id: Scalars['bigint'];
+}>;
+
+export type DeleteGroupMutation = { __typename?: 'mutation_root'; delete_groups_by_pk?: { __typename?: 'groups'; id: any; name: string } | undefined };
+
+export type UpdateGroupMutationVariables = Exact<{
+  id: Scalars['bigint'];
+  changes?: InputMaybe<Groups_Set_Input>;
+}>;
+
+export type UpdateGroupMutation = { __typename?: 'mutation_root'; update_groups_by_pk?: { __typename?: 'groups'; id: any } | undefined };
 
 export type InsertLabelMutationVariables = Exact<{
   object: Labels_Insert_Input;
@@ -9039,6 +10911,24 @@ export type UpdateRevenueStandardMutation = {
   update_revenues?: { __typename?: 'revenues_mutation_response'; affected_rows: number } | undefined;
 };
 
+export type InsertTransactionsImportMutationVariables = Exact<{
+  object: Transactions_Import_Insert_Input;
+}>;
+
+export type InsertTransactionsImportMutation = {
+  __typename?: 'mutation_root';
+  insert_transactions_import_one?: { __typename?: 'transactions_import'; id: number } | undefined;
+};
+
+export type DeleteTransactionsImportMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+export type DeleteTransactionsImportMutation = {
+  __typename?: 'mutation_root';
+  delete_transactions_import_by_pk?: { __typename?: 'transactions_import'; id: number } | undefined;
+};
+
 export type InsertTransactionMutationVariables = Exact<{
   object: Transactions_Insert_Input;
 }>;
@@ -9089,6 +10979,31 @@ export type UpdateUserSettingsMutation = {
   insert_user_settings_one?: { __typename?: 'user_settings'; user_id: any; langKey: string; darkMode: boolean } | undefined;
 };
 
+export type AllActiveAccountsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type AllActiveAccountsQuery = {
+  __typename?: 'query_root';
+  expenses: Array<{
+    __typename?: 'expenses';
+    id: any;
+    name: string;
+    alternate_name?: string | undefined;
+    account_no?: string | undefined;
+    category_id?: any | undefined;
+  }>;
+  assets: Array<{
+    __typename?: 'assets';
+    id: any;
+    name: string;
+    default: boolean;
+    alternate_name?: string | undefined;
+    account_no?: string | undefined;
+    category_id?: any | undefined;
+  }>;
+  revenues: Array<{ __typename?: 'revenues'; id: any; name: string; category_id?: any | undefined; alternate_name?: string | undefined }>;
+  liabilities: Array<{ __typename?: 'liabilities'; id: any; name: string; alternate_name?: string | undefined }>;
+};
+
 export type AllAssetsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -9107,13 +11022,26 @@ export type AllAssetsQuery = {
     created_at: string;
     updated_at: string;
     default: boolean;
+    category_id?: any | undefined;
+    category?: { __typename?: 'categories'; name: string } | undefined;
   }>;
   assets_aggregate: { __typename?: 'assets_aggregate'; aggregate?: { __typename?: 'assets_aggregate_fields'; count: number } | undefined };
 };
 
 export type ActiveAssetAccountsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ActiveAssetAccountsQuery = { __typename?: 'query_root'; assets: Array<{ __typename?: 'assets'; id: any; name: string; default: boolean }> };
+export type ActiveAssetAccountsQuery = {
+  __typename?: 'query_root';
+  assets: Array<{
+    __typename?: 'assets';
+    id: any;
+    name: string;
+    default: boolean;
+    alternate_name?: string | undefined;
+    account_no?: string | undefined;
+    category_id?: any | undefined;
+  }>;
+};
 
 export type AllCategoriesQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -9133,13 +11061,35 @@ export type AllExpenseAccountsQueryVariables = Exact<{
 
 export type AllExpenseAccountsQuery = {
   __typename?: 'query_root';
-  expenses: Array<{ __typename?: 'expenses'; id: any; name: string; active: boolean; created_at: string; updated_at: string }>;
+  expenses: Array<{
+    __typename?: 'expenses';
+    id: any;
+    name: string;
+    alternate_name?: string | undefined;
+    account_no?: string | undefined;
+    active: boolean;
+    created_at: string;
+    updated_at: string;
+    category_id?: any | undefined;
+    category?: { __typename?: 'categories'; name: string } | undefined;
+  }>;
   expenses_aggregate: { __typename?: 'expenses_aggregate'; aggregate?: { __typename?: 'expenses_aggregate_fields'; count: number } | undefined };
 };
 
 export type ActiveExpenseAccountsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ActiveExpenseAccountsQuery = { __typename?: 'query_root'; expenses: Array<{ __typename?: 'expenses'; id: any; name: string }> };
+export type ActiveExpenseAccountsQuery = {
+  __typename?: 'query_root';
+  expenses: Array<{
+    __typename?: 'expenses';
+    id: any;
+    name: string;
+    alternate_name?: string | undefined;
+    category_id?: any | undefined;
+    account_no?: string | undefined;
+    category?: { __typename?: 'categories'; name: string } | undefined;
+  }>;
+};
 
 export type FetchUserQueryVariables = Exact<{
   userId: Scalars['uuid'];
@@ -9159,6 +11109,13 @@ export type FetchUserSettingsQuery = {
   user_settings_by_pk?: { __typename?: 'user_settings'; user_id: any; darkMode: boolean; langKey: string } | undefined;
 };
 
+export type AllGroupsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type AllGroupsQuery = {
+  __typename?: 'query_root';
+  groups: Array<{ __typename?: 'groups'; id: any; name: string; created_at: string; updated_at: string }>;
+};
+
 export type AllLabelsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type AllLabelsQuery = {
@@ -9173,7 +11130,18 @@ export type AllLiabilityAccountsQueryVariables = Exact<{
 
 export type AllLiabilityAccountsQuery = {
   __typename?: 'query_root';
-  liabilities: Array<{ __typename?: 'liabilities'; id: any; name: string; active: boolean; created_at: string; updated_at: string }>;
+  liabilities: Array<{
+    __typename?: 'liabilities';
+    id: any;
+    name: string;
+    active: boolean;
+    created_at: string;
+    updated_at: string;
+    category_id?: any | undefined;
+    alternate_name?: string | undefined;
+    account_no?: string | undefined;
+    category?: { __typename?: 'categories'; name: string } | undefined;
+  }>;
   liabilities_aggregate: { __typename?: 'liabilities_aggregate'; aggregate?: { __typename?: 'liabilities_aggregate_fields'; count: number } | undefined };
 };
 
@@ -9191,13 +11159,47 @@ export type AllRevenueAccountsQueryVariables = Exact<{
 
 export type AllRevenueAccountsQuery = {
   __typename?: 'query_root';
-  revenues: Array<{ __typename?: 'revenues'; id: any; name: string; active: boolean; default: boolean; created_at: string; updated_at: string }>;
+  revenues: Array<{
+    __typename?: 'revenues';
+    id: any;
+    name: string;
+    active: boolean;
+    default: boolean;
+    created_at: string;
+    updated_at: string;
+    alternate_name?: string | undefined;
+    account_no?: string | undefined;
+    category_id?: any | undefined;
+    category?: { __typename?: 'categories'; name: string } | undefined;
+  }>;
   revenues_aggregate: { __typename?: 'revenues_aggregate'; aggregate?: { __typename?: 'revenues_aggregate_fields'; count: number } | undefined };
 };
 
 export type ActiveRevenueAccountsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type ActiveRevenueAccountsQuery = { __typename?: 'query_root'; revenues: Array<{ __typename?: 'revenues'; id: any; name: string; default: boolean }> };
+
+export type Transactions_ImportQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+}>;
+
+export type Transactions_ImportQuery = {
+  __typename?: 'query_root';
+  transactions_import: Array<{
+    __typename?: 'transactions_import';
+    id: number;
+    file_name: string;
+    created_at: string;
+    status: any;
+    updated_at: string;
+    asset: { __typename?: 'assets'; name: string };
+  }>;
+  transactions_import_aggregate: {
+    __typename?: 'transactions_import_aggregate';
+    aggregate?: { __typename?: 'transactions_import_aggregate_fields'; count: number } | undefined;
+  };
+};
 
 export type RecurringTransactionsQueryVariables = Exact<{
   recurringId: Scalars['bigint'];
@@ -9798,6 +11800,7 @@ export const InsertExpenseAccDocument = gql`
     insert_expenses_one(object: $object) {
       id
       name
+      account_no
       created_at
       updated_at
     }
@@ -10046,6 +12049,161 @@ export function useUpdateExpenseStateMutation(baseOptions?: Apollo.MutationHookO
 export type UpdateExpenseStateMutationHookResult = ReturnType<typeof useUpdateExpenseStateMutation>;
 export type UpdateExpenseStateMutationResult = Apollo.MutationResult<UpdateExpenseStateMutation>;
 export type UpdateExpenseStateMutationOptions = Apollo.BaseMutationOptions<UpdateExpenseStateMutation, UpdateExpenseStateMutationVariables>;
+export const InsertGroupDocument = gql`
+  mutation insertGroup($object: groups_insert_input!) {
+    insert_groups_one(object: $object) {
+      id
+      name
+      created_at
+      updated_at
+    }
+  }
+`;
+export type InsertGroupMutationFn = Apollo.MutationFunction<InsertGroupMutation, InsertGroupMutationVariables>;
+export type InsertGroupComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<InsertGroupMutation, InsertGroupMutationVariables>, 'mutation'>;
+
+export const InsertGroupComponent = (props: InsertGroupComponentProps) => (
+  <ApolloReactComponents.Mutation<InsertGroupMutation, InsertGroupMutationVariables> mutation={InsertGroupDocument} {...props} />
+);
+
+export type InsertGroupProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertGroupMutation, InsertGroupMutationVariables>;
+} & TChildProps;
+export function withInsertGroup<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, InsertGroupMutation, InsertGroupMutationVariables, InsertGroupProps<TChildProps, TDataName>>
+) {
+  return ApolloReactHoc.withMutation<TProps, InsertGroupMutation, InsertGroupMutationVariables, InsertGroupProps<TChildProps, TDataName>>(InsertGroupDocument, {
+    alias: 'insertGroup',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useInsertGroupMutation__
+ *
+ * To run a mutation, you first call `useInsertGroupMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertGroupMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [insertGroupMutation, { data, loading, error }] = useInsertGroupMutation({
+ *   variables: {
+ *      object: // value for 'object'
+ *   },
+ * });
+ */
+export function useInsertGroupMutation(baseOptions?: Apollo.MutationHookOptions<InsertGroupMutation, InsertGroupMutationVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<InsertGroupMutation, InsertGroupMutationVariables>(InsertGroupDocument, options);
+}
+export type InsertGroupMutationHookResult = ReturnType<typeof useInsertGroupMutation>;
+export type InsertGroupMutationResult = Apollo.MutationResult<InsertGroupMutation>;
+export type InsertGroupMutationOptions = Apollo.BaseMutationOptions<InsertGroupMutation, InsertGroupMutationVariables>;
+export const DeleteGroupDocument = gql`
+  mutation deleteGroup($id: bigint!) {
+    delete_groups_by_pk(id: $id) {
+      id
+      name
+    }
+  }
+`;
+export type DeleteGroupMutationFn = Apollo.MutationFunction<DeleteGroupMutation, DeleteGroupMutationVariables>;
+export type DeleteGroupComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<DeleteGroupMutation, DeleteGroupMutationVariables>, 'mutation'>;
+
+export const DeleteGroupComponent = (props: DeleteGroupComponentProps) => (
+  <ApolloReactComponents.Mutation<DeleteGroupMutation, DeleteGroupMutationVariables> mutation={DeleteGroupDocument} {...props} />
+);
+
+export type DeleteGroupProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteGroupMutation, DeleteGroupMutationVariables>;
+} & TChildProps;
+export function withDeleteGroup<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, DeleteGroupMutation, DeleteGroupMutationVariables, DeleteGroupProps<TChildProps, TDataName>>
+) {
+  return ApolloReactHoc.withMutation<TProps, DeleteGroupMutation, DeleteGroupMutationVariables, DeleteGroupProps<TChildProps, TDataName>>(DeleteGroupDocument, {
+    alias: 'deleteGroup',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useDeleteGroupMutation__
+ *
+ * To run a mutation, you first call `useDeleteGroupMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteGroupMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteGroupMutation, { data, loading, error }] = useDeleteGroupMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteGroupMutation(baseOptions?: Apollo.MutationHookOptions<DeleteGroupMutation, DeleteGroupMutationVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<DeleteGroupMutation, DeleteGroupMutationVariables>(DeleteGroupDocument, options);
+}
+export type DeleteGroupMutationHookResult = ReturnType<typeof useDeleteGroupMutation>;
+export type DeleteGroupMutationResult = Apollo.MutationResult<DeleteGroupMutation>;
+export type DeleteGroupMutationOptions = Apollo.BaseMutationOptions<DeleteGroupMutation, DeleteGroupMutationVariables>;
+export const UpdateGroupDocument = gql`
+  mutation updateGroup($id: bigint!, $changes: groups_set_input) {
+    update_groups_by_pk(pk_columns: { id: $id }, _set: $changes) {
+      id
+    }
+  }
+`;
+export type UpdateGroupMutationFn = Apollo.MutationFunction<UpdateGroupMutation, UpdateGroupMutationVariables>;
+export type UpdateGroupComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<UpdateGroupMutation, UpdateGroupMutationVariables>, 'mutation'>;
+
+export const UpdateGroupComponent = (props: UpdateGroupComponentProps) => (
+  <ApolloReactComponents.Mutation<UpdateGroupMutation, UpdateGroupMutationVariables> mutation={UpdateGroupDocument} {...props} />
+);
+
+export type UpdateGroupProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<UpdateGroupMutation, UpdateGroupMutationVariables>;
+} & TChildProps;
+export function withUpdateGroup<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, UpdateGroupMutation, UpdateGroupMutationVariables, UpdateGroupProps<TChildProps, TDataName>>
+) {
+  return ApolloReactHoc.withMutation<TProps, UpdateGroupMutation, UpdateGroupMutationVariables, UpdateGroupProps<TChildProps, TDataName>>(UpdateGroupDocument, {
+    alias: 'updateGroup',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useUpdateGroupMutation__
+ *
+ * To run a mutation, you first call `useUpdateGroupMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateGroupMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateGroupMutation, { data, loading, error }] = useUpdateGroupMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      changes: // value for 'changes'
+ *   },
+ * });
+ */
+export function useUpdateGroupMutation(baseOptions?: Apollo.MutationHookOptions<UpdateGroupMutation, UpdateGroupMutationVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<UpdateGroupMutation, UpdateGroupMutationVariables>(UpdateGroupDocument, options);
+}
+export type UpdateGroupMutationHookResult = ReturnType<typeof useUpdateGroupMutation>;
+export type UpdateGroupMutationResult = Apollo.MutationResult<UpdateGroupMutation>;
+export type UpdateGroupMutationOptions = Apollo.BaseMutationOptions<UpdateGroupMutation, UpdateGroupMutationVariables>;
 export const InsertLabelDocument = gql`
   mutation insertLabel($object: labels_insert_input!) {
     insert_labels_one(object: $object) {
@@ -11031,6 +13189,142 @@ export function useUpdateRevenueStandardMutation(
 export type UpdateRevenueStandardMutationHookResult = ReturnType<typeof useUpdateRevenueStandardMutation>;
 export type UpdateRevenueStandardMutationResult = Apollo.MutationResult<UpdateRevenueStandardMutation>;
 export type UpdateRevenueStandardMutationOptions = Apollo.BaseMutationOptions<UpdateRevenueStandardMutation, UpdateRevenueStandardMutationVariables>;
+export const InsertTransactionsImportDocument = gql`
+  mutation insertTransactionsImport($object: transactions_import_insert_input!) {
+    insert_transactions_import_one(object: $object) {
+      id
+    }
+  }
+`;
+export type InsertTransactionsImportMutationFn = Apollo.MutationFunction<InsertTransactionsImportMutation, InsertTransactionsImportMutationVariables>;
+export type InsertTransactionsImportComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<InsertTransactionsImportMutation, InsertTransactionsImportMutationVariables>,
+  'mutation'
+>;
+
+export const InsertTransactionsImportComponent = (props: InsertTransactionsImportComponentProps) => (
+  <ApolloReactComponents.Mutation<InsertTransactionsImportMutation, InsertTransactionsImportMutationVariables>
+    mutation={InsertTransactionsImportDocument}
+    {...props}
+  />
+);
+
+export type InsertTransactionsImportProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<InsertTransactionsImportMutation, InsertTransactionsImportMutationVariables>;
+} & TChildProps;
+export function withInsertTransactionsImport<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    InsertTransactionsImportMutation,
+    InsertTransactionsImportMutationVariables,
+    InsertTransactionsImportProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    InsertTransactionsImportMutation,
+    InsertTransactionsImportMutationVariables,
+    InsertTransactionsImportProps<TChildProps, TDataName>
+  >(InsertTransactionsImportDocument, {
+    alias: 'insertTransactionsImport',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useInsertTransactionsImportMutation__
+ *
+ * To run a mutation, you first call `useInsertTransactionsImportMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertTransactionsImportMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [insertTransactionsImportMutation, { data, loading, error }] = useInsertTransactionsImportMutation({
+ *   variables: {
+ *      object: // value for 'object'
+ *   },
+ * });
+ */
+export function useInsertTransactionsImportMutation(
+  baseOptions?: Apollo.MutationHookOptions<InsertTransactionsImportMutation, InsertTransactionsImportMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<InsertTransactionsImportMutation, InsertTransactionsImportMutationVariables>(InsertTransactionsImportDocument, options);
+}
+export type InsertTransactionsImportMutationHookResult = ReturnType<typeof useInsertTransactionsImportMutation>;
+export type InsertTransactionsImportMutationResult = Apollo.MutationResult<InsertTransactionsImportMutation>;
+export type InsertTransactionsImportMutationOptions = Apollo.BaseMutationOptions<InsertTransactionsImportMutation, InsertTransactionsImportMutationVariables>;
+export const DeleteTransactionsImportDocument = gql`
+  mutation deleteTransactionsImport($id: Int!) {
+    delete_transactions_import_by_pk(id: $id) {
+      id
+    }
+  }
+`;
+export type DeleteTransactionsImportMutationFn = Apollo.MutationFunction<DeleteTransactionsImportMutation, DeleteTransactionsImportMutationVariables>;
+export type DeleteTransactionsImportComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<DeleteTransactionsImportMutation, DeleteTransactionsImportMutationVariables>,
+  'mutation'
+>;
+
+export const DeleteTransactionsImportComponent = (props: DeleteTransactionsImportComponentProps) => (
+  <ApolloReactComponents.Mutation<DeleteTransactionsImportMutation, DeleteTransactionsImportMutationVariables>
+    mutation={DeleteTransactionsImportDocument}
+    {...props}
+  />
+);
+
+export type DeleteTransactionsImportProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<DeleteTransactionsImportMutation, DeleteTransactionsImportMutationVariables>;
+} & TChildProps;
+export function withDeleteTransactionsImport<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DeleteTransactionsImportMutation,
+    DeleteTransactionsImportMutationVariables,
+    DeleteTransactionsImportProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withMutation<
+    TProps,
+    DeleteTransactionsImportMutation,
+    DeleteTransactionsImportMutationVariables,
+    DeleteTransactionsImportProps<TChildProps, TDataName>
+  >(DeleteTransactionsImportDocument, {
+    alias: 'deleteTransactionsImport',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useDeleteTransactionsImportMutation__
+ *
+ * To run a mutation, you first call `useDeleteTransactionsImportMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteTransactionsImportMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteTransactionsImportMutation, { data, loading, error }] = useDeleteTransactionsImportMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteTransactionsImportMutation(
+  baseOptions?: Apollo.MutationHookOptions<DeleteTransactionsImportMutation, DeleteTransactionsImportMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<DeleteTransactionsImportMutation, DeleteTransactionsImportMutationVariables>(DeleteTransactionsImportDocument, options);
+}
+export type DeleteTransactionsImportMutationHookResult = ReturnType<typeof useDeleteTransactionsImportMutation>;
+export type DeleteTransactionsImportMutationResult = Apollo.MutationResult<DeleteTransactionsImportMutation>;
+export type DeleteTransactionsImportMutationOptions = Apollo.BaseMutationOptions<DeleteTransactionsImportMutation, DeleteTransactionsImportMutationVariables>;
 export const InsertTransactionDocument = gql`
   mutation insertTransaction($object: transactions_insert_input!) {
     insert_transactions_one(object: $object) {
@@ -11356,6 +13650,91 @@ export function useUpdateUserSettingsMutation(baseOptions?: Apollo.MutationHookO
 export type UpdateUserSettingsMutationHookResult = ReturnType<typeof useUpdateUserSettingsMutation>;
 export type UpdateUserSettingsMutationResult = Apollo.MutationResult<UpdateUserSettingsMutation>;
 export type UpdateUserSettingsMutationOptions = Apollo.BaseMutationOptions<UpdateUserSettingsMutation, UpdateUserSettingsMutationVariables>;
+export const AllActiveAccountsDocument = gql`
+  query allActiveAccounts {
+    expenses(order_by: { name: asc }, where: { active: { _eq: true } }) {
+      id
+      name
+      alternate_name
+      account_no
+      category_id
+    }
+    assets(order_by: { name: asc }, where: { active: { _eq: true } }) {
+      id
+      name
+      default
+      alternate_name
+      account_no
+      category_id
+    }
+    revenues {
+      id
+      name
+      category_id
+      alternate_name
+    }
+    liabilities {
+      id
+      name
+      alternate_name
+    }
+  }
+`;
+export type AllActiveAccountsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<AllActiveAccountsQuery, AllActiveAccountsQueryVariables>,
+  'query'
+>;
+
+export const AllActiveAccountsComponent = (props: AllActiveAccountsComponentProps) => (
+  <ApolloReactComponents.Query<AllActiveAccountsQuery, AllActiveAccountsQueryVariables> query={AllActiveAccountsDocument} {...props} />
+);
+
+export type AllActiveAccountsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<AllActiveAccountsQuery, AllActiveAccountsQueryVariables>;
+} & TChildProps;
+export function withAllActiveAccounts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    AllActiveAccountsQuery,
+    AllActiveAccountsQueryVariables,
+    AllActiveAccountsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<TProps, AllActiveAccountsQuery, AllActiveAccountsQueryVariables, AllActiveAccountsProps<TChildProps, TDataName>>(
+    AllActiveAccountsDocument,
+    {
+      alias: 'allActiveAccounts',
+      ...operationOptions,
+    }
+  );
+}
+
+/**
+ * __useAllActiveAccountsQuery__
+ *
+ * To run a query within a React component, call `useAllActiveAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllActiveAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllActiveAccountsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAllActiveAccountsQuery(baseOptions?: Apollo.QueryHookOptions<AllActiveAccountsQuery, AllActiveAccountsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AllActiveAccountsQuery, AllActiveAccountsQueryVariables>(AllActiveAccountsDocument, options);
+}
+export function useAllActiveAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllActiveAccountsQuery, AllActiveAccountsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AllActiveAccountsQuery, AllActiveAccountsQueryVariables>(AllActiveAccountsDocument, options);
+}
+export type AllActiveAccountsQueryHookResult = ReturnType<typeof useAllActiveAccountsQuery>;
+export type AllActiveAccountsLazyQueryHookResult = ReturnType<typeof useAllActiveAccountsLazyQuery>;
+export type AllActiveAccountsQueryResult = Apollo.QueryResult<AllActiveAccountsQuery, AllActiveAccountsQueryVariables>;
 export const AllAssetsDocument = gql`
   query allAssets($limit: Int, $offset: Int) {
     assets(limit: $limit, offset: $offset, order_by: { name: asc }) {
@@ -11368,6 +13747,10 @@ export const AllAssetsDocument = gql`
       created_at
       updated_at
       default
+      category_id
+      category {
+        name
+      }
     }
     assets_aggregate {
       aggregate {
@@ -11428,6 +13811,9 @@ export const ActiveAssetAccountsDocument = gql`
       id
       name
       default
+      alternate_name
+      account_no
+      category_id
     }
   }
 `;
@@ -11606,9 +13992,15 @@ export const AllExpenseAccountsDocument = gql`
     expenses(limit: $limit, offset: $offset, order_by: { name: asc }) {
       id
       name
+      alternate_name
+      account_no
       active
       created_at
       updated_at
+      category_id
+      category {
+        name
+      }
     }
     expenses_aggregate {
       aggregate {
@@ -11679,6 +14071,12 @@ export const ActiveExpenseAccountsDocument = gql`
     expenses(order_by: { name: asc }, where: { active: { _eq: true } }) {
       id
       name
+      alternate_name
+      category_id
+      account_no
+      category {
+        name
+      }
     }
   }
 `;
@@ -11859,6 +14257,60 @@ export function useFetchUserSettingsLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type FetchUserSettingsQueryHookResult = ReturnType<typeof useFetchUserSettingsQuery>;
 export type FetchUserSettingsLazyQueryHookResult = ReturnType<typeof useFetchUserSettingsLazyQuery>;
 export type FetchUserSettingsQueryResult = Apollo.QueryResult<FetchUserSettingsQuery, FetchUserSettingsQueryVariables>;
+export const AllGroupsDocument = gql`
+  query allGroups {
+    groups(order_by: { name: asc }) {
+      id
+      name
+      created_at
+      updated_at
+    }
+  }
+`;
+export type AllGroupsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllGroupsQuery, AllGroupsQueryVariables>, 'query'>;
+
+export const AllGroupsComponent = (props: AllGroupsComponentProps) => (
+  <ApolloReactComponents.Query<AllGroupsQuery, AllGroupsQueryVariables> query={AllGroupsDocument} {...props} />
+);
+
+export type AllGroupsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<AllGroupsQuery, AllGroupsQueryVariables>;
+} & TChildProps;
+export function withAllGroups<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<TProps, AllGroupsQuery, AllGroupsQueryVariables, AllGroupsProps<TChildProps, TDataName>>
+) {
+  return ApolloReactHoc.withQuery<TProps, AllGroupsQuery, AllGroupsQueryVariables, AllGroupsProps<TChildProps, TDataName>>(AllGroupsDocument, {
+    alias: 'allGroups',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useAllGroupsQuery__
+ *
+ * To run a query within a React component, call `useAllGroupsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllGroupsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllGroupsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAllGroupsQuery(baseOptions?: Apollo.QueryHookOptions<AllGroupsQuery, AllGroupsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AllGroupsQuery, AllGroupsQueryVariables>(AllGroupsDocument, options);
+}
+export function useAllGroupsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllGroupsQuery, AllGroupsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AllGroupsQuery, AllGroupsQueryVariables>(AllGroupsDocument, options);
+}
+export type AllGroupsQueryHookResult = ReturnType<typeof useAllGroupsQuery>;
+export type AllGroupsLazyQueryHookResult = ReturnType<typeof useAllGroupsLazyQuery>;
+export type AllGroupsQueryResult = Apollo.QueryResult<AllGroupsQuery, AllGroupsQueryVariables>;
 export const AllLabelsDocument = gql`
   query allLabels {
     labels(order_by: { name: asc }) {
@@ -11921,6 +14373,12 @@ export const AllLiabilityAccountsDocument = gql`
       active
       created_at
       updated_at
+      category_id
+      alternate_name
+      account_no
+      category {
+        name
+      }
     }
     liabilities_aggregate {
       aggregate {
@@ -12065,6 +14523,12 @@ export const AllRevenueAccountsDocument = gql`
       default
       created_at
       updated_at
+      alternate_name
+      account_no
+      category_id
+      category {
+        name
+      }
     }
     revenues_aggregate {
       aggregate {
@@ -12194,6 +14658,82 @@ export function useActiveRevenueAccountsLazyQuery(baseOptions?: Apollo.LazyQuery
 export type ActiveRevenueAccountsQueryHookResult = ReturnType<typeof useActiveRevenueAccountsQuery>;
 export type ActiveRevenueAccountsLazyQueryHookResult = ReturnType<typeof useActiveRevenueAccountsLazyQuery>;
 export type ActiveRevenueAccountsQueryResult = Apollo.QueryResult<ActiveRevenueAccountsQuery, ActiveRevenueAccountsQueryVariables>;
+export const Transactions_ImportDocument = gql`
+  query transactions_import($limit: Int, $offset: Int) {
+    transactions_import(limit: $limit, offset: $offset, order_by: { updated_at: asc }) {
+      id
+      file_name
+      created_at
+      status
+      updated_at
+      asset {
+        name
+      }
+    }
+    transactions_import_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+`;
+export type Transactions_ImportComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<Transactions_ImportQuery, Transactions_ImportQueryVariables>,
+  'query'
+>;
+
+export const Transactions_ImportComponent = (props: Transactions_ImportComponentProps) => (
+  <ApolloReactComponents.Query<Transactions_ImportQuery, Transactions_ImportQueryVariables> query={Transactions_ImportDocument} {...props} />
+);
+
+export type Transactions_ImportProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<Transactions_ImportQuery, Transactions_ImportQueryVariables>;
+} & TChildProps;
+export function withTransactions_Import<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    Transactions_ImportQuery,
+    Transactions_ImportQueryVariables,
+    Transactions_ImportProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<TProps, Transactions_ImportQuery, Transactions_ImportQueryVariables, Transactions_ImportProps<TChildProps, TDataName>>(
+    Transactions_ImportDocument,
+    {
+      alias: 'transactionsImport',
+      ...operationOptions,
+    }
+  );
+}
+
+/**
+ * __useTransactions_ImportQuery__
+ *
+ * To run a query within a React component, call `useTransactions_ImportQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTransactions_ImportQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTransactions_ImportQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useTransactions_ImportQuery(baseOptions?: Apollo.QueryHookOptions<Transactions_ImportQuery, Transactions_ImportQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<Transactions_ImportQuery, Transactions_ImportQueryVariables>(Transactions_ImportDocument, options);
+}
+export function useTransactions_ImportLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Transactions_ImportQuery, Transactions_ImportQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<Transactions_ImportQuery, Transactions_ImportQueryVariables>(Transactions_ImportDocument, options);
+}
+export type Transactions_ImportQueryHookResult = ReturnType<typeof useTransactions_ImportQuery>;
+export type Transactions_ImportLazyQueryHookResult = ReturnType<typeof useTransactions_ImportLazyQuery>;
+export type Transactions_ImportQueryResult = Apollo.QueryResult<Transactions_ImportQuery, Transactions_ImportQueryVariables>;
 export const RecurringTransactionsDocument = gql`
   query recurringTransactions($recurringId: bigint!) {
     recurring_by_pk(id: $recurringId) {
@@ -12680,32 +15220,68 @@ export type ResolversTypes = {
   account_info_variance_fields: ResolverTypeWrapper<Account_Info_Variance_Fields>;
   assets: ResolverTypeWrapper<Assets>;
   assets_aggregate: ResolverTypeWrapper<Assets_Aggregate>;
+  assets_aggregate_bool_exp: Assets_Aggregate_Bool_Exp;
+  assets_aggregate_bool_exp_avg: Assets_Aggregate_Bool_Exp_Avg;
+  assets_aggregate_bool_exp_bool_and: Assets_Aggregate_Bool_Exp_Bool_And;
+  assets_aggregate_bool_exp_bool_or: Assets_Aggregate_Bool_Exp_Bool_Or;
+  assets_aggregate_bool_exp_corr: Assets_Aggregate_Bool_Exp_Corr;
+  assets_aggregate_bool_exp_corr_arguments: Assets_Aggregate_Bool_Exp_Corr_Arguments;
+  assets_aggregate_bool_exp_count: Assets_Aggregate_Bool_Exp_Count;
+  assets_aggregate_bool_exp_covar_samp: Assets_Aggregate_Bool_Exp_Covar_Samp;
+  assets_aggregate_bool_exp_covar_samp_arguments: Assets_Aggregate_Bool_Exp_Covar_Samp_Arguments;
+  assets_aggregate_bool_exp_max: Assets_Aggregate_Bool_Exp_Max;
+  assets_aggregate_bool_exp_min: Assets_Aggregate_Bool_Exp_Min;
+  assets_aggregate_bool_exp_stddev_samp: Assets_Aggregate_Bool_Exp_Stddev_Samp;
+  assets_aggregate_bool_exp_sum: Assets_Aggregate_Bool_Exp_Sum;
+  assets_aggregate_bool_exp_var_samp: Assets_Aggregate_Bool_Exp_Var_Samp;
   assets_aggregate_fields: ResolverTypeWrapper<Assets_Aggregate_Fields>;
+  assets_aggregate_order_by: Assets_Aggregate_Order_By;
+  assets_arr_rel_insert_input: Assets_Arr_Rel_Insert_Input;
   assets_avg_fields: ResolverTypeWrapper<Assets_Avg_Fields>;
+  assets_avg_order_by: Assets_Avg_Order_By;
   assets_bool_exp: Assets_Bool_Exp;
   assets_constraint: Assets_Constraint;
   assets_inc_input: Assets_Inc_Input;
   assets_insert_input: Assets_Insert_Input;
   assets_max_fields: ResolverTypeWrapper<Assets_Max_Fields>;
+  assets_max_order_by: Assets_Max_Order_By;
   assets_min_fields: ResolverTypeWrapper<Assets_Min_Fields>;
+  assets_min_order_by: Assets_Min_Order_By;
   assets_mutation_response: ResolverTypeWrapper<Assets_Mutation_Response>;
   assets_obj_rel_insert_input: Assets_Obj_Rel_Insert_Input;
   assets_on_conflict: Assets_On_Conflict;
   assets_order_by: Assets_Order_By;
   assets_pk_columns_input: Assets_Pk_Columns_Input;
   assets_select_column: Assets_Select_Column;
+  assets_select_column_assets_aggregate_bool_exp_avg_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Avg_Arguments_Columns;
+  assets_select_column_assets_aggregate_bool_exp_bool_and_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  assets_select_column_assets_aggregate_bool_exp_bool_or_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  assets_select_column_assets_aggregate_bool_exp_corr_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Corr_Arguments_Columns;
+  assets_select_column_assets_aggregate_bool_exp_covar_samp_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Covar_Samp_Arguments_Columns;
+  assets_select_column_assets_aggregate_bool_exp_max_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Max_Arguments_Columns;
+  assets_select_column_assets_aggregate_bool_exp_min_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Min_Arguments_Columns;
+  assets_select_column_assets_aggregate_bool_exp_stddev_samp_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Stddev_Samp_Arguments_Columns;
+  assets_select_column_assets_aggregate_bool_exp_sum_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Sum_Arguments_Columns;
+  assets_select_column_assets_aggregate_bool_exp_var_samp_arguments_columns: Assets_Select_Column_Assets_Aggregate_Bool_Exp_Var_Samp_Arguments_Columns;
   assets_set_input: Assets_Set_Input;
   assets_stddev_fields: ResolverTypeWrapper<Assets_Stddev_Fields>;
+  assets_stddev_order_by: Assets_Stddev_Order_By;
   assets_stddev_pop_fields: ResolverTypeWrapper<Assets_Stddev_Pop_Fields>;
+  assets_stddev_pop_order_by: Assets_Stddev_Pop_Order_By;
   assets_stddev_samp_fields: ResolverTypeWrapper<Assets_Stddev_Samp_Fields>;
+  assets_stddev_samp_order_by: Assets_Stddev_Samp_Order_By;
   assets_stream_cursor_input: Assets_Stream_Cursor_Input;
   assets_stream_cursor_value_input: Assets_Stream_Cursor_Value_Input;
   assets_sum_fields: ResolverTypeWrapper<Assets_Sum_Fields>;
+  assets_sum_order_by: Assets_Sum_Order_By;
   assets_update_column: Assets_Update_Column;
   assets_updates: Assets_Updates;
   assets_var_pop_fields: ResolverTypeWrapper<Assets_Var_Pop_Fields>;
+  assets_var_pop_order_by: Assets_Var_Pop_Order_By;
   assets_var_samp_fields: ResolverTypeWrapper<Assets_Var_Samp_Fields>;
+  assets_var_samp_order_by: Assets_Var_Samp_Order_By;
   assets_variance_fields: ResolverTypeWrapper<Assets_Variance_Fields>;
+  assets_variance_order_by: Assets_Variance_Order_By;
   bigint: ResolverTypeWrapper<Scalars['bigint']>;
   bigint_comparison_exp: Bigint_Comparison_Exp;
   bpchar: ResolverTypeWrapper<Scalars['bpchar']>;
@@ -12743,32 +15319,50 @@ export type ResolversTypes = {
   date_comparison_exp: Date_Comparison_Exp;
   expenses: ResolverTypeWrapper<Expenses>;
   expenses_aggregate: ResolverTypeWrapper<Expenses_Aggregate>;
+  expenses_aggregate_bool_exp: Expenses_Aggregate_Bool_Exp;
+  expenses_aggregate_bool_exp_bool_and: Expenses_Aggregate_Bool_Exp_Bool_And;
+  expenses_aggregate_bool_exp_bool_or: Expenses_Aggregate_Bool_Exp_Bool_Or;
+  expenses_aggregate_bool_exp_count: Expenses_Aggregate_Bool_Exp_Count;
   expenses_aggregate_fields: ResolverTypeWrapper<Expenses_Aggregate_Fields>;
+  expenses_aggregate_order_by: Expenses_Aggregate_Order_By;
+  expenses_arr_rel_insert_input: Expenses_Arr_Rel_Insert_Input;
   expenses_avg_fields: ResolverTypeWrapper<Expenses_Avg_Fields>;
+  expenses_avg_order_by: Expenses_Avg_Order_By;
   expenses_bool_exp: Expenses_Bool_Exp;
   expenses_constraint: Expenses_Constraint;
   expenses_inc_input: Expenses_Inc_Input;
   expenses_insert_input: Expenses_Insert_Input;
   expenses_max_fields: ResolverTypeWrapper<Expenses_Max_Fields>;
+  expenses_max_order_by: Expenses_Max_Order_By;
   expenses_min_fields: ResolverTypeWrapper<Expenses_Min_Fields>;
+  expenses_min_order_by: Expenses_Min_Order_By;
   expenses_mutation_response: ResolverTypeWrapper<Expenses_Mutation_Response>;
   expenses_obj_rel_insert_input: Expenses_Obj_Rel_Insert_Input;
   expenses_on_conflict: Expenses_On_Conflict;
   expenses_order_by: Expenses_Order_By;
   expenses_pk_columns_input: Expenses_Pk_Columns_Input;
   expenses_select_column: Expenses_Select_Column;
+  expenses_select_column_expenses_aggregate_bool_exp_bool_and_arguments_columns: Expenses_Select_Column_Expenses_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  expenses_select_column_expenses_aggregate_bool_exp_bool_or_arguments_columns: Expenses_Select_Column_Expenses_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
   expenses_set_input: Expenses_Set_Input;
   expenses_stddev_fields: ResolverTypeWrapper<Expenses_Stddev_Fields>;
+  expenses_stddev_order_by: Expenses_Stddev_Order_By;
   expenses_stddev_pop_fields: ResolverTypeWrapper<Expenses_Stddev_Pop_Fields>;
+  expenses_stddev_pop_order_by: Expenses_Stddev_Pop_Order_By;
   expenses_stddev_samp_fields: ResolverTypeWrapper<Expenses_Stddev_Samp_Fields>;
+  expenses_stddev_samp_order_by: Expenses_Stddev_Samp_Order_By;
   expenses_stream_cursor_input: Expenses_Stream_Cursor_Input;
   expenses_stream_cursor_value_input: Expenses_Stream_Cursor_Value_Input;
   expenses_sum_fields: ResolverTypeWrapper<Expenses_Sum_Fields>;
+  expenses_sum_order_by: Expenses_Sum_Order_By;
   expenses_update_column: Expenses_Update_Column;
   expenses_updates: Expenses_Updates;
   expenses_var_pop_fields: ResolverTypeWrapper<Expenses_Var_Pop_Fields>;
+  expenses_var_pop_order_by: Expenses_Var_Pop_Order_By;
   expenses_var_samp_fields: ResolverTypeWrapper<Expenses_Var_Samp_Fields>;
+  expenses_var_samp_order_by: Expenses_Var_Samp_Order_By;
   expenses_variance_fields: ResolverTypeWrapper<Expenses_Variance_Fields>;
+  expenses_variance_order_by: Expenses_Variance_Order_By;
   float8: ResolverTypeWrapper<Scalars['float8']>;
   float8_comparison_exp: Float8_Comparison_Exp;
   gauge_data: ResolverTypeWrapper<Gauge_Data>;
@@ -12798,6 +15392,33 @@ export type ResolversTypes = {
   gauge_data_var_pop_fields: ResolverTypeWrapper<Gauge_Data_Var_Pop_Fields>;
   gauge_data_var_samp_fields: ResolverTypeWrapper<Gauge_Data_Var_Samp_Fields>;
   gauge_data_variance_fields: ResolverTypeWrapper<Gauge_Data_Variance_Fields>;
+  groups: ResolverTypeWrapper<Groups>;
+  groups_aggregate: ResolverTypeWrapper<Groups_Aggregate>;
+  groups_aggregate_fields: ResolverTypeWrapper<Groups_Aggregate_Fields>;
+  groups_avg_fields: ResolverTypeWrapper<Groups_Avg_Fields>;
+  groups_bool_exp: Groups_Bool_Exp;
+  groups_constraint: Groups_Constraint;
+  groups_inc_input: Groups_Inc_Input;
+  groups_insert_input: Groups_Insert_Input;
+  groups_max_fields: ResolverTypeWrapper<Groups_Max_Fields>;
+  groups_min_fields: ResolverTypeWrapper<Groups_Min_Fields>;
+  groups_mutation_response: ResolverTypeWrapper<Groups_Mutation_Response>;
+  groups_on_conflict: Groups_On_Conflict;
+  groups_order_by: Groups_Order_By;
+  groups_pk_columns_input: Groups_Pk_Columns_Input;
+  groups_select_column: Groups_Select_Column;
+  groups_set_input: Groups_Set_Input;
+  groups_stddev_fields: ResolverTypeWrapper<Groups_Stddev_Fields>;
+  groups_stddev_pop_fields: ResolverTypeWrapper<Groups_Stddev_Pop_Fields>;
+  groups_stddev_samp_fields: ResolverTypeWrapper<Groups_Stddev_Samp_Fields>;
+  groups_stream_cursor_input: Groups_Stream_Cursor_Input;
+  groups_stream_cursor_value_input: Groups_Stream_Cursor_Value_Input;
+  groups_sum_fields: ResolverTypeWrapper<Groups_Sum_Fields>;
+  groups_update_column: Groups_Update_Column;
+  groups_updates: Groups_Updates;
+  groups_var_pop_fields: ResolverTypeWrapper<Groups_Var_Pop_Fields>;
+  groups_var_samp_fields: ResolverTypeWrapper<Groups_Var_Samp_Fields>;
+  groups_variance_fields: ResolverTypeWrapper<Groups_Variance_Fields>;
   historical_data: ResolverTypeWrapper<Historical_Data>;
   historical_data_aggregate: ResolverTypeWrapper<Historical_Data_Aggregate>;
   historical_data_aggregate_fields: ResolverTypeWrapper<Historical_Data_Aggregate_Fields>;
@@ -12855,32 +15476,50 @@ export type ResolversTypes = {
   labels_variance_fields: ResolverTypeWrapper<Labels_Variance_Fields>;
   liabilities: ResolverTypeWrapper<Liabilities>;
   liabilities_aggregate: ResolverTypeWrapper<Liabilities_Aggregate>;
+  liabilities_aggregate_bool_exp: Liabilities_Aggregate_Bool_Exp;
+  liabilities_aggregate_bool_exp_bool_and: Liabilities_Aggregate_Bool_Exp_Bool_And;
+  liabilities_aggregate_bool_exp_bool_or: Liabilities_Aggregate_Bool_Exp_Bool_Or;
+  liabilities_aggregate_bool_exp_count: Liabilities_Aggregate_Bool_Exp_Count;
   liabilities_aggregate_fields: ResolverTypeWrapper<Liabilities_Aggregate_Fields>;
+  liabilities_aggregate_order_by: Liabilities_Aggregate_Order_By;
+  liabilities_arr_rel_insert_input: Liabilities_Arr_Rel_Insert_Input;
   liabilities_avg_fields: ResolverTypeWrapper<Liabilities_Avg_Fields>;
+  liabilities_avg_order_by: Liabilities_Avg_Order_By;
   liabilities_bool_exp: Liabilities_Bool_Exp;
   liabilities_constraint: Liabilities_Constraint;
   liabilities_inc_input: Liabilities_Inc_Input;
   liabilities_insert_input: Liabilities_Insert_Input;
   liabilities_max_fields: ResolverTypeWrapper<Liabilities_Max_Fields>;
+  liabilities_max_order_by: Liabilities_Max_Order_By;
   liabilities_min_fields: ResolverTypeWrapper<Liabilities_Min_Fields>;
+  liabilities_min_order_by: Liabilities_Min_Order_By;
   liabilities_mutation_response: ResolverTypeWrapper<Liabilities_Mutation_Response>;
   liabilities_obj_rel_insert_input: Liabilities_Obj_Rel_Insert_Input;
   liabilities_on_conflict: Liabilities_On_Conflict;
   liabilities_order_by: Liabilities_Order_By;
   liabilities_pk_columns_input: Liabilities_Pk_Columns_Input;
   liabilities_select_column: Liabilities_Select_Column;
+  liabilities_select_column_liabilities_aggregate_bool_exp_bool_and_arguments_columns: Liabilities_Select_Column_Liabilities_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  liabilities_select_column_liabilities_aggregate_bool_exp_bool_or_arguments_columns: Liabilities_Select_Column_Liabilities_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
   liabilities_set_input: Liabilities_Set_Input;
   liabilities_stddev_fields: ResolverTypeWrapper<Liabilities_Stddev_Fields>;
+  liabilities_stddev_order_by: Liabilities_Stddev_Order_By;
   liabilities_stddev_pop_fields: ResolverTypeWrapper<Liabilities_Stddev_Pop_Fields>;
+  liabilities_stddev_pop_order_by: Liabilities_Stddev_Pop_Order_By;
   liabilities_stddev_samp_fields: ResolverTypeWrapper<Liabilities_Stddev_Samp_Fields>;
+  liabilities_stddev_samp_order_by: Liabilities_Stddev_Samp_Order_By;
   liabilities_stream_cursor_input: Liabilities_Stream_Cursor_Input;
   liabilities_stream_cursor_value_input: Liabilities_Stream_Cursor_Value_Input;
   liabilities_sum_fields: ResolverTypeWrapper<Liabilities_Sum_Fields>;
+  liabilities_sum_order_by: Liabilities_Sum_Order_By;
   liabilities_update_column: Liabilities_Update_Column;
   liabilities_updates: Liabilities_Updates;
   liabilities_var_pop_fields: ResolverTypeWrapper<Liabilities_Var_Pop_Fields>;
+  liabilities_var_pop_order_by: Liabilities_Var_Pop_Order_By;
   liabilities_var_samp_fields: ResolverTypeWrapper<Liabilities_Var_Samp_Fields>;
+  liabilities_var_samp_order_by: Liabilities_Var_Samp_Order_By;
   liabilities_variance_fields: ResolverTypeWrapper<Liabilities_Variance_Fields>;
+  liabilities_variance_order_by: Liabilities_Variance_Order_By;
   mutation_root: ResolverTypeWrapper<{}>;
   notifications: ResolverTypeWrapper<Notifications>;
   notifications_aggregate: ResolverTypeWrapper<Notifications_Aggregate>;
@@ -13018,32 +15657,50 @@ export type ResolversTypes = {
   recurring_variance_order_by: Recurring_Variance_Order_By;
   revenues: ResolverTypeWrapper<Revenues>;
   revenues_aggregate: ResolverTypeWrapper<Revenues_Aggregate>;
+  revenues_aggregate_bool_exp: Revenues_Aggregate_Bool_Exp;
+  revenues_aggregate_bool_exp_bool_and: Revenues_Aggregate_Bool_Exp_Bool_And;
+  revenues_aggregate_bool_exp_bool_or: Revenues_Aggregate_Bool_Exp_Bool_Or;
+  revenues_aggregate_bool_exp_count: Revenues_Aggregate_Bool_Exp_Count;
   revenues_aggregate_fields: ResolverTypeWrapper<Revenues_Aggregate_Fields>;
+  revenues_aggregate_order_by: Revenues_Aggregate_Order_By;
+  revenues_arr_rel_insert_input: Revenues_Arr_Rel_Insert_Input;
   revenues_avg_fields: ResolverTypeWrapper<Revenues_Avg_Fields>;
+  revenues_avg_order_by: Revenues_Avg_Order_By;
   revenues_bool_exp: Revenues_Bool_Exp;
   revenues_constraint: Revenues_Constraint;
   revenues_inc_input: Revenues_Inc_Input;
   revenues_insert_input: Revenues_Insert_Input;
   revenues_max_fields: ResolverTypeWrapper<Revenues_Max_Fields>;
+  revenues_max_order_by: Revenues_Max_Order_By;
   revenues_min_fields: ResolverTypeWrapper<Revenues_Min_Fields>;
+  revenues_min_order_by: Revenues_Min_Order_By;
   revenues_mutation_response: ResolverTypeWrapper<Revenues_Mutation_Response>;
   revenues_obj_rel_insert_input: Revenues_Obj_Rel_Insert_Input;
   revenues_on_conflict: Revenues_On_Conflict;
   revenues_order_by: Revenues_Order_By;
   revenues_pk_columns_input: Revenues_Pk_Columns_Input;
   revenues_select_column: Revenues_Select_Column;
+  revenues_select_column_revenues_aggregate_bool_exp_bool_and_arguments_columns: Revenues_Select_Column_Revenues_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  revenues_select_column_revenues_aggregate_bool_exp_bool_or_arguments_columns: Revenues_Select_Column_Revenues_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
   revenues_set_input: Revenues_Set_Input;
   revenues_stddev_fields: ResolverTypeWrapper<Revenues_Stddev_Fields>;
+  revenues_stddev_order_by: Revenues_Stddev_Order_By;
   revenues_stddev_pop_fields: ResolverTypeWrapper<Revenues_Stddev_Pop_Fields>;
+  revenues_stddev_pop_order_by: Revenues_Stddev_Pop_Order_By;
   revenues_stddev_samp_fields: ResolverTypeWrapper<Revenues_Stddev_Samp_Fields>;
+  revenues_stddev_samp_order_by: Revenues_Stddev_Samp_Order_By;
   revenues_stream_cursor_input: Revenues_Stream_Cursor_Input;
   revenues_stream_cursor_value_input: Revenues_Stream_Cursor_Value_Input;
   revenues_sum_fields: ResolverTypeWrapper<Revenues_Sum_Fields>;
+  revenues_sum_order_by: Revenues_Sum_Order_By;
   revenues_update_column: Revenues_Update_Column;
   revenues_updates: Revenues_Updates;
   revenues_var_pop_fields: ResolverTypeWrapper<Revenues_Var_Pop_Fields>;
+  revenues_var_pop_order_by: Revenues_Var_Pop_Order_By;
   revenues_var_samp_fields: ResolverTypeWrapper<Revenues_Var_Samp_Fields>;
+  revenues_var_samp_order_by: Revenues_Var_Samp_Order_By;
   revenues_variance_fields: ResolverTypeWrapper<Revenues_Variance_Fields>;
+  revenues_variance_order_by: Revenues_Variance_Order_By;
   smallint: ResolverTypeWrapper<Scalars['smallint']>;
   smallint_comparison_exp: Smallint_Comparison_Exp;
   status_data: ResolverTypeWrapper<Status_Data>;
@@ -13227,6 +15884,47 @@ export type ResolversTypes = {
   transactions_avg_order_by: Transactions_Avg_Order_By;
   transactions_bool_exp: Transactions_Bool_Exp;
   transactions_constraint: Transactions_Constraint;
+  transactions_import: ResolverTypeWrapper<Transactions_Import>;
+  transactions_import_aggregate: ResolverTypeWrapper<Transactions_Import_Aggregate>;
+  transactions_import_aggregate_bool_exp: Transactions_Import_Aggregate_Bool_Exp;
+  transactions_import_aggregate_bool_exp_count: Transactions_Import_Aggregate_Bool_Exp_Count;
+  transactions_import_aggregate_fields: ResolverTypeWrapper<Transactions_Import_Aggregate_Fields>;
+  transactions_import_aggregate_order_by: Transactions_Import_Aggregate_Order_By;
+  transactions_import_arr_rel_insert_input: Transactions_Import_Arr_Rel_Insert_Input;
+  transactions_import_avg_fields: ResolverTypeWrapper<Transactions_Import_Avg_Fields>;
+  transactions_import_avg_order_by: Transactions_Import_Avg_Order_By;
+  transactions_import_bool_exp: Transactions_Import_Bool_Exp;
+  transactions_import_constraint: Transactions_Import_Constraint;
+  transactions_import_inc_input: Transactions_Import_Inc_Input;
+  transactions_import_insert_input: Transactions_Import_Insert_Input;
+  transactions_import_max_fields: ResolverTypeWrapper<Transactions_Import_Max_Fields>;
+  transactions_import_max_order_by: Transactions_Import_Max_Order_By;
+  transactions_import_min_fields: ResolverTypeWrapper<Transactions_Import_Min_Fields>;
+  transactions_import_min_order_by: Transactions_Import_Min_Order_By;
+  transactions_import_mutation_response: ResolverTypeWrapper<Transactions_Import_Mutation_Response>;
+  transactions_import_on_conflict: Transactions_Import_On_Conflict;
+  transactions_import_order_by: Transactions_Import_Order_By;
+  transactions_import_pk_columns_input: Transactions_Import_Pk_Columns_Input;
+  transactions_import_select_column: Transactions_Import_Select_Column;
+  transactions_import_set_input: Transactions_Import_Set_Input;
+  transactions_import_stddev_fields: ResolverTypeWrapper<Transactions_Import_Stddev_Fields>;
+  transactions_import_stddev_order_by: Transactions_Import_Stddev_Order_By;
+  transactions_import_stddev_pop_fields: ResolverTypeWrapper<Transactions_Import_Stddev_Pop_Fields>;
+  transactions_import_stddev_pop_order_by: Transactions_Import_Stddev_Pop_Order_By;
+  transactions_import_stddev_samp_fields: ResolverTypeWrapper<Transactions_Import_Stddev_Samp_Fields>;
+  transactions_import_stddev_samp_order_by: Transactions_Import_Stddev_Samp_Order_By;
+  transactions_import_stream_cursor_input: Transactions_Import_Stream_Cursor_Input;
+  transactions_import_stream_cursor_value_input: Transactions_Import_Stream_Cursor_Value_Input;
+  transactions_import_sum_fields: ResolverTypeWrapper<Transactions_Import_Sum_Fields>;
+  transactions_import_sum_order_by: Transactions_Import_Sum_Order_By;
+  transactions_import_update_column: Transactions_Import_Update_Column;
+  transactions_import_updates: Transactions_Import_Updates;
+  transactions_import_var_pop_fields: ResolverTypeWrapper<Transactions_Import_Var_Pop_Fields>;
+  transactions_import_var_pop_order_by: Transactions_Import_Var_Pop_Order_By;
+  transactions_import_var_samp_fields: ResolverTypeWrapper<Transactions_Import_Var_Samp_Fields>;
+  transactions_import_var_samp_order_by: Transactions_Import_Var_Samp_Order_By;
+  transactions_import_variance_fields: ResolverTypeWrapper<Transactions_Import_Variance_Fields>;
+  transactions_import_variance_order_by: Transactions_Import_Variance_Order_By;
   transactions_inc_input: Transactions_Inc_Input;
   transactions_insert_input: Transactions_Insert_Input;
   transactions_max_fields: ResolverTypeWrapper<Transactions_Max_Fields>;
@@ -13344,13 +16042,32 @@ export type ResolversParentTypes = {
   account_info_variance_fields: Account_Info_Variance_Fields;
   assets: Assets;
   assets_aggregate: Assets_Aggregate;
+  assets_aggregate_bool_exp: Assets_Aggregate_Bool_Exp;
+  assets_aggregate_bool_exp_avg: Assets_Aggregate_Bool_Exp_Avg;
+  assets_aggregate_bool_exp_bool_and: Assets_Aggregate_Bool_Exp_Bool_And;
+  assets_aggregate_bool_exp_bool_or: Assets_Aggregate_Bool_Exp_Bool_Or;
+  assets_aggregate_bool_exp_corr: Assets_Aggregate_Bool_Exp_Corr;
+  assets_aggregate_bool_exp_corr_arguments: Assets_Aggregate_Bool_Exp_Corr_Arguments;
+  assets_aggregate_bool_exp_count: Assets_Aggregate_Bool_Exp_Count;
+  assets_aggregate_bool_exp_covar_samp: Assets_Aggregate_Bool_Exp_Covar_Samp;
+  assets_aggregate_bool_exp_covar_samp_arguments: Assets_Aggregate_Bool_Exp_Covar_Samp_Arguments;
+  assets_aggregate_bool_exp_max: Assets_Aggregate_Bool_Exp_Max;
+  assets_aggregate_bool_exp_min: Assets_Aggregate_Bool_Exp_Min;
+  assets_aggregate_bool_exp_stddev_samp: Assets_Aggregate_Bool_Exp_Stddev_Samp;
+  assets_aggregate_bool_exp_sum: Assets_Aggregate_Bool_Exp_Sum;
+  assets_aggregate_bool_exp_var_samp: Assets_Aggregate_Bool_Exp_Var_Samp;
   assets_aggregate_fields: Assets_Aggregate_Fields;
+  assets_aggregate_order_by: Assets_Aggregate_Order_By;
+  assets_arr_rel_insert_input: Assets_Arr_Rel_Insert_Input;
   assets_avg_fields: Assets_Avg_Fields;
+  assets_avg_order_by: Assets_Avg_Order_By;
   assets_bool_exp: Assets_Bool_Exp;
   assets_inc_input: Assets_Inc_Input;
   assets_insert_input: Assets_Insert_Input;
   assets_max_fields: Assets_Max_Fields;
+  assets_max_order_by: Assets_Max_Order_By;
   assets_min_fields: Assets_Min_Fields;
+  assets_min_order_by: Assets_Min_Order_By;
   assets_mutation_response: Assets_Mutation_Response;
   assets_obj_rel_insert_input: Assets_Obj_Rel_Insert_Input;
   assets_on_conflict: Assets_On_Conflict;
@@ -13358,15 +16075,22 @@ export type ResolversParentTypes = {
   assets_pk_columns_input: Assets_Pk_Columns_Input;
   assets_set_input: Assets_Set_Input;
   assets_stddev_fields: Assets_Stddev_Fields;
+  assets_stddev_order_by: Assets_Stddev_Order_By;
   assets_stddev_pop_fields: Assets_Stddev_Pop_Fields;
+  assets_stddev_pop_order_by: Assets_Stddev_Pop_Order_By;
   assets_stddev_samp_fields: Assets_Stddev_Samp_Fields;
+  assets_stddev_samp_order_by: Assets_Stddev_Samp_Order_By;
   assets_stream_cursor_input: Assets_Stream_Cursor_Input;
   assets_stream_cursor_value_input: Assets_Stream_Cursor_Value_Input;
   assets_sum_fields: Assets_Sum_Fields;
+  assets_sum_order_by: Assets_Sum_Order_By;
   assets_updates: Assets_Updates;
   assets_var_pop_fields: Assets_Var_Pop_Fields;
+  assets_var_pop_order_by: Assets_Var_Pop_Order_By;
   assets_var_samp_fields: Assets_Var_Samp_Fields;
+  assets_var_samp_order_by: Assets_Var_Samp_Order_By;
   assets_variance_fields: Assets_Variance_Fields;
+  assets_variance_order_by: Assets_Variance_Order_By;
   bigint: Scalars['bigint'];
   bigint_comparison_exp: Bigint_Comparison_Exp;
   bpchar: Scalars['bpchar'];
@@ -13400,13 +16124,22 @@ export type ResolversParentTypes = {
   date_comparison_exp: Date_Comparison_Exp;
   expenses: Expenses;
   expenses_aggregate: Expenses_Aggregate;
+  expenses_aggregate_bool_exp: Expenses_Aggregate_Bool_Exp;
+  expenses_aggregate_bool_exp_bool_and: Expenses_Aggregate_Bool_Exp_Bool_And;
+  expenses_aggregate_bool_exp_bool_or: Expenses_Aggregate_Bool_Exp_Bool_Or;
+  expenses_aggregate_bool_exp_count: Expenses_Aggregate_Bool_Exp_Count;
   expenses_aggregate_fields: Expenses_Aggregate_Fields;
+  expenses_aggregate_order_by: Expenses_Aggregate_Order_By;
+  expenses_arr_rel_insert_input: Expenses_Arr_Rel_Insert_Input;
   expenses_avg_fields: Expenses_Avg_Fields;
+  expenses_avg_order_by: Expenses_Avg_Order_By;
   expenses_bool_exp: Expenses_Bool_Exp;
   expenses_inc_input: Expenses_Inc_Input;
   expenses_insert_input: Expenses_Insert_Input;
   expenses_max_fields: Expenses_Max_Fields;
+  expenses_max_order_by: Expenses_Max_Order_By;
   expenses_min_fields: Expenses_Min_Fields;
+  expenses_min_order_by: Expenses_Min_Order_By;
   expenses_mutation_response: Expenses_Mutation_Response;
   expenses_obj_rel_insert_input: Expenses_Obj_Rel_Insert_Input;
   expenses_on_conflict: Expenses_On_Conflict;
@@ -13414,15 +16147,22 @@ export type ResolversParentTypes = {
   expenses_pk_columns_input: Expenses_Pk_Columns_Input;
   expenses_set_input: Expenses_Set_Input;
   expenses_stddev_fields: Expenses_Stddev_Fields;
+  expenses_stddev_order_by: Expenses_Stddev_Order_By;
   expenses_stddev_pop_fields: Expenses_Stddev_Pop_Fields;
+  expenses_stddev_pop_order_by: Expenses_Stddev_Pop_Order_By;
   expenses_stddev_samp_fields: Expenses_Stddev_Samp_Fields;
+  expenses_stddev_samp_order_by: Expenses_Stddev_Samp_Order_By;
   expenses_stream_cursor_input: Expenses_Stream_Cursor_Input;
   expenses_stream_cursor_value_input: Expenses_Stream_Cursor_Value_Input;
   expenses_sum_fields: Expenses_Sum_Fields;
+  expenses_sum_order_by: Expenses_Sum_Order_By;
   expenses_updates: Expenses_Updates;
   expenses_var_pop_fields: Expenses_Var_Pop_Fields;
+  expenses_var_pop_order_by: Expenses_Var_Pop_Order_By;
   expenses_var_samp_fields: Expenses_Var_Samp_Fields;
+  expenses_var_samp_order_by: Expenses_Var_Samp_Order_By;
   expenses_variance_fields: Expenses_Variance_Fields;
+  expenses_variance_order_by: Expenses_Variance_Order_By;
   float8: Scalars['float8'];
   float8_comparison_exp: Float8_Comparison_Exp;
   gauge_data: Gauge_Data;
@@ -13449,6 +16189,30 @@ export type ResolversParentTypes = {
   gauge_data_var_pop_fields: Gauge_Data_Var_Pop_Fields;
   gauge_data_var_samp_fields: Gauge_Data_Var_Samp_Fields;
   gauge_data_variance_fields: Gauge_Data_Variance_Fields;
+  groups: Groups;
+  groups_aggregate: Groups_Aggregate;
+  groups_aggregate_fields: Groups_Aggregate_Fields;
+  groups_avg_fields: Groups_Avg_Fields;
+  groups_bool_exp: Groups_Bool_Exp;
+  groups_inc_input: Groups_Inc_Input;
+  groups_insert_input: Groups_Insert_Input;
+  groups_max_fields: Groups_Max_Fields;
+  groups_min_fields: Groups_Min_Fields;
+  groups_mutation_response: Groups_Mutation_Response;
+  groups_on_conflict: Groups_On_Conflict;
+  groups_order_by: Groups_Order_By;
+  groups_pk_columns_input: Groups_Pk_Columns_Input;
+  groups_set_input: Groups_Set_Input;
+  groups_stddev_fields: Groups_Stddev_Fields;
+  groups_stddev_pop_fields: Groups_Stddev_Pop_Fields;
+  groups_stddev_samp_fields: Groups_Stddev_Samp_Fields;
+  groups_stream_cursor_input: Groups_Stream_Cursor_Input;
+  groups_stream_cursor_value_input: Groups_Stream_Cursor_Value_Input;
+  groups_sum_fields: Groups_Sum_Fields;
+  groups_updates: Groups_Updates;
+  groups_var_pop_fields: Groups_Var_Pop_Fields;
+  groups_var_samp_fields: Groups_Var_Samp_Fields;
+  groups_variance_fields: Groups_Variance_Fields;
   historical_data: Historical_Data;
   historical_data_aggregate: Historical_Data_Aggregate;
   historical_data_aggregate_fields: Historical_Data_Aggregate_Fields;
@@ -13500,13 +16264,22 @@ export type ResolversParentTypes = {
   labels_variance_fields: Labels_Variance_Fields;
   liabilities: Liabilities;
   liabilities_aggregate: Liabilities_Aggregate;
+  liabilities_aggregate_bool_exp: Liabilities_Aggregate_Bool_Exp;
+  liabilities_aggregate_bool_exp_bool_and: Liabilities_Aggregate_Bool_Exp_Bool_And;
+  liabilities_aggregate_bool_exp_bool_or: Liabilities_Aggregate_Bool_Exp_Bool_Or;
+  liabilities_aggregate_bool_exp_count: Liabilities_Aggregate_Bool_Exp_Count;
   liabilities_aggregate_fields: Liabilities_Aggregate_Fields;
+  liabilities_aggregate_order_by: Liabilities_Aggregate_Order_By;
+  liabilities_arr_rel_insert_input: Liabilities_Arr_Rel_Insert_Input;
   liabilities_avg_fields: Liabilities_Avg_Fields;
+  liabilities_avg_order_by: Liabilities_Avg_Order_By;
   liabilities_bool_exp: Liabilities_Bool_Exp;
   liabilities_inc_input: Liabilities_Inc_Input;
   liabilities_insert_input: Liabilities_Insert_Input;
   liabilities_max_fields: Liabilities_Max_Fields;
+  liabilities_max_order_by: Liabilities_Max_Order_By;
   liabilities_min_fields: Liabilities_Min_Fields;
+  liabilities_min_order_by: Liabilities_Min_Order_By;
   liabilities_mutation_response: Liabilities_Mutation_Response;
   liabilities_obj_rel_insert_input: Liabilities_Obj_Rel_Insert_Input;
   liabilities_on_conflict: Liabilities_On_Conflict;
@@ -13514,15 +16287,22 @@ export type ResolversParentTypes = {
   liabilities_pk_columns_input: Liabilities_Pk_Columns_Input;
   liabilities_set_input: Liabilities_Set_Input;
   liabilities_stddev_fields: Liabilities_Stddev_Fields;
+  liabilities_stddev_order_by: Liabilities_Stddev_Order_By;
   liabilities_stddev_pop_fields: Liabilities_Stddev_Pop_Fields;
+  liabilities_stddev_pop_order_by: Liabilities_Stddev_Pop_Order_By;
   liabilities_stddev_samp_fields: Liabilities_Stddev_Samp_Fields;
+  liabilities_stddev_samp_order_by: Liabilities_Stddev_Samp_Order_By;
   liabilities_stream_cursor_input: Liabilities_Stream_Cursor_Input;
   liabilities_stream_cursor_value_input: Liabilities_Stream_Cursor_Value_Input;
   liabilities_sum_fields: Liabilities_Sum_Fields;
+  liabilities_sum_order_by: Liabilities_Sum_Order_By;
   liabilities_updates: Liabilities_Updates;
   liabilities_var_pop_fields: Liabilities_Var_Pop_Fields;
+  liabilities_var_pop_order_by: Liabilities_Var_Pop_Order_By;
   liabilities_var_samp_fields: Liabilities_Var_Samp_Fields;
+  liabilities_var_samp_order_by: Liabilities_Var_Samp_Order_By;
   liabilities_variance_fields: Liabilities_Variance_Fields;
+  liabilities_variance_order_by: Liabilities_Variance_Order_By;
   mutation_root: {};
   notifications: Notifications;
   notifications_aggregate: Notifications_Aggregate;
@@ -13640,13 +16420,22 @@ export type ResolversParentTypes = {
   recurring_variance_order_by: Recurring_Variance_Order_By;
   revenues: Revenues;
   revenues_aggregate: Revenues_Aggregate;
+  revenues_aggregate_bool_exp: Revenues_Aggregate_Bool_Exp;
+  revenues_aggregate_bool_exp_bool_and: Revenues_Aggregate_Bool_Exp_Bool_And;
+  revenues_aggregate_bool_exp_bool_or: Revenues_Aggregate_Bool_Exp_Bool_Or;
+  revenues_aggregate_bool_exp_count: Revenues_Aggregate_Bool_Exp_Count;
   revenues_aggregate_fields: Revenues_Aggregate_Fields;
+  revenues_aggregate_order_by: Revenues_Aggregate_Order_By;
+  revenues_arr_rel_insert_input: Revenues_Arr_Rel_Insert_Input;
   revenues_avg_fields: Revenues_Avg_Fields;
+  revenues_avg_order_by: Revenues_Avg_Order_By;
   revenues_bool_exp: Revenues_Bool_Exp;
   revenues_inc_input: Revenues_Inc_Input;
   revenues_insert_input: Revenues_Insert_Input;
   revenues_max_fields: Revenues_Max_Fields;
+  revenues_max_order_by: Revenues_Max_Order_By;
   revenues_min_fields: Revenues_Min_Fields;
+  revenues_min_order_by: Revenues_Min_Order_By;
   revenues_mutation_response: Revenues_Mutation_Response;
   revenues_obj_rel_insert_input: Revenues_Obj_Rel_Insert_Input;
   revenues_on_conflict: Revenues_On_Conflict;
@@ -13654,15 +16443,22 @@ export type ResolversParentTypes = {
   revenues_pk_columns_input: Revenues_Pk_Columns_Input;
   revenues_set_input: Revenues_Set_Input;
   revenues_stddev_fields: Revenues_Stddev_Fields;
+  revenues_stddev_order_by: Revenues_Stddev_Order_By;
   revenues_stddev_pop_fields: Revenues_Stddev_Pop_Fields;
+  revenues_stddev_pop_order_by: Revenues_Stddev_Pop_Order_By;
   revenues_stddev_samp_fields: Revenues_Stddev_Samp_Fields;
+  revenues_stddev_samp_order_by: Revenues_Stddev_Samp_Order_By;
   revenues_stream_cursor_input: Revenues_Stream_Cursor_Input;
   revenues_stream_cursor_value_input: Revenues_Stream_Cursor_Value_Input;
   revenues_sum_fields: Revenues_Sum_Fields;
+  revenues_sum_order_by: Revenues_Sum_Order_By;
   revenues_updates: Revenues_Updates;
   revenues_var_pop_fields: Revenues_Var_Pop_Fields;
+  revenues_var_pop_order_by: Revenues_Var_Pop_Order_By;
   revenues_var_samp_fields: Revenues_Var_Samp_Fields;
+  revenues_var_samp_order_by: Revenues_Var_Samp_Order_By;
   revenues_variance_fields: Revenues_Variance_Fields;
+  revenues_variance_order_by: Revenues_Variance_Order_By;
   smallint: Scalars['smallint'];
   smallint_comparison_exp: Smallint_Comparison_Exp;
   status_data: Status_Data;
@@ -13825,6 +16621,44 @@ export type ResolversParentTypes = {
   transactions_avg_fields: Transactions_Avg_Fields;
   transactions_avg_order_by: Transactions_Avg_Order_By;
   transactions_bool_exp: Transactions_Bool_Exp;
+  transactions_import: Transactions_Import;
+  transactions_import_aggregate: Transactions_Import_Aggregate;
+  transactions_import_aggregate_bool_exp: Transactions_Import_Aggregate_Bool_Exp;
+  transactions_import_aggregate_bool_exp_count: Transactions_Import_Aggregate_Bool_Exp_Count;
+  transactions_import_aggregate_fields: Transactions_Import_Aggregate_Fields;
+  transactions_import_aggregate_order_by: Transactions_Import_Aggregate_Order_By;
+  transactions_import_arr_rel_insert_input: Transactions_Import_Arr_Rel_Insert_Input;
+  transactions_import_avg_fields: Transactions_Import_Avg_Fields;
+  transactions_import_avg_order_by: Transactions_Import_Avg_Order_By;
+  transactions_import_bool_exp: Transactions_Import_Bool_Exp;
+  transactions_import_inc_input: Transactions_Import_Inc_Input;
+  transactions_import_insert_input: Transactions_Import_Insert_Input;
+  transactions_import_max_fields: Transactions_Import_Max_Fields;
+  transactions_import_max_order_by: Transactions_Import_Max_Order_By;
+  transactions_import_min_fields: Transactions_Import_Min_Fields;
+  transactions_import_min_order_by: Transactions_Import_Min_Order_By;
+  transactions_import_mutation_response: Transactions_Import_Mutation_Response;
+  transactions_import_on_conflict: Transactions_Import_On_Conflict;
+  transactions_import_order_by: Transactions_Import_Order_By;
+  transactions_import_pk_columns_input: Transactions_Import_Pk_Columns_Input;
+  transactions_import_set_input: Transactions_Import_Set_Input;
+  transactions_import_stddev_fields: Transactions_Import_Stddev_Fields;
+  transactions_import_stddev_order_by: Transactions_Import_Stddev_Order_By;
+  transactions_import_stddev_pop_fields: Transactions_Import_Stddev_Pop_Fields;
+  transactions_import_stddev_pop_order_by: Transactions_Import_Stddev_Pop_Order_By;
+  transactions_import_stddev_samp_fields: Transactions_Import_Stddev_Samp_Fields;
+  transactions_import_stddev_samp_order_by: Transactions_Import_Stddev_Samp_Order_By;
+  transactions_import_stream_cursor_input: Transactions_Import_Stream_Cursor_Input;
+  transactions_import_stream_cursor_value_input: Transactions_Import_Stream_Cursor_Value_Input;
+  transactions_import_sum_fields: Transactions_Import_Sum_Fields;
+  transactions_import_sum_order_by: Transactions_Import_Sum_Order_By;
+  transactions_import_updates: Transactions_Import_Updates;
+  transactions_import_var_pop_fields: Transactions_Import_Var_Pop_Fields;
+  transactions_import_var_pop_order_by: Transactions_Import_Var_Pop_Order_By;
+  transactions_import_var_samp_fields: Transactions_Import_Var_Samp_Fields;
+  transactions_import_var_samp_order_by: Transactions_Import_Var_Samp_Order_By;
+  transactions_import_variance_fields: Transactions_Import_Variance_Fields;
+  transactions_import_variance_order_by: Transactions_Import_Variance_Order_By;
   transactions_inc_input: Transactions_Inc_Input;
   transactions_insert_input: Transactions_Insert_Input;
   transactions_max_fields: Transactions_Max_Fields;
@@ -13898,6 +16732,7 @@ export type CachedDirectiveArgs = {
 export type CachedDirectiveResolver<Result, Parent, ContextType = any, Args = CachedDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type Account_InfoResolvers<ContextType = any, ParentType extends ResolversParentTypes['account_info'] = ResolversParentTypes['account_info']> = {
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   asset?: Resolver<Maybe<ResolversTypes['assets']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   expense?: Resolver<Maybe<ResolversTypes['expenses']>, ParentType, ContextType>;
@@ -13974,6 +16809,7 @@ export type Account_Info_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['account_info_max_fields'] = ResolversParentTypes['account_info_max_fields']
 > = {
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -13986,6 +16822,7 @@ export type Account_Info_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['account_info_min_fields'] = ResolversParentTypes['account_info_min_fields']
 > = {
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -14063,12 +16900,22 @@ export type AssetsResolvers<ContextType = any, ParentType extends ResolversParen
   account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
   account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   balance?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   balance_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
+  category?: Resolver<Maybe<ResolversTypes['categories']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   default?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  transactions_imports?: Resolver<Array<ResolversTypes['transactions_import']>, ParentType, ContextType, Partial<AssetsTransactions_ImportsArgs>>;
+  transactions_imports_aggregate?: Resolver<
+    ResolversTypes['transactions_import_aggregate'],
+    ParentType,
+    ContextType,
+    Partial<AssetsTransactions_Imports_AggregateArgs>
+  >;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14105,6 +16952,7 @@ export type Assets_Avg_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_avg_fields'] = ResolversParentTypes['assets_avg_fields']
 > = {
   balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14114,8 +16962,10 @@ export type Assets_Max_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_max_fields'] = ResolversParentTypes['assets_max_fields']
 > = {
   account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   balance?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   balance_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -14128,8 +16978,10 @@ export type Assets_Min_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_min_fields'] = ResolversParentTypes['assets_min_fields']
 > = {
   account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   balance?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   balance_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -14151,6 +17003,7 @@ export type Assets_Stddev_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_stddev_fields'] = ResolversParentTypes['assets_stddev_fields']
 > = {
   balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14160,6 +17013,7 @@ export type Assets_Stddev_Pop_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_stddev_pop_fields'] = ResolversParentTypes['assets_stddev_pop_fields']
 > = {
   balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14169,6 +17023,7 @@ export type Assets_Stddev_Samp_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_stddev_samp_fields'] = ResolversParentTypes['assets_stddev_samp_fields']
 > = {
   balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14178,6 +17033,7 @@ export type Assets_Sum_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_sum_fields'] = ResolversParentTypes['assets_sum_fields']
 > = {
   balance?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14187,6 +17043,7 @@ export type Assets_Var_Pop_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_var_pop_fields'] = ResolversParentTypes['assets_var_pop_fields']
 > = {
   balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14196,6 +17053,7 @@ export type Assets_Var_Samp_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_var_samp_fields'] = ResolversParentTypes['assets_var_samp_fields']
 > = {
   balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14205,6 +17063,7 @@ export type Assets_Variance_FieldsResolvers<
   ParentType extends ResolversParentTypes['assets_variance_fields'] = ResolversParentTypes['assets_variance_fields']
 > = {
   balance?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14219,11 +17078,19 @@ export interface BpcharScalarConfig extends GraphQLScalarTypeConfig<ResolversTyp
 
 export type CategoriesResolvers<ContextType = any, ParentType extends ResolversParentTypes['categories'] = ResolversParentTypes['categories']> = {
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  assets?: Resolver<Array<ResolversTypes['assets']>, ParentType, ContextType, Partial<CategoriesAssetsArgs>>;
+  assets_aggregate?: Resolver<ResolversTypes['assets_aggregate'], ParentType, ContextType, Partial<CategoriesAssets_AggregateArgs>>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  expenses?: Resolver<Array<ResolversTypes['expenses']>, ParentType, ContextType, Partial<CategoriesExpensesArgs>>;
+  expenses_aggregate?: Resolver<ResolversTypes['expenses_aggregate'], ParentType, ContextType, Partial<CategoriesExpenses_AggregateArgs>>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  liabilities?: Resolver<Array<ResolversTypes['liabilities']>, ParentType, ContextType, Partial<CategoriesLiabilitiesArgs>>;
+  liabilities_aggregate?: Resolver<ResolversTypes['liabilities_aggregate'], ParentType, ContextType, Partial<CategoriesLiabilities_AggregateArgs>>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   recurrings?: Resolver<Array<ResolversTypes['recurring']>, ParentType, ContextType, Partial<CategoriesRecurringsArgs>>;
   recurrings_aggregate?: Resolver<ResolversTypes['recurring_aggregate'], ParentType, ContextType, Partial<CategoriesRecurrings_AggregateArgs>>;
+  revenues?: Resolver<Array<ResolversTypes['revenues']>, ParentType, ContextType, Partial<CategoriesRevenuesArgs>>;
+  revenues_aggregate?: Resolver<ResolversTypes['revenues_aggregate'], ParentType, ContextType, Partial<CategoriesRevenues_AggregateArgs>>;
   transactions?: Resolver<Array<ResolversTypes['transactions']>, ParentType, ContextType, Partial<CategoriesTransactionsArgs>>;
   transactions_aggregate?: Resolver<ResolversTypes['transactions_aggregate'], ParentType, ContextType, Partial<CategoriesTransactions_AggregateArgs>>;
   updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
@@ -14358,7 +17225,11 @@ export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
 
 export type ExpensesResolvers<ContextType = any, ParentType extends ResolversParentTypes['expenses'] = ResolversParentTypes['expenses']> = {
   account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  category?: Resolver<Maybe<ResolversTypes['categories']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -14397,6 +17268,7 @@ export type Expenses_Avg_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_avg_fields'] = ResolversParentTypes['expenses_avg_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14405,6 +17277,9 @@ export type Expenses_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_max_fields'] = ResolversParentTypes['expenses_max_fields']
 > = {
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -14416,6 +17291,9 @@ export type Expenses_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_min_fields'] = ResolversParentTypes['expenses_min_fields']
 > = {
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -14436,6 +17314,7 @@ export type Expenses_Stddev_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_stddev_fields'] = ResolversParentTypes['expenses_stddev_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14444,6 +17323,7 @@ export type Expenses_Stddev_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_stddev_pop_fields'] = ResolversParentTypes['expenses_stddev_pop_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14452,6 +17332,7 @@ export type Expenses_Stddev_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_stddev_samp_fields'] = ResolversParentTypes['expenses_stddev_samp_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14460,6 +17341,7 @@ export type Expenses_Sum_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_sum_fields'] = ResolversParentTypes['expenses_sum_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14468,6 +17350,7 @@ export type Expenses_Var_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_var_pop_fields'] = ResolversParentTypes['expenses_var_pop_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14476,6 +17359,7 @@ export type Expenses_Var_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_var_samp_fields'] = ResolversParentTypes['expenses_var_samp_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14484,6 +17368,7 @@ export type Expenses_Variance_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['expenses_variance_fields'] = ResolversParentTypes['expenses_variance_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -14641,6 +17526,136 @@ export type Gauge_Data_Variance_FieldsResolvers<
   amount?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   battery?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   tick?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type GroupsResolvers<ContextType = any, ParentType extends ResolversParentTypes['groups'] = ResolversParentTypes['groups']> = {
+  created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_AggregateResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_aggregate'] = ResolversParentTypes['groups_aggregate']
+> = {
+  aggregate?: Resolver<Maybe<ResolversTypes['groups_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['groups']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Aggregate_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_aggregate_fields'] = ResolversParentTypes['groups_aggregate_fields']
+> = {
+  avg?: Resolver<Maybe<ResolversTypes['groups_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Groups_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['groups_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['groups_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['groups_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['groups_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['groups_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['groups_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['groups_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['groups_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['groups_variance_fields']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Avg_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_avg_fields'] = ResolversParentTypes['groups_avg_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Max_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_max_fields'] = ResolversParentTypes['groups_max_fields']
+> = {
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Min_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_min_fields'] = ResolversParentTypes['groups_min_fields']
+> = {
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Mutation_ResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_mutation_response'] = ResolversParentTypes['groups_mutation_response']
+> = {
+  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  returning?: Resolver<Array<ResolversTypes['groups']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Stddev_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_stddev_fields'] = ResolversParentTypes['groups_stddev_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Stddev_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_stddev_pop_fields'] = ResolversParentTypes['groups_stddev_pop_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Stddev_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_stddev_samp_fields'] = ResolversParentTypes['groups_stddev_samp_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Sum_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_sum_fields'] = ResolversParentTypes['groups_sum_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Var_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_var_pop_fields'] = ResolversParentTypes['groups_var_pop_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Var_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_var_samp_fields'] = ResolversParentTypes['groups_var_samp_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Groups_Variance_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['groups_variance_fields'] = ResolversParentTypes['groups_variance_fields']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -14965,7 +17980,11 @@ export type Labels_Variance_FieldsResolvers<
 
 export type LiabilitiesResolvers<ContextType = any, ParentType extends ResolversParentTypes['liabilities'] = ResolversParentTypes['liabilities']> = {
   account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  category?: Resolver<Maybe<ResolversTypes['categories']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -15004,6 +18023,7 @@ export type Liabilities_Avg_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_avg_fields'] = ResolversParentTypes['liabilities_avg_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15012,6 +18032,9 @@ export type Liabilities_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_max_fields'] = ResolversParentTypes['liabilities_max_fields']
 > = {
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -15023,6 +18046,9 @@ export type Liabilities_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_min_fields'] = ResolversParentTypes['liabilities_min_fields']
 > = {
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -15043,6 +18069,7 @@ export type Liabilities_Stddev_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_stddev_fields'] = ResolversParentTypes['liabilities_stddev_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15051,6 +18078,7 @@ export type Liabilities_Stddev_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_stddev_pop_fields'] = ResolversParentTypes['liabilities_stddev_pop_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15059,6 +18087,7 @@ export type Liabilities_Stddev_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_stddev_samp_fields'] = ResolversParentTypes['liabilities_stddev_samp_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15067,6 +18096,7 @@ export type Liabilities_Sum_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_sum_fields'] = ResolversParentTypes['liabilities_sum_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15075,6 +18105,7 @@ export type Liabilities_Var_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_var_pop_fields'] = ResolversParentTypes['liabilities_var_pop_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15083,6 +18114,7 @@ export type Liabilities_Var_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_var_samp_fields'] = ResolversParentTypes['liabilities_var_samp_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15091,6 +18123,7 @@ export type Liabilities_Variance_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['liabilities_variance_fields'] = ResolversParentTypes['liabilities_variance_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -15141,6 +18174,8 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     ContextType,
     RequireFields<Mutation_RootDelete_Gauge_Data_By_PkArgs, 'id' | 'ts'>
   >;
+  delete_groups?: Resolver<Maybe<ResolversTypes['groups_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_GroupsArgs, 'where'>>;
+  delete_groups_by_pk?: Resolver<Maybe<ResolversTypes['groups']>, ParentType, ContextType, RequireFields<Mutation_RootDelete_Groups_By_PkArgs, 'id'>>;
   delete_historical_data?: Resolver<
     Maybe<ResolversTypes['historical_data_mutation_response']>,
     ParentType,
@@ -15265,6 +18300,18 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     ContextType,
     RequireFields<Mutation_RootDelete_Transactions_By_PkArgs, 'id'>
   >;
+  delete_transactions_import?: Resolver<
+    Maybe<ResolversTypes['transactions_import_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Transactions_ImportArgs, 'where'>
+  >;
+  delete_transactions_import_by_pk?: Resolver<
+    Maybe<ResolversTypes['transactions_import']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootDelete_Transactions_Import_By_PkArgs, 'id'>
+  >;
   delete_user_settings?: Resolver<
     Maybe<ResolversTypes['user_settings_mutation_response']>,
     ParentType,
@@ -15329,6 +18376,13 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     ContextType,
     RequireFields<Mutation_RootInsert_Gauge_Data_OneArgs, 'object'>
   >;
+  insert_groups?: Resolver<
+    Maybe<ResolversTypes['groups_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_GroupsArgs, 'objects'>
+  >;
+  insert_groups_one?: Resolver<Maybe<ResolversTypes['groups']>, ParentType, ContextType, RequireFields<Mutation_RootInsert_Groups_OneArgs, 'object'>>;
   insert_historical_data?: Resolver<
     Maybe<ResolversTypes['historical_data_mutation_response']>,
     ParentType,
@@ -15452,6 +18506,18 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     ContextType,
     RequireFields<Mutation_RootInsert_TransactionsArgs, 'objects'>
   >;
+  insert_transactions_import?: Resolver<
+    Maybe<ResolversTypes['transactions_import_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Transactions_ImportArgs, 'objects'>
+  >;
+  insert_transactions_import_one?: Resolver<
+    Maybe<ResolversTypes['transactions_import']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootInsert_Transactions_Import_OneArgs, 'object'>
+  >;
   insert_transactions_one?: Resolver<
     Maybe<ResolversTypes['transactions']>,
     ParentType,
@@ -15551,6 +18617,14 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     ParentType,
     ContextType,
     RequireFields<Mutation_RootUpdate_Gauge_Data_ManyArgs, 'updates'>
+  >;
+  update_groups?: Resolver<Maybe<ResolversTypes['groups_mutation_response']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_GroupsArgs, 'where'>>;
+  update_groups_by_pk?: Resolver<Maybe<ResolversTypes['groups']>, ParentType, ContextType, RequireFields<Mutation_RootUpdate_Groups_By_PkArgs, 'pk_columns'>>;
+  update_groups_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['groups_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Groups_ManyArgs, 'updates'>
   >;
   update_historical_data?: Resolver<
     Maybe<ResolversTypes['historical_data_mutation_response']>,
@@ -15752,6 +18826,24 @@ export type Mutation_RootResolvers<ContextType = any, ParentType extends Resolve
     ContextType,
     RequireFields<Mutation_RootUpdate_Transactions_By_PkArgs, 'pk_columns'>
   >;
+  update_transactions_import?: Resolver<
+    Maybe<ResolversTypes['transactions_import_mutation_response']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Transactions_ImportArgs, 'where'>
+  >;
+  update_transactions_import_by_pk?: Resolver<
+    Maybe<ResolversTypes['transactions_import']>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Transactions_Import_By_PkArgs, 'pk_columns'>
+  >;
+  update_transactions_import_many?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['transactions_import_mutation_response']>>>,
+    ParentType,
+    ContextType,
+    RequireFields<Mutation_RootUpdate_Transactions_Import_ManyArgs, 'updates'>
+  >;
   update_transactions_many?: Resolver<
     Maybe<Array<Maybe<ResolversTypes['transactions_mutation_response']>>>,
     ParentType,
@@ -15939,6 +19031,9 @@ export type Query_RootResolvers<ContextType = any, ParentType extends ResolversP
   gauge_data?: Resolver<Array<ResolversTypes['gauge_data']>, ParentType, ContextType, Partial<Query_RootGauge_DataArgs>>;
   gauge_data_aggregate?: Resolver<ResolversTypes['gauge_data_aggregate'], ParentType, ContextType, Partial<Query_RootGauge_Data_AggregateArgs>>;
   gauge_data_by_pk?: Resolver<Maybe<ResolversTypes['gauge_data']>, ParentType, ContextType, RequireFields<Query_RootGauge_Data_By_PkArgs, 'id' | 'ts'>>;
+  groups?: Resolver<Array<ResolversTypes['groups']>, ParentType, ContextType, Partial<Query_RootGroupsArgs>>;
+  groups_aggregate?: Resolver<ResolversTypes['groups_aggregate'], ParentType, ContextType, Partial<Query_RootGroups_AggregateArgs>>;
+  groups_by_pk?: Resolver<Maybe<ResolversTypes['groups']>, ParentType, ContextType, RequireFields<Query_RootGroups_By_PkArgs, 'id'>>;
   historical_data?: Resolver<Array<ResolversTypes['historical_data']>, ParentType, ContextType, Partial<Query_RootHistorical_DataArgs>>;
   historical_data_aggregate?: Resolver<ResolversTypes['historical_data_aggregate'], ParentType, ContextType, Partial<Query_RootHistorical_Data_AggregateArgs>>;
   historical_data_by_pk?: Resolver<
@@ -16025,6 +19120,19 @@ export type Query_RootResolvers<ContextType = any, ParentType extends ResolversP
   transactions?: Resolver<Array<ResolversTypes['transactions']>, ParentType, ContextType, Partial<Query_RootTransactionsArgs>>;
   transactions_aggregate?: Resolver<ResolversTypes['transactions_aggregate'], ParentType, ContextType, Partial<Query_RootTransactions_AggregateArgs>>;
   transactions_by_pk?: Resolver<Maybe<ResolversTypes['transactions']>, ParentType, ContextType, RequireFields<Query_RootTransactions_By_PkArgs, 'id'>>;
+  transactions_import?: Resolver<Array<ResolversTypes['transactions_import']>, ParentType, ContextType, Partial<Query_RootTransactions_ImportArgs>>;
+  transactions_import_aggregate?: Resolver<
+    ResolversTypes['transactions_import_aggregate'],
+    ParentType,
+    ContextType,
+    Partial<Query_RootTransactions_Import_AggregateArgs>
+  >;
+  transactions_import_by_pk?: Resolver<
+    Maybe<ResolversTypes['transactions_import']>,
+    ParentType,
+    ContextType,
+    RequireFields<Query_RootTransactions_Import_By_PkArgs, 'id'>
+  >;
   user_settings?: Resolver<Array<ResolversTypes['user_settings']>, ParentType, ContextType, Partial<Query_RootUser_SettingsArgs>>;
   user_settings_aggregate?: Resolver<ResolversTypes['user_settings_aggregate'], ParentType, ContextType, Partial<Query_RootUser_Settings_AggregateArgs>>;
   user_settings_by_pk?: Resolver<Maybe<ResolversTypes['user_settings']>, ParentType, ContextType, RequireFields<Query_RootUser_Settings_By_PkArgs, 'user_id'>>;
@@ -16412,7 +19520,11 @@ export type Recurring_Variance_FieldsResolvers<
 
 export type RevenuesResolvers<ContextType = any, ParentType extends ResolversParentTypes['revenues'] = ResolversParentTypes['revenues']> = {
   account_info?: Resolver<ResolversTypes['account_info'], ParentType, ContextType>;
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  category?: Resolver<Maybe<ResolversTypes['categories']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   default?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
@@ -16452,6 +19564,7 @@ export type Revenues_Avg_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_avg_fields'] = ResolversParentTypes['revenues_avg_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16460,6 +19573,9 @@ export type Revenues_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_max_fields'] = ResolversParentTypes['revenues_max_fields']
 > = {
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -16471,6 +19587,9 @@ export type Revenues_Min_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_min_fields'] = ResolversParentTypes['revenues_min_fields']
 > = {
+  account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -16491,6 +19610,7 @@ export type Revenues_Stddev_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_stddev_fields'] = ResolversParentTypes['revenues_stddev_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16499,6 +19619,7 @@ export type Revenues_Stddev_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_stddev_pop_fields'] = ResolversParentTypes['revenues_stddev_pop_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16507,6 +19628,7 @@ export type Revenues_Stddev_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_stddev_samp_fields'] = ResolversParentTypes['revenues_stddev_samp_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16515,6 +19637,7 @@ export type Revenues_Sum_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_sum_fields'] = ResolversParentTypes['revenues_sum_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16523,6 +19646,7 @@ export type Revenues_Var_Pop_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_var_pop_fields'] = ResolversParentTypes['revenues_var_pop_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16531,6 +19655,7 @@ export type Revenues_Var_Samp_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_var_samp_fields'] = ResolversParentTypes['revenues_var_samp_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16539,6 +19664,7 @@ export type Revenues_Variance_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['revenues_variance_fields'] = ResolversParentTypes['revenues_variance_fields']
 > = {
+  category_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -16807,6 +19933,28 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootGauge_Data_StreamArgs, 'batch_size' | 'cursor'>
+  >;
+  groups?: SubscriptionResolver<Array<ResolversTypes['groups']>, 'groups', ParentType, ContextType, Partial<Subscription_RootGroupsArgs>>;
+  groups_aggregate?: SubscriptionResolver<
+    ResolversTypes['groups_aggregate'],
+    'groups_aggregate',
+    ParentType,
+    ContextType,
+    Partial<Subscription_RootGroups_AggregateArgs>
+  >;
+  groups_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['groups']>,
+    'groups_by_pk',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootGroups_By_PkArgs, 'id'>
+  >;
+  groups_stream?: SubscriptionResolver<
+    Array<ResolversTypes['groups']>,
+    'groups_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootGroups_StreamArgs, 'batch_size' | 'cursor'>
   >;
   historical_data?: SubscriptionResolver<
     Array<ResolversTypes['historical_data']>,
@@ -17106,6 +20254,34 @@ export type Subscription_RootResolvers<
     ParentType,
     ContextType,
     RequireFields<Subscription_RootTransactions_By_PkArgs, 'id'>
+  >;
+  transactions_import?: SubscriptionResolver<
+    Array<ResolversTypes['transactions_import']>,
+    'transactions_import',
+    ParentType,
+    ContextType,
+    Partial<Subscription_RootTransactions_ImportArgs>
+  >;
+  transactions_import_aggregate?: SubscriptionResolver<
+    ResolversTypes['transactions_import_aggregate'],
+    'transactions_import_aggregate',
+    ParentType,
+    ContextType,
+    Partial<Subscription_RootTransactions_Import_AggregateArgs>
+  >;
+  transactions_import_by_pk?: SubscriptionResolver<
+    Maybe<ResolversTypes['transactions_import']>,
+    'transactions_import_by_pk',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootTransactions_Import_By_PkArgs, 'id'>
+  >;
+  transactions_import_stream?: SubscriptionResolver<
+    Array<ResolversTypes['transactions_import']>,
+    'transactions_import_stream',
+    ParentType,
+    ContextType,
+    RequireFields<Subscription_RootTransactions_Import_StreamArgs, 'batch_size' | 'cursor'>
   >;
   transactions_stream?: SubscriptionResolver<
     Array<ResolversTypes['transactions']>,
@@ -17629,9 +20805,11 @@ export type TransactionsResolvers<ContextType = any, ParentType extends Resolver
   amount?: Resolver<ResolversTypes['float8'], ParentType, ContextType>;
   category?: Resolver<Maybe<ResolversTypes['categories']>, ParentType, ContextType>;
   category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  client_reference?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
   description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  mandate_reference?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   recurring?: Resolver<Maybe<ResolversTypes['recurring']>, ParentType, ContextType>;
   recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   transaction_accounts?: Resolver<Array<ResolversTypes['transaction_accounts']>, ParentType, ContextType, Partial<TransactionsTransaction_AccountsArgs>>;
@@ -17696,6 +20874,162 @@ export type Transactions_Avg_FieldsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type Transactions_ImportResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import'] = ResolversParentTypes['transactions_import']
+> = {
+  asset?: Resolver<ResolversTypes['assets'], ParentType, ContextType>;
+  asset_id?: Resolver<ResolversTypes['bigint'], ParentType, ContextType>;
+  created_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  file_name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  status?: Resolver<ResolversTypes['smallint'], ParentType, ContextType>;
+  updated_at?: Resolver<ResolversTypes['timestamptz'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_AggregateResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_aggregate'] = ResolversParentTypes['transactions_import_aggregate']
+> = {
+  aggregate?: Resolver<Maybe<ResolversTypes['transactions_import_aggregate_fields']>, ParentType, ContextType>;
+  nodes?: Resolver<Array<ResolversTypes['transactions_import']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Aggregate_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_aggregate_fields'] = ResolversParentTypes['transactions_import_aggregate_fields']
+> = {
+  avg?: Resolver<Maybe<ResolversTypes['transactions_import_avg_fields']>, ParentType, ContextType>;
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType, Partial<Transactions_Import_Aggregate_FieldsCountArgs>>;
+  max?: Resolver<Maybe<ResolversTypes['transactions_import_max_fields']>, ParentType, ContextType>;
+  min?: Resolver<Maybe<ResolversTypes['transactions_import_min_fields']>, ParentType, ContextType>;
+  stddev?: Resolver<Maybe<ResolversTypes['transactions_import_stddev_fields']>, ParentType, ContextType>;
+  stddev_pop?: Resolver<Maybe<ResolversTypes['transactions_import_stddev_pop_fields']>, ParentType, ContextType>;
+  stddev_samp?: Resolver<Maybe<ResolversTypes['transactions_import_stddev_samp_fields']>, ParentType, ContextType>;
+  sum?: Resolver<Maybe<ResolversTypes['transactions_import_sum_fields']>, ParentType, ContextType>;
+  var_pop?: Resolver<Maybe<ResolversTypes['transactions_import_var_pop_fields']>, ParentType, ContextType>;
+  var_samp?: Resolver<Maybe<ResolversTypes['transactions_import_var_samp_fields']>, ParentType, ContextType>;
+  variance?: Resolver<Maybe<ResolversTypes['transactions_import_variance_fields']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Avg_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_avg_fields'] = ResolversParentTypes['transactions_import_avg_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Max_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_max_fields'] = ResolversParentTypes['transactions_import_max_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  file_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Min_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_min_fields'] = ResolversParentTypes['transactions_import_min_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  file_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
+  updated_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Mutation_ResponseResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_mutation_response'] = ResolversParentTypes['transactions_import_mutation_response']
+> = {
+  affected_rows?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  returning?: Resolver<Array<ResolversTypes['transactions_import']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Stddev_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_stddev_fields'] = ResolversParentTypes['transactions_import_stddev_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Stddev_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_stddev_pop_fields'] = ResolversParentTypes['transactions_import_stddev_pop_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Stddev_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_stddev_samp_fields'] = ResolversParentTypes['transactions_import_stddev_samp_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Sum_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_sum_fields'] = ResolversParentTypes['transactions_import_sum_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['smallint']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Var_Pop_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_var_pop_fields'] = ResolversParentTypes['transactions_import_var_pop_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Var_Samp_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_var_samp_fields'] = ResolversParentTypes['transactions_import_var_samp_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type Transactions_Import_Variance_FieldsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['transactions_import_variance_fields'] = ResolversParentTypes['transactions_import_variance_fields']
+> = {
+  asset_id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  status?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Transactions_Max_FieldsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['transactions_max_fields'] = ResolversParentTypes['transactions_max_fields']
@@ -17704,9 +21038,11 @@ export type Transactions_Max_FieldsResolvers<
   account_to?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  client_reference?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  mandate_reference?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   transaction_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   transaction_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
@@ -17722,9 +21058,11 @@ export type Transactions_Min_FieldsResolvers<
   account_to?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   amount?: Resolver<Maybe<ResolversTypes['float8']>, ParentType, ContextType>;
   category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  client_reference?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   created_at?: Resolver<Maybe<ResolversTypes['timestamptz']>, ParentType, ContextType>;
   description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  mandate_reference?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   recurring_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   transaction_date?: Resolver<Maybe<ResolversTypes['date']>, ParentType, ContextType>;
   transaction_type?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
@@ -18034,6 +21372,20 @@ export type Resolvers<ContextType = any> = {
   gauge_data_var_pop_fields?: Gauge_Data_Var_Pop_FieldsResolvers<ContextType>;
   gauge_data_var_samp_fields?: Gauge_Data_Var_Samp_FieldsResolvers<ContextType>;
   gauge_data_variance_fields?: Gauge_Data_Variance_FieldsResolvers<ContextType>;
+  groups?: GroupsResolvers<ContextType>;
+  groups_aggregate?: Groups_AggregateResolvers<ContextType>;
+  groups_aggregate_fields?: Groups_Aggregate_FieldsResolvers<ContextType>;
+  groups_avg_fields?: Groups_Avg_FieldsResolvers<ContextType>;
+  groups_max_fields?: Groups_Max_FieldsResolvers<ContextType>;
+  groups_min_fields?: Groups_Min_FieldsResolvers<ContextType>;
+  groups_mutation_response?: Groups_Mutation_ResponseResolvers<ContextType>;
+  groups_stddev_fields?: Groups_Stddev_FieldsResolvers<ContextType>;
+  groups_stddev_pop_fields?: Groups_Stddev_Pop_FieldsResolvers<ContextType>;
+  groups_stddev_samp_fields?: Groups_Stddev_Samp_FieldsResolvers<ContextType>;
+  groups_sum_fields?: Groups_Sum_FieldsResolvers<ContextType>;
+  groups_var_pop_fields?: Groups_Var_Pop_FieldsResolvers<ContextType>;
+  groups_var_samp_fields?: Groups_Var_Samp_FieldsResolvers<ContextType>;
+  groups_variance_fields?: Groups_Variance_FieldsResolvers<ContextType>;
   historical_data?: Historical_DataResolvers<ContextType>;
   historical_data_aggregate?: Historical_Data_AggregateResolvers<ContextType>;
   historical_data_aggregate_fields?: Historical_Data_Aggregate_FieldsResolvers<ContextType>;
@@ -18198,6 +21550,20 @@ export type Resolvers<ContextType = any> = {
   transactions_aggregate?: Transactions_AggregateResolvers<ContextType>;
   transactions_aggregate_fields?: Transactions_Aggregate_FieldsResolvers<ContextType>;
   transactions_avg_fields?: Transactions_Avg_FieldsResolvers<ContextType>;
+  transactions_import?: Transactions_ImportResolvers<ContextType>;
+  transactions_import_aggregate?: Transactions_Import_AggregateResolvers<ContextType>;
+  transactions_import_aggregate_fields?: Transactions_Import_Aggregate_FieldsResolvers<ContextType>;
+  transactions_import_avg_fields?: Transactions_Import_Avg_FieldsResolvers<ContextType>;
+  transactions_import_max_fields?: Transactions_Import_Max_FieldsResolvers<ContextType>;
+  transactions_import_min_fields?: Transactions_Import_Min_FieldsResolvers<ContextType>;
+  transactions_import_mutation_response?: Transactions_Import_Mutation_ResponseResolvers<ContextType>;
+  transactions_import_stddev_fields?: Transactions_Import_Stddev_FieldsResolvers<ContextType>;
+  transactions_import_stddev_pop_fields?: Transactions_Import_Stddev_Pop_FieldsResolvers<ContextType>;
+  transactions_import_stddev_samp_fields?: Transactions_Import_Stddev_Samp_FieldsResolvers<ContextType>;
+  transactions_import_sum_fields?: Transactions_Import_Sum_FieldsResolvers<ContextType>;
+  transactions_import_var_pop_fields?: Transactions_Import_Var_Pop_FieldsResolvers<ContextType>;
+  transactions_import_var_samp_fields?: Transactions_Import_Var_Samp_FieldsResolvers<ContextType>;
+  transactions_import_variance_fields?: Transactions_Import_Variance_FieldsResolvers<ContextType>;
   transactions_max_fields?: Transactions_Max_FieldsResolvers<ContextType>;
   transactions_min_fields?: Transactions_Min_FieldsResolvers<ContextType>;
   transactions_mutation_response?: Transactions_Mutation_ResponseResolvers<ContextType>;

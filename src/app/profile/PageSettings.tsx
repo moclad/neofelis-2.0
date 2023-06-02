@@ -14,7 +14,7 @@ import { Formiz, useForm } from '@formiz/core';
 
 export const PageSettings = () => {
   const { data: session } = useSession();
-  const { t } = useTranslation(['profile', 'common']);
+  const { t } = useTranslation('profile');
   const { colorModeValue } = useDarkMode();
   const { loading, data } = useFetchUserSettingsQuery({
     variables: {
@@ -30,13 +30,13 @@ export const PageSettings = () => {
   const [updateUser, { loading: updateLoading }] = useUpdateUserSettingsMutation({
     onError: (error) => {
       toastError({
-        title: t('feedbacks.updateError.title').toString(),
+        title: t('feedbacks.updateError.title', { ns: 'common' }).toString(),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('feedbacks.updateSuccess.title').toString(),
+        title: t('feedbacks.updateSuccess.title', { ns: 'common' }).toString(),
       });
     },
   });
@@ -69,7 +69,7 @@ export const PageSettings = () => {
                   name="langKey"
                   label={t('data.language.label').toString()}
                   options={AVAILABLE_LANGUAGES.map(({ key }) => ({
-                    label: t(`languages.${key}`),
+                    label: t(`languages.${key}`, { ns: 'common' }),
                     value: key,
                   }))}
                 />

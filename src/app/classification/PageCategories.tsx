@@ -15,7 +15,7 @@ import { useEditMode } from '@/hooks/useEditMode';
 import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, Tag, TagLabel, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
 
 export const PageCategories = () => {
-  const { t } = useTranslation(['classification', 'common']);
+  const { t } = useTranslation('classification');
   const { loading, data } = useAllCategoriesQuery();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Categories>();
@@ -27,13 +27,13 @@ export const PageCategories = () => {
   const [updateCategory, { loading: updateLoading }] = useUpdateCategoryMutation({
     onError: (error) => {
       toastError({
-        title: t('feedbacks.updateError.title').toString(),
+        title: t('feedbacks.updateError.title', { ns: 'common' }),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('feedbacks.updateSuccess.title').toString(),
+        title: t('feedbacks.updateSuccess.title', { ns: 'common' }),
       });
     },
   });
@@ -41,13 +41,13 @@ export const PageCategories = () => {
   const [insertCategory, { loading: insertLoading }] = useInsertCategoryMutation({
     onError: (error) => {
       toastError({
-        title: t('feedbacks.createdError.title').toString(),
+        title: t('feedbacks.createdError.title', { ns: 'common' }),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t('feedbacks.createdSuccess.title').toString(),
+        title: t('feedbacks.createdSuccess.title', { ns: 'common' }),
       });
     },
   });
@@ -87,7 +87,7 @@ export const PageCategories = () => {
       refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
-        title: t('feedbacks.deletedSuccess.title').toString(),
+        title: t('feedbacks.deletedSuccess.title', { ns: 'common' }),
       });
     });
   };
