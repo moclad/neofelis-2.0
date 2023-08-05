@@ -1,12 +1,12 @@
-export { default as Alert } from './alert';
-export { default as Badge } from './badge';
-export { default as Button } from './button';
-export { default as Checkbox } from './checkbox';
-export { default as Input } from './input';
-export { default as Modal } from './modal';
-export { default as Popover } from './popover';
-export { default as Radio } from './radio';
-export { default as Select } from './select';
-export { default as Textarea } from './textarea';
-export { default as FormLabel } from './form-label';
-
+export { alertTheme as Alert } from './alert';
+export { badgeTheme as Badge } from './badge';
+export { buttonTheme as Button } from './button';
+export { checkboxTheme as Checkbox } from './checkbox';
+export { inputTheme as Input } from './input';
+export { linkTheme as Link } from './link';
+export { modalTheme as Modal } from './modal';
+export { popoverTheme as Popover } from './popover';
+export { radioTheme as Radio } from './radio';
+export { selectTheme as Select } from './select';
+export { textareaTheme as Textarea } from './textarea';
+export { tagTheme as Tag } from './tag';

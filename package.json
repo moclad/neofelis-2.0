@@ -115,6 +115,7 @@
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
     "@mdx-js/react": "^2.3.0",
     "@next/eslint-plugin-next": "^13.4.12",
+    "@parcel/watcher": "^2.2.0",
     "@release-it/conventional-changelog": "^7.0.0",
     "@storybook/addon-actions": "^7.2.1",
     "@storybook/addon-docs": "^7.2.1",
