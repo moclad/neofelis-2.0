@@ -53,6 +53,8 @@
     "@formkit/auto-animate": "0.7.0",
     "@next-auth/typeorm-legacy-adapter": "^2.0.2",
     "@popperjs/core": "^2.11.8",
+    "@rpldy/upload-drop-zone": "1.4.1",
+    "@rpldy/uploady": "1.4.1",
     "@tanstack/react-query": "4.32.6",
     "@tanstack/react-query-devtools": "4.32.6",
     "avvvatars-react": "^0.4.2",
