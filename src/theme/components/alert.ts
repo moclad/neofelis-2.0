@@ -103,12 +103,39 @@ const variantSolid: PartsStyleFunction<typeof parts> = (props) => {
   };
 };
 
-const variants = {
-  subtle: variantSubtle,
-  'left-accent': variantLeftAccent,
-  'top-accent': variantTopAccent,
-  solid: variantSolid,
-};
+export const alertTheme = defineMultiStyleConfig({
+  baseStyle: {
+    container: {
+      py: 2,
+      borderRadius: 'md',
+      fontSize: 'sm',
+      flexWrap: 'wrap',
+    },
+    title: {
+      lineHeight: 6,
+      marginEnd: 2,
+    },
+    description: {
+      lineHeight: 5,
+    },
+    icon: {
+      marginEnd: 2,
+    },
+    spinner: {
+      marginEnd: 2,
+    },
+  },
+  variants: {
+    subtle: variantSubtle,
+    'left-accent': variantLeftAccent,
+    'top-accent': variantTopAccent,
+    solid: variantSolid,
+  },
+  defaultProps: {
+    variant: 'subtle',
+    colorScheme: 'blue',
+  },
+});
 
 const defaultProps = {
   variant: 'subtle',
