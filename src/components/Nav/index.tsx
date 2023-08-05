@@ -1,8 +1,7 @@
 import React, { FC, ReactNode, useEffect, useMemo, useState } from 'react';
-import { FiChevronDown } from 'react-icons/fi';
+import { LuChevronDown } from 'react-icons/lu';
 
 import { Icon } from '@/components/Icons';
-import { useDarkMode } from '@/hooks/useDarkMode';
 import {
   Button,
   ChakraComponent,
@@ -33,27 +32,34 @@ const NavContext = React.createContext<NavContextValue>({
 });
 const useNavContext = () => React.useContext(NavContext);
 
-interface NavProps extends MenuProps {
+type NavProps = React.PropsWithChildren<MenuProps> & {
   breakpoint?: string;
-}
+};
 
 export const Nav = ({ children, breakpoint = 'lg', ...rest }: NavProps) => {
-  const isMenu = useBreakpointValue({
-    base: true,
-    [breakpoint]: false,
-  });
+  const isMenu = useBreakpointValue(
+    {
+      base: true,
+      [breakpoint]: false,
+    },
+    { ssr: false }
+  );
 
   const [active, setActive] = useState<ReactNode>(<>-</>);
   return (
     <NavContext.Provider value={{ active, setActive, isMenu: !!isMenu }}>
       <Menu matchWidth {...rest}>
-        {!isMenu && <Stack spacing="1">{children}</Stack>}
+        {!isMenu && (
+          <Stack spacing="1" >
+            {children}
+          </Stack>
+        )}
         {isMenu && (
           <>
             <MenuButton
               textAlign="left"
               as={Button}
-              rightIcon={<FiChevronDown />}
+              rightIcon={<LuChevronDown />}
               sx={{ '> *': { minW: 0 } }}
             >
               {active}
@@ -79,10 +85,8 @@ export const NavItem: ChakraComponent<'span', NavItemProps> = ({
   isActive = false,
   ...rest
 }) => {
-  const { colorModeValue } = useDarkMode();
-
   const { setActive, isMenu } = useNavContext();
-  const Item: any = isMenu ? MenuItem : Flex;
+  const Item: TODO = isMenu ? MenuItem : Flex;
 
   const itemContent = useMemo(
     () => (
@@ -93,9 +97,8 @@ export const NavItem: ChakraComponent<'span', NavItemProps> = ({
             mt="0.05rem"
             me="2"
             fontSize="lg"
-            color={
-              isActive ? colorModeValue('brand.500', 'brand.300') : 'gray.400'
-            }
+            color={isActive ? 'brand.500' : 'gray.400'}
+            _dark={{ color: isActive ? 'brand.300' : 'gray.400' }}
           />
         )}
         <Text as="span" noOfLines={isMenu ? 1 : 2}>
@@ -103,7 +106,7 @@ export const NavItem: ChakraComponent<'span', NavItemProps> = ({
         </Text>
       </Flex>
     ),
-    [icon, children, isActive, isMenu, colorModeValue]
+    [icon, children, isActive, isMenu]
   );
 
   useEffect(() => {
@@ -118,19 +121,23 @@ export const NavItem: ChakraComponent<'span', NavItemProps> = ({
       py="2"
       borderRadius={isMenu ? undefined : 'md'}
       transition="0.2s"
-      color={
-        isActive
-          ? colorModeValue('gray.700', 'gray.100')
-          : colorModeValue('gray.600', 'gray.300')
-      }
       fontSize="sm"
       fontWeight="bold"
-      bg={isActive ? colorModeValue('white', 'blackAlpha.300') : undefined}
+      bg={isActive ? 'white' : 'transparent'}
+      color={isActive ? 'gray.700' : 'gray.600'}
+      _dark={{
+        color: isActive ? 'white' : 'gray.100',
+        bg: isActive ? 'gray.700' : 'transparent',
+      }}
       _hover={
         !isActive && !isMenu
           ? {
-              bg: colorModeValue('white', 'blackAlpha.300'),
-              color: colorModeValue('gray.700', 'gray.100'),
+              bg: 'white',
+              color: 'gray.700',
+              _dark: {
+                bg: 'gray.700',
+                color: 'gray.100',
+              },
             }
           : {}
       }
@@ -146,7 +153,6 @@ export const NavGroup: FC<React.PropsWithChildren<FlexProps>> = ({
   title,
   ...rest
 }) => {
-  const { colorModeValue } = useDarkMode();
   const { isMenu } = useNavContext();
 
   if (isMenu) {
@@ -161,10 +167,11 @@ export const NavGroup: FC<React.PropsWithChildren<FlexProps>> = ({
       <Flex
         fontSize="xs"
         fontWeight="bold"
-        color={colorModeValue('gray.500', 'gray.300')}
         px="3"
         pt="6"
         pb="2"
+        color="gray.500"
+        _dark={{ color: 'gray.300' }}
         {...rest}
       >
         {title}

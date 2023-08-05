@@ -8,7 +8,13 @@ import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
-import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
+import {
+  DataList,
+  DataListCell,
+  DataListFooter,
+  DataListHeader,
+  DataListRow
+} from '@/components/DataList';
 import { FieldCurrency } from '@/components/FieldCurrency';
 import { FieldDayPicker } from '@/components/FieldDayPicker';
 import { FieldInput } from '@/components/FieldInput';
@@ -20,7 +26,7 @@ import {
   PaginationButtonLastPage,
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
-  PaginationInfo,
+  PaginationInfo
 } from '@/components/Pagination';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { TextCurrency } from '@/components/TextCurrency';
@@ -33,13 +39,27 @@ import {
   useInsertCategoryMutation,
   useUpdateAssetMutation,
   useUpdateAssetStandardMutation,
-  useUpdateAssetStateMutation,
+  useUpdateAssetStateMutation
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import { Badge, Box, HStack, LinkBox, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Stack, Text, useDisclosure } from '@chakra-ui/react';
+import {
+  Badge,
+  Box,
+  HStack,
+  LinkBox,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Portal,
+  Stack,
+  Text,
+  useDisclosure
+} from '@chakra-ui/react';
 
 export const PageAssets = () => {
   const { t } = useTranslation('accounts');
