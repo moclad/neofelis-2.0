@@ -194,7 +194,7 @@ export const PageLiabilities = () => {
                     </HStack>
                   </DataListCell>
                   <DataListCell colName="category">
-                    <Text size={'sm'}>{item.category?.name}</Text>
+                    <Text fontSize="small">{item.category?.name}</Text>
                   </DataListCell>
                   <DataListCell colName="status">
                     <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>

@@ -21,7 +21,6 @@ import {
   PaginationInfo,
 } from '@/components/Pagination';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
-import { useToastSuccess } from '@/components/Toast';
 import {
   ActiveCategoriesDocument,
   Expenses,
@@ -36,22 +35,7 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import {
-  Badge,
-  Box,
-  HStack,
-  LinkBox,
-  LinkOverlay,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Portal,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Badge, Box, HStack, LinkBox, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageExpenses = () => {
   const { t } = useTranslation('accounts');
@@ -60,7 +44,6 @@ export const PageExpenses = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorModeValue } = useDarkMode();
   const { dataKey, dataContext, isEditing, onEdit, onFinish } = useEditMode<number, Expenses>();
-  const toastSuccess = useToastSuccess();
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
@@ -71,7 +54,7 @@ export const PageExpenses = () => {
     },
   });
 
-  const [deleteExpense, { loading: deleteFetching }] = useDeleteExpenseAccMutation();
+  const [deleteExpense, { loading: deleteFetching }] = useDeleteExpenseAccMutation(mutationOptions);
   const [updateExpense, { loading: updateLoading }] = useUpdateExpenseAccMutation(mutationOptions);
   const [updateExpenseState, { loading: updateStateLoading }] = useUpdateExpenseStateMutation(mutationOptions);
   const [insertExpense, { loading: insertLoading }] = useInsertExpenseAccMutation(mutationOptions);
@@ -103,7 +86,7 @@ export const PageExpenses = () => {
       account_info: { data: { type: 'E', name: name } },
     };
 
-    insertExpense({
+    await insertExpense({
       variables: {
         object: newData,
       },
@@ -136,16 +119,12 @@ export const PageExpenses = () => {
     });
   };
 
-  const onDelete = async (id: number) => {
+  const onDelete = (id: number) => {
     deleteExpense({
       variables: {
         id,
       },
       refetchQueries: 'active',
-    }).then(() => {
-      toastSuccess({
-        title: tCommon('feedbacks.deletedSuccess.title').toString(),
-      });
     });
   };
 
@@ -174,56 +153,55 @@ export const PageExpenses = () => {
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
-            {data &&
-              data.expenses.map((item) => (
-                <DataListRow as={LinkBox} key={item.id} isDisabled={!item.active}>
-                  <DataListCell colName="name">
-                    <HStack maxW="100%">
-                      <Avvvatars value={item.name} />
-                      <Box minW="0">
-                        <Text noOfLines={0} maxW="full" fontWeight="bold">
-                          {item.active ? <LinkOverlay href="#">{item.name}</LinkOverlay> : item.name}
-                        </Text>
-                        <Text noOfLines={0} maxW="full" fontSize="xs" color={colorModeValue('gray.600', 'gray.300')}>
-                          {item.account_no}
-                        </Text>
-                      </Box>
-                    </HStack>
-                  </DataListCell>
-                  <DataListCell colName="category">
-                    <Text size={'sm'}>{item.category?.name}</Text>
-                  </DataListCell>
-                  <DataListCell colName="status">
-                    <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
-                      {item.active ? t('expenses.data.active').toString() : t('expenses.data.inactive').toString()}
-                    </Badge>
-                  </DataListCell>
-                  <DataListCell colName="actions">
-                    <Menu isLazy>
-                      <MenuButton as={ActionsButton} isDisabled={!item.active} />
-                      <Portal>
-                        <MenuList>
-                          <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {tCommon('actions.edit').toString()}
-                          </MenuItem>
-                          <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {tCommon('actions.deactivate').toString()}
-                          </MenuItem>
-                          <MenuDivider />
-                          <ConfirmMenuItem
-                            icon={<FiTrash2 />}
-                            onClick={() => {
-                              onDelete(item.id);
-                            }}
-                          >
-                            {tCommon('actions.delete').toString()}
-                          </ConfirmMenuItem>
-                        </MenuList>
-                      </Portal>
-                    </Menu>
-                  </DataListCell>
-                </DataListRow>
-              ))}
+            {data?.expenses.map((item) => (
+              <DataListRow as={LinkBox} key={item.id} isDisabled={!item.active}>
+                <DataListCell colName="name">
+                  <HStack maxW="100%">
+                    <Avvvatars value={item.name} />
+                    <Box minW="0">
+                      <Text noOfLines={0} maxW="full" fontWeight="bold">
+                        {item.name}
+                      </Text>
+                      <Text noOfLines={0} maxW="full" fontSize="xs" color={colorModeValue('gray.600', 'gray.300')}>
+                        {item.account_no}
+                      </Text>
+                    </Box>
+                  </HStack>
+                </DataListCell>
+                <DataListCell colName="category">
+                  <Text fontSize="small">{item.category?.name}</Text>
+                </DataListCell>
+                <DataListCell colName="status">
+                  <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
+                    {item.active ? t('expenses.data.active').toString() : t('expenses.data.inactive').toString()}
+                  </Badge>
+                </DataListCell>
+                <DataListCell colName="actions">
+                  <Menu isLazy>
+                    <MenuButton as={ActionsButton} isDisabled={!item.active} />
+                    <Portal>
+                      <MenuList>
+                        <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
+                          {tCommon('actions.edit').toString()}
+                        </MenuItem>
+                        <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
+                          {tCommon('actions.deactivate').toString()}
+                        </MenuItem>
+                        <MenuDivider />
+                        <ConfirmMenuItem
+                          icon={<FiTrash2 />}
+                          onClick={() => {
+                            onDelete(item.id);
+                          }}
+                        >
+                          {tCommon('actions.delete').toString()}
+                        </ConfirmMenuItem>
+                      </MenuList>
+                    </Portal>
+                  </Menu>
+                </DataListCell>
+              </DataListRow>
+            ))}
             <DataListFooter>
               <Pagination
                 isLoadingPage={loading || insertLoading || updateLoading}

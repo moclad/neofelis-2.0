@@ -186,7 +186,7 @@ export const PageRevenues = () => {
                     </HStack>
                   </DataListCell>
                   <DataListCell colName="category">
-                    <Text fontSize={'sm'}>{item.category?.name}</Text>
+                    <Text fontSize="small">{item.category?.name}</Text>
                   </DataListCell>
                   <DataListCell colName="status">
                     <HStack>
@@ -214,7 +214,7 @@ export const PageRevenues = () => {
                             {t('actions.deactivate', { ns: 'common' })}
                           </MenuItem>
                           <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
-                            {t('actions.setAsStandard', { ns: 'common' })}
+                            {t('actions.setAdDefault', { ns: 'common' })}
                           </MenuItem>
                           <MenuDivider />
                           <ConfirmMenuItem

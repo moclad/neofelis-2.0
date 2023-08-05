@@ -1,28 +1,33 @@
-import { useSession } from 'next-auth/react';
-import React, { useEffect } from 'react';
+import dayjs from 'dayjs';
+import React, { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ReactSpreadsheetImport } from 'react-spreadsheet-import';
 import { Data, Field, SelectOption } from 'react-spreadsheet-import/types/types';
 
 import { Page, PageContent } from '@/app/layout';
 import { FieldSelect } from '@/components/FieldSelect';
-import { useToastError, useToastSuccess } from '@/components/Toast';
 import {
   ActiveAssetAccountsDocument,
   ActiveCategoriesDocument,
+  AllActiveAccountsQuery,
   Assets,
   Categories,
-  useActiveExpenseAccountsQuery,
+  Expenses_Insert_Input,
+  Import_Asset_File_Insert_Input,
+  Transactions_Arr_Rel_Insert_Input,
+  Transactions_Insert_Input,
   useAllActiveAccountsQuery,
-  useInsertTransactionsImportMutation,
+  useInsertExpenseAccountsMutation,
+  useInsertImportAssetDataMutation,
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
-import { useQuery } from '@apollo/client';
+import { useMutationOptions } from '@/hooks/useMutationOptions';
 import { Button, Flex, Heading, Stack, useDisclosure } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 
-import { Columns, ImporterFields } from './ImporterFields';
+import { ITransactionAccount } from '../../types/types';
+import { ImporterFields } from './ImporterFields';
 import { ToolsNav } from './ToolsNav';
 
 export const PageImportNew = () => {
@@ -32,30 +37,31 @@ export const PageImportNew = () => {
   const { t } = useTranslation('tools');
   const { colorModeValue } = useDarkMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const toastSuccess = useToastSuccess();
-  const toastError = useToastError();
-
   const form = useForm();
 
   const categories: SelectOption[] = [];
-  const expenseAccounts: SelectOption[] = [];
+
+  const accountOptionsList: SelectOption[] = useMemo(() => [], []);
+
+  const { mutationOptions } = useMutationOptions();
+  const [insertExpenses] = useInsertExpenseAccountsMutation(mutationOptions);
+  const [insertImportAsset, { loading }] = useInsertImportAssetDataMutation(mutationOptions);
 
   const { selectOptions: assets } = useDataToSelectorConverter<Assets>({
     entity: 'assets',
     query: ActiveAssetAccountsDocument,
     onComplete: (data) => {
-      defaultAccount = data.find((x) => x.data.default === true)?.value;
+      defaultAccount = data.find((x) => x.data.default === true)?.value ?? 0;
     },
   });
 
-  const { data: expenses } = useActiveExpenseAccountsQuery();
+  const { data: allAccounts, refetch: refetchAllAccounts } = useAllActiveAccountsQuery();
 
   useEffect(() => {
-    if (expenses?.expenses) {
-      expenses.expenses.forEach((x) => expenseAccounts.push({ label: x.name, value: x.id }));
+    if (allAccounts?.all_active_accounts) {
+      allAccounts.all_active_accounts.forEach((x) => accountOptionsList.push({ label: x.name ?? '', value: x.id }));
     }
-  }, [expenseAccounts, expenses]);
+  }, [allAccounts, accountOptionsList]);
 
   useDataToSelectorConverter<Categories>({
     entity: 'categories',
@@ -65,46 +71,13 @@ export const PageImportNew = () => {
     },
   });
 
-  const [insertTransactionsImport, { loading }] = useInsertTransactionsImportMutation({
-    onError: (error) => {
-      toastError({
-        title: t('feedbacks.updateError.title', { ns: 'common' }),
-        description: error.message,
-      });
-    },
-    onCompleted: () => {
-      toastSuccess({
-        title: t('feedbacks.updateSuccess.title', { ns: 'common' }),
-      });
-    },
-  });
-
-  const submit = async (values: any) => {
-    console.log(values.all.map((value: any) => value));
-
-    /*
-
-    const file = '';
-    const data = {
-      ...values,
-      file_name: file,
-      status: 0,
-    };
-
-    await insertTransactionsImport({
-      variables: {
-        object: data,
-      },
-    });*/
-  };
-
   const getFields = () => {
     const sourceAccountField: Field<string> = {
       label: t('importer.fields.asset.label'),
       key: 'account',
       fieldType: {
         type: 'select',
-        options: expenseAccounts,
+        options: accountOptionsList,
       },
     };
     const categoryField: Field<string> = {
@@ -115,30 +88,123 @@ export const PageImportNew = () => {
         options: categories,
       },
     };
-    const typeField: Field<string> = {
-      label: t('importer.fields.type.label'),
-      key: 'type',
-      fieldType: {
-        type: 'select',
-        options: [
-          { label: t('importer.fields.type.expense'), value: '1' },
-          { label: t('importer.fields.type.income'), value: '2' },
-          { label: t('importer.fields.type.transfer'), value: '3' },
-        ],
-      },
-      validations: [
-        {
-          rule: 'required',
-          errorMessage: t('importer.fields.type.errorMessage'),
-          level: 'error',
-        },
-      ],
+
+    fields.Fields.splice(5, 0, categoryField);
+    fields.Fields.splice(6, 0, sourceAccountField);
+    return fields.Fields;
+  };
+
+  const getTransactionObject = (value: any): Transactions_Insert_Input => {
+    const data: Transactions_Insert_Input = {};
+
+    switch (value.type) {
+      case '2':
+        data.account_to = form.fields?.asset?.value;
+        data.account_from = value.account;
+        data.transaction_type = 2;
+        data.amount = value.incomeAmount;
+        break;
+      case '3':
+        data.account_from = form.fields?.asset?.value;
+        data.account_to = value.account;
+        data.transaction_type = 3;
+        data.amount = value.amount;
+        break;
+
+      default:
+        data.account_from = form.fields?.asset?.value;
+        data.account_to = value.account;
+        data.transaction_type = 1;
+        data.amount = value.amount;
+        break;
+    }
+
+    data.category_id = value.category;
+    data.client_reference = value.clientReference;
+    data.description = value.description;
+    data.mandate_reference = value.mandateReference;
+    data.transaction_date = dayjs(value.bookingDate, 'DD.MM.YYYY').toDate();
+    data.account_no = value.account_no;
+
+    const source: ITransactionAccount = {
+      account_id: data.account_from ?? 0,
+      amount: data.amount * -1,
     };
 
-    fields.Fields.push(categoryField);
-    fields.Fields.push(typeField);
-    fields.Fields.push(sourceAccountField);
-    return fields.Fields;
+    const target: ITransactionAccount = {
+      account_id: data.account_to ?? 0,
+      amount: data.amount,
+    };
+    data.transaction_accounts = { data: [source, target] };
+
+    return data;
+  };
+
+  const createNewExpenseAccounts = async (dataRows: any) => {
+    const accounts = dataRows.validData.filter((x: any) => x.type === '1' && (!x.account || x.account === undefined));
+
+    if (accounts.length === 0) {
+      return;
+    }
+
+    const distinctRows = accounts.reduce((accumulator: any[], currentRow: any) => {
+      const duplicateRow = accumulator.find((row) => row.beneficiary === currentRow.beneficiary && row.account_no === currentRow.account_no);
+
+      if (!duplicateRow) {
+        accumulator.push(currentRow);
+      }
+
+      return accumulator;
+    }, []);
+
+    const newAccounts: Expenses_Insert_Input[] = [];
+
+    distinctRows.forEach((x: any) =>
+      newAccounts.push({
+        category_id: x.category,
+        name: x.beneficiary,
+        alternate_name: x.beneficiary,
+        account_no: x.account_no,
+        account_info: { data: { type: 'E', name: x.beneficiary } },
+      })
+    );
+
+    if (newAccounts.length > 0) {
+      await insertExpenses({
+        variables: {
+          objects: newAccounts,
+        },
+        refetchQueries: 'all',
+      });
+    }
+  };
+
+  const submit = async (dataRows: any) => {
+    await createNewExpenseAccounts(dataRows);
+    const result = await refetchAllAccounts();
+
+    const updatedDataRows = dataRows.validData;
+
+    updatedDataRows.forEach((x: any) => {
+      setAccount(x, result.data);
+    });
+
+    const transactionObjects = updatedDataRows.map((x: any) => getTransactionObject(x));
+
+    const transactions: Transactions_Arr_Rel_Insert_Input = {
+      data: transactionObjects,
+    };
+
+    const data: Import_Asset_File_Insert_Input = {
+      asset_id: form.values.asset,
+      transactions,
+    };
+
+    await insertImportAsset({
+      variables: {
+        object: data,
+      },
+    });
   };
 
   const setAmountAndType = (data: Data<string>) => {
@@ -150,6 +216,7 @@ export const PageImportNew = () => {
       const amount = parseFloat(txt);
       data.incomeAmount = amount.toFixed(2);
       data.type = '2';
+      return;
     }
 
     if (data.amount) {
@@ -170,10 +237,12 @@ export const PageImportNew = () => {
       if (account_no) {
         const accountRegex = new RegExp(account_no, 'i');
 
-        const candidates = assets.filter((a) => a.data.account_no && accountRegex.test(a.data.account_no));
+        const candidates = allAccounts?.all_active_accounts?.filter((a) => a.account_no && accountRegex.test(a.account_no));
 
         if (candidates && candidates.length > 0) {
           data.type = '3';
+          data.account = candidates[0]?.id;
+          data.category = candidates[0]?.category_id?.toString();
         }
       }
     }
@@ -182,6 +251,7 @@ export const PageImportNew = () => {
   const setBeneficiary = (data: Data<string>) => {
     if (!data.beneficiary && data.description) {
       data.beneficiary = (data.description as string).split('//', 1)[0];
+      data.beneficiary = (data.description as string).split('/', 1)[0];
       if (data.beneficiary) {
         const value = data.beneficiary.split('.', 1)[0];
         if (value && value.length > 3) {
@@ -191,27 +261,31 @@ export const PageImportNew = () => {
     }
   };
 
-  const setExpenseAccount = (data: Data<string>) => {
+  const setAccount = (data: Data<string>, accounts: AllActiveAccountsQuery) => {
     const asset = data.beneficiary as string;
-    const account = data.account as string;
+    const account = data.account_no as string;
 
     const searchFor = [];
     if (asset) {
-      searchFor.push(asset);
+      searchFor.push(asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
     }
     if (account) {
-      searchFor.push(account);
+      searchFor.push(account.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
     }
 
     const regex = new RegExp(searchFor.join('|'), 'i');
 
-    const candidates = expenses?.expenses.filter((e) => {
+    const candidates = accounts?.all_active_accounts.filter((e) => {
+      if (e.account_no && regex.test(e.account_no)) {
+        return true;
+      }
+
       if (e.alternate_name && regex.test(e.alternate_name)) {
         return true;
       }
 
-      if (e.account_no && regex.test(e.account_no)) {
-        return true;
+      if (!e.name) {
+        return false;
       }
 
       return regex.test(e.name);
@@ -227,10 +301,16 @@ export const PageImportNew = () => {
     data.forEach((x) => {
       setAmountAndType(x);
       setBeneficiary(x);
-      setExpenseAccount(x);
+      if (allAccounts !== undefined) {
+        setAccount(x, allAccounts);
+      }
     });
 
     return data;
+  };
+
+  const startImport = () => {
+    onOpen();
   };
 
   return (
@@ -239,19 +319,14 @@ export const PageImportNew = () => {
         <Heading size="md" mb="4">
           {t('importer.page.title').toString()}
         </Heading>
-        <Formiz
-          id="import-csv-form"
-          initialValues={{
-            asset: defaultAccount,
-          }}
-        >
-          <form noValidate onSubmit={form.submit}>
+        <Formiz connect={form} id="import-csv-form" initialValues={{ asset: defaultAccount }}>
+          <form onSubmit={form.submit} noValidate>
             <Stack direction="column" bg={colorModeValue('white', 'blackAlpha.400')} p="6" borderRadius="lg" spacing="6" shadow="md">
               <Stack direction={{ base: 'column', sm: 'row' }} spacing="6">
                 <FieldSelect name="asset" label={t('importer.page.asset').toString()} required={t('importer.page.assetRequired').toString()} options={assets} />
               </Stack>
               <Flex>
-                <Button variant="@primary" ms="auto" onClick={() => onOpen()}>
+                <Button variant="@primary" ms="auto" type="submit" onClick={startImport} disabled={!form.isValid && form.isSubmitted}>
                   {t('importer.page.start').toString()}
                 </Button>
               </Flex>

@@ -1,13 +1,14 @@
 import { useTranslation } from 'react-i18next';
 
 import { useToastError, useToastSuccess } from '@/components/Toast';
+import { ApolloError } from '@apollo/client';
 
-export interface useMutationOptionProps {
+export interface UseMutationOptionProps {
   successMessage?: string;
   errorMessage?: string;
 }
 
-export const useMutationOptions = (props: useMutationOptionProps = {}) => {
+export const useMutationOptions = (props: UseMutationOptionProps = {}) => {
   const toastSuccess = useToastSuccess();
   const toastError = useToastError();
   const { t } = useTranslation('common');
@@ -18,15 +19,15 @@ export const useMutationOptions = (props: useMutationOptionProps = {}) => {
   } = props;
 
   const mutationOptions = {
-    onError: (error) => {
+    onError: (error: ApolloError) => {
       toastError({
-        title: t(errorMessage),
+        title: t(errorMessage, ''),
         description: error.message,
       });
     },
     onCompleted: () => {
       toastSuccess({
-        title: t(successMessage),
+        title: t(successMessage, ''),
       });
     },
   };

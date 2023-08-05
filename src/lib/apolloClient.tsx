@@ -10,11 +10,11 @@ import { getMainDefinition } from '@apollo/client/utilities';
 
 const createHttpLink = (token: string) => {
   return new HttpLink({
-    uri: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/v1/graphql',
+    uri: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8080/v1/graphql',
     credentials: 'include',
     headers: {
       Authorization: `Bearer ${token}`,
-      'x-hasura-admin-secret': process.env.NEXT_PUBLIC_API_SECRET,
+      'x-hasura-admin-secret': process.env.NEXT_PUBLIC_API_SECRET ?? '',
     },
     fetch,
   });

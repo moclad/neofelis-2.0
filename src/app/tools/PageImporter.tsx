@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiEdit, FiFilePlus, FiTrash2 } from 'react-icons/fi';
@@ -8,6 +9,7 @@ import { usePaginationFromUrl } from '@/app/router';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
 import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
+import { DateAgo } from '@/components/DateAgo';
 import {
   Pagination,
   PaginationButtonFirstPage,
@@ -18,8 +20,7 @@ import {
 } from '@/components/Pagination';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastSuccess } from '@/components/Toast';
-import { useDeleteTransactionByIdMutation, useInsertTransactionsImportMutation, useTransactions_ImportQuery } from '@/generated/graphql';
-import { useMutationOptions } from '@/hooks/useMutationOptions';
+import { useDeleteImportAssetMutation, useImport_AssetQuery } from '@/generated/graphql';
 import { Badge, LinkBox, LinkOverlay, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text } from '@chakra-ui/react';
 
 import { ToolsNav } from './ToolsNav';
@@ -32,19 +33,17 @@ export const PageImporter = () => {
   const { page, setPage } = usePaginationFromUrl();
   const pageSize = 15;
 
-  const { mutationOptions } = useMutationOptions();
-
-  const { loading, data } = useTransactions_ImportQuery({
+  const { loading, data } = useImport_AssetQuery({
     variables: {
       offset: (page - 1) * pageSize,
       limit: pageSize,
     },
   });
 
-  const [deleteTransactionsImport, { loading: deleteLoading }] = useDeleteTransactionByIdMutation();
+  const [deleteImportAsset, { loading: deleteLoading }] = useDeleteImportAssetMutation();
 
   const onDelete = async (id: number) => {
-    deleteTransactionsImport({
+    await deleteImportAsset({
       variables: {
         id,
       },
@@ -80,64 +79,52 @@ export const PageImporter = () => {
         >
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
-              <DataListCell colName="name" colWidth="1.5">
-                {t('importer.header.fileName').toString()}
-              </DataListCell>
-              <DataListCell colName="status" colWidth="0.5" isVisible={{ base: false, md: true }}>
-                {t('importer.header.status').toString()}
-              </DataListCell>
-              <DataListCell colName="asset" colWidth="1.5">
-                {t('importer.header.asset').toString()}
-              </DataListCell>
-              <DataListCell colName="created" colWidth="0.5">
-                {t('importer.header.created').toString()}
-              </DataListCell>
-              <DataListCell colName="updated" colWidth="0.5">
-                {t('importer.header.updated').toString()}
-              </DataListCell>
+              <DataListCell colName="asset">{t('importer.header.asset').toString()}</DataListCell>
+              <DataListCell colName="created">{t('importer.header.created').toString()}</DataListCell>
+              <DataListCell colName="updated">{t('importer.header.updated').toString()}</DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
-            {data &&
-              data.transactions_import.map((item, index) => (
-                <DataListRow as={LinkBox} key={index}>
-                  <DataListCell colName="name">
-                    <Text noOfLines={0} maxW="full">
-                      <LinkOverlay href="#">{item.file_name}</LinkOverlay>
-                    </Text>
-                  </DataListCell>
-                  <DataListCell colName="status">
-                    <Badge size="sm" colorScheme={item.status ? 'success' : 'gray'}>
-                      {item.status ? t('tools.data.success').toString() : t('tools.data.error').toString()}
-                    </Badge>
-                  </DataListCell>
-                  <DataListCell colName="actions">
-                    <Menu isLazy>
-                      <MenuButton as={ActionsButton} />
-                      <Portal>
-                        <MenuList>
-                          <MenuItem icon={<FiEdit />}>{t('actions.edit', { ns: 'common' })}</MenuItem>
-                          <MenuDivider />
-                          <ConfirmMenuItem
-                            icon={<FiTrash2 />}
-                            onClick={() => {
-                              onDelete(item.id);
-                            }}
-                          >
-                            {t('actions.delete', { ns: 'common' })}
-                          </ConfirmMenuItem>
-                        </MenuList>
-                      </Portal>
-                    </Menu>
-                  </DataListCell>
-                </DataListRow>
-              ))}
+            {data?.import_asset_file.map((item) => (
+              <DataListRow as={LinkBox} key={item.id}>
+                <DataListCell colName="name">
+                  <Text noOfLines={0} maxW="full">
+                    {item.asset.name}
+                  </Text>
+                </DataListCell>
+                <DataListCell colName="created">
+                  <DateAgo date={dayjs(item.created_at)}></DateAgo>
+                </DataListCell>
+                <DataListCell colName="updated">
+                  <DateAgo date={dayjs(item.updated_at)}></DateAgo>
+                </DataListCell>
+                <DataListCell colName="actions">
+                  <Menu isLazy>
+                    <MenuButton as={ActionsButton} />
+                    <Portal>
+                      <MenuList>
+                        <MenuItem icon={<FiEdit />}>{t('actions.edit', { ns: 'common' })}</MenuItem>
+                        <MenuDivider />
+                        <ConfirmMenuItem
+                          icon={<FiTrash2 />}
+                          onClick={() => {
+                            onDelete(item.id);
+                          }}
+                        >
+                          {t('actions.delete', { ns: 'common' })}
+                        </ConfirmMenuItem>
+                      </MenuList>
+                    </Portal>
+                  </Menu>
+                </DataListCell>
+              </DataListRow>
+            ))}
             <DataListFooter>
               <Pagination
                 isLoadingPage={loading || deleteLoading}
                 setPage={setPage}
                 page={page}
                 pageSize={pageSize}
-                totalItems={data?.transactions_import_aggregate?.aggregate?.count}
+                totalItems={data?.import_asset_file_aggregate?.aggregate?.count}
               >
                 <PaginationButtonFirstPage />
                 <PaginationButtonPrevPage />

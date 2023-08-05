@@ -1,0 +1,16 @@
+query import_asset($limit: Int, $offset: Int) {
+  import_asset_file(limit: $limit, offset: $offset, order_by: { updated_at: desc }) {
+    id
+    file_name
+    created_at
+    updated_at
+    asset {
+      name
+    }
+  }
+  import_asset_file_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

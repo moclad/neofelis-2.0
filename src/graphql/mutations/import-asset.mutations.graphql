@@ -1,0 +1,11 @@
+mutation insertImportAssetData($object: import_asset_file_insert_input!) {
+  insert_import_asset_file_one(object: $object) {
+    id
+  }
+}
+
+mutation deleteImportAsset($id: Int!) {
+  delete_import_asset_file_by_pk(id: $id) {
+    id
+  }
+}

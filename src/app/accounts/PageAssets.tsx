@@ -39,22 +39,7 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import {
-  Badge,
-  Box,
-  HStack,
-  LinkBox,
-  LinkOverlay,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Portal,
-  Stack,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Badge, Box, HStack, LinkBox, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageAssets = () => {
   const { t } = useTranslation('accounts');
@@ -167,7 +152,7 @@ export const PageAssets = () => {
       <Page nav={<AccountsNav />}>
         <PageContent
           loading={loading || deleteFetching || insertLoading || updateLoading}
-          title={t('assets.title').toString()}
+          title={t('assets.title')}
           actions={[
             <ResponsiveIconButton key="createAsset" icon={<FiPlus />} variant="@primary" onClick={() => onOpen()}>
               {t('assets.actions.create').toString()}
@@ -177,7 +162,7 @@ export const PageAssets = () => {
           <DataList>
             <DataListHeader isVisible={{ base: false, md: true }}>
               <DataListCell colName="name" colWidth="1.0">
-                {t('assets.header.name').toString()}
+                {t('assets.header.name')}
               </DataListCell>
               <DataListCell colName="category" colWidth="0.5" isVisible={{ base: false, lg: true }}>
                 {t('assets.header.category').toString()}
@@ -190,73 +175,81 @@ export const PageAssets = () => {
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
-            {data &&
-              data.assets.map((item) => (
-                <DataListRow as={LinkBox} key={item.id} isDisabled={!item.active}>
-                  <DataListCell colName="name">
-                    <HStack maxW="100%">
-                      <Avvvatars value={item.name} />
+            {data?.assets.map((item) => (
+              <DataListRow as={LinkBox} key={item.id} isDisabled={!item.active}>
+                <DataListCell colName="name">
+                  <HStack maxW="100%">
+                    <Avvvatars value={item.name} />
 
-                      <Box minW="0">
-                        <Text noOfLines={0} maxW="full" fontWeight="bold">
-                          {item.active ? <LinkOverlay href="#">{item.name}</LinkOverlay> : item.name}
-                        </Text>
-                        <Text noOfLines={0} maxW="full" fontSize="xs" color={colorModeValue('gray.600', 'gray.300')}>
-                          {item.account_no}
-                        </Text>
-                      </Box>
-                    </HStack>
-                  </DataListCell>
-                  <DataListCell colName="category">
-                    <Text fontSize={'sm'}>{item.category?.name}</Text>
-                  </DataListCell>
-                  <DataListCell colName="balance">
-                    <TextCurrency value={0} locale="de" currency="EUR" />
-                  </DataListCell>
-                  <DataListCell colName="status">
-                    <HStack maxW="100%">
-                      <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
-                        {item.active ? t('assets.data.active').toString() : t('assets.data.inactive').toString()}
+                    <Box minW="0">
+                      <Text noOfLines={0} maxW="full" fontWeight="bold">
+                        {item.name}
+                      </Text>
+                      <Text noOfLines={0} maxW="full" fontSize="xs" color={colorModeValue('gray.600', 'gray.300')}>
+                        {item.account_no}
+                      </Text>
+                    </Box>
+                  </HStack>
+                </DataListCell>
+                <DataListCell colName="category">
+                  <Text fontSize="small">{item.category?.name}</Text>
+                </DataListCell>
+                <DataListCell colName="balance">
+                  <TextCurrency value={0} locale="de" currency="EUR" />
+                </DataListCell>
+                <DataListCell colName="status">
+                  <HStack maxW="100%">
+                    <Badge size="sm" colorScheme={item.active ? 'success' : 'gray'}>
+                      {item.active ? t('assets.data.active').toString() : t('assets.data.inactive').toString()}
+                    </Badge>
+
+                    {item.default ? (
+                      <Badge size="sm" colorScheme="green" color={colorModeValue('brand.500', 'brand.500')}>
+                        {t('assets.data.defaultAsset').toString()}
                       </Badge>
-
-                      {item.default ? (
-                        <Badge size="sm" colorScheme="green" color={colorModeValue('brand.500', 'brand.500')}>
-                          {t('assets.data.defaultAsset').toString()}
-                        </Badge>
-                      ) : (
-                        <></>
-                      )}
-                    </HStack>
-                  </DataListCell>
-                  <DataListCell colName="actions">
-                    <Menu isLazy>
-                      <MenuButton as={ActionsButton} isDisabled={!item.active} />
-                      <Portal>
-                        <MenuList>
-                          <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                            {t('actions.edit', { ns: 'common' })}
-                          </MenuItem>
-                          <MenuItem onClick={() => deactivate(item)} icon={<FiEdit />}>
-                            {t('actions.deactivate', { ns: 'common' })}
-                          </MenuItem>
-                          <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
-                            {t('actions.setAsStandard', { ns: 'common' })}
-                          </MenuItem>
-                          <MenuDivider />
+                    ) : (
+                      <></>
+                    )}
+                  </HStack>
+                </DataListCell>
+                <DataListCell colName="actions">
+                  <Menu isLazy>
+                    <MenuButton as={ActionsButton} isDisabled={!item.active} />
+                    <Portal>
+                      <MenuList>
+                        <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
+                          {t('actions.edit', { ns: 'common' })}
+                        </MenuItem>
+                        {item.default === false ? (
                           <ConfirmMenuItem
-                            icon={<FiTrash2 />}
+                            icon={<FiEdit />}
                             onClick={() => {
-                              onDelete(item.id);
+                              deactivate(item);
                             }}
                           >
-                            {t('actions.delete', { ns: 'common' })}
+                            {t('actions.deactivate', { ns: 'common' })}
                           </ConfirmMenuItem>
-                        </MenuList>
-                      </Portal>
-                    </Menu>
-                  </DataListCell>
-                </DataListRow>
-              ))}
+                        ) : null}
+                        {item.default === false ? (
+                          <MenuItem onClick={() => setStandard(item)} icon={<FiEdit />}>
+                            {t('actions.setAdDefault', { ns: 'common' })}
+                          </MenuItem>
+                        ) : null}
+                        <MenuDivider />
+                        <ConfirmMenuItem
+                          icon={<FiTrash2 />}
+                          onClick={() => {
+                            onDelete(item.id);
+                          }}
+                        >
+                          {t('actions.delete', { ns: 'common' })}
+                        </ConfirmMenuItem>
+                      </MenuList>
+                    </Portal>
+                  </Menu>
+                </DataListCell>
+              </DataListRow>
+            ))}
             <DataListFooter>
               <Pagination
                 isLoadingPage={loading || insertLoading || updateLoading}

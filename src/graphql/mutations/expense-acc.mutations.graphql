@@ -8,6 +8,16 @@ mutation insertExpenseAcc($object: expenses_insert_input!) {
   }
 }
 
+mutation insertExpenseAccounts($objects: [expenses_insert_input!]!) {
+  insert_expenses(objects: $objects) {
+    affected_rows
+    returning {
+      id
+      name
+    }
+  }
+}
+
 mutation deleteExpenseAcc($id: bigint!) {
   delete_account_info_by_pk(id: $id) {
     id

@@ -76,6 +76,25 @@ export class ImporterFields {
       example: this.t.t('importer.fields.description.example'),
     },
     {
+      label: this.t.t('importer.fields.type.label'),
+      key: 'type',
+      fieldType: {
+        type: 'select',
+        options: [
+          { label: this.t.t('importer.fields.type.expense'), value: '1' },
+          { label: this.t.t('importer.fields.type.income'), value: '2' },
+          { label: this.t.t('importer.fields.type.transfer'), value: '3' },
+        ],
+      },
+      validations: [
+        {
+          rule: 'required',
+          errorMessage: this.t.t('importer.fields.type.errorMessage'),
+          level: 'error',
+        },
+      ],
+    },
+    {
       label: this.t.t('importer.fields.account_no.label'),
       key: 'account_no',
       fieldType: {
@@ -99,18 +118,6 @@ export class ImporterFields {
         type: 'input',
       },
       alternateMatches: [this.t.t('importer.fields.mandateReference.alternateMatch1')],
-    },
-    {
-      label: this.t.t('importer.fields.currency.label'),
-      key: 'currency',
-      alternateMatches: [this.t.t('importer.fields.currency.alternateMatch1')],
-      fieldType: {
-        type: 'select',
-        options: [
-          { label: 'Euro', value: 'euro' },
-          { label: 'US Dollar', value: 'dollar' },
-        ],
-      },
     },
   ];
 }

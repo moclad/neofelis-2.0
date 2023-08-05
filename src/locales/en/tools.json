@@ -28,7 +28,7 @@
         "alternateMatch1": "Buchungstag"
       },
       "asset": {
-        "label": "Asset",
+        "label": "Account",
         "errorMessage": "Assent is required",
         "example": "Acme Ltd."
       },
@@ -44,8 +44,7 @@
       "amount": {
         "label": "Amount",
         "errorMessage": "Amount is required",
-        "alternateMatch1": "soll",
-        "alternateMatch1": "Betrag"
+        "alternateMatch1": "soll"
       },
       "incomeAmount": {
         "label": "Income amount",

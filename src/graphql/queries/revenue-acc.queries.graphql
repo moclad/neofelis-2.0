@@ -25,5 +25,6 @@ query activeRevenueAccounts {
     id
     name
     default
+    category_id
   }
 }

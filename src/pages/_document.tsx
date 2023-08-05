@@ -23,13 +23,7 @@ export default class Document extends NextDocument {
 
   render() {
     return (
-      <Html
-        lang={i18n.language}
-        dir={
-          AVAILABLE_LANGUAGES.find(({ key }) => key === i18n.language)?.dir ??
-          'ltr'
-        }
-      >
+      <Html lang={i18n.language} dir={AVAILABLE_LANGUAGES.find(({ key }) => key === i18n.language)?.dir ?? 'ltr'}>
         <Head />
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
