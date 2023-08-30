@@ -6,9 +6,7 @@ import { ErrorPage } from '@/components/ErrorPage';
 
 import { SecuredPage } from '../router';
 
-const AdminUsersRoutes = React.lazy(
-  () => import('@/app/admin/users/AdminUsersRoutes')
-);
+const AdminUsersRoutes = React.lazy(() => import('@/app/admin/users/AdminUsersRoutes'));
 
 const AdminRoutes = () => {
   return (

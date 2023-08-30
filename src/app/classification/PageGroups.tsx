@@ -10,9 +10,26 @@ import { FieldInput } from '@/components/FieldInput';
 import { ModalDialog } from '@/components/ModalDialog';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastError, useToastSuccess } from '@/components/Toast';
-import { Groups, useAllGroupsQuery, useDeleteGroupMutation, useInsertGroupMutation, useUpdateGroupMutation } from '@/generated/graphql';
+import {
+  Groups,
+  useAllGroupsQuery,
+  useDeleteGroupMutation,
+  useInsertGroupMutation,
+  useUpdateGroupMutation
+} from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
-import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, Tag, TagLabel, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
+import {
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Tag,
+  TagLabel,
+  useDisclosure,
+  Wrap,
+  WrapItem
+} from '@chakra-ui/react';
 
 export const PageGroups = () => {
   const { t } = useTranslation('classification');

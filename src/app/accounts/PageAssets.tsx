@@ -8,13 +8,7 @@ import { Page, PageContent } from '@/app/layout';
 import { usePaginationFromUrl } from '@/app/router';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
-import {
-  DataList,
-  DataListCell,
-  DataListFooter,
-  DataListHeader,
-  DataListRow
-} from '@/components/DataList';
+import { DataList, DataListCell, DataListFooter, DataListHeader, DataListRow } from '@/components/DataList';
 import { FieldCurrency } from '@/components/FieldCurrency';
 import { FieldDayPicker } from '@/components/FieldDayPicker';
 import { FieldInput } from '@/components/FieldInput';
@@ -26,7 +20,7 @@ import {
   PaginationButtonLastPage,
   PaginationButtonNextPage,
   PaginationButtonPrevPage,
-  PaginationInfo
+  PaginationInfo,
 } from '@/components/Pagination';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { TextCurrency } from '@/components/TextCurrency';
@@ -37,29 +31,15 @@ import {
   useDeleteAssetMutation,
   useInsertAssetMutation,
   useInsertCategoryMutation,
+  useSetAssetAsDefaultMutation,
   useUpdateAssetMutation,
-  useUpdateAssetStandardMutation,
-  useUpdateAssetStateMutation
+  useUpdateAssetStateMutation,
 } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useEditMode } from '@/hooks/useEditMode';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
-import {
-  Badge,
-  Box,
-  HStack,
-  LinkBox,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Portal,
-  Stack,
-  Text,
-  useDisclosure
-} from '@chakra-ui/react';
+import { Badge, Box, HStack, LinkBox, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 export const PageAssets = () => {
   const { t } = useTranslation('accounts');
@@ -77,6 +57,7 @@ export const PageAssets = () => {
       offset: (page - 1) * pageSize,
       limit: pageSize,
     },
+    fetchPolicy: 'cache-and-network',
   });
 
   const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
@@ -84,7 +65,7 @@ export const PageAssets = () => {
   const [insertAsset, { loading: insertLoading }] = useInsertAssetMutation(mutationOptions);
   const [insertCategory] = useInsertCategoryMutation(mutationOptions);
   const [updateAssetState] = useUpdateAssetStateMutation(mutationOptions);
-  const [updateAssetStandard] = useUpdateAssetStandardMutation(mutationOptions);
+  const [setAssetAsDefaultMutation] = useSetAssetAsDefaultMutation(mutationOptions);
 
   const { selectOptions: categories } = useDataToSelectorConverter({
     entity: 'categories',
@@ -100,7 +81,6 @@ export const PageAssets = () => {
       variables: {
         object: newData,
       },
-      refetchQueries: 'active',
     }).then((x) => x.data?.insert_categories_one?.id);
   };
 
@@ -116,16 +96,14 @@ export const PageAssets = () => {
       variables: {
         object: newData,
       },
-      refetchQueries: 'active',
     });
   };
 
   const setStandard = async (item: any) => {
-    await updateAssetStandard({
+    await setAssetAsDefaultMutation({
       variables: {
         id: item.id,
       },
-      refetchQueries: 'active',
     });
   };
 
@@ -135,7 +113,6 @@ export const PageAssets = () => {
         id: item.id,
         state: !item.active,
       },
-      refetchQueries: 'active',
     });
   };
 
@@ -150,7 +127,6 @@ export const PageAssets = () => {
         changes: newData,
         name: newData.name,
       },
-      refetchQueries: 'active',
     });
   };
 
@@ -159,7 +135,6 @@ export const PageAssets = () => {
       variables: {
         id,
       },
-      refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
         title: t('feedbacks.deletedSuccess.title', { ns: 'common' }).toString(),

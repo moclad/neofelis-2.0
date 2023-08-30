@@ -10951,11 +10951,11 @@ export type UpdateAssetStateMutationVariables = Exact<{
 
 export type UpdateAssetStateMutation = { __typename?: 'mutation_root'; update_assets_by_pk?: { __typename?: 'assets'; active: boolean } | undefined };
 
-export type UpdateAssetStandardMutationVariables = Exact<{
+export type SetAssetAsDefaultMutationVariables = Exact<{
   id: Scalars['bigint']['input'];
 }>;
 
-export type UpdateAssetStandardMutation = {
+export type SetAssetAsDefaultMutation = {
   __typename?: 'mutation_root';
   update_assets_by_pk?: { __typename?: 'assets'; active: boolean } | undefined;
   update_assets?: { __typename?: 'assets_mutation_response'; affected_rows: number } | undefined;
@@ -11808,8 +11808,8 @@ export function useUpdateAssetStateMutation(baseOptions?: Apollo.MutationHookOpt
 export type UpdateAssetStateMutationHookResult = ReturnType<typeof useUpdateAssetStateMutation>;
 export type UpdateAssetStateMutationResult = Apollo.MutationResult<UpdateAssetStateMutation>;
 export type UpdateAssetStateMutationOptions = Apollo.BaseMutationOptions<UpdateAssetStateMutation, UpdateAssetStateMutationVariables>;
-export const UpdateAssetStandardDocument = gql`
-  mutation updateAssetStandard($id: bigint!) {
+export const SetAssetAsDefaultDocument = gql`
+  mutation setAssetAsDefault($id: bigint!) {
     update_assets_by_pk(pk_columns: { id: $id }, _set: { default: true }) {
       active
     }
@@ -11818,62 +11818,60 @@ export const UpdateAssetStandardDocument = gql`
     }
   }
 `;
-export type UpdateAssetStandardMutationFn = Apollo.MutationFunction<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>;
-export type UpdateAssetStandardComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>,
+export type SetAssetAsDefaultMutationFn = Apollo.MutationFunction<SetAssetAsDefaultMutation, SetAssetAsDefaultMutationVariables>;
+export type SetAssetAsDefaultComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<SetAssetAsDefaultMutation, SetAssetAsDefaultMutationVariables>,
   'mutation'
 >;
 
-export const UpdateAssetStandardComponent = (props: UpdateAssetStandardComponentProps) => (
-  <ApolloReactComponents.Mutation<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables> mutation={UpdateAssetStandardDocument} {...props} />
+export const SetAssetAsDefaultComponent = (props: SetAssetAsDefaultComponentProps) => (
+  <ApolloReactComponents.Mutation<SetAssetAsDefaultMutation, SetAssetAsDefaultMutationVariables> mutation={SetAssetAsDefaultDocument} {...props} />
 );
 
-export type UpdateAssetStandardProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
-  [key in TDataName]: Apollo.MutationFunction<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>;
+export type SetAssetAsDefaultProps<TChildProps = {}, TDataName extends string = 'mutate'> = {
+  [key in TDataName]: Apollo.MutationFunction<SetAssetAsDefaultMutation, SetAssetAsDefaultMutationVariables>;
 } & TChildProps;
-export function withUpdateAssetStandard<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
+export function withSetAssetAsDefault<TProps, TChildProps = {}, TDataName extends string = 'mutate'>(
   operationOptions?: ApolloReactHoc.OperationOption<
     TProps,
-    UpdateAssetStandardMutation,
-    UpdateAssetStandardMutationVariables,
-    UpdateAssetStandardProps<TChildProps, TDataName>
+    SetAssetAsDefaultMutation,
+    SetAssetAsDefaultMutationVariables,
+    SetAssetAsDefaultProps<TChildProps, TDataName>
   >
 ) {
-  return ApolloReactHoc.withMutation<
-    TProps,
-    UpdateAssetStandardMutation,
-    UpdateAssetStandardMutationVariables,
-    UpdateAssetStandardProps<TChildProps, TDataName>
-  >(UpdateAssetStandardDocument, {
-    alias: 'updateAssetStandard',
-    ...operationOptions,
-  });
+  return ApolloReactHoc.withMutation<TProps, SetAssetAsDefaultMutation, SetAssetAsDefaultMutationVariables, SetAssetAsDefaultProps<TChildProps, TDataName>>(
+    SetAssetAsDefaultDocument,
+    {
+      alias: 'setAssetAsDefault',
+      ...operationOptions,
+    }
+  );
 }
 
 /**
- * __useUpdateAssetStandardMutation__
+ * __useSetAssetAsDefaultMutation__
  *
- * To run a mutation, you first call `useUpdateAssetStandardMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateAssetStandardMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useSetAssetAsDefaultMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSetAssetAsDefaultMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [updateAssetStandardMutation, { data, loading, error }] = useUpdateAssetStandardMutation({
+ * const [setAssetAsDefaultMutation, { data, loading, error }] = useSetAssetAsDefaultMutation({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useUpdateAssetStandardMutation(baseOptions?: Apollo.MutationHookOptions<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>) {
+export function useSetAssetAsDefaultMutation(baseOptions?: Apollo.MutationHookOptions<SetAssetAsDefaultMutation, SetAssetAsDefaultMutationVariables>) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>(UpdateAssetStandardDocument, options);
+  return Apollo.useMutation<SetAssetAsDefaultMutation, SetAssetAsDefaultMutationVariables>(SetAssetAsDefaultDocument, options);
 }
-export type UpdateAssetStandardMutationHookResult = ReturnType<typeof useUpdateAssetStandardMutation>;
-export type UpdateAssetStandardMutationResult = Apollo.MutationResult<UpdateAssetStandardMutation>;
-export type UpdateAssetStandardMutationOptions = Apollo.BaseMutationOptions<UpdateAssetStandardMutation, UpdateAssetStandardMutationVariables>;
+export type SetAssetAsDefaultMutationHookResult = ReturnType<typeof useSetAssetAsDefaultMutation>;
+export type SetAssetAsDefaultMutationResult = Apollo.MutationResult<SetAssetAsDefaultMutation>;
+export type SetAssetAsDefaultMutationOptions = Apollo.BaseMutationOptions<SetAssetAsDefaultMutation, SetAssetAsDefaultMutationVariables>;
 export const InsertCategoryDocument = gql`
   mutation insertCategory($object: categories_insert_input!) {
     insert_categories_one(object: $object) {

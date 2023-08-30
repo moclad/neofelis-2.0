@@ -28,14 +28,11 @@ mutation updateAssetState($id: bigint!, $state: Boolean) {
   }
 }
 
-mutation updateAssetStandard($id: bigint!) {
+mutation setAssetAsDefault($id: bigint!) {
   update_assets_by_pk(pk_columns: { id: $id }, _set: { default: true }) {
     active
   }
-  update_assets(
-    _set: { default: false }
-    where: { id: { _neq: $id }, default: { _eq: true } }
-  ) {
+  update_assets(_set: { default: false }, where: { id: { _neq: $id }, default: { _eq: true } }) {
     affected_rows
   }
 }

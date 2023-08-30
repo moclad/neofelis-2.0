@@ -4,14 +4,14 @@ import { isBrowser } from '@/utils/ssr';
 
 interface AuthContextValue {
   isLogged: boolean;
-  updateToken(string): void;
+  updateToken(newToken: string): void;
 }
 
 export const AUTH_TOKEN_KEY = 'authToken';
 
-const AuthContext = React.createContext<AuthContextValue>(null);
+const AuthContext = React.createContext<AuthContextValue>({ isLogged: false, updateToken: () => {} });
 
-const updateToken = (newToken) => {
+const updateToken = (newToken: string) => {
   if (!isBrowser) {
     return () => undefined;
   }
@@ -25,12 +25,8 @@ const updateToken = (newToken) => {
 
 export const useAuthContext = () => useContext(AuthContext);
 
-export const AuthProvider: FC<React.PropsWithChildren<unknown>> = ({
-  children,
-}) => {
-  const [token, setToken] = useState(
-    (isBrowser && localStorage.getItem(AUTH_TOKEN_KEY)) ?? null
-  );
+export const AuthProvider: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
+  const [token, setToken] = useState((isBrowser && localStorage.getItem(AUTH_TOKEN_KEY)) ?? null);
 
   const handleUpdateToken = useCallback(
     (newToken: string) => {

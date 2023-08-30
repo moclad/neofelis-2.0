@@ -1,0 +1,1018 @@
+
+> neofelis@2.0.0 storybook D:\_\neofelis\neofelis-client
+> storybook dev -p 6006 -s ./public
+
+@storybook/cli v7.2.1
+
+WARN Could not resolve addon "storybook-dark-mode/register", skipping. Is it installed?
+WARN The "@storybook/addon-mdx-gfm" addon is meant as a migration assistant for Storybook 7.0; and will likely be removed in a future version.
+WARN It's recommended you read this document:
+WARN https://storybook.js.org/docs/react/writing-docs/mdx#lack-of-github-flavored-markdown-gfm
+WARN 
+WARN Once you've made the necessary changes, you can remove the addon from your package.json and storybook config.
+WARN Could not resolve addon "storybook-dark-mode/register", skipping. Is it installed?
+WARN Failed to load static files, no such directory: D:\_\neofelis\neofelis-client\.storybook\public
+WARN Make sure this directory exists, or omit the -s (--static-dir) option.
+info => Starting manager..
+WARN You (or an addon) are using the 'config' preset field. This has been replaced by 'previewAnnotations' and will be removed in 8.0
+info Addon-docs: using MDX2
+info => Using implicit CSS loaders
+info => Using default Webpack5 setup
+WARN Force closed preview build
+ModuleBuildError: Module build failed (from ./node_modules/.pnpm/css-loader@6.7.3_webpack@5.74.0/node_modules/css-loader/dist/cjs.js):
+ValidationError: Invalid options object. CSS Loader has been initialized using an options object that does not match the API schema.
+ - options.url should be one of these:
+   boolean | object { filter? }
+   -> Allows to enables/disables `url()`/`image-set()` functions handling.
+   -> Read more at https://github.com/webpack-contrib/css-loader#url
+   Details:
+    * options.url should be a boolean.
+    * options.url should be an object:
+      object { filter? }
+ - options.import should be one of these:
+   boolean | object { filter? }
+   -> Allows to enables/disables `@import` at-rules handling.
+   -> Read more at https://github.com/webpack-contrib/css-loader#import
+   Details:
+    * options.import should be a boolean.
+    * options.import should be an object:
+      object { filter? }
+    at validate (D:\_\neofelis\neofelis-client\node_modules\.pnpm\schema-utils@3.1.1\node_modules\schema-utils\dist\validate.js:105:11)
+    at Object.getOptions (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:585:19)
+    at Object.loader (D:\_\neofelis\neofelis-client\node_modules\.pnpm\css-loader@6.7.3_webpack@5.74.0\node_modules\css-loader\dist\index.js:22:27)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:252:18
+ModuleBuildError: Module build failed (from ./node_modules/.pnpm/css-loader@6.7.3_webpack@5.74.0/node_modules/css-loader/dist/cjs.js):
+ValidationError: Invalid options object. CSS Loader has been initialized using an options object that does not match the API schema.
+ - options.url should be one of these:
+   boolean | object { filter? }
+   -> Allows to enables/disables `url()`/`image-set()` functions handling.
+   -> Read more at https://github.com/webpack-contrib/css-loader#url
+   Details:
+    * options.url should be a boolean.
+    * options.url should be an object:
+      object { filter? }
+ - options.import should be one of these:
+   boolean | object { filter? }
+   -> Allows to enables/disables `@import` at-rules handling.
+   -> Read more at https://github.com/webpack-contrib/css-loader#import
+   Details:
+    * options.import should be a boolean.
+    * options.import should be an object:
+      object { filter? }
+    at validate (D:\_\neofelis\neofelis-client\node_modules\.pnpm\schema-utils@3.1.1\node_modules\schema-utils\dist\validate.js:105:11)
+    at Object.getOptions (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:585:19)
+    at Object.loader (D:\_\neofelis\neofelis-client\node_modules\.pnpm\css-loader@6.7.3_webpack@5.74.0\node_modules\css-loader\dist\index.js:22:27)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:252:18
+ModuleBuildError: Module build failed (from ./node_modules/.pnpm/css-loader@6.7.3_webpack@5.74.0/node_modules/css-loader/dist/cjs.js):
+ValidationError: Invalid options object. CSS Loader has been initialized using an options object that does not match the API schema.
+ - options.url should be one of these:
+   boolean | object { filter? }
+   -> Allows to enables/disables `url()`/`image-set()` functions handling.
+   -> Read more at https://github.com/webpack-contrib/css-loader#url
+   Details:
+    * options.url should be a boolean.
+    * options.url should be an object:
+      object { filter? }
+ - options.import should be one of these:
+   boolean | object { filter? }
+   -> Allows to enables/disables `@import` at-rules handling.
+   -> Read more at https://github.com/webpack-contrib/css-loader#import
+   Details:
+    * options.import should be a boolean.
+    * options.import should be an object:
+      object { filter? }
+    at validate (D:\_\neofelis\neofelis-client\node_modules\.pnpm\schema-utils@3.1.1\node_modules\schema-utils\dist\validate.js:105:11)
+    at Object.getOptions (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:585:19)
+    at Object.loader (D:\_\neofelis\neofelis-client\node_modules\.pnpm\css-loader@6.7.3_webpack@5.74.0\node_modules\css-loader\dist\index.js:22:27)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:252:18
+ModuleBuildError: Module build failed (from ./node_modules/.pnpm/css-loader@6.7.3_webpack@5.74.0/node_modules/css-loader/dist/cjs.js):
+ValidationError: Invalid options object. CSS Loader has been initialized using an options object that does not match the API schema.
+ - options.url should be one of these:
+   boolean | object { filter? }
+   -> Allows to enables/disables `url()`/`image-set()` functions handling.
+   -> Read more at https://github.com/webpack-contrib/css-loader#url
+   Details:
+    * options.url should be a boolean.
+    * options.url should be an object:
+      object { filter? }
+ - options.import should be one of these:
+   boolean | object { filter? }
+   -> Allows to enables/disables `@import` at-rules handling.
+   -> Read more at https://github.com/webpack-contrib/css-loader#import
+   Details:
+    * options.import should be a boolean.
+    * options.import should be an object:
+      object { filter? }
+    at validate (D:\_\neofelis\neofelis-client\node_modules\.pnpm\schema-utils@3.1.1\node_modules\schema-utils\dist\validate.js:105:11)
+    at Object.getOptions (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:585:19)
+    at Object.loader (D:\_\neofelis\neofelis-client\node_modules\.pnpm\css-loader@6.7.3_webpack@5.74.0\node_modules\css-loader\dist\index.js:22:27)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:252:18
+ModuleNotFoundError: Module not found: Error: Can't resolve 'unfetch' in 'D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\isomorphic-unfetch'
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:2016:28
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModuleFactory.js:798:13
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:10:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModuleFactory.js:270:22
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:9:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModuleFactory.js:434:22
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModuleFactory.js:116:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModuleFactory.js:670:25
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModuleFactory.js:855:8
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModuleFactory.js:975:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\neo-async@2.6.2\node_modules\neo-async\async.js:6883:13
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModuleFactory.js:958:45
+    at finishWithoutResolve (D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:312:11)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:386:15
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:435:5
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:16:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:435:5
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:27:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:87:43
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:435:5
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:16:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\forEachBail.js:16:12
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\AliasPlugin.js:125:14
+    at next (D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\forEachBail.js:14:3)
+    at forEachBail (D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\forEachBail.js:24:9)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\AliasPlugin.js:51:5
+    at _next2 (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:8:1)
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:31:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:435:5
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:16:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:435:5
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:16:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:435:5
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:27:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\DescriptionFilePlugin.js:87:43
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:435:5
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:16:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\Resolver.js:435:5
+    at eval (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:15:1)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\enhanced-resolve@5.10.0\node_modules\enhanced-resolve\lib\DirectoryExistsPlugin.js:41:15
+    at processTicksAndRejections (node:internal/process/task_queues:81:21)
+    at runNextTicks (node:internal/process/task_queues:64:3)
+    at processImmediate (node:internal/timers:447:9)
+resolve 'unfetch' in 'D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\isomorphic-unfetch'
+  Parsed request is a module
+  using description file: D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\isomorphic-unfetch\package.json (relative path: .)
+    Field 'browser' doesn't contain a valid alias configuration
+    resolve as module
+      D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\isomorphic-unfetch\node_modules doesn't exist or is not a directory
+      D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\node_modules doesn't exist or is not a directory
+      looking for modules in D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules
+        single file module
+          using description file: D:\_\neofelis\neofelis-client\package.json (relative path: ./node_modules/.pnpm/isomorphic-unfetch@4.0.2/node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch is not a file
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch.cjs doesn't exist
+        existing directory D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch
+          using description file: D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\package.json (relative path: .)
+            using exports field: ./index.mjs
+              using description file: D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\package.json (relative path: ./index.mjs)
+                no extension
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\index.mjs doesn't exist
+                .mjs
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\index.mjs.mjs doesn't exist
+                .js
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\index.mjs.js doesn't exist
+                .jsx
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\index.mjs.jsx doesn't exist
+                .ts
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\index.mjs.ts doesn't exist
+                .tsx
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\index.mjs.tsx doesn't exist
+                .json
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\index.mjs.json doesn't exist
+                .cjs
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\index.mjs.cjs doesn't exist
+                as directory
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\isomorphic-unfetch@4.0.2\node_modules\unfetch\index.mjs doesn't exist
+      looking for modules in D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules
+        single file module
+          using description file: D:\_\neofelis\neofelis-client\package.json (relative path: ./node_modules/.pnpm/node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch is not a file
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.cjs doesn't exist
+        existing directory D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch
+          using description file: D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\package.json (relative path: .)
+            using exports field: ./index.mjs
+              using description file: D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\package.json (relative path: ./index.mjs)
+                no extension
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs doesn't exist
+                .mjs
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.mjs doesn't exist
+                .js
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.js doesn't exist
+                .jsx
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.jsx doesn't exist
+                .ts
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.ts doesn't exist
+                .tsx
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.tsx doesn't exist
+                .json
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.json doesn't exist
+                .cjs
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.cjs doesn't exist
+                as directory
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs doesn't exist
+      D:\_\neofelis\neofelis-client\node_modules\node_modules doesn't exist or is not a directory
+      looking for modules in D:\_\neofelis\neofelis-client\node_modules
+        single file module
+          using description file: D:\_\neofelis\neofelis-client\package.json (relative path: ./node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\unfetch doesn't exist
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\unfetch.cjs doesn't exist
+        D:\_\neofelis\neofelis-client\node_modules\unfetch doesn't exist
+      D:\_\neofelis\node_modules doesn't exist or is not a directory
+      D:\_\node_modules doesn't exist or is not a directory
+      D:\node_modules doesn't exist or is not a directory
+      looking for modules in D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules
+        single file module
+          using description file: D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\package.json (relative path: ./node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules\unfetch doesn't exist
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules\unfetch.cjs doesn't exist
+        D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\storybook\node_modules\unfetch doesn't exist
+      looking for modules in D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules
+        single file module
+          using description file: D:\_\neofelis\neofelis-client\package.json (relative path: ./node_modules/.pnpm/storybook@7.2.1/node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\unfetch doesn't exist
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\unfetch.cjs doesn't exist
+        D:\_\neofelis\neofelis-client\node_modules\.pnpm\storybook@7.2.1\node_modules\unfetch doesn't exist
+      looking for modules in D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules
+        single file module
+          using description file: D:\_\neofelis\neofelis-client\package.json (relative path: ./node_modules/.pnpm/node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch is not a file
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch.cjs doesn't exist
+        existing directory D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch
+          using description file: D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\package.json (relative path: .)
+            using exports field: ./index.mjs
+              using description file: D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\package.json (relative path: ./index.mjs)
+                no extension
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs doesn't exist
+                .mjs
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.mjs doesn't exist
+                .js
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.js doesn't exist
+                .jsx
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.jsx doesn't exist
+                .ts
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.ts doesn't exist
+                .tsx
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.tsx doesn't exist
+                .json
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.json doesn't exist
+                .cjs
+                  Field 'browser' doesn't contain a valid alias configuration
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs.cjs doesn't exist
+                as directory
+                  D:\_\neofelis\neofelis-client\node_modules\.pnpm\node_modules\unfetch\index.mjs doesn't exist
+      looking for modules in C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules
+        single file module
+          using description file: C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\package.json (relative path: ./bin/node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules\unfetch doesn't exist
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules\unfetch.cjs doesn't exist
+        C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\bin\node_modules\unfetch doesn't exist
+      looking for modules in C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules
+        single file module
+          using description file: C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\package.json (relative path: ./node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules\unfetch doesn't exist
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules\unfetch.cjs doesn't exist
+        C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\pnpm\node_modules\unfetch doesn't exist
+      looking for modules in C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules
+        single file module
+          using description file: C:\Users\benod\AppData\Local\pnpm\global\5\package.json (relative path: ./.pnpm/pnpm@8.6.11/node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\unfetch doesn't exist
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\unfetch.cjs doesn't exist
+        C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\pnpm@8.6.11\node_modules\unfetch doesn't exist
+      looking for modules in C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules
+        single file module
+          using description file: C:\Users\benod\AppData\Local\pnpm\global\5\package.json (relative path: ./.pnpm/node_modules/unfetch)
+            no extension
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules\unfetch doesn't exist
+            .mjs
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules\unfetch.mjs doesn't exist
+            .js
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules\unfetch.js doesn't exist
+            .jsx
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules\unfetch.jsx doesn't exist
+            .ts
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules\unfetch.ts doesn't exist
+            .tsx
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules\unfetch.tsx doesn't exist
+            .json
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules\unfetch.json doesn't exist
+            .cjs
+              Field 'browser' doesn't contain a valid alias configuration
+              C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules\unfetch.cjs doesn't exist
+        C:\Users\benod\AppData\Local\pnpm\global\5\.pnpm\node_modules\unfetch doesn't exist
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:buffer" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:fs" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:https" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:http" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\Hook.js:18:14)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\Hook.js:18:14)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:net" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:path" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:process" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:stream/web" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:stream" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:url" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:util" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+ModuleBuildError: Module build failed: UnhandledSchemeError: Reading from "node:zlib" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:25
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+    at processResult (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:758:19)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:860:5
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:400:11
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:221:19
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:832:16
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Object.processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:829:8)
+    at processResource (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:220:11)
+    at iteratePitchingLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:171:10)
+    at runLoaders (D:\_\neofelis\neofelis-client\node_modules\.pnpm\loader-runner@4.3.0\node_modules\loader-runner\lib\LoaderRunner.js:398:2)
+    at NormalModule._doBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:819:3)
+    at NormalModule.build (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:963:15)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1371:12
+    at NormalModule.needBuild (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\NormalModule.js:1253:32)
+    at Compilation._buildModule (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\Compilation.js:1352:10)
+    at D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:303:10
+    at Hook.eval [as callAsync] (eval at create (D:\_\neofelis\neofelis-client\node_modules\.pnpm\tapable@2.2.1\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:293:26)
+    at AsyncQueue._ensureProcessing (D:\_\neofelis\neofelis-client\node_modules\.pnpm\webpack@5.74.0_@swc+core@1.3.70_esbuild@0.18.15\node_modules\webpack\lib\util\AsyncQueue.js:280:12)
+    at processImmediate (node:internal/timers:476:21)
+
+WARN Broken build, fix the error above.
+WARN You may need to refresh the browser.
+
+ÔÇëELIFECYCLEÔÇë Command failed with exit code 1.

@@ -9,7 +9,18 @@ import buildInfo from '@/../.build-info.json';
 import { Icon } from '@/components/Icons';
 import { useFetchUserQuery } from '@/generated/graphql';
 import { useDarkMode } from '@/hooks/useDarkMode';
-import { Flex, Menu, MenuButton, MenuDivider, MenuGroup, MenuItem, MenuList, Text, useClipboard, useColorMode } from '@chakra-ui/react';
+import {
+  Flex,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
+  Text,
+  useClipboard,
+  useColorMode
+} from '@chakra-ui/react';
 
 const AppVersion = ({ ...rest }) => {
   const { t } = useTranslation('layout');

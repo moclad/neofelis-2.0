@@ -1,5 +1,5 @@
 export * from './UserProfileMenu';
-export * from './hooks/useFocusMode';
+export * from './useFocusMode';
 export * from './LayoutContext';
 export * from './Layout';
 export * from './Loader';

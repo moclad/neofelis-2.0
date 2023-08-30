@@ -10,9 +10,26 @@ import { FieldInput } from '@/components/FieldInput';
 import { ModalDialog } from '@/components/ModalDialog';
 import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { useToastError, useToastSuccess } from '@/components/Toast';
-import { Labels, useAllLabelsQuery, useDeleteLabelMutation, useInsertLabelMutation, useUpdateLabelMutation } from '@/generated/graphql';
+import {
+  Labels,
+  useAllLabelsQuery,
+  useDeleteLabelMutation,
+  useInsertLabelMutation,
+  useUpdateLabelMutation
+} from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
-import { Menu, MenuButton, MenuDivider, MenuItem, MenuList, Tag, TagLabel, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
+import {
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Tag,
+  TagLabel,
+  useDisclosure,
+  Wrap,
+  WrapItem
+} from '@chakra-ui/react';
 
 export const PageLabels = () => {
   const { t } = useTranslation('classification');
