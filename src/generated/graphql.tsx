@@ -497,6 +497,7 @@ export type All_Active_Accounts = {
   account_no?: Maybe<Scalars['String']['output']>;
   alternate_name?: Maybe<Scalars['String']['output']>;
   category_id?: Maybe<Scalars['bigint']['output']>;
+  default?: Maybe<Scalars['Boolean']['output']>;
   id?: Maybe<Scalars['bigint']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['bpchar']['output']>;
@@ -546,6 +547,7 @@ export type All_Active_Accounts_Bool_Exp = {
   account_no?: InputMaybe<String_Comparison_Exp>;
   alternate_name?: InputMaybe<String_Comparison_Exp>;
   category_id?: InputMaybe<Bigint_Comparison_Exp>;
+  default?: InputMaybe<Boolean_Comparison_Exp>;
   id?: InputMaybe<Bigint_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   type?: InputMaybe<Bpchar_Comparison_Exp>;
@@ -578,6 +580,7 @@ export type All_Active_Accounts_Order_By = {
   account_no?: InputMaybe<Order_By>;
   alternate_name?: InputMaybe<Order_By>;
   category_id?: InputMaybe<Order_By>;
+  default?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   type?: InputMaybe<Order_By>;
@@ -591,6 +594,8 @@ export enum All_Active_Accounts_Select_Column {
   AlternateName = 'alternate_name',
   /** column name */
   CategoryId = 'category_id',
+  /** column name */
+  Default = 'default',
   /** column name */
   Id = 'id',
   /** column name */
@@ -633,6 +638,7 @@ export type All_Active_Accounts_Stream_Cursor_Value_Input = {
   account_no?: InputMaybe<Scalars['String']['input']>;
   alternate_name?: InputMaybe<Scalars['String']['input']>;
   category_id?: InputMaybe<Scalars['bigint']['input']>;
+  default?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Scalars['bigint']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['bpchar']['input']>;
@@ -11266,6 +11272,23 @@ export type AllActiveAccountsQuery = {
     category_id?: any | undefined;
     id?: any | undefined;
     name?: string | undefined;
+    default?: boolean | undefined;
+    type?: any | undefined;
+  }>;
+};
+
+export type AllAssetLiabilityAccountsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type AllAssetLiabilityAccountsQuery = {
+  __typename?: 'query_root';
+  all_active_accounts: Array<{
+    __typename?: 'all_active_accounts';
+    account_no?: string | undefined;
+    alternate_name?: string | undefined;
+    category_id?: any | undefined;
+    id?: any | undefined;
+    name?: string | undefined;
+    default?: boolean | undefined;
     type?: any | undefined;
   }>;
 };
@@ -13983,6 +14006,7 @@ export const AllActiveAccountsDocument = gql`
       category_id
       id
       name
+      default
       type
     }
   }
@@ -14042,6 +14066,80 @@ export function useAllActiveAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type AllActiveAccountsQueryHookResult = ReturnType<typeof useAllActiveAccountsQuery>;
 export type AllActiveAccountsLazyQueryHookResult = ReturnType<typeof useAllActiveAccountsLazyQuery>;
 export type AllActiveAccountsQueryResult = Apollo.QueryResult<AllActiveAccountsQuery, AllActiveAccountsQueryVariables>;
+export const AllAssetLiabilityAccountsDocument = gql`
+  query allAssetLiabilityAccounts {
+    all_active_accounts(where: { type: { _in: ["A", "L"] } }, order_by: { name: asc }) {
+      account_no
+      alternate_name
+      category_id
+      id
+      name
+      default
+      type
+    }
+  }
+`;
+export type AllAssetLiabilityAccountsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<AllAssetLiabilityAccountsQuery, AllAssetLiabilityAccountsQueryVariables>,
+  'query'
+>;
+
+export const AllAssetLiabilityAccountsComponent = (props: AllAssetLiabilityAccountsComponentProps) => (
+  <ApolloReactComponents.Query<AllAssetLiabilityAccountsQuery, AllAssetLiabilityAccountsQueryVariables> query={AllAssetLiabilityAccountsDocument} {...props} />
+);
+
+export type AllAssetLiabilityAccountsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<AllAssetLiabilityAccountsQuery, AllAssetLiabilityAccountsQueryVariables>;
+} & TChildProps;
+export function withAllAssetLiabilityAccounts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    AllAssetLiabilityAccountsQuery,
+    AllAssetLiabilityAccountsQueryVariables,
+    AllAssetLiabilityAccountsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    AllAssetLiabilityAccountsQuery,
+    AllAssetLiabilityAccountsQueryVariables,
+    AllAssetLiabilityAccountsProps<TChildProps, TDataName>
+  >(AllAssetLiabilityAccountsDocument, {
+    alias: 'allAssetLiabilityAccounts',
+    ...operationOptions,
+  });
+}
+
+/**
+ * __useAllAssetLiabilityAccountsQuery__
+ *
+ * To run a query within a React component, call `useAllAssetLiabilityAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllAssetLiabilityAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllAssetLiabilityAccountsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAllAssetLiabilityAccountsQuery(
+  baseOptions?: Apollo.QueryHookOptions<AllAssetLiabilityAccountsQuery, AllAssetLiabilityAccountsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AllAssetLiabilityAccountsQuery, AllAssetLiabilityAccountsQueryVariables>(AllAssetLiabilityAccountsDocument, options);
+}
+export function useAllAssetLiabilityAccountsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<AllAssetLiabilityAccountsQuery, AllAssetLiabilityAccountsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AllAssetLiabilityAccountsQuery, AllAssetLiabilityAccountsQueryVariables>(AllAssetLiabilityAccountsDocument, options);
+}
+export type AllAssetLiabilityAccountsQueryHookResult = ReturnType<typeof useAllAssetLiabilityAccountsQuery>;
+export type AllAssetLiabilityAccountsLazyQueryHookResult = ReturnType<typeof useAllAssetLiabilityAccountsLazyQuery>;
+export type AllAssetLiabilityAccountsQueryResult = Apollo.QueryResult<AllAssetLiabilityAccountsQuery, AllAssetLiabilityAccountsQueryVariables>;
 export const AllAssetsDocument = gql`
   query allAssets($limit: Int, $offset: Int) {
     assets(limit: $limit, offset: $offset, order_by: { name: asc }) {
@@ -17234,6 +17332,7 @@ export type All_Active_AccountsResolvers<
   account_no?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   alternate_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   category_id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
+  default?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['bigint']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   type?: Resolver<Maybe<ResolversTypes['bpchar']>, ParentType, ContextType>;

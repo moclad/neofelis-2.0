@@ -8,12 +8,12 @@ import { FieldInput } from '@/components/FieldInput';
 import { FieldSelect } from '@/components/FieldSelect';
 import { ModalDialog } from '@/components/ModalDialog';
 import {
-  ActiveAssetAccountsDocument,
   ActiveCategoriesDocument,
   ActiveExpenseAccountsDocument,
   ActiveRevenueAccountsDocument,
+  All_Active_Accounts,
+  AllAssetLiabilityAccountsDocument,
   AllLabelsDocument,
-  Assets,
   Revenues,
   Transactions,
   useInsertCategoryMutation,
@@ -86,9 +86,9 @@ export const TransactionDialog = (props: TransactionDialogProps) => {
     onComplete: (data) => (defaultAccount = data.find((x) => x.data.default === true)?.value),
   });
 
-  const { selectOptions: assets } = useDataToSelectorConverter<Assets>({
-    entity: 'assets',
-    query: ActiveAssetAccountsDocument,
+  const { selectOptions: assets } = useDataToSelectorConverter<All_Active_Accounts>({
+    entity: 'all_active_accounts',
+    query: AllAssetLiabilityAccountsDocument,
     skipQuery: transactionType === TransactionType.None,
     onComplete: (data) => {
       if (transactionType === TransactionType.Expense) {

@@ -1,11 +1,10 @@
+import { createClient } from 'graphql-ws';
 import fetch from 'isomorphic-unfetch';
-import ws from 'isomorphic-ws';
 import React from 'react';
-import { SubscriptionClient } from 'subscriptions-transport-ws';
 
 import { ApolloClient, HttpLink, split } from '@apollo/client';
 import { InMemoryCache, NormalizedCacheObject } from '@apollo/client/cache';
-import { WebSocketLink } from '@apollo/client/link/ws';
+import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { getMainDefinition } from '@apollo/client/utilities';
 
 const createHttpLink = (token: string) => {
@@ -21,23 +20,19 @@ const createHttpLink = (token: string) => {
 };
 
 const createWSLink = (token: string) => {
-  return new WebSocketLink(
-    new SubscriptionClient(
-      process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8080/v1/graphql',
-      {
-        lazy: true,
-        reconnect: true,
-        connectionParams: async () => {
-          return {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'x-hasura-admin-secret': process.env.NEXT_PUBLIC_API_SECRET,
-            },
-          };
-        },
+  return new GraphQLWsLink(
+    createClient({
+      url: process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8080/v1/graphql',
+      lazy: true,
+      connectionParams: async () => {
+        return {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'x-hasura-admin-secret': process.env.NEXT_PUBLIC_API_SECRET,
+          },
+        };
       },
-      ws
-    )
+    })
   );
 };
 

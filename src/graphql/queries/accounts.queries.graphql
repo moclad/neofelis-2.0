@@ -5,6 +5,19 @@ query allActiveAccounts {
     category_id
     id
     name
+    default
+    type
+  }
+}
+
+query allAssetLiabilityAccounts {
+  all_active_accounts(where: { type: { _in: ["A", "L"] } }, order_by: { name: asc }) {
+    account_no
+    alternate_name
+    category_id
+    id
+    name
+    default
     type
   }
 }

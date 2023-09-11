@@ -57,7 +57,6 @@ export const PageAssets = () => {
       offset: (page - 1) * pageSize,
       limit: pageSize,
     },
-    fetchPolicy: 'cache-and-network',
   });
 
   const [deleteAsset, { loading: deleteFetching }] = useDeleteAssetMutation();
@@ -96,6 +95,7 @@ export const PageAssets = () => {
       variables: {
         object: newData,
       },
+      refetchQueries: 'active',
     });
   };
 
@@ -104,6 +104,7 @@ export const PageAssets = () => {
       variables: {
         id: item.id,
       },
+      refetchQueries: 'active',
     });
   };
 
@@ -113,6 +114,7 @@ export const PageAssets = () => {
         id: item.id,
         state: !item.active,
       },
+      refetchQueries: 'active',
     });
   };
 
@@ -127,6 +129,7 @@ export const PageAssets = () => {
         changes: newData,
         name: newData.name,
       },
+      refetchQueries: 'active',
     });
   };
 
@@ -135,6 +138,7 @@ export const PageAssets = () => {
       variables: {
         id,
       },
+      refetchQueries: 'active',
     }).then(() => {
       toastSuccess({
         title: t('feedbacks.deletedSuccess.title', { ns: 'common' }).toString(),
