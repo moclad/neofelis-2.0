@@ -44,7 +44,8 @@
       "amount": {
         "label": "Amount",
         "errorMessage": "Amount is required",
-        "alternateMatch1": "soll"
+        "alternateMatch1": "soll",
+        "alternateMatch2": "betrag"
       },
       "incomeAmount": {
         "label": "Income amount",

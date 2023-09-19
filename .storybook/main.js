@@ -11,7 +11,7 @@ module.exports = {
     babelModeV7: true
   },
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-interactions', '@storybook/addon-essentials', 'storybook-dark-mode/register', '@storybook/addon-mdx-gfm'],
+  addons: ['@storybook/addon-links', '@storybook/addon-interactions', '@storybook/addon-essentials', 'storybook-dark-mode', '@storybook/addon-mdx-gfm', '@storybook/addon-mdx-gfm'],
   staticDir: ['../public'],
   typescript: {
     reactDocgen: false

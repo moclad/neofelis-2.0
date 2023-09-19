@@ -1,7 +1,7 @@
 import Avvvatars from 'avvvatars-react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiEdit, FiEye, FiPlus, FiTrash2, FiXCircle } from 'react-icons/fi';
+import { FiEdit, FiEye, FiPlus, FiRefreshCcw, FiTrash2, FiXCircle } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
 import { Page, PageContent } from '@/app/layout';
@@ -44,7 +44,7 @@ import { RecurringNav } from './RecurringNav';
 
 export const PageRecurring = () => {
   const { colorModeValue } = useDarkMode();
-  const { t } = useTranslation(['recurring', 'common']);
+  const { t } = useTranslation(['recurring']);
   const navigate = useNavigate();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -66,6 +66,8 @@ export const PageRecurring = () => {
 
   const [inactivateRecurring, { loading: inactivateFetching }] = useInactivateRecurringMutation();
 
+  const generateTransactions = async (id: number) => {};
+
   const onDeactivate = async (id: number) => {
     inactivateRecurring({
       variables: {
@@ -73,7 +75,7 @@ export const PageRecurring = () => {
       },
     }).then(() => {
       toastSuccess({
-        title: t('feedbacks.inactivate.title'),
+        title: t('feedbacks.inactivate.title', { ns: 'common' }),
       });
     });
   };
@@ -85,7 +87,7 @@ export const PageRecurring = () => {
       },
     }).then(() => {
       toastSuccess({
-        title: t('feedbacks.deletedSuccess.title'),
+        title: t('feedbacks.deletedSuccess.title', { ns: 'common' }),
       });
     });
   };
@@ -124,88 +126,96 @@ export const PageRecurring = () => {
               </DataListCell>
               <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
             </DataListHeader>
-            {data &&
-              data.recurring.map((item) => (
-                <DataListRow as={LinkBox} key={item.id}>
-                  <DataListCell colName="title" colWidth={1.5}>
-                    <HStack maxW="100%">
-                      <Avvvatars value={item.title} />
-                      <Text noOfLines={0} maxW="full">
-                        <LinkOverlay href="#">{item.title}</LinkOverlay>
+            {data?.recurring.map((item) => (
+              <DataListRow as={LinkBox} key={item.id}>
+                <DataListCell colName="title" colWidth={1.5}>
+                  <HStack maxW="100%">
+                    <Avvvatars value={item.title} />
+                    <Text noOfLines={0} maxW="full">
+                      <LinkOverlay href="#">{item.title}</LinkOverlay>
+                    </Text>
+                  </HStack>
+                </DataListCell>
+                <DataListCell colName="accounts">
+                  <Wrap>
+                    <WrapItem>
+                      <Text noOfLines={0} maxW="full" fontSize="sm" color={colorModeValue('gray.600', 'gray.300')}>
+                        {item?.account_info?.name}
                       </Text>
-                    </HStack>
-                  </DataListCell>
-                  <DataListCell colName="accounts">
-                    <Wrap>
-                      <WrapItem>
-                        <Text noOfLines={0} maxW="full" fontSize="sm" color={colorModeValue('gray.600', 'gray.300')}>
-                          {item?.account_info?.name}
-                        </Text>
-                      </WrapItem>
-                      <WrapItem>
-                        <Text noOfLines={0} maxW="full" fontSize="sm" color={colorModeValue('gray.600', 'gray.300')}>
-                          {item?.accountInfoByAccountTo?.name}
-                        </Text>
-                      </WrapItem>
-                    </Wrap>
-                  </DataListCell>
-                  <DataListCell colName="cycle">
-                    <Wrap>
-                      <WrapItem>
-                        <Badge size="sm" colorScheme="success">
-                          {t(`recurring.cycleType.${item.cycle_type}`).toString()}
-                        </Badge>
-                      </WrapItem>
-                      <WrapItem>
-                        <Badge size="sm" colorScheme="gray">
-                          {t(`recurring.durationType.${item.duration_type}`).toString()}
-                        </Badge>
-                      </WrapItem>
-                    </Wrap>
-                  </DataListCell>
-                  <DataListCell colName="status">
-                    <Badge size="sm" colorScheme={item.active ? 'success' : 'red'}>
-                      {item.active ? t('recurring.status.active').toString() : t('recurring.status.inactive').toString()}
-                    </Badge>
-                  </DataListCell>
-                  <DataListCell colName="amount">
-                    <TextCurrency value={item.amount} locale="de" currency="EUR" />
-                  </DataListCell>
-                  <DataListCell colName="total">
-                    <TextCurrency value={item?.transactions_aggregate?.aggregate?.sum?.amount ?? 0} locale="de" currency="EUR" />
-                  </DataListCell>
-                  <DataListCell colName="actions">
-                    <HStack>
-                      <Tooltip hasArrow label={t('common:actions.view')}>
-                        <ActionsButton icon={<FiEye />} onClick={() => navigate(`/recurring/transactions/${item.id}`)} />
-                      </Tooltip>
-                      <Menu isLazy>
-                        <MenuButton as={ActionsButton} disabled={!item.active} />
-                        <Portal>
-                          <MenuList>
-                            <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                              {t('common:actions.edit')}
-                            </MenuItem>
+                    </WrapItem>
+                    <WrapItem>
+                      <Text noOfLines={0} maxW="full" fontSize="sm" color={colorModeValue('gray.600', 'gray.300')}>
+                        {item?.accountInfoByAccountTo?.name}
+                      </Text>
+                    </WrapItem>
+                  </Wrap>
+                </DataListCell>
+                <DataListCell colName="cycle">
+                  <Wrap>
+                    <WrapItem>
+                      <Badge size="sm" colorScheme="success">
+                        {t(`recurring.cycleType.${item.cycle_type}`).toString()}
+                      </Badge>
+                    </WrapItem>
+                    <WrapItem>
+                      <Badge size="sm" colorScheme="gray">
+                        {t(`recurring.durationType.${item.duration_type}`).toString()}
+                      </Badge>
+                    </WrapItem>
+                  </Wrap>
+                </DataListCell>
+                <DataListCell colName="status">
+                  <Badge size="sm" colorScheme={item.active ? 'success' : 'red'}>
+                    {item.active ? t('recurring.status.active').toString() : t('recurring.status.inactive').toString()}
+                  </Badge>
+                </DataListCell>
+                <DataListCell colName="amount">
+                  <TextCurrency value={item.amount} locale="de" currency="EUR" />
+                </DataListCell>
+                <DataListCell colName="total">
+                  <TextCurrency value={item?.transactions_aggregate?.aggregate?.sum?.amount ?? 0} locale="de" currency="EUR" />
+                </DataListCell>
+                <DataListCell colName="actions">
+                  <HStack>
+                    <Tooltip hasArrow label={t('actions.view', { ns: 'common' })}>
+                      <ActionsButton icon={<FiEye />} onClick={() => navigate(`/recurring/transactions/${item.id}`)} />
+                    </Tooltip>
+                    <Menu isLazy>
+                      <MenuButton as={ActionsButton} disabled={!item.active} />
+                      <Portal>
+                        <MenuList>
+                          <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
+                            {t('actions.edit', { ns: 'common' })}
+                          </MenuItem>
+                          {item.active ? (
                             <ConfirmMenuItem icon={<FiXCircle />} onClick={() => onDeactivate(item.id)}>
-                              {t('common:actions.deactivate')}
+                              {t('actions.deactivate', { ns: 'common' })}
                             </ConfirmMenuItem>
-                            <MenuDivider />
-                            <ConfirmMenuItem
-                              isDisabled={item?.transactions_aggregate?.aggregate?.sum?.amount > 0}
-                              icon={<FiTrash2 />}
-                              onClick={() => {
-                                onDelete(item.id);
-                              }}
-                            >
-                              {t('common:actions.delete')}
-                            </ConfirmMenuItem>
-                          </MenuList>
-                        </Portal>
-                      </Menu>
-                    </HStack>
-                  </DataListCell>
-                </DataListRow>
-              ))}
+                          ) : null}
+                          <ConfirmMenuItem
+                            icon={<FiRefreshCcw />}
+                            onClick={() => generateTransactions(item.id)}
+                            isDisabled={item?.transactions_aggregate?.aggregate?.sum?.amount > 0}
+                          >
+                            {t('recurring.actions.generate')}
+                          </ConfirmMenuItem>
+                          <MenuDivider />
+                          <ConfirmMenuItem
+                            isDisabled={item?.transactions_aggregate?.aggregate?.sum?.amount > 0}
+                            icon={<FiTrash2 />}
+                            onClick={() => {
+                              onDelete(item.id);
+                            }}
+                          >
+                            {t('actions.delete', { ns: 'common' })}
+                          </ConfirmMenuItem>
+                        </MenuList>
+                      </Portal>
+                    </Menu>
+                  </HStack>
+                </DataListCell>
+              </DataListRow>
+            ))}
             <DataListPaginationFooter
               isLoadingPage={loading || deleteFetching}
               setPage={setPage}

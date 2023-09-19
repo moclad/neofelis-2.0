@@ -23,10 +23,10 @@ import {
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useDataToSelectorConverter } from '@/hooks/useDataToSelectorConverter';
 import { useMutationOptions } from '@/hooks/useMutationOptions';
+import { ITransactionAccount } from '@/types/types';
 import { Button, Flex, Heading, Stack, useDisclosure } from '@chakra-ui/react';
 import { Formiz, useForm } from '@formiz/core';
 
-import { ITransactionAccount } from '../../types/types';
 import { ImporterFields } from './ImporterFields';
 import { ToolsNav } from './ToolsNav';
 

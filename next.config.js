@@ -41,7 +41,6 @@ module.exports = nextConfig({
     ];
   },
   experimental: {
-    appDir: true,
     // This experimental configuration is useful to remove some SWC dependencies
     // from the final output. Those dependencies are included since Storybook v7
     // https://github.com/orgs/vercel/discussions/103#discussioncomment-6356642

@@ -6,7 +6,8 @@
     "title": "Recurring Transactions",
     "actions": {
       "create": "Create",
-      "edit": "Edit"
+      "edit": "Edit",
+      "generate": "Generate transactions"
     },
     "table": {
       "header": {

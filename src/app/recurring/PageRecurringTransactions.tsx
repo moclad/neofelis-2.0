@@ -9,15 +9,14 @@ import { TransactionDialog } from '@/app/transactions/transaction-dialog';
 import { ActionsButton } from '@/components/ActionsButton';
 import { ConfirmMenuItem } from '@/components/ConfirmMenuItem';
 import { DataList, DataListCell, DataListHeader, DataListPaginationFooter, DataListRow } from '@/components/DataList';
+import { NoData } from '@/components/no-data';
+import { ResponsiveIconButton } from '@/components/ResponsiveIconButton';
 import { TextCurrency } from '@/components/TextCurrency';
 import { useToastError, useToastSuccess } from '@/components/Toast';
 import { Transactions, useDeleteTransactionByIdMutation, useRecurringTransactionsQuery } from '@/generated/graphql';
 import { useEditMode } from '@/hooks/useEditMode';
+import { TransactionType } from '@/types/types';
 import { Badge, Box, HStack, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Portal, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
-
-import { NoData } from '../../components/no-data';
-import { ResponsiveIconButton } from '../../components/ResponsiveIconButton';
-import { TransactionType } from '../../types/types';
 
 export const PageRecurringTransactions = () => {
   const navigate = useNavigate();
@@ -44,14 +43,14 @@ export const PageRecurringTransactions = () => {
     })
       .then(() => {
         toastSuccess({
-          title: t('feedbacks.deletedSuccess.title'),
+          title: t('feedbacks.deletedSuccess.title', { ns: 'common' }),
         });
       })
       .catch((error) => toastError(error));
   };
 
   const showRecurringDetails = () => {
-    if (!data || !data.recurring_by_pk) {
+    if (!data?.recurring_by_pk) {
       return <></>;
     }
 
@@ -118,7 +117,7 @@ export const PageRecurringTransactions = () => {
   };
 
   const showTransactionItems = () => {
-    if (!data || !data.recurring_by_pk || data?.transactions?.length === 0) {
+    if (!data?.recurring_by_pk || data?.transactions?.length === 0) {
       return <NoData />;
     }
 
@@ -129,40 +128,39 @@ export const PageRecurringTransactions = () => {
           <DataListCell colName="amount">{t('recurring.table.header.amount').toString()}</DataListCell>
           <DataListCell colName="actions" colWidth="4rem" align="flex-end" />
         </DataListHeader>
-        {data &&
-          data.transactions.map((item) => (
-            <DataListRow key={item.id}>
-              <DataListCell colName="title">
-                <Text noOfLines={0} maxW="full" fontSize="sm">
-                  {dayjs(item.transaction_date).format('DD MMM YYYY')}
-                </Text>
-              </DataListCell>
-              <DataListCell colName="amount">
-                <TextCurrency value={item.amount} locale="de" currency="EUR" fontSize="sm" />
-              </DataListCell>
-              <DataListCell colName="actions">
-                <Menu isLazy>
-                  <MenuButton as={ActionsButton} size="xs" />
-                  <Portal>
-                    <MenuList>
-                      <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
-                        {t('common:actions.edit')}
-                      </MenuItem>
-                      <MenuDivider />
-                      <ConfirmMenuItem
-                        icon={<FiTrash2 />}
-                        onClick={() => {
-                          onDelete(item.id);
-                        }}
-                      >
-                        {t('common:actions.delete')}
-                      </ConfirmMenuItem>
-                    </MenuList>
-                  </Portal>
-                </Menu>
-              </DataListCell>
-            </DataListRow>
-          ))}
+        {data?.transactions.map((item) => (
+          <DataListRow key={item.id}>
+            <DataListCell colName="title">
+              <Text noOfLines={0} maxW="full" fontSize="sm">
+                {dayjs(item.transaction_date).format('DD MMM YYYY')}
+              </Text>
+            </DataListCell>
+            <DataListCell colName="amount">
+              <TextCurrency value={item.amount} locale="de" currency="EUR" fontSize="sm" />
+            </DataListCell>
+            <DataListCell colName="actions">
+              <Menu isLazy>
+                <MenuButton as={ActionsButton} size="xs" />
+                <Portal>
+                  <MenuList>
+                    <MenuItem onClick={() => onEdit(item.id, item)} icon={<FiEdit />}>
+                      {t('common:actions.edit')}
+                    </MenuItem>
+                    <MenuDivider />
+                    <ConfirmMenuItem
+                      icon={<FiTrash2 />}
+                      onClick={() => {
+                        onDelete(item.id);
+                      }}
+                    >
+                      {t('common:actions.delete')}
+                    </ConfirmMenuItem>
+                  </MenuList>
+                </Portal>
+              </Menu>
+            </DataListCell>
+          </DataListRow>
+        ))}
         <DataListPaginationFooter
           setPage={() => {
             return null;

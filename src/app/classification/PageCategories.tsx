@@ -105,36 +105,35 @@ export const PageCategories = () => {
           ]}
         >
           <Wrap spacing="8px">
-            {data &&
-              data.categories.map((data) => (
-                <WrapItem key={data.id}>
-                  <Tag size={'md'} variant="outline" key={data.id}>
-                    <TagLabel>{data.name}</TagLabel>
-                    <Menu isLazy>
-                      <MenuButton as={ActionsButton} size="sm" ml="8px" />
-                      <MenuList>
-                        <MenuItem
-                          icon={<FiEdit />}
-                          onClick={() => {
-                            onEdit(data.id, data);
-                          }}
-                        >
-                          {t('categories.actions.edit').toString()}
-                        </MenuItem>
-                        <MenuDivider />
-                        <ConfirmMenuItem
-                          icon={<FiTrash2 />}
-                          onClick={() => {
-                            onDelete(data.id);
-                          }}
-                        >
-                          {t('categories.actions.delete').toString()}
-                        </ConfirmMenuItem>
-                      </MenuList>
-                    </Menu>
-                  </Tag>
-                </WrapItem>
-              ))}
+            {data?.categories.map((data) => (
+              <WrapItem key={data.id}>
+                <Tag size={'md'} variant="outline" key={data.id}>
+                  <TagLabel>{data.name}</TagLabel>
+                  <Menu isLazy>
+                    <MenuButton as={ActionsButton} size="sm" ml="8px" />
+                    <MenuList>
+                      <MenuItem
+                        icon={<FiEdit />}
+                        onClick={() => {
+                          onEdit(data.id, data);
+                        }}
+                      >
+                        {t('categories.actions.edit').toString()}
+                      </MenuItem>
+                      <MenuDivider />
+                      <ConfirmMenuItem
+                        icon={<FiTrash2 />}
+                        onClick={() => {
+                          onDelete(data.id);
+                        }}
+                      >
+                        {t('categories.actions.delete').toString()}
+                      </ConfirmMenuItem>
+                    </MenuList>
+                  </Menu>
+                </Tag>
+              </WrapItem>
+            ))}
           </Wrap>
         </PageContent>
       </Page>
